@@ -1,3 +1,10 @@
+// Theme settings
+// --------------
+
+$main-block-background: rgba(0, 0, 0, 0.6);
+$form-padding: 30px;
+$input-height: 25px;
+
 //  Foundation for Sites Settings
 //  -----------------------------
 //
@@ -42,13 +49,6 @@
 //  37. Top Bar
 
 @import '../../node_modules/foundation-sites/scss/util/util';
-
-// Theme settings
-// --------------
-
-$main-block-background: rgba(0, 0, 0, 0.6);
-$form-padding: 30px;
-$input-height: 25px;
 
 // 1. Global
 // ---------
