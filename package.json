@@ -1,0 +1,31 @@
+{
+  "name": "lightdm-webkit-theme-litarvan",
+  "version": "1.0.0",
+  "description": "Litarvan's LightDM HTML greeter",
+  "scripts": {},
+  "keywords": [
+    "lightdm",
+    "greeter",
+    "litarvan",
+    "webkit",
+    "theme"
+  ],
+  "author": "Adrien 'Litarvan' Navratil <adrien1975@live.fr>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "babel-preset-es2015": "6.18.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-minify": "0.0.14",
+    "gulp-rename": "latest",
+    "gulp-sass": "2.3.2",
+    "gulp-zip": "^3.2.0"
+  },
+  "dependencies": {
+    "foundation-sites": "^6.2.4"
+  }
+}

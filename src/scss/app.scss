@@ -1,0 +1,67 @@
+@import 'settings';
+
+html, body, #main {
+  height: 100%;
+}
+
+#main {
+  background-color: $main-block-background;
+  text-align: center;
+}
+
+#login {
+  @include breakpoint(large) {
+    margin-top: 25px;
+  }
+
+  padding-left: $form-padding;
+  padding-right: $form-padding;
+}
+
+#logo {
+  @include breakpoint(small) {
+    width: 100px;
+    margin-top: 3vh;
+  }
+
+  @include breakpoint(medium) {
+    width: 125px;
+  }
+
+  @include breakpoint(large) {
+    width: 150px;
+  }
+
+  @include breakpoint(xlarge) {
+    width: 175px;
+    margin-top: 7.5vh;
+    margin-bottom: 7.5vh;
+  }
+
+  @include breakpoint(xxlarge) {
+    width: 200px;
+  }
+
+  @include breakpoint(xxxlarge) {
+    width: 250px;
+  }
+}
+
+#btn-login {
+  width: 100%;
+
+  @include breakpoint(large) {
+    margin-top: 25px;
+  }
+}
+
+#desktop {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+#messages {
+  background: rgba(0, 0, 0, 0);
+  visibility: hidden;
+}
