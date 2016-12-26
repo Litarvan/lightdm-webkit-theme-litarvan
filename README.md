@@ -7,6 +7,14 @@
 * **Lightweight and simple**
 * Simply debuggable
 
+## Installing
+
+1. Install ![LightDM Webkit2 greeter](https://github.com/antergos/lightdm-webkit2-greeter) if not done
+2. Build using the instructions below or download from ![Releases](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases)
+3. Unzip lightdm-webkit-theme-litarvan-1.0.0.zip to /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-litarvan/
+4. Open /etc/lightdm/lightdm-webkit2-greeter.conf and change webkit-theme to lightdm-webkit-theme-litarvan
+5. Restart LightDM (Close session or restart computer)
+
 ## Screenshots
 
 ![Second screenshot](https://i.gyazo.com/7eb870c4d5e5a649b639298d9ad33250.png)
@@ -39,9 +47,3 @@ $ gulp watch
 Then open build/index.html in your navigator, every change you make will be updated (you'll just need to refresh).
 
 window.lightdm is automatically created with some debug fields/functions, to test authentication use username **litarvan** and any password. First, an authentication error will be thrown for debugging, then it will work.
-
-## Installing
-
-1. Unzip lightdm-webkit-theme-litarvan-1.0.0.zip to /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-litarvan/
-2. Open /etc/lightdm/lightdm-webkit2-greeter.conf and change webkit-theme to lightdm-webkit-theme-litarvan
-3. Restart LightDM (Close session or restart computer)
