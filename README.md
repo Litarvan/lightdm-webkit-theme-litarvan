@@ -42,6 +42,6 @@ window.lightdm is automatically created with some debug fields/functions, to tes
 
 ## Installing
 
-1) Unzip lightdm-webkit-theme-litarvan-1.0.0.zip to /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-litarvan/
-2) Open /etc/lightdm/lightdm-webkit2-greeter.conf and change webkit-theme to lightdm-webkit-theme-litarvan
-3) Restart LightDM (Close session or restart computer)
+1. Unzip lightdm-webkit-theme-litarvan-1.0.0.zip to /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-litarvan/
+2. Open /etc/lightdm/lightdm-webkit2-greeter.conf and change webkit-theme to lightdm-webkit-theme-litarvan
+3. Restart LightDM (Close session or restart computer)
