@@ -9,8 +9,8 @@
 
 ## Installing
 
-1. Install ![LightDM Webkit2 greeter](https://github.com/antergos/lightdm-webkit2-greeter) if not done
-2. Build using the instructions below or download from ![Releases](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases)
+1. Install [LightDM Webkit2 greeter](https://github.com/antergos/lightdm-webkit2-greeter) if not done
+2. Build using the instructions below or download from [Releases](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases)
 3. Unzip lightdm-webkit-theme-litarvan-1.0.0.zip to /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-litarvan/
 4. Open /etc/lightdm/lightdm-webkit2-greeter.conf and change webkit-theme to lightdm-webkit-theme-litarvan
 5. Restart LightDM (Close session or restart computer)
