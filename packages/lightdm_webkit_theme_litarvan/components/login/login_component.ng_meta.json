@@ -93,7 +93,7 @@
       "lifecycleHooks": [],
       "template": {
         "encapsulation": 0,
-        "template": "<img id=\"avatar\" src=\"/images/litarvan.png\" />\n\n<p id=\"user\">Litarvan (<b>litarvan</b>)</p>\n<input type=\"password\" id=\"password\" placeholder=\"Mot de passe...\" /><br/>\n\n<button id=\"desktop\">{{ desktop }} <i class=\"fa fa-angle-right\"></i></button>",
+        "template": "<img id=\"avatar\" src=\"images/litarvan.png\" />\n\n<p id=\"user\">Litarvan (<b>litarvan</b>)</p>\n<input type=\"password\" id=\"password\" placeholder=\"Mot de passe...\" /><br/>\n\n<button id=\"desktop\">{{ desktop }} <i class=\"fa fa-angle-right\"></i></button>",
         "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/login/login_component.html",
         "styles": [],
         "styleUrls": [
