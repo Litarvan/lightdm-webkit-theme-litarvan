@@ -5432,7 +5432,7 @@ S.f3()
 R.mf()}}],["","",,Y,{"^":"",hV:{"^":"a;a,b,c,d,e,f,r"}}],["","",,G,{"^":"",
 ma:function(){if($.k5)return
 $.k5=!0
-$.$get$r().a.i(0,C.b1,new M.p(C.b,C.dr,new G.xJ(),C.dN,null))
+$.$get$r().a.i(0,C.b1,new M.p(C.b,C.ds,new G.xJ(),C.dN,null))
 L.F()},
 xJ:{"^":"b:70;",
 $3:[function(a,b,c){return new Y.hV(a,b,c,null,null,[],null)},null,null,6,0,null,41,87,84,"call"]}}],["","",,R,{"^":"",hZ:{"^":"a;a,b,c,d,e,f,r"}}],["","",,B,{"^":"",
@@ -5453,8 +5453,8 @@ $2:[function(a,b){return new K.i2(b,a,!1)},null,null,4,0,null,31,45,"call"]}}],[
 md:function(){if($.k2)return
 $.k2=!0
 var z=$.$get$r().a
-z.i(0,C.ba,new M.p(C.az,C.d3,new B.xF(),null,null))
-z.i(0,C.bb,new M.p(C.az,C.cJ,new B.xG(),C.d7,null))
+z.i(0,C.ba,new M.p(C.az,C.d4,new B.xF(),null,null))
+z.i(0,C.bb,new M.p(C.az,C.cJ,new B.xG(),C.d8,null))
 L.F()
 S.f3()},
 xF:{"^":"b:107;",
@@ -5465,7 +5465,7 @@ xG:{"^":"b:35;",
 $1:[function(a){return new A.i4(a,null,null,new H.a_(0,null,null,null,null,null,0,[null,V.cC]),null)},null,null,2,0,null,67,"call"]}}],["","",,X,{"^":"",i7:{"^":"a;a,b,c,d"}}],["","",,Z,{"^":"",
 me:function(){if($.k1)return
 $.k1=!0
-$.$get$r().a.i(0,C.bd,new M.p(C.b,C.dq,new Z.xD(),C.at,null))
+$.$get$r().a.i(0,C.bd,new M.p(C.b,C.dr,new Z.xD(),C.at,null))
 L.F()
 K.mn()},
 xD:{"^":"b:37;",
@@ -5653,7 +5653,7 @@ $asaF:I.C,
 $asbH:I.C}}],["","",,T,{"^":"",
 mE:function(){if($.lI)return
 $.lI=!0
-$.$get$r().a.i(0,C.b7,new M.p(C.b,C.ao,new T.xp(),C.db,null))
+$.$get$r().a.i(0,C.b7,new M.p(C.b,C.ao,new T.xp(),C.dc,null))
 L.F()
 O.al()
 L.bc()
@@ -5836,7 +5836,7 @@ $.lz=!0
 var z=$.$get$r().a
 z.i(0,C.bm,new M.p(C.b,C.b,new L.xe(),null,null))
 z.i(0,C.b0,new M.p(C.b,C.co,new L.xf(),C.R,null))
-z.i(0,C.b_,new M.p(C.b,C.d5,new L.xg(),C.R,null))
+z.i(0,C.b_,new M.p(C.b,C.d6,new L.xg(),C.R,null))
 z.i(0,C.bh,new M.p(C.b,C.cs,new L.xh(),C.R,null))
 L.F()
 O.al()
@@ -7643,7 +7643,7 @@ z=u.createElement("div")
 J.nz(J.fB(z),"animationName")
 this.b=""
 y=C.cQ
-x=C.d1
+x=C.d2
 for(w=0;J.bD(w,J.ab(y));w=J.aN(w,1)){v=J.v(y,w)
 t=J.nh(J.fB(z),v)
 if((t!=null?t:"")!=null)this.c=J.v(x,w)}}catch(s){H.H(s)
@@ -8056,7 +8056,7 @@ $.l6=!0}}],["","",,R,{"^":"",hc:{"^":"a;",
 fE:function(a){return E.xU(a)}}}],["","",,D,{"^":"",
 ww:function(){if($.l2)return
 $.l2=!0
-$.$get$r().a.i(0,C.aR,new M.p(C.f,C.b,new D.xS(),C.d9,null))
+$.$get$r().a.i(0,C.aR,new M.p(C.f,C.b,new D.xS(),C.da,null))
 V.Y()
 T.ml()
 M.wL()
@@ -8178,10 +8178,10 @@ if(z&&4===b)return this.x2
 if(z&&6===b)return this.ce
 return c},
 aB:function(){if(this.fr===C.i&&!$.bo)this.k3.aZ()
-if(Q.ba(this.f0,"/images/shutdown.svg")){this.x2.b="/images/shutdown.svg"
-this.f0="/images/shutdown.svg"}if(Q.ba(this.f1,"shutdown")){this.x2.c="shutdown"
-this.f1="shutdown"}if(Q.ba(this.f2,"/images/reboot.svg")){this.ce.b="/images/reboot.svg"
-this.f2="/images/reboot.svg"}if(Q.ba(this.f3,"reboot")){this.ce.c="reboot"
+if(Q.ba(this.f0,"images/shutdown.svg")){this.x2.b="images/shutdown.svg"
+this.f0="images/shutdown.svg"}if(Q.ba(this.f1,"shutdown")){this.x2.c="shutdown"
+this.f1="shutdown"}if(Q.ba(this.f2,"images/reboot.svg")){this.ce.b="images/reboot.svg"
+this.f2="images/reboot.svg"}if(Q.ba(this.f3,"reboot")){this.ce.c="reboot"
 this.f3="reboot"}this.aC()
 this.aD()},
 $asR:function(){return[Q.ci]}},
@@ -8193,7 +8193,7 @@ this.k2=new V.az(0,null,this,z,null,null,null,null)
 z=this.a8(0)
 y=this.k2
 x=$.mU
-if(x==null){x=$.aq.aj("",0,C.n,C.cq)
+if(x==null){x=$.aq.aj("",0,C.n,C.d0)
 $.mU=x}w=$.dI
 v=P.af()
 u=new V.j3(null,null,null,null,null,null,null,null,null,null,null,null,null,w,w,w,w,C.br,x,C.j,v,z,y,C.h,!1,null,null,null,H.B([],[{func:1,v:true}]),null,[],[],null,null,C.i,null,null,!1,null)
@@ -8322,7 +8322,7 @@ xt:{"^":"b:22;",
 $1:[function(a){return new F.bN(null,a)},null,null,2,0,null,38,"call"]}}],["","",,D,{"^":"",bR:{"^":"a;a,bz:b<"}}],["","",,B,{"^":"",
 nb:function(a,b){var z,y,x
 z=$.mY
-if(z==null){z=$.aq.aj("",0,C.n,C.d0)
+if(z==null){z=$.aq.aj("",0,C.n,C.d1)
 $.mY=z}y=$.dI
 x=P.af()
 y=new B.j8(null,null,null,null,null,null,null,null,y,C.bv,z,C.j,x,a,b,C.h,!1,null,null,null,H.B([],[{func:1,v:true}]),null,[],[],null,null,C.i,null,null,!1,null)
@@ -8441,7 +8441,7 @@ case"reboot":z.a.jE()
 break}}}}],["","",,E,{"^":"",
 fu:function(a,b){var z,y,x
 z=$.n_
-if(z==null){z=$.aq.aj("",0,C.n,C.dn)
+if(z==null){z=$.aq.aj("",0,C.n,C.dp)
 $.n_=z}y=$.dI
 x=P.af()
 y=new E.ja(null,null,null,y,C.bx,z,C.j,x,a,b,C.h,!1,null,null,null,H.B([],[{func:1,v:true}]),null,[],[],null,null,C.i,null,null,!1,null)
@@ -8456,7 +8456,7 @@ x.ad(C.bp,z,C.l,y,a,b,C.h,null)
 return x},"$2","yd",4,0,5],
 wE:function(){if($.kV)return
 $.kV=!0
-$.$get$r().a.i(0,C.z,new M.p(C.d6,C.ap,new E.x7(),null,null))
+$.$get$r().a.i(0,C.z,new M.p(C.d7,C.ap,new E.x7(),null,null))
 L.F()
 Q.f4()},
 ja:{"^":"R;k1,k2,k3,k4,a,b,c,d,e,f,r,x,y,z,Q,ch,cx,cy,db,dx,dy,fr,fx,fy,go,id",
@@ -8541,7 +8541,7 @@ $0:function(){J.cg(this.a).U(0,"hidden")
 J.no(document.querySelector("#password"))}}}],["","",,X,{"^":"",
 nc:function(a,b){var z,y,x
 z=$.n1
-if(z==null){z=$.aq.aj("",0,C.n,C.dm)
+if(z==null){z=$.aq.aj("",0,C.n,C.dn)
 $.n1=z}y=P.af()
 x=new X.jc(null,null,null,null,C.by,z,C.j,y,a,b,C.h,!1,null,null,null,H.B([],[{func:1,v:true}]),null,[],[],null,null,C.i,null,null,!1,null)
 x.ad(C.by,z,C.j,y,a,b,C.h,V.bX)
@@ -8938,8 +8938,8 @@ C.al=function getTagFallback(o) {
 }
 C.eM=H.h("bT")
 C.C=new B.en()
-C.dg=I.e([C.eM,C.C])
-C.cg=I.e([C.dg])
+C.dh=I.e([C.eM,C.C])
+C.cg=I.e([C.dh])
 C.bS=new P.h5("Use listeners or variable binding on the control itself instead. This adds overhead for every form control whether the class is used or not.")
 C.ci=I.e([C.bS])
 C.eZ=H.h("aA")
@@ -8976,8 +8976,6 @@ C.cn=I.e([C.q,C.bB])
 C.co=I.e([C.cn])
 C.cp=I.e([C.as,C.I,C.H])
 C.am=I.e(["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"])
-C.du=I.e(["[_nghost-%COMP%] {\n    background: url('/images/background.jpg');\n\n    color: white;\n    text-align: center;\n}\n\n[_nghost-%COMP%], splash[_ngcontent-%COMP%] {\n    width: 100%;\n    height: 100vh;\n}\n\n#shutdown[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n}\n\n#reboot[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\nlogin[_ngcontent-%COMP%] {\n    margin: 10vh 10%;\n    display: none;\n}"])
-C.cq=I.e([C.du])
 C.bD=new O.cX("pattern")
 C.cu=I.e([C.q,C.bD])
 C.cs=I.e([C.cu])
@@ -8988,12 +8986,12 @@ C.ad=new B.ho()
 C.dM=I.e([C.M,C.B,C.ad])
 C.cw=I.e([C.t,C.dM])
 C.a7=H.h("cA")
-C.dj=I.e([C.a7])
+C.dk=I.e([C.a7])
 C.L=H.h("aR")
 C.P=I.e([C.L])
 C.a1=H.h("aP")
 C.au=I.e([C.a1])
-C.cA=I.e([C.dj,C.P,C.au])
+C.cA=I.e([C.dk,C.P,C.au])
 C.b=I.e([])
 C.eu=new Y.a0(C.L,null,"__noValueProvided__",null,Y.v0(),null,C.b,null)
 C.T=H.h("fJ")
@@ -9024,7 +9022,7 @@ C.Y=H.h("yQ")
 C.ev=new Y.a0(C.bn,null,"__noValueProvided__",C.Y,null,null,null,null)
 C.aR=H.h("hc")
 C.er=new Y.a0(C.Y,C.aR,"__noValueProvided__",null,null,null,null,null)
-C.dp=I.e([C.ev,C.er])
+C.dq=I.e([C.ev,C.er])
 C.aU=H.h("hk")
 C.a8=H.h("de")
 C.cD=I.e([C.aU,C.a8])
@@ -9085,30 +9083,30 @@ C.a_=H.h("d2")
 C.eh=new Y.a0(C.aH,C.a_,"__noValueProvided__",null,null,null,null,null)
 C.ab=H.h("dj")
 C.Z=H.h("d1")
-C.ct=I.e([C.cF,C.dp,C.cD,C.en,C.eq,C.et,C.es,C.X,C.a2,C.a0,C.em,C.eh,C.ab,C.Z])
+C.ct=I.e([C.cF,C.dq,C.cD,C.en,C.eq,C.et,C.es,C.X,C.a2,C.a0,C.em,C.eh,C.ab,C.Z])
 C.cB=I.e([C.ct])
-C.di=I.e([C.a3,C.ad])
-C.an=I.e([C.u,C.G,C.di])
+C.dj=I.e([C.a3,C.ad])
+C.an=I.e([C.u,C.G,C.dj])
 C.ao=I.e([C.I,C.H])
 C.m=new B.hr()
 C.f=I.e([C.m])
 C.w=H.h("bK")
-C.d2=I.e([C.w,C.b])
-C.bP=new D.bq("clock",F.vp(),C.w,C.d2)
+C.d3=I.e([C.w,C.b])
+C.bP=new D.bq("clock",F.vp(),C.w,C.d3)
 C.cE=I.e([C.bP])
 C.cG=I.e([C.aq])
 C.ar=I.e([C.V])
 C.cH=I.e([C.ar])
 C.E=I.e([C.t])
 C.J=H.h("bN")
-C.dc=I.e([C.J])
-C.cI=I.e([C.dc])
+C.dd=I.e([C.J])
+C.cI=I.e([C.dd])
 C.p=H.h("da")
-C.df=I.e([C.p])
-C.ap=I.e([C.df])
+C.dg=I.e([C.p])
+C.ap=I.e([C.dg])
 C.eN=H.h("e9")
-C.dh=I.e([C.eN])
-C.cJ=I.e([C.dh])
+C.di=I.e([C.eN])
+C.cJ=I.e([C.di])
 C.cK=I.e([C.P])
 C.cL=I.e([C.u])
 C.a6=H.h("zR")
@@ -9135,27 +9133,29 @@ C.ef=new O.aT("slice",!1)
 C.cZ=I.e([C.ef,C.m])
 C.eg=new O.aT("uppercase",null)
 C.d_=I.e([C.eg,C.m])
+C.cr=I.e(["[_nghost-%COMP%] {\n    background: url('images/background.jpg');\n\n    color: white;\n    text-align: center;\n}\n\n[_nghost-%COMP%], splash[_ngcontent-%COMP%] {\n    width: 100%;\n    height: 100vh;\n}\n\n#shutdown[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n}\n\n#reboot[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\nlogin[_ngcontent-%COMP%] {\n    margin: 10vh 10%;\n    display: none;\n}"])
+C.d0=I.e([C.cr])
 C.dT=I.e(['[_nghost-%COMP%] {\n    text-align: center;\n    font-family: "Lato", "Noto Sans", "Arial", sans-serif;\n\n    \n}\n\n#avatar[_ngcontent-%COMP%] {\n    border-radius: 15px;\n    transition: background-color 150ms ease-in-out;\n}\n\n#avatar[_ngcontent-%COMP%]:hover {\n    background: rgba(255, 255, 255, 0.1);\n    cursor: pointer;\n}\n\n#user[_ngcontent-%COMP%] {\n    font-size: 24px;\n}\n\n#password[_ngcontent-%COMP%] {\n    margin-top: 20px;\n    width: 300px;\n    height: 25px;\n    padding: 10px;\n\n    font-size: 18px;\n    font-family: "Lato", "Noto Sans", "Arial", sans-serif;\n\n    border: none;\n    outline: none;\n    background: none;\n\n    border-bottom: solid 2px white;\n    color: white;\n\n    transition: border-bottom-color 150ms ease-in-out, background-color 150ms ease-in-out;\n}\n\n[_ngcontent-%COMP%]::-webkit-input-placeholder {\n    color: rgba(255, 255, 255, 0.8);\n}\n\n#password[_ngcontent-%COMP%]:hover {\n    background: rgba(255, 255, 255, 0.1);\n}\n\n#password[_ngcontent-%COMP%]:focus {\n    border-bottom-color: #2fa6ff;\n}\n\n#desktop[_ngcontent-%COMP%] {\n    background: none;\n    border: none;\n    outline: none;\n\n    color: white;\n\n    font-family: "Lato", "Noto Sans", "Arial", serif;\n    font-weight: 300;\n    font-size: 32px;\n    text-align: left;\n\n    width: 300px;\n    padding: 10px 15px;\n    margin-top: 22.5vh;\n\n    transition: background-color 150ms ease-in-out;\n}\n\n#desktop[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    float: right;\n    margin-top: 3px;\n}\n\n#desktop[_ngcontent-%COMP%]:hover {\n    background: rgba(255, 255, 255, 0.1);\n}'])
-C.d0=I.e([C.dT])
-C.d1=I.e(["webkitTransitionEnd","transitionend","oTransitionEnd otransitionend","transitionend"])
+C.d1=I.e([C.dT])
+C.d2=I.e(["webkitTransitionEnd","transitionend","oTransitionEnd otransitionend","transitionend"])
 C.bC=new O.cX("ngPluralCase")
 C.dz=I.e([C.q,C.bC])
-C.d3=I.e([C.dz,C.G,C.u])
+C.d4=I.e([C.dz,C.G,C.u])
 C.bA=new O.cX("maxlength")
 C.cM=I.e([C.q,C.bA])
-C.d5=I.e([C.cM])
+C.d6=I.e([C.cM])
 C.z=H.h("bt")
 C.dL=I.e([C.z,C.b])
 C.bO=new D.bq("power-button",E.yd(),C.z,C.dL)
-C.d6=I.e([C.bO])
+C.d7=I.e([C.bO])
 C.ex=H.h("yz")
-C.d7=I.e([C.ex])
+C.d8=I.e([C.ex])
 C.aM=H.h("aG")
 C.F=I.e([C.aM])
 C.aQ=H.h("yM")
 C.at=I.e([C.aQ])
-C.d9=I.e([C.Y])
-C.db=I.e([C.aV])
+C.da=I.e([C.Y])
+C.dc=I.e([C.aV])
 C.ax=I.e([C.a5])
 C.ay=I.e([C.y])
 C.Q=I.e([C.a6])
@@ -9164,27 +9164,27 @@ C.o=I.e([C.eQ])
 C.eY=H.h("cE")
 C.R=I.e([C.eY])
 C.dx=I.e(['[_nghost-%COMP%] {\n    display: block;\n}\n\nclock[_ngcontent-%COMP%] {\n    margin-top: 5vh;\n    display: inline-block;\n}\n\n#trigger[_ngcontent-%COMP%] {\n    font-family: "Lato", "Noto Sans", serif;\n    font-weight: 300;\n    font-style: italic;\n    font-size: 32px;\n\n    margin-top: calc(83.5vh - 237px - 49px);\n}'])
-C.dm=I.e([C.dx])
+C.dn=I.e([C.dx])
 C.dC=I.e(["#power-button[_ngcontent-%COMP%] {\n    transition: background 125ms ease-in-out;\n}\n\n#power-button[_ngcontent-%COMP%]:hover {\n    background: rgba(255, 255, 255, 0.075);\n}\n\n#power-button-icon[_ngcontent-%COMP%] {\n    color: white;\n\n    padding: 10px 7.5px 7.5px;\n\n    width: 42px;\n    height: 42px;\n}"])
-C.dn=I.e([C.dC])
+C.dp=I.e([C.dC])
 C.aw=I.e([C.aY])
-C.dq=I.e([C.aw,C.t])
+C.dr=I.e([C.aw,C.t])
 C.bR=new P.h5("Copy into your own project if needed, no longer supported")
 C.az=I.e([C.bR])
-C.dr=I.e([C.av,C.aw,C.t])
+C.ds=I.e([C.av,C.aw,C.t])
 C.aA=I.e(["Janvier","F\xe9vrier","Mars","Avril","Mai","Juin","Juillet","Ao\xfbt","Septembre","Octobre","Novembre","Decembre"])
 C.dv=H.B(I.e([]),[U.bV])
 C.v=H.h("ci")
-C.dt=I.e([C.v,C.b])
-C.bN=new D.bq("app",V.v_(),C.v,C.dt)
+C.du=I.e([C.v,C.b])
+C.bN=new D.bq("app",V.v_(),C.v,C.du)
 C.dy=I.e([C.bN])
-C.d8=I.e([C.X])
-C.de=I.e([C.a2])
-C.dd=I.e([C.a0])
-C.dA=I.e([C.d8,C.de,C.dd])
+C.d9=I.e([C.X])
+C.df=I.e([C.a2])
+C.de=I.e([C.a0])
+C.dA=I.e([C.d9,C.df,C.de])
 C.dB=I.e([C.a5,C.y])
-C.dk=I.e([C.a8])
-C.dD=I.e([C.t,C.dk,C.au])
+C.dl=I.e([C.a8])
+C.dD=I.e([C.t,C.dl,C.au])
 C.aB=I.e([C.I,C.H,C.aC])
 C.dF=I.e([C.aM,C.y,C.a6])
 C.x=H.h("bR")
@@ -9193,26 +9193,26 @@ C.bM=new D.bq("login",B.y3(),C.x,C.cN)
 C.dG=I.e([C.bM])
 C.bZ=new B.b3(C.aF)
 C.cv=I.e([C.q,C.bZ])
-C.dl=I.e([C.bn])
-C.da=I.e([C.Z])
-C.dH=I.e([C.cv,C.dl,C.da])
+C.dm=I.e([C.bn])
+C.db=I.e([C.Z])
+C.dH=I.e([C.cv,C.dm,C.db])
 C.cP=I.e(['[_nghost-%COMP%] {\n    font-size: 164px;\n    font-weight: 300;\n    font-family: "Lato", "Noto Sans", sans-serif;\n\n    text-align: center;\n}\n\n#date[_ngcontent-%COMP%] {\n    font-weight: normal;\n    margin-top: 1.25vh;\n    font-size: 28px;\n}'])
 C.dJ=I.e([C.cP])
 C.A=H.h("bX")
-C.cr=I.e([C.A,C.b])
-C.bQ=new D.bq("splash",X.ym(),C.A,C.cr)
+C.cq=I.e([C.A,C.b])
+C.bQ=new D.bq("splash",X.ym(),C.A,C.cq)
 C.dK=I.e([C.bQ])
 C.dN=I.e([C.aQ,C.y])
 C.c0=new B.b3(C.aH)
-C.d4=I.e([C.a_,C.c0])
-C.dO=I.e([C.d4])
+C.d5=I.e([C.a_,C.c0])
+C.dO=I.e([C.d5])
 C.c_=new B.b3(C.aG)
 C.ch=I.e([C.K,C.c_])
 C.dP=I.e([C.ch,C.P])
 C.e5=new S.ax("Application Packages Root URL")
 C.c4=new B.b3(C.e5)
-C.ds=I.e([C.q,C.c4])
-C.dR=I.e([C.ds])
+C.dt=I.e([C.q,C.c4])
+C.dR=I.e([C.dt])
 C.dQ=I.e(["xlink","svg","xhtml"])
 C.dU=new H.dQ(3,{xlink:"http://www.w3.org/1999/xlink",svg:"http://www.w3.org/2000/svg",xhtml:"http://www.w3.org/1999/xhtml"},C.dQ,[null,null])
 C.dV=new H.cr([0,"ChangeDetectionStrategy.CheckOnce",1,"ChangeDetectionStrategy.Checked",2,"ChangeDetectionStrategy.CheckAlways",3,"ChangeDetectionStrategy.Detached",4,"ChangeDetectionStrategy.OnPush",5,"ChangeDetectionStrategy.Stateful",6,"ChangeDetectionStrategy.Default"],[null,null])

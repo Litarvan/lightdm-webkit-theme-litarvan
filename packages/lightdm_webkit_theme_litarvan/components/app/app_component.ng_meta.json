@@ -101,7 +101,7 @@
       ],
       "template": {
         "encapsulation": 0,
-        "template": "<splash class=\"fade\"></splash>\n<login class=\"fade hidden\"></login>\n\n<power-button id=\"shutdown\" [image]=\"'/images/shutdown.svg'\" [type]=\"'shutdown'\"></power-button>\n<power-button id=\"reboot\" [image]=\"'/images/reboot.svg'\" [type]=\"'reboot'\"></power-button>",
+        "template": "<splash class=\"fade\"></splash>\n<login class=\"fade hidden\"></login>\n\n<power-button id=\"shutdown\" [image]=\"'images/shutdown.svg'\" [type]=\"'shutdown'\"></power-button>\n<power-button id=\"reboot\" [image]=\"'images/reboot.svg'\" [type]=\"'reboot'\"></power-button>",
         "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/app/app_component.html",
         "styles": [],
         "styleUrls": [
