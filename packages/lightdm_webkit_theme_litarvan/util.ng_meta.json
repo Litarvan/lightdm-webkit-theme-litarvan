@@ -1,0 +1,27 @@
+{
+  "ngDeps": null,
+  "type": {
+    "fadeIn": {
+      "class": "Identifier",
+      "name": "fadeIn",
+      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "fadeOut": {
+      "class": "Identifier",
+      "name": "fadeOut",
+      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "shutdown": {
+      "class": "Identifier",
+      "name": "shutdown",
+      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/util.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

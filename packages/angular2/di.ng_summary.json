@@ -1,0 +1,115 @@
+{
+  "ngDeps": {
+    "1": "",
+    "4": [
+      {
+        "1": "package:angular2/src/core/di/decorators.dart"
+      },
+      {
+        "1": "package:angular2/src/core/di/injector.dart",
+        "2": [
+          "Injector",
+          "InjectorFactory"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_injector.dart",
+        "2": [
+          "ReflectiveInjector"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/di/provider.dart",
+        "2": [
+          "Provider",
+          "provide",
+          "noValueProvided"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_provider.dart",
+        "2": [
+          "ResolvedReflectiveBinding",
+          "ResolvedReflectiveFactory",
+          "ReflectiveDependency",
+          "ResolvedReflectiveProvider"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_key.dart",
+        "2": [
+          "ReflectiveKey"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_exceptions.dart",
+        "2": [
+          "NoProviderError",
+          "AbstractProviderError",
+          "CyclicDependencyError",
+          "InstantiationError",
+          "InvalidProviderError",
+          "NoAnnotationError",
+          "OutOfBoundsError"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/di/opaque_token.dart",
+        "2": [
+          "OpaqueToken"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/testability/testability.dart"
+      },
+      {
+        "1": "package:angular2/src/facade/exception_handler.dart",
+        "2": [
+          "ExceptionHandler"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/zone/ng_zone.dart"
+      },
+      {
+        "1": "package:angular2/src/core/change_detection/pipe_transform.dart"
+      },
+      {
+        "1": "package:angular2/src/core/metadata.dart",
+        "2": [
+          "Component",
+          "Directive",
+          "Input",
+          "Output"
+        ]
+      },
+      {
+        "1": "package:angular2/src/core/metadata.dart",
+        "2": [
+          "Pipe"
+        ]
+      },
+      {
+        "1": "package:angular2/src/facade/exceptions.dart",
+        "2": [
+          "WrappedException"
+        ]
+      },
+      {
+        "1": "package:angular2/src/facade/async.dart",
+        "2": [
+          "EventEmitter"
+        ]
+      },
+      {
+        "1": "package:angular2/src/compiler/url_resolver.dart",
+        "2": [
+          "UrlResolver"
+        ]
+      }
+    ],
+    "6": "di.dart"
+  },
+  "type": {},
+  "alias": {}
+}

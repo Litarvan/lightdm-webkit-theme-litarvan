@@ -1,0 +1,24 @@
+{
+  "ngDeps": {
+    "1": "",
+    "4": [
+      {
+        "1": "src/error_matchers.dart",
+        "2": [
+          "throwsInAngular"
+        ]
+      },
+      {
+        "1": "src/ng_test_bed.dart",
+        "2": [
+          "disposeAnyRunningTest",
+          "NgTestBed",
+          "NgTestFixture"
+        ]
+      }
+    ],
+    "6": "testing.dart"
+  },
+  "type": {},
+  "alias": {}
+}

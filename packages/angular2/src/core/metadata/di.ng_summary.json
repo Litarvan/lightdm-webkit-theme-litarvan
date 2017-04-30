@@ -1,0 +1,21 @@
+{
+  "ngDeps": {
+    "1": "",
+    "4": [
+      {
+        "1": "package:angular2/src/core/di/decorators.dart"
+      }
+    ],
+    "6": "di.dart"
+  },
+  "type": {
+    "ProviderProperty": {
+      "class": "Identifier",
+      "name": "ProviderProperty",
+      "moduleUrl": "asset:angular2/lib/src/core/metadata/di.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

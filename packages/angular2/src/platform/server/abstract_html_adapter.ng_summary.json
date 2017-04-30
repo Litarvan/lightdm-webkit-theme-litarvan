@@ -1,0 +1,42 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/platform/common_dom.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/compiler/xhr.dart",
+        "5": false
+      },
+      {
+        "1": "package:html/dom.dart",
+        "5": false
+      },
+      {
+        "1": "package:html/parser.dart",
+        "4": "parser",
+        "5": false
+      }
+    ],
+    "6": "abstract_html_adapter.dart"
+  },
+  "type": {
+    "_attrToPropMap": {
+      "class": "Identifier",
+      "name": "_attrToPropMap",
+      "moduleUrl": "asset:angular2/lib/src/platform/server/abstract_html_adapter.dart",
+      "prefix": null,
+      "value": null
+    },
+    "AbstractHtml5LibAdapter": {
+      "class": "Identifier",
+      "name": "AbstractHtml5LibAdapter",
+      "moduleUrl": "asset:angular2/lib/src/platform/server/abstract_html_adapter.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

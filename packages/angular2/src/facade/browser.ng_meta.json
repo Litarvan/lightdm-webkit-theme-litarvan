@@ -1,0 +1,20 @@
+{
+  "ngDeps": null,
+  "type": {
+    "location": {
+      "class": "Identifier",
+      "name": "location",
+      "moduleUrl": "asset:angular2/lib/src/facade/browser.dart",
+      "prefix": null,
+      "value": null
+    },
+    "gc": {
+      "class": "Identifier",
+      "name": "gc",
+      "moduleUrl": "asset:angular2/lib/src/facade/browser.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

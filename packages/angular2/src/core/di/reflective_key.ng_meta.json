@@ -1,0 +1,35 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "decorators.dart",
+        "5": false
+      }
+    ],
+    "6": "reflective_key.dart",
+    "7": [
+      {
+        "1": "decorators.template.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "ReflectiveKey": {
+      "class": "Identifier",
+      "name": "ReflectiveKey",
+      "moduleUrl": "asset:angular2/lib/src/core/di/reflective_key.dart",
+      "prefix": null,
+      "value": null
+    },
+    "KeyRegistry": {
+      "class": "Identifier",
+      "name": "KeyRegistry",
+      "moduleUrl": "asset:angular2/lib/src/core/di/reflective_key.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

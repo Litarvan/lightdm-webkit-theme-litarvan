@@ -1,0 +1,52 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/src/transform/common/url_resolver.dart",
+        "5": false
+      },
+      {
+        "1": "package:path/path.dart",
+        "4": "path",
+        "5": false
+      },
+      {
+        "1": "import_export_model.pb.dart",
+        "5": false
+      }
+    ],
+    "6": "source_module.dart"
+  },
+  "type": {
+    "toImportModel": {
+      "class": "Identifier",
+      "name": "toImportModel",
+      "moduleUrl": "asset:angular2/lib/src/transform/common/model/source_module.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_canImportRelative": {
+      "class": "Identifier",
+      "name": "_canImportRelative",
+      "moduleUrl": "asset:angular2/lib/src/transform/common/model/source_module.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_canPackageImport": {
+      "class": "Identifier",
+      "name": "_canPackageImport",
+      "moduleUrl": "asset:angular2/lib/src/transform/common/model/source_module.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_toPackageImport": {
+      "class": "Identifier",
+      "name": "_toPackageImport",
+      "moduleUrl": "asset:angular2/lib/src/transform/common/model/source_module.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

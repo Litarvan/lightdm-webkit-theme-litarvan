@@ -1,0 +1,44 @@
+{
+  "ngDeps": {
+    "1": "angular2.compiler",
+    "4": [
+      {
+        "1": "package:angular2/src/compiler/compiler.dart",
+        "2": [
+          "PLATFORM_DIRECTIVES",
+          "PLATFORM_PIPES",
+          "COMPILER_PROVIDERS",
+          "CompilerConfig",
+          "UrlResolver",
+          "DEFAULT_PACKAGE_URL_PROVIDER",
+          "createOfflineCompileUrlResolver",
+          "XHR",
+          "ViewResolver",
+          "DirectiveResolver",
+          "PipeResolver",
+          "SourceModule",
+          "NormalizedComponentWithViewDirectives",
+          "OfflineCompiler",
+          "CompileMetadataWithIdentifier",
+          "CompileMetadataWithType",
+          "CompileIdentifierMetadata",
+          "CompileDiDependencyMetadata",
+          "CompileProviderMetadata",
+          "CompileFactoryMetadata",
+          "CompileTokenMetadata",
+          "CompileTypeMetadata",
+          "CompileQueryMetadata",
+          "CompileTemplateMetadata",
+          "CompileDirectiveMetadata",
+          "CompilePipeMetadata"
+        ]
+      },
+      {
+        "1": "package:angular2/src/compiler/template_ast.dart"
+      }
+    ],
+    "6": "compiler.dart"
+  },
+  "type": {},
+  "alias": {}
+}

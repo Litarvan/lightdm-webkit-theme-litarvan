@@ -1,0 +1,75 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/src/facade/browser.dart",
+        "2": [
+          "document",
+          "window"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/exceptions.dart",
+        "2": [
+          "BaseException"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/platform/browser/browser_adapter.dart",
+        "2": [
+          "BrowserDomAdapter"
+        ],
+        "5": false
+      }
+    ],
+    "6": "benchmark_util.dart"
+  },
+  "type": {
+    "getIntParameter": {
+      "class": "Identifier",
+      "name": "getIntParameter",
+      "moduleUrl": "asset:angular2/lib/src/testing/benchmark_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "getStringParameter": {
+      "class": "Identifier",
+      "name": "getStringParameter",
+      "moduleUrl": "asset:angular2/lib/src/testing/benchmark_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "bindAction": {
+      "class": "Identifier",
+      "name": "bindAction",
+      "moduleUrl": "asset:angular2/lib/src/testing/benchmark_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "microBenchmark": {
+      "class": "Identifier",
+      "name": "microBenchmark",
+      "moduleUrl": "asset:angular2/lib/src/testing/benchmark_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "windowProfile": {
+      "class": "Identifier",
+      "name": "windowProfile",
+      "moduleUrl": "asset:angular2/lib/src/testing/benchmark_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "windowProfileEnd": {
+      "class": "Identifier",
+      "name": "windowProfileEnd",
+      "moduleUrl": "asset:angular2/lib/src/testing/benchmark_util.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

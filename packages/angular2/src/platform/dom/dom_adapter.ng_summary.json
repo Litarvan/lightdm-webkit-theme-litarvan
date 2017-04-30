@@ -1,0 +1,20 @@
+{
+  "ngDeps": null,
+  "type": {
+    "setRootDomAdapter": {
+      "class": "Identifier",
+      "name": "setRootDomAdapter",
+      "moduleUrl": "asset:angular2/lib/src/platform/dom/dom_adapter.dart",
+      "prefix": null,
+      "value": null
+    },
+    "DomAdapter": {
+      "class": "Identifier",
+      "name": "DomAdapter",
+      "moduleUrl": "asset:angular2/lib/src/platform/dom/dom_adapter.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

@@ -1,0 +1,86 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/src/facade/async.dart",
+        "2": [
+          "EventEmitter"
+        ],
+        "5": false
+      },
+      {
+        "1": "ng_zone_impl.dart",
+        "2": [
+          "NgZoneImpl",
+          "NgZoneError"
+        ],
+        "5": false
+      }
+    ],
+    "4": [
+      {
+        "1": "ng_zone_impl.dart",
+        "2": [
+          "NgZoneError"
+        ]
+      }
+    ],
+    "6": "ng_zone.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/facade/async.template.dart",
+        "4": "i0"
+      },
+      {
+        "1": "ng_zone_impl.template.dart",
+        "4": "i1"
+      }
+    ]
+  },
+  "type": {
+    "NgZone": {
+      "class": "Identifier",
+      "name": "NgZone",
+      "moduleUrl": "asset:angular2/lib/src/core/zone/ng_zone.dart",
+      "prefix": null,
+      "value": null
+    },
+    "ZeroArgFunction": {
+      "class": "Identifier",
+      "name": "ZeroArgFunction",
+      "moduleUrl": "asset:angular2/lib/src/core/zone/ng_zone_impl.dart",
+      "prefix": null,
+      "value": null
+    },
+    "ErrorHandlingFn": {
+      "class": "Identifier",
+      "name": "ErrorHandlingFn",
+      "moduleUrl": "asset:angular2/lib/src/core/zone/ng_zone_impl.dart",
+      "prefix": null,
+      "value": null
+    },
+    "WrappedTimer": {
+      "class": "Identifier",
+      "name": "WrappedTimer",
+      "moduleUrl": "asset:angular2/lib/src/core/zone/ng_zone_impl.dart",
+      "prefix": null,
+      "value": null
+    },
+    "NgZoneError": {
+      "class": "Identifier",
+      "name": "NgZoneError",
+      "moduleUrl": "asset:angular2/lib/src/core/zone/ng_zone_impl.dart",
+      "prefix": null,
+      "value": null
+    },
+    "NgZoneImpl": {
+      "class": "Identifier",
+      "name": "NgZoneImpl",
+      "moduleUrl": "asset:angular2/lib/src/core/zone/ng_zone_impl.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

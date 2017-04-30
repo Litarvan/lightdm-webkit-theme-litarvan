@@ -1,0 +1,109 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/src/facade/exceptions.dart",
+        "2": [
+          "BaseException"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/lang.dart",
+        "2": [
+          "stringify",
+          "looseIdentical"
+        ],
+        "5": false
+      },
+      {
+        "1": "../change_detector_ref.dart",
+        "2": [
+          "ChangeDetectorRef"
+        ],
+        "5": false
+      },
+      {
+        "1": "../differs/iterable_differs.dart",
+        "2": [
+          "IterableDiffer",
+          "IterableDifferFactory",
+          "TrackByFn"
+        ],
+        "5": false
+      }
+    ],
+    "6": "default_iterable_differ.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/facade/exceptions.template.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/src/facade/lang.template.dart",
+        "4": "i1"
+      },
+      {
+        "1": "../change_detector_ref.template.dart",
+        "4": "i2"
+      },
+      {
+        "1": "../differs/iterable_differs.template.dart",
+        "4": "i3"
+      }
+    ]
+  },
+  "type": {
+    "DefaultIterableCallback": {
+      "class": "Identifier",
+      "name": "DefaultIterableCallback",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/differs/default_iterable_differ.dart",
+      "prefix": null,
+      "value": null
+    },
+    "DefaultIterableDifferFactory": {
+      "class": "Identifier",
+      "name": "DefaultIterableDifferFactory",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/differs/default_iterable_differ.dart",
+      "prefix": null,
+      "value": null
+    },
+    "DefaultIterableDiffer": {
+      "class": "Identifier",
+      "name": "DefaultIterableDiffer",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/differs/default_iterable_differ.dart",
+      "prefix": null,
+      "value": null
+    },
+    "CollectionChangeRecord": {
+      "class": "Identifier",
+      "name": "CollectionChangeRecord",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/differs/default_iterable_differ.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_DuplicateItemRecordList": {
+      "class": "Identifier",
+      "name": "_DuplicateItemRecordList",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/differs/default_iterable_differ.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_DuplicateMap": {
+      "class": "Identifier",
+      "name": "_DuplicateMap",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/differs/default_iterable_differ.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_getPreviousIndex": {
+      "class": "Identifier",
+      "name": "_getPreviousIndex",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/differs/default_iterable_differ.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

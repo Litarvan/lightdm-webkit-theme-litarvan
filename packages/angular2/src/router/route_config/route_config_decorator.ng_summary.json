@@ -1,0 +1,13 @@
+{
+  "ngDeps": {
+    "1": "",
+    "4": [
+      {
+        "1": "./route_config_impl.dart"
+      }
+    ],
+    "6": "route_config_decorator.dart"
+  },
+  "type": {},
+  "alias": {}
+}

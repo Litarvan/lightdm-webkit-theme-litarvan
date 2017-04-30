@@ -1,0 +1,133 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "differs/default_iterable_differ.dart",
+        "2": [
+          "DefaultIterableDifferFactory"
+        ],
+        "5": false
+      },
+      {
+        "1": "differs/default_keyvalue_differ.dart",
+        "2": [
+          "DefaultKeyValueDifferFactory"
+        ],
+        "5": false
+      },
+      {
+        "1": "differs/iterable_differs.dart",
+        "2": [
+          "IterableDiffers",
+          "IterableDifferFactory"
+        ],
+        "5": false
+      },
+      {
+        "1": "differs/keyvalue_differs.dart",
+        "2": [
+          "KeyValueDiffers",
+          "KeyValueDifferFactory"
+        ],
+        "5": false
+      }
+    ],
+    "4": [
+      {
+        "1": "change_detection_util.dart",
+        "2": [
+          "WrappedValue",
+          "ValueUnwrapper",
+          "SimpleChange",
+          "devModeEqual",
+          "looseIdentical",
+          "uninitialized"
+        ]
+      },
+      {
+        "1": "change_detector_ref.dart",
+        "2": [
+          "ChangeDetectorRef"
+        ]
+      },
+      {
+        "1": "constants.dart",
+        "2": [
+          "ChangeDetectionStrategy",
+          "ChangeDetectorState",
+          "isDefaultChangeDetectionStrategy"
+        ]
+      },
+      {
+        "1": "differs/default_iterable_differ.dart",
+        "2": [
+          "DefaultIterableDifferFactory",
+          "CollectionChangeRecord"
+        ]
+      },
+      {
+        "1": "differs/default_keyvalue_differ.dart",
+        "2": [
+          "DefaultKeyValueDifferFactory",
+          "KeyValueChangeRecord"
+        ]
+      },
+      {
+        "1": "differs/iterable_differs.dart",
+        "2": [
+          "IterableDiffers",
+          "IterableDiffer",
+          "IterableDifferFactory",
+          "TrackByFn"
+        ]
+      },
+      {
+        "1": "differs/keyvalue_differs.dart",
+        "2": [
+          "KeyValueDiffers",
+          "KeyValueDiffer",
+          "KeyValueDifferFactory"
+        ]
+      },
+      {
+        "1": "pipe_transform.dart",
+        "2": [
+          "PipeTransform"
+        ]
+      }
+    ],
+    "6": "change_detection.dart"
+  },
+  "type": {
+    "keyValDiff": {
+      "class": "Identifier",
+      "name": "keyValDiff",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection.dart",
+      "prefix": null,
+      "value": null
+    },
+    "iterableDiff": {
+      "class": "Identifier",
+      "name": "iterableDiff",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection.dart",
+      "prefix": null,
+      "value": null
+    },
+    "defaultIterableDiffers": {
+      "class": "Identifier",
+      "name": "defaultIterableDiffers",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection.dart",
+      "prefix": null,
+      "value": null
+    },
+    "defaultKeyValueDiffers": {
+      "class": "Identifier",
+      "name": "defaultKeyValueDiffers",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

@@ -1,0 +1,185 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/components/clock/clock_component.dart",
+        "5": false
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/components/greeter_service.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "LoginComponent",
+        "5": [
+          {
+            "1": "GreeterService",
+            "4": "_greeterService"
+          }
+        ],
+        "7": [
+          {
+            "2": "ClockComponent"
+          }
+        ]
+      }
+    ],
+    "6": "login_component.dart",
+    "7": [
+      {
+        "1": "package:angular2/core.template.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/components/clock/clock_component.template.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/components/greeter_service.template.dart",
+        "4": "i2"
+      }
+    ]
+  },
+  "type": {
+    "LoginComponent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "login",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "LoginComponent",
+        "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/login/login_component.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "GreeterService",
+                "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/greeter_service.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 6,
+      "inputs": {},
+      "inputTypes": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": {
+        "encapsulation": 0,
+        "template": "<img id=\"avatar\" src=\"/images/litarvan.png\" />\n\n<p id=\"user\">Litarvan (<b>litarvan</b>)</p>\n<input type=\"password\" id=\"password\" placeholder=\"Mot de passe...\" /><br/>\n\n<button id=\"desktop\">{{ desktop }} <i class=\"fa fa-angle-right\"></i></button>",
+        "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/login/login_component.html",
+        "styles": [],
+        "styleUrls": [
+          "asset:lightdm_webkit_theme_litarvan/lib/components/login/login_component.css"
+        ],
+        "ngContentSelectors": []
+      },
+      "providers": [
+        {
+          "class": "Provider",
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Type",
+              "name": "GreeterService",
+              "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/greeter_service.dart",
+              "prefix": null,
+              "isHost": false,
+              "value": null,
+              "diDeps": [
+                {
+                  "token": {
+                    "value": null,
+                    "identifier": {
+                      "class": "Identifier",
+                      "name": "LightDM",
+                      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/lightdm.dart",
+                      "prefix": null,
+                      "value": null
+                    },
+                    "identifierIsInstance": false
+                  },
+                  "value": null,
+                  "isAttribute": false,
+                  "isSelf": false,
+                  "isHost": false,
+                  "isSkipSelf": false,
+                  "isOptional": false,
+                  "isValue": false
+                }
+              ]
+            },
+            "identifierIsInstance": false
+          },
+          "useClass": {
+            "class": "Type",
+            "name": "GreeterService",
+            "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/greeter_service.dart",
+            "prefix": null,
+            "isHost": false,
+            "value": null,
+            "diDeps": [
+              {
+                "token": {
+                  "value": null,
+                  "identifier": {
+                    "class": "Identifier",
+                    "name": "LightDM",
+                    "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/lightdm.dart",
+                    "prefix": null,
+                    "value": null
+                  },
+                  "identifierIsInstance": false
+                },
+                "value": null,
+                "isAttribute": false,
+                "isSelf": false,
+                "isHost": false,
+                "isSkipSelf": false,
+                "isOptional": false,
+                "isValue": false
+              }
+            ]
+          },
+          "useExisting": null,
+          "useValue": null,
+          "useFactory": null,
+          "useProperty": null,
+          "multi": false,
+          "deps": null
+        }
+      ],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

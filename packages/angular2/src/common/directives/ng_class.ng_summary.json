@@ -1,0 +1,145 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/core.dart",
+        "2": [
+          "DoCheck",
+          "OnDestroy",
+          "Directive",
+          "ElementRef",
+          "IterableDiffers",
+          "KeyValueDiffers",
+          "IterableDiffer",
+          "KeyValueDiffer",
+          "CollectionChangeRecord",
+          "KeyValueChangeRecord"
+        ],
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "NgClass",
+        "5": [
+          {
+            "1": "IterableDiffers",
+            "4": "_iterableDiffers"
+          },
+          {
+            "1": "KeyValueDiffers",
+            "4": "_keyValueDiffers"
+          },
+          {
+            "1": "ElementRef",
+            "4": "_ngEl"
+          }
+        ],
+        "6": [
+          "DoCheck",
+          "OnDestroy"
+        ]
+      }
+    ],
+    "6": "ng_class.dart"
+  },
+  "type": {
+    "NgClass": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "[ngClass]",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "NgClass",
+        "moduleUrl": "asset:angular2/lib/src/common/directives/ng_class.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "IterableDiffers",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "KeyValueDiffers",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 6,
+      "inputs": {
+        "rawClass": "ngClass",
+        "initialClasses": "class"
+      },
+      "inputTypes": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        2,
+        1
+      ],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

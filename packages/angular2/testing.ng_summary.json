@@ -1,0 +1,62 @@
+{
+  "ngDeps": {
+    "1": "angular2.testing",
+    "4": [
+      {
+        "1": "package:angular2/src/compiler/xhr_mock.dart",
+        "2": [
+          "MockXHR"
+        ]
+      },
+      {
+        "1": "package:angular2/src/mock/directive_resolver_mock.dart",
+        "2": [
+          "MockDirectiveResolver"
+        ]
+      },
+      {
+        "1": "package:angular2/src/mock/mock_application_ref.dart",
+        "2": [
+          "MockApplicationRef"
+        ]
+      },
+      {
+        "1": "package:angular2/src/mock/ng_zone_mock.dart",
+        "2": [
+          "MockNgZone"
+        ]
+      },
+      {
+        "1": "package:angular2/src/mock/view_resolver_mock.dart",
+        "2": [
+          "MockViewResolver"
+        ]
+      },
+      {
+        "1": "src/debug/debug_node.dart",
+        "2": [
+          "DebugElement"
+        ]
+      },
+      {
+        "1": "src/testing/by.dart"
+      },
+      {
+        "1": "src/testing/fake_async.dart"
+      },
+      {
+        "1": "src/testing/test_component_builder.dart",
+        "2": [
+          "ComponentFixture",
+          "TestComponentBuilder"
+        ]
+      },
+      {
+        "1": "src/testing/test_injector.dart"
+      }
+    ],
+    "6": "testing.dart"
+  },
+  "type": {},
+  "alias": {}
+}
