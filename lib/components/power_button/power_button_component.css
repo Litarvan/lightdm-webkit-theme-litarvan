@@ -1,0 +1,16 @@
+#power-button {
+    transition: background 125ms ease-in-out;
+}
+
+#power-button:hover {
+    background: rgba(255, 255, 255, 0.075);
+}
+
+#power-button-icon {
+    color: white;
+
+    padding: 10px 7.5px 7.5px;
+
+    width: 42px;
+    height: 42px;
+}

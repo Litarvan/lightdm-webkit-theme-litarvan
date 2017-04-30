@@ -1,0 +1,13 @@
+:host {
+    font-size: 164px;
+    font-weight: 300;
+    font-family: "Lato", "Noto Sans", sans-serif;
+
+    text-align: center;
+}
+
+#date {
+    font-weight: normal;
+    margin-top: 1.25vh;
+    font-size: 28px;
+}

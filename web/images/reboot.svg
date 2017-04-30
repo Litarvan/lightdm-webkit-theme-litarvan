@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg5048"
+   height="128"
+   width="128">
+  <defs
+     id="defs5050">
+    <filter
+       color-interpolation-filters="sRGB"
+       height="1"
+       width="1"
+       y="0"
+       x="0"
+       id="filter4004-4">
+      <feColorMatrix
+         result="result2"
+         type="saturate"
+         in="SourceGraphic"
+         values="1"
+         id="feColorMatrix4006-0" />
+      <feFlood
+         result="result1"
+         flood-opacity="1"
+         flood-color="rgb(250,247,247)"
+         id="feFlood4008-2" />
+      <feBlend
+         result="result3"
+         in="result1"
+         mode="multiply"
+         in2="result2"
+         id="feBlend4010-1" />
+      <feComposite
+         result="result4"
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite4012-3" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       height="1"
+       width="1"
+       y="0"
+       x="0"
+       id="filter4004-44">
+      <feColorMatrix
+         result="result2"
+         type="saturate"
+         in="SourceGraphic"
+         values="1"
+         id="feColorMatrix4006-8" />
+      <feFlood
+         result="result1"
+         flood-opacity="1"
+         flood-color="rgb(250,247,247)"
+         id="feFlood4008-0" />
+      <feBlend
+         result="result3"
+         in="result1"
+         mode="multiply"
+         in2="result2"
+         id="feBlend4010-5" />
+      <feComposite
+         result="result4"
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite4012-6" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       height="1"
+       width="1"
+       y="0"
+       x="0"
+       id="filter4004-4-4">
+      <feColorMatrix
+         result="result2"
+         type="saturate"
+         in="SourceGraphic"
+         values="1"
+         id="feColorMatrix4006-0-1" />
+      <feFlood
+         result="result1"
+         flood-opacity="1"
+         flood-color="rgb(250,247,247)"
+         id="feFlood4008-2-5" />
+      <feBlend
+         result="result3"
+         in="result1"
+         mode="multiply"
+         in2="result2"
+         id="feBlend4010-1-5" />
+      <feComposite
+         result="result4"
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite4012-3-5" />
+    </filter>
+    <style
+       type="text/css"
+       id="current-color-scheme">      .ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Background{
+        color:#eff0f1;
+      }
+      .ColorScheme-ViewText {
+        color:#31363b;
+      }
+      .ColorScheme-ViewBackground{
+        color:#fcfcfc;
+      }
+      .ColorScheme-ViewHover {
+        color:#3daee9;
+      }
+      .ColorScheme-ViewFocus{
+        color:#3daee9;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+      }
+      .ColorScheme-ButtonBackground{
+        color:#eff0f1;
+      }
+      .ColorScheme-ButtonHover {
+        color:#3daee9;
+      }
+      .ColorScheme-ButtonFocus{
+        color:#3daee9;
+      }</style>
+  </defs>
+  <metadata
+     id="metadata5053">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-6.1297004,-913.75296)"
+     id="layer1">
+    <path
+       class="ColorScheme-Background"
+       id="rect4085-6"
+       d="m 70.1297,917.75272 c -10.812855,0 -21.022208,2.76937 -29.765625,7.73437 l 5.390625,5.15626 0.468751,0.46874 20.625,20.85938 5.390624,-5.39063 -18.75,-18.51562 c 5.23749,-1.76018 10.79358,-2.8125 16.640625,-2.8125 29.08477,0 52.5,23.415 52.5,52.5 0,8.71875 -2.12907,16.91888 -5.85937,24.14088 l 5.625,5.625 c 4.96538,-8.74371 7.73437,-18.95313 7.73437,-29.76588 0,-33.24 -26.76026,-60 -60,-60 z m -52.265625,30.23437 c -4.965383,8.74351 -7.734375,18.95288 -7.734375,29.76563 0,33.24028 26.760255,60.00028 60,60.00028 10.812855,0 21.022208,-2.7694 29.76563,-7.7344 l -5.15625,-5.1563 -0.46875,-0.4687 -20.859379,-20.8594 -5.156251,5.3907 18.515626,18.5156 c -5.237491,1.7601 -10.793588,2.8125 -16.640626,2.8125 -29.084775,0 -52.5,-23.415 -52.5,-52.50028 0,-8.71875 2.129071,-16.91888 5.859375,-24.14063 l -5.625,-5.625 z"
+       style="fill:currentColor;fill-opacity:1;stroke:none" />
+  </g>
+</svg>
