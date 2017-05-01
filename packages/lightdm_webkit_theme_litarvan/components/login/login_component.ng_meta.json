@@ -7,6 +7,10 @@
         "5": false
       },
       {
+        "1": "dart:async",
+        "5": false
+      },
+      {
         "1": "package:angular2/core.dart",
         "5": false
       },
@@ -20,6 +24,14 @@
       },
       {
         "1": "package:lightdm_webkit_theme_litarvan/greeter_service.dart",
+        "5": false
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/lightdm.dart",
+        "5": false
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/translations.dart",
         "5": false
       },
       {
@@ -37,7 +49,15 @@
         "5": [
           {
             "1": "GreeterService",
-            "4": "_greeter"
+            "4": "greeter"
+          },
+          {
+            "1": "LightDM",
+            "4": "_lightdm"
+          },
+          {
+            "1": "Translations",
+            "4": "trans"
           }
         ],
         "6": [
@@ -69,12 +89,20 @@
         "4": "i3"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/user.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/lightdm.template.dart",
         "4": "i4"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/util.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/translations.template.dart",
         "4": "i5"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/user.template.dart",
+        "4": "i6"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/util.template.dart",
+        "4": "i7"
       }
     ]
   },
@@ -111,6 +139,46 @@
             "isSkipSelf": false,
             "isOptional": false,
             "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "LightDM",
+                "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/lightdm.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Translations",
+                "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/translations.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
           }
         ]
       },
@@ -126,7 +194,7 @@
       ],
       "template": {
         "encapsulation": 0,
-        "template": "<img id=\"avatar\" (click)=\"users()\" src=\"{{ user.avatar }}\" />\n\n<p id=\"user\">{{ user.name }} (<b>{{ user.username }}</b>)</p>\n<input type=\"password\" id=\"password\" placeholder=\"Mot de passe...\" /><br/>\n\n<button id=\"desktop\">{{ desktop.name }} <i class=\"fa fa-angle-right\"></i></button>",
+        "template": "<img id=\"avatar\" (click)=\"users()\" src=\"{{ greeter.user.avatar }}\" />\n\n<p id=\"user\">{{ greeter.user.name }} (<b>{{ greeter.user.username }}</b>)</p>\n<input type=\"password\" id=\"password\" placeholder=\"{{ trans['password'] }}\" /><br/>\n<span id=\"error\"></span><br/>\n\n<button id=\"desktop\" (click)=\"desktops()\">{{ greeter.desktop.name }} <i class=\"fa fa-angle-right\"></i></button>",
         "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/login/login_component.html",
         "styles": [],
         "styleUrls": [

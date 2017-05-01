@@ -7,6 +7,10 @@
         "5": false
       },
       {
+        "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
         "1": "package:js/js.dart",
         "5": false
       },
@@ -19,25 +23,42 @@
         "5": false
       }
     ],
+    "5": [
+      {
+        "1": "LightDM",
+        "4": [
+          {
+            "1": "Injectable",
+            "4": false
+          }
+        ]
+      }
+    ],
     "6": "lightdm.dart",
     "7": [
       {
-        "1": "package:lightdm_webkit_theme_litarvan/desktop.template.dart",
+        "1": "package:angular2/core.template.dart",
         "4": "i0"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/user.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/desktop.template.dart",
         "4": "i1"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/user.template.dart",
+        "4": "i2"
       }
     ]
   },
   "type": {
     "LightDM": {
-      "class": "Identifier",
+      "class": "Type",
       "name": "LightDM",
       "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/lightdm.dart",
       "prefix": null,
-      "value": null
+      "isHost": false,
+      "value": null,
+      "diDeps": []
     }
   },
   "alias": {}

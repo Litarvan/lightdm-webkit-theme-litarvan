@@ -9,11 +9,21 @@
       {
         "1": "package:angular2/core.dart",
         "5": false
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/translations.dart",
+        "5": false
       }
     ],
     "5": [
       {
         "1": "ClockComponent",
+        "5": [
+          {
+            "1": "Translations",
+            "4": "_trans"
+          }
+        ],
         "6": [
           "OnInit"
         ]
@@ -24,6 +34,10 @@
       {
         "1": "package:angular2/core.template.dart",
         "4": "i0"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/translations.template.dart",
+        "4": "i1"
       }
     ]
   },
@@ -40,7 +54,28 @@
         "prefix": null,
         "isHost": false,
         "value": null,
-        "diDeps": []
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Translations",
+                "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/translations.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
       },
       "changeDetection": 6,
       "inputs": {},
@@ -54,7 +89,7 @@
       ],
       "template": {
         "encapsulation": 0,
-        "template": "<b>{{ hours }}</b>:{{ minutes }}\n\n<div id=\"date\">\n    {{ weekday }} {{ day }} {{ month }} {{ year }}\n</div>",
+        "template": "<b>{{ hours }}</b>:{{ minutes }}\n\n<div id=\"date\">\n    {{ date }}\n</div>",
         "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/clock/clock_component.html",
         "styles": [],
         "styleUrls": [

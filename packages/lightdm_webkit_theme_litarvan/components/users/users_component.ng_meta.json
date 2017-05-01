@@ -29,7 +29,7 @@
         "5": [
           {
             "1": "LightDM",
-            "4": "_lightDM"
+            "4": "lightDM"
           },
           {
             "1": "GreeterService",
@@ -128,7 +128,7 @@
       "lifecycleHooks": [],
       "template": {
         "encapsulation": 0,
-        "template": "<li id=\"users\">\n    <ul *ngFor=\"let user of users\" (click)=\"apply(user)\" class=\"user\">\n        <i class=\"fa fa-angle-left\"></i> {{ user.name }} (<b>{{ user.username }}</b>) <img src=\"{{ user.avatar }}\" />\n    </ul>\n</li>",
+        "template": "<li id=\"users\">\n    <ul *ngFor=\"let user of lightDM.users\" (click)=\"apply(user)\" class=\"user\">\n        <i class=\"fa fa-angle-left\"></i> {{ user.name }} (<b>{{ user.username }}</b>) <img src=\"{{ user.avatar }}\" />\n    </ul>\n</li>",
         "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/users/users_component.html",
         "styles": [],
         "styleUrls": [

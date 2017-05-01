@@ -1,6 +1,7 @@
-<img id="avatar" (click)="users()" src="{{ user.avatar }}" />
+<img id="avatar" (click)="users()" src="{{ greeter.user.avatar }}" />
 
-<p id="user">{{ user.name }} (<b>{{ user.username }}</b>)</p>
-<input type="password" id="password" placeholder="Mot de passe..." /><br/>
+<p id="user">{{ greeter.user.name }} (<b>{{ greeter.user.username }}</b>)</p>
+<input type="password" id="password" placeholder="{{ trans['password'] }}" /><br/>
+<span id="error"></span><br/>
 
-<button id="desktop">{{ desktop.name }} <i class="fa fa-angle-right"></i></button>
+<button id="desktop" (click)="desktops()">{{ greeter.desktop.name }} <i class="fa fa-angle-right"></i></button>

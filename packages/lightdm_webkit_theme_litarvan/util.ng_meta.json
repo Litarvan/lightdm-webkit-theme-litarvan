@@ -29,6 +29,13 @@
       "prefix": null,
       "value": null
     },
+    "focus": {
+      "class": "Identifier",
+      "name": "focus",
+      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/util.dart",
+      "prefix": null,
+      "value": null
+    },
     "shutdown": {
       "class": "Identifier",
       "name": "shutdown",

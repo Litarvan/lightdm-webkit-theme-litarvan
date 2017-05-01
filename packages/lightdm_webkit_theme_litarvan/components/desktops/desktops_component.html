@@ -1,0 +1,5 @@
+<li id="desktops">
+    <ul *ngFor="let desktop of desktops" (click)="apply(desktop)" class="desktop">
+        <i class="fa fa-angle-left"></i> {{ desktop.name }}
+    </ul>
+</li>

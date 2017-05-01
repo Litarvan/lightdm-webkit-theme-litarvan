@@ -53,16 +53,17 @@ html, body {
 }
 
 #loading {
-  margin-top: calc(50vh - 225px);
+  /*margin-top: calc(50vh - 225px);*/
+  margin-top: calc(50vh - 125px);
   width: 100%;
 
   color: white;
   text-align: center;
 
-  font-style: italic;
+  /*font-style: italic;
   font-weight: 300;
   font-family: "Lato", "Noto Sans", Arial, serif;
-  font-size: 96px;
+  font-size: 96px;*/
 
   opacity: 1;
 }
@@ -71,7 +72,7 @@ html, body {
   transition: opacity 250ms ease-in-out;
 }
 
-#loading.hidden, splash.hidden, login.hidden, users.hidden, body.hidden, app.hidden, #app-container.hidden {
+#loading.hidden, splash.hidden, login.hidden, users.hidden, desktops.hidden, body.hidden, app.hidden, #app-container.hidden {
   opacity: 0;
 }
 
@@ -84,6 +85,6 @@ html, body {
   display: inline-block;
 }*/
 
-app, users {
+app, users, desktops {
   display: none;
 }

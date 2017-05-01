@@ -7,7 +7,15 @@
         "5": false
       },
       {
+        "1": "dart:html",
+        "5": false
+      },
+      {
         "1": "package:angular2/core.dart",
+        "5": false
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/components/desktops/desktops_component.dart",
         "5": false
       },
       {
@@ -49,6 +57,9 @@
           },
           {
             "2": "UsersComponent"
+          },
+          {
+            "2": "DesktopsComponent"
           }
         ]
       }
@@ -60,24 +71,28 @@
         "4": "i0"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/components/login/login_component.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/components/desktops/desktops_component.template.dart",
         "4": "i1"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/components/power_button/power_button_component.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/components/login/login_component.template.dart",
         "4": "i2"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/components/splash/splash_component.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/components/power_button/power_button_component.template.dart",
         "4": "i3"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/components/users/users_component.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/components/splash/splash_component.template.dart",
         "4": "i4"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/util.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/components/users/users_component.template.dart",
         "4": "i5"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/util.template.dart",
+        "4": "i6"
       }
     ]
   },
@@ -108,7 +123,7 @@
       ],
       "template": {
         "encapsulation": 0,
-        "template": "<splash class=\"fade\"></splash>\n<login class=\"fade hidden\"></login>\n<users class=\"fade hidden\"></users>\n\n<power-button id=\"shutdown\" [image]=\"'images/shutdown.svg'\" [type]=\"'shutdown'\"></power-button>\n<power-button id=\"reboot\" [image]=\"'images/reboot.svg'\" [type]=\"'reboot'\"></power-button>",
+        "template": "<splash class=\"fade\"></splash>\n<login class=\"fade hidden\"></login>\n<users class=\"fade hidden\"></users>\n<desktops class=\"fade hidden\"></desktops>\n\n<power-button id=\"shutdown\" [image]=\"'images/shutdown.svg'\" [type]=\"'shutdown'\"></power-button>\n<power-button id=\"reboot\" [image]=\"'images/reboot.svg'\" [type]=\"'reboot'\"></power-button>",
         "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/app/app_component.html",
         "styles": [],
         "styleUrls": [

@@ -3,6 +3,10 @@
     "1": "",
     "3": [
       {
+        "1": "dart:async",
+        "5": false
+      },
+      {
         "1": "dart:html",
         "5": false
       },
@@ -15,6 +19,10 @@
         "5": false
       },
       {
+        "1": "package:lightdm_webkit_theme_litarvan/translations.dart",
+        "5": false
+      },
+      {
         "1": "package:lightdm_webkit_theme_litarvan/util.dart",
         "5": false
       }
@@ -22,6 +30,12 @@
     "5": [
       {
         "1": "SplashComponent",
+        "5": [
+          {
+            "1": "Translations",
+            "4": "trans"
+          }
+        ],
         "6": [
           "OnInit"
         ],
@@ -47,7 +61,28 @@
         "prefix": null,
         "isHost": false,
         "value": null,
-        "diDeps": []
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Translations",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
       },
       "changeDetection": 6,
       "inputs": {},
@@ -61,7 +96,7 @@
       ],
       "template": {
         "encapsulation": 0,
-        "template": "<clock></clock>\n\n<div id=\"trigger\">\n    Appuyez sur \"Espace\" ou \"Entrée\" pour vous connecter\n</div>",
+        "template": "<clock></clock>\n\n<div id=\"trigger\">\n    {{ trans['splash'] }}\n</div>",
         "templateUrl": "asset:lightdm_webkit_theme_litarvan/lib/components/splash/splash_component.html",
         "styles": [],
         "styleUrls": [
