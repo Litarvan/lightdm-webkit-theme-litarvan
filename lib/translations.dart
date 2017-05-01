@@ -24,7 +24,7 @@ class Translations {
   Translations(this._lightdm);
 
   dynamic get(String key) {
-    if (_lightdm.language != null && _lightdm.language.startsWith('fr_')) {
+    if (_lightdm.language != null && _lightdm.language.toLowerCase() == 'français') {
       return FRENCH[key];
     } else {
       return ENGLISH[key];
