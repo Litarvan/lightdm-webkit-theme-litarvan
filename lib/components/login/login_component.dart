@@ -1,4 +1,5 @@
 import 'dart:html';
+import 'dart:async';
 import 'package:angular2/core.dart';
 import 'package:lightdm_webkit_theme_litarvan/components/clock/clock_component.dart';
 import 'package:lightdm_webkit_theme_litarvan/desktop.dart';
@@ -67,8 +68,11 @@ class LoginComponent implements OnInit {
 
         this._lightdm.login(user.username, (password as InputElement).value, () {
           setEnabled();
+	  shutdown();
 
-          _lightdm.start(desktop.key);
+	  new Future.delayed(const Duration(milliseconds: 500), () {
+              _lightdm.start(desktop.key);
+	  });
         }, (err) {
           $('#error').innerHtml = err == 'auth' ? 'Invalid password' : err;
 

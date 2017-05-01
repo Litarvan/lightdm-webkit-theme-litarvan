@@ -36,7 +36,7 @@ if (window.debug)
             console.log(`Starting authenticating : '${username}'`);
             lightdm.authentication_user = username;
 
-            show_prompt("Password:");
+            show_prompt("Password: ");
         },
         cancel_authentication: () => {
             console.log('Auth cancelled');
@@ -88,7 +88,7 @@ function start(desktop)
 
 function show_prompt(text, type)
 {
-    if (text === "Password:")
+    if (text === "Password: ")
     {
         lightdm.respond(password);
     }
@@ -96,8 +96,11 @@ function show_prompt(text, type)
 
 function authentication_complete()
 {
+    console.log('Hey');
+
     if (lightdm.is_authenticated)
     {
+	console.log('Ho');
         completeCB();
     }
     else
