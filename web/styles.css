@@ -71,7 +71,7 @@ html, body {
   transition: opacity 250ms ease-in-out;
 }
 
-#loading.hidden, splash.hidden, login.hidden, body.hidden, app.hidden, #app-container.hidden {
+#loading.hidden, splash.hidden, login.hidden, users.hidden, body.hidden, app.hidden, #app-container.hidden {
   opacity: 0;
 }
 
@@ -84,6 +84,6 @@ html, body {
   display: inline-block;
 }*/
 
-app {
+app, users {
   display: none;
 }

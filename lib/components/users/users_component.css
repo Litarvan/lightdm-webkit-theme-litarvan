@@ -1,0 +1,44 @@
+:host {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    font-family: "Lato", "Noto Sans", "Arial", sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+}
+
+#users {
+    list-style: none;
+}
+
+.user {
+    font-size: 32px;
+    text-align: right;
+
+    min-width: 300px;
+    padding: 10px 15px;
+    transition: background-color 150ms ease-in-out;
+}
+
+.user:hover {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.user i {
+    float: left;
+    margin-top: 3px;
+    margin-right: 25px;
+}
+
+.user img {
+    margin-bottom: -4px;
+    margin-left: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 4px;
+}

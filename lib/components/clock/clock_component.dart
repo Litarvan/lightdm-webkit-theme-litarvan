@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:angular2/core.dart';
-import 'package:intl/intl.dart';
 
 @Component(
   selector: 'clock',
@@ -10,8 +9,6 @@ import 'package:intl/intl.dart';
 class ClockComponent implements OnInit {
   static const DAYS = const ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
   static const MONTHS = const ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
-
-  Timer _timer;
 
   String hours = '00';
   String minutes = '00';
@@ -23,7 +20,7 @@ class ClockComponent implements OnInit {
 
   @override
   ngOnInit() {
-    _timer = new Timer.periodic(const Duration(milliseconds: 1000), (_) {
+    new Timer.periodic(const Duration(milliseconds: 1000), (_) {
       var date = new DateTime.now();
 
       hours = date.hour.toString().padLeft(2, '0');

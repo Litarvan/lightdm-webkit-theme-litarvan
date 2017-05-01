@@ -1,6 +1,6 @@
-<img id="avatar" src="images/litarvan.png" />
+<img id="avatar" (click)="users()" src="{{ user.avatar }}" />
 
-<p id="user">Litarvan (<b>litarvan</b>)</p>
+<p id="user">{{ user.name }} (<b>{{ user.username }}</b>)</p>
 <input type="password" id="password" placeholder="Mot de passe..." /><br/>
 
-<button id="desktop">{{ desktop }} <i class="fa fa-angle-right"></i></button>
+<button id="desktop">{{ desktop.name }} <i class="fa fa-angle-right"></i></button>

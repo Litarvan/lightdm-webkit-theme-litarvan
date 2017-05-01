@@ -1,13 +1,15 @@
 import 'dart:js';
 
 import 'package:js/js.dart';
-import 'package:lightdm_webkit_theme_litarvan/components/desktop.dart';
+import 'package:lightdm_webkit_theme_litarvan/desktop.dart';
+import 'package:lightdm_webkit_theme_litarvan/user.dart';
 
 class LightDM {
   Function errorCallback;
   JsObject lightdm;
 
   List<Desktop> _desktops;
+  List<User> _users;
 
   LightDM(this.errorCallback) {
     this.lightdm = context['lightdm'];
@@ -29,5 +31,17 @@ class LightDM {
     }
 
     return _desktops;
+  }
+
+  List<User> get users {
+    if (_users == null) {
+      _users = [];
+
+      for (JsObject obj in lightdm['users']) {
+        _users.add(new User(obj['display_name'], obj['username'], obj['image'] != null ? (obj['image'].startsWith('/') ? 'file://' : '') + obj['image'] : 'images/default_user.png'));
+      }
+    }
+
+    return _users;
   }
 }

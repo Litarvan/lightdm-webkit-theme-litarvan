@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:html';
 import 'package:angular2/core.dart';
 import 'package:lightdm_webkit_theme_litarvan/lightdm.dart';
 import 'package:lightdm_webkit_theme_litarvan/util.dart';
