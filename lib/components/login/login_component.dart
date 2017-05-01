@@ -65,8 +65,6 @@ class LoginComponent implements OnInit {
           this.login = false;
         }
 
-        print((password as InputElement).value);
-        print(password.text);
         this._lightdm.login(user.username, (password as InputElement).value, () {
           setEnabled();
 
