@@ -41,7 +41,7 @@ if (window.debug)
         cancel_authentication: () => {
             console.log('Auth cancelled');
         },
-        respond: async (password) => {
+        respond: (password) => {
             console.log(`Password provided : '${password}'`);
 
             if (password === DEBUG_PASSWORD)
@@ -50,7 +50,8 @@ if (window.debug)
             }
             else
             {
-                await (new Promise(resolve => setTimeout(resolve, 2500)));
+                let now = new Date().getTime();
+                while (new Date().getTime() < now + 2000);
             }
 
             authentication_complete();

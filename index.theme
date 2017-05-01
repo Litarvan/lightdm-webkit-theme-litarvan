@@ -1,0 +1,5 @@
+[theme]
+name=Litarvan
+description=Litarvan's LightDM Webkit2 theme.
+engine=lightdm-webkit-greeter
+url=index.html
