@@ -23,5 +23,6 @@ class UsersComponent {
     _greeter.user = user;
 
     fadeSwitch($('users'), $('login'), 'inline-block');
+    focus();
   }
 }

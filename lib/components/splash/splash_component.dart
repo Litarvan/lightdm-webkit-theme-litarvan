@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 import 'package:angular2/core.dart';
 import 'package:lightdm_webkit_theme_litarvan/components/clock/clock_component.dart';
@@ -17,6 +18,7 @@ class SplashComponent implements OnInit {
 
       if ((event.keyCode == KeyCode.ENTER || event.keyCode == KeyCode.SPACE) && splash.style.opacity == '') {
         fadeSwitch(splash, $('login'), 'inline-block');
+        focus();
       }
     });
   }

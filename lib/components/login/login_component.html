@@ -2,5 +2,6 @@
 
 <p id="user">{{ user.name }} (<b>{{ user.username }}</b>)</p>
 <input type="password" id="password" placeholder="Mot de passe..." /><br/>
+<span id="error"></span><br/>
 
-<button id="desktop">{{ desktop.name }} <i class="fa fa-angle-right"></i></button>
+<button id="desktop" (click)="desktops()">{{ desktop.name }} <i class="fa fa-angle-right"></i></button>

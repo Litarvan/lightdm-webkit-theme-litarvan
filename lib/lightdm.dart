@@ -1,22 +1,22 @@
 import 'dart:js';
 
+import 'package:angular2/core.dart';
 import 'package:js/js.dart';
 import 'package:lightdm_webkit_theme_litarvan/desktop.dart';
 import 'package:lightdm_webkit_theme_litarvan/user.dart';
 
+@Injectable()
 class LightDM {
-  Function errorCallback;
   JsObject lightdm;
 
   List<Desktop> _desktops;
   List<User> _users;
 
-  LightDM(this.errorCallback) {
+  LightDM() {
     this.lightdm = context['lightdm'];
-    context.callMethod('init', [allowInterop(errorCallback)]);
   }
 
-  login(String username, String password) => context.callMethod('login', [username, password]);
+  login(String username, String password, Function completeCB, Function errCB) => context.callMethod('login', [username, password, allowInterop(completeCB), allowInterop(errCB)]);
   start(String desktop) => context.callMethod('start', [desktop]);
   shutdown() => lightdm.callMethod('shutdown');
   reboot() => lightdm.callMethod('restart');

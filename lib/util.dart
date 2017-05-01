@@ -24,4 +24,10 @@ void fadeSwitch(Element oldEl, Element newEl, String display, [int delay = 300])
   });
 }
 
+void focus() {
+  new Future.delayed(const Duration(milliseconds: 400), () {
+    ($('#password') as InputElement).focus();
+  });
+}
+
 void shutdown() => fadeOut($('app'));

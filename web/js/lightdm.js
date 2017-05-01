@@ -1,13 +1,14 @@
 'use strict';
 
+const DEBUG_PASSWORD = 'test';
+
 window.debug = window.lightdm === undefined;
 
 if (window.debug)
 {
     window.lightdm = {
-        password_debugged: false,
         is_authenticated: false,
-        authentication_user: 'DEBUG USER',
+        authentication_user: undefined,
         default_session: 'plasma-shell',
         sessions: [
             {
@@ -33,21 +34,23 @@ if (window.debug)
         }],
         start_authentication: (username) => {
             console.log(`Starting authenticating : '${username}'`);
+            lightdm.authentication_user = username;
+
             show_prompt("Password:");
         },
         cancel_authentication: () => {
             console.log('Auth cancelled');
         },
-        respond: (password) => {
+        respond: async (password) => {
             console.log(`Password provided : '${password}'`);
 
-            if (lightdm.password_debugged)
+            if (password === DEBUG_PASSWORD)
             {
                 lightdm.is_authenticated = true;
             }
             else
             {
-                lightdm.password_debugged = true;
+                await (new Promise(resolve => setTimeout(resolve, 2500)));
             }
 
             authentication_complete();
@@ -68,12 +71,13 @@ let password;
 let errorCB;
 let completeCB;
 
-function login(username, pass, cb)
+function login(username, pass, cb, errCB)
 {
-    lightdm.start_authentication(username);
+    completeCB = cb;
+    errorCB = errCB;
     password = pass;
 
-    completeCB = cb;
+    lightdm.start_authentication(username);
 }
 
 function start(desktop)
@@ -93,12 +97,12 @@ function authentication_complete()
 {
     if (lightdm.is_authenticated)
     {
-        lightdm.cancel_authentication();
-        errorCB("Invalid username/password");
+        completeCB();
     }
     else
     {
-        completeCB(lightdm.authentication_user);
+        lightdm.cancel_authentication();
+        errorCB('Invalid username/password');
     }
 }
 
@@ -106,9 +110,3 @@ function show_message(text, type)
 {
     errorCB(text);
 }
-
-window.init = (errorCallback) =>
-{
-    console.log(errorCallback);
-    errorCB = errorCallback;
-};
