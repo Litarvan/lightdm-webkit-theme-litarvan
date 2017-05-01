@@ -10,14 +10,10 @@ import 'package:lightdm_webkit_theme_litarvan/util.dart';
   styleUrls: const ['users_component.css']
 )
 class UsersComponent {
-  LightDM _lightDM;
+  LightDM lightDM;
   GreeterService _greeter;
 
-  List<User> users;
-
-  UsersComponent(this._lightDM, this._greeter) {
-    this.users = this._lightDM.users;
-  }
+  UsersComponent(this.lightDM, this._greeter);
 
   apply(User user) {
     _greeter.user = user;

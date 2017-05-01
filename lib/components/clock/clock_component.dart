@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:angular2/core.dart';
+import 'package:lightdm_webkit_theme_litarvan/translations.dart';
 
 @Component(
   selector: 'clock',
@@ -7,16 +8,14 @@ import 'package:angular2/core.dart';
   styleUrls: const ['clock_component.css']
 )
 class ClockComponent implements OnInit {
-  static const DAYS = const ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-  static const MONTHS = const ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+  Translations _trans;
 
   String hours = '00';
   String minutes = '00';
 
-  String weekday = DAYS[0];
-  String day = '1';
-  String month = MONTHS[0];
-  String year = '1970';
+  String date = '';
+
+  ClockComponent(this._trans);
 
   @override
   ngOnInit() {
@@ -26,10 +25,11 @@ class ClockComponent implements OnInit {
       hours = date.hour.toString().padLeft(2, '0');
       minutes = date.minute.toString().padLeft(2, '0');
 
-      weekday = DAYS[date.weekday - 1];
-      day = date.day.toString();
-      month = MONTHS[date.month - 1];
-      year = date.year.toString();
+      this.date = (_trans['date'] as String)
+          .replaceAll('day', date.day.toString())
+          .replaceAll('weekd', _trans['days'][date.weekday - 1])
+          .replaceAll('month', _trans['months'][date.month - 1])
+          .replaceAll('year', date.year.toString());
     });
   }
 }

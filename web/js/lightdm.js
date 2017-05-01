@@ -32,6 +32,14 @@ if (window.debug)
             username: 'litarvan',
             image: 'images/litarvan.png'
         }],
+        languages: [{
+            name: 'American English',
+            code: 'en_US.utf8'
+        }, {
+            name: 'Français',
+            code: 'fr_FR.utf8'
+        }],
+        language: 'fr_FR.utf8',
         start_authentication: (username) => {
             console.log(`Starting authenticating : '${username}'`);
             lightdm.authentication_user = username;
@@ -96,11 +104,8 @@ function show_prompt(text, type)
 
 function authentication_complete()
 {
-    console.log('Hey');
-
     if (lightdm.is_authenticated)
     {
-	console.log('Ho');
         completeCB();
     }
     else

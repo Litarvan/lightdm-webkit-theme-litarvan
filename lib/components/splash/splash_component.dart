@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:html';
 import 'package:angular2/core.dart';
 import 'package:lightdm_webkit_theme_litarvan/components/clock/clock_component.dart';
+import 'package:lightdm_webkit_theme_litarvan/translations.dart';
 import 'package:lightdm_webkit_theme_litarvan/util.dart';
 
 @Component(
@@ -11,6 +12,10 @@ import 'package:lightdm_webkit_theme_litarvan/util.dart';
   directives: const [ClockComponent]
 )
 class SplashComponent implements OnInit {
+  Translations trans;
+
+  SplashComponent(this.trans);
+
   @override
   ngOnInit() {
     window.onKeyUp.listen((event) {

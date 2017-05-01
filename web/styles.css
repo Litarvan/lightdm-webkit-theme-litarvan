@@ -53,16 +53,17 @@ html, body {
 }
 
 #loading {
-  margin-top: calc(50vh - 225px);
+  /*margin-top: calc(50vh - 225px);*/
+  margin-top: calc(50vh - 125px);
   width: 100%;
 
   color: white;
   text-align: center;
 
-  font-style: italic;
+  /*font-style: italic;
   font-weight: 300;
   font-family: "Lato", "Noto Sans", Arial, serif;
-  font-size: 96px;
+  font-size: 96px;*/
 
   opacity: 1;
 }

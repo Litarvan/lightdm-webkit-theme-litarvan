@@ -11,9 +11,30 @@ class LightDM {
 
   List<Desktop> _desktops;
   List<User> _users;
+  List<String> _languages;
+  String _language;
 
   LightDM() {
     this.lightdm = context['lightdm'];
+
+    _desktops = [];
+    _users = [];
+    _languages = [];
+
+    for (JsObject obj in lightdm['sessions']) {
+      _desktops.add(new Desktop(obj['key'], obj['name']));
+    }
+
+    for (JsObject obj in lightdm['users']) {
+      _users.add(new User(obj['display_name'], obj['username'], obj['image'] != null ? (obj['image'].startsWith('/') ? 'file://' : '') + obj['image'] : 'images/default_user.png'));
+    }
+
+    for (JsObject obj in lightdm['languages']) {
+      _languages.add(obj['code']);
+    }
+
+    _language = lightdm['language'];
+    print(_language);
   }
 
   login(String username, String password, Function completeCB, Function errCB) => context.callMethod('login', [username, password, allowInterop(completeCB), allowInterop(errCB)]);
@@ -21,27 +42,8 @@ class LightDM {
   shutdown() => lightdm.callMethod('shutdown');
   reboot() => lightdm.callMethod('restart');
 
-  List<Desktop> get desktops {
-    if (_desktops == null) {
-      _desktops = [];
-
-      for (JsObject obj in lightdm['sessions']) {
-        _desktops.add(new Desktop(obj['key'], obj['name']));
-      }
-    }
-
-    return _desktops;
-  }
-
-  List<User> get users {
-    if (_users == null) {
-      _users = [];
-
-      for (JsObject obj in lightdm['users']) {
-        _users.add(new User(obj['display_name'], obj['username'], obj['image'] != null ? (obj['image'].startsWith('/') ? 'file://' : '') + obj['image'] : 'images/default_user.png'));
-      }
-    }
-
-    return _users;
-  }
+  List<Desktop> get desktops => _desktops;
+  List<User> get users => _users;
+  List<String> get languages => _languages;
+  String get language => _language;
 }

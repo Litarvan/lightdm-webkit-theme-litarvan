@@ -5,6 +5,7 @@ import 'package:lightdm_webkit_theme_litarvan/components/clock/clock_component.d
 import 'package:lightdm_webkit_theme_litarvan/desktop.dart';
 import 'package:lightdm_webkit_theme_litarvan/greeter_service.dart';
 import 'package:lightdm_webkit_theme_litarvan/lightdm.dart';
+import 'package:lightdm_webkit_theme_litarvan/translations.dart';
 import 'package:lightdm_webkit_theme_litarvan/user.dart';
 import 'package:lightdm_webkit_theme_litarvan/util.dart';
 
@@ -16,22 +17,12 @@ import 'package:lightdm_webkit_theme_litarvan/util.dart';
 )
 class LoginComponent implements OnInit {
   LightDM _lightdm;
-  GreeterService _greeter;
-
-  Desktop desktop;
-  User user;
+  GreeterService greeter;
+  Translations trans;
 
   bool login;
 
-  LoginComponent(this._greeter, this._lightdm) {
-    this.desktop = this._greeter.desktop;
-    this.user = this._greeter.user;
-
-    this._greeter.onChange = () {
-      this.desktop = this._greeter.desktop;
-      this.user = this._greeter.user;
-    };
-  }
+  LoginComponent(this.greeter, this._lightdm, this.trans);
 
   users() {
     if (!login) {
@@ -66,12 +57,12 @@ class LoginComponent implements OnInit {
           this.login = false;
         }
 
-        this._lightdm.login(user.username, (password as InputElement).value, () {
+        this._lightdm.login(greeter.user.username, (password as InputElement).value, () {
           setEnabled();
 	  shutdown();
 
 	  new Future.delayed(const Duration(milliseconds: 500), () {
-              _lightdm.start(desktop.key);
+              _lightdm.start(greeter.desktop.key);
 	  });
         }, (err) {
           $('#error').innerHtml = err == 'auth' ? 'Invalid password' : err;
