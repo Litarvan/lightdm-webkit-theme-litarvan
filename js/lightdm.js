@@ -24,7 +24,12 @@ if (window.debug)
             }
         ],
         users: [{
-            name: 'litarvan'
+            display_name: 'John Doe',
+            username: 'johnd'
+        }, {
+            display_name: 'Adrien Navratil',
+            username: 'litarvan',
+            image: 'images/litarvan.png'
         }],
         start_authentication: (username) => {
             console.log(`Starting authenticating : '${username}'`);

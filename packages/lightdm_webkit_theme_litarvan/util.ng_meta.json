@@ -1,6 +1,13 @@
 {
   "ngDeps": null,
   "type": {
+    "$": {
+      "class": "Identifier",
+      "name": "$",
+      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/util.dart",
+      "prefix": null,
+      "value": null
+    },
     "fadeIn": {
       "class": "Identifier",
       "name": "fadeIn",
@@ -11,6 +18,13 @@
     "fadeOut": {
       "class": "Identifier",
       "name": "fadeOut",
+      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "fadeSwitch": {
+      "class": "Identifier",
+      "name": "fadeSwitch",
       "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/util.dart",
       "prefix": null,
       "value": null

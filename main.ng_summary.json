@@ -19,6 +19,10 @@
         "5": false
       },
       {
+        "1": "package:lightdm_webkit_theme_litarvan/greeter_service.dart",
+        "5": false
+      },
+      {
         "1": "package:lightdm_webkit_theme_litarvan/lightdm.dart",
         "5": false
       }

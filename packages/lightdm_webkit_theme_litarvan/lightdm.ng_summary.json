@@ -11,7 +11,11 @@
         "5": false
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/components/desktop.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/desktop.dart",
+        "5": false
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/user.dart",
         "5": false
       }
     ],

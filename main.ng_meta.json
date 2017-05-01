@@ -19,6 +19,10 @@
         "5": false
       },
       {
+        "1": "package:lightdm_webkit_theme_litarvan/greeter_service.dart",
+        "5": false
+      },
+      {
         "1": "package:lightdm_webkit_theme_litarvan/lightdm.dart",
         "5": false
       }
@@ -38,8 +42,12 @@
         "4": "i2"
       },
       {
-        "1": "package:lightdm_webkit_theme_litarvan/lightdm.template.dart",
+        "1": "package:lightdm_webkit_theme_litarvan/greeter_service.template.dart",
         "4": "i3"
+      },
+      {
+        "1": "package:lightdm_webkit_theme_litarvan/lightdm.template.dart",
+        "4": "i4"
       }
     ]
   },

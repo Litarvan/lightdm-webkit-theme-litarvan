@@ -7,10 +7,6 @@
         "5": false
       },
       {
-        "1": "dart:html",
-        "5": false
-      },
-      {
         "1": "package:angular2/core.dart",
         "5": false
       },

@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "Desktop": {
+      "class": "Identifier",
+      "name": "Desktop",
+      "moduleUrl": "asset:lightdm_webkit_theme_litarvan/lib/desktop.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}
