@@ -19,12 +19,12 @@
 yaourt -S lightdm-webkit-theme-litarvan
 ```
 
-Then edit /etc/lightdm/lightdm-webkit.conf and set greeter-theme to litarvan
+Then edit /etc/lightdm/lightdm-webkit.conf and set webkit-theme to litarvan
 
 ## Manual
 
 * Unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in /usr/share/lightdm-webkit/themes/litarvan/
-* Edit /etc/lightdm/lightdm-webkit.conf and set greeter-theme to litarvan
+* Edit /etc/lightdm/lightdm-webkit.conf and set webkit-theme to litarvan
 
 # Screenshots
 
