@@ -26043,7 +26043,7 @@
   C.List_Pipe_slice_false_Injectable = Isolate.makeConstantList([C.Pipe_slice_false, C.C_Injectable]);
   C.Pipe_uppercase_null = new O.Pipe("uppercase", null);
   C.List_Pipe_uppercase_null_Injectable = Isolate.makeConstantList([C.Pipe_uppercase_null, C.C_Injectable]);
-  C.List_8eb = Isolate.makeConstantList(["[_nghost-%COMP%] {\n    background: url('images/background.jpg');\n\n    color: white;\n    text-align: center;\n}\n\n[_nghost-%COMP%], splash[_ngcontent-%COMP%] {\n    width: 100%;\n    height: 100vh;\n}\n\n#shutdown[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n}\n\n#reboot[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\nlogin[_ngcontent-%COMP%] {\n    margin: 10vh 10%;\n    display: none;\n}"]);
+  C.List_8eb = Isolate.makeConstantList(["[_nghost-%COMP%] {\n    background: url('images/background.jpg');\n\n    color: white;\n    text-align: center;\n}\n\n[_nghost-%COMP%], splash[_ngcontent-%COMP%] {\n    width: 100%;\n    height: 100vh;\n}\n\n#shutdown[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n}\n\n#reboot[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\nlogin[_ngcontent-%COMP%] {\n    margin-top: 10vh;\n    display: none;\n}"]);
   C.List_QcD = Isolate.makeConstantList([C.List_8eb]);
   C.List_QcT = Isolate.makeConstantList(["webkitTransitionEnd", "transitionend", "oTransitionEnd otransitionend", "transitionend"]);
   C.List_wMy = Isolate.makeConstantList([C.Type_UsersComponent_lzO, C.List_empty]);
