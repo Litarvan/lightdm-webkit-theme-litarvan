@@ -1,6 +1,7 @@
+pub get
 pub build --mode=debug
 cp index.theme build/web
 pushd build/web
-zip -r lightdm-webkit-theme-litarvan-$(cat ../../version).zip ./*
-mv *.zip ../../
+tar -zcvf lightdm-webkit-theme-litarvan-$(cat ../../version).tar.gz ./*
+mv *.tar.gz ../../
 popd

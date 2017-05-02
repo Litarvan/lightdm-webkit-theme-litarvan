@@ -11,6 +11,21 @@
  - Shutdown/Reboot buttons
  - Fade in on display, fade out on session start
 
+# How to install
+
+## AUR
+
+```
+yaourt -S lightdm-webkit-theme-litarvan
+```
+
+Then edit /etc/lightdm/lightdm-webkit.conf and set greeter-theme to litarvan
+
+## Manual
+
+* Unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in /usr/share/lightdm-webkit/themes/litarvan/
+* Edit /etc/lightdm/lightdm-webkit.conf and set greeter-theme to litarvan
+
 # Screenshots
 
 ![Main screenshot](https://i.gyazo.com/a3d80875d710e63a786eb356822093ef.png)
