@@ -2,6 +2,8 @@
 
 **=> Screenshots below**
 
+# [Live testing](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
+
 # Features
 
  - Arch logo splash
@@ -14,6 +16,8 @@
 # How to install
 
 ## AUR
+
+Requires **web-greeter** (aka lightdm-webkit2-greeter)
 
 ```
 yaourt -S lightdm-webkit-theme-litarvan
