@@ -4,6 +4,8 @@
 
 # [Live testing](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
 
+# [AUR page](https://aur.archlinux.org/packages/lightdm-webkit-theme-litarvan)
+
 # Features
 
  - Arch logo splash
