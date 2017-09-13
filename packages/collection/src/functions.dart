@@ -9,17 +9,16 @@ import 'utils.dart';
 
 // TODO(nweiz): When sdk#26488 is fixed, use overloads to ensure that if [key]
 // or [value] isn't passed, `K2`/`V2` defaults to `K1`/`V1`, respectively.
-/// Creates a new map from [map] with new keys and values. 
+/// Creates a new map from [map] with new keys and values.
 ///
 /// The return values of [key] are used as the keys and the return values of
 /// [value] are used as the values for the new map.
-Map/*<K2, V2>*/ mapMap/*<K1, V1, K2, V2>*/(Map/*<K1, V1>*/ map,
-    {/*=K2*/ key(/*=K1*/ key, /*=V1*/ value),
-    /*=V2*/ value(/*=K1*/ key, /*=V1*/ value)}) {
-  key ??= (mapKey, _) => mapKey as dynamic/*=K2*/;
-  value ??= (_, mapValue) => mapValue as dynamic/*=V2*/;
+Map<K2, V2> mapMap<K1, V1, K2, V2>(Map<K1, V1> map,
+    {K2 key(K1 key, V1 value), V2 value(K1 key, V1 value)}) {
+  key ??= (mapKey, _) => mapKey as K2;
+  value ??= (_, mapValue) => mapValue as V2;
 
-  var result = /*<K2, V2>*/{};
+  var result = <K2, V2>{};
   map.forEach((mapKey, mapValue) {
     result[key(mapKey, mapValue)] = value(mapKey, mapValue);
   });
@@ -31,15 +30,14 @@ Map/*<K2, V2>*/ mapMap/*<K1, V1, K2, V2>*/(Map/*<K1, V1>*/ map,
 /// If there are keys that occur in both maps, the [value] function is used to
 /// select the value that goes into the resulting map based on the two original
 /// values. If [value] is omitted, the value from [map2] is used.
-Map/*<K, V>*/ mergeMaps/*<K, V>*/(Map/*<K, V>*/ map1, Map/*<K, V>*/ map2,
-    {/*=V*/ value(/*=V*/ value1, /*=V*/ value2)}) {
-  var result = new Map/*<K, V>*/.from(map1);
+Map<K, V> mergeMaps<K, V>(Map<K, V> map1, Map<K, V> map2,
+    {V value(V value1, V value2)}) {
+  var result = new Map<K, V>.from(map1);
   if (value == null) return result..addAll(map2);
 
   map2.forEach((key, mapValue) {
-    result[key] = result.containsKey(key)
-        ? value(result[key], mapValue)
-        : mapValue;
+    result[key] =
+        result.containsKey(key) ? value(result[key], mapValue) : mapValue;
   });
   return result;
 }
@@ -49,9 +47,8 @@ Map/*<K, V>*/ mergeMaps/*<K, V>*/(Map/*<K, V>*/ map1, Map/*<K, V>*/ map2,
 /// Returns a map from keys computed by [key] to a list of all values for which
 /// [key] returns that key. The values appear in the list in the same relative
 /// order as in [values].
-Map<dynamic/*=T*/, List/*<S>*/> groupBy/*<S, T>*/(Iterable/*<S>*/ values,
-    /*=T*/ key(/*=S*/ element)) {
-  var map = /*<T, List<S>>*/{};
+Map<T, List<S>> groupBy<S, T>(Iterable<S> values, T key(S element)) {
+  var map = <T, List<S>>{};
   for (var element in values) {
     var list = map.putIfAbsent(key(element), () => []);
     list.add(element);
@@ -65,12 +62,12 @@ Map<dynamic/*=T*/, List/*<S>*/> groupBy/*<S, T>*/(Iterable/*<S>*/ values,
 /// The values returned by [orderBy] are compared using the [compare] function.
 /// If [compare] is omitted, values must implement [Comparable<T>] and they are
 /// compared using their [Comparable.compareTo].
-/*=S*/ minBy/*<S, T>*/(Iterable/*<S>*/ values, /*=T*/ orderBy(/*=S*/ element),
-    {int compare(/*=T*/ value1, /*=T*/ value2)}) {
-  compare ??= defaultCompare/*<T>*/();
+S minBy<S, T>(Iterable<S> values, T orderBy(S element),
+    {int compare(T value1, T value2)}) {
+  compare ??= defaultCompare<T>();
 
-  var/*=S*/ minValue;
-  var/*=T*/ minOrderBy;
+  S minValue;
+  T minOrderBy;
   for (var element in values) {
     var elementOrderBy = orderBy(element);
     if (minOrderBy == null || compare(elementOrderBy, minOrderBy) < 0) {
@@ -87,12 +84,12 @@ Map<dynamic/*=T*/, List/*<S>*/> groupBy/*<S, T>*/(Iterable/*<S>*/ values,
 /// The values returned by [orderBy] are compared using the [compare] function.
 /// If [compare] is omitted, values must implement [Comparable<T>] and they are
 /// compared using their [Comparable.compareTo].
-/*=S*/ maxBy/*<S, T>*/(Iterable/*<S>*/ values, /*=T*/ orderBy(/*=S*/ element),
-    {int compare(/*=T*/ value1, /*=T*/ value2)}) {
-  compare ??= defaultCompare/*<T>*/();
+S maxBy<S, T>(Iterable<S> values, T orderBy(S element),
+    {int compare(T value1, T value2)}) {
+  compare ??= defaultCompare<T>();
 
-  var/*=S*/ maxValue;
-  var/*=T*/ maxOrderBy;
+  S maxValue;
+  T maxOrderBy;
   for (var element in values) {
     var elementOrderBy = orderBy(element);
     if (maxOrderBy == null || compare(elementOrderBy, maxOrderBy) > 0) {
@@ -114,15 +111,14 @@ Map<dynamic/*=T*/, List/*<S>*/> groupBy/*<S, T>*/(Iterable/*<S>*/ values,
 /// that vertex has no outgoing edges. This isn't checked, but if it's not
 /// satisfied, the function may crash or provide unexpected output. For example,
 /// `{"a": ["b"]}` is not valid, but `{"a": ["b"], "b": []}` is.
-Map<dynamic/*=T*/, Set/*<T>*/> transitiveClosure/*<T>*/(
-    Map<dynamic/*=T*/, Iterable/*<T>*/> graph) {
+Map<T, Set<T>> transitiveClosure<T>(Map<T, Iterable<T>> graph) {
   // This uses [Warshall's algorithm][], modified not to add a vertex from each
   // node to itself.
   //
   // [Warshall's algorithm]: https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm#Applications_and_generalizations.
-  var result = /*<T, Set>*/{};
+  var result = <T, Set<T>>{};
   graph.forEach((vertex, edges) {
-    result[vertex] = new Set/*<T>*/.from(edges);
+    result[vertex] = new Set<T>.from(edges);
   });
 
   // Lists are faster to iterate than maps, so we create a list since we're
@@ -154,22 +150,21 @@ Map<dynamic/*=T*/, Set/*<T>*/> transitiveClosure/*<T>*/(
 /// that vertex has no outgoing edges. This isn't checked, but if it's not
 /// satisfied, the function may crash or provide unexpected output. For example,
 /// `{"a": ["b"]}` is not valid, but `{"a": ["b"], "b": []}` is.
-List<Set/*<T>*/> stronglyConnectedComponents/*<T>*/(
-    Map<dynamic/*=T*/, Iterable/*<T>*/> graph) {
+List<Set<T>> stronglyConnectedComponents<T>(Map<T, Iterable<T>> graph) {
   // This uses [Tarjan's algorithm][].
   //
   // [Tarjan's algorithm]: https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
   var index = 0;
-  var stack = /*<T>*/[];
-  var result = /*<Set<T>>*/[];
+  var stack = <T>[];
+  var result = <Set<T>>[];
 
   // The order of these doesn't matter, so we use un-linked implementations to
   // avoid unnecessary overhead.
-  var indices = new HashMap/*<T, int>*/();
-  var lowLinks = new HashMap/*<T, int>*/();
-  var onStack = new HashSet/*<T>*/();
+  var indices = new HashMap<T, int>();
+  var lowLinks = new HashMap<T, int>();
+  var onStack = new HashSet<T>();
 
-  strongConnect(/*=T*/ vertex) {
+  strongConnect(T vertex) {
     indices[vertex] = index;
     lowLinks[vertex] = index;
     index++;
@@ -187,8 +182,8 @@ List<Set/*<T>*/> stronglyConnectedComponents/*<T>*/(
     }
 
     if (lowLinks[vertex] == indices[vertex]) {
-      var component = new Set/*<T>*/();
-      var/*=T*/ neighbor;
+      var component = new Set<T>();
+      T neighbor;
       do {
         neighbor = stack.removeLast();
         onStack.remove(neighbor);

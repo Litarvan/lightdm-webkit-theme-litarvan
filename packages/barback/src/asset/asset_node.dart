@@ -83,7 +83,7 @@ class AssetNode {
   /// The return value of [callback] is piped to the returned Future. If the
   /// asset is removed before becoming available, the returned future will throw
   /// an [AssetNotFoundException].
-  Future whenAvailable(callback(Asset asset)) {
+  Future/*<T>*/ whenAvailable/*<T>*/(/*=T*/ callback(Asset asset)) {
     return _waitForState((state) => state.isAvailable || state.isRemoved,
         (state) {
       if (state.isRemoved) throw new AssetNotFoundException(id);

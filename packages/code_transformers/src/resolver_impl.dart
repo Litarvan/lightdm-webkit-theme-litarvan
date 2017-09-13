@@ -31,7 +31,7 @@ final path = native_path.url;
 /// with the resolved AST.
 class ResolverImpl implements Resolver {
   /// Cache of all asset sources currently referenced.
-  final Map<AssetId, AssetBasedSource> sources;
+  final Map<AssetId, AssetBasedSource> sources = {};
 
   final InternalAnalysisContext _context =
       AnalysisEngine.instance.createAnalysisContext();
@@ -49,18 +49,12 @@ class ResolverImpl implements Resolver {
   /// Completer for wrapping up the current phase.
   Completer _currentPhaseComplete;
 
-  /// Whether or not we are using a shared sources cache.
-  final bool _usingSharedSources;
-
   /// Creates a resolver with a given [sdk] implementation for resolving
   /// `dart:*` imports.
   ResolverImpl(DartSdk sdk, DartUriResolver dartUriResolver,
-      {AnalysisOptions options, Map<AssetId, AssetBasedSource> sources})
-      : _usingSharedSources = sources != null,
-        sources = sources ?? <AssetId, AssetBasedSource>{} {
+      {AnalysisOptions options}) {
     if (options == null) {
       options = new AnalysisOptionsImpl()
-        ..cacheSize = 256 // # of sources to cache ASTs for.
         ..preserveComments = false
         ..analyzeFunctionBodies = true;
     }
@@ -69,9 +63,21 @@ class ResolverImpl implements Resolver {
         new SourceFactory([dartUriResolver, new _AssetUriResolver(this)]);
   }
 
+  @override
+  bool isLibrary(AssetId assetId) {
+    var source = sources[assetId];
+    return source != null && _isLibrary(source);
+  }
+
+  bool _isLibrary(Source source) =>
+      _context.computeKindOf(source) == SourceKind.LIBRARY;
+
+  @override
   LibraryElement getLibrary(AssetId assetId) {
     var source = sources[assetId];
-    return source == null ? null : _context.computeLibraryElement(source);
+    if (source == null) return null;
+    if (!_isLibrary(source)) return null;
+    return _context.computeLibraryElement(source);
   }
 
   Future<Resolver> resolve(Transform transform,
@@ -140,6 +146,7 @@ class ResolverImpl implements Resolver {
         }
       }));
     }
+
     entryPoints.forEach(processAsset);
 
     // Once we have all asset sources updated with the new contents then
@@ -148,18 +155,6 @@ class ResolverImpl implements Resolver {
       var changeSet = new ChangeSet();
       toUpdate.forEach((pending) => pending.apply(changeSet));
 
-      // If we aren't using shared sources, then remove from the cache any
-      // sources which are no longer reachable.
-      if (!_usingSharedSources) {
-        var unreachableAssets =
-            sources.keys.toSet().difference(visited).map((id) => sources[id]);
-        for (var unreachable in unreachableAssets) {
-          changeSet.removedSource(unreachable);
-          unreachable.updateContents(null);
-          sources.remove(unreachable.assetId);
-        }
-      }
-
       // Update the analyzer context with the latest sources
       _context.applyChanges(changeSet);
       // Force resolve each entry point (the getter will ensure the library is
@@ -167,6 +162,8 @@ class ResolverImpl implements Resolver {
       _entryLibraries = entryPoints.map((id) {
         var source = sources[id];
         if (source == null) return null;
+        var kind = _context.computeKindOf(source);
+        if (kind != SourceKind.LIBRARY) return null;
         return _context.computeLibraryElement(source);
       }).toList();
 

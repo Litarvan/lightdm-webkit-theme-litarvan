@@ -12,6 +12,9 @@ import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/dart/element/visitor.dart';
+import 'package:analyzer/error/error.dart';
+import 'package:analyzer/error/listener.dart';
+import 'package:analyzer/exception/exception.dart';
 import 'package:analyzer/src/dart/ast/ast.dart';
 import 'package:analyzer/src/dart/ast/utilities.dart';
 import 'package:analyzer/src/dart/element/element.dart';
@@ -19,13 +22,11 @@ import 'package:analyzer/src/dart/element/type.dart';
 import 'package:analyzer/src/dart/element/utilities.dart';
 import 'package:analyzer/src/dart/resolver/inheritance_manager.dart';
 import 'package:analyzer/src/dart/resolver/scope.dart';
+import 'package:analyzer/src/error/codes.dart';
 import 'package:analyzer/src/generated/constant.dart';
 import 'package:analyzer/src/generated/element_resolver.dart';
 import 'package:analyzer/src/generated/engine.dart';
-import 'package:analyzer/src/generated/error.dart';
 import 'package:analyzer/src/generated/error_verifier.dart';
-import 'package:analyzer/src/generated/java_core.dart';
-import 'package:analyzer/src/generated/java_engine.dart';
 import 'package:analyzer/src/generated/source.dart';
 import 'package:analyzer/src/generated/static_type_analyzer.dart';
 import 'package:analyzer/src/generated/type_system.dart';
@@ -50,18 +51,23 @@ class BestPracticesVerifier extends RecursiveAstVisitor<Object> {
    * The class containing the AST nodes being visited, or `null` if we are not in the scope of
    * a class.
    */
-  ClassElement _enclosingClass;
+  ClassElementImpl _enclosingClass;
 
   /**
    * A flag indicating whether a surrounding member (compilation unit or class)
    * is deprecated.
    */
-  bool inDeprecatedMember = false;
+  bool inDeprecatedMember;
 
   /**
    * The error reporter by which errors will be reported.
    */
   final ErrorReporter _errorReporter;
+
+  /**
+   * The type [Null].
+   */
+  final InterfaceType _nullType;
 
   /**
    * The type Future<Null>, which is needed for determining whether it is safe
@@ -80,15 +86,23 @@ class BestPracticesVerifier extends RecursiveAstVisitor<Object> {
   LibraryElement _currentLibrary;
 
   /**
+   * The inheritance manager used to find overridden methods.
+   */
+  InheritanceManager _manager;
+
+  /**
    * Create a new instance of the [BestPracticesVerifier].
    *
    * @param errorReporter the error reporter
    */
-  BestPracticesVerifier(
-      this._errorReporter, TypeProvider typeProvider, this._currentLibrary,
+  BestPracticesVerifier(this._errorReporter, TypeProvider typeProvider,
+      this._currentLibrary, this._manager,
       {TypeSystem typeSystem})
-      : _futureNullType = typeProvider.futureNullType,
-        _typeSystem = typeSystem ?? new TypeSystemImpl();
+      : _nullType = typeProvider.nullType,
+        _futureNullType = typeProvider.futureNullType,
+        _typeSystem = typeSystem ?? new TypeSystemImpl() {
+    inDeprecatedMember = _currentLibrary.isDeprecated;
+  }
 
   @override
   Object visitAnnotation(Annotation node) {
@@ -149,9 +163,9 @@ class BestPracticesVerifier extends RecursiveAstVisitor<Object> {
 
   @override
   Object visitClassDeclaration(ClassDeclaration node) {
-    ClassElement outerClass = _enclosingClass;
+    ClassElementImpl outerClass = _enclosingClass;
     bool wasInDeprecatedMember = inDeprecatedMember;
-    ClassElement element = node.element;
+    ClassElement element = AbstractClassElementImpl.getImpl(node.element);
     if (element != null && element.isDeprecated) {
       inDeprecatedMember = true;
     }
@@ -273,7 +287,10 @@ class BestPracticesVerifier extends RecursiveAstVisitor<Object> {
 
   @override
   Object visitMethodInvocation(MethodInvocation node) {
-    _checkForCanBeNullAfterNullAware(node.realTarget, node.operator);
+    Expression realTarget = node.realTarget;
+    _checkForAbstractSuperMemberReference(realTarget, node.methodName);
+    _checkForCanBeNullAfterNullAware(
+        realTarget, node.operator, null, node.methodName);
     DartType staticInvokeType = node.staticInvokeType;
     if (staticInvokeType is InterfaceType) {
       MethodElement methodElement = staticInvokeType.lookUpMethod(
@@ -297,7 +314,10 @@ class BestPracticesVerifier extends RecursiveAstVisitor<Object> {
 
   @override
   Object visitPropertyAccess(PropertyAccess node) {
-    _checkForCanBeNullAfterNullAware(node.realTarget, node.operator);
+    Expression realTarget = node.realTarget;
+    _checkForAbstractSuperMemberReference(realTarget, node.propertyName);
+    _checkForCanBeNullAfterNullAware(
+        realTarget, node.operator, node.propertyName, null);
     return super.visitPropertyAccess(node);
   }
 
@@ -395,6 +415,34 @@ class BestPracticesVerifier extends RecursiveAstVisitor<Object> {
       }
     }
     return false;
+  }
+
+  void _checkForAbstractSuperMemberReference(
+      Expression target, SimpleIdentifier name) {
+    if (target is SuperExpression) {
+      Element element = name.staticElement;
+      if (element is ExecutableElement && element.isAbstract) {
+        if (!_enclosingClass.hasNoSuchMethod) {
+          ExecutableElement concrete = null;
+          if (element.kind == ElementKind.METHOD) {
+            concrete = _enclosingClass.lookUpInheritedConcreteMethod(
+                element.displayName, _currentLibrary);
+          } else if (element.kind == ElementKind.GETTER) {
+            concrete = _enclosingClass.lookUpInheritedConcreteGetter(
+                element.displayName, _currentLibrary);
+          } else if (element.kind == ElementKind.SETTER) {
+            concrete = _enclosingClass.lookUpInheritedConcreteSetter(
+                element.displayName, _currentLibrary);
+          }
+          if (concrete == null) {
+            _errorReporter.reportTypeErrorForNode(
+                HintCode.ABSTRACT_SUPER_MEMBER_REFERENCE,
+                name,
+                [element.kind.displayName, name.name]);
+          }
+        }
+      }
+    }
   }
 
   /**
@@ -519,20 +567,37 @@ class BestPracticesVerifier extends RecursiveAstVisitor<Object> {
   }
 
   /**
-   * Produce a hint if the given [target] could have a value of `null`.
+   * Produce a hint if the given [target] could have a value of `null`, and
+   * [identifier] is not a name of a getter or a method that exists in the
+   * class [Null].
    */
-  void _checkForCanBeNullAfterNullAware(Expression target, Token operator) {
+  void _checkForCanBeNullAfterNullAware(Expression target, Token operator,
+      SimpleIdentifier propertyName, SimpleIdentifier methodName) {
     if (operator?.type == TokenType.QUESTION_PERIOD) {
       return;
     }
+    bool isNullTypeMember() {
+      if (propertyName != null) {
+        String name = propertyName.name;
+        return _nullType.lookUpGetter(name, _currentLibrary) != null;
+      }
+      if (methodName != null) {
+        String name = methodName.name;
+        return _nullType.lookUpMethod(name, _currentLibrary) != null;
+      }
+      return false;
+    }
+
     target = target?.unParenthesized;
     if (target is MethodInvocation) {
-      if (target.operator?.type == TokenType.QUESTION_PERIOD) {
+      if (target.operator?.type == TokenType.QUESTION_PERIOD &&
+          !isNullTypeMember()) {
         _errorReporter.reportErrorForNode(
             HintCode.CAN_BE_NULL_AFTER_NULL_AWARE, target);
       }
     } else if (target is PropertyAccess) {
-      if (target.operator.type == TokenType.QUESTION_PERIOD) {
+      if (target.operator.type == TokenType.QUESTION_PERIOD &&
+          !isNullTypeMember()) {
         _errorReporter.reportErrorForNode(
             HintCode.CAN_BE_NULL_AFTER_NULL_AWARE, target);
       }
@@ -1918,10 +1983,10 @@ class DeadCodeVerifier extends RecursiveAstVisitor<Object> {
   @override
   Object visitExportDirective(ExportDirective node) {
     ExportElement exportElement = node.element;
-    if (exportElement != null && exportElement.uriExists) {
+    if (exportElement != null) {
       // The element is null when the URI is invalid
       LibraryElement library = exportElement.exportedLibrary;
-      if (library != null) {
+      if (library != null && !library.isSynthetic) {
         for (Combinator combinator in node.combinators) {
           _checkCombinator(exportElement.exportedLibrary, combinator);
         }
@@ -1962,11 +2027,11 @@ class DeadCodeVerifier extends RecursiveAstVisitor<Object> {
   @override
   Object visitImportDirective(ImportDirective node) {
     ImportElement importElement = node.element;
-    if (importElement != null && importElement.uriExists) {
+    if (importElement != null) {
       // The element is null when the URI is invalid, but not when the URI is
       // valid but refers to a non-existent file.
       LibraryElement library = importElement.importedLibrary;
-      if (library != null) {
+      if (library != null && !library.isSynthetic) {
         for (Combinator combinator in node.combinators) {
           _checkCombinator(library, combinator);
         }
@@ -4262,7 +4327,7 @@ class HintGenerator {
     }
     // Dart best practices
     unit.accept(new BestPracticesVerifier(
-        errorReporter, _context.typeProvider, _library,
+        errorReporter, _context.typeProvider, _library, _manager,
         typeSystem: _context.typeSystem));
     unit.accept(new OverrideVerifier(errorReporter, _manager));
     // Find to-do comments
@@ -4452,7 +4517,7 @@ class ImportsVerifier {
         LibraryElement libraryElement = importElement.importedLibrary;
         if (libraryElement == null ||
             libraryElement.isDartCore ||
-            !importElement.uriExists) {
+            libraryElement.isSynthetic) {
           continue;
         }
       }
@@ -4726,12 +4791,10 @@ class InferenceContext {
     if (_returnStack.isEmpty) {
       return;
     }
-    DartType context = _returnStack.last;
-    if (context is! FutureUnionType) {
-      DartType inferred = _inferredReturn.last;
-      inferred = _typeSystem.getLeastUpperBound(_typeProvider, type, inferred);
-      _inferredReturn[_inferredReturn.length - 1] = inferred;
-    }
+
+    DartType inferred = _inferredReturn.last;
+    inferred = _typeSystem.getLeastUpperBound(_typeProvider, type, inferred);
+    _inferredReturn[_inferredReturn.length - 1] = inferred;
   }
 
   /**
@@ -4756,7 +4819,17 @@ class InferenceContext {
     if (_returnStack.isNotEmpty && _inferredReturn.isNotEmpty) {
       DartType context = _returnStack.removeLast() ?? DynamicTypeImpl.instance;
       DartType inferred = _inferredReturn.removeLast();
-      if (!inferred.isBottom && _typeSystem.isSubtypeOf(inferred, context)) {
+      if (inferred.isBottom) {
+        return;
+      }
+
+      if (context is FutureUnionType) {
+        // Try and match the Future type first.
+        if (_typeSystem.isSubtypeOf(inferred, context.futureOfType) ||
+            _typeSystem.isSubtypeOf(inferred, context.type)) {
+          setType(node, inferred);
+        }
+      } else if (_typeSystem.isSubtypeOf(inferred, context)) {
         setType(node, inferred);
       }
     } else {
@@ -4910,6 +4983,15 @@ class InferenceContext {
   }
 
   /**
+   * Look for contextual type information attached to [node].  Returns
+   * the type if found, otherwise null.
+   *
+   * If [node] has a contextual union type like `T | Future<T>` this will be
+   * returned. You can use [getType] if you prefer to only get the `T`.
+   */
+  static DartType getContext(AstNode node) => node?.getProperty(_typeProperty);
+
+  /**
    * Look for a single contextual type attached to [node], and returns the type
    * if found, otherwise null.
    *
@@ -4924,15 +5006,6 @@ class InferenceContext {
     }
     return t;
   }
-
-  /**
-   * Look for contextual type information attached to [node].  Returns
-   * the type if found, otherwise null.
-   *
-   * If [node] has a contextual union type like `T | Future<T>` this will be
-   * returned. You can use [getType] if you prefer to only get the `T`.
-   */
-  static DartType getContext(AstNode node) => node?.getProperty(_typeProperty);
 
   /**
    * Like [getContext] but expands a union type into a list of types.
@@ -4953,7 +5026,11 @@ class InferenceContext {
    * inference.
    */
   static void setType(AstNode node, DartType type) {
-    node?.setProperty(_typeProperty, type);
+    if (type == null || type.isDynamic) {
+      clearType(node);
+    } else {
+      node?.setProperty(_typeProperty, type);
+    }
   }
 
   /**
@@ -4966,11 +5043,11 @@ class InferenceContext {
 }
 
 /**
- * This enum holds one of four states of a field initialization state through a constructor
- * signature, not initialized, initialized in the field declaration, initialized in the field
- * formal, and finally, initialized in the initializers list.
+ * The four states of a field initialization state through a constructor
+ * signature, not initialized, initialized in the field declaration, initialized
+ * in the field formal, and finally, initialized in the initializers list.
  */
-class INIT_STATE extends Enum<INIT_STATE> {
+class INIT_STATE implements Comparable<INIT_STATE> {
   static const INIT_STATE NOT_INIT = const INIT_STATE('NOT_INIT', 0);
 
   static const INIT_STATE INIT_IN_DECLARATION =
@@ -4989,7 +5066,26 @@ class INIT_STATE extends Enum<INIT_STATE> {
     INIT_IN_INITIALIZERS
   ];
 
-  const INIT_STATE(String name, int ordinal) : super(name, ordinal);
+  /**
+   * The name of this init state.
+   */
+  final String name;
+
+  /**
+   * The ordinal value of the init state.
+   */
+  final int ordinal;
+
+  const INIT_STATE(this.name, this.ordinal);
+
+  @override
+  int get hashCode => ordinal;
+
+  @override
+  int compareTo(INIT_STATE other) => ordinal - other.ordinal;
+
+  @override
+  String toString() => name;
 }
 
 /**
@@ -5192,12 +5288,6 @@ class PartialResolverVisitor extends ResolverVisitor {
   final List<VariableElement> staticVariables = <VariableElement>[];
 
   /**
-   * The static and instance variables and fields that have an initializer.
-   * These are the variables whose types might be propagated.
-   */
-  final List<VariableElement> propagableVariables = <VariableElement>[];
-
-  /**
    * Initialize a newly created visitor to resolve the nodes in an AST node.
    *
    * The [definingLibrary] is the element for the library containing the node
@@ -5238,7 +5328,6 @@ class PartialResolverVisitor extends ResolverVisitor {
 
   @override
   Object visitFieldDeclaration(FieldDeclaration node) {
-    _addPropagableVariables(node.fields.variables);
     if (node.isStatic) {
       _addStaticVariables(node.fields.variables);
     }
@@ -5252,25 +5341,8 @@ class PartialResolverVisitor extends ResolverVisitor {
 
   @override
   Object visitTopLevelVariableDeclaration(TopLevelVariableDeclaration node) {
-    _addPropagableVariables(node.variables.variables);
     _addStaticVariables(node.variables.variables);
     return super.visitTopLevelVariableDeclaration(node);
-  }
-
-  /**
-   * Add all of the [variables] with initializers to [propagableVariables].
-   */
-  void _addPropagableVariables(List<VariableDeclaration> variables) {
-    int length = variables.length;
-    for (int i = 0; i < length; i++) {
-      VariableDeclaration variable = variables[i];
-      if (variable.name.name.isNotEmpty && variable.initializer != null) {
-        VariableElement element = variable.element;
-        if (element.isConst || element.isFinal) {
-          propagableVariables.add(element);
-        }
-      }
-    }
   }
 
   /**
@@ -5510,7 +5582,8 @@ class PubVerifier extends RecursiveAstVisitor<Object> {
 /**
  * Kind of the redirecting constructor.
  */
-class RedirectingConstructorKind extends Enum<RedirectingConstructorKind> {
+class RedirectingConstructorKind
+    implements Comparable<RedirectingConstructorKind> {
   static const RedirectingConstructorKind CONST =
       const RedirectingConstructorKind('CONST', 0);
 
@@ -5519,8 +5592,26 @@ class RedirectingConstructorKind extends Enum<RedirectingConstructorKind> {
 
   static const List<RedirectingConstructorKind> values = const [CONST, NORMAL];
 
-  const RedirectingConstructorKind(String name, int ordinal)
-      : super(name, ordinal);
+  /**
+   * The name of this redirecting constructor kind.
+   */
+  final String name;
+
+  /**
+   * The ordinal value of the redirecting constructor kind.
+   */
+  final int ordinal;
+
+  const RedirectingConstructorKind(this.name, this.ordinal);
+
+  @override
+  int get hashCode => ordinal;
+
+  @override
+  int compareTo(RedirectingConstructorKind other) => ordinal - other.ordinal;
+
+  @override
+  String toString() => name;
 }
 
 /**
@@ -5758,6 +5849,28 @@ class ResolverVisitor extends ScopedVisitor {
   }
 
   /**
+   * Returns true if this method is `Future.then` or an override thereof.
+   *
+   * If so we will apply special typing rules in strong mode, to handle the
+   * implicit union of `S | Future<S>`
+   */
+  bool isFutureThen(Element element) {
+    // If we are a method named then
+    if (element is MethodElement && element.name == 'then') {
+      DartType type = element.enclosingElement.type;
+      // On Future or a subtype, then we're good.
+      return (type.isDartAsyncFuture || isSubtypeOfFuture(type));
+    }
+    return false;
+  }
+
+  /**
+   * Returns true if this type is any subtype of the built in Future type.
+   */
+  bool isSubtypeOfFuture(DartType type) =>
+      typeSystem.isSubtypeOf(type, typeProvider.futureDynamicType);
+
+  /**
    * Given a downward inference type [fnType], and the declared
    * [typeParameterList] for a function expression, determines if we can enable
    * downward inference and if so, returns the function type to use for
@@ -5907,7 +6020,7 @@ class ResolverVisitor extends ScopedVisitor {
   void recordPropagatedTypeIfBetter(Expression expression, DartType type,
       [bool hasOldPropagatedType = false]) {
     // Ensure that propagated type invalid.
-    if (type == null || type.isDynamic || type.isBottom) {
+    if (strongMode || type == null || type.isDynamic || type.isBottom) {
       if (!hasOldPropagatedType) {
         expression.propagatedType = null;
       }
@@ -6311,6 +6424,12 @@ class ResolverVisitor extends ScopedVisitor {
   @override
   void visitConstructorDeclarationInScope(ConstructorDeclaration node) {
     super.visitConstructorDeclarationInScope(node);
+    // Because of needing a different scope for the initializer list, the
+    // overridden implementation of this method cannot cause the visitNode
+    // method to be invoked. As a result, we have to hard-code using the
+    // element resolver and type analyzer to visit the constructor declaration.
+    node.accept(elementResolver);
+    node.accept(typeAnalyzer);
     safelyVisitComment(node.documentationComment);
   }
 
@@ -6583,7 +6702,7 @@ class ResolverVisitor extends ScopedVisitor {
             _inferFormalParameterList(node.parameters, functionType);
 
             DartType returnType;
-            if (_isFutureThenLambda(node)) {
+            if (isFutureThen(node.staticParameterElement?.enclosingElement)) {
               var futureThenType =
                   InferenceContext.getContext(node.parent) as FunctionType;
 
@@ -6593,8 +6712,10 @@ class ResolverVisitor extends ScopedVisitor {
               //
               // We can't represent this in Dart so we populate it here during
               // inference.
-              returnType = FutureUnionType.from(
-                  futureThenType.returnType, typeProvider, typeSystem);
+              var typeParamS =
+                  futureThenType.returnType.flattenFutures(typeSystem);
+              returnType =
+                  FutureUnionType.from(typeParamS, typeProvider, typeSystem);
             } else {
               returnType = _computeReturnOrYieldType(functionType.returnType);
             }
@@ -6713,6 +6834,12 @@ class ResolverVisitor extends ScopedVisitor {
   @override
   Object visitInstanceCreationExpression(InstanceCreationExpression node) {
     TypeName classTypeName = node.constructorName.type;
+    // TODO(leafp): Currently, we may re-infer types here, since we
+    // sometimes resolve multiple times.  We should really check that we
+    // have not already inferred something.  However, the obvious ways to
+    // check this don't work, since we may have been instantiated
+    // to bounds in an earlier phase, and we *do* want to do inference
+    // in that case.
     if (classTypeName.typeArguments == null) {
       // Given a union of context types ` T0 | T1 | ... | Tn`, find the first
       // valid instantiation `new C<Ti>`, if it exists.
@@ -7147,7 +7274,8 @@ class ResolverVisitor extends ScopedVisitor {
         return (typeArgs?.length == 1) ? typeArgs[0] : null;
       }
       // async functions expect `Future<T> | T`
-      return new FutureUnionType(declaredType, typeProvider, typeSystem);
+      var futureTypeParam = declaredType.flattenFutures(typeSystem);
+      return FutureUnionType.from(futureTypeParam, typeProvider, typeSystem);
     }
     return declaredType;
   }
@@ -7222,15 +7350,20 @@ class ResolverVisitor extends ScopedVisitor {
     DartType contextType = node.staticInvokeType;
     if (contextType is FunctionType) {
       DartType originalType = node.function.staticType;
-      DartType returnContextType = InferenceContext.getType(node);
+      DartType returnContextType = InferenceContext.getContext(node);
       TypeSystem ts = typeSystem;
       if (returnContextType != null &&
           node.typeArguments == null &&
           originalType is FunctionType &&
           originalType.typeFormals.isNotEmpty &&
           ts is StrongTypeSystemImpl) {
-        contextType = ts.inferGenericFunctionCall(typeProvider, originalType,
-            DartType.EMPTY_LIST, DartType.EMPTY_LIST, returnContextType);
+        contextType = ts.inferGenericFunctionCall(
+            typeProvider,
+            originalType,
+            DartType.EMPTY_LIST,
+            DartType.EMPTY_LIST,
+            originalType.returnType,
+            returnContextType);
       }
 
       InferenceContext.setType(node.argumentList, contextType);
@@ -7282,13 +7415,16 @@ class ResolverVisitor extends ScopedVisitor {
         !FunctionTypeImpl.relate(
             expectedClosureType,
             staticClosureType,
-            (DartType t, DartType s) => (t as TypeImpl).isMoreSpecificThan(s),
+            (DartType t, DartType s, _, __) =>
+                (t as TypeImpl).isMoreSpecificThan(s),
             new TypeSystemImpl().instantiateToBounds,
             returnRelation: (s, t) => true)) {
       return;
     }
     // set propagated type for the closure
-    closure.propagatedType = expectedClosureType;
+    if (!strongMode) {
+      closure.propagatedType = expectedClosureType;
+    }
     // set inferred types for parameters
     NodeList<FormalParameter> parameters = closure.parameters.parameters;
     List<ParameterElement> expectedParameters = expectedClosureType.parameters;
@@ -7391,19 +7527,6 @@ class ResolverVisitor extends ScopedVisitor {
       return _isAbruptTerminationStatement(statements[size - 1]);
     }
     return false;
-  }
-
-  /**
-   * Returns true if this expression is being passed to `Future.then`.
-   *
-   * If so we will apply special typing rules in strong mode, to handle the
-   * implicit union of `S | Future<S>`
-   */
-  bool _isFutureThenLambda(FunctionExpression node) {
-    Element element = node.staticParameterElement?.enclosingElement;
-    return element is MethodElement &&
-        element.name == 'then' &&
-        element.enclosingElement.type.isDartAsyncFuture;
   }
 
   /**
@@ -7711,6 +7834,12 @@ abstract class ScopedVisitor extends UnifyingAstVisitor<Object> {
   LabelScope labelScope;
 
   /**
+   * A flag indicating whether to enable support for allowing access to field
+   * formal parameters in a constructor's initializer list.
+   */
+  bool enableInitializingFormalAccess = false;
+
+  /**
    * The class containing the AST nodes being visited,
    * or `null` if we are not in the scope of a class.
    */
@@ -7737,10 +7866,12 @@ abstract class ScopedVisitor extends UnifyingAstVisitor<Object> {
       : source = source,
         errorReporter = new ErrorReporter(errorListener, source) {
     if (nameScope == null) {
-      this.nameScope = new LibraryScope(definingLibrary, errorListener);
+      this.nameScope = new LibraryScope(definingLibrary);
     } else {
       this.nameScope = nameScope;
     }
+    enableInitializingFormalAccess =
+        definingLibrary.context.analysisOptions.enableInitializingFormalAccess;
   }
 
   /**
@@ -7774,8 +7905,7 @@ abstract class ScopedVisitor extends UnifyingAstVisitor<Object> {
   Object visitBlock(Block node) {
     Scope outerScope = nameScope;
     try {
-      EnclosedScope enclosedScope = new EnclosedScope(nameScope);
-      _hideNamesDefinedInBlock(enclosedScope, node);
+      EnclosedScope enclosedScope = new BlockScope(nameScope, node);
       nameScope = enclosedScope;
       super.visitBlock(node);
     } finally {
@@ -7878,23 +8008,40 @@ abstract class ScopedVisitor extends UnifyingAstVisitor<Object> {
   @override
   Object visitConstructorDeclaration(ConstructorDeclaration node) {
     ConstructorElement constructorElement = node.element;
+    if (constructorElement == null) {
+      StringBuffer buffer = new StringBuffer();
+      buffer.write("Missing element for constructor ");
+      buffer.write(node.returnType.name);
+      if (node.name != null) {
+        buffer.write(".");
+        buffer.write(node.name.name);
+      }
+      buffer.write(" in ");
+      buffer.write(definingLibrary.source.fullName);
+      AnalysisEngine.instance.logger.logInformation(buffer.toString(),
+          new CaughtException(new AnalysisException(), null));
+    }
     Scope outerScope = nameScope;
     try {
-      if (constructorElement == null) {
-        StringBuffer buffer = new StringBuffer();
-        buffer.write("Missing element for constructor ");
-        buffer.write(node.returnType.name);
-        if (node.name != null) {
-          buffer.write(".");
-          buffer.write(node.name.name);
-        }
-        buffer.write(" in ");
-        buffer.write(definingLibrary.source.fullName);
-        AnalysisEngine.instance.logger.logInformation(buffer.toString(),
-            new CaughtException(new AnalysisException(), null));
-      } else {
+      if (constructorElement != null) {
         nameScope = new FunctionScope(nameScope, constructorElement);
       }
+      node.documentationComment?.accept(this);
+      node.metadata.accept(this);
+      node.returnType?.accept(this);
+      node.name?.accept(this);
+      node.parameters?.accept(this);
+      Scope functionScope = nameScope;
+      try {
+        if (constructorElement != null && enableInitializingFormalAccess) {
+          nameScope =
+              new ConstructorInitializerScope(nameScope, constructorElement);
+        }
+        node.initializers.accept(this);
+      } finally {
+        nameScope = functionScope;
+      }
+      node.redirectedConstructor?.accept(this);
       visitConstructorDeclarationInScope(node);
     } finally {
       nameScope = outerScope;
@@ -7903,7 +8050,7 @@ abstract class ScopedVisitor extends UnifyingAstVisitor<Object> {
   }
 
   void visitConstructorDeclarationInScope(ConstructorDeclaration node) {
-    super.visitConstructorDeclaration(node);
+    node.body?.accept(this);
   }
 
   @override
@@ -8299,28 +8446,6 @@ abstract class ScopedVisitor extends UnifyingAstVisitor<Object> {
     }
     return outerScope;
   }
-
-  /**
-   * Marks the local declarations of the given [Block] hidden in the enclosing scope.
-   * According to the scoping rules name is hidden if block defines it, but name is defined after
-   * its declaration statement.
-   */
-  void _hideNamesDefinedInBlock(EnclosedScope scope, Block block) {
-    NodeList<Statement> statements = block.statements;
-    int statementCount = statements.length;
-    for (int i = 0; i < statementCount; i++) {
-      Statement statement = statements[i];
-      if (statement is VariableDeclarationStatement) {
-        NodeList<VariableDeclaration> variables = statement.variables.variables;
-        int variableCount = variables.length;
-        for (int j = 0; j < variableCount; j++) {
-          scope.hide(variables[j].element);
-        }
-      } else if (statement is FunctionDeclarationStatement) {
-        scope.hide(statement.functionDeclaration.element);
-      }
-    }
-  }
 }
 
 /**
@@ -8544,14 +8669,13 @@ class ToDoFinder {
    * @param commentToken the comment token to analyze
    */
   void _scrapeTodoComment(Token commentToken) {
-    JavaPatternMatcher matcher =
-        new JavaPatternMatcher(TodoCode.TODO_REGEX, commentToken.lexeme);
-    if (matcher.find()) {
-      int offset =
-          commentToken.offset + matcher.start() + matcher.group(1).length;
-      int length = matcher.group(2).length;
+    Iterable<Match> matches =
+        TodoCode.TODO_REGEX.allMatches(commentToken.lexeme);
+    for (Match match in matches) {
+      int offset = commentToken.offset + match.start + match.group(1).length;
+      int length = match.group(2).length;
       _errorReporter.reportErrorForOffset(
-          TodoCode.TODO, offset, length, [matcher.group(2)]);
+          TodoCode.TODO, offset, length, [match.group(2)]);
     }
   }
 }
@@ -8821,6 +8945,11 @@ class TypeNameResolver {
             parent is WithClause ||
             parent is ClassTypeAlias) {
           // Ignored. The error will be reported elsewhere.
+        } else if (element is LocalVariableElement ||
+            (element is FunctionElement &&
+                element.enclosingElement is ExecutableElement)) {
+          reportErrorForNode(CompileTimeErrorCode.REFERENCED_BEFORE_DECLARATION,
+              typeName, [typeName.name]);
         } else {
           reportErrorForNode(
               StaticWarningCode.NOT_A_TYPE, typeName, [typeName.name]);
@@ -9082,7 +9211,7 @@ class TypeOverrideManager {
    */
   void applyOverrides(Map<VariableElement, DartType> overrides) {
     if (currentScope == null) {
-      throw new IllegalStateException("Cannot apply overrides without a scope");
+      throw new StateError("Cannot apply overrides without a scope");
     }
     currentScope.applyOverrides(overrides);
   }
@@ -9095,8 +9224,7 @@ class TypeOverrideManager {
    */
   Map<VariableElement, DartType> captureLocalOverrides() {
     if (currentScope == null) {
-      throw new IllegalStateException(
-          "Cannot capture local overrides without a scope");
+      throw new StateError("Cannot capture local overrides without a scope");
     }
     return currentScope.captureLocalOverrides();
   }
@@ -9111,8 +9239,7 @@ class TypeOverrideManager {
   Map<VariableElement, DartType> captureOverrides(
       VariableDeclarationList variableList) {
     if (currentScope == null) {
-      throw new IllegalStateException(
-          "Cannot capture overrides without a scope");
+      throw new StateError("Cannot capture overrides without a scope");
     }
     return currentScope.captureOverrides(variableList);
   }
@@ -9129,7 +9256,7 @@ class TypeOverrideManager {
    */
   void exitScope() {
     if (currentScope == null) {
-      throw new IllegalStateException("No scope to exit");
+      throw new StateError("No scope to exit");
     }
     currentScope = currentScope._outerScope;
   }
@@ -9188,7 +9315,7 @@ class TypeOverrideManager {
    */
   void setType(VariableElement element, DartType type) {
     if (currentScope == null) {
-      throw new IllegalStateException("Cannot override without a scope");
+      throw new StateError("Cannot override without a scope");
     }
     currentScope.setType(element, type);
   }
@@ -9348,7 +9475,7 @@ class TypeParameterBoundsResolver {
                 library, LibraryResolutionCapability.resolvedTypeNames)) {
               bound.type = typeParameterElement.bound;
             } else {
-              libraryScope ??= new LibraryScope(library, errorListener);
+              libraryScope ??= new LibraryScope(library);
               typeParametersScope ??= createTypeParametersScope();
               typeNameResolver ??= new TypeNameResolver(new TypeSystemImpl(),
                   typeProvider, library, source, errorListener);
@@ -9390,7 +9517,7 @@ class TypePromotionManager {
    */
   void exitScope() {
     if (currentScope == null) {
-      throw new IllegalStateException("No scope to exit");
+      throw new StateError("No scope to exit");
     }
     currentScope = currentScope._outerScope;
   }
@@ -9415,7 +9542,7 @@ class TypePromotionManager {
    */
   void setType(Element element, DartType type) {
     if (currentScope == null) {
-      throw new IllegalStateException("Cannot promote without a scope");
+      throw new StateError("Cannot promote without a scope");
     }
     currentScope.setType(element, type);
   }
@@ -9614,13 +9741,64 @@ abstract class TypeProvider {
    * Return the type representing typenames that can't be resolved.
    */
   DartType get undefinedType;
+
+  /**
+   * Return 'true' if [id] is the name of a getter on
+   * the Object type.
+   */
+  bool isObjectGetter(String id);
+
+  /**
+   * Return 'true' if [id] is the name of a method or getter on
+   * the Object type.
+   */
+  bool isObjectMember(String id);
+
+  /**
+   * Return 'true' if [id] is the name of a method on
+   * the Object type.
+   */
+  bool isObjectMethod(String id);
+}
+
+/**
+ * Provide common functionality shared by the various TypeProvider
+ * implementations.
+ */
+abstract class TypeProviderBase implements TypeProvider {
+  @override
+  List<InterfaceType> get nonSubtypableTypes => <InterfaceType>[
+        nullType,
+        numType,
+        intType,
+        doubleType,
+        boolType,
+        stringType
+      ];
+
+  @override
+  bool isObjectGetter(String id) {
+    PropertyAccessorElement element = objectType.element.getGetter(id);
+    return (element != null && !element.isStatic);
+  }
+
+  @override
+  bool isObjectMember(String id) {
+    return isObjectGetter(id) || isObjectMethod(id);
+  }
+
+  @override
+  bool isObjectMethod(String id) {
+    MethodElement element = objectType.element.getMethod(id);
+    return (element != null && !element.isStatic);
+  }
 }
 
 /**
  * Instances of the class `TypeProviderImpl` provide access to types defined by the language
  * by looking for those types in the element model for the core library.
  */
-class TypeProviderImpl implements TypeProvider {
+class TypeProviderImpl extends TypeProviderBase {
   /**
    * The type representing the built-in type 'bool'.
    */
@@ -9808,16 +9986,6 @@ class TypeProviderImpl implements TypeProvider {
 
   @override
   InterfaceType get mapType => _mapType;
-
-  @override
-  List<InterfaceType> get nonSubtypableTypes => <InterfaceType>[
-        nullType,
-        numType,
-        intType,
-        doubleType,
-        boolType,
-        stringType
-      ];
 
   @override
   DartObjectImpl get nullObject {

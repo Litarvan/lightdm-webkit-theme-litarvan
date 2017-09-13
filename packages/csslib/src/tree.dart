@@ -540,6 +540,19 @@ class SupportsDisjunction extends SupportsCondition {
   visit(VisitorBase visitor) => visitor.visitSupportsDisjunction(this);
 }
 
+class ViewportDirective extends Directive {
+  final String name;
+  final DeclarationGroup declarations;
+
+  ViewportDirective(this.name, this.declarations, SourceSpan span)
+      : super(span);
+
+  ViewportDirective clone() =>
+      new ViewportDirective(name, declarations.clone(), span);
+
+  visit(VisitorBase visitor) => visitor.visitViewportDirective(this);
+}
+
 class ImportDirective extends Directive {
   /** import name specified. */
   final String import;
@@ -625,9 +638,9 @@ class MediaQuery extends TreeNode {
 
 class MediaDirective extends Directive {
   final List<MediaQuery> mediaQueries;
-  final List<RuleSet> rulesets;
+  final List<TreeNode> rules;
 
-  MediaDirective(this.mediaQueries, this.rulesets, SourceSpan span)
+  MediaDirective(this.mediaQueries, this.rules, SourceSpan span)
       : super(span);
 
   MediaDirective clone() {
@@ -635,27 +648,27 @@ class MediaDirective extends Directive {
     for (var mediaQuery in mediaQueries) {
       cloneQueries.add(mediaQuery.clone());
     }
-    var cloneRulesets = <RuleSet>[];
-    for (var ruleset in rulesets) {
-      cloneRulesets.add(ruleset.clone());
+    var cloneRules = <TreeNode>[];
+    for (var rule in rules) {
+      cloneRules.add(rule.clone());
     }
-    return new MediaDirective(cloneQueries, cloneRulesets, span);
+    return new MediaDirective(cloneQueries, cloneRules, span);
   }
 
   visit(VisitorBase visitor) => visitor.visitMediaDirective(this);
 }
 
 class HostDirective extends Directive {
-  final List<RuleSet> rulesets;
+  final List<TreeNode> rules;
 
-  HostDirective(this.rulesets, SourceSpan span) : super(span);
+  HostDirective(this.rules, SourceSpan span) : super(span);
 
   HostDirective clone() {
-    var cloneRulesets = <RuleSet>[];
-    for (var ruleset in rulesets) {
-      cloneRulesets.add(ruleset.clone());
+    var cloneRules = <TreeNode>[];
+    for (var rule in rules) {
+      cloneRules.add(rule.clone());
     }
-    return new HostDirective(cloneRulesets, span);
+    return new HostDirective(cloneRules, span);
   }
 
   visit(VisitorBase visitor) => visitor.visitHostDirective(this);
@@ -758,20 +771,20 @@ class FontFaceDirective extends Directive {
 
 class StyletDirective extends Directive {
   final String dartClassName;
-  final List<RuleSet> rulesets;
+  final List<TreeNode> rules;
 
-  StyletDirective(this.dartClassName, this.rulesets, SourceSpan span)
+  StyletDirective(this.dartClassName, this.rules, SourceSpan span)
       : super(span);
 
   bool get isBuiltIn => false;
   bool get isExtension => true;
 
   StyletDirective clone() {
-    var cloneRulesets = <RuleSet>[];
-    for (var ruleset in rulesets) {
-      cloneRulesets.add(ruleset.clone());
+    var cloneRules = <TreeNode>[];
+    for (var rule in rules) {
+      cloneRules.add(rule.clone());
     }
-    return new StyletDirective(dartClassName, cloneRulesets, span);
+    return new StyletDirective(dartClassName, cloneRules, span);
   }
 
   visit(VisitorBase visitor) => visitor.visitStyletDirective(this);

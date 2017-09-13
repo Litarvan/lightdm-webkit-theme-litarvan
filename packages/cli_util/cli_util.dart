@@ -2,15 +2,24 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+/// Utilities to return the Dart SDK location.
 library cli_util;
 
 import 'dart:io';
 
-import 'package:path/path.dart' as p;
-import 'package:which/which.dart';
+import 'package:path/path.dart' as path;
 
-/// Return the path to the current Dart SDK. This will return `null` if we are
-/// unable to locate the Dart SDK.
+import 'src/utils.dart';
+
+/// Return the path to the current Dart SDK.
+///
+/// This first checks for an explicit SDK listed on the command-line
+/// (`--dart-sdk`). It then looks in any `DART_SDK` environment variable. Next,
+/// it looks relative to the Dart VM executable. Last, it uses the
+/// [Platform.resolvedExecutable] API.
+///
+/// Callers should generally prefer using the [getSdkPath] function.
+@Deprecated('Clients should generally prefer getSdkPath()')
 Directory getSdkDir([List<String> cliArgs]) {
   // Look for --dart-sdk on the command line.
   if (cliArgs != null) {
@@ -33,36 +42,19 @@ Directory getSdkDir([List<String> cliArgs]) {
   }
 
   // Look relative to the dart executable.
-  Directory sdkDirectory = new File(Platform.executable).parent.parent;
-  if (_isSdkDir(sdkDirectory)) return sdkDirectory;
+  File platformExecutable = new File(Platform.executable);
+  Directory sdkDirectory = platformExecutable.parent.parent;
+  if (isSdkDir(sdkDirectory)) return sdkDirectory;
 
-  // Try and locate the VM using 'which'.
-  String executable = whichSync('dart', orElse: () => null);
+  // Handle the case where Platform.executable is a sibling of the SDK directory
+  // (this happens during internal testing).
+  sdkDirectory =
+      new Directory(path.join(platformExecutable.parent.path, 'dart-sdk'));
+  if (isSdkDir(sdkDirectory)) return sdkDirectory;
 
-  if (executable != null) {
-    // In case Dart is symlinked (e.g. homebrew on Mac) follow symbolic links.
-    Link link = new Link(executable);
-    if (link.existsSync()) {
-      executable = link.resolveSymbolicLinksSync();
-    }
-
-    Link parentLink = new Link(p.dirname(executable));
-    if (parentLink.existsSync()) {
-      executable = p.join(
-          parentLink.resolveSymbolicLinksSync(), p.basename(executable));
-    }
-
-    File dartVm = new File(executable);
-    Directory dir = dartVm.parent.parent;
-    if (_isSdkDir(dir)) return dir;
-  }
-
-  return null;
+  // Use `Platform.resolvedExecutable`.
+  return new Directory(getSdkPath());
 }
 
-bool _isSdkDir(Directory dir) => _joinFile(dir, ['version']).existsSync();
-
-File _joinFile(Directory dir, List<String> files) {
-  String pathFragment = files.join(Platform.pathSeparator);
-  return new File("${dir.path}${Platform.pathSeparator}${pathFragment}");
-}
+/// Return the path to the current Dart SDK.
+String getSdkPath() => path.dirname(path.dirname(Platform.resolvedExecutable));

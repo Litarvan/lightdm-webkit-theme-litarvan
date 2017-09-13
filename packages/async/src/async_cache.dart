@@ -42,8 +42,7 @@ class AsyncCache<T> {
   /// An ephemeral cache guarantees that a callback function will only be
   /// executed at most once concurrently. This is useful for requests for which
   /// data is updated frequently but stale data is acceptable.
-  factory AsyncCache.ephemeral() =>
-      new AsyncCache(Duration.ZERO);
+  factory AsyncCache.ephemeral() => new AsyncCache(Duration.ZERO);
 
   /// Creates a cache that invalidates its contents after [duration] has passed.
   ///

@@ -397,7 +397,7 @@ class Context {
     // Single dots and double dots are normalized to directory traversals.
     if (previous == chars.PERIOD &&
         (previousPrevious == null ||
-         previousPrevious == chars.SLASH ||
+         style.isSeparator(previousPrevious) ||
          previousPrevious == chars.PERIOD)) {
       return true;
     }

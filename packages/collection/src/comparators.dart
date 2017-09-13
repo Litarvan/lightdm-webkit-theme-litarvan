@@ -3,11 +3,11 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Character constants.
-const int _zero         = 0x30;
-const int _upperCaseA   = 0x41;
-const int _upperCaseZ   = 0x5a;
-const int _lowerCaseA   = 0x61;
-const int _lowerCaseZ   = 0x7a;
+const int _zero = 0x30;
+const int _upperCaseA = 0x41;
+const int _upperCaseZ = 0x5a;
+const int _lowerCaseA = 0x61;
+const int _lowerCaseZ = 0x7a;
 const int _asciiCaseBit = 0x20;
 
 /// Checks if strings [a] and [b] differ only on the case of ASCII letters.
@@ -43,7 +43,6 @@ bool equalsIgnoreAsciiCase(String a, String b) {
   return true;
 }
 
-
 /// Hash code for a string which is compatible with [equalsIgnoreAsciiCase].
 ///
 /// The hash code is unaffected by changing the case of ASCII letters, but
@@ -68,7 +67,6 @@ int hashIgnoreAsciiCase(String string) {
   hash >>= 11;
   return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
 }
-
 
 /// Compares [a] and [b] lexically, converting ASCII letters to upper case.
 ///
@@ -106,7 +104,6 @@ int compareAsciiUpperCase(String a, String b) {
   if (b.length > a.length) return -1;
   return defaultResult.sign;
 }
-
 
 /// Compares [a] and [b] lexically, converting ASCII letters to lower case.
 ///
@@ -258,8 +255,7 @@ int compareAsciiUpperCaseNatural(String a, String b) {
 /// is a digit, and if so, the the one with the digit is the greater number.
 ///
 /// Otherwise just returns the difference between [aChar] and [bChar].
-int _compareNaturally(
-    String a, String b, int index, int aChar, int bChar) {
+int _compareNaturally(String a, String b, int index, int aChar, int bChar) {
   assert(aChar != bChar);
   var aIsDigit = _isDigit(aChar);
   var bIsDigit = _isDigit(bChar);
@@ -302,14 +298,14 @@ int _compareNumerically(String a, String b, int aChar, int bChar, int index) {
   if (aChar == _zero) {
     do {
       aIndex++;
-      if (aIndex == a.length) return -1;  // number in a is zero, b is not.
+      if (aIndex == a.length) return -1; // number in a is zero, b is not.
       aChar = a.codeUnitAt(aIndex);
     } while (aChar == _zero);
     if (!_isDigit(aChar)) return -1;
   } else if (bChar == _zero) {
     do {
       bIndex++;
-      if (bIndex == b.length) return 1;  // number in b is zero, a is not.
+      if (bIndex == b.length) return 1; // number in b is zero, a is not.
       bChar = b.codeUnitAt(bIndex);
     } while (bChar == _zero);
     if (!_isDigit(bChar)) return 1;
@@ -343,7 +339,7 @@ int _compareNumerically(String a, String b, int aChar, int bChar, int index) {
       // bChar is non-digit, so a has longer number.
       return 1;
     } else if (bIsDigit) {
-      return -1;  // b has longer number.
+      return -1; // b has longer number.
     } else {
       // Neither is digit, so numbers had same numerical value.
       // Fall back on number of leading zeros

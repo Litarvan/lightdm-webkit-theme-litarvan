@@ -153,9 +153,6 @@ class ArgumentListVisitor {
     // split before it, so try not to.
     if (_isSingle) _visitor.builder.startSpan();
 
-    // Nest around the parentheses in case there are comments before or after
-    // them.
-    _visitor.builder.nestExpression();
     _visitor.builder.startSpan();
     _visitor.token(_leftParenthesis);
 
@@ -192,8 +189,6 @@ class ArgumentListVisitor {
     }
 
     _visitor.token(_rightParenthesis);
-
-    _visitor.builder.unnest();
 
     if (_isSingle) _visitor.builder.endSpan();
   }

@@ -163,6 +163,8 @@ class TokenKind {
   static const int DIRECTIVE_EXTEND = 657;
   static const int DIRECTIVE_MOZ_DOCUMENT = 658;
   static const int DIRECTIVE_SUPPORTS = 659;
+  static const int DIRECTIVE_VIEWPORT = 660;
+  static const int DIRECTIVE_MS_VIEWPORT = 661;
 
   // Media query operators
   static const int MEDIA_OP_ONLY = 665; // Unary.
@@ -222,6 +224,8 @@ class TokenKind {
     const {'type': TokenKind.DIRECTIVE_EXTEND, 'value': 'extend'},
     const {'type': TokenKind.DIRECTIVE_MOZ_DOCUMENT, 'value': '-moz-document'},
     const {'type': TokenKind.DIRECTIVE_SUPPORTS, 'value': 'supports'},
+    const {'type': TokenKind.DIRECTIVE_VIEWPORT, 'value': 'viewport'},
+    const {'type': TokenKind.DIRECTIVE_MS_VIEWPORT, 'value': '-ms-viewport'},
   ];
 
   static const List<Map<String, dynamic>> MEDIA_OPERATORS = const [

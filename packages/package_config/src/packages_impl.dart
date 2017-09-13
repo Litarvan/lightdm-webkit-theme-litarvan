@@ -8,6 +8,7 @@
 library package_config.packages_impl;
 
 import "dart:collection" show UnmodifiableMapView;
+
 import "../packages.dart";
 import "util.dart" show checkValidPackageUri;
 

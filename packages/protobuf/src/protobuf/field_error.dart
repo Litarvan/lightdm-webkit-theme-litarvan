@@ -185,6 +185,7 @@ bool _inRange(min, value, max) => (min <= value) && (value <= max);
 
 bool _isSigned32(int value) => _inRange(-2147483648, value, 2147483647);
 bool _isUnsigned32(int value) => _inRange(0, value, 4294967295);
-bool _isFloat32(double value) => value.isNaN ||
+bool _isFloat32(double value) =>
+    value.isNaN ||
     value.isInfinite ||
     _inRange(-3.4028234663852886E38, value, 3.4028234663852886E38);

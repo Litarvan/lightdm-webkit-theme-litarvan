@@ -5,7 +5,7 @@
 import 'package:collection/collection.dart';
 import 'package:convert/convert.dart';
 
-/// A message digest as computed by a [Hash] or [HMAC] function.
+/// A message digest as computed by a `Hash` or `HMAC` function.
 class Digest {
   /// The message digest as an array of bytes.
   final List<int> bytes;
@@ -16,11 +16,14 @@ class Digest {
   ///
   /// This should be used instead of manual comparisons to avoid leaking
   /// information via timing.
-  bool operator ==(Object other) => other is Digest &&
-      const ListEquality().equals(bytes, other.bytes);
+  @override
+  bool operator ==(Object other) =>
+      other is Digest && const ListEquality().equals(bytes, other.bytes);
 
+  @override
   int get hashCode => const ListEquality().hash(bytes);
 
   /// The message digest as a string of hexadecimal digits.
+  @override
   String toString() => hex.encode(bytes);
 }

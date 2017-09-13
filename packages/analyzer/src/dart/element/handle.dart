@@ -340,10 +340,6 @@ abstract class ElementHandle implements Element {
   @override
   String get displayName => actualElement.displayName;
 
-  @deprecated
-  @override
-  SourceRange get docRange => actualElement.docRange;
-
   @override
   String get documentationComment => actualElement.documentationComment;
 
@@ -562,9 +558,6 @@ class ExportElementHandle extends ElementHandle implements ExportElement {
   int get uriEnd => actualElement.uriEnd;
 
   @override
-  bool get uriExists => actualElement.uriExists;
-
-  @override
   int get uriOffset => actualElement.uriOffset;
 }
 
@@ -590,6 +583,9 @@ class FieldElementHandle extends PropertyInducingElementHandle
 
   @override
   bool get isEnumConstant => actualElement.isEnumConstant;
+
+  @override
+  bool get isVirtual => actualElement.isVirtual;
 
   @override
   ElementKind get kind => ElementKind.FIELD;
@@ -710,9 +706,6 @@ class ImportElementHandle extends ElementHandle implements ImportElement {
   int get uriEnd => actualElement.uriEnd;
 
   @override
-  bool get uriExists => actualElement.uriExists;
-
-  @override
   int get uriOffset => actualElement.uriOffset;
 }
 
@@ -818,17 +811,11 @@ class LibraryElementHandle extends ElementHandle implements LibraryElement {
   List<CompilationUnitElement> get units => actualElement.units;
 
   @override
-  List<LibraryElement> get visibleLibraries => actualElement.visibleLibraries;
-
-  @override
   List<ImportElement> getImportsWithPrefix(PrefixElement prefixElement) =>
       actualElement.getImportsWithPrefix(prefixElement);
 
   @override
   ClassElement getType(String className) => actualElement.getType(className);
-
-  @override
-  bool isUpToDate(int timeStamp) => actualElement.isUpToDate(timeStamp);
 }
 
 /**
@@ -909,6 +896,9 @@ class ParameterElementHandle extends VariableElementHandle
 
   @override
   String get defaultValueCode => actualElement.defaultValueCode;
+
+  @override
+  bool get isCovariant => actualElement.isCovariant;
 
   @override
   bool get isInitializingFormal => actualElement.isInitializingFormal;

@@ -7,6 +7,7 @@ library code_transformers.src.resolvers;
 import 'dart:async';
 import 'package:barback/barback.dart';
 
+import 'package:analyzer/file_system/physical_file_system.dart';
 import 'package:analyzer/src/generated/engine.dart' show AnalysisOptions;
 import 'package:analyzer/src/generated/sdk.dart' show DartSdk;
 import 'package:analyzer/src/generated/engine.dart';
@@ -26,40 +27,26 @@ import 'dart_sdk.dart' hide dartSdkDirectory;
 /// If multiple transformers rely on a resolved AST they should (ideally) share
 /// the same Resolvers object to minimize re-parsing the AST.
 class Resolvers {
-  final Map<AssetId, Resolver> _resolvers = {};
-  final DartSdk dartSdk;
-  final DartUriResolver dartUriResolver;
-  final AnalysisOptions options;
+  final Resolver _resolver;
 
-  /// Null unless `useSharedSources` is true. This option should only be used if
-  /// you know that files are always in a consistent state wherever this
-  /// resolvers object is used. Any time that [Resolvers#get] or
-  /// [Resolver#resolve] are called it will update the sources globally when
-  /// this option is in use.
-  final Map<AssetId, AssetBasedSource> sharedSources;
+  Resolvers.fromSdk(DartSdk dartSdk, DartUriResolver dartUriResolver,
+      {AnalysisOptions options})
+      : _resolver =
+            new ResolverImpl(dartSdk, dartUriResolver, options: options);
 
-  Resolvers.fromSdk(this.dartSdk, this.dartUriResolver,
-      {this.options, bool useSharedSources})
-      : sharedSources =
-            useSharedSources == true ? <AssetId, AssetBasedSource>{} : null;
-
-  factory Resolvers(dartSdkDirectory,
-      {AnalysisOptions options, bool useSharedSources}) {
+  factory Resolvers(String dartSdkDirectory, {AnalysisOptions options}) {
     _initAnalysisEngine();
-    var sdk = new DirectoryBasedDartSdkProxy(dartSdkDirectory);
+    var sdk = new FolderBasedDartSdkProxy(
+        PhysicalResourceProvider.INSTANCE, dartSdkDirectory);
     var uriResolver = new DartUriResolverProxy(sdk);
-    return new Resolvers.fromSdk(sdk, uriResolver,
-        options: options, useSharedSources: useSharedSources);
+    return new Resolvers.fromSdk(sdk, uriResolver, options: options);
   }
 
   factory Resolvers.fromMock(Map<String, String> sources,
-      {bool reportMissing: false,
-      AnalysisOptions options,
-      bool useSharedSources}) {
+      {bool reportMissing: false, AnalysisOptions options}) {
     _initAnalysisEngine();
     var sdk = new MockDartSdk(sources, options, reportMissing: reportMissing);
-    return new Resolvers.fromSdk(sdk, sdk.resolver,
-        options: options, useSharedSources: useSharedSources);
+    return new Resolvers.fromSdk(sdk, sdk.resolver, options: options);
   }
 
   /// Get a resolver for [transform]. If provided, this resolves the code
@@ -72,14 +59,8 @@ class Resolvers {
   ///
   /// See [Resolver#resolve] for more info on the `resolveAllLibraries` option.
   Future<Resolver> get(Transform transform,
-      [List<AssetId> entryPoints, bool resolveAllLibraries]) {
-    var id = transform.primaryInput.id;
-    var resolver = _resolvers.putIfAbsent(
-        id,
-        () => new ResolverImpl(dartSdk, dartUriResolver,
-            options: options, sources: sharedSources));
-    return resolver.resolve(transform, entryPoints, resolveAllLibraries);
-  }
+          [List<AssetId> entryPoints, bool resolveAllLibraries]) =>
+      _resolver.resolve(transform, entryPoints, resolveAllLibraries);
 }
 
 /// Transformer mixin which automatically gets and releases resolvers.

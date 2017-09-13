@@ -28,8 +28,7 @@ class HandlerTransformer<S, T> implements StreamSinkTransformer<S, T> {
   /// The handler for done events.
   final HandleDone<T> _handleDone;
 
-  HandlerTransformer(
-      this._handleData, this._handleError, this._handleDone);
+  HandlerTransformer(this._handleData, this._handleError, this._handleDone);
 
   StreamSink<S> bind(StreamSink<T> sink) => new _HandlerSink<S, T>(this, sink);
 }

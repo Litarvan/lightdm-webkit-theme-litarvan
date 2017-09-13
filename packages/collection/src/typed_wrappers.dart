@@ -27,17 +27,14 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
 
   bool every(bool test(E element)) => _base.every(_validate(test));
 
-  Iterable/*<T>*/ expand/*<T>*/(Iterable/*<T>*/ f(E element)) =>
-      _base.expand(_validate(f));
+  Iterable<T> expand<T>(Iterable<T> f(E element)) => _base.expand(_validate(f));
 
   E get first => _base.first as E;
 
   E firstWhere(bool test(E element), {E orElse()}) =>
       _base.firstWhere(_validate(test), orElse: orElse) as E;
 
-  /*=T*/ fold/*<T>*/(
-          /*=T*/ initialValue,
-          /*=T*/ combine(/*=T*/ previousValue, E element)) =>
+  T fold<T>(T initialValue, T combine(T previousValue, E element)) =>
       _base.fold(initialValue,
           (previousValue, element) => combine(previousValue, element as E));
 
@@ -58,7 +55,7 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
 
   int get length => _base.length;
 
-  Iterable/*<T>*/ map/*<T>*/(/*=T*/ f(E element)) => _base.map(_validate(f));
+  Iterable<T> map<T>(T f(E element)) => _base.map(_validate(f));
 
   E reduce(E combine(E value, E element)) =>
       _base.reduce((value, element) => combine(value as E, element as E)) as E;
@@ -66,7 +63,7 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
   E get single => _base.single as E;
 
   E singleWhere(bool test(E element)) =>
-    _base.singleWhere(_validate(test)) as E;
+      _base.singleWhere(_validate(test)) as E;
 
   Iterable<E> skip(int n) => new TypeSafeIterable<E>(_base.skip(n));
 
@@ -90,7 +87,7 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
 
   /// Returns a version of [function] that asserts that its argument is an
   /// instance of `E`.
-  _UnaryFunction/*<dynamic, F>*/ _validate/*<F>*/(/*=F*/ function(E value)) =>
+  _UnaryFunction<dynamic, F> _validate<F>(F function(E value)) =>
       (value) => function(value as E);
 }
 

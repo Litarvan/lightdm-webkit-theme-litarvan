@@ -34,6 +34,12 @@ abstract class Resolver {
   /// Release this resolver so it can be updated by following transforms.
   void release();
 
+  /// Whether [assetId] represents an Dart library file.
+  ///
+  /// This will be false in the case where the file is not Dart source code, or
+  /// is a 'part of' file.
+  bool isLibrary(AssetId assetId);
+
   /// Gets the resolved Dart library for an asset, or null if the AST has not
   /// been resolved.
   ///

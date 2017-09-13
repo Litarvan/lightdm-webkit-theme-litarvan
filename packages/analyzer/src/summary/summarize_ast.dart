@@ -359,6 +359,12 @@ class _SummarizeAstVisitor extends RecursiveAstVisitor {
   Set<String> _parameterNames;
 
   /**
+   * Indicates whether parameters found during visitors might inherit
+   * covariance.
+   */
+  bool _parametersMayInheritCovariance = false;
+
+  /**
    * Create a slot id for storing a propagated or inferred type or const cycle
    * info.
    */
@@ -585,10 +591,7 @@ class _SummarizeAstVisitor extends RecursiveAstVisitor {
         .map((Token t) => t.toString())
         .join()
         .replaceAll('\r\n', '\n');
-    return new UnlinkedDocumentationCommentBuilder(
-        text: text,
-        offset: documentationComment.offset,
-        length: documentationComment.length);
+    return new UnlinkedDocumentationCommentBuilder(text: text);
   }
 
   /**
@@ -641,9 +644,12 @@ class _SummarizeAstVisitor extends RecursiveAstVisitor {
     b.returnType = serializeTypeName(returnType);
     bool isSemanticallyStatic = isTopLevel || isDeclaredStatic;
     if (formalParameters != null) {
+      bool oldMayInheritCovariance = _parametersMayInheritCovariance;
+      _parametersMayInheritCovariance = !isTopLevel && !isDeclaredStatic;
       b.parameters = formalParameters.parameters
           .map((FormalParameter p) => p.accept(this) as UnlinkedParamBuilder)
           .toList();
+      _parametersMayInheritCovariance = oldMayInheritCovariance;
       if (!isSemanticallyStatic) {
         for (int i = 0; i < formalParameters.parameters.length; i++) {
           if (!b.parameters[i].isFunctionTyped &&
@@ -751,9 +757,12 @@ class _SummarizeAstVisitor extends RecursiveAstVisitor {
     if (serializedReturnType != null) {
       b.type = serializedReturnType;
     }
+    bool oldMayInheritCovariance = _parametersMayInheritCovariance;
+    _parametersMayInheritCovariance = false;
     b.parameters = parameters.parameters
         .map((FormalParameter p) => p.accept(this) as UnlinkedParamBuilder)
         .toList();
+    _parametersMayInheritCovariance = oldMayInheritCovariance;
   }
 
   /**
@@ -785,6 +794,9 @@ class _SummarizeAstVisitor extends RecursiveAstVisitor {
     b.nameOffset = node.identifier.offset;
     b.annotations = serializeAnnotations(node.metadata);
     b.codeRange = serializeCodeRange(node);
+    if (_parametersMayInheritCovariance) {
+      b.inheritsCovariantSlot = assignSlot();
+    }
     switch (node.kind) {
       case ParameterKind.REQUIRED:
         b.kind = UnlinkedParamKind.required;
@@ -1094,7 +1106,8 @@ class _SummarizeAstVisitor extends RecursiveAstVisitor {
   @override
   UnlinkedParamBuilder visitDefaultFormalParameter(
       DefaultFormalParameter node) {
-    UnlinkedParamBuilder b = node.parameter.accept(this);
+    UnlinkedParamBuilder b =
+        node.parameter.accept(this) as UnlinkedParamBuilder;
     b.initializer = serializeInitializerFunction(node.defaultValue, true);
     if (node.defaultValue != null) {
       b.defaultValueCode = node.defaultValue.toSource();
@@ -1264,6 +1277,7 @@ class _SummarizeAstVisitor extends RecursiveAstVisitor {
     }
     b.offset = node.offset;
     b.combinators = node.combinators.map(serializeCombinator).toList();
+    b.configurations = node.configurations.map(serializeConfiguration).toList();
     if (node.prefix != null) {
       b.prefixReference = serializeReference(null, node.prefix.name);
       b.prefixOffset = node.prefix.offset;

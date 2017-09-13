@@ -5,9 +5,9 @@
 part of protobuf;
 
 class CodedBufferWriter {
-
   final List<TypedData> _output = <TypedData>[];
   int _runningSizeInBytes = 0;
+  int get lengthInBytes => _runningSizeInBytes;
 
   static final _WRITE_FUNCTION_MAP = _makeWriteFunctionMap();
 
@@ -52,8 +52,8 @@ class CodedBufferWriter {
     }
 
     makeWriter(convertor) => ((output, value) {
-      output.writeRawBytes(convertor(value));
-    });
+          output.writeRawBytes(convertor(value));
+        });
 
     int _encodeZigZag32(int value) => (value << 1) ^ (value >> 31);
 
@@ -68,81 +68,79 @@ class CodedBufferWriter {
     }
 
     return new Map<int, dynamic>()
-        ..[PbFieldType._BOOL_BIT] = makeWriter(
-            (value) => _int32ToBytes(value ? 1 : 0))
-        ..[PbFieldType._BYTES_BIT] = writeBytesNoTag
-        ..[PbFieldType._STRING_BIT] = (output, value) {
-            writeBytesNoTag(output, _UTF8.encode(value));
+      ..[PbFieldType._BOOL_BIT] =
+          makeWriter((value) => _int32ToBytes(value ? 1 : 0))
+      ..[PbFieldType._BYTES_BIT] = writeBytesNoTag
+      ..[PbFieldType._STRING_BIT] = (output, value) {
+        writeBytesNoTag(output, _UTF8.encode(value));
+      }
+      ..[PbFieldType._DOUBLE_BIT] = makeWriter((double value) {
+        if (value.isNaN)
+          return new ByteData(8)
+            ..setUint32(0, 0x00000000, Endianness.LITTLE_ENDIAN)
+            ..setUint32(4, 0x7ff80000, Endianness.LITTLE_ENDIAN);
+        return new ByteData(8)..setFloat64(0, value, Endianness.LITTLE_ENDIAN);
+      })
+      ..[PbFieldType._FLOAT_BIT] = makeWriter((double value) {
+        const double MIN_FLOAT_DENORM = 1.401298464324817E-45;
+        const double MAX_FLOAT = 3.4028234663852886E38;
+        // TODO(antonm): reevaluate once semantics of odd values
+        // writes is clear.
+        if (value.isNaN) return makeByteData32(0x7fc00000);
+        if (value.abs() < MIN_FLOAT_DENORM) {
+          return makeByteData32(value.isNegative ? 0x80000000 : 0x00000000);
         }
-        ..[PbFieldType._DOUBLE_BIT] = makeWriter((double value) {
-            if (value.isNaN) return new ByteData(8)
-                  ..setUint32(0, 0x00000000, Endianness.LITTLE_ENDIAN)
-                  ..setUint32(4, 0x7ff80000, Endianness.LITTLE_ENDIAN);
-            return new ByteData(8)
-                ..setFloat64(0, value, Endianness.LITTLE_ENDIAN);
-        })
-        ..[PbFieldType._FLOAT_BIT] = makeWriter((double value) {
-            const double MIN_FLOAT_DENORM = 1.401298464324817E-45;
-            const double MAX_FLOAT = 3.4028234663852886E38;
-            // TODO(antonm): reevaluate once semantics of odd values
-            // writes is clear.
-            if (value.isNaN) return makeByteData32(0x7fc00000);
-            if (value.abs() < MIN_FLOAT_DENORM) {
-              return makeByteData32(value.isNegative ? 0x80000000 : 0x00000000);
-            }
-            if (value.isInfinite || value.abs() > MAX_FLOAT) {
-              return makeByteData32(value.isNegative ? 0xff800000 : 0x7f800000);
-            }
-            return new ByteData(4)
-                ..setFloat32(0, value, Endianness.LITTLE_ENDIAN);
-        })
-        ..[PbFieldType._ENUM_BIT] = makeWriter(
-            (value) => _int32ToBytes(value.value))
-        ..[PbFieldType._GROUP_BIT] = (output, value) {
-            value.writeToCodedBufferWriter(output);
+        if (value.isInfinite || value.abs() > MAX_FLOAT) {
+          return makeByteData32(value.isNegative ? 0xff800000 : 0x7f800000);
         }
-        ..[PbFieldType._INT32_BIT] = makeWriter(_int32ToBytes)
-        ..[PbFieldType._INT64_BIT] = makeWriter(
-            (value) => _toVarint64(value))
-        ..[PbFieldType._SINT32_BIT] = makeWriter(
-            (int value) => _int32ToBytes(_encodeZigZag32(value)))
-        ..[PbFieldType._SINT64_BIT] = makeWriter(
-            (Int64 value) => _toVarint64(_encodeZigZag64(value)))
-        ..[PbFieldType._UINT32_BIT] = makeWriter(_toVarint32)
-        ..[PbFieldType._UINT64_BIT] = makeWriter(_toVarint64)
-        ..[PbFieldType._FIXED32_BIT] = makeWriter(makeByteData32)
-        ..[PbFieldType._FIXED64_BIT] = makeWriter(makeByteData64)
-        ..[PbFieldType._SFIXED32_BIT] = makeWriter(makeByteData32)
-        ..[PbFieldType._SFIXED64_BIT] = makeWriter(makeByteData64)
-        ..[PbFieldType._MESSAGE_BIT] = (output, value) {
-            output._withDeferredSizeCalculation(() {
-              value.writeToCodedBufferWriter(output);
-            });
-        };
+        return new ByteData(4)..setFloat32(0, value, Endianness.LITTLE_ENDIAN);
+      })
+      ..[PbFieldType._ENUM_BIT] =
+          makeWriter((value) => _int32ToBytes(value.value))
+      ..[PbFieldType._GROUP_BIT] = (output, value) {
+        value.writeToCodedBufferWriter(output);
+      }
+      ..[PbFieldType._INT32_BIT] = makeWriter(_int32ToBytes)
+      ..[PbFieldType._INT64_BIT] = makeWriter((value) => _toVarint64(value))
+      ..[PbFieldType._SINT32_BIT] =
+          makeWriter((int value) => _int32ToBytes(_encodeZigZag32(value)))
+      ..[PbFieldType._SINT64_BIT] =
+          makeWriter((Int64 value) => _toVarint64(_encodeZigZag64(value)))
+      ..[PbFieldType._UINT32_BIT] = makeWriter(_toVarint32)
+      ..[PbFieldType._UINT64_BIT] = makeWriter(_toVarint64)
+      ..[PbFieldType._FIXED32_BIT] = makeWriter(makeByteData32)
+      ..[PbFieldType._FIXED64_BIT] = makeWriter(makeByteData64)
+      ..[PbFieldType._SFIXED32_BIT] = makeWriter(makeByteData32)
+      ..[PbFieldType._SFIXED64_BIT] = makeWriter(makeByteData64)
+      ..[PbFieldType._MESSAGE_BIT] = (output, value) {
+        output._withDeferredSizeCalculation(() {
+          value.writeToCodedBufferWriter(output);
+        });
+      };
   }
 
   static final _OPEN_TAG_MAP = _makeOpenTagMap();
 
   static _makeOpenTagMap() {
     return new Map<int, int>()
-        ..[PbFieldType._BOOL_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._BYTES_BIT] = WIRETYPE_LENGTH_DELIMITED
-        ..[PbFieldType._STRING_BIT] = WIRETYPE_LENGTH_DELIMITED
-        ..[PbFieldType._DOUBLE_BIT] = WIRETYPE_FIXED64
-        ..[PbFieldType._FLOAT_BIT] = WIRETYPE_FIXED32
-        ..[PbFieldType._ENUM_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._GROUP_BIT] = WIRETYPE_START_GROUP
-        ..[PbFieldType._INT32_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._INT64_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._SINT32_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._SINT64_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._UINT32_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._UINT64_BIT] = WIRETYPE_VARINT
-        ..[PbFieldType._FIXED32_BIT] = WIRETYPE_FIXED32
-        ..[PbFieldType._FIXED64_BIT] = WIRETYPE_FIXED64
-        ..[PbFieldType._SFIXED32_BIT] = WIRETYPE_FIXED32
-        ..[PbFieldType._SFIXED64_BIT] = WIRETYPE_FIXED64
-        ..[PbFieldType._MESSAGE_BIT] = WIRETYPE_LENGTH_DELIMITED;
+      ..[PbFieldType._BOOL_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._BYTES_BIT] = WIRETYPE_LENGTH_DELIMITED
+      ..[PbFieldType._STRING_BIT] = WIRETYPE_LENGTH_DELIMITED
+      ..[PbFieldType._DOUBLE_BIT] = WIRETYPE_FIXED64
+      ..[PbFieldType._FLOAT_BIT] = WIRETYPE_FIXED32
+      ..[PbFieldType._ENUM_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._GROUP_BIT] = WIRETYPE_START_GROUP
+      ..[PbFieldType._INT32_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._INT64_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._SINT32_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._SINT64_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._UINT32_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._UINT64_BIT] = WIRETYPE_VARINT
+      ..[PbFieldType._FIXED32_BIT] = WIRETYPE_FIXED32
+      ..[PbFieldType._FIXED64_BIT] = WIRETYPE_FIXED64
+      ..[PbFieldType._SFIXED32_BIT] = WIRETYPE_FIXED32
+      ..[PbFieldType._SFIXED64_BIT] = WIRETYPE_FIXED64
+      ..[PbFieldType._MESSAGE_BIT] = WIRETYPE_LENGTH_DELIMITED;
   }
 
   void _withDeferredSizeCalculation(continuation) {
@@ -204,13 +202,23 @@ class CodedBufferWriter {
 
   Uint8List toBuffer() {
     Uint8List result = new Uint8List(_runningSizeInBytes);
-    int position = 0;
+    writeTo(result);
+    return result;
+  }
+
+  /// Serializes everything written to this writer so far to [buffer], starting
+  /// from [offset] in [buffer]. Returns `true` on success.
+  bool writeTo(List<int> buffer, [int offset = 0]) {
+    if (buffer.length - offset < _runningSizeInBytes) {
+      return false;
+    }
+    int position = offset;
     for (var typedData in _output) {
       Uint8List asBytes = new Uint8List.view(
           typedData.buffer, typedData.offsetInBytes, typedData.lengthInBytes);
-      result.setRange(position, position + typedData.lengthInBytes, asBytes);
+      buffer.setRange(position, position + typedData.lengthInBytes, asBytes);
       position += typedData.lengthInBytes;
     }
-    return result;
+    return true;
   }
 }

@@ -19,7 +19,10 @@ import 'package:analyzer/src/generated/resolver.dart';
 import 'package:analyzer/src/generated/source_io.dart';
 import 'package:analyzer/src/generated/testing/ast_factory.dart';
 import 'package:analyzer/src/generated/testing/token_factory.dart';
+import 'package:analyzer/src/generated/utilities_dart.dart';
+import 'package:analyzer/src/summary/format.dart';
 import 'package:analyzer/src/summary/idl.dart';
+import 'package:analyzer/src/util/fast_uri.dart';
 
 /**
  * Implementation of [ElementResynthesizer] used when resynthesizing an element
@@ -151,6 +154,7 @@ abstract class SummaryResynthesizer extends ElementResynthesizer {
                 e is PropertyAccessorElementImpl ? e.identifier : e.name;
             elementsInUnit[id] = e;
           }
+
           unitElement.accessors.forEach(putElement);
           unitElement.enums.forEach(putElement);
           unitElement.functions.forEach(putElement);
@@ -204,15 +208,29 @@ abstract class SummaryResynthesizer extends ElementResynthesizer {
       return parent.getLibraryElement(uri);
     }
     return _resynthesizedLibraries.putIfAbsent(uri, () {
-      LinkedLibrary serializedLibrary = _getLinkedSummaryOrThrow(uri);
-      List<UnlinkedUnit> serializedUnits = <UnlinkedUnit>[
-        _getUnlinkedSummaryOrThrow(uri)
-      ];
+      LinkedLibrary serializedLibrary = _getLinkedSummaryOrNull(uri);
       Source librarySource = _getSource(uri);
+      if (serializedLibrary == null) {
+        LibraryElementImpl libraryElement =
+            new LibraryElementImpl(context, '', -1, 0);
+        libraryElement.synthetic = true;
+        CompilationUnitElementImpl unitElement =
+            new CompilationUnitElementImpl(librarySource.shortName);
+        libraryElement.definingCompilationUnit = unitElement;
+        unitElement.source = librarySource;
+        unitElement.librarySource = librarySource;
+        return libraryElement..synthetic = true;
+      }
+      UnlinkedUnit unlinkedSummary = _getUnlinkedSummaryOrNull(uri);
+      if (unlinkedSummary == null) {
+        throw new StateError('Unable to find unlinked summary: $uri');
+      }
+      List<UnlinkedUnit> serializedUnits = <UnlinkedUnit>[unlinkedSummary];
       for (String part in serializedUnits[0].publicNamespace.parts) {
         Source partSource = sourceFactory.resolveUri(librarySource, part);
         String partAbsUri = partSource.uri.toString();
-        serializedUnits.add(_getUnlinkedSummaryOrThrow(partAbsUri));
+        serializedUnits.add(_getUnlinkedSummaryOrNull(partAbsUri) ??
+            new UnlinkedUnitBuilder(codeRange: new CodeRangeBuilder()));
       }
       _LibraryResynthesizer libraryResynthesizer = new _LibraryResynthesizer(
           this, serializedLibrary, serializedUnits, librarySource);
@@ -244,18 +262,14 @@ abstract class SummaryResynthesizer extends ElementResynthesizer {
   bool hasLibrarySummary(String uri);
 
   /**
-   * Return the [LinkedLibrary] for the given [uri] or throw [StateError] if it
+   * Return the [LinkedLibrary] for the given [uri] or return `null` if it
    * could not be found.
    */
-  LinkedLibrary _getLinkedSummaryOrThrow(String uri) {
+  LinkedLibrary _getLinkedSummaryOrNull(String uri) {
     if (parent != null && parent._hasLibrarySummary(uri)) {
-      return parent._getLinkedSummaryOrThrow(uri);
+      return parent._getLinkedSummaryOrNull(uri);
     }
-    LinkedLibrary summary = getLinkedSummary(uri);
-    if (summary != null) {
-      return summary;
-    }
-    throw new StateError('Unable to find linked summary: $uri');
+    return getLinkedSummary(uri);
   }
 
   /**
@@ -266,18 +280,14 @@ abstract class SummaryResynthesizer extends ElementResynthesizer {
   }
 
   /**
-   * Return the [UnlinkedUnit] for the given [uri] or throw [StateError] if it
+   * Return the [UnlinkedUnit] for the given [uri] or return `null` if it
    * could not be found.
    */
-  UnlinkedUnit _getUnlinkedSummaryOrThrow(String uri) {
+  UnlinkedUnit _getUnlinkedSummaryOrNull(String uri) {
     if (parent != null && parent._hasLibrarySummary(uri)) {
-      return parent._getUnlinkedSummaryOrThrow(uri);
+      return parent._getUnlinkedSummaryOrNull(uri);
     }
-    UnlinkedUnit summary = getUnlinkedSummary(uri);
-    if (summary != null) {
-      return summary;
-    }
-    throw new StateError('Unable to find unlinked summary: $uri');
+    return getUnlinkedSummary(uri);
   }
 
   /**
@@ -1152,9 +1162,8 @@ class _LibraryResynthesizerContext implements LibraryResynthesizerContext {
   }
 
   LibraryElementHandle _getLibraryByRelativeUri(String depUri) {
-    String absoluteUri = resynthesizer.summaryResynthesizer.sourceFactory
-        .resolveUri(resynthesizer.librarySource, depUri)
-        .uri
+    String absoluteUri = resolveRelativeUri(
+            resynthesizer.librarySource.uri, FastUri.parse(depUri))
         .toString();
     return new LibraryElementHandle(resynthesizer.summaryResynthesizer,
         new ElementLocationImpl.con3(<String>[absoluteUri]));
@@ -1277,12 +1286,23 @@ class _ReferenceInfo {
       InterfaceTypeImpl type =
           new InterfaceTypeImpl.elementWithNameAndArgs(element, name, () {
         if (typeArguments == null) {
-          typeArguments = element.typeParameters.map((typeParameter) {
-            DartType bound = typeParameter.bound;
-            return libraryResynthesizer.summaryResynthesizer.strongMode &&
-                instantiateToBoundsAllowed &&
-                bound != null ? bound : DynamicTypeImpl.instance;
-          }).toList();
+          typeArguments = element.typeParameters
+              .map/*<DartType>*/((_) => DynamicTypeImpl.instance)
+              .toList();
+          if (libraryResynthesizer.summaryResynthesizer.strongMode &&
+              instantiateToBoundsAllowed) {
+            List<DartType> typeParameterTypes;
+            for (int i = 0; i < typeArguments.length; i++) {
+              DartType bound = element.typeParameters[i].bound;
+              if (bound != null) {
+                typeParameterTypes ??= element.typeParameters
+                    .map/*<DartType>*/((TypeParameterElement e) => e.type)
+                    .toList();
+                typeArguments[i] =
+                    bound.substitute2(typeArguments, typeParameterTypes);
+              }
+            }
+          }
         }
         return typeArguments;
       });
@@ -1369,6 +1389,11 @@ class _ResynthesizerContext implements ResynthesizerContext {
   }
 
   @override
+  bool inheritsCovariant(int slot) {
+    return _unitResynthesizer.parametersInheritingCovariant.contains(slot);
+  }
+
+  @override
   bool isInConstCycle(int slot) {
     return _unitResynthesizer.constCycles.contains(slot);
   }
@@ -1434,6 +1459,12 @@ class _UnitResynthesizer {
    */
   Set<int> constCycles;
 
+  /**
+   * Set of slot ids corresponding to parameters that inherit `@covariant`
+   * behavior.
+   */
+  Set<int> parametersInheritingCovariant;
+
   int numLinkedReferences;
   int numUnlinkedReferences;
 
@@ -1462,6 +1493,8 @@ class _UnitResynthesizer {
       linkedTypeMap[t.slot] = t;
     }
     constCycles = linkedUnit.constCycles.toSet();
+    parametersInheritingCovariant =
+        linkedUnit.parametersInheritingCovariant.toSet();
     numLinkedReferences = linkedUnit.references.length;
     numUnlinkedReferences = unlinkedUnit.references.length;
     referenceInfos = new List<_ReferenceInfo>(numLinkedReferences);
@@ -1492,7 +1525,8 @@ class _UnitResynthesizer {
         constructorName = null;
       }
       elementAnnotation.annotationAst = AstFactory.annotation2(
-          typeName, constructorName, constExpr.argumentList);
+          typeName, constructorName, constExpr.argumentList)
+        ..element = constExpr.staticElement;
     } else {
       throw new StateError(
           'Unexpected annotation type: ${constExpr.runtimeType}');
@@ -1573,6 +1607,7 @@ class _UnitResynthesizer {
           return DynamicTypeImpl.instance;
         }
       }
+
       _ReferenceInfo referenceInfo = getReferenceInfo(type.reference);
       return referenceInfo.buildType(
           instantiateToBoundsAllowed,

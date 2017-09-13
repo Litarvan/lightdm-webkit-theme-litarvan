@@ -26,9 +26,7 @@ class LazyStream<T> extends Stream<T> {
   }
 
   StreamSubscription<T> listen(void onData(T event),
-                               {Function onError,
-                                void onDone(),
-                                bool cancelOnError}) {
+      {Function onError, void onDone(), bool cancelOnError}) {
     if (_callback == null) {
       throw new StateError("Stream has already been listened to.");
     }

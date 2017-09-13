@@ -19,13 +19,15 @@ class ClientContext {
 /// The protoc plugin generates a client-side stub for each service that
 /// takes an RpcClient as a constructor parameter.
 abstract class RpcClient {
-
   /// Sends a request to a server and returns the reply.
   ///
   /// The implementation should serialize the request as binary or JSON, as
   /// appropriate. It should merge the reply into [emptyResponse] and
   /// return it.
   Future<GeneratedMessage> invoke(
-      ClientContext ctx, String serviceName, String methodName,
-      GeneratedMessage request, GeneratedMessage emptyResponse);
+      ClientContext ctx,
+      String serviceName,
+      String methodName,
+      GeneratedMessage request,
+      GeneratedMessage emptyResponse);
 }

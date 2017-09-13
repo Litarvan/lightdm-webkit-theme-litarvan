@@ -11,7 +11,7 @@
 /// That means that using the [TypedDataView.buffer] getter is not guaranteed
 /// to return the same result each time it is used, and that the buffer may
 /// be larger than what the list is using.
-library dart.pkg.typed_data.typed_buffers;
+library typed_data.typed_buffers;
 
 import "dart:collection" show ListBase;
 import "dart:typed_data";

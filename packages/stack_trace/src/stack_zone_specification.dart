@@ -77,7 +77,7 @@ class StackZoneSpecification {
   /// By default, the first frame of the first trace will be the line where
   /// [currentChain] is called. If [level] is passed, the first trace will start
   /// that many frames up instead.
-  Chain currentChain([int level=0]) => _createNode(level + 1).toChain();
+  Chain currentChain([int level = 0]) => _createNode(level + 1).toChain();
 
   /// Returns the stack chain associated with [trace], if one exists.
   ///
@@ -92,8 +92,8 @@ class StackZoneSpecification {
 
   /// Tracks the current stack chain so it can be set to [_currentChain] when
   /// [f] is run.
-  ZoneCallback _registerCallback(Zone self, ZoneDelegate parent, Zone zone,
-      Function f) {
+  ZoneCallback _registerCallback(
+      Zone self, ZoneDelegate parent, Zone zone, Function f) {
     if (f == null || _disabled) return parent.registerCallback(zone, f);
     var node = _createNode(1);
     return parent.registerCallback(zone, () => _run(f, node));
@@ -101,8 +101,8 @@ class StackZoneSpecification {
 
   /// Tracks the current stack chain so it can be set to [_currentChain] when
   /// [f] is run.
-  ZoneUnaryCallback _registerUnaryCallback(Zone self, ZoneDelegate parent,
-      Zone zone, Function f) {
+  ZoneUnaryCallback _registerUnaryCallback(
+      Zone self, ZoneDelegate parent, Zone zone, Function f) {
     if (f == null || _disabled) return parent.registerUnaryCallback(zone, f);
     var node = _createNode(1);
     return parent.registerUnaryCallback(zone, (arg) {
@@ -112,8 +112,8 @@ class StackZoneSpecification {
 
   /// Tracks the current stack chain so it can be set to [_currentChain] when
   /// [f] is run.
-  ZoneBinaryCallback _registerBinaryCallback(Zone self, ZoneDelegate parent,
-      Zone zone, Function f) {
+  ZoneBinaryCallback _registerBinaryCallback(
+      Zone self, ZoneDelegate parent, Zone zone, Function f) {
     if (f == null || _disabled) return parent.registerBinaryCallback(zone, f);
 
     var node = _createNode(1);
@@ -124,8 +124,8 @@ class StackZoneSpecification {
 
   /// Looks up the chain associated with [stackTrace] and passes it either to
   /// [_onError] or [parent]'s error handler.
-  _handleUncaughtError(Zone self, ZoneDelegate parent, Zone zone, error,
-      StackTrace stackTrace) {
+  _handleUncaughtError(
+      Zone self, ZoneDelegate parent, Zone zone, error, StackTrace stackTrace) {
     if (_disabled) {
       return parent.handleUncaughtError(zone, error, stackTrace);
     }
@@ -138,7 +138,7 @@ class StackZoneSpecification {
     // TODO(nweiz): Currently this copies a lot of logic from [runZoned]. Just
     // allow [runBinary] to throw instead once issue 18134 is fixed.
     try {
-      return parent.runBinary(zone, _onError, error, stackChain);
+      return self.parent.runBinary(_onError, error, stackChain);
     } catch (newError, newStackTrace) {
       if (identical(newError, error)) {
         return parent.handleUncaughtError(zone, error, stackChain);
@@ -171,8 +171,8 @@ class StackZoneSpecification {
   /// By default, the first frame of the first trace will be the line where
   /// [_createNode] is called. If [level] is passed, the first trace will start
   /// that many frames up instead.
-  _Node _createNode([int level=0]) =>
-    new _Node(_currentTrace(level + 1), _currentNode);
+  _Node _createNode([int level = 0]) =>
+      new _Node(_currentTrace(level + 1), _currentNode);
 
   // TODO(nweiz): use a more robust way of detecting and tracking errors when
   // issue 15105 is fixed.
@@ -232,6 +232,6 @@ Trace _currentTrace([int level]) {
     var trace = new Trace.parse(text);
     // JS includes a frame for the call to StackTrace.current, but the VM
     // doesn't, so we skip an extra frame in a JS context.
-    return new Trace(trace.frames.skip(level + (inJS ? 2 : 1)));
+    return new Trace(trace.frames.skip(level + (inJS ? 2 : 1)), original: text);
   });
 }

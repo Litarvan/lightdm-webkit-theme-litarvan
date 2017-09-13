@@ -5,9 +5,6 @@
 /// A bitmask that limits an integer to 32 bits.
 const mask32 = 0xFFFFFFFF;
 
-/// The highest value representable by a 64-bit unsigned integer.
-const maxUint64 = 0xFFFFFFFFFFFFFFFF;
-
 /// The number of bits in a byte.
 const bitsPerByte = 8;
 
@@ -21,6 +18,5 @@ int add32(int x, int y) => (x + y) & mask32;
 /// semantics.
 int rotl32(int val, int shift) {
   var modShift = shift & 31;
-  return ((val << modShift) & mask32) |
-      ((val & mask32) >> (32 - modShift));
+  return ((val << modShift) & mask32) | ((val & mask32) >> (32 - modShift));
 }

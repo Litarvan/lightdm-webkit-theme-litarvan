@@ -35,12 +35,14 @@ StreamTransformer<T, T> subscriptionTransformer<T>(
     return new _TransformedSubscription(
         stream.listen(null, cancelOnError: cancelOnError),
         handleCancel ?? (inner) => inner.cancel(),
-        handlePause ?? (inner) {
-          inner.pause();
-        },
-        handleResume ?? (inner) {
-          inner.resume();
-        });
+        handlePause ??
+            (inner) {
+              inner.pause();
+            },
+        handleResume ??
+            (inner) {
+              inner.resume();
+            });
   });
 }
 
@@ -61,8 +63,8 @@ class _TransformedSubscription<T> implements StreamSubscription<T> {
 
   bool get isPaused => _inner?.isPaused ?? false;
 
-  _TransformedSubscription(this._inner, this._handleCancel, this._handlePause,
-      this._handleResume);
+  _TransformedSubscription(
+      this._inner, this._handleCancel, this._handlePause, this._handleResume);
 
   void onData(void handleData(T data)) {
     _inner?.onData(handleData);
@@ -77,15 +79,15 @@ class _TransformedSubscription<T> implements StreamSubscription<T> {
   }
 
   Future cancel() => _cancelMemoizer.runOnce(() {
-    var inner = _inner;
-    _inner.onData(null);
-    _inner.onDone(null);
+        var inner = _inner;
+        _inner.onData(null);
+        _inner.onDone(null);
 
-    // Setting onError to null will cause errors to be top-leveled.
-    _inner.onError((_, __) {});
-    _inner = null;
-    return _handleCancel(inner);
-  });
+        // Setting onError to null will cause errors to be top-leveled.
+        _inner.onError((_, __) {});
+        _inner = null;
+        return _handleCancel(inner);
+      });
   final _cancelMemoizer = new AsyncMemoizer();
 
   void pause([Future resumeFuture]) {

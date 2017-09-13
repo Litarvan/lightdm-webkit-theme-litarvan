@@ -809,7 +809,6 @@ class NodeList extends ListProxy<Node> {
 // TODO(jmesserly): "implements List<Element>" is a workaround for analyzer bug.
 class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
     implements List<Element> {
-  final Node _node;
   final List<Node> _childNodes;
 
   /// Creates a collection of the elements that descend from a node.
@@ -819,8 +818,8 @@ class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
   ///     var filteredElements = new FilteredElementList(query("#container"));
   ///     // filteredElements is [a, b, c].
   FilteredElementList(Node node)
-      : _childNodes = node.nodes,
-        _node = node;
+      : _childNodes = node.nodes;
+
 
   // We can't memoize this, since it's possible that children will be messed
   // with externally to this class.

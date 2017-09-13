@@ -16,8 +16,7 @@ import "dart:collection";
 class IterableZip<T> extends IterableBase<List<T>> {
   final Iterable<Iterable<T>> _iterables;
 
-  IterableZip(Iterable<Iterable<T>> iterables)
-      : this._iterables = iterables;
+  IterableZip(Iterable<Iterable<T>> iterables) : this._iterables = iterables;
 
   /// Returns an iterator that combines values of the iterables' iterators
   /// as long as they all have values.

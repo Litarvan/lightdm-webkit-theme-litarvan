@@ -30,17 +30,16 @@ class _StreamTransformerWrapperSink<S, T> implements StreamSink<S> {
 
   Future get done => _inner.done;
 
-  _StreamTransformerWrapperSink(StreamTransformer<S, T> transformer,
-      this._inner) {
-    _controller.stream.transform(transformer).listen(
-        _inner.add,
-        onError: _inner.addError,
-        onDone: () {
-          // Ignore any errors that come from this call to [_inner.close]. The
-          // user can access them through [done] or the value returned from
-          // [this.close], and we don't want them to get top-leveled.
-          _inner.close().catchError((_) {});
-        });
+  _StreamTransformerWrapperSink(
+      StreamTransformer<S, T> transformer, this._inner) {
+    _controller.stream
+        .transform(transformer)
+        .listen(_inner.add, onError: _inner.addError, onDone: () {
+      // Ignore any errors that come from this call to [_inner.close]. The
+      // user can access them through [done] or the value returned from
+      // [this.close], and we don't want them to get top-leveled.
+      _inner.close().catchError((_) {});
+    });
   }
 
   void add(S event) {

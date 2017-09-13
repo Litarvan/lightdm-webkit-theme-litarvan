@@ -29,9 +29,10 @@ Future<Uint8List> collectBytes(Stream<List<int>> source) {
 /// an eight-bit unsigned value in the resulting list.
 CancelableOperation<Uint8List> collectBytesCancelable(
     Stream<List<int>> source) {
-  return _collectBytes(source, (subscription, result) =>
-      new CancelableOperation.fromFuture(result, onCancel: subscription.cancel)
-  );
+  return _collectBytes(
+      source,
+      (subscription, result) => new CancelableOperation.fromFuture(result,
+          onCancel: subscription.cancel));
 }
 
 /// Generalization over [collectBytes] and [collectBytesCancelable].
@@ -41,8 +42,8 @@ CancelableOperation<Uint8List> collectBytesCancelable(
 /// so it can cancel the operation.
 T _collectBytes<T>(
     Stream<List<int>> source,
-    T result(StreamSubscription<List<int>> subscription,
-        Future<Uint8List> result)) {
+    T result(
+        StreamSubscription<List<int>> subscription, Future<Uint8List> result)) {
   var byteLists = <List<int>>[];
   var length = 0;
   var completer = new Completer<Uint8List>.sync();

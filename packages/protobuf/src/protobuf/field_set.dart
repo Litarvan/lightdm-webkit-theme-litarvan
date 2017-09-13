@@ -210,14 +210,14 @@ class _FieldSet {
   /// Creates and stores the repeated field if it doesn't exist.
   /// If it's an extension and the list doesn't exist, validates and stores it.
   /// Suitable for decoders.
-  List/*<T>*/ _ensureRepeatedField/*<T>*/(FieldInfo/*<T>*/ fi) {
+  List<T> _ensureRepeatedField<T>(FieldInfo<T> fi) {
     assert(!_isReadOnly);
     assert(fi.isRepeated);
     if (fi.index == null) {
       return _ensureExtensions()._ensureRepeatedField(fi);
     }
     var value = _getFieldOrNull(fi);
-    if (value != null) return value as List/*<T>*/;
+    if (value != null) return value as List<T>;
 
     var newValue = fi._createRepeatedField(_message);
     _setNonExtensionFieldUnchecked(fi, newValue);
@@ -235,12 +235,12 @@ class _FieldSet {
   // Generated method implementations
 
   /// The implementation of a generated getter.
-  /*=T*/ _$get/*<T>*/(int index, int tagNumber, /*=T*/ defaultValue) {
+  T _$get<T>(int index, int tagNumber, T defaultValue) {
     assert(_nonExtensionInfo(tagNumber).index == index);
     var value = _values[index];
-    if (value != null) return value as dynamic/*=T*/;
+    if (value != null) return value as T;
     if (defaultValue != null) return defaultValue;
-    return _getDefault(_nonExtensionInfo(tagNumber)) as dynamic/*=T*/;
+    return _getDefault(_nonExtensionInfo(tagNumber)) as T;
   }
 
   /// The implementation of a generated has method.
@@ -448,7 +448,6 @@ class _FieldSet {
   /// in this message. Repeated fields are appended. Singular sub-messages are
   /// recursively merged.
   void _mergeFromMessage(_FieldSet other) {
-
     // TODO(https://github.com/dart-lang/protobuf/issues/60): Recognize
     // when [this] and [other] are the same protobuf (e.g. from cloning). In
     // this case, we can merge the non-extension fields without field lookups or

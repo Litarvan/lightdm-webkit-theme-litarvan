@@ -44,8 +44,8 @@ class CancelableOperation<T> {
   /// This is like `value.asStream()`, but if a subscription to the stream is
   /// canceled, this is as well.
   Stream<T> asStream() {
-    var controller = new StreamController<T>(
-        sync: true, onCancel: _completer._cancel);
+    var controller =
+        new StreamController<T>(sync: true, onCancel: _completer._cancel);
 
     value.then((value) {
       controller.add(value);

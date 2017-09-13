@@ -29,6 +29,5 @@ class ResultFuture<T> extends DelegatingFuture<T> {
     return resultFuture;
   }
 
-  ResultFuture._(Future<T> future)
-      : super(future);
+  ResultFuture._(Future<T> future) : super(future);
 }

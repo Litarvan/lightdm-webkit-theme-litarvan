@@ -9,7 +9,6 @@ part of fixnum;
  * Arithmetic operations may overflow in order to maintain this range.
  */
 class Int32 implements IntX {
-
   /**
    * The maximum positive value attainable by an [Int32], namely
    * 2147483647.

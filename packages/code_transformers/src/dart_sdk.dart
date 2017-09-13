@@ -6,14 +6,11 @@ library code_transformers.src.dart_sdk;
 
 import 'dart:io' show Directory;
 
-/// Note that the Analyzer has two versions of SdkAnalysisContext (and lots of
-/// other classes) with different signatures: can't mix the two.
-import 'package:analyzer/src/generated/engine.dart'
-    show AnalysisOptions, InternalAnalysisContext, TimestampedData;
-import 'package:analyzer/src/context/context.dart' show SdkAnalysisContext;
-import 'package:analyzer/src/generated/java_io.dart';
+import 'package:analyzer/file_system/file_system.dart';
+import 'package:analyzer/src/context/context.dart';
+import 'package:analyzer/src/dart/sdk/sdk.dart';
+import 'package:analyzer/src/generated/engine.dart';
 import 'package:analyzer/src/generated/sdk.dart';
-import 'package:analyzer/src/generated/sdk_io.dart' show DirectoryBasedDartSdk;
 import 'package:analyzer/src/generated/source.dart';
 import 'package:analyzer/src/summary/idl.dart';
 import 'package:cli_util/cli_util.dart' as cli_util;
@@ -36,9 +33,10 @@ abstract class UriAnnotatedSource extends Source {
 
 /// Dart SDK which wraps all Dart sources as [UriAnnotatedSource] to ensure they
 /// are tracked with Uris.
-class DirectoryBasedDartSdkProxy extends DirectoryBasedDartSdk {
-  DirectoryBasedDartSdkProxy(String sdkDirectory)
-      : super(new JavaFile(sdkDirectory));
+class FolderBasedDartSdkProxy extends FolderBasedDartSdk {
+  FolderBasedDartSdkProxy(
+      ResourceProvider resourceProvider, String sdkDirectory)
+      : super(resourceProvider, resourceProvider.getFolder(sdkDirectory));
 
   Source mapDartUri(String dartUri) =>
       DartSourceProxy.wrap(super.mapDartUri(dartUri), Uri.parse(dartUri));
@@ -264,6 +262,8 @@ final Map<String, String> mockSdkSources = {
   'dart:async': '''
         class Future<T> {
           Future then(callback) {}
+        }
+        class FutureOr<T> {}
         class Stream<T> {}
   ''',
   'dart:html': '''

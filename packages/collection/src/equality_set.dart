@@ -29,4 +29,3 @@ class EqualitySet<E> extends DelegatingSet<E> {
     addAll(other);
   }
 }
-

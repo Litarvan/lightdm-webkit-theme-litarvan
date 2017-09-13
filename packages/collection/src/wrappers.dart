@@ -27,17 +27,14 @@ abstract class _DelegatingIterableBase<E> implements Iterable<E> {
 
   bool every(bool test(E element)) => _base.every(test);
 
-  Iterable/*<T>*/ expand/*<T>*/(Iterable/*<T>*/ f(E element)) =>
-      _base.expand(f);
+  Iterable<T> expand<T>(Iterable<T> f(E element)) => _base.expand(f);
 
   E get first => _base.first;
 
   E firstWhere(bool test(E element), {E orElse()}) =>
       _base.firstWhere(test, orElse: orElse);
 
-  /*=T*/ fold/*<T>*/(
-          /*=T*/ initialValue,
-          /*=T*/ combine(/*=T*/ previousValue, E element)) =>
+  T fold<T>(T initialValue, T combine(T previousValue, E element)) =>
       _base.fold(initialValue, combine);
 
   void forEach(void f(E element)) => _base.forEach(f);
@@ -57,7 +54,7 @@ abstract class _DelegatingIterableBase<E> implements Iterable<E> {
 
   int get length => _base.length;
 
-  Iterable/*<T>*/ map/*<T>*/(/*=T*/ f(E element)) => _base.map(f);
+  Iterable<T> map<T>(T f(E element)) => _base.map(f);
 
   E reduce(E combine(E value, E element)) => _base.reduce(combine);
 
@@ -102,10 +99,9 @@ class DelegatingIterable<E> extends _DelegatingIterableBase<E> {
   /// This forwards all operations to [base], so any changes in [base] will be
   /// reflected in [this]. If [base] is already an `Iterable<E>`, it's returned
   /// unmodified.
-  static Iterable/*<E>*/ typed/*<E>*/(Iterable base) =>
-      base is Iterable/*<E>*/ ? base : new TypeSafeIterable/*<E>*/(base);
+  static Iterable<E> typed<E>(Iterable base) =>
+      base is Iterable<E> ? base : new TypeSafeIterable<E>(base);
 }
-
 
 /// A [List] that delegates all operations to a base list.
 ///
@@ -126,8 +122,8 @@ class DelegatingList<E> extends DelegatingIterable<E> implements List<E> {
   /// This forwards all operations to [base], so any changes in [base] will be
   /// reflected in [this]. If [base] is already a `List<E>`, it's returned
   /// unmodified.
-  static List/*<E>*/ typed/*<E>*/(List base) =>
-      base is List/*<E>*/ ? base : new TypeSafeList/*<E>*/(base);
+  static List<E> typed<E>(List base) =>
+      base is List<E> ? base : new TypeSafeList<E>(base);
 
   List<E> get _listBase => _base;
 
@@ -217,7 +213,6 @@ class DelegatingList<E> extends DelegatingIterable<E> implements List<E> {
   List<E> sublist(int start, [int end]) => _listBase.sublist(start, end);
 }
 
-
 /// A [Set] that delegates all operations to a base set.
 ///
 /// This class can be used to hide non-`Set` methods of a set object, or it can
@@ -236,8 +231,8 @@ class DelegatingSet<E> extends DelegatingIterable<E> implements Set<E> {
   /// This forwards all operations to [base], so any changes in [base] will be
   /// reflected in [this]. If [base] is already a `Set<E>`, it's returned
   /// unmodified.
-  static Set/*<E>*/ typed/*<E>*/(Set base) =>
-      base is Set/*<E>*/ ? base : new TypeSafeSet/*<E>*/(base);
+  static Set<E> typed<E>(Set base) =>
+      base is Set<E> ? base : new TypeSafeSet<E>(base);
 
   Set<E> get _setBase => _base;
 
@@ -301,8 +296,8 @@ class DelegatingQueue<E> extends DelegatingIterable<E> implements Queue<E> {
   /// This forwards all operations to [base], so any changes in [base] will be
   /// reflected in [this]. If [base] is already a `Queue<E>`, it's returned
   /// unmodified.
-  static Queue/*<E>*/ typed/*<E>*/(Queue base) =>
-      base is Queue/*<E>*/ ? base : new TypeSafeQueue/*<E>*/(base);
+  static Queue<E> typed<E>(Queue base) =>
+      base is Queue<E> ? base : new TypeSafeQueue<E>(base);
 
   Queue<E> get _baseQueue => _base;
 
@@ -328,9 +323,13 @@ class DelegatingQueue<E> extends DelegatingIterable<E> implements Queue<E> {
 
   bool remove(Object object) => _baseQueue.remove(object);
 
-  void removeWhere(bool test(E element)) { _baseQueue.removeWhere(test); }
+  void removeWhere(bool test(E element)) {
+    _baseQueue.removeWhere(test);
+  }
 
-  void retainWhere(bool test(E element)) { _baseQueue.retainWhere(test); }
+  void retainWhere(bool test(E element)) {
+    _baseQueue.retainWhere(test);
+  }
 
   E removeFirst() => _baseQueue.removeFirst();
 
@@ -358,8 +357,8 @@ class DelegatingMap<K, V> implements Map<K, V> {
   /// This forwards all operations to [base], so any changes in [base] will be
   /// reflected in [this]. If [base] is already a `Map<K, V>`, it's returned
   /// unmodified.
-  static Map/*<K, V>*/ typed/*<K, V>*/(Map base) =>
-      base is Map/*<K, V>*/ ? base : new TypeSafeMap/*<K, V>*/(base);
+  static Map<K, V> typed<K, V>(Map base) =>
+      base is Map<K, V> ? base : new TypeSafeMap<K, V>(base);
 
   V operator [](Object key) => _base[key];
 
@@ -450,8 +449,8 @@ class MapKeySet<E> extends _DelegatingIterableBase<E>
 
   /// Throws an [UnsupportedError] since there's no corresponding method for
   /// [Map]s.
-  E lookup(E element) => throw new UnsupportedError(
-      "MapKeySet doesn't support lookup().");
+  E lookup(Object element) =>
+      throw new UnsupportedError("MapKeySet doesn't support lookup().");
 
   /// Returns a new set which contains all the elements of [this] and [other].
   ///

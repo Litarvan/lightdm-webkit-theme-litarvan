@@ -78,8 +78,7 @@ abstract class Result<T> {
   /// Errors have been converted to an [ErrorResult] value.
   static Future<Result<T>> capture<T>(Future<T> future) {
     return future.then((value) => new ValueResult(value),
-        onError: (error, stackTrace) =>
-            new ErrorResult<T>(error, stackTrace));
+        onError: (error, stackTrace) => new ErrorResult<T>(error, stackTrace));
   }
 
   /// Release the result of a captured future.
@@ -115,8 +114,7 @@ abstract class Result<T> {
   /// result with the value is returned.
   static Result<T> flatten<T>(Result<Result<T>> result) {
     if (result.isValue) return result.asValue.value;
-    return new ErrorResult<T>(
-        result.asError.error, result.asError.stackTrace);
+    return new ErrorResult<T>(result.asError.error, result.asError.stackTrace);
   }
 
   /// Whether this result is a value result.

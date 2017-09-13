@@ -12,8 +12,8 @@
 /// determined to be "package directories" themselves.
 library package_config.discovery_analysis;
 
-import "dart:io" show File, Directory;
 import "dart:collection" show HashMap;
+import "dart:io" show File, Directory;
 
 import "package:path/path.dart" as path;
 

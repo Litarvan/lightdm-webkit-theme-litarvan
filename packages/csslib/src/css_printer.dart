@@ -54,8 +54,11 @@ class CssPrinter extends Visitor {
 
   void visitMediaExpression(MediaExpression node) {
     emit(node.andOperator ? ' AND ' : ' ');
-    emit('(${node.mediaFeature}:');
-    visitExpressions(node.exprs);
+    emit('(${node.mediaFeature}');
+    if (node.exprs.expressions.isNotEmpty) {
+      emit(':');
+      visitExpressions(node.exprs);
+    }
     emit(')');
   }
 
@@ -68,11 +71,11 @@ class CssPrinter extends Visitor {
     }
   }
 
-  void emitMediaQueries(queries) {
+  void emitMediaQueries(List<MediaQuery> queries) {
     var queriesLen = queries.length;
     for (var i = 0; i < queriesLen; i++) {
       var query = queries[i];
-      if (query.hasMediaType && i > 0) emit(',');
+      if (i > 0) emit(',');
       visitMediaQuery(query);
     }
   }
@@ -128,11 +131,17 @@ class CssPrinter extends Visitor {
     }
   }
 
+  void visitViewportDirective(ViewportDirective node) {
+    emit('@${node.name}$_sp{$_newLine');
+    node.declarations.visit(this);
+    emit('}');
+  }
+
   void visitMediaDirective(MediaDirective node) {
     emit('$_newLine@media');
     emitMediaQueries(node.mediaQueries);
     emit('$_sp{');
-    for (var ruleset in node.rulesets) {
+    for (var ruleset in node.rules) {
       ruleset.visit(this);
     }
     emit('$_newLine}');
@@ -140,7 +149,7 @@ class CssPrinter extends Visitor {
 
   void visitHostDirective(HostDirective node) {
     emit('$_newLine@host$_sp{');
-    for (var ruleset in node.rulesets) {
+    for (var ruleset in node.rules) {
       ruleset.visit(this);
     }
     emit('$_newLine}');

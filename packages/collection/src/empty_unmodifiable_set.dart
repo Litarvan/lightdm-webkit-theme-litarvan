@@ -11,7 +11,7 @@ import 'unmodifiable_wrappers.dart';
 /// An unmodifiable, empty set that can have a const constructor.
 class EmptyUnmodifiableSet<E> extends IterableBase<E>
     implements UnmodifiableSetView<E> {
-  static /*=T*/ _throw/*<T>*/() {
+  static T _throw<T>() {
     throw new UnsupportedError("Cannot modify an unmodifiable Set");
   }
 
@@ -37,4 +37,3 @@ class EmptyUnmodifiableSet<E> extends IterableBase<E>
   void retainWhere(bool test(E element)) => _throw();
   void retainAll(Iterable<Object> elements) => _throw();
 }
-

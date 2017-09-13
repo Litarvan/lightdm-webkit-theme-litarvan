@@ -54,6 +54,7 @@ class LoginComponent implements OnInit {
 
         setEnabled() {
           password.attributes.remove('readonly');
+          password.value = "";
           this.login = false;
         }
 

@@ -329,6 +329,9 @@ class Cost {
   /// Splitting on the "." in a named constructor.
   static const constructorName = 3;
 
+  /// Splitting a `[...]` index operator.
+  static const index = 3;
+
   /// Splitting before a type argument or type parameter.
   static const typeArgument = 4;
 }

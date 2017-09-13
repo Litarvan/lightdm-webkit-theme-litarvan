@@ -5,7 +5,6 @@
 part of protobuf;
 
 class UnknownFieldSet {
-
   final Map<int, UnknownFieldSetField> _fields =
       new Map<int, UnknownFieldSetField>();
 
@@ -15,12 +14,12 @@ class UnknownFieldSet {
     mergeFromUnknownFieldSet(unknownFieldSet);
   }
 
-   UnknownFieldSet clone() => new UnknownFieldSet._clone(this);
+  UnknownFieldSet clone() => new UnknownFieldSet._clone(this);
 
-   bool get isEmpty => _fields.isEmpty;
-   bool get isNotEmpty => _fields.isNotEmpty;
+  bool get isEmpty => _fields.isEmpty;
+  bool get isNotEmpty => _fields.isNotEmpty;
 
-   Map<int, UnknownFieldSetField> asMap() => new Map.from(_fields);
+  Map<int, UnknownFieldSetField> asMap() => new Map.from(_fields);
 
   void clear() {
     _fields.clear();
@@ -142,12 +141,12 @@ class UnknownFieldSet {
       for (var value in field.values) {
         if (value is UnknownFieldSet) {
           stringBuffer
-              ..write('${indent}${tag}: {\n')
-              ..write(value._toString('$indent  '))
-              ..write('${indent}}\n');
+            ..write('${indent}${tag}: {\n')
+            ..write(value._toString('$indent  '))
+            ..write('${indent}}\n');
         } else {
           if (value is ByteData) {
-          // TODO(antonm): fix for longs.
+            // TODO(antonm): fix for longs.
             value = value.getUint64(0, Endianness.LITTLE_ENDIAN);
           }
           stringBuffer.write('${indent}${tag}: ${value}\n');
@@ -166,7 +165,6 @@ class UnknownFieldSet {
 }
 
 class UnknownFieldSetField {
-
   final List<List<int>> lengthDelimited = <List<int>>[];
   final List<Int64> varints = <Int64>[];
   final List<int> fixed32s = <int>[];
@@ -219,11 +217,11 @@ class UnknownFieldSetField {
   }
 
   List get values => []
-      ..addAll(lengthDelimited)
-      ..addAll(varints)
-      ..addAll(fixed32s)
-      ..addAll(fixed64s)
-      ..addAll(groups);
+    ..addAll(lengthDelimited)
+    ..addAll(varints)
+    ..addAll(fixed32s)
+    ..addAll(fixed64s)
+    ..addAll(groups);
 
   void writeTo(int fieldNumber, CodedBufferWriter output) {
     write(type, value) {

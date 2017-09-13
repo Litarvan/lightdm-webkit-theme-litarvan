@@ -73,9 +73,7 @@ class StreamGroup<T> implements Sink<Stream<T>> {
   /// Creates a new stream group where [stream] is a broadcast stream.
   StreamGroup.broadcast() {
     _controller = new StreamController<T>.broadcast(
-        onListen: _onListen,
-        onCancel: _onCancelBroadcast,
-        sync: true);
+        onListen: _onListen, onCancel: _onCancelBroadcast, sync: true);
   }
 
   /// Adds [stream] as a member of this group.
@@ -193,10 +191,8 @@ class StreamGroup<T> implements Sink<Stream<T>> {
   ///
   /// This will pause the resulting subscription if [this] is paused.
   StreamSubscription<T> _listenToStream(Stream<T> stream) {
-    var subscription = stream.listen(
-        _controller.add,
-        onError: _controller.addError,
-        onDone: () => remove(stream));
+    var subscription = stream.listen(_controller.add,
+        onError: _controller.addError, onDone: () => remove(stream));
     if (_state == _StreamGroupState.paused) subscription.pause();
     return subscription;
   }

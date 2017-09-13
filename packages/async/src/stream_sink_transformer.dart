@@ -24,8 +24,7 @@ abstract class StreamSinkTransformer<S, T> {
   /// This is equivalent to piping all events from the outer sink through a
   /// stream transformed by [transformer] and from there into the inner sink.
   const factory StreamSinkTransformer.fromStreamTransformer(
-          StreamTransformer<S, T> transformer) =
-      StreamTransformerWrapper<S, T>;
+      StreamTransformer<S, T> transformer) = StreamTransformerWrapper<S, T>;
 
   /// Creates a [StreamSinkTransformer] that delegates events to the given
   /// handlers.
@@ -34,8 +33,8 @@ abstract class StreamSinkTransformer<S, T> {
   /// They're called for each incoming event, and any actions on the sink
   /// they're passed are forwarded to the inner sink. If a handler is omitted,
   /// the event is passed through unaltered.
-  factory StreamSinkTransformer.fromHandlers({
-      void handleData(S data, EventSink<T> sink),
+  factory StreamSinkTransformer.fromHandlers(
+      {void handleData(S data, EventSink<T> sink),
       void handleError(Object error, StackTrace stackTrace, EventSink<T> sink),
       void handleDone(EventSink<T> sink)}) {
     return new HandlerTransformer<S, T>(handleData, handleError, handleDone);

@@ -204,7 +204,7 @@ class StringScanner {
     }
     if (length == null) length = match == null ? 0 : match.end - match.start;
 
-    var sourceFile = new SourceFile(string, url: sourceUrl);
+    var sourceFile = new SourceFile.fromString(string, url: sourceUrl);
     var span = sourceFile.span(position, position + length);
     throw new StringScannerException(message, span, string);
   }

@@ -30,7 +30,7 @@ class SubscriptionStream<T> extends Stream<T> {
   /// stream. That may be an issue if `subscription` was made to cancel on
   /// an error.
   SubscriptionStream(StreamSubscription<T> subscription)
-       : _source = subscription {
+      : _source = subscription {
     _source.pause();
     // Clear callbacks to avoid keeping them alive unnecessarily.
     _source.onData(null);
@@ -39,9 +39,7 @@ class SubscriptionStream<T> extends Stream<T> {
   }
 
   StreamSubscription<T> listen(void onData(T event),
-                               {Function onError,
-                                void onDone(),
-                                bool cancelOnError}) {
+      {Function onError, void onDone(), bool cancelOnError}) {
     if (_source == null) {
       throw new StateError("Stream has already been listened to.");
     }

@@ -131,7 +131,6 @@ abstract class StreamQueue<T> {
     throw _failClosed();
   }
 
-
   /// Look at the next [count] data events without consuming them.
   ///
   /// Works like [take] except that the events are left in the queue.
@@ -495,7 +494,6 @@ abstract class StreamQueue<T> {
   }
 }
 
-
 /// The default implementation of [StreamQueue].
 ///
 /// This queue gets its events from a stream which is listened
@@ -523,18 +521,14 @@ class _StreamQueue<T> extends StreamQueue<T> {
   void _ensureListening() {
     if (_isDone) return;
     if (_subscription == null) {
-      _subscription =
-          _sourceStream.listen(
-              (data) {
-                _addResult(new Result.value(data));
-              },
-              onError: (error, StackTrace stackTrace) {
-                _addResult(new Result.error(error, stackTrace));
-              },
-              onDone: () {
-                _subscription = null;
-                this._close();
-              });
+      _subscription = _sourceStream.listen((data) {
+        _addResult(new Result.value(data));
+      }, onError: (error, StackTrace stackTrace) {
+        _addResult(new Result.error(error, stackTrace));
+      }, onDone: () {
+        _subscription = null;
+        this._close();
+      });
     } else {
       _subscription.resume();
     }
@@ -650,8 +644,8 @@ class StreamQueueTransaction<T> {
       queue._cancel();
     }
 
-    assert((_parent._requestQueue.first as _TransactionRequest)
-        .transaction == this);
+    assert((_parent._requestQueue.first as _TransactionRequest).transaction ==
+        this);
     _parent._requestQueue.removeFirst();
     _parent._updateRequests();
   }
@@ -722,14 +716,13 @@ class _NextRequest<T> implements _EventRequest<T> {
       return true;
     }
     if (isDone) {
-      _completer.completeError(new StateError("No elements"),
-                               StackTrace.current);
+      _completer.completeError(
+          new StateError("No elements"), StackTrace.current);
       return true;
     }
     return false;
   }
 }
-
 
 /// Request for a [StreamQueue.peek] call.
 ///
@@ -749,14 +742,13 @@ class _PeekRequest<T> implements _EventRequest<T> {
       return true;
     }
     if (isDone) {
-      _completer.completeError(new StateError("No elements"),
-                               StackTrace.current);
+      _completer.completeError(
+          new StateError("No elements"), StackTrace.current);
       return true;
     }
     return false;
   }
 }
-
 
 /// Request for a [StreamQueue.skip] call.
 class _SkipRequest<T> implements _EventRequest<T> {
@@ -815,7 +807,6 @@ abstract class _ListRequest<T> implements _EventRequest<T> {
   Future<List<T>> get future => _completer.future;
 }
 
-
 /// Request for a [StreamQueue.take] call.
 class _TakeRequest<T> extends _ListRequest<T> {
   _TakeRequest(int eventsToTake) : super(eventsToTake);
@@ -839,7 +830,6 @@ class _TakeRequest<T> extends _ListRequest<T> {
   }
 }
 
-
 /// Request for a [StreamQueue.lookAhead] call.
 class _LookAheadRequest<T> extends _ListRequest<T> {
   _LookAheadRequest(int eventsToTake) : super(eventsToTake);
@@ -862,7 +852,6 @@ class _LookAheadRequest<T> extends _ListRequest<T> {
   }
 }
 
-
 /// Request for a [StreamQueue.cancel] call.
 ///
 /// The request needs no events, it just waits in the request queue
@@ -871,6 +860,7 @@ class _LookAheadRequest<T> extends _ListRequest<T> {
 class _CancelRequest<T> implements _EventRequest<T> {
   /// Completer for the future returned by the `cancel` call.
   final _completer = new Completer();
+
   ///
   /// When the event is completed, it needs to cancel the active subscription
   /// of the `StreamQueue` object, if any.
@@ -926,8 +916,9 @@ class _RestRequest<T> implements _EventRequest<T> {
       for (var event in events) {
         event.addTo(controller);
       }
-      controller.addStream(_streamQueue._extractStream(), cancelOnError: false)
-                .whenComplete(controller.close);
+      controller
+          .addStream(_streamQueue._extractStream(), cancelOnError: false)
+          .whenComplete(controller.close);
       _completer.setSourceStream(controller.stream);
     }
     return true;

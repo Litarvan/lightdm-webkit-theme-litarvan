@@ -85,7 +85,7 @@ class _TreePrinter extends Visitor {
     heading('MediaDirective', node);
     output.depth++;
     output.writeNodeList('media queries', node.mediaQueries);
-    output.writeNodeList('rule sets', node.rulesets);
+    output.writeNodeList('rule sets', node.rules);
     super.visitMediaDirective(node);
     output.depth--;
   }
@@ -131,6 +131,13 @@ class _TreePrinter extends Visitor {
     heading('SupportsDisjunction', node);
     output.depth++;
     output.writeNodeList('conditions', node.conditions);
+    output.depth--;
+  }
+
+  void visitViewportDirective(ViewportDirective node) {
+    heading('ViewportDirective', node);
+    output.depth++;
+    super.visitViewportDirective(node);
     output.depth--;
   }
 
@@ -184,7 +191,7 @@ class _TreePrinter extends Visitor {
     heading('StyletDirective', node);
     output.writeValue('dartClassName', node.dartClassName);
     output.depth++;
-    output.writeNodeList('rulesets', node.rulesets);
+    output.writeNodeList('rulesets', node.rules);
     output.depth--;
   }
 

@@ -102,8 +102,9 @@ class DartFormatter {
 
     // Parse it.
     var parser = new Parser(stringSource, errorListener);
+    parser.parseGenericMethods = true;
 
-    var node;
+    AstNode node;
     if (source.isCompilationUnit) {
       node = parser.parseCompilationUnit(startToken);
     } else {

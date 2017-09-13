@@ -15,12 +15,13 @@ import 'digest_sink.dart';
 abstract class Hash extends Converter<List<int>, Digest> {
   /// The internal block size of the hash in bytes.
   ///
-  /// This is exposed for use by the [Hmac] class, which needs to know the block
+  /// This is exposed for use by the `Hmac` class, which needs to know the block
   /// size for the [Hash] it uses.
   int get blockSize;
 
   const Hash();
 
+  @override
   Digest convert(List<int> data) {
     var innerSink = new DigestSink();
     var outerSink = startChunkedConversion(innerSink);
@@ -29,5 +30,6 @@ abstract class Hash extends Converter<List<int>, Digest> {
     return innerSink.value;
   }
 
+  @override
   ByteConversionSink startChunkedConversion(Sink<Digest> sink);
 }

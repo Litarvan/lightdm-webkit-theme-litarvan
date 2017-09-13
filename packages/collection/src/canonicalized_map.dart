@@ -48,7 +48,7 @@ class CanonicalizedMap<C, K, V> implements Map<K, V> {
   /// methods that take arbitrary objects. It can be used to filter out keys
   /// that can't be canonicalized.
   CanonicalizedMap.from(Map<K, V> other, C canonicalize(K key),
-                        {bool isValidKey(Object key)})
+      {bool isValidKey(Object key)})
       : _canonicalize = canonicalize,
         _isValidKeyFn = isValidKey {
     addAll(other);
@@ -94,8 +94,9 @@ class CanonicalizedMap<C, K, V> implements Map<K, V> {
   int get length => _base.length;
 
   V putIfAbsent(K key, V ifAbsent()) {
-    return _base.putIfAbsent(_canonicalize(key),
-        () => new Pair(key, ifAbsent())).last;
+    return _base
+        .putIfAbsent(_canonicalize(key), () => new Pair(key, ifAbsent()))
+        .last;
   }
 
   V remove(Object key) {
@@ -108,6 +109,7 @@ class CanonicalizedMap<C, K, V> implements Map<K, V> {
 
   String toString() => Maps.mapToString(this);
 
-  bool _isValidKey(Object key) => (key == null || key is K) &&
+  bool _isValidKey(Object key) =>
+      (key == null || key is K) &&
       (_isValidKeyFn == null || _isValidKeyFn(key));
 }

@@ -4,9 +4,7 @@
 
 part of protobuf;
 
-/**
- * An object representing a protobuf message field.
- */
+/// An object representing a protobuf message field.
 class FieldInfo<T> {
   final String name;
   final int tagNumber;
@@ -127,7 +125,7 @@ class FieldInfo<T> {
   /// be overridden by a mixin.
   List<T> _createRepeatedField(GeneratedMessage m) {
     assert(isRepeated);
-    return m.createRepeatedField/*<T>*/(tagNumber, this);
+    return m.createRepeatedField<T>(tagNumber, this);
   }
 
   String toString() => name;

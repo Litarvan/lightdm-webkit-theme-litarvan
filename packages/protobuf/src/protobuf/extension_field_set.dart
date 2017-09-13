@@ -38,12 +38,12 @@ class _ExtensionFieldSet {
   ///
   /// If it doesn't exist, creates the list and saves the extension.
   /// Suitable for public API and decoders.
-  List/*<T>*/ _ensureRepeatedField/*<T>*/(Extension/*<T>*/ fi) {
+  List<T> _ensureRepeatedField<T>(Extension<T> fi) {
     assert(fi.isRepeated);
     assert(fi.extendee == _parent._messageName);
 
     var list = _values[fi.tagNumber];
-    if (list != null) return list as List/*<T>*/;
+    if (list != null) return list as List<T>;
 
     // Add info and create list.
     _validateInfo(fi);

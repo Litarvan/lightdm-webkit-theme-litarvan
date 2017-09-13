@@ -221,8 +221,8 @@ abstract class GeneratedMessage {
   /// that the protobuf can be encoded correctly, the returned List must
   /// validate all items added to it. This can most easily be done
   /// using the FieldInfo.check function.
-  List/*<T>*/ createRepeatedField/*<T>*/(int tagNumber, FieldInfo/*<T>*/ fi) {
-    return new PbList/*<T>*/(check: fi.check);
+  List<T> createRepeatedField<T>(int tagNumber, FieldInfo<T> fi) {
+    return new PbList<T>(check: fi.check);
   }
 
   /// Returns the value of a field, ignoring any defaults.
@@ -279,8 +279,8 @@ abstract class GeneratedMessage {
   void setField(int tagNumber, value) => _fieldSet._setField(tagNumber, value);
 
   /// For generated code only.
-  /*=T*/ $_get/*<T>*/(int index, int tagNumber, /*=T*/ defaultValue) =>
-      _fieldSet._$get/*<T>*/(index, tagNumber, defaultValue);
+  T $_get<T>(int index, int tagNumber, T defaultValue) =>
+      _fieldSet._$get<T>(index, tagNumber, defaultValue);
 
   /// For generated code only.
   bool $_has(int index, int tagNumber) => _fieldSet._$has(index, tagNumber);

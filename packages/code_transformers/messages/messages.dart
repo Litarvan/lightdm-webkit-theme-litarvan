@@ -167,7 +167,10 @@ class BuildLogEntry {
 
   /// Serializes this log entry to JSON.
   Map toJson() {
-    var data = {'level': level, 'message': message.toJson(),};
+    var data = {
+      'level': level,
+      'message': message.toJson(),
+    };
     if (span != null) {
       data['span'] = {
         'start': {

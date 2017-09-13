@@ -211,17 +211,11 @@ class _Parser {
     var start = _peekToken.span;
     while (!_maybeEat(TokenKind.END_OF_FILE) && !_peekKind(TokenKind.RBRACE)) {
       // TODO(terry): Need to handle charset.
-      var directive = processDirective();
-      if (directive != null) {
-        productions.add(directive);
-        _maybeEat(TokenKind.SEMICOLON);
+      final rule = processRule();
+      if (rule != null) {
+        productions.add(rule);
       } else {
-        RuleSet ruleset = processRuleSet();
-        if (ruleset != null) {
-          productions.add(ruleset);
-        } else {
-          break;
-        }
+        break;
       }
     }
 
@@ -375,27 +369,19 @@ class _Parser {
   List<MediaQuery> processMediaQueryList() {
     var mediaQueries = <MediaQuery>[];
 
-    bool firstTime = true;
-    var mediaQuery;
     do {
-      mediaQuery = processMediaQuery(firstTime == true);
+      var mediaQuery = processMediaQuery();
       if (mediaQuery != null) {
         mediaQueries.add(mediaQuery);
-        firstTime = false;
-        continue;
+      } else {
+        break;
       }
-
-      // Any more more media types separated by comma.
-      if (!_maybeEat(TokenKind.COMMA)) break;
-
-      // Yep more media types start again.
-      firstTime = true;
-    } while ((!firstTime && mediaQuery != null) || firstTime);
+    } while (_maybeEat(TokenKind.COMMA));
 
     return mediaQueries;
   }
 
-  MediaQuery processMediaQuery([bool startQuery = true]) {
+  MediaQuery processMediaQuery() {
     // Grammar: [ONLY | NOT]? S* media_type S*
     //          [ AND S* MediaExpr ]* | MediaExpr [ AND S* MediaExpr ]*
 
@@ -407,13 +393,10 @@ class _Parser {
     var unaryOp = TokenKind.matchMediaOperator(op, 0, opLen);
     if (unaryOp != -1) {
       if (isChecked) {
-        if (startQuery && unaryOp != TokenKind.MEDIA_OP_NOT ||
+        if (unaryOp != TokenKind.MEDIA_OP_NOT ||
             unaryOp != TokenKind.MEDIA_OP_ONLY) {
           _warning("Only the unary operators NOT and ONLY allowed",
               _makeSpan(start));
-        }
-        if (!startQuery && unaryOp != TokenKind.MEDIA_OP_AND) {
-          _warning("Only the binary AND operator allowed", _makeSpan(start));
         }
       }
       _next();
@@ -421,27 +404,28 @@ class _Parser {
     }
 
     var type;
-    if (startQuery && unaryOp != TokenKind.MEDIA_OP_AND) {
-      // Get the media type.
-      if (_peekIdentifier()) type = identifier();
-    }
+    // Get the media type.
+    if (_peekIdentifier()) type = identifier();
 
     var exprs = <MediaExpression>[];
 
-    if (unaryOp == -1 || unaryOp == TokenKind.MEDIA_OP_AND) {
-      var andOp = false;
-      while (true) {
-        var expr = processMediaExpression(andOp);
-        if (expr == null) break;
-
-        exprs.add(expr);
+    while (true) {
+      // Parse AND if query has a media_type or previous expression.
+      var andOp = exprs.isNotEmpty || type != null;
+      if (andOp) {
         op = _peekToken.text;
         opLen = op.length;
-        andOp = TokenKind.matchMediaOperator(op, 0, opLen) ==
-            TokenKind.MEDIA_OP_AND;
-        if (!andOp) break;
+        if (TokenKind.matchMediaOperator(op, 0, opLen) !=
+            TokenKind.MEDIA_OP_AND) {
+          break;
+        }
         _next();
       }
+
+      var expr = processMediaExpression(andOp);
+      if (expr == null) break;
+
+      exprs.add(expr);
     }
 
     if (unaryOp != -1 || type != null || exprs.length > 0) {
@@ -457,17 +441,16 @@ class _Parser {
     if (_maybeEat(TokenKind.LPAREN)) {
       if (_peekIdentifier()) {
         var feature = identifier(); // Media feature.
-        while (_maybeEat(TokenKind.COLON)) {
-          var startExpr = _peekToken.span;
-          var exprs = processExpr();
-          if (_maybeEat(TokenKind.RPAREN)) {
-            return new MediaExpression(
-                andOperator, feature, exprs, _makeSpan(startExpr));
-          } else if (isChecked) {
-            _warning("Missing parenthesis around media expression",
-                _makeSpan(start));
-            return null;
-          }
+        var exprs = _maybeEat(TokenKind.COLON)
+            ? processExpr()
+            : new Expressions(_makeSpan(_peekToken.span));
+        if (_maybeEat(TokenKind.RPAREN)) {
+          return new MediaExpression(
+              andOperator, feature, exprs, _makeSpan(start));
+        } else if (isChecked) {
+          _warning(
+              "Missing parenthesis around media expression", _makeSpan(start));
+          return null;
         }
       } else if (isChecked) {
         _warning("Missing media feature in media expression", _makeSpan(start));
@@ -534,12 +517,12 @@ class _Parser {
         // Any medias?
         var media = processMediaQueryList();
 
-        List<TreeNode> rulesets = [];
+        List<TreeNode> rules = [];
         if (_maybeEat(TokenKind.LBRACE)) {
           while (!_maybeEat(TokenKind.END_OF_FILE)) {
-            RuleSet ruleset = processRuleSet();
-            if (ruleset == null) break;
-            rulesets.add(ruleset);
+            final rule = processRule();
+            if (rule == null) break;
+            rules.add(rule);
           }
 
           if (!_maybeEat(TokenKind.RBRACE)) {
@@ -548,17 +531,17 @@ class _Parser {
         } else {
           _error('expected { after media before ruleset', _peekToken.span);
         }
-        return new MediaDirective(media, rulesets, _makeSpan(start));
+        return new MediaDirective(media, rules, _makeSpan(start));
 
       case TokenKind.DIRECTIVE_HOST:
         _next();
 
-        List<TreeNode> rulesets = [];
+        List<TreeNode> rules = [];
         if (_maybeEat(TokenKind.LBRACE)) {
           while (!_maybeEat(TokenKind.END_OF_FILE)) {
-            RuleSet ruleset = processRuleSet();
-            if (ruleset == null) break;
-            rulesets.add(ruleset);
+            final rule = processRule();
+            if (rule == null) break;
+            rules.add(rule);
           }
 
           if (!_maybeEat(TokenKind.RBRACE)) {
@@ -567,7 +550,7 @@ class _Parser {
         } else {
           _error('expected { after host before ruleset', _peekToken.span);
         }
-        return new HostDirective(rulesets, _makeSpan(start));
+        return new HostDirective(rules, _makeSpan(start));
 
       case TokenKind.DIRECTIVE_PAGE:
         /*
@@ -719,11 +702,11 @@ class _Parser {
 
         start = _peekToken.span;
         while (!_maybeEat(TokenKind.END_OF_FILE)) {
-          RuleSet ruleset = processRuleSet();
-          if (ruleset == null) {
+          final rule = processRule();
+          if (rule == null) {
             break;
           }
-          productions.add(ruleset);
+          productions.add(rule);
         }
 
         _eat(TokenKind.RBRACE);
@@ -781,6 +764,9 @@ class _Parser {
         return processDocumentDirective();
       case TokenKind.DIRECTIVE_SUPPORTS:
         return processSupportsDirective();
+      case TokenKind.DIRECTIVE_VIEWPORT:
+      case TokenKind.DIRECTIVE_MS_VIEWPORT:
+        return processViewportDirective();
     }
     return null;
   }
@@ -1122,8 +1108,20 @@ class _Parser {
     return new SupportsConditionInParens(declaration, _makeSpan(start));
   }
 
-  RuleSet processRuleSet([SelectorGroup selectorGroup]) {
+  ViewportDirective processViewportDirective() {
+    var start = _peekToken.span;
+    var name = _next().text;
+    var declarations = processDeclarations();
+    return new ViewportDirective(name, declarations, _makeSpan(start));
+  }
+
+  TreeNode processRule([SelectorGroup selectorGroup]) {
     if (selectorGroup == null) {
+      final directive = processDirective();
+      if (directive != null) {
+        _maybeEat(TokenKind.SEMICOLON);
+        return directive;
+      }
       selectorGroup = processSelectorGroup();
     }
     if (selectorGroup != null) {
@@ -1136,14 +1134,9 @@ class _Parser {
   List<TreeNode> processGroupRuleBody() {
     var nodes = <TreeNode>[];
     while (!(_peekKind(TokenKind.RBRACE) || _peekKind(TokenKind.END_OF_FILE))) {
-      var directive = processDirective();
-      if (directive != null) {
-        nodes.add(directive);
-        continue;
-      }
-      var ruleSet = processRuleSet();
-      if (ruleSet != null) {
-        nodes.add(ruleSet);
+      var rule = processRule();
+      if (rule != null) {
+        nodes.add(rule);
         continue;
       }
       break;
@@ -1212,7 +1205,7 @@ class _Parser {
       var selectorGroup = _nestedSelector();
       while (selectorGroup != null) {
         // Nested selector so process as a ruleset.
-        var ruleset = processRuleSet(selectorGroup);
+        var ruleset = processRule(selectorGroup);
         decls.add(ruleset);
         selectorGroup = _nestedSelector();
       }
@@ -2476,7 +2469,7 @@ class _Parser {
         break;
     }
 
-    return processDimension(t, value, _makeSpan(start));
+    return t != null ? processDimension(t, value, _makeSpan(start)) : null;
   }
 
   /** Process all dimension units. */
@@ -2693,7 +2686,7 @@ class _Parser {
     var start = _peekToken.span;
 
     var name = func.name;
-    if (name == 'calc') {
+    if (name == 'calc' || name == '-webkit-calc' || name == '-moz-calc') {
       // TODO(terry): Implement expression parsing properly.
       String expression = processCalcExpression();
       var calcExpr = new LiteralTerm(expression, expression, _makeSpan(start));

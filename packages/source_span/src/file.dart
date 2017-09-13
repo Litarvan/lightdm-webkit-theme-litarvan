@@ -49,15 +49,28 @@ class SourceFile {
   /// previous result.
   int _cachedLine;
 
-  /// Creates a new source file from [text].
+  /// This constructor is deprecated.
   ///
-  /// [url] may be either a [String], a [Uri], or `null`.
+  /// Use [new SourceFile.fromString] instead.
+  @Deprecated("Will be removed in 2.0.0")
   SourceFile(String text, {url})
       : this.decoded(text.runes, url: url);
 
-  /// Creates a new source file from a list of decoded characters.
+  /// Creates a new source file from [text].
   ///
   /// [url] may be either a [String], a [Uri], or `null`.
+  SourceFile.fromString(String text, {url})
+      : this.decoded(text.codeUnits, url: url);
+
+  /// Creates a new source file from a list of decoded code units.
+  ///
+  /// [url] may be either a [String], a [Uri], or `null`.
+  ///
+  /// Currently, if [decodedChars] contains characters larger than `0xFFFF`,
+  /// they'll be treated as single characters rather than being split into
+  /// surrogate pairs. **This behavior is deprecated**. For
+  /// forwards-compatibility, callers should only pass in characters less than
+  /// or equal to `0xFFFF`.
   SourceFile.decoded(Iterable<int> decodedChars, {url})
       : url = url is String ? Uri.parse(url) : url,
         _decodedChars = new Uint32List.fromList(decodedChars.toList()) {

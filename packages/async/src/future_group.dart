@@ -47,6 +47,7 @@ class FutureGroup<T> implements Sink<Future<T>> {
     }
     return _onIdleController.stream;
   }
+
   StreamController _onIdleController;
 
   /// The values emitted by the futures that have been added to the group, in
@@ -93,4 +94,3 @@ class FutureGroup<T> implements Sink<Future<T>> {
     _completer.complete(_values);
   }
 }
-

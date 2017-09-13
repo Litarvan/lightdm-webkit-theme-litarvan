@@ -149,7 +149,7 @@ class Tokenizer extends TokenizerBase {
         if (_maybeEatChar(TokenChar.BANG)) {
           if (_maybeEatChar(TokenChar.MINUS) &&
               _maybeEatChar(TokenChar.MINUS)) {
-            return finishMultiLineComment();
+            return finishHtmlComment();
           } else if (_maybeEatChar(TokenChar.LBRACK) &&
               _maybeEatChar(CDATA_NAME[0]) &&
               _maybeEatChar(CDATA_NAME[1]) &&
@@ -393,6 +393,26 @@ class Tokenizer extends TokenizerBase {
     return _finishToken(TokenKind.HEX_RANGE);
   }
 
+  Token finishHtmlComment() {
+    while (true) {
+      int ch = _nextChar();
+      if (ch == 0) {
+        return _finishToken(TokenKind.INCOMPLETE_COMMENT);
+      } else if (ch == TokenChar.MINUS) {
+        /* Check if close part of Comment Definition --> (CDC). */
+        if (_maybeEatChar(TokenChar.MINUS)) {
+          if (_maybeEatChar(TokenChar.GREATER)) {
+            if (_inString) {
+              return next();
+            } else {
+              return _finishToken(TokenKind.HTML_COMMENT);
+            }
+          }
+        }
+      }
+    }
+  }
+
   Token finishMultiLineComment() {
     while (true) {
       int ch = _nextChar();
@@ -404,17 +424,6 @@ class Tokenizer extends TokenizerBase {
             return next();
           } else {
             return _finishToken(TokenKind.COMMENT);
-          }
-        }
-      } else if (ch == TokenChar.MINUS) {
-        /* Check if close part of Comment Definition --> (CDC). */
-        if (_maybeEatChar(TokenChar.MINUS)) {
-          if (_maybeEatChar(TokenChar.GREATER)) {
-            if (_inString) {
-              return next();
-            } else {
-              return _finishToken(TokenKind.HTML_COMMENT);
-            }
           }
         }
       }

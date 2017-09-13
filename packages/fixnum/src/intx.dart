@@ -8,7 +8,6 @@ part of fixnum;
  * A fixed-precision integer.
  */
 abstract class IntX implements Comparable<dynamic> {
-
   /** Addition operator. */
   IntX operator +(other);
 

@@ -57,8 +57,7 @@ class StreamSplitter<T> {
   ///
   /// [count] defaults to 2. This is the same as creating [count] branches and
   /// then closing the [StreamSplitter].
-  static List<Stream<T>> splitFrom<T>(Stream<T> stream,
-      [int count]) {
+  static List<Stream<T>> splitFrom<T>(Stream<T> stream, [int count]) {
     if (count == null) count = 2;
     var splitter = new StreamSplitter<T>(stream);
     var streams = new List<Stream>.generate(count, (_) => splitter.split());
@@ -77,9 +76,7 @@ class StreamSplitter<T> {
     }
 
     var controller = new StreamController<T>(
-        onListen: _onListen,
-        onPause: _onPause,
-        onResume: _onResume);
+        onListen: _onListen, onPause: _onPause, onResume: _onResume);
     controller.onCancel = () => _onCancel(controller);
 
     for (var result in _buffer) {
@@ -147,8 +144,8 @@ class StreamSplitter<T> {
       // wasn't paused, this will be a no-op.
       _subscription.resume();
     } else {
-      _subscription = _stream.listen(
-          _onData, onError: _onError, onDone: _onDone);
+      _subscription =
+          _stream.listen(_onData, onError: _onError, onDone: _onDone);
     }
   }
 

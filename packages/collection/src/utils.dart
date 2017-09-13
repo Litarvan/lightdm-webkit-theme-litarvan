@@ -11,5 +11,5 @@ class Pair<E, F> {
 }
 
 /// Returns a [Comparator] that asserts that its first argument is comparable.
-Comparator/*<T>*/ defaultCompare/*<T>*/() =>
+Comparator<T> defaultCompare<T>() =>
     (value1, value2) => (value1 as Comparable).compareTo(value2);

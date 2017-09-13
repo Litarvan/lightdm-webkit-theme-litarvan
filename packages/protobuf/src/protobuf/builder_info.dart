@@ -4,9 +4,7 @@
 
 part of protobuf;
 
-/**
- * Per-message type setup.
- */
+/// Per-message type setup.
 class BuilderInfo {
   final String messageName;
   final Map<int, FieldInfo> fieldInfo = new Map<int, FieldInfo>();
@@ -18,22 +16,17 @@ class BuilderInfo {
 
   BuilderInfo(this.messageName);
 
-  void add/*<T>*/(
-      int tagNumber,
-      String name,
-      int fieldType,
-      dynamic defaultOrMaker,
-      CreateBuilderFunc subBuilder,
-      ValueOfFunc valueOf) {
+  void add<T>(int tagNumber, String name, int fieldType, dynamic defaultOrMaker,
+      CreateBuilderFunc subBuilder, ValueOfFunc valueOf) {
     var index = fieldInfo.length;
-    addField(new FieldInfo/*<T>*/(name, tagNumber, index, fieldType,
-        defaultOrMaker, subBuilder, valueOf));
+    addField(new FieldInfo<T>(name, tagNumber, index, fieldType, defaultOrMaker,
+        subBuilder, valueOf));
   }
 
-  void addRepeated/*<T>*/(int tagNumber, String name, int fieldType,
+  void addRepeated<T>(int tagNumber, String name, int fieldType,
       CheckFunc check, CreateBuilderFunc subBuilder, ValueOfFunc valueOf) {
     var index = fieldInfo.length;
-    addField(new FieldInfo/*<T>*/ .repeated(
+    addField(new FieldInfo<T>.repeated(
         name, tagNumber, index, fieldType, check, subBuilder, valueOf));
   }
 
@@ -43,39 +36,39 @@ class BuilderInfo {
     byName[fi.name] = fi;
   }
 
-  void a/*<T>*/(int tagNumber, String name, int fieldType,
+  void a<T>(int tagNumber, String name, int fieldType,
       [dynamic defaultOrMaker,
       CreateBuilderFunc subBuilder,
       ValueOfFunc valueOf]) {
-    add/*<T>*/(tagNumber, name, fieldType, defaultOrMaker, subBuilder, valueOf);
+    add<T>(tagNumber, name, fieldType, defaultOrMaker, subBuilder, valueOf);
   }
 
   // Enum.
-  void e/*<T>*/(int tagNumber, String name, int fieldType,
-      dynamic defaultOrMaker, ValueOfFunc valueOf) {
-    add/*<T>*/(tagNumber, name, fieldType, defaultOrMaker, null, valueOf);
+  void e<T>(int tagNumber, String name, int fieldType, dynamic defaultOrMaker,
+      ValueOfFunc valueOf) {
+    add<T>(tagNumber, name, fieldType, defaultOrMaker, null, valueOf);
   }
 
   // Repeated message.
   // TODO(skybrian): migrate to pp() and remove.
-  void m/*<T>*/(int tagNumber, String name, CreateBuilderFunc subBuilder,
+  void m<T>(int tagNumber, String name, CreateBuilderFunc subBuilder,
       MakeDefaultFunc makeDefault) {
-    add/*<T>*/(tagNumber, name, PbFieldType._REPEATED_MESSAGE, makeDefault,
+    add<T>(tagNumber, name, PbFieldType._REPEATED_MESSAGE, makeDefault,
         subBuilder, null);
   }
 
   // Repeated, not a message, group, or enum.
-  void p/*<T>*/(int tagNumber, String name, int fieldType) {
+  void p<T>(int tagNumber, String name, int fieldType) {
     assert(!_isGroupOrMessage(fieldType) && !_isEnum(fieldType));
-    addRepeated/*<T>*/(
+    addRepeated<T>(
         tagNumber, name, fieldType, getCheckFunction(fieldType), null, null);
   }
 
   // Repeated message, group, or enum.
-  void pp/*<T>*/(int tagNumber, String name, int fieldType, CheckFunc check,
+  void pp<T>(int tagNumber, String name, int fieldType, CheckFunc check,
       [CreateBuilderFunc subBuilder, ValueOfFunc valueOf]) {
     assert(_isGroupOrMessage(fieldType) || _isEnum(fieldType));
-    addRepeated/*<T>*/(tagNumber, name, fieldType, check, subBuilder, valueOf);
+    addRepeated<T>(tagNumber, name, fieldType, check, subBuilder, valueOf);
   }
 
   bool containsTagNumber(int tagNumber) => fieldInfo.containsKey(tagNumber);

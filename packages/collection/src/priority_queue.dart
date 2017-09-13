@@ -145,7 +145,7 @@ class HeapPriorityQueue<E> implements PriorityQueue<E> {
   /// is the case, `E` must implement [Comparable], and this is checked at
   /// runtime for every comparison.
   HeapPriorityQueue([int comparison(E e1, E e2)])
-      : comparison = comparison ?? defaultCompare/*<E>*/();
+      : comparison = comparison ?? defaultCompare<E>();
 
   void add(E element) {
     _add(element);
@@ -276,8 +276,8 @@ class HeapPriorityQueue<E> implements PriorityQueue<E> {
         }
         // Then go to the right sibling of the left-child.
         position += 1;
-      } while (position > _length);  // Happens if last element is a left child.
-    } while (position != 1);  // At root again. Happens for right-most element.
+      } while (position > _length); // Happens if last element is a left child.
+    } while (position != 1); // At root again. Happens for right-most element.
     return -1;
   }
 

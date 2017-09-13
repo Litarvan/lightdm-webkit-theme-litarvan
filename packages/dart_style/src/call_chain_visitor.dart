@@ -317,7 +317,7 @@ class CallChainVisitor {
 
     // If the expression ends in an argument list, base the splitting on the
     // last argument.
-    var argumentList;
+    ArgumentList argumentList;
     if (expression is MethodInvocation) {
       argumentList = expression.argumentList;
     } else if (expression is InstanceCreationExpression) {
@@ -331,7 +331,9 @@ class CallChainVisitor {
     if (argumentList.arguments.isEmpty) return true;
 
     var argument = argumentList.arguments.last;
-    if (argument is NamedExpression) argument = argument.expression;
+    if (argument is NamedExpression) {
+      argument = (argument as NamedExpression).expression;
+    }
 
     // TODO(rnystrom): This logic is similar (but not identical) to
     // ArgumentListVisitor.hasBlockArguments. They overlap conceptually and
@@ -399,12 +401,16 @@ class CallChainVisitor {
       _endSpan();
     }
 
-    _visitor.visit(invocation.argumentList);
+    _visitor.builder.nestExpression();
+    _visitor.visit(invocation.typeArguments);
+    _visitor.visitArgumentList(invocation.argumentList, nestExpression: false);
+    _visitor.builder.unnest();
   }
 
   void _writeBlockCall(MethodInvocation invocation) {
     _visitor.token(invocation.operator);
     _visitor.token(invocation.methodName.token);
+    _visitor.visit(invocation.typeArguments);
     _visitor.visit(invocation.argumentList);
   }
 

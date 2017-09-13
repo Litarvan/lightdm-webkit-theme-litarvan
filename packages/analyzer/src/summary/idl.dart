@@ -58,100 +58,6 @@ import 'format.dart' as generated;
 const informative = null;
 
 /**
- * Information about an analysis error in a source.
- */
-abstract class CacheAnalysisError extends base.SummaryClass {
-  /**
-   * The correction to be displayed for this error, or `null` if there is no
-   * correction information for this error. The correction should indicate how
-   * the user can fix the error.
-   */
-  @Id(4)
-  String get correction;
-
-  /**
-   * The unique name of the error code.
-   */
-  @Id(0)
-  String get errorCodeUniqueName;
-
-  /**
-   * Length of the error range.
-   */
-  @Id(2)
-  int get length;
-
-  /**
-   * The message to be displayed for this error. The message should indicate
-   * what is wrong and why it is wrong.
-   */
-  @Id(3)
-  String get message;
-
-  /**
-   * Offset of the error range relative to the beginning of the file.
-   */
-  @Id(1)
-  int get offset;
-}
-
-/**
- * Information about a source that depends only on its content.
- */
-@TopLevel('CaSS')
-abstract class CacheSourceContent extends base.SummaryClass {
-  factory CacheSourceContent.fromBuffer(List<int> buffer) =>
-      generated.readCacheSourceContent(buffer);
-
-  /**
-   * The list of exported URIs, e.g. `dart:core`, or `foo/bar.dart`,
-   * or `package:foo/bar.dart`.  Empty if [kind] is [CacheSourceKind.part].
-   */
-  @Id(2)
-  List<String> get exportedUris;
-
-  /**
-   * The list of explicitly imported URIs, e.g. `dart:core`, or `foo/bar.dart`,
-   * or `package:foo/bar.dart`.  Empty if [kind] is [CacheSourceKind.part].
-   */
-  @Id(1)
-  List<String> get importedUris;
-
-  /**
-   * The kind of the source.
-   */
-  @Id(0)
-  CacheSourceKind get kind;
-
-  /**
-   * The list of part URIs, e.g. `foo/bar.dart`.  Empty if [kind] is
-   * [CacheSourceKind.part].
-   */
-  @Id(3)
-  List<String> get partUris;
-}
-
-/**
- * Errors of a source in a library, which depends on the import/export closure
- * of the containing library and the source.
- */
-@TopLevel('CSEL')
-abstract class CacheSourceErrorsInLibrary extends base.SummaryClass {
-  factory CacheSourceErrorsInLibrary.fromBuffer(List<int> buffer) =>
-      generated.readCacheSourceErrorsInLibrary(buffer);
-  /**
-   * The list of errors in the source in the library.
-   */
-  @Id(0)
-  List<CacheAnalysisError> get errors;
-}
-
-/**
- * Kind of a source in the cache.
- */
-enum CacheSourceKind { library, part }
-
-/**
  * Information about an element code range.
  */
 abstract class CodeRange extends base.SummaryClass {
@@ -621,6 +527,14 @@ abstract class LinkedUnit extends base.SummaryClass {
    */
   @Id(2)
   List<int> get constCycles;
+
+  /**
+   * List of slot ids (referring to [UnlinkedParam.inheritsCovariantSlot])
+   * corresponding to parameters that inherit `@covariant` behavior from a base
+   * class.
+   */
+  @Id(3)
+  List<int> get parametersInheritingCovariant;
 
   /**
    * Information about the resolution of references within the compilation
@@ -1127,6 +1041,31 @@ abstract class UnlinkedCombinator extends base.SummaryClass {
    */
   @Id(0)
   List<String> get shows;
+}
+
+/**
+ * Unlinked summary information about a single import or export configuration.
+ */
+abstract class UnlinkedConfiguration extends base.SummaryClass {
+  /**
+   * The name of the declared variable whose value is being used in the
+   * condition.
+   */
+  @Id(0)
+  String get name;
+
+  /**
+   * The URI of the implementation library to be used if the condition is true.
+   */
+  @Id(2)
+  String get uri;
+
+  /**
+   * The value to which the value of the declared variable will be compared,
+   * or `true` if the condition does not include an equality test.
+   */
+  @Id(1)
+  String get value;
 }
 
 /**
@@ -1674,6 +1613,7 @@ abstract class UnlinkedDocumentationComment extends base.SummaryClass {
    * Length of the documentation comment (prior to replacing '\r\n' with '\n').
    */
   @Id(0)
+  @deprecated
   int get length;
 
   /**
@@ -1681,6 +1621,7 @@ abstract class UnlinkedDocumentationComment extends base.SummaryClass {
    * beginning of the file.
    */
   @Id(2)
+  @deprecated
   int get offset;
 
   /**
@@ -2061,10 +2002,17 @@ abstract class UnlinkedExportNonPublic extends base.SummaryClass {
  */
 abstract class UnlinkedExportPublic extends base.SummaryClass {
   /**
-   * Combinators contained in this import declaration.
+   * Combinators contained in this export declaration.
    */
   @Id(1)
   List<UnlinkedCombinator> get combinators;
+
+  /**
+   * Configurations used to control which library will actually be loaded at
+   * run-time.
+   */
+  @Id(2)
+  List<UnlinkedConfiguration> get configurations;
 
   /**
    * URI used in the source code to reference the exported library.
@@ -2182,6 +2130,13 @@ abstract class UnlinkedImport extends base.SummaryClass {
    */
   @Id(4)
   List<UnlinkedCombinator> get combinators;
+
+  /**
+   * Configurations used to control which library will actually be loaded at
+   * run-time.
+   */
+  @Id(10)
+  List<UnlinkedConfiguration> get configurations;
 
   /**
    * Indicates whether the import declaration uses the `deferred` keyword.
@@ -2312,6 +2267,17 @@ abstract class UnlinkedParam extends base.SummaryClass {
    */
   @Id(2)
   int get inferredTypeSlot;
+
+  /**
+   * If this is a parameter of an instance method, a nonzero slot id which is
+   * unique within this compilation unit.  If this id is found in
+   * [LinkedUnit.parametersInheritingCovariant], then this parameter inherits
+   * `@covariant` behavior from a base class.
+   *
+   * Otherwise, zero.
+   */
+  @Id(14)
+  int get inheritsCovariantSlot;
 
   /**
    * The synthetic initializer function of the parameter.  Absent if the variable

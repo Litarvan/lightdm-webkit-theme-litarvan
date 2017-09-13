@@ -22,7 +22,7 @@ class Hmac extends Converter<List<int>, Digest> {
   /// The secret key shared by the sender and the receiver.
   final Uint8List _key;
 
-  /// Create an [HMAC] object from a [Hash] and a binary key.
+  /// Create an [Hmac] object from a [Hash] and a binary key.
   ///
   /// The key should be a secret shared between the sender and receiver of the
   /// message.
@@ -37,6 +37,7 @@ class Hmac extends Converter<List<int>, Digest> {
     _key.setRange(0, key.length, key);
   }
 
+  @override
   Digest convert(List<int> data) {
     var innerSink = new DigestSink();
     var outerSink = startChunkedConversion(innerSink);
@@ -45,6 +46,7 @@ class Hmac extends Converter<List<int>, Digest> {
     return innerSink.value;
   }
 
+  @override
   ByteConversionSink startChunkedConversion(Sink<Digest> sink) =>
       new _HmacSink(sink, _hash, _key);
 }
@@ -81,16 +83,19 @@ class _HmacSink extends ByteConversionSink {
     _innerSink.add(padding);
   }
 
+  @override
   void add(List<int> data) {
     if (_isClosed) throw new StateError("HMAC is closed");
     _innerSink.add(data);
   }
 
+  @override
   void addSlice(List<int> data, int start, int end, bool isLast) {
     if (_isClosed) throw new StateError("HMAC is closed");
     _innerSink.addSlice(data, start, end, isLast);
   }
 
+  @override
   void close() {
     if (_isClosed) return;
     _isClosed = true;

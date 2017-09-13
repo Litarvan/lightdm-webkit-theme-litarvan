@@ -24,19 +24,21 @@ final sha256 = new Sha256._();
 /// Note that it's almost always easier to use [sha256] rather than creating a
 /// new instance.
 class Sha256 extends Hash {
+  @override
   final int blockSize = 16 * bytesPerWord;
 
   Sha256._();
 
   Sha256 newInstance() => new Sha256._();
 
+  @override
   ByteConversionSink startChunkedConversion(Sink<Digest> sink) =>
       new ByteConversionSink.from(new _Sha256Sink(sink));
 }
 
 /// Data from a non-linear function that functions as reproducible noise.
 const List<int> _noise = const [
-  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1,
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, //
   0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
   0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786,
   0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
@@ -51,9 +53,10 @@ const List<int> _noise = const [
 
 /// The concrete implementation of [Sha256].
 ///
-/// This is separate so that it can extend [HashBase] without leaking additional
-/// public memebers.
+/// This is separate so that it can extend [HashSink] without leaking additional
+/// public members.
 class _Sha256Sink extends HashSink {
+  @override
   final digest = new Uint32List(8);
 
   /// The sixteen words from the original chunk, extended to 64 words.
@@ -88,6 +91,7 @@ class _Sha256Sink extends HashSink {
   int _ssig0(int x) => _rotr32(7, x) ^ _rotr32(18, x) ^ (x >> 3);
   int _ssig1(int x) => _rotr32(17, x) ^ _rotr32(19, x) ^ (x >> 10);
 
+  @override
   void updateHash(Uint32List chunk) {
     assert(chunk.length == 16);
 
@@ -96,8 +100,7 @@ class _Sha256Sink extends HashSink {
       _extended[i] = chunk[i];
     }
     for (var i = 16; i < 64; i++) {
-      _extended[i] = add32(
-          add32(_ssig1(_extended[i - 2]),  _extended[i - 7]),
+      _extended[i] = add32(add32(_ssig1(_extended[i - 2]), _extended[i - 7]),
           add32(_ssig0(_extended[i - 15]), _extended[i - 16]));
     }
 
@@ -112,11 +115,8 @@ class _Sha256Sink extends HashSink {
     var h = digest[7];
 
     for (var i = 0; i < 64; i++) {
-      var temp1 = add32(
-          add32(h, _bsig1(e)),
-          add32(
-              _ch(e, f, g),
-              add32(_noise[i], _extended[i])));
+      var temp1 = add32(add32(h, _bsig1(e)),
+          add32(_ch(e, f, g), add32(_noise[i], _extended[i])));
       var temp2 = add32(_bsig0(a), _maj(a, b, c));
       h = g;
       g = f;

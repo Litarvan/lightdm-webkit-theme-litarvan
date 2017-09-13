@@ -29,4 +29,3 @@ class EqualityMap<K, V> extends DelegatingMap<K, V> {
     addAll(other);
   }
 }
-

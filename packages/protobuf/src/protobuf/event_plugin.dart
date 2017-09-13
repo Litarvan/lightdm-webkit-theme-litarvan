@@ -12,7 +12,6 @@ part of protobuf;
 /// to user code, plugins should buffer events and send them asynchronously.
 /// (See event_mixin.dart for an example.)
 abstract class EventPlugin {
-
   /// Initializes the plugin.
   ///
   /// GeneratedMessage calls this once in its constructors.

@@ -4,9 +4,7 @@
 
 part of protobuf;
 
-/**
- * An object representing an extension field.
- */
+/// An object representing an extension field.
 class Extension<T> extends FieldInfo<T> {
   final String extendee;
 

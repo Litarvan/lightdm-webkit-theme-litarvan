@@ -22,7 +22,10 @@ import 'package:analyzer/src/generated/utilities_dart.dart';
  * nodes that are part of a cascade expression. These methods are all prefixed with 'cascaded'. The
  * second is places where a shorter name seemed unambiguous and easier to read, such as using
  * 'identifier' rather than 'prefixedIdentifier', or 'integer' rather than 'integerLiteral'.
+ *
+ * Deprecated.  Please use [AstTestFactory] instead.
  */
+@deprecated
 class AstFactory {
   static AdjacentStrings adjacentStrings(List<StringLiteral> strings) =>
       new AdjacentStrings(strings);

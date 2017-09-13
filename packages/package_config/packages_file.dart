@@ -5,6 +5,7 @@
 library package_config.packages_file;
 
 import "package:charcode/ascii.dart";
+
 import "src/util.dart" show isValidPackageName;
 
 /// Parses a `.packages` file into a map from package name to base URI.

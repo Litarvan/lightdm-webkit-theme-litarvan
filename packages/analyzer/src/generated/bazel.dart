@@ -4,7 +4,7 @@
 
 library analyzer.src.generated.bazel;
 
-import 'dart:core' hide Resource;
+import 'dart:core';
 
 import 'package:analyzer/file_system/file_system.dart';
 import 'package:analyzer/src/generated/source.dart';
@@ -57,13 +57,11 @@ class BazelFileUriResolver extends ResourceUriResolver {
   }
 
   String _getPathFromWorkspaceDir(Uri uri) {
-    String uriPath = uri.path;
-    String workspacePath = _workspaceDir.path;
-
-    if (uriPath.startsWith(workspacePath) &&
-        workspacePath.length < uriPath.length) {
-      return uriPath.substring(workspacePath.length + 1);
+    try {
+      return provider.pathContext.relative(provider.pathContext.fromUri(uri),
+          from: _workspaceDir.path);
+    } on Exception {
+      return '';
     }
-    return '';
   }
 }

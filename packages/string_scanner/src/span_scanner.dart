@@ -56,7 +56,7 @@ class SpanScanner extends StringScanner implements LineScanner {
   /// [FileSpan]s as well as for error reporting. It can be a [String], a
   /// [Uri], or `null`.
   SpanScanner(String string, {sourceUrl, int position})
-      : _sourceFile = new SourceFile(string, url: sourceUrl),
+      : _sourceFile = new SourceFile.fromString(string, url: sourceUrl),
         super(string, sourceUrl: sourceUrl, position: position);
 
   /// Creates a new [SpanScanner] that eagerly computes line and column numbers.

@@ -36,8 +36,7 @@ class StreamCompleter<T> {
   /// instead contain just that error.
   static Stream<T> fromFuture<T>(Future<Stream<T>> streamFuture) {
     var completer = new StreamCompleter<T>();
-    streamFuture.then(completer.setSourceStream,
-        onError: completer.setError);
+    streamFuture.then(completer.setSourceStream, onError: completer.setError);
     return completer.stream;
   }
 
@@ -118,23 +117,21 @@ class _CompleterStream<T> extends Stream<T> {
   Stream<T> _sourceStream;
 
   StreamSubscription<T> listen(onData(T data),
-                               {Function onError,
-                                void onDone(),
-                                bool cancelOnError}) {
+      {Function onError, void onDone(), bool cancelOnError}) {
     if (_controller == null) {
       if (_sourceStream != null && !_sourceStream.isBroadcast) {
         // If the source stream is itself single subscription,
         // just listen to it directly instead of creating a controller.
-        return _sourceStream.listen(onData, onError: onError, onDone: onDone,
-                                    cancelOnError: cancelOnError);
+        return _sourceStream.listen(onData,
+            onError: onError, onDone: onDone, cancelOnError: cancelOnError);
       }
       _createController();
       if (_sourceStream != null) {
         _linkStreamToController();
       }
     }
-    return _controller.stream.listen(onData, onError: onError, onDone: onDone,
-                                     cancelOnError: cancelOnError);
+    return _controller.stream.listen(onData,
+        onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }
 
   /// Whether a source stream has been set.
@@ -161,8 +158,9 @@ class _CompleterStream<T> extends Stream<T> {
   void _linkStreamToController() {
     assert(_controller != null);
     assert(_sourceStream != null);
-    _controller.addStream(_sourceStream, cancelOnError: false)
-               .whenComplete(_controller.close);
+    _controller
+        .addStream(_sourceStream, cancelOnError: false)
+        .whenComplete(_controller.close);
   }
 
   /// Sets an empty source stream.
@@ -174,7 +172,7 @@ class _CompleterStream<T> extends Stream<T> {
     if (_controller == null) {
       _createController();
     }
-    _sourceStream = _controller.stream;  // Mark stream as set.
+    _sourceStream = _controller.stream; // Mark stream as set.
     _controller.close();
   }
 

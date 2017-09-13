@@ -200,7 +200,6 @@ class EncodingParser {
         }
       }
     }
-    return true; // unreachable
   }
 
   bool handlePossibleStartTag() => handlePossibleTag(false);
@@ -322,7 +321,6 @@ class EncodingParser {
         attrValue.add(c);
       }
     }
-    return null; // unreachable
   }
 }
 
