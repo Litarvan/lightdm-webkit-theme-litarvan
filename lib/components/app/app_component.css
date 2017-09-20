@@ -1,6 +1,6 @@
 :host {
     background: url('images/background.jpg');
-
+    background-size: cover;
     color: white;
     text-align: center;
 }
