@@ -19,15 +19,28 @@ class Translations {
     'months': const ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre']
   };
 
+  static const DUTCH = const {
+    'password': 'Wachtwoord...',
+    'splash': 'Druk op "Spatie" of "Enter" om aan te melden',
+    'date': 'weekd day month year',
+    'days': const ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'],
+    'months': const ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'October', 'November', 'December']
+  };
+
   LightDM _lightdm;
 
   Translations(this._lightdm);
 
   dynamic get(String key) {
-    if (_lightdm.language != null && _lightdm.language.toLowerCase() == 'français') {
-      return FRENCH[key];
-    } else {
-      return ENGLISH[key];
+    switch(_lightdm.language.toLowerCase()) {
+        case 'français':
+            return FRENCH[key];
+            break;
+        case 'nederlands':
+            return DUTCH[key];
+            break;
+        default:
+            return ENGLISH[key];
     }
   }
 
