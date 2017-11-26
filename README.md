@@ -40,3 +40,6 @@ Then edit `/etc/lightdm/lightdm-webkit.conf` and set webkit-theme to litarvan
 ![Login screnshot](https://i.gyazo.com/7a282eb525fe973c673b088a2f7e2db8.png)
 
 ![Splash screenshot](https://i.gyazo.com/70686f52d6caa3155d8c6332e14cb19a.png)
+
+[release]: https://img.shields.io/github/release/Litarvan/lightdm-webkit-theme-litarvan.svg?style=flat-square "Latest Release"
+[aur]: https://img.shields.io/aur/votes/lightdm-webkit-theme-litarvan.svg?maxAge=604800&style=flat-square "AUR Votes"
