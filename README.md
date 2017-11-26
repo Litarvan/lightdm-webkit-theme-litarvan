@@ -1,4 +1,5 @@
 # Litarvan's LightDM WebKit2 theme
+[![Latest Release][release]](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) &nbsp;[![AUR Votes][aur]](https://aur.archlinux.org/packages/lightdm-webkit-theme-litarvan)
 
 **=> Screenshots below**
 
