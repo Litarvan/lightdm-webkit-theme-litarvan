@@ -12,12 +12,12 @@ import 'package:lightdm_webkit_theme_litarvan/util.dart';
   selector: 'app',
   templateUrl: 'app_component.html',
   styleUrls: const ['app_component.css'],
-  directives: const [SplashComponent, PowerButtonComponent, LoginComponent, UsersComponent, DesktopsComponent]
+  directives: const [PowerButtonComponent, LoginComponent, UsersComponent, DesktopsComponent]
 )
 class AppComponent implements OnInit {
   @override
   ngOnInit() {
-    new Future.delayed(const Duration(seconds: 2), () {
+    new Future.delayed(const Duration(seconds: 0.8), () {
       fadeSwitch($('#loading'), $('app'), 'block', 1000);
     });
   }

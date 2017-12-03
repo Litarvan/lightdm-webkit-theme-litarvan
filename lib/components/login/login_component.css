@@ -7,15 +7,16 @@
 }
 
 #avatar {
+    padding-top: 20px;
     border-radius: 15px;
     transition: background-color 150ms ease-in-out;
     max-height: 225px;
 }
 
-#avatar:hover {
+/*#avatar:hover {
     background: rgba(255, 255, 255, 0.1);
     cursor: pointer;
-}
+}*/
 
 #user {
     font-size: 24px;

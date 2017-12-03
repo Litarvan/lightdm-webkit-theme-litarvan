@@ -26,7 +26,7 @@ class LightDM {
     }
 
     for (JsObject obj in lightdm['users']) {
-      _users.add(new User(obj['display_name'], obj['username'], obj['image'] != null ? (obj['image'].startsWith('/') ? 'file://' : '') + obj['image'] : 'images/default_user.png'));
+      _users.add(new User(obj['display_name'], obj['username'], obj['image'] != null ? (obj['image'].startsWith('/') ? 'file://' : '') + obj['image'] : 'images/default_user.svg'));
     }
 
     for (JsObject obj in lightdm['languages']) {
