@@ -17,7 +17,7 @@ import 'package:lightdm_webkit_theme_litarvan/util.dart';
 class AppComponent implements OnInit {
   @override
   ngOnInit() {
-    new Future.delayed(const Duration(seconds: 2), () {
+    new Future.delayed(const Duration(seconds: 0.8), () {
       fadeSwitch($('#loading'), $('app'), 'block', 1000);
     });
   }
