@@ -12,7 +12,7 @@ import 'package:lightdm_webkit_theme_litarvan/util.dart';
   selector: 'app',
   templateUrl: 'app_component.html',
   styleUrls: const ['app_component.css'],
-  directives: const [SplashComponent, PowerButtonComponent, LoginComponent, UsersComponent, DesktopsComponent]
+  directives: const [PowerButtonComponent, LoginComponent, UsersComponent, DesktopsComponent]
 )
 class AppComponent implements OnInit {
   @override

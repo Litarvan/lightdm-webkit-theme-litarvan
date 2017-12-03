@@ -40,13 +40,7 @@ class LoginComponent implements OnInit {
     window.onKeyUp.listen((event) {
       var login = $('login');
 
-      if (login.style.opacity != '' || login.style.display != 'inline-block') {
-        return;
-      }
-
-      if (event.keyCode == KeyCode.ESC) {
-        fadeSwitch(login, $('splash'), 'block');
-      } else if (event.keyCode == KeyCode.ENTER && !this.login) {
+      if (event.keyCode == KeyCode.ENTER && !this.login) {
         var password = $('#password');
 
         password.setAttribute('readonly', 'true');
