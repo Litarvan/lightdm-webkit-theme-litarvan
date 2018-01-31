@@ -27,6 +27,14 @@ class Translations {
     'months': const ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'October', 'November', 'December']
   };
 
+static const POLISH = const {
+    'password': 'Hasło...',
+    'splash': 'Naciśnij "Spację" lub "Enter" aby kontynuować',
+    'date': 'weekd, day month year',
+    'days': const ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
+    'months': const ['Stycznia', 'Lutego', 'Marca', 'Kwietnia', 'Maja', 'Czerwca', 'Lipca', 'Sierpnia', 'Września', 'Października', 'Listopada', 'Grudnia']
+};
+
   LightDM _lightdm;
 
   Translations(this._lightdm);
@@ -38,6 +46,9 @@ class Translations {
             break;
         case 'nederlands':
             return DUTCH[key];
+            break;
+        case 'polski':
+            return POLISH[key];
             break;
         default:
             return ENGLISH[key];
