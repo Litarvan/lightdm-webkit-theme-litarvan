@@ -34,6 +34,15 @@ static const POLISH = const {
     'days': const ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'],
     'months': const ['Stycznia', 'Lutego', 'Marca', 'Kwietnia', 'Maja', 'Czerwca', 'Lipca', 'Sierpnia', 'Września', 'Października', 'Listopada', 'Grudnia']
 };
+  
+  static const GERMAN = const {
+    'password': 'Passwort...',
+    'splash': 'Drücken Sie "Leertaste" oder "Enter" um sich einzuloggen',
+    'date': 'weekd day month year',
+    'days': const ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],
+    'months': const ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+  };
+
 
   LightDM _lightdm;
 
@@ -49,6 +58,9 @@ static const POLISH = const {
             break;
         case 'polski':
             return POLISH[key];
+            break;
+        case 'deutsch':
+            return GERMAN[key];
             break;
         default:
             return ENGLISH[key];
