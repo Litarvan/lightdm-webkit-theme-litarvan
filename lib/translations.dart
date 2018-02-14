@@ -59,7 +59,7 @@ static const POLISH = const {
         case 'polski':
             return POLISH[key];
             break;
-        case 'Deutsch':
+        case 'deutsch':
             return GERMAN[key];
             break;
         default:
