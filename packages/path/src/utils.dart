@@ -8,7 +8,7 @@ import 'characters.dart' as chars;
 /// lowercase).
 bool isAlphabetic(int char) =>
     (char >= chars.UPPER_A && char <= chars.UPPER_Z) ||
-        (char >= chars.LOWER_A && char <= chars.LOWER_Z);
+    (char >= chars.LOWER_A && char <= chars.LOWER_Z);
 
 /// Returns whether [char] is the code for an ASCII digit.
 bool isNumeric(int char) => char >= chars.ZERO && char <= chars.NINE;

@@ -44,22 +44,24 @@ abstract class ResubscribableWatcher implements Watcher {
 
     _eventsController = new StreamController<WatchEvent>.broadcast(
         onListen: () {
-      watcher = _factory();
-      subscription = watcher.events.listen(_eventsController.add,
-          onError: _eventsController.addError,
-          onDone: _eventsController.close);
+          watcher = _factory();
+          subscription = watcher.events.listen(_eventsController.add,
+              onError: _eventsController.addError,
+              onDone: _eventsController.close);
 
-      // It's important that we complete the value of [_readyCompleter] at the
-      // time [onListen] is called, as opposed to the value when [watcher.ready]
-      // fires. A new completer may be created by that time.
-      watcher.ready.then(_readyCompleter.complete);
-    }, onCancel: () {
-      // Cancel the subscription before closing the watcher so that the
-      // watcher's `onDone` event doesn't close [events].
-      subscription.cancel();
-      watcher.close();
-      _readyCompleter = new Completer();
-    }, sync: true);
+          // It's important that we complete the value of [_readyCompleter] at the
+          // time [onListen] is called, as opposed to the value when [watcher.ready]
+          // fires. A new completer may be created by that time.
+          watcher.ready.then(_readyCompleter.complete);
+        },
+        onCancel: () {
+          // Cancel the subscription before closing the watcher so that the
+          // watcher's `onDone` event doesn't close [events].
+          subscription.cancel();
+          watcher.close();
+          _readyCompleter = new Completer();
+        },
+        sync: true);
   }
 }
 

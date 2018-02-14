@@ -58,6 +58,7 @@ class Glob implements Pattern {
     }
     return _contextIsAbsoluteCache;
   }
+
   bool _contextIsAbsoluteCache;
 
   /// Whether [pattern] could match absolute paths.
@@ -67,6 +68,7 @@ class Glob implements Pattern {
     }
     return _patternCanMatchAbsoluteCache;
   }
+
   bool _patternCanMatchAbsoluteCache;
 
   /// Whether [pattern] could match relative paths.
@@ -76,6 +78,7 @@ class Glob implements Pattern {
     }
     return _patternCanMatchRelativeCache;
   }
+
   bool _patternCanMatchRelativeCache;
 
   /// Returns [contents] with characters that are meaningful in globs
@@ -95,8 +98,8 @@ class Glob implements Pattern {
   /// case matches that of the characters in the glob. Otherwise, it matches
   /// regardless of case. This defaults to `false` when [context] is Windows and
   /// `true` otherwise.
-  factory Glob(String pattern, {p.Context context, bool recursive: false,
-      bool caseSensitive}) {
+  factory Glob(String pattern,
+      {p.Context context, bool recursive: false, bool caseSensitive}) {
     context ??= p.context;
     caseSensitive ??= context.style == p.Style.windows ? false : true;
     if (recursive) pattern += "{,/**}";

@@ -43,7 +43,7 @@ class _ProcessUtils {
  * cross-platform issues.
  */
 void exit(int code) {
-  if (code is !int) {
+  if (code is! int) {
     throw new ArgumentError("Integer value for exit code expected");
   }
   _ProcessUtils._exit(code);
@@ -62,7 +62,7 @@ void exit(int code) {
  * exit code.
  */
 void set exitCode(int code) {
-  if (code is !int) {
+  if (code is! int) {
     throw new ArgumentError("Integer value for exit code expected");
   }
   _ProcessUtils._setExitCode(code);
@@ -100,13 +100,42 @@ void sleep(Duration duration) {
 int get pid => _ProcessUtils._pid(null);
 
 /**
+ * [ProcessInfo] provides methods for retrieving information about the
+ * current process.
+ */
+class ProcessInfo {
+  /**
+   * The current resident set size of memory for the process.
+   *
+   * Note that the meaning of this field is platform dependent. For example,
+   * some memory accounted for here may be shared with other processes, or if
+   * the same page is mapped into a process's address space, it may be counted
+   * twice.
+   */
+  external static int get currentRss;
+
+  /**
+   * The high-watermark in bytes for the resident set size of memory for the
+   * process.
+   *
+   * Note that the meaning of this field is platform dependent. For example,
+   * some memory accounted for here may be shared with other processes, or if
+   * the same page is mapped into a process's address space, it may be counted
+   * twice.
+   */
+  external static int get maxRss;
+}
+
+/**
  * Modes for running a new process.
  */
 enum ProcessStartMode {
   /// Normal child process.
   NORMAL,
+
   /// Detached child process with no open communication channel.
   DETACHED,
+
   /// Detached child process with stdin, stdout and stderr still open
   /// for communication with the child.
   DETACHED_WITH_STDIO
@@ -292,13 +321,12 @@ abstract class Process {
    * The default value for `mode` is `ProcessStartMode.NORMAL`.
    */
   external static Future<Process> start(
-      String executable,
-      List<String> arguments,
+      String executable, List<String> arguments,
       {String workingDirectory,
-       Map<String, String> environment,
-       bool includeParentEnvironment: true,
-       bool runInShell: false,
-       ProcessStartMode mode: ProcessStartMode.NORMAL});
+      Map<String, String> environment,
+      bool includeParentEnvironment: true,
+      bool runInShell: false,
+      ProcessStartMode mode: ProcessStartMode.NORMAL});
 
   /**
    * Starts a process and runs it non-interactively to completion. The
@@ -342,15 +370,13 @@ abstract class Process {
    *     });
    */
   external static Future<ProcessResult> run(
-      String executable,
-      List<String> arguments,
+      String executable, List<String> arguments,
       {String workingDirectory,
-       Map<String, String> environment,
-       bool includeParentEnvironment: true,
-       bool runInShell: false,
-       Encoding stdoutEncoding: SYSTEM_ENCODING,
-       Encoding stderrEncoding: SYSTEM_ENCODING});
-
+      Map<String, String> environment,
+      bool includeParentEnvironment: true,
+      bool runInShell: false,
+      Encoding stdoutEncoding: SYSTEM_ENCODING,
+      Encoding stderrEncoding: SYSTEM_ENCODING});
 
   /**
    * Starts a process and runs it to completion. This is a synchronous
@@ -362,14 +388,13 @@ abstract class Process {
    * i.e., exit code, standard out and standard in.
    */
   external static ProcessResult runSync(
-      String executable,
-      List<String> arguments,
+      String executable, List<String> arguments,
       {String workingDirectory,
-       Map<String, String> environment,
-       bool includeParentEnvironment: true,
-       bool runInShell: false,
-       Encoding stdoutEncoding: SYSTEM_ENCODING,
-       Encoding stderrEncoding: SYSTEM_ENCODING});
+      Map<String, String> environment,
+      bool includeParentEnvironment: true,
+      bool runInShell: false,
+      Encoding stdoutEncoding: SYSTEM_ENCODING,
+      Encoding stderrEncoding: SYSTEM_ENCODING});
 
   /**
    * Kills the process with id [pid].
@@ -387,8 +412,8 @@ abstract class Process {
    * process. Otherwise the signal could not be sent, usually meaning
    * that the process is already dead.
    */
-  external static bool killPid(
-      int pid, [ProcessSignal signal = ProcessSignal.SIGTERM]);
+  external static bool killPid(int pid,
+      [ProcessSignal signal = ProcessSignal.SIGTERM]);
 
   /**
    * Returns the standard output stream of the process as a [:Stream:].
@@ -428,7 +453,6 @@ abstract class Process {
   bool kill([ProcessSignal signal = ProcessSignal.SIGTERM]);
 }
 
-
 /**
  * [ProcessResult] represents the result of running a non-interactive
  * process started with [Process.run] or [Process.runSync].
@@ -465,7 +489,6 @@ class ProcessResult {
 
   ProcessResult(this.pid, this.exitCode, this.stdout, this.stderr);
 }
-
 
 /**
  * On Posix systems, [ProcessSignal] is used to send a specific signal
@@ -533,7 +556,6 @@ class ProcessSignal {
   Stream<ProcessSignal> watch() => _ProcessUtils._watchSignal(this);
 }
 
-
 class SignalException implements IOException {
   final String message;
   final osError;
@@ -548,7 +570,6 @@ class SignalException implements IOException {
     return "SignalException: $message$msg";
   }
 }
-
 
 class ProcessException implements IOException {
   /**
@@ -571,8 +592,8 @@ class ProcessException implements IOException {
    */
   final int errorCode;
 
-  const ProcessException(this.executable, this.arguments, [this.message = "",
-                         this.errorCode = 0]);
+  const ProcessException(this.executable, this.arguments,
+      [this.message = "", this.errorCode = 0]);
   String toString() {
     var msg = (message == null) ? 'OS error code: $errorCode' : message;
     var args = arguments.join(' ');

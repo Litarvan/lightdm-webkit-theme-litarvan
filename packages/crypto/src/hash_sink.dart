@@ -127,7 +127,7 @@ abstract class HashSink implements Sink<List<int>> {
 
     if (_lengthInBytes > _maxMessageLengthInBytes) {
       throw new UnsupportedError(
-          "Hashing is unsupported for messages with more than 2^64 bits.");
+          'Hashing is unsupported for messages with more than 2^64 bits.');
     }
 
     var lengthInBits = _lengthInBytes * bitsPerByte;

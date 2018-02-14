@@ -81,7 +81,7 @@ class AggregateTransform extends BaseTransform {
   /// If an input with [id] cannot be found, throws an [AssetNotFoundException].
   Future<String> readInputAsString(AssetId id, {Encoding encoding}) {
     if (encoding == null) encoding = UTF8;
-    return getInput(id).then/*<Future<String>>*/(
+    return getInput(id).then(
         (input) => input.readAsString(encoding: encoding));
   }
 
@@ -100,8 +100,8 @@ class AggregateTransform extends BaseTransform {
   /// This is equivalent to calling [getInput] and catching an
   /// [AssetNotFoundException].
   Future<bool> hasInput(AssetId id) {
-    return DelegatingFuture.typed(
-        getInput(id).then((_) => true).catchError((error) {
+    return DelegatingFuture
+        .typed(getInput(id).then((_) => true).catchError((error) {
       if (error is AssetNotFoundException && error.id == id) return false;
       throw error;
     }));
@@ -146,8 +146,7 @@ class AggregateTransformController extends BaseTransformController {
   }
 
   /// Returns whether an input with the given [id] was added via [addInput].
-  bool addedId(AssetId id) =>
-      transform._emittedPrimaryInputs.containsId(id);
+  bool addedId(AssetId id) => transform._emittedPrimaryInputs.containsId(id);
 
   void done() {
     transform._inputController.close();

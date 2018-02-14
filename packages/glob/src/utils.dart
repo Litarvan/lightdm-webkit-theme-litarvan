@@ -18,14 +18,13 @@ class Range {
   Range(this.min, this.max);
 
   /// Returns a range that covers only [value].
-  Range.singleton(int value)
-      : this(value, value);
+  Range.singleton(int value) : this(value, value);
 
   /// Whether [this] contains [value].
   bool contains(int value) => value >= min && value <= max;
 
-  bool operator==(Object other) => other is Range &&
-      other.min == min && other.max == max;
+  bool operator ==(Object other) =>
+      other is Range && other.min == min && other.max == max;
 
   int get hashCode => 3 * min + 7 * max;
 }

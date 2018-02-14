@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library services.src.refactoring.rename_local;
-
 import 'dart:async';
 
 import 'package:analysis_server/src/protocol_server.dart' hide Element;
@@ -17,6 +15,7 @@ import 'package:analysis_server/src/services/search/search_engine.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/src/dart/element/ast_provider.dart';
 import 'package:analyzer/src/generated/source.dart';
 import 'package:analyzer/src/generated/utilities_dart.dart';
 
@@ -24,10 +23,15 @@ import 'package:analyzer/src/generated/utilities_dart.dart';
  * A [Refactoring] for renaming [LocalElement]s.
  */
 class RenameLocalRefactoringImpl extends RenameRefactoringImpl {
+  final AstProvider astProvider;
+  final ResolvedUnitCache unitCache;
+
   Set<LocalElement> elements = new Set<LocalElement>();
 
-  RenameLocalRefactoringImpl(SearchEngine searchEngine, LocalElement element)
-      : super(searchEngine, element);
+  RenameLocalRefactoringImpl(
+      SearchEngine searchEngine, this.astProvider, LocalElement element)
+      : unitCache = new ResolvedUnitCache(astProvider),
+        super(searchEngine, element);
 
   @override
   LocalElement get element => super.element as LocalElement;
@@ -46,18 +50,14 @@ class RenameLocalRefactoringImpl extends RenameRefactoringImpl {
   @override
   Future<RefactoringStatus> checkFinalConditions() async {
     RefactoringStatus result = new RefactoringStatus();
-    // prepare all elements (usually one)
     await _prepareElements();
-    // checks the resolved CompilationUnit(s)
     for (LocalElement element in elements) {
-      Source unitSource = element.source;
-      List<Source> librarySources = context.getLibrariesContaining(unitSource);
-      for (Source librarySource in librarySources) {
-        _analyzePossibleConflicts_inLibrary(
-            result, unitSource, librarySource, element);
+      CompilationUnit unit = await unitCache.getUnit(element);
+      if (unit != null) {
+        SourceRange elementRange = element.visibleRange;
+        unit.accept(new _ConflictValidatorVisitor(this, result, elementRange));
       }
     }
-    // done
     return result;
   }
 
@@ -80,21 +80,6 @@ class RenameLocalRefactoringImpl extends RenameRefactoringImpl {
       addDeclarationEdit(element);
       await searchEngine.searchReferences(element).then(addReferenceEdits);
     }
-  }
-
-  void _analyzePossibleConflicts_inLibrary(RefactoringStatus result,
-      Source unitSource, Source librarySource, LocalElement element) {
-    // prepare resolved unit
-    CompilationUnit unit = null;
-    try {
-      unit = context.resolveCompilationUnit2(unitSource, librarySource);
-    } catch (e) {}
-    if (unit == null) {
-      return;
-    }
-    // check for conflicts in the unit
-    SourceRange elementRange = element.visibleRange;
-    unit.accept(new _ConflictValidatorVisitor(this, result, elementRange));
   }
 
   /**

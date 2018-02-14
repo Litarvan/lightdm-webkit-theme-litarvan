@@ -32,6 +32,9 @@ abstract class File implements Resource {
    */
   int get modificationStamp;
 
+  @override
+  File copyTo(Folder parentFolder);
+
   /**
    * Create a new [Source] instance that serves this file.
    */
@@ -114,6 +117,14 @@ abstract class Folder implements Resource {
    */
   bool contains(String path);
 
+  @override
+  Folder copyTo(Folder parentFolder);
+
+  /**
+   * If this folder does not already exist, create it.
+   */
+  void create();
+
   /**
    * Return an existing child [Resource] with the given [relPath].
    * Return a not existing [File] if no such child exist.
@@ -139,6 +150,8 @@ abstract class Folder implements Resource {
   /**
    * Return a list of existing direct children [Resource]s (folders and files)
    * in this folder, in no particular order.
+   *
+   * On I/O errors, this will throw [FileSystemException].
    */
   List<Resource> getChildren();
 }
@@ -168,6 +181,19 @@ abstract class Resource {
    * denote this resource.
    */
   String get shortName;
+
+  /**
+   * Copy this resource to a child of the [parentFolder] with the same kind and
+   * [shortName] as this resource. If this resource is a folder, then all of the
+   * contents of the folder will be recursively copied.
+   *
+   * The parent folder is created if it does not already exist.
+   *
+   * Existing files and folders will be overwritten.
+   *
+   * Return the resource corresponding to this resource in the parent folder.
+   */
+  Resource copyTo(Folder parentFolder);
 
   /**
    * Synchronously deletes this resource and its children.

@@ -19,7 +19,6 @@ class ScalarStyle {
   /// See http://yaml.org/spec/1.2/spec.html#id2795688.
   static const LITERAL = const ScalarStyle._("LITERAL");
 
-
   /// The folded scalar style, with a `>` prefix.
   ///
   /// See http://yaml.org/spec/1.2/spec.html#id2796251.

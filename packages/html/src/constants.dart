@@ -514,17 +514,27 @@ const rcdataElements = const [
 ];
 
 const Map<String, List<String>> booleanAttributes = const {
-  "": const ["irrelevant",],
-  "style": const ["scoped",],
-  "img": const ["ismap",],
+  "": const [
+    "irrelevant",
+  ],
+  "style": const [
+    "scoped",
+  ],
+  "img": const [
+    "ismap",
+  ],
   "audio": const ["autoplay", "controls"],
   "video": const ["autoplay", "controls"],
   "script": const ["defer", "async"],
-  "details": const ["open",],
+  "details": const [
+    "open",
+  ],
   "datagrid": const ["multiple", "disabled"],
   "command": const ["hidden", "disabled", "checked", "default"],
   "hr": const ["noshade"],
-  "men": const ["autosubmit",],
+  "men": const [
+    "autosubmit",
+  ],
   "fieldset": const ["disabled", "readonly"],
   "option": const ["disabled", "readonly", "selected"],
   "optgroup": const ["disabled", "readonly"],

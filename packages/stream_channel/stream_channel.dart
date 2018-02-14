@@ -97,8 +97,8 @@ abstract class StreamChannel<T> {
   /// transforming it with a [StreamTransformer]. This is a lighter-weight way
   /// of preserving that guarantee in particular than
   /// [StreamChannel.withGuarantees].
-  factory StreamChannel.withCloseGuarantee(Stream<T> stream,
-          StreamSink<T> sink) =>
+  factory StreamChannel.withCloseGuarantee(
+          Stream<T> stream, StreamSink<T> sink) =>
       new CloseGuaranteeChannel(stream, sink);
 
   /// Connects [this] to [other], so that any values emitted by either are sent
@@ -108,8 +108,7 @@ abstract class StreamChannel<T> {
   /// Transforms [this] using [transformer].
   ///
   /// This is identical to calling `transformer.bind(channel)`.
-  StreamChannel/*<S>*/ transform/*<S>*/(
-      StreamChannelTransformer<dynamic/*=S*/, T> transformer);
+  StreamChannel<S> transform<S>(StreamChannelTransformer<S, T> transformer);
 
   /// Transforms only the [stream] component of [this] using [transformer].
   StreamChannel<T> transformStream(StreamTransformer<T, T> transformer);
@@ -130,7 +129,7 @@ abstract class StreamChannel<T> {
   /// If any events emitted by [stream] aren't of type [S], they're converted
   /// into [CastError] events. Similarly, if any events are added to [sync] that
   /// aren't of type [S], a [CastError] is thrown.
-  StreamChannel/*<S>*/ cast/*<S>*/();
+  StreamChannel<S> cast<S>();
 }
 
 /// An implementation of [StreamChannel] that simply takes a stream and a sink
@@ -153,8 +152,7 @@ abstract class StreamChannelMixin<T> implements StreamChannel<T> {
     other.stream.pipe(sink);
   }
 
-  StreamChannel/*<S>*/ transform/*<S>*/(
-          StreamChannelTransformer<dynamic/*=S*/, T> transformer) =>
+  StreamChannel<S> transform<S>(StreamChannelTransformer<S, T> transformer) =>
       transformer.bind(this);
 
   StreamChannel<T> transformStream(StreamTransformer<T, T> transformer) =>
@@ -169,6 +167,6 @@ abstract class StreamChannelMixin<T> implements StreamChannel<T> {
   StreamChannel<T> changeSink(StreamSink<T> change(StreamSink<T> sink)) =>
       new StreamChannel.withCloseGuarantee(stream, change(sink));
 
-  StreamChannel/*<S>*/ cast/*<S>*/() => new StreamChannel(
+  StreamChannel<S> cast<S>() => new StreamChannel(
       DelegatingStream.typed(stream), DelegatingStreamSink.typed(sink));
 }

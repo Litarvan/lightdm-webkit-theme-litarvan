@@ -80,9 +80,7 @@ class WindowsStyle extends InternalStyle {
       // Drive-letter paths look like "file:///C:/path/to/file". The
       // replaceFirst removes the extra initial slash. Otherwise, leave the
       // slash to match IE's interpretation of "/foo" as a root-relative path.
-      if (path.length >= 3 &&
-          path.startsWith('/') &&
-          isDriveLetter(path, 1)) {
+      if (path.length >= 3 && path.startsWith('/') && isDriveLetter(path, 1)) {
         path = path.replaceFirst("/", "");
       }
     } else {
@@ -123,8 +121,8 @@ class WindowsStyle extends InternalStyle {
 
       // Get rid of the trailing "\" in "C:\" because the URI constructor will
       // add a separator on its own.
-      parsed.parts.insert(
-          0, parsed.root.replaceAll("/", "").replaceAll("\\", ""));
+      parsed.parts
+          .insert(0, parsed.root.replaceAll("/", "").replaceAll("\\", ""));
 
       return new Uri(scheme: 'file', pathSegments: parsed.parts);
     }

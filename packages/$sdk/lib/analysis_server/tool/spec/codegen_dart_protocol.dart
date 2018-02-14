@@ -2,12 +2,12 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library codegen.protocol;
-
 import 'dart:convert';
 
 import 'package:analyzer/src/codegen/tools.dart';
+import 'package:front_end/src/codegen/tools.dart';
 import 'package:html/dom.dart' as dom;
+import 'package:path/path.dart' as path;
 
 import 'api.dart';
 import 'codegen_dart.dart';
@@ -28,11 +28,14 @@ const Map<String, String> specialElementFlags = const {
   'deprecated': '0x20'
 };
 
-final GeneratedFile target = new GeneratedFile(
-    'lib/plugin/protocol/generated_protocol.dart', (String pkgPath) {
-  CodegenProtocolVisitor visitor = new CodegenProtocolVisitor(readApi(pkgPath));
-  return visitor.collectCode(visitor.visitApi);
-});
+GeneratedFile target(bool responseRequiresRequestTime) {
+  return new GeneratedFile('lib/protocol/protocol_generated.dart',
+      (String pkgPath) {
+    CodegenProtocolVisitor visitor = new CodegenProtocolVisitor(
+        path.basename(pkgPath), responseRequiresRequestTime, readApi(pkgPath));
+    return visitor.collectCode(visitor.visitApi);
+  });
+}
 
 /**
  * Callback type used to represent arbitrary code generation.
@@ -67,6 +70,17 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
       'Clients may not extend, implement or mix-in this class.';
 
   /**
+   * The name of the package into which code is being generated.
+   */
+  final String packageName;
+
+  /**
+   * A flag indicating whether the class [Response] requires a `requestTime`
+   * parameter.
+   */
+  final bool responseRequiresRequestTime;
+
+  /**
    * Visitor used to produce doc comments.
    */
   final ToHtmlVisitor toHtmlVisitor;
@@ -78,7 +92,8 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
    */
   final Map<String, ImpliedType> impliedTypes;
 
-  CodegenProtocolVisitor(Api api)
+  CodegenProtocolVisitor(
+      this.packageName, this.responseRequiresRequestTime, Api api)
       : toHtmlVisitor = new ToHtmlVisitor(api),
         impliedTypes = computeImpliedTypes(api),
         super(api) {
@@ -113,13 +128,14 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
   }
 
   /**
-   * Translate each type implied by the API to a class.
+   * Translate each of the given [types] implied by the API to a class.
    */
-  void emitClasses() {
-    for (ImpliedType impliedType in impliedTypes.values) {
+  void emitClasses(List<ImpliedType> types) {
+    for (ImpliedType impliedType in types) {
       TypeDecl type = impliedType.type;
       String dartTypeName = capitalize(impliedType.camelName);
       if (type == null) {
+        writeln();
         emitEmptyObjectClass(dartTypeName, impliedType);
       } else if (type is TypeObject) {
         writeln();
@@ -152,14 +168,14 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
       case 'requestParams':
         inputType = 'Request';
         inputName = 'request';
-        fieldName = '_params';
+        fieldName = 'params';
         makeDecoder = 'new RequestDecoder(request)';
         constructorName = 'fromRequest';
         break;
       case 'requestResult':
         inputType = 'Response';
         inputName = 'response';
-        fieldName = '_result';
+        fieldName = 'result';
         makeDecoder =
             'new ResponseDecoder(REQUEST_ID_REFACTORING_KINDS.remove(response.id))';
         constructorName = 'fromResponse';
@@ -167,7 +183,7 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
       case 'notificationParams':
         inputType = 'Notification';
         inputName = 'notification';
-        fieldName = '_params';
+        fieldName = 'params';
         makeDecoder = 'new ResponseDecoder(null)';
         constructorName = 'fromNotification';
         break;
@@ -216,8 +232,24 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
         toHtmlVisitor.write(disclaimer);
       });
     }));
-    writeln('class $className {');
+    write('class $className');
+    if (impliedType.kind == 'refactoringFeedback') {
+      writeln(' extends RefactoringFeedback implements HasToJson {');
+    } else if (impliedType.kind == 'refactoringOptions') {
+      writeln(' extends RefactoringOptions implements HasToJson {');
+    } else if (impliedType.kind == 'requestParams') {
+      writeln(' implements RequestParams {');
+    } else if (impliedType.kind == 'requestResult') {
+      writeln(' implements ResponseResult {');
+    } else {
+      writeln(' {');
+    }
     indent(() {
+      if (impliedType.kind == 'requestResult' ||
+          impliedType.kind == 'requestParams') {
+        emitEmptyToJsonMember();
+        writeln();
+      }
       if (emitToRequestMember(impliedType)) {
         writeln();
       }
@@ -232,6 +264,14 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
       emitObjectHashCode(null, className);
     });
     writeln('}');
+  }
+
+  /**
+   * Emit the toJson() code for an empty class.
+   */
+  void emitEmptyToJsonMember() {
+    writeln('@override');
+    writeln('Map<String, dynamic> toJson() => <String, dynamic>{};');
   }
 
   /**
@@ -284,6 +324,7 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
       writeln('];');
       writeln();
 
+      writeln('@override');
       writeln('final String name;');
       writeln();
       writeln('const $className._(this.name);');
@@ -360,6 +401,20 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
     writeln('}');
   }
 
+  void emitImports() {
+    writeln("import 'dart:convert' hide JsonDecoder;");
+    writeln();
+    writeln("import 'package:analyzer/src/generated/utilities_general.dart';");
+    writeln("import 'package:$packageName/protocol/protocol.dart';");
+    writeln(
+        "import 'package:$packageName/src/protocol/protocol_internal.dart';");
+    for (String uri in api.types.importUris) {
+      write("import '");
+      write(uri);
+      writeln("';");
+    }
+  }
+
   /**
    * Emit the class to encapsulate an object type.
    */
@@ -378,12 +433,16 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
     }));
     write('class $className');
     if (impliedType.kind == 'refactoringFeedback') {
-      write(' extends RefactoringFeedback');
+      writeln(' extends RefactoringFeedback {');
+    } else if (impliedType.kind == 'refactoringOptions') {
+      writeln(' extends RefactoringOptions {');
+    } else if (impliedType.kind == 'requestParams') {
+      writeln(' implements RequestParams {');
+    } else if (impliedType.kind == 'requestResult') {
+      writeln(' implements ResponseResult {');
+    } else {
+      writeln(' implements HasToJson {');
     }
-    if (impliedType.kind == 'refactoringOptions') {
-      write(' extends RefactoringOptions');
-    }
-    writeln(' implements HasToJson {');
     indent(() {
       if (emitSpecialStaticMembers(className)) {
         writeln();
@@ -524,7 +583,7 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
    */
   void emitObjectEqualsMember(TypeObject type, String className) {
     writeln('@override');
-    writeln('bool operator==(other) {');
+    writeln('bool operator ==(other) {');
     indent(() {
       writeln('if (other is $className) {');
       indent(() {
@@ -623,7 +682,7 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
             writeln(' else {');
             indent(() {
               writeln(
-                  "throw jsonDecoder.missingKey(jsonPath, $fieldNameString);");
+                  "throw jsonDecoder.mismatch(jsonPath, $fieldNameString);");
             });
             writeln('}');
           } else {
@@ -832,6 +891,7 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
    * Emit the toJson() code for an object class.
    */
   void emitToJsonMember(TypeObject type) {
+    writeln('@override');
     writeln('Map<String, dynamic> toJson() {');
     indent(() {
       writeln('Map<String, dynamic> result = {};');
@@ -883,6 +943,7 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
    */
   bool emitToRequestMember(ImpliedType impliedType) {
     if (impliedType.kind == 'requestParams') {
+      writeln('@override');
       writeln('Request toRequest(String id) {');
       indent(() {
         String methodString =
@@ -902,10 +963,19 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
    */
   bool emitToResponseMember(ImpliedType impliedType) {
     if (impliedType.kind == 'requestResult') {
-      writeln('Response toResponse(String id) {');
+      writeln('@override');
+      if (responseRequiresRequestTime) {
+        writeln('Response toResponse(String id, int requestTime) {');
+      } else {
+        writeln('Response toResponse(String id) {');
+      }
       indent(() {
         String jsonPart = impliedType.type != null ? 'toJson()' : 'null';
-        writeln('return new Response(id, result: $jsonPart);');
+        if (responseRequiresRequestTime) {
+          writeln('return new Response(id, requestTime, result: $jsonPart);');
+        } else {
+          writeln('return new Response(id, result: $jsonPart);');
+        }
       });
       writeln('}');
       return true;
@@ -1010,6 +1080,19 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
   }
 
   /**
+   * Return a list of the classes to be emitted.
+   */
+  List<ImpliedType> getClassesToEmit() {
+    List<ImpliedType> types = impliedTypes.values.where((ImpliedType type) {
+      ApiNode node = type.apiNode;
+      return !(node is TypeDefinition && node.isExternal);
+    }).toList();
+    types.sort((first, second) =>
+        capitalize(first.camelName).compareTo(capitalize(second.camelName)));
+    return types;
+  }
+
+  /**
    * True if the constructor argument for the given field should be optional.
    */
   bool isOptionalConstructorArg(String className, TypeObjectField field) {
@@ -1087,11 +1170,10 @@ class CodegenProtocolVisitor extends DartCodegenVisitor with CodeGenerator {
 
   @override
   visitApi() {
-    outputHeader();
+    outputHeader(year: '2017');
     writeln();
-    writeln('part of analysis_server.plugin.protocol.protocol;');
-    writeln();
-    emitClasses();
+    emitImports();
+    emitClasses(getClassesToEmit());
   }
 }
 
@@ -1122,6 +1204,7 @@ abstract class FromJsonCode {
  * Representation of FromJsonCode for a function defined elsewhere.
  */
 class FromJsonFunction extends FromJsonCode {
+  @override
   final String asClosure;
 
   FromJsonFunction(this.asClosure);
@@ -1193,6 +1276,7 @@ abstract class ToJsonCode {
  * Representation of ToJsonCode for a function defined elsewhere.
  */
 class ToJsonFunction extends ToJsonCode {
+  @override
   final String asClosure;
 
   ToJsonFunction(this.asClosure);

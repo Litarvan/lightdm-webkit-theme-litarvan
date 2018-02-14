@@ -19,8 +19,7 @@ class AssetNodeSet extends DelegatingSet<AssetNode> {
   /// A map from asset ids to assets in the set.
   final _assetsById = new Map<AssetId, AssetNode>();
 
-  AssetNodeSet()
-      : super(new Set());
+  AssetNodeSet() : super(new Set());
 
   /// Returns the asset node in the set with [id], or `null` if none exists.
   AssetNode operator [](AssetId id) => _assetsById[id];

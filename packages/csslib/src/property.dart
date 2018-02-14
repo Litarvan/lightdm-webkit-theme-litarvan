@@ -1245,4 +1245,4 @@ class BoxEdge {
   num get height => (top != null ? top : 0) + (bottom != null ? bottom : 0);
 }
 
-/*=T*/ _mergeVal/*<T>*/(/*=T*/ x, /*=T*/ y) => y != null ? y : x;
+T _mergeVal<T>(T x, T y) => y != null ? y : x;

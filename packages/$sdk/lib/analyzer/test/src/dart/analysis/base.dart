@@ -7,14 +7,17 @@ import 'package:analyzer/dart/element/visitor.dart';
 import 'package:analyzer/file_system/file_system.dart';
 import 'package:analyzer/file_system/memory_file_system.dart';
 import 'package:analyzer/source/package_map_resolver.dart';
-import 'package:analyzer/src/dart/analysis/byte_store.dart';
 import 'package:analyzer/src/dart/analysis/driver.dart';
 import 'package:analyzer/src/dart/analysis/file_state.dart';
 import 'package:analyzer/src/dart/analysis/status.dart';
 import 'package:analyzer/src/generated/engine.dart' show AnalysisOptionsImpl;
 import 'package:analyzer/src/generated/sdk.dart';
 import 'package:analyzer/src/generated/source.dart';
+import 'package:analyzer/src/summary/package_bundle_reader.dart';
+import 'package:front_end/src/base/performace_logger.dart';
+import 'package:front_end/src/incremental/byte_store.dart';
 import 'package:test/test.dart';
+import 'package:typed_mock/typed_mock.dart';
 
 import '../../context/mock_sdk.dart';
 
@@ -51,14 +54,18 @@ class BaseAnalysisDriverTest {
   final StringBuffer logBuffer = new StringBuffer();
   PerformanceLog logger;
 
+  final UriResolver generatedUriResolver = new _GeneratedUriResolverMock();
   AnalysisDriverScheduler scheduler;
   AnalysisDriver driver;
   final List<AnalysisStatus> allStatuses = <AnalysisStatus>[];
   final List<AnalysisResult> allResults = <AnalysisResult>[];
+  final List<ExceptionResult> allExceptions = <ExceptionResult>[];
 
   String testProject;
   String testFile;
   String testCode;
+
+  bool get disableChangesAndCacheAllResults => false;
 
   void addTestFile(String content, {bool priority: false}) {
     testCode = content;
@@ -67,6 +74,29 @@ class BaseAnalysisDriverTest {
     if (priority) {
       driver.priorityFiles = [testFile];
     }
+  }
+
+  AnalysisDriver createAnalysisDriver({SummaryDataStore externalSummaries}) {
+    return new AnalysisDriver(
+        scheduler,
+        logger,
+        provider,
+        byteStore,
+        contentOverlay,
+        null,
+        new SourceFactory([
+          new DartUriResolver(sdk),
+          generatedUriResolver,
+          new PackageMapUriResolver(provider, <String, List<Folder>>{
+            'test': [provider.getFolder(testProject)]
+          }),
+          new ResourceUriResolver(provider)
+        ], null, provider),
+        new AnalysisOptionsImpl()
+          ..strongMode = true
+          ..enableUriInPartOf = true,
+        disableChangesAndCacheAllResults: disableChangesAndCacheAllResults,
+        externalSummaries: externalSummaries);
   }
 
   int findOffset(String search) {
@@ -104,25 +134,14 @@ class BaseAnalysisDriverTest {
     testFile = _p('/test/lib/test.dart');
     logger = new PerformanceLog(logBuffer);
     scheduler = new AnalysisDriverScheduler(logger);
-    driver = new AnalysisDriver(
-        scheduler,
-        logger,
-        provider,
-        byteStore,
-        contentOverlay,
-        'test',
-        new SourceFactory([
-          new DartUriResolver(sdk),
-          new PackageMapUriResolver(provider, <String, List<Folder>>{
-            'test': [provider.getFolder(testProject)]
-          }),
-          new ResourceUriResolver(provider)
-        ], null, provider),
-        new AnalysisOptionsImpl()..strongMode = true);
+    driver = createAnalysisDriver();
     scheduler.start();
-    driver.status.listen(allStatuses.add);
+    scheduler.status.listen(allStatuses.add);
     driver.results.listen(allResults.add);
+    driver.exceptions.listen(allExceptions.add);
   }
+
+  void tearDown() {}
 
   String _p(String path) => provider.convertPath(path);
 }
@@ -140,3 +159,5 @@ class _ElementVisitorFunctionWrapper extends GeneralizingElementVisitor {
     super.visitElement(element);
   }
 }
+
+class _GeneratedUriResolverMock extends TypedMock implements UriResolver {}

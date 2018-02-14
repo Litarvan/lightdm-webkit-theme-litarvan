@@ -7,9 +7,8 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'bound_multipart_stream.dart';
-import 'mime_shared.dart';
 import 'char_code.dart';
-
+import 'mime_shared.dart';
 
 Uint8List _getBoundary(String boundary) {
   var charCodes = boundary.codeUnits;
@@ -32,7 +31,6 @@ Uint8List _getBoundary(String boundary) {
  */
 class MimeMultipartTransformer
     implements StreamTransformer<List<int>, MimeMultipart> {
-
   final List<int> _boundary;
 
   /**

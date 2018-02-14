@@ -197,8 +197,8 @@ class AssetCascade {
     _phases.removeRange(transformers.length + 1, _phases.length);
 
     _phaseStatusSubscription.cancel();
-    _phaseStatusSubscription = _phases.last.onStatusChange
-        .listen(_streams.changeStatus);
+    _phaseStatusSubscription =
+        _phases.last.onStatusChange.listen(_streams.changeStatus);
 
     _streams.onAssetPool.add(_phases.last.onAsset);
   }

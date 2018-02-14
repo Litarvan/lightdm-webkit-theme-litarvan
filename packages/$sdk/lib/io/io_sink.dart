@@ -15,20 +15,17 @@ part of dart.io;
  * While a stream is being added using [addStream], any further attempts
  * to add or write to the [IOSink] will fail until the [addStream] completes.
  *
- * If data is added to the [IOSink] after the sink is closed, the data will be
- * ignored. Use the [done] future to be notified when the [IOSink] is closed.
+ * It is an error to add data to the [IOSink] after the sink is closed.
  */
 abstract class IOSink implements StreamSink<List<int>>, StringSink {
-
   /**
    * Create an [IOSink] that outputs to a [target] [StreamConsumer] of bytes.
    *
    * Text written to [StreamSink] methods is encoded to bytes using [encoding]
    * before being output on [target].
    */
-  factory IOSink(StreamConsumer<List<int>> target,
-                 {Encoding encoding: UTF8})
-      => new _IOSinkImpl(target, encoding);
+  factory IOSink(StreamConsumer<List<int>> target, {Encoding encoding: UTF8}) =>
+      new _IOSinkImpl(target, encoding);
 
   /**
    * The [Encoding] used when writing strings. Depending on the
@@ -112,7 +109,7 @@ abstract class IOSink implements StreamSink<List<int>>, StringSink {
 
   /**
    * Returns a [Future] that completes once all buffered data is accepted by the
-   * to underlying [StreamConsumer].
+   * underlying [StreamConsumer].
    *
    * This method must not be called while an [addStream] is incomplete.
    *
@@ -123,6 +120,10 @@ abstract class IOSink implements StreamSink<List<int>>, StringSink {
 
   /**
    * Close the target consumer.
+   *
+   * NOTE: Writes to the [IOSink] may be buffered, and may not be flushed by
+   * a call to `close()`. To flush all buffered writes, call `flush()` before
+   * calling `close()`.
    */
   Future close();
 
@@ -145,12 +146,33 @@ class _StreamSinkImpl<T> implements StreamSink<T> {
 
   _StreamSinkImpl(this._target);
 
+  void _reportClosedSink() {
+    // TODO(29554): this is very brittle and depends on the layout of the
+    // stderr class.
+    if (this == stderr._sink) {
+      // We can't report on stderr anymore (as we would otherwise
+      // have an infinite recursion.
+      throw new StateError("Stderr is closed.");
+    }
+    // TODO(29554): throw a StateError, and don't just report the problem.
+    stderr.writeln("StreamSink is closed and adding to it is an error.");
+    stderr.writeln("  See http://dartbug.com/29554.");
+    stderr.writeln(StackTrace.current);
+  }
+
   void add(T data) {
-    if (_isClosed) return;
+    if (_isClosed) {
+      _reportClosedSink();
+      return;
+    }
     _controller.add(data);
   }
 
   void addError(error, [StackTrace stackTrace]) {
+    if (_isClosed) {
+      _reportClosedSink();
+      return;
+    }
     _controller.addError(error, stackTrace);
   }
 
@@ -162,11 +184,11 @@ class _StreamSinkImpl<T> implements StreamSink<T> {
     if (_hasError) return done;
     // Wait for any sync operations to complete.
     Future targetAddStream() {
-      return _target.addStream(stream)
-          .whenComplete(() {
-            _isBound = false;
-          });
+      return _target.addStream(stream).whenComplete(() {
+        _isBound = false;
+      });
     }
+
     if (_controllerInstance == null) return targetAddStream();
     var future = _controllerCompleter.future;
     _controllerInstance.close();
@@ -254,18 +276,16 @@ class _StreamSinkImpl<T> implements StreamSink<T> {
           _completeDoneError(error, stackTrace);
         }
       });
-   }
+    }
     return _controllerInstance;
   }
 }
-
 
 class _IOSinkImpl extends _StreamSinkImpl<List<int>> implements IOSink {
   Encoding _encoding;
   bool _encodingMutable = true;
 
-  _IOSinkImpl(StreamConsumer<List<int>> target, this._encoding)
-      : super(target);
+  _IOSinkImpl(StreamConsumer<List<int>> target, this._encoding) : super(target);
 
   Encoding get encoding => _encoding;
 

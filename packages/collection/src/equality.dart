@@ -274,12 +274,10 @@ class _MapEntry {
           7 * equality._valueEquality.hash(value)) &
       _HASH_MASK;
 
-  bool operator ==(Object other) {
-    if (other is! _MapEntry) return false;
-    _MapEntry otherEntry = other;
-    return equality._keyEquality.equals(key, otherEntry.key) &&
-        equality._valueEquality.equals(value, otherEntry.value);
-  }
+  bool operator ==(Object other) =>
+      other is _MapEntry &&
+      equality._keyEquality.equals(key, other.key) &&
+      equality._valueEquality.equals(value, other.value);
 }
 
 /// Equality on maps.
@@ -411,26 +409,23 @@ class DeepCollectionEquality implements Equality {
 
   bool equals(e1, e2) {
     if (e1 is Set) {
-      if (e2 is! Set) return false;
-      return new SetEquality(this).equals(e1, e2);
+      return e2 is Set && new SetEquality(this).equals(e1, e2);
     }
     if (e1 is Map) {
-      if (e2 is! Map) return false;
-      return new MapEquality(keys: this, values: this).equals(e1, e2);
+      return e2 is Map &&
+          new MapEquality(keys: this, values: this).equals(e1, e2);
     }
     if (!_unordered) {
       if (e1 is List) {
-        if (e2 is! List) return false;
-        return new ListEquality(this).equals(e1, e2);
+        return e2 is List && new ListEquality(this).equals(e1, e2);
       }
       if (e1 is Iterable) {
-        if (e2 is! Iterable) return false;
-        return new IterableEquality(this).equals(e1, e2);
+        return e2 is Iterable && new IterableEquality(this).equals(e1, e2);
       }
     } else if (e1 is Iterable) {
-      if (e2 is! Iterable) return false;
       if (e1 is List != e2 is List) return false;
-      return new UnorderedIterableEquality(this).equals(e1, e2);
+      return e2 is Iterable &&
+          new UnorderedIterableEquality(this).equals(e1, e2);
     }
     return _base.equals(e1, e2);
   }

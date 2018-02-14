@@ -41,9 +41,9 @@ class StreamChannelTransformer<S, T> {
   /// throws a [CastError]. This also means that calls to [StreamSink.add] on
   /// the transformed channel's sink may throw a [CastError] if the argument
   /// type doesn't match the reified type of the sink.
-  static StreamChannelTransformer/*<S, T>*/ typed/*<S, T>*/(
+  static StreamChannelTransformer<S, T> typed<S, T>(
           StreamChannelTransformer transformer) =>
-      transformer is StreamChannelTransformer/*<S, T>*/
+      transformer is StreamChannelTransformer<S, T>
           ? transformer
           : new TypeSafeStreamChannelTransformer(transformer);
 
@@ -58,9 +58,10 @@ class StreamChannelTransformer<S, T> {
   /// and all output from its stream is decoded using [Codec.decoder].
   StreamChannelTransformer.fromCodec(Codec<S, T> codec)
       : this(
-          typedStreamTransformer(codec.decoder),
-          StreamSinkTransformer.typed(
-              new StreamSinkTransformer.fromStreamTransformer(codec.encoder)));
+            typedStreamTransformer(codec.decoder),
+            StreamSinkTransformer.typed(
+                new StreamSinkTransformer.fromStreamTransformer(
+                    codec.encoder)));
 
   /// Transforms the events sent to and emitted by [channel].
   ///

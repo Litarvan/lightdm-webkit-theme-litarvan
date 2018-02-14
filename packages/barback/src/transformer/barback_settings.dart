@@ -48,8 +48,10 @@ class BarbackMode {
   factory BarbackMode(String name) {
     // Use canonical instances of known names.
     switch (name) {
-      case "debug": return BarbackMode.DEBUG;
-      case "release": return BarbackMode.RELEASE;
+      case "debug":
+        return BarbackMode.DEBUG;
+      case "release":
+        return BarbackMode.RELEASE;
       default:
         return new BarbackMode._(name);
     }

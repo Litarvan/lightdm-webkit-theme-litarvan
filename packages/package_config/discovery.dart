@@ -33,6 +33,7 @@ Future<Packages> loadPackagesFile(Uri packagesFile,
     Map<String, Uri> packageMap = pkgfile.parse(bytes, packagesFile);
     return new MapPackages(packageMap);
   }
+
   if (packagesFile.scheme == "file") {
     File file = new File.fromUri(packagesFile);
     return parseBytes(await file.readAsBytes());
@@ -125,6 +126,7 @@ FileSystemEntity _findPackagesFile(String workingDirectory) {
     if (file.existsSync()) return file;
     return null;
   }
+
   // Check for $cwd/.packages
   var packagesCfgFile = checkForConfigFile(dir);
   if (packagesCfgFile != null) return packagesCfgFile;
@@ -210,8 +212,8 @@ Future<List<int>> _httpGet(Uri uri) async {
   HttpClientRequest request = await client.getUrl(uri);
   HttpClientResponse response = await request.close();
   if (response.statusCode != HttpStatus.OK) {
-    throw 'Failure getting $uri: '
-        '${response.statusCode} ${response.reasonPhrase}';
+    throw new HttpException('${response.statusCode} ${response.reasonPhrase}',
+        uri: uri);
   }
   List<List<int>> splitContent = await response.toList();
   int totalLength = 0;

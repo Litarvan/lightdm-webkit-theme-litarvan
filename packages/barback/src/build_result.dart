@@ -29,8 +29,7 @@ class BuildResult {
   /// Creates a build result indicating a successful build.
   ///
   /// This equivalent to a build result with no errors.
-  BuildResult.success()
-      : this([]);
+  BuildResult.success() : this([]);
 
   /// Creates a single [BuildResult] that contains all of the errors of
   /// [results].
@@ -42,22 +41,23 @@ class BuildResult {
   String toString() {
     if (succeeded) return "success";
 
-    return "errors:\n" + errors.map((error) {
-      var stackTrace = null;
-      if (error is TransformerException) {
-        stackTrace = error.stackTrace.terse;
-      } else if (error is AssetLoadException) {
-        stackTrace = error.stackTrace.terse;
-      }
+    return "errors:\n" +
+        errors.map((error) {
+          var stackTrace = null;
+          if (error is TransformerException) {
+            stackTrace = error.stackTrace.terse;
+          } else if (error is AssetLoadException) {
+            stackTrace = error.stackTrace.terse;
+          }
 
-      var msg = new StringBuffer();
-      msg.write(prefixLines(error.toString()));
-      if (stackTrace != null) {
-        msg.write("\n\n");
-        msg.write("Stack chain:\n");
-        msg.write(prefixLines(stackTrace.toString()));
-      }
-      return msg.toString();
-    }).join("\n\n");
+          var msg = new StringBuffer();
+          msg.write(prefixLines(error.toString()));
+          if (stackTrace != null) {
+            msg.write("\n\n");
+            msg.write("Stack chain:\n");
+            msg.write(prefixLines(stackTrace.toString()));
+          }
+          return msg.toString();
+        }).join("\n\n");
   }
 }

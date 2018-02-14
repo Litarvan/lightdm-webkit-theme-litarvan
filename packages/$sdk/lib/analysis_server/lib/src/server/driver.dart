@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library driver;
-
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -11,6 +9,7 @@ import 'dart:math';
 import 'package:analysis_server/src/analysis_server.dart';
 import 'package:analysis_server/src/plugin/server_plugin.dart';
 import 'package:analysis_server/src/provisional/completion/dart/completion_plugin.dart';
+import 'package:analysis_server/src/server/diagnostic_server.dart';
 import 'package:analysis_server/src/server/http_server.dart';
 import 'package:analysis_server/src/server/stdio_server.dart';
 import 'package:analysis_server/src/socket_server.dart';
@@ -242,19 +241,10 @@ class Driver implements ServerStarter {
       "incremental-resolution-validation";
 
   /**
-   * The name of the option used to enable using the new analysis driver.
+   * The name of the option used to disable using the new analysis driver.
    */
-  static const String ENABLE_NEW_ANALYSIS_DRIVER = 'enable-new-analysis-driver';
-
-  /**
-   * The name of the option used to enable using pub summary manager.
-   */
-  static const String ENABLE_PUB_SUMMARY_MANAGER = 'enable-pub-summary-manager';
-
-  /**
-   * The name of the option used to enable fined grained invalidation.
-   */
-  static const String FINER_GRAINED_INVALIDATION = 'finer-grained-invalidation';
+  static const String DISABLE_NEW_ANALYSIS_DRIVER =
+      'disable-new-analysis-driver';
 
   /**
    * The name of the option used to cause instrumentation to also be written to
@@ -280,20 +270,16 @@ class Driver implements ServerStarter {
   static const String NEW_ANALYSIS_DRIVER_LOG = 'new-analysis-driver-log';
 
   /**
-   * The name of the flag used to disable error notifications.
+   * The name of the option used to enable verbose Flutter completion code generation.
    */
-  static const String NO_ERROR_NOTIFICATION = "no-error-notification";
-
-  /**
-   * The name of the flag used to disable the index.
-   */
-  static const String NO_INDEX = "no-index";
+  static const String VERBOSE_FLUTTER_COMPLETIONS =
+      'verbose-flutter-completions';
 
   /**
    * The name of the flag used to enable version 2 of semantic highlight
    * notification.
    */
-  static const String USE_ANALISYS_HIGHLIGHT2 = "useAnalysisHighlight2";
+  static const String USE_ANALYSIS_HIGHLIGHT2 = "useAnalysisHighlight2";
 
   /**
    * The option for specifying the http diagnostic port.
@@ -356,13 +342,17 @@ class Driver implements ServerStarter {
 
   /**
    * Use the given command-line [arguments] to start this server.
+   *
+   * At least temporarily returns AnalysisServer so that consumers of the
+   * starter API can then use the server, this is done as a stopgap for the
+   * angular plugin until the official plugin API is finished.
    */
-  void start(List<String> arguments) {
+  AnalysisServer start(List<String> arguments) {
     CommandLineParser parser = _createArgParser();
     ArgResults results = parser.parse(arguments, <String, String>{});
     if (results[HELP_OPTION]) {
       _printUsage(parser.parser);
-      return;
+      return null;
     }
 
     // TODO (danrubel) Remove this workaround
@@ -375,15 +365,15 @@ class Driver implements ServerStarter {
     int port;
     bool serve_http = false;
     if (results[PORT_OPTION] != null) {
-      serve_http = true;
       try {
         port = int.parse(results[PORT_OPTION]);
+        serve_http = true;
       } on FormatException {
         print('Invalid port number: ${results[PORT_OPTION]}');
         print('');
         _printUsage(parser.parser);
         exitCode = 1;
-        return;
+        return null;
       }
     }
 
@@ -393,18 +383,14 @@ class Driver implements ServerStarter {
     analysisServerOptions.enableIncrementalResolutionValidation =
         results[INCREMENTAL_RESOLUTION_VALIDATION];
     analysisServerOptions.enableNewAnalysisDriver =
-        results[ENABLE_NEW_ANALYSIS_DRIVER];
-    analysisServerOptions.enablePubSummaryManager =
-        results[ENABLE_PUB_SUMMARY_MANAGER];
-    analysisServerOptions.finerGrainedInvalidation =
-        results[FINER_GRAINED_INVALIDATION];
-    analysisServerOptions.noErrorNotification = results[NO_ERROR_NOTIFICATION];
-    analysisServerOptions.noIndex = results[NO_INDEX];
+        !results[DISABLE_NEW_ANALYSIS_DRIVER];
     analysisServerOptions.useAnalysisHighlight2 =
-        results[USE_ANALISYS_HIGHLIGHT2];
+        results[USE_ANALYSIS_HIGHLIGHT2];
     analysisServerOptions.fileReadMode = results[FILE_READ_MODE];
     analysisServerOptions.newAnalysisDriverLog =
         results[NEW_ANALYSIS_DRIVER_LOG];
+    analysisServerOptions.enableVerboseFlutterCompletions =
+        results[VERBOSE_FLUTTER_COMPLETIONS];
 
     _initIncrementalLogger(results[INCREMENTAL_RESOLUTION_LOG]);
 
@@ -450,11 +436,18 @@ class Driver implements ServerStarter {
               [instrumentationServer, fileBasedServer])
           : fileBasedServer;
     }
-    InstrumentationService service =
+    InstrumentationService instrumentationService =
         new InstrumentationService(instrumentationServer);
-    service.logVersion(_readUuid(service), results[CLIENT_ID],
-        results[CLIENT_VERSION], AnalysisServer.VERSION, defaultSdk.sdkVersion);
-    AnalysisEngine.instance.instrumentationService = service;
+    instrumentationService.logVersion(
+        _readUuid(instrumentationService),
+        results[CLIENT_ID],
+        results[CLIENT_VERSION],
+        AnalysisServer.VERSION,
+        defaultSdk.sdkVersion);
+    AnalysisEngine.instance.instrumentationService = instrumentationService;
+
+    _DiagnosticServerImpl diagnosticServer = new _DiagnosticServerImpl();
+
     //
     // Create the sockets and start listening for requests.
     //
@@ -462,7 +455,8 @@ class Driver implements ServerStarter {
         analysisServerOptions,
         new DartSdkManager(defaultSdkPath, useSummaries),
         defaultSdk,
-        service,
+        instrumentationService,
+        diagnosticServer,
         serverPlugin,
         fileResolverProvider,
         packageResolverProvider,
@@ -471,21 +465,24 @@ class Driver implements ServerStarter {
     stdioServer = new StdioAnalysisServer(socketServer);
     socketServer.userDefinedPlugins = _userDefinedPlugins;
 
+    diagnosticServer.httpServer = httpServer;
     if (serve_http) {
-      httpServer.serveHttp(port);
+      diagnosticServer.startOnPort(port);
     }
 
-    _captureExceptions(service, () {
+    _captureExceptions(instrumentationService, () {
       stdioServer.serveStdio().then((_) async {
         if (serve_http) {
           httpServer.close();
         }
-        await service.shutdown();
+        await instrumentationService.shutdown();
         exit(0);
       });
     },
         print:
             results[INTERNAL_PRINT_TO_CONSOLE] ? null : httpServer.recordPrint);
+
+    return socketServer.analysisServer;
   }
 
   /**
@@ -543,16 +540,8 @@ class Driver implements ServerStarter {
         help: "enable validation of incremental resolution results (slow)",
         defaultsTo: false,
         negatable: false);
-    parser.addFlag(ENABLE_NEW_ANALYSIS_DRIVER,
-        help: "enable using new analysis driver",
-        defaultsTo: false,
-        negatable: false);
-    parser.addFlag(ENABLE_PUB_SUMMARY_MANAGER,
-        help: "enable using summaries for pub cache packages",
-        defaultsTo: false,
-        negatable: false);
-    parser.addFlag(FINER_GRAINED_INVALIDATION,
-        help: "enable finer grained invalidation",
+    parser.addFlag(DISABLE_NEW_ANALYSIS_DRIVER,
+        help: "disable using new analysis driver",
         defaultsTo: false,
         negatable: false);
     parser.addOption(INSTRUMENTATION_LOG_FILE,
@@ -564,30 +553,26 @@ class Driver implements ServerStarter {
         negatable: false);
     parser.addOption(NEW_ANALYSIS_DRIVER_LOG,
         help: "set a destination for the new analysis driver's log");
+    parser.addFlag(VERBOSE_FLUTTER_COMPLETIONS,
+        help: "enable verbose code completion for Flutter (experimental)");
     parser.addOption(PORT_OPTION,
         help: "the http diagnostic port on which the server provides"
             " status and performance information");
     parser.addOption(INTERNAL_DELAY_FREQUENCY);
     parser.addOption(SDK_OPTION, help: "[path] the path to the sdk");
-    parser.addFlag(NO_ERROR_NOTIFICATION,
-        help: "disable sending all analysis error notifications to the server",
-        defaultsTo: false,
-        negatable: false);
-    parser.addFlag(NO_INDEX,
-        help: "disable indexing sources", defaultsTo: false, negatable: false);
-    parser.addFlag(USE_ANALISYS_HIGHLIGHT2,
+    parser.addFlag(USE_ANALYSIS_HIGHLIGHT2,
         help: "enable version 2 of semantic highlight",
         defaultsTo: false,
         negatable: false);
     parser.addOption(FILE_READ_MODE,
-        help: "an option of the ways files can be read from disk, " +
-            "some clients normalize end of line characters which would make " +
-            "the file offset and range information incorrect.",
+        help: "an option for reading files (some clients normalize eol "
+            "characters, which make the file offset and range information "
+            "incorrect)",
         allowed: ["as-is", "normalize-eol-always"],
         allowedHelp: {
-          "as-is": "file contents are read as-is, no file changes occur",
+          "as-is": "file contents are read as-is",
           "normalize-eol-always":
-              r'file contents normalize the end of line characters to the single character new line `\n`'
+              r"eol characters normalized to the single character new line ('\n')"
         },
         defaultsTo: "as-is");
 
@@ -659,5 +644,21 @@ class Driver implements ServerStarter {
         new File(oldPath).renameSync('$path.${i+1}');
       } catch (e) {}
     }
+  }
+}
+
+/**
+ * Implements the [DiagnosticServer] class by wrapping an [HttpAnalysisServer].
+ */
+class _DiagnosticServerImpl extends DiagnosticServer {
+  HttpAnalysisServer httpServer;
+
+  _DiagnosticServerImpl();
+
+  @override
+  Future<int> getServerPort() => httpServer.serveHttp();
+
+  Future startOnPort(int port) {
+    return httpServer.serveHttp(port);
   }
 }

@@ -38,9 +38,9 @@ abstract class AstNode {
   ///
   /// For example, given the glob `{foo,bar}/{click/clack}`, this would return
   /// `{foo/click,foo/clack,bar/click,bar/clack}`.
-  OptionsNode flattenOptions() => new OptionsNode(
-      [new SequenceNode([this], caseSensitive: caseSensitive)],
-      caseSensitive: caseSensitive);
+  OptionsNode flattenOptions() => new OptionsNode([
+        new SequenceNode([this], caseSensitive: caseSensitive)
+      ], caseSensitive: caseSensitive);
 
   /// Returns whether this glob matches [string].
   bool matches(String string) {
@@ -71,8 +71,8 @@ class SequenceNode extends AstNode {
       return new OptionsNode([this], caseSensitive: caseSensitive);
     }
 
-    var sequences = nodes.first.flattenOptions().options
-        .map((sequence) => sequence.nodes);
+    var sequences =
+        nodes.first.flattenOptions().options.map((sequence) => sequence.nodes);
     for (var node in nodes.skip(1)) {
       // Concatenate all sequences in the next options node ([nextSequences])
       // onto all previous sequences ([sequences]).
@@ -86,18 +86,22 @@ class SequenceNode extends AstNode {
 
     return new OptionsNode(sequences.map((sequence) {
       // Combine any adjacent LiteralNodes in [sequence].
-      return new SequenceNode(sequence.fold/*<List<AstNode>>*/([], (combined, node) {
-        if (combined.isEmpty || combined.last is! LiteralNode ||
-            node is! LiteralNode) {
-          return combined..add(node);
-        }
+      return new SequenceNode(
+          sequence.fold<List<AstNode>>([], (combined, node) {
+            if (combined.isEmpty ||
+                combined.last is! LiteralNode ||
+                node is! LiteralNode) {
+              return combined..add(node);
+            }
 
-        combined[combined.length - 1] = new LiteralNode(
-            // TODO(nweiz): Avoid casting when sdk#25565 is fixed.
-            (combined.last as LiteralNode).text + (node as LiteralNode).text,
-            caseSensitive: caseSensitive);
-        return combined;
-      }), caseSensitive: caseSensitive);
+            combined[combined.length - 1] = new LiteralNode(
+                // TODO(nweiz): Avoid casting when sdk#25565 is fixed.
+                (combined.last as LiteralNode).text +
+                    (node as LiteralNode).text,
+                caseSensitive: caseSensitive);
+            return combined;
+          }),
+          caseSensitive: caseSensitive);
     }), caseSensitive: caseSensitive);
   }
 
@@ -185,7 +189,8 @@ class SequenceNode extends AstNode {
 
   String _toRegExp() => nodes.map((node) => node._toRegExp()).join();
 
-  bool operator==(Object other) => other is SequenceNode &&
+  bool operator ==(Object other) =>
+      other is SequenceNode &&
       const IterableEquality().equals(nodes, other.nodes);
 
   int get hashCode => const IterableEquality().hash(nodes);
@@ -199,7 +204,7 @@ class StarNode extends AstNode {
 
   String _toRegExp() => '[^/]*';
 
-  bool operator==(Object other) => other is StarNode;
+  bool operator ==(Object other) => other is StarNode;
 
   int get hashCode => 0;
 
@@ -241,7 +246,7 @@ class DoubleStarNode extends AstNode {
     return buffer.toString();
   }
 
-  bool operator==(Object other) => other is DoubleStarNode;
+  bool operator ==(Object other) => other is DoubleStarNode;
 
   int get hashCode => 1;
 
@@ -254,7 +259,7 @@ class AnyCharNode extends AstNode {
 
   String _toRegExp() => '[^/]';
 
-  bool operator==(Object other) => other is AnyCharNode;
+  bool operator ==(Object other) => other is AnyCharNode;
 
   int get hashCode => 2;
 
@@ -319,7 +324,7 @@ class RangeNode extends AstNode {
     return buffer.toString();
   }
 
-  bool operator==(Object other) {
+  bool operator ==(Object other) {
     if (other is! RangeNode) return false;
     if ((other as RangeNode).negated != negated) return false;
     return const SetEquality().equals(ranges, (other as RangeNode).ranges);
@@ -359,7 +364,8 @@ class OptionsNode extends AstNode {
   String _toRegExp() =>
       '(?:${options.map((option) => option._toRegExp()).join("|")})';
 
-  bool operator==(Object other) => other is OptionsNode &&
+  bool operator ==(Object other) =>
+      other is OptionsNode &&
       const UnorderedIterableEquality().equals(options, other.options);
 
   int get hashCode => const UnorderedIterableEquality().hash(options);
@@ -378,8 +384,8 @@ class LiteralNode extends AstNode {
   final p.Context _context;
 
   bool get canMatchAbsolute {
-    var nativeText = _context.style == p.Style.windows ?
-        text.replaceAll('/', '\\') : text;
+    var nativeText =
+        _context.style == p.Style.windows ? text.replaceAll('/', '\\') : text;
     return _context.isAbsolute(nativeText);
   }
 
@@ -391,7 +397,7 @@ class LiteralNode extends AstNode {
 
   String _toRegExp() => regExpQuote(text);
 
-  bool operator==(Object other) => other is LiteralNode && other.text == text;
+  bool operator ==(Object other) => other is LiteralNode && other.text == text;
 
   int get hashCode => text.hashCode;
 

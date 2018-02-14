@@ -1,0 +1,27 @@
+{
+  "ngDeps": null,
+  "type": {
+    "SetterFn": {
+      "class": "Identifier",
+      "name": "SetterFn",
+      "moduleUrl": "asset:angular2/lib/src/core/reflection/types.dart",
+      "prefix": null,
+      "value": null
+    },
+    "GetterFn": {
+      "class": "Identifier",
+      "name": "GetterFn",
+      "moduleUrl": "asset:angular2/lib/src/core/reflection/types.dart",
+      "prefix": null,
+      "value": null
+    },
+    "MethodFn": {
+      "class": "Identifier",
+      "name": "MethodFn",
+      "moduleUrl": "asset:angular2/lib/src/core/reflection/types.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

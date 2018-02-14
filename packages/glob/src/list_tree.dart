@@ -2,8 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 
 import 'package:async/async.dart';
 import 'package:path/path.dart' as p;
@@ -143,8 +143,8 @@ class ListTree {
           parent = parent.children[component];
         }
       } else if (recursive) {
-        _trees[root] = new _ListTreeNode.recursive(
-            _join(components.sublist(i)));
+        _trees[root] =
+            new _ListTreeNode.recursive(_join(components.sublist(i)));
         return;
       } else if (complete) {
         _trees[root] = new _ListTreeNode()..addOption(component);
@@ -193,8 +193,7 @@ class ListTree {
   List<FileSystemEntity> listSync({String root, bool followLinks: true}) {
     if (root == null) root = '.';
 
-    // TODO(nweiz): Remove the explicit annotation when sdk#26139 is fixed.
-    var result = _trees.keys.expand/*<FileSystemEntity>*/((rootDir) {
+    var result = _trees.keys.expand((rootDir) {
       var dir = rootDir == '.' ? root : rootDir;
       return _trees[rootDir].listSync(dir, followLinks: followLinks);
     });
@@ -247,7 +246,6 @@ class _ListTreeNode {
   /// its children.
   bool get _isIntermediate {
     if (_validator != null) return false;
-    if (!_caseSensitive) return false;
     return children.keys.every((sequence) =>
         sequence.nodes.length == 1 && sequence.nodes.first is LiteralNode);
   }
@@ -301,8 +299,8 @@ class _ListTreeNode {
   /// Adds [validator] to this node's existing validator.
   void addOption(SequenceNode validator) {
     if (_validator == null) {
-      _validator = new OptionsNode([validator],
-          caseSensitive: validator.caseSensitive);
+      _validator =
+          new OptionsNode([validator], caseSensitive: validator.caseSensitive);
     } else {
       _validator.options.add(validator);
     }
@@ -314,15 +312,15 @@ class _ListTreeNode {
   /// [ListTree.list].
   Stream<FileSystemEntity> list(String dir, {bool followLinks: true}) {
     if (isRecursive) {
-      return new Directory(dir).list(recursive: true, followLinks: followLinks)
+      return new Directory(dir)
+          .list(recursive: true, followLinks: followLinks)
           .where((entity) => _matches(p.relative(entity.path, from: dir)));
     }
 
-    var resultGroup = new StreamGroup<FileSystemEntity>();
-
     // Don't spawn extra [Directory.list] calls when we already know exactly
     // which subdirectories we're interested in.
-    if (_isIntermediate) {
+    if (_isIntermediate && _caseSensitive) {
+      var resultGroup = new StreamGroup<FileSystemEntity>();
       children.forEach((sequence, child) {
         resultGroup.add(child.list(
             p.join(dir, (sequence.nodes.single as LiteralNode).text),
@@ -332,35 +330,65 @@ class _ListTreeNode {
       return resultGroup.stream;
     }
 
-    var resultController = new StreamController<FileSystemEntity>(sync: true);
-    resultGroup.add(resultController.stream);
-    new Directory(dir).list(followLinks: followLinks).listen((entity) {
-      var basename = p.relative(entity.path, from: dir);
-      if (_matches(basename)) resultController.add(entity);
+    return StreamCompleter.fromFuture(() async {
+      var entities =
+          await new Directory(dir).list(followLinks: followLinks).toList();
+      await _validateIntermediateChildrenAsync(dir, entities);
 
-      children.forEach((sequence, child) {
-        if (entity is! Directory) return;
-        if (!sequence.matches(basename)) return;
-        var stream = child.list(p.join(dir, basename), followLinks: followLinks)
-            .handleError((_) {}, test: (error) {
-          // Ignore errors from directories not existing. We do this here so
-          // that we only ignore warnings below wild cards. For example, the
-          // glob "foo/bar/*/baz" should fail if "foo/bar" doesn't exist but
-          // succeed if "foo/bar/qux/baz" doesn't exist.
-          return error is FileSystemException &&
-              (error.osError.errorCode == _ENOENT ||
-              error.osError.errorCode == _ENOENT_WIN);
-        });
-        resultGroup.add(stream);
-      });
-    },
-        onError: resultController.addError,
-        onDone: () {
-          resultController.close();
-          resultGroup.close();
-        });
+      var resultGroup = new StreamGroup<FileSystemEntity>();
+      var resultController = new StreamController<FileSystemEntity>(sync: true);
+      resultGroup.add(resultController.stream);
+      for (var entity in entities) {
+        var basename = p.relative(entity.path, from: dir);
+        if (_matches(basename)) resultController.add(entity);
 
-    return resultGroup.stream;
+        children.forEach((sequence, child) {
+          if (entity is! Directory) return;
+          if (!sequence.matches(basename)) return;
+          var stream = child
+              .list(p.join(dir, basename), followLinks: followLinks)
+              .handleError((_) {}, test: (error) {
+            // Ignore errors from directories not existing. We do this here so
+            // that we only ignore warnings below wild cards. For example, the
+            // glob "foo/bar/*/baz" should fail if "foo/bar" doesn't exist but
+            // succeed if "foo/bar/qux/baz" doesn't exist.
+            return error is FileSystemException &&
+                (error.osError.errorCode == _ENOENT ||
+                    error.osError.errorCode == _ENOENT_WIN);
+          });
+          resultGroup.add(stream);
+        });
+      }
+      resultController.close();
+      resultGroup.close();
+      return resultGroup.stream;
+    }());
+  }
+
+  /// If this is a case-insensitive list, validates that all intermediate
+  /// children (according to [_isIntermediate]) match at least one entity in
+  /// [entities].
+  ///
+  /// This ensures that listing "foo/bar/*" fails on case-sensitive systems if
+  /// "foo/bar" doesn't exist.
+  Future _validateIntermediateChildrenAsync(
+      String dir, List<FileSystemEntity> entities) async {
+    if (_caseSensitive) return;
+
+    for (var sequence in children.keys) {
+      var child = children[sequence];
+      if (!child._isIntermediate) continue;
+      if (entities.any(
+          (entity) => sequence.matches(p.relative(entity.path, from: dir)))) {
+        continue;
+      }
+
+      // We know this will fail, we're just doing it to force dart:io to emit
+      // the exception it would if we were listing case-sensitively.
+      await child
+          .list(p.join(dir, (sequence.nodes.single as LiteralNode).text))
+          .toList();
+    }
   }
 
   /// Synchronously lists all entities within [dir] matching this node or its
@@ -377,7 +405,7 @@ class _ListTreeNode {
 
     // Don't spawn extra [Directory.listSync] calls when we already know exactly
     // which subdirectories we're interested in.
-    if (_isIntermediate) {
+    if (_isIntermediate && _caseSensitive) {
       return children.keys.expand((sequence) {
         return children[sequence].listSync(
             p.join(dir, (sequence.nodes.single as LiteralNode).text),
@@ -385,8 +413,10 @@ class _ListTreeNode {
       });
     }
 
-    return new Directory(dir).listSync(followLinks: followLinks)
-        .expand((entity) {
+    var entities = new Directory(dir).listSync(followLinks: followLinks);
+    _validateIntermediateChildrenSync(dir, entities);
+
+    return entities.expand((entity) {
       var entities = <FileSystemEntity>[];
       var basename = p.relative(entity.path, from: dir);
       if (_matches(basename)) entities.add(entity);
@@ -396,8 +426,9 @@ class _ListTreeNode {
           .where((sequence) => sequence.matches(basename))
           .expand((sequence) {
         try {
-          return children[sequence].listSync(
-              p.join(dir, basename), followLinks: followLinks).toList();
+          return children[sequence]
+              .listSync(p.join(dir, basename), followLinks: followLinks)
+              .toList();
         } on FileSystemException catch (error) {
           // Ignore errors from directories not existing. We do this here so
           // that we only ignore warnings below wild cards. For example, the
@@ -413,6 +444,31 @@ class _ListTreeNode {
       }));
 
       return entities;
+    });
+  }
+
+  /// If this is a case-insensitive list, validates that all intermediate
+  /// children (according to [_isIntermediate]) match at least one entity in
+  /// [entities].
+  ///
+  /// This ensures that listing "foo/bar/*" fails on case-sensitive systems if
+  /// "foo/bar" doesn't exist.
+  void _validateIntermediateChildrenSync(
+      String dir, List<FileSystemEntity> entities) {
+    if (_caseSensitive) return;
+
+    children.forEach((sequence, child) {
+      if (!child._isIntermediate) return;
+      if (entities.any(
+          (entity) => sequence.matches(p.relative(entity.path, from: dir)))) {
+        return;
+      }
+
+      // If there are no [entities] that match [sequence], manually list the
+      // directory to force `dart:io` to throw an error. This allows us to
+      // ensure that listing "foo/bar/*" fails on case-sensitive systems if
+      // "foo/bar" doesn't exist.
+      child.listSync(p.join(dir, (sequence.nodes.single as LiteralNode).text));
     });
   }
 

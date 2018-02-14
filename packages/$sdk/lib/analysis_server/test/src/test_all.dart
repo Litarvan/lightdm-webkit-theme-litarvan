@@ -2,17 +2,17 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.src;
-
 import 'package:test_reflective_loader/test_reflective_loader.dart';
 
-import 'utilities/test_all.dart' as utilities_all;
+import 'domain_abstract_test.dart' as domain_abstract_test;
+import 'plugin/test_all.dart' as plugin_all;
 
 /**
  * Utility for manually running all tests.
  */
 main() {
   defineReflectiveSuite(() {
-    utilities_all.main();
-  }, name: 'analysis_server');
+    domain_abstract_test.main();
+    plugin_all.main();
+  }, name: 'src');
 }

@@ -37,9 +37,8 @@ class NodeStatus {
   final String _name;
 
   /// Returns the dirtiest status in [statuses].
-  static NodeStatus dirtiest(Iterable<NodeStatus> statuses) =>
-      statuses.fold(NodeStatus.IDLE,
-          (status1, status2) => status1.dirtier(status2));
+  static NodeStatus dirtiest(Iterable<NodeStatus> statuses) => statuses.fold(
+      NodeStatus.IDLE, (status1, status2) => status1.dirtier(status2));
 
   const NodeStatus(this._name);
 

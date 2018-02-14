@@ -450,6 +450,17 @@ class ParserErrorCode extends ErrorCode {
       "Comment references should contain a possibly prefixed identifier and "
       "can start with 'new', but shouldn't contain anything else.");
 
+  static const ParserErrorCode INVALID_CONSTRUCTOR_NAME = const ParserErrorCode(
+      'INVALID_CONSTRUCTOR_NAME',
+      "The keyword '{0}' cannot be used to name a constructor.",
+      "Try giving the constructor a different name.");
+
+  static const ParserErrorCode INVALID_GENERIC_FUNCTION_TYPE =
+      const ParserErrorCode(
+          'INVALID_GENERIC_FUNCTION_TYPE',
+          "Invalid generic function type.",
+          "Try using a generic function type (returnType 'Function(' parameters ')').");
+
   static const ParserErrorCode INVALID_HEX_ESCAPE = const ParserErrorCode(
       'INVALID_HEX_ESCAPE',
       "An escape sequence starting with '\\x' must be followed by 2 hexidecimal digits.");
@@ -822,6 +833,11 @@ class ParserErrorCode extends ErrorCode {
       'SETTER_IN_FUNCTION',
       "Setters can't be defined within methods or functions.",
       "Try moving the setter outside the method or function.");
+
+  static const ParserErrorCode STACK_OVERFLOW = const ParserErrorCode(
+      'STACK_OVERFLOW',
+      "The file has too many nested expressions or statements.",
+      "Try simplifying the code.");
 
   static const ParserErrorCode STATIC_AFTER_CONST = const ParserErrorCode(
       'STATIC_AFTER_CONST',

@@ -8,9 +8,9 @@ import 'dart:math' as math;
 
 import 'package:source_span/source_span.dart';
 
-import 'visitor.dart';
 import 'src/messages.dart';
 import 'src/options.dart';
+import 'visitor.dart';
 
 export 'src/messages.dart' show Message;
 export 'src/options.dart';
@@ -68,7 +68,7 @@ StyleSheet compile(input,
 
   _createMessages(errors: errors, options: options);
 
-  var file = new SourceFile(source);
+  var file = new SourceFile.fromString(source);
 
   var tree = new _Parser(file, source).parse();
 
@@ -99,7 +99,7 @@ StyleSheet parse(input, {List<Message> errors, PreprocessorOptions options}) {
 
   _createMessages(errors: errors, options: options);
 
-  var file = new SourceFile(source);
+  var file = new SourceFile.fromString(source);
   return new _Parser(file, source).parse();
 }
 
@@ -114,7 +114,7 @@ StyleSheet selector(input, {List<Message> errors}) {
 
   _createMessages(errors: errors);
 
-  var file = new SourceFile(source);
+  var file = new SourceFile.fromString(source);
   return (new _Parser(file, source)..tokenizer.inSelector = true)
       .parseSelector();
 }
@@ -124,7 +124,7 @@ SelectorGroup parseSelectorGroup(input, {List<Message> errors}) {
 
   _createMessages(errors: errors);
 
-  var file = new SourceFile(source);
+  var file = new SourceFile.fromString(source);
   return (new _Parser(file, source)
         // TODO(jmesserly): this fix should be applied to the parser. It's tricky
         // because by the time the flag is set one token has already been fetched.

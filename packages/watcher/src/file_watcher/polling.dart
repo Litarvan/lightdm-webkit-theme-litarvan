@@ -14,9 +14,9 @@ import '../watch_event.dart';
 class PollingFileWatcher extends ResubscribableWatcher implements FileWatcher {
   PollingFileWatcher(String path, {Duration pollingDelay})
       : super(path, () {
-        return new _PollingFileWatcher(path,
-            pollingDelay != null ? pollingDelay : new Duration(seconds: 1));
-      });
+          return new _PollingFileWatcher(path,
+              pollingDelay != null ? pollingDelay : new Duration(seconds: 1));
+        });
 }
 
 class _PollingFileWatcher implements FileWatcher, ManuallyClosedWatcher {

@@ -5,11 +5,10 @@
 /**
  * Code generation for the file "matchers.dart".
  */
-library codegen.matchers;
-
 import 'dart:convert';
 
 import 'package:analyzer/src/codegen/tools.dart';
+import 'package:front_end/src/codegen/tools.dart';
 
 import 'api.dart';
 import 'from_html.dart';
@@ -17,7 +16,7 @@ import 'implied_types.dart';
 import 'to_html.dart';
 
 final GeneratedFile target = new GeneratedFile(
-    'test/integration/protocol_matchers.dart', (String pkgPath) {
+    'test/integration/support/protocol_matchers.dart', (String pkgPath) {
   CodegenMatchersVisitor visitor = new CodegenMatchersVisitor(readApi(pkgPath));
   return visitor.collectCode(visitor.visitApi);
 });
@@ -98,19 +97,19 @@ class CodegenMatchersVisitor extends HierarchicalApiVisitor with CodeGenerator {
 
   @override
   visitApi() {
-    outputHeader();
+    outputHeader(year: '2017');
     writeln();
     writeln('/**');
     writeln(' * Matchers for data types defined in the analysis server API');
     writeln(' */');
-    writeln('library test.integration.protocol.matchers;');
-    writeln();
     writeln("import 'package:test/test.dart';");
     writeln();
     writeln("import 'integration_tests.dart';");
     writeln();
-    writeln();
-    for (ImpliedType impliedType in computeImpliedTypes(api).values) {
+    List<ImpliedType> impliedTypes = computeImpliedTypes(api).values.toList();
+    impliedTypes.sort((ImpliedType first, ImpliedType second) =>
+        first.camelName.compareTo(second.camelName));
+    for (ImpliedType impliedType in impliedTypes) {
       makeMatcher(impliedType);
     }
   }

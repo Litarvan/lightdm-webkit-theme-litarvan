@@ -37,8 +37,8 @@ class ConstructableFileSystemModifyEvent extends _ConstructableFileSystemEvent
   final bool contentChanged;
   final type = FileSystemEvent.MODIFY;
 
-  ConstructableFileSystemModifyEvent(String path, bool isDirectory,
-      this.contentChanged)
+  ConstructableFileSystemModifyEvent(
+      String path, bool isDirectory, this.contentChanged)
       : super(path, isDirectory);
 
   String toString() =>
@@ -50,8 +50,8 @@ class ConstructableFileSystemMoveEvent extends _ConstructableFileSystemEvent
   final String destination;
   final type = FileSystemEvent.MOVE;
 
-  ConstructableFileSystemMoveEvent(String path, bool isDirectory,
-      this.destination)
+  ConstructableFileSystemMoveEvent(
+      String path, bool isDirectory, this.destination)
       : super(path, isDirectory);
 
   String toString() => "FileSystemMoveEvent('$path', '$destination')";

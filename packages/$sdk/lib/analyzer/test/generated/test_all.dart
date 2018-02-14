@@ -15,7 +15,7 @@ import 'checked_mode_compile_time_error_code_test.dart'
 import 'compile_time_error_code_driver_test.dart'
     as compile_time_error_code_driver_test;
 import 'compile_time_error_code_test.dart' as compile_time_error_code_test;
-import 'constant_test.dart' as constant_test;
+import 'constant_test.dart' as constant_test; // ignore: deprecated_member_use
 import 'declaration_resolver_test.dart' as declaration_resolver_test;
 import 'element_resolver_test.dart' as element_resolver_test;
 import 'engine_test.dart' as engine_test;
@@ -24,7 +24,6 @@ import 'error_suppression_test.dart' as error_suppression_test;
 import 'gn_test.dart' as gn_test;
 import 'hint_code_driver_test.dart' as hint_code_driver_test;
 import 'hint_code_test.dart' as hint_code_test;
-import 'incremental_resolver_test.dart' as incremental_resolver_test;
 import 'inheritance_manager_test.dart' as inheritance_manager_test;
 import 'java_core_test.dart' as java_core_test;
 import 'java_io_test.dart' as java_io_test;
@@ -32,6 +31,7 @@ import 'non_error_resolver_driver_test.dart' as non_error_resolver_driver_test;
 import 'non_error_resolver_test.dart' as non_error_resolver_test;
 import 'non_hint_code_driver_test.dart' as non_hint_code_driver_test;
 import 'non_hint_code_test.dart' as non_hint_code_test;
+import 'parser_fasta_test.dart' as parser_fasta_test;
 import 'parser_test.dart' as parser_test;
 import 'resolver_driver_test.dart' as resolver_driver_test;
 import 'resolver_test.dart' as resolver_test;
@@ -72,7 +72,6 @@ main() {
     gn_test.main();
     hint_code_driver_test.main();
     hint_code_test.main();
-    incremental_resolver_test.main();
     inheritance_manager_test.main();
     java_core_test.main();
     java_io_test.main();
@@ -80,6 +79,7 @@ main() {
     non_error_resolver_test.main();
     non_hint_code_driver_test.main();
     non_hint_code_test.main();
+    parser_fasta_test.main();
     parser_test.main();
     resolver_driver_test.main();
     resolver_test.main();

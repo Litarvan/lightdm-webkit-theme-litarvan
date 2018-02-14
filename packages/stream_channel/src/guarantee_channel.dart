@@ -32,28 +32,29 @@ class GuaranteeChannel<T> extends StreamChannelMixin<T> {
 
   GuaranteeChannel(Stream<T> innerStream, StreamSink<T> innerSink,
       {bool allowSinkErrors: true}) {
-    _sink = new _GuaranteeSink<T>(innerSink, this,
-        allowErrors: allowSinkErrors);
+    _sink =
+        new _GuaranteeSink<T>(innerSink, this, allowErrors: allowSinkErrors);
 
     // Enforce the single-subscription guarantee by changing a broadcast stream
     // to single-subscription.
     if (innerStream.isBroadcast) {
-      innerStream = innerStream.transform(
-          const SingleSubscriptionTransformer());
+      innerStream =
+          innerStream.transform(const SingleSubscriptionTransformer());
     }
 
-    _streamController = new StreamController<T>(onListen: () {
-      // If the sink has disconnected, we've already called
-      // [_streamController.close].
-      if (_disconnected) return;
+    _streamController = new StreamController<T>(
+        onListen: () {
+          // If the sink has disconnected, we've already called
+          // [_streamController.close].
+          if (_disconnected) return;
 
-      _subscription = innerStream.listen(_streamController.add,
-          onError: _streamController.addError,
-          onDone: () {
+          _subscription = innerStream.listen(_streamController.add,
+              onError: _streamController.addError, onDone: () {
             _sink._onStreamDisconnected();
             _streamController.close();
           });
-    }, sync: true);
+        },
+        sync: true);
   }
 
   /// Called by [_GuaranteeSink] when the user closes it.
@@ -159,10 +160,8 @@ class _GuaranteeSink<T> implements StreamSink<T> {
     if (_disconnected) return new Future.value();
 
     _addStreamCompleter = new Completer.sync();
-    _addStreamSubscription = stream.listen(
-        _inner.add,
-        onError: _addError,
-        onDone: _addStreamCompleter.complete);
+    _addStreamSubscription = stream.listen(_inner.add,
+        onError: _addError, onDone: _addStreamCompleter.complete);
     return _addStreamCompleter.future.then((_) {
       _addStreamCompleter = null;
       _addStreamSubscription = null;

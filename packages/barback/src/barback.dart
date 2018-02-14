@@ -71,8 +71,7 @@ class Barback {
   /// Otherwise, a default logger will display them.
   Stream<LogEntry> get log => _graph.log;
 
-  Barback(PackageProvider provider)
-      : _graph = new PackageGraph(provider);
+  Barback(PackageProvider provider) : _graph = new PackageGraph(provider);
 
   /// Gets the asset identified by [id].
   ///

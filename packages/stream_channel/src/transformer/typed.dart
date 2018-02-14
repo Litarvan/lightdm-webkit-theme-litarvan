@@ -8,7 +8,7 @@ import '../../stream_channel.dart';
 /// transformer to `S`.
 class TypeSafeStreamChannelTransformer<S, T>
     implements StreamChannelTransformer<S, T> {
- final StreamChannelTransformer _inner;
+  final StreamChannelTransformer _inner;
 
   TypeSafeStreamChannelTransformer(this._inner);
 

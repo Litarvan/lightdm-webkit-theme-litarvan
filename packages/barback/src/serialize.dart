@@ -23,11 +23,11 @@ SendPort serializeStream(Stream stream) {
     stream.listen((data) => sendPort.send({'type': 'data', 'data': data}),
         onDone: () => sendPort.send({'type': 'done'}),
         onError: (error, stackTrace) {
-      sendPort.send({
-        'type': 'error',
-        'error': CrossIsolateException.serialize(error, stackTrace)
-      });
-    });
+          sendPort.send({
+            'type': 'error',
+            'error': CrossIsolateException.serialize(error, stackTrace)
+          });
+        });
   });
 
   return receivePort.sendPort;
@@ -45,8 +45,8 @@ Stream deserializeStream(SendPort sendPort) {
   return callbackStream(() {
     var receivePort = new ReceivePort();
     sendPort.send(receivePort.sendPort);
-    return receivePort.transform(
-        const StreamTransformer(_deserializeTransformer));
+    return receivePort
+        .transform(const StreamTransformer(_deserializeTransformer));
   });
 }
 
@@ -54,8 +54,8 @@ Stream deserializeStream(SendPort sendPort) {
 /// sent by [serializeStream].
 StreamSubscription _deserializeTransformer(Stream input, bool cancelOnError) {
   var subscription;
-  var transformed = input.transform(new StreamTransformer.fromHandlers(
-      handleData: (data, sink) {
+  var transformed = input
+      .transform(new StreamTransformer.fromHandlers(handleData: (data, sink) {
     if (data['type'] == 'data') {
       sink.add(data['data']);
     } else if (data['type'] == 'error') {
@@ -95,8 +95,8 @@ class CrossIsolateException implements Exception {
   CrossIsolateException.deserialize(Map error)
       : type = error['type'],
         message = error['message'],
-        stackTrace = error['stack'] == null ? null :
-            new Chain.parse(error['stack']);
+        stackTrace =
+            error['stack'] == null ? null : new Chain.parse(error['stack']);
 
   /// Serializes [error] to an object that can safely be passed across isolate
   /// boundaries.

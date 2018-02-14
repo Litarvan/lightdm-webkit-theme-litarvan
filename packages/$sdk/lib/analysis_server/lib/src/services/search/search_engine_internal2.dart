@@ -39,9 +39,9 @@ class SearchEngineImpl2 implements SearchEngine {
   @override
   Future<List<SearchMatch>> searchMemberDeclarations(String name) async {
     List<SearchMatch> allDeclarations = [];
-    RegExp regExp = new RegExp('^$name\$');
-    for (AnalysisDriver driver in _drivers) {
-      List<Element> elements = await driver.search.classMembers(regExp);
+    List<AnalysisDriver> drivers = _drivers.toList();
+    for (AnalysisDriver driver in drivers) {
+      List<Element> elements = await driver.search.classMembers(name);
       allDeclarations.addAll(elements.map(_SearchMatch.forElement));
     }
     return allDeclarations;
@@ -50,7 +50,8 @@ class SearchEngineImpl2 implements SearchEngine {
   @override
   Future<List<SearchMatch>> searchMemberReferences(String name) async {
     List<SearchResult> allResults = [];
-    for (AnalysisDriver driver in _drivers) {
+    List<AnalysisDriver> drivers = _drivers.toList();
+    for (AnalysisDriver driver in drivers) {
       List<SearchResult> results =
           await driver.search.unresolvedMemberReferences(name);
       allResults.addAll(results);
@@ -61,7 +62,8 @@ class SearchEngineImpl2 implements SearchEngine {
   @override
   Future<List<SearchMatch>> searchReferences(Element element) async {
     List<SearchResult> allResults = [];
-    for (AnalysisDriver driver in _drivers) {
+    List<AnalysisDriver> drivers = _drivers.toList();
+    for (AnalysisDriver driver in drivers) {
       List<SearchResult> results = await driver.search.references(element);
       allResults.addAll(results);
     }
@@ -78,7 +80,8 @@ class SearchEngineImpl2 implements SearchEngine {
   Future<List<SearchMatch>> searchTopLevelDeclarations(String pattern) async {
     List<SearchMatch> allDeclarations = [];
     RegExp regExp = new RegExp(pattern);
-    for (AnalysisDriver driver in _drivers) {
+    List<AnalysisDriver> drivers = _drivers.toList();
+    for (AnalysisDriver driver in drivers) {
       List<Element> elements = await driver.search.topLevelElements(regExp);
       allDeclarations.addAll(elements.map(_SearchMatch.forElement));
     }
@@ -87,7 +90,8 @@ class SearchEngineImpl2 implements SearchEngine {
 
   Future<List<SearchResult>> _searchDirectSubtypes(ClassElement type) async {
     List<SearchResult> allResults = [];
-    for (AnalysisDriver driver in _drivers) {
+    List<AnalysisDriver> drivers = _drivers.toList();
+    for (AnalysisDriver driver in drivers) {
       List<SearchResult> results = await driver.search.subTypes(type);
       allResults.addAll(results);
     }
@@ -153,6 +157,19 @@ class _SearchMatch implements SearchMatch {
     return buffer.toString();
   }
 
+  static _SearchMatch forElement(Element element) {
+    return new _SearchMatch(
+        element.source.fullName,
+        element.librarySource,
+        element.source,
+        element.library,
+        element,
+        true,
+        true,
+        MatchKind.DECLARATION,
+        new SourceRange(element.nameOffset, element.nameLength));
+  }
+
   static _SearchMatch forSearchResult(SearchResult result) {
     Element enclosingElement = result.enclosingElement;
     return new _SearchMatch(
@@ -165,19 +182,6 @@ class _SearchMatch implements SearchMatch {
         result.isQualified,
         toMatchKind(result.kind),
         new SourceRange(result.offset, result.length));
-  }
-
-  static _SearchMatch forElement(Element element) {
-    return new _SearchMatch(
-        element.source.fullName,
-        element.librarySource,
-        element.source,
-        element.library,
-        element,
-        true,
-        true,
-        MatchKind.DECLARATION,
-        new SourceRange(element.nameOffset, element.nameLength));
   }
 
   static MatchKind toMatchKind(SearchResultKind kind) {

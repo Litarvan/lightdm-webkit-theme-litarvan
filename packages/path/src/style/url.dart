@@ -62,9 +62,6 @@ class UrlStyle extends InternalStyle {
       }
     }
 
-    var index = path.indexOf("/");
-    if (index > 0 && path.startsWith('://', index - 1)) {
-    }
     return 0;
   }
 

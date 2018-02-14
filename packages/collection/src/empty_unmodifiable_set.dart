@@ -20,9 +20,14 @@ class EmptyUnmodifiableSet<E> extends IterableBase<E>
 
   const EmptyUnmodifiableSet();
 
+  EmptyUnmodifiableSet<T> cast<T>() => new EmptyUnmodifiableSet<T>();
   bool contains(Object element) => false;
   bool containsAll(Iterable<Object> other) => other.isEmpty;
+  Iterable<E> followedBy(Iterable<E> other) => new Set.from(other);
   E lookup(Object element) => null;
+  EmptyUnmodifiableSet<T> retype<T>() => new EmptyUnmodifiableSet<T>();
+  E singleWhere(bool test(E element), {E orElse()}) => super.singleWhere(test);
+  Iterable<T> whereType<T>() => new EmptyUnmodifiableSet<T>();
   Set<E> toSet() => new Set();
   Set<E> union(Set<E> other) => new Set.from(other);
   Set<E> intersection(Set<Object> other) => new Set();

@@ -2,17 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.services.refactoring;
-
 import 'dart:async';
 
-import 'package:analysis_server/plugin/protocol/protocol.dart'
-    show
-        RefactoringProblem,
-        RefactoringProblemSeverity,
-        SourceChange,
-        SourceEdit,
-        SourceFileEdit;
 import 'package:analysis_server/src/services/correction/status.dart';
 import 'package:analysis_server/src/services/index/index.dart';
 import 'package:analysis_server/src/services/refactoring/refactoring.dart';
@@ -22,7 +13,17 @@ import 'package:analysis_server/src/services/search/search_engine_internal2.dart
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart' show Element;
 import 'package:analyzer/file_system/file_system.dart';
+import 'package:analyzer/src/dart/analysis/ast_provider_context.dart';
+import 'package:analyzer/src/dart/analysis/ast_provider_driver.dart';
+import 'package:analyzer/src/dart/element/ast_provider.dart';
 import 'package:analyzer/src/generated/source.dart';
+import 'package:analyzer_plugin/protocol/protocol_common.dart'
+    show
+        RefactoringProblem,
+        RefactoringProblemSeverity,
+        SourceChange,
+        SourceEdit,
+        SourceFileEdit;
 import 'package:test/test.dart';
 
 import '../../abstract_single_unit.dart';
@@ -47,6 +48,7 @@ int findIdentifierLength(String search) {
 abstract class RefactoringTest extends AbstractSingleUnitTest {
   Index index;
   SearchEngine searchEngine;
+  AstProvider astProvider;
 
   SourceChange refactoringChange;
 
@@ -180,9 +182,12 @@ abstract class RefactoringTest extends AbstractSingleUnitTest {
     super.setUp();
     if (enableNewAnalysisDriver) {
       searchEngine = new SearchEngineImpl2([driver]);
+      astProvider = new AstProviderForDriver(driver);
     } else {
       index = createMemoryIndex();
-      searchEngine = new SearchEngineImpl(index);
+      searchEngine = new SearchEngineImpl(
+          index, (_) => new AstProviderForContext(context));
+      astProvider = new AstProviderForContext(context);
     }
   }
 }

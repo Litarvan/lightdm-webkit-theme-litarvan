@@ -2,14 +2,16 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library services.completion.contributor.dart.arglist;
-
 import 'dart:async';
 
 import 'package:analysis_server/src/protocol_server.dart'
     hide Element, ElementKind;
 import 'package:analysis_server/src/provisional/completion/dart/completion_dart.dart';
+import 'package:analysis_server/src/services/completion/dart/utilities.dart';
+import 'package:analysis_server/src/services/correction/flutter_util.dart';
+import 'package:analysis_server/src/utilities/documentation.dart';
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/src/generated/utilities_dart.dart';
 
@@ -143,7 +145,7 @@ bool _isInsertingToArgListWithSynthetic(DartCompletionRequest request) {
       // parameter list, guard first against end of list
       if (node.arguments.length == argIndex + 1 ||
           node.arguments.getRange(argIndex + 1, argIndex + 2).first
-          is NamedExpression) {
+              is NamedExpression) {
         return true;
       }
     }
@@ -183,17 +185,7 @@ class ArgListContributor extends DartCompletionContributor {
 
     // Determine if the target is in an argument list
     // for a method or a constructor or an annotation
-    // and resolve the identifier
     SimpleIdentifier targetId = _getTargetId(request.target.containingNode);
-    if (targetId == null) {
-      return EMPTY_LIST;
-    }
-
-    // Resolve the target expression to determine the arguments
-    await request.resolveContainingExpression(targetId);
-    // Gracefully degrade if the element could not be resolved
-    // e.g. target changed, completion aborted
-    targetId = _getTargetId(request.target.containingNode);
     if (targetId == null) {
       return EMPTY_LIST;
     }
@@ -204,12 +196,8 @@ class ArgListContributor extends DartCompletionContributor {
 
     // Generate argument list suggestion based upon the type of element
     if (elem is ClassElement) {
-      for (ConstructorElement constructor in elem.constructors) {
-        if (!constructor.isFactory) {
-          _addSuggestions(constructor.parameters);
-          return suggestions;
-        }
-      }
+      _addSuggestions(elem.unnamedConstructor?.parameters);
+      return suggestions;
     }
     if (elem is ConstructorElement) {
       _addSuggestions(elem.parameters);
@@ -230,39 +218,58 @@ class ArgListContributor extends DartCompletionContributor {
       [bool appendComma = false]) {
     bool appendColon = !_isInNamedExpression(request);
     Iterable<String> namedArgs = _namedArgs(request);
-    for (ParameterElement param in parameters) {
-      if (param.parameterKind == ParameterKind.NAMED) {
-        _addNamedParameterSuggestion(request, namedArgs, param.name,
-            param.type?.displayName, appendColon, appendComma);
+    for (ParameterElement parameter in parameters) {
+      if (parameter.parameterKind == ParameterKind.NAMED) {
+        _addNamedParameterSuggestion(
+            namedArgs, parameter, appendColon, appendComma);
       }
     }
   }
 
-  void _addNamedParameterSuggestion(
-      DartCompletionRequest request,
-      List<String> namedArgs,
-      String name,
-      String paramType,
-      bool appendColon,
-      bool appendComma) {
+  void _addNamedParameterSuggestion(List<String> namedArgs,
+      ParameterElement parameter, bool appendColon, bool appendComma) {
+    String name = parameter.name;
+    String type = parameter.type?.displayName;
     if (name != null && name.length > 0 && !namedArgs.contains(name)) {
       String completion = name;
       if (appendColon) {
         completion += ': ';
       }
+      int selectionOffset = completion.length;
+
+      // Optionally add Flutter child widget details.
+      Element element = parameter.enclosingElement;
+      if (element is ConstructorElement) {
+        if (isFlutterWidget(element.enclosingElement) &&
+            parameter.name == 'children') {
+          String value = getDefaultStringParameterValue(parameter);
+          if (value != null) {
+            completion += value;
+            // children: <Widget>[]
+            selectionOffset = completion.length - 1; // before closing ']'
+          }
+        }
+      }
+
       if (appendComma) {
         completion += ',';
       }
-      suggestions.add(new CompletionSuggestion(
+      CompletionSuggestion suggestion = new CompletionSuggestion(
           CompletionSuggestionKind.NAMED_ARGUMENT,
           DART_RELEVANCE_NAMED_PARAMETER,
           completion,
-          completion.length,
+          selectionOffset,
           0,
           false,
           false,
           parameterName: name,
-          parameterType: paramType));
+          parameterType: type);
+      if (parameter is FieldFormalParameterElement) {
+        _setDocumentation(suggestion, parameter.field?.documentationComment);
+        suggestion.element = convertElement(parameter);
+      }
+
+      suggestions.add(suggestion);
     }
   }
 
@@ -280,12 +287,49 @@ class ArgListContributor extends DartCompletionContributor {
     // method which returns some enum with 5+ cases.
     if (_isEditingNamedArgLabel(request) || _isAppendingToArgList(request)) {
       if (requiredCount == 0 || requiredCount < _argCount(request)) {
-        _addDefaultParamSuggestions(parameters);
+        bool addTrailingComma =
+            !_isFollowedByAComma(request) && _isInFlutterCreation(request);
+        _addDefaultParamSuggestions(parameters, addTrailingComma);
       }
     } else if (_isInsertingToArgListWithNoSynthetic(request)) {
       _addDefaultParamSuggestions(parameters, true);
     } else if (_isInsertingToArgListWithSynthetic(request)) {
-      _addDefaultParamSuggestions(parameters);
+      _addDefaultParamSuggestions(parameters, !_isFollowedByAComma(request));
+    }
+  }
+
+  bool _isFollowedByAComma(DartCompletionRequest request) {
+    // new A(^); NO
+    // new A(one: 1, ^); NO
+    // new A(^ , one: 1); YES
+    // new A(^), ... NO
+
+    var containingNode = request.target.containingNode;
+    var entity = request.target.entity;
+    Token token =
+        entity is AstNode ? entity.endToken : entity is Token ? entity : null;
+    return (token != containingNode?.endToken) &&
+        token?.next?.type == TokenType.COMMA;
+  }
+
+  bool _isInFlutterCreation(DartCompletionRequest request) {
+    AstNode containingNode = request?.target?.containingNode;
+    InstanceCreationExpression newExpr = containingNode != null
+        ? identifyNewExpression(containingNode.parent)
+        : null;
+    return newExpr != null && isFlutterInstanceCreationExpression(newExpr);
+  }
+
+  /**
+   * If the given [comment] is not `null`, fill the [suggestion] documentation
+   * fields.
+   */
+  static void _setDocumentation(
+      CompletionSuggestion suggestion, String comment) {
+    if (comment != null) {
+      String doc = removeDartDocDelimiters(comment);
+      suggestion.docComplete = doc;
+      suggestion.docSummary = getDartDocSummary(doc);
     }
   }
 }

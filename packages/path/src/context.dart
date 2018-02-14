@@ -72,8 +72,13 @@ class Context {
   ///     context.absolute('path', 'to', 'foo'); // -> '/root/path/to/foo'
   ///
   /// If [current] isn't absolute, this won't return an absolute path.
-  String absolute(String part1, [String part2, String part3, String part4,
-      String part5, String part6, String part7]) {
+  String absolute(String part1,
+      [String part2,
+      String part3,
+      String part4,
+      String part5,
+      String part6,
+      String part7]) {
     _validateArgList(
         "absolute", [part1, part2, part3, part4, part5, part6, part7]);
 
@@ -205,8 +210,14 @@ class Context {
   ///
   ///     context.join('path', '/to', 'foo'); // -> '/to/foo'
   ///
-  String join(String part1, [String part2, String part3, String part4,
-      String part5, String part6, String part7, String part8]) {
+  String join(String part1,
+      [String part2,
+      String part3,
+      String part4,
+      String part5,
+      String part6,
+      String part7,
+      String part8]) {
     var parts = <String>[
       part1,
       part2,
@@ -246,8 +257,8 @@ class Context {
         // replaces the path after it.
         var parsed = _parse(part);
         var path = buffer.toString();
-        parsed.root = path.substring(
-            0, style.rootLength(path, withDrive: true));
+        parsed.root =
+            path.substring(0, style.rootLength(path, withDrive: true));
         if (style.needsSeparator(parsed.root)) {
           parsed.separators[0] = style.separator;
         }
@@ -343,8 +354,8 @@ class Context {
   bool _needsNormalization(String path) {
     var start = 0;
     var codeUnits = path.codeUnits;
-    var previousPrevious;
-    var previous;
+    int previousPrevious;
+    int previous;
 
     // Skip past the root before we start looking for snippets that need
     // normalization. We want to normalize "//", but not when it's part of
@@ -378,8 +389,8 @@ class Context {
         // enough that it's probably not going to cause performance issues.
         if (previous == chars.PERIOD &&
             (previousPrevious == null ||
-             previousPrevious == chars.PERIOD ||
-             style.isSeparator(previousPrevious))) {
+                previousPrevious == chars.PERIOD ||
+                style.isSeparator(previousPrevious))) {
           return true;
         }
       }
@@ -397,8 +408,8 @@ class Context {
     // Single dots and double dots are normalized to directory traversals.
     if (previous == chars.PERIOD &&
         (previousPrevious == null ||
-         style.isSeparator(previousPrevious) ||
-         previousPrevious == chars.PERIOD)) {
+            style.isSeparator(previousPrevious) ||
+            previousPrevious == chars.PERIOD)) {
       return true;
     }
 
@@ -493,8 +504,8 @@ class Context {
     if (fromParsed.parts.length > 0 && fromParsed.parts[0] == '..') {
       throw new PathException('Unable to find a path to "$path" from "$from".');
     }
-    pathParsed.parts.insertAll(
-        0, new List.filled(fromParsed.parts.length, '..'));
+    pathParsed.parts
+        .insertAll(0, new List.filled(fromParsed.parts.length, '..'));
     pathParsed.separators[0] = '';
     pathParsed.separators.insertAll(
         1, new List.filled(fromParsed.parts.length, style.separator));
@@ -566,7 +577,7 @@ class Context {
     var result = _isWithinOrEqualsFast(parent, child);
     if (result != _PathRelation.inconclusive) return result;
 
-    var relative;
+    String relative;
     try {
       relative = this.relative(child, from: parent);
     } on PathException catch (_) {
@@ -580,7 +591,7 @@ class Context {
     if (relative == '..') return _PathRelation.different;
     return (relative.length >= 3 &&
             relative.startsWith('..') &&
-             style.isSeparator(relative.codeUnitAt(2)))
+            style.isSeparator(relative.codeUnitAt(2)))
         ? _PathRelation.different
         : _PathRelation.within;
   }
@@ -739,8 +750,8 @@ class Context {
         lastParentSeparator ??= math.max(0, parentRootLength - 1);
       }
 
-      var direction = _pathDirection(parent,
-          lastParentSeparator ?? parentRootLength - 1);
+      var direction =
+          _pathDirection(parent, lastParentSeparator ?? parentRootLength - 1);
       if (direction == _PathDirection.atRoot) return _PathRelation.equal;
       return direction == _PathDirection.aboveRoot
           ? _PathRelation.inconclusive
@@ -907,7 +918,7 @@ class Context {
         if (!beginning &&
             next == chars.PERIOD &&
             (i + 2 == path.length ||
-             style.isSeparator(path.codeUnitAt(i + 2)))) {
+                style.isSeparator(path.codeUnitAt(i + 2)))) {
           return null;
         }
       }
@@ -938,6 +949,20 @@ class Context {
     return parsed.toString();
   }
 
+  /// Returns [path] with the trailing extension set to [extension].
+  ///
+  /// If [path] doesn't have a trailing extension, this just adds [extension] to
+  /// the end.
+  ///
+  ///     context.setExtension('path/to/foo.dart', '.js')
+  ///       // -> 'path/to/foo.js'
+  ///     context.setExtension('path/to/foo.dart.js', '.map')
+  ///       // -> 'path/to/foo.dart.map'
+  ///     context.setExtension('path/to/foo', '.js')
+  ///       // -> 'path/to/foo.js'
+  String setExtension(String path, String extension) =>
+      withoutExtension(path) + extension;
+
   /// Returns the path represented by [uri], which may be a [String] or a [Uri].
   ///
   /// For POSIX and Windows styles, [uri] must be a `file:` URI. For the URL
@@ -958,10 +983,7 @@ class Context {
   /// If [uri] is relative, a relative path will be returned.
   ///
   ///     path.fromUri('path/to/foo'); // -> 'path/to/foo'
-  String fromUri(uri) {
-    if (uri is String) uri = Uri.parse(uri);
-    return style.pathFromUri(uri);
-  }
+  String fromUri(uri) => style.pathFromUri(_parseUri(uri));
 
   /// Returns the URI that represents [path].
   ///
@@ -1013,13 +1035,16 @@ class Context {
   ///         // -> r'a/b.dart'
   ///     context.prettyUri('file:///root/path'); // -> 'file:///root/path'
   String prettyUri(uri) {
-    if (uri is String) uri = Uri.parse(uri);
-    if (uri.scheme == 'file' && style == Style.url) return uri.toString();
-    if (uri.scheme != 'file' && uri.scheme != '' && style != Style.url) {
-      return uri.toString();
+    var typedUri = _parseUri(uri);
+    if (typedUri.scheme == 'file' && style == Style.url) {
+      return typedUri.toString();
+    } else if (typedUri.scheme != 'file' &&
+        typedUri.scheme != '' &&
+        style != Style.url) {
+      return typedUri.toString();
     }
 
-    var path = normalize(fromUri(uri));
+    var path = normalize(fromUri(typedUri));
     var rel = relative(path);
 
     // Only return a relative path if it's actually shorter than the absolute
@@ -1031,14 +1056,23 @@ class Context {
   ParsedPath _parse(String path) => new ParsedPath.parse(path, style);
 }
 
+/// Parses argument if it's a [String] or returns it intact if it's a [Uri].
+///
+/// Throws an [ArgumentError] otherwise.
+Uri _parseUri(uri) {
+  if (uri is String) return Uri.parse(uri);
+  if (uri is Uri) return uri;
+  throw new ArgumentError.value(uri, 'uri', 'Value must be a String or a Uri');
+}
+
 /// Validates that there are no non-null arguments following a null one and
 /// throws an appropriate [ArgumentError] on failure.
-_validateArgList(String method, List<String> args) {
+void _validateArgList(String method, List<String> args) {
   for (var i = 1; i < args.length; i++) {
     // Ignore nulls hanging off the end.
     if (args[i] == null || args[i - 1] != null) continue;
 
-    var numArgs;
+    int numArgs;
     for (numArgs = args.length; numArgs >= 1; numArgs--) {
       if (args[numArgs - 1] != null) break;
     }
@@ -1109,4 +1143,3 @@ class _PathRelation {
 
   String toString() => name;
 }
-

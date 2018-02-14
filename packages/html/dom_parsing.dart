@@ -85,14 +85,14 @@ class CodeMarkupVisitor extends TreeVisitor {
   visitElement(Element node) {
     final tag = node.localName;
     _str.write('&lt;<code class="markup element-name">$tag</code>');
-    if (node.attributes.length > 0) {
+    if (node.attributes.isNotEmpty) {
       node.attributes.forEach((key, v) {
         v = htmlSerializeEscape(v, attributeMode: true);
         _str.write(' <code class="markup attribute-name">$key</code>'
             '=<code class="markup attribute-value">"$v"</code>');
       });
     }
-    if (node.nodes.length > 0) {
+    if (node.nodes.isNotEmpty) {
       _str.write(">");
       visitChildren(node);
     } else if (isVoidElement(tag)) {
@@ -128,10 +128,10 @@ class CodeMarkupVisitor extends TreeVisitor {
 String htmlSerializeEscape(String text, {bool attributeMode: false}) {
   // TODO(jmesserly): is it faster to build up a list of codepoints?
   // StringBuffer seems cleaner assuming Dart can unbox 1-char strings.
-  StringBuffer result = null;
+  StringBuffer result;
   for (int i = 0; i < text.length; i++) {
     var ch = text[i];
-    String replace = null;
+    String replace;
     switch (ch) {
       case '&':
         replace = '&amp;';

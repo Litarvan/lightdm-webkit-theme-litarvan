@@ -60,11 +60,8 @@ class WrappingAggregateTransformer implements AggregateTransformer {
 class _DeclaringWrappingAggregateTransformer
     extends WrappingAggregateTransformer
     implements DeclaringAggregateTransformer {
-  final DeclaringTransformer _declaring;
-
   _DeclaringWrappingAggregateTransformer(DeclaringTransformer transformer)
-      : _declaring = transformer,
-        super._(transformer as Transformer);
+      : super._(transformer as Transformer);
 
   Future declareOutputs(DeclaringAggregateTransform aggregateTransform) {
     return newDeclaringTransform(aggregateTransform).then((transform) {

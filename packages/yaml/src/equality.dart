@@ -9,7 +9,7 @@ import 'package:collection/collection.dart';
 import 'yaml_node.dart';
 
 /// Returns a [Map] that compares its keys based on [deepEquals].
-Map/*<K, V>*/ deepEqualsMap/*<K, V>*/() =>
+Map<K, V> deepEqualsMap<K, V>() =>
     new HashMap(equals: deepEquals, hashCode: deepHashCode);
 
 /// Returns whether two objects are structurally equivalent.
@@ -58,7 +58,7 @@ class _DeepEquals {
     }
   }
 
-  /// Returns whether [list1] and [list2] are structurally equal. 
+  /// Returns whether [list1] and [list2] are structurally equal.
   bool _listEquals(List list1, List list2) {
     if (list1.length != list2.length) return false;
 
@@ -69,7 +69,7 @@ class _DeepEquals {
     return true;
   }
 
-  /// Returns whether [map1] and [map2] are structurally equal. 
+  /// Returns whether [map1] and [map2] are structurally equal.
   bool _mapEquals(Map map1, Map map2) {
     if (map1.length != map2.length) return false;
 

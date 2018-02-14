@@ -50,7 +50,8 @@ class PhaseOutput {
   AssetCollisionException get collisionException {
     if (_assets.length == 1) return null;
     return new AssetCollisionException(
-        _assets.where((asset) => asset.transform != null)
+        _assets
+            .where((asset) => asset.transform != null)
             .map((asset) => asset.transform.info),
         output.id);
   }

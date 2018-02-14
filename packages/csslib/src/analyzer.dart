@@ -222,7 +222,7 @@ class ExpandNestedSelectors extends Visitor {
     // If any expandedRuleSets and we're back at the top-level rule set then
     // there were nested rule set(s).
     if (_parentRuleSet == null) {
-      if (!_expandedRuleSets.isEmpty) {
+      if (_expandedRuleSets.isNotEmpty) {
         // Remember ruleset to replace with these flattened rulesets.
         _expansions[node] = _expandedRuleSets;
         _expandedRuleSets = [];
@@ -278,8 +278,8 @@ class ExpandNestedSelectors extends Visitor {
           // Substitue the & with the parent selector and only use a combinator
           // descendant if & is prefix by a sequence with an empty name e.g.,
           // "... + &", "&", "... ~ &", etc.
-          var hasPrefix = !newSequence.isEmpty &&
-              !newSequence.last.simpleSelector.name.isEmpty;
+          var hasPrefix = newSequence.isNotEmpty &&
+              newSequence.last.simpleSelector.name.isNotEmpty;
           newSequence.addAll(
               hasPrefix ? _convertToDescendentSequence(parent) : parent);
         } else {
@@ -906,7 +906,7 @@ class AllExtends extends Visitor {
 
   SelectorGroup _currSelectorGroup;
   int _currDeclIndex;
-  List<int> _extendsToRemove = [];
+  final List<int> _extendsToRemove = [];
 
   void visitRuleSet(RuleSet node) {
     var oldSelectorGroup = _currSelectorGroup;

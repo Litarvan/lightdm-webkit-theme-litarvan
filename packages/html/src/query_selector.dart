@@ -16,8 +16,8 @@ Element querySelector(Node node, String selector) =>
 
 List<Element> querySelectorAll(Node node, String selector) {
   var results = <Element>[];
-  new SelectorEvaluator().querySelectorAll(
-      node, _parseSelectorList(selector), results);
+  new SelectorEvaluator()
+      .querySelectorAll(node, _parseSelectorList(selector), results);
   return results;
 }
 
@@ -67,7 +67,7 @@ class SelectorEvaluator extends Visitor {
     var result = true;
 
     // Note: evaluate selectors right-to-left as it's more efficient.
-    int combinator = null;
+    int combinator;
     for (var s in selector.simpleSelectorSequences.reversed) {
       if (combinator == null) {
         result = s.simpleSelector.visit(this);
@@ -124,9 +124,9 @@ class SelectorEvaluator extends Visitor {
     return result;
   }
 
-  _unimplemented(SimpleSelector selector) => new UnimplementedError(
-      "'$selector' selector of type "
-      "${selector.runtimeType} is not implemented");
+  _unimplemented(SimpleSelector selector) =>
+      new UnimplementedError("'$selector' selector of type "
+          "${selector.runtimeType} is not implemented");
 
   _unsupported(selector) =>
       new FormatException("'$selector' is not a valid selector");

@@ -89,8 +89,8 @@ class _MD5Sink extends HashSink {
     var c = digest[2];
     var d = digest[3];
 
-    var e;
-    var f;
+    int e;
+    int f;
 
     for (var i = 0; i < 64; i++) {
       if (i < 16) {

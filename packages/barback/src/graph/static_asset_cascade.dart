@@ -40,13 +40,17 @@ class StaticAssetCascade implements AssetCascade {
 
   final status = NodeStatus.IDLE;
 
-  final onLog = new StreamController<LogEntry>.broadcast().stream;
-  final onStatusChange = new StreamController<NodeStatus>.broadcast().stream;
-  final onAsset = new StreamController<AssetNode>.broadcast().stream;
+  final Stream<LogEntry> onLog = new StreamController.broadcast().stream;
+  final Stream<NodeStatus> onStatusChange =
+      new StreamController.broadcast().stream;
+  final Stream<AssetNode> onAsset = new StreamController.broadcast().stream;
 
   Future<AssetSet> get availableOutputs {
     var provider = graph.provider as StaticPackageProvider;
-    return provider.getAllAssetIds(package).asyncMap(provider.getAsset).toList()
+    return provider
+        .getAllAssetIds(package)
+        .asyncMap(provider.getAsset)
+        .toList()
         .then((assets) => new AssetSet.from(DelegatingList.typed(assets)));
   }
 

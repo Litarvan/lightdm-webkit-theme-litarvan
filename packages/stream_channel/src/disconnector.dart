@@ -34,10 +34,10 @@ class Disconnector<T> implements StreamChannelTransformer<T, T> {
   /// futures have completed. Note that a [StreamController]'s sink won't close
   /// until the corresponding stream has a listener.
   Future disconnect() => _disconnectMemo.runOnce(() {
-    var futures = _sinks.map((sink) => sink._disconnect()).toList();
-    _sinks.clear();
-    return Future.wait(futures, eagerError: true);
-  });
+        var futures = _sinks.map((sink) => sink._disconnect()).toList();
+        _sinks.clear();
+        return Future.wait(futures, eagerError: true);
+      });
   final _disconnectMemo = new AsyncMemoizer();
 
   StreamChannel<T> bind(StreamChannel<T> channel) {
@@ -111,10 +111,8 @@ class _DisconnectorSink<T> implements StreamSink<T> {
     if (_isDisconnected) return new Future.value();
 
     _addStreamCompleter = new Completer.sync();
-    _addStreamSubscription = stream.listen(
-        _inner.add,
-        onError: _inner.addError,
-        onDone: _addStreamCompleter.complete);
+    _addStreamSubscription = stream.listen(_inner.add,
+        onError: _inner.addError, onDone: _addStreamCompleter.complete);
     return _addStreamCompleter.future.then((_) {
       _addStreamCompleter = null;
       _addStreamSubscription = null;

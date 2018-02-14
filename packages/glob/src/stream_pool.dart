@@ -46,8 +46,7 @@ class StreamPool<T> {
   void add(Stream<T> stream) {
     if (_subscriptions.containsKey(stream)) return;
     _subscriptions[stream] = stream.listen(_controller.add,
-        onError: _controller.addError,
-        onDone: () => remove(stream));
+        onError: _controller.addError, onDone: () => remove(stream));
   }
 
   /// Removes [stream] as a member of this pool.

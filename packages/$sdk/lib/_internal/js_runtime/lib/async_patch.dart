@@ -4,21 +4,18 @@
 
 // Patch file for the dart:async library.
 
-import 'dart:_js_helper' show
-    patch,
-    ExceptionAndStackTrace,
-    Primitives,
-    convertDartClosureToJS,
-    getTraceFromException,
-    requiresPreamble,
-    wrapException,
-    unwrapException;
-import 'dart:_isolate_helper' show
-    IsolateNatives,
-    TimerImpl,
-    leaveJsAsync,
-    enterJsAsync,
-    isWorker;
+import 'dart:_js_helper'
+    show
+        patch,
+        ExceptionAndStackTrace,
+        Primitives,
+        convertDartClosureToJS,
+        getTraceFromException,
+        requiresPreamble,
+        wrapException,
+        unwrapException;
+import 'dart:_isolate_helper'
+    show IsolateNatives, TimerImpl, leaveJsAsync, enterJsAsync, isWorker;
 
 import 'dart:_foreign_helper' show JS;
 
@@ -52,12 +49,13 @@ class _AsyncRun {
         var f = storedCallback;
         storedCallback = null;
         f();
-      };
+      }
+
+      ;
 
       var observer = JS('', 'new self.MutationObserver(#)',
           convertDartClosureToJS(internalCallback, 1));
-      JS('', '#.observe(#, { childList: true })',
-          observer, div);
+      JS('', '#.observe(#, { childList: true })', observer, div);
 
       return (void callback()) {
         assert(storedCallback == null);
@@ -66,8 +64,8 @@ class _AsyncRun {
         // Because of a broken shadow-dom polyfill we have to change the
         // children instead a cheap property.
         // See https://github.com/Polymer/ShadowDOM/issues/468
-        JS('', '#.firstChild ? #.removeChild(#): #.appendChild(#)',
-            div, div, span, div, span);
+        JS('', '#.firstChild ? #.removeChild(#): #.appendChild(#)', div, div,
+            span, div, span);
       };
     } else if (JS('', 'self.setImmediate') != null) {
       return _scheduleImmediateWithSetImmediate;
@@ -80,20 +78,24 @@ class _AsyncRun {
     internalCallback() {
       leaveJsAsync();
       callback();
-    };
+    }
+
+    ;
     enterJsAsync();
     JS('void', 'self.scheduleImmediate(#)',
-       convertDartClosureToJS(internalCallback, 0));
+        convertDartClosureToJS(internalCallback, 0));
   }
 
   static void _scheduleImmediateWithSetImmediate(void callback()) {
     internalCallback() {
       leaveJsAsync();
       callback();
-    };
+    }
+
+    ;
     enterJsAsync();
     JS('void', 'self.setImmediate(#)',
-       convertDartClosureToJS(internalCallback, 0));
+        convertDartClosureToJS(internalCallback, 0));
   }
 
   static void _scheduleImmediateWithTimer(void callback()) {
@@ -106,7 +108,7 @@ class DeferredLibrary {
   @patch
   Future<Null> load() {
     throw 'DeferredLibrary not supported. '
-          'please use the `import "lib.dart" deferred as lib` syntax.';
+        'please use the `import "lib.dart" deferred as lib` syntax.';
   }
 }
 
@@ -120,45 +122,57 @@ class Timer {
   }
 
   @patch
-  static Timer _createPeriodicTimer(Duration duration,
-                             void callback(Timer timer)) {
+  static Timer _createPeriodicTimer(
+      Duration duration, void callback(Timer timer)) {
     int milliseconds = duration.inMilliseconds;
     if (milliseconds < 0) milliseconds = 0;
     return new TimerImpl.periodic(milliseconds, callback);
   }
 }
 
-/// Runtime support for async-await transformation.
+/// Initiates the computation of an `async` function.
 ///
-/// This function is called by a transformed function on each await and return
-/// in the untransformed function, and before starting.
+/// Used as part of the runtime support for the async/await transformation.
 ///
-/// If [object] is not a future it will be wrapped in a `new Future.value`.
-///
-/// If [asyncBody] is [async_error_codes.SUCCESS]/[async_error_codes.ERROR] it
-/// indicates a return or throw from the async function, and
-/// complete/completeError is called on [completer] with [object].
-///
-/// Otherwise [asyncBody] is set up to be called when the future is completed
-/// with a code [async_error_codes.SUCCESS]/[async_error_codes.ERROR] depending
-/// on the success of the future.
-///
-/// Returns the future of the completer for convenience of the first call.
-dynamic _asyncHelper(dynamic object,
-    dynamic /* int | _WrappedAsyncBody */ bodyFunctionOrErrorCode,
-    Completer completer) {
-  if (identical(bodyFunctionOrErrorCode, async_error_codes.SUCCESS)) {
-    completer.complete(object);
-    return;
-  } else if (identical(bodyFunctionOrErrorCode, async_error_codes.ERROR)) {
-    // The error is a js-error.
-    completer.completeError(unwrapException(object),
-    getTraceFromException(object));
-    return;
-  }
-
-  _awaitOnObject(object, bodyFunctionOrErrorCode);
+/// This function sets up the first call into the transformed [bodyFunction].
+/// Independently, it takes the [completer] and returns the future of the
+/// completer for convenience of the transformed code.
+dynamic _asyncStart(_WrappedAsyncBody bodyFunction, Completer completer) {
+  // TODO(sra): Specialize this implementation of `await null`.
+  _awaitOnObject(null, bodyFunction);
   return completer.future;
+}
+
+/// Performs the `await` operation of an `async` function.
+///
+/// Used as part of the runtime support for the async/await transformation.
+///
+/// Arranges for [bodyFunction] to be called when the future or value [object]
+/// is completed with a code [async_error_codes.SUCCESS] or
+/// [async_error_codes.ERROR] depending on the success of the future.
+dynamic _asyncAwait(dynamic object, _WrappedAsyncBody bodyFunction) {
+  _awaitOnObject(object, bodyFunction);
+}
+
+/// Completes the future of an `async` function.
+///
+/// Used as part of the runtime support for the async/await transformation.
+///
+/// This function is used when the `async` function returns (explicitly or
+/// implicitly).
+dynamic _asyncReturn(dynamic object, Completer completer) {
+  completer.complete(object);
+}
+
+/// Completes the future of an `async` function with an error.
+///
+/// Used as part of the runtime support for the async/await transformation.
+///
+/// This function is used when the `async` function re-throws an exception.
+dynamic _asyncRethrow(dynamic object, Completer completer) {
+  // The error is a js-error.
+  completer.completeError(
+      unwrapException(object), getTraceFromException(object));
 }
 
 /// Awaits on the given [object].
@@ -216,7 +230,8 @@ _WrappedAsyncBody _wrapJsFunctionForAsync(dynamic /* js function */ function) {
             }
           }
         })(#, #)""",
-      function, async_error_codes.ERROR);
+      function,
+      async_error_codes.ERROR);
 
   return Zone.current.registerBinaryCallback((int errorCode, dynamic result) {
     JS('', '#(#, #)', protected, errorCode, result);
@@ -259,7 +274,8 @@ _WrappedAsyncBody _wrapJsFunctionForAsync(dynamic /* js function */ function) {
 ///
 /// If [object] is not a [Future], it is wrapped in a `Future.value`.
 /// The [asyncBody] is called on completion of the future (see [asyncHelper].
-void _asyncStarHelper(dynamic object,
+void _asyncStarHelper(
+    dynamic object,
     dynamic /* int | _WrappedAsyncBody */ bodyFunctionOrErrorCode,
     _AsyncStarStreamController controller) {
   if (identical(bodyFunctionOrErrorCode, async_error_codes.SUCCESS)) {
@@ -274,11 +290,10 @@ void _asyncStarHelper(dynamic object,
     // The error is a js-error.
     if (controller.isCanceled) {
       controller.cancelationCompleter.completeError(
-          unwrapException(object),
-          getTraceFromException(object));
+          unwrapException(object), getTraceFromException(object));
     } else {
-      controller.addError(unwrapException(object),
-                          getTraceFromException(object));
+      controller.addError(
+          unwrapException(object), getTraceFromException(object));
       controller.close();
     }
     return;
@@ -369,38 +384,36 @@ class _AsyncStarStreamController {
   close() => controller.close();
 
   _AsyncStarStreamController(_WrappedAsyncBody body) {
-
     _resumeBody() {
       scheduleMicrotask(() {
         body(async_error_codes.SUCCESS, null);
       });
     }
 
-    controller = new StreamController(
-      onListen: () {
+    controller = new StreamController(onListen: () {
+      _resumeBody();
+    }, onResume: () {
+      // Only schedule again if the async* function actually is suspended.
+      // Resume directly instead of scheduling, so that the sequence
+      // `pause-resume-pause` will result in one extra event produced.
+      if (isSuspended) {
+        isSuspended = false;
         _resumeBody();
-      }, onResume: () {
-        // Only schedule again if the async* function actually is suspended.
-        // Resume directly instead of scheduling, so that the sequence
-        // `pause-resume-pause` will result in one extra event produced.
+      }
+    }, onCancel: () {
+      // If the async* is finished we ignore cancel events.
+      if (!controller.isClosed) {
+        cancelationCompleter = new Completer();
         if (isSuspended) {
+          // Resume the suspended async* function to run finalizers.
           isSuspended = false;
-          _resumeBody();
+          scheduleMicrotask(() {
+            body(async_error_codes.STREAM_WAS_CANCELED, null);
+          });
         }
-      }, onCancel: () {
-        // If the async* is finished we ignore cancel events.
-        if (!controller.isClosed) {
-          cancelationCompleter = new Completer();
-          if (isSuspended) {
-            // Resume the suspended async* function to run finalizers.
-            isSuspended = false;
-            scheduleMicrotask(() {
-              body(async_error_codes.STREAM_WAS_CANCELED, null);
-            });
-          }
-          return cancelationCompleter.future;
-        }
-      });
+        return cancelationCompleter.future;
+      }
+    });
   }
 }
 
@@ -468,7 +481,8 @@ class _SyncStarIterator implements Iterator {
 
   _runBody() {
     // TODO(sra): Find a way to hard-wire SUCCESS and ERROR codes.
-    return JS('',
+    return JS(
+        '',
         '''
         // Invokes [body] with [errorCode] and [result].
         //
@@ -485,7 +499,9 @@ class _SyncStarIterator implements Iterator {
             }
           }
         })(#, #, #)''',
-        _body, async_error_codes.SUCCESS, async_error_codes.ERROR);
+        _body,
+        async_error_codes.SUCCESS,
+        async_error_codes.ERROR);
   }
 
   bool moveNext() {
@@ -537,7 +553,7 @@ class _SyncStarIterator implements Iterator {
         return true;
       }
     }
-    return false;  // TODO(sra): Fix type inference so that this is not needed.
+    return false; // TODO(sra): Fix type inference so that this is not needed.
   }
 }
 

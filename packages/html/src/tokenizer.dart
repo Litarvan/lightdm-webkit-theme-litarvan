@@ -65,11 +65,16 @@ class HtmlTokenizer implements Iterator<Token> {
   List<TagAttribute> _attributes;
   Set<String> _attributeNames;
 
-  HtmlTokenizer(doc, {String encoding, bool parseMeta: true,
-      this.lowercaseElementName: true, this.lowercaseAttrName: true,
-      bool generateSpans: false, String sourceUrl, this.attributeSpans: false})
+  HtmlTokenizer(doc,
+      {String encoding,
+      bool parseMeta: true,
+      this.lowercaseElementName: true,
+      this.lowercaseAttrName: true,
+      bool generateSpans: false,
+      String sourceUrl,
+      this.attributeSpans: false})
       : stream = new HtmlInputStream(
-          doc, encoding, parseMeta, generateSpans, sourceUrl),
+            doc, encoding, parseMeta, generateSpans, sourceUrl),
         tokenQueue = new Queue(),
         generateSpans = generateSpans {
     reset();
@@ -120,16 +125,16 @@ class HtmlTokenizer implements Iterator<Token> {
   bool moveNext() {
     // Start processing. When EOF is reached state will return false;
     // instead of true and the loop will terminate.
-    while (stream.errors.length == 0 && tokenQueue.length == 0) {
+    while (stream.errors.isEmpty && tokenQueue.isEmpty) {
       if (!state()) {
         _current = null;
         return false;
       }
     }
-    if (stream.errors.length > 0) {
+    if (stream.errors.isNotEmpty) {
       _current = new ParseErrorToken(stream.errors.removeFirst());
     } else {
-      assert(tokenQueue.length > 0);
+      assert(tokenQueue.isNotEmpty);
       _current = tokenQueue.removeFirst();
     }
     return true;
@@ -200,42 +205,42 @@ class HtmlTokenizer implements Iterator<Token> {
           (0x007F <= charAsInt && charAsInt <= 0x009F) ||
           (0xFDD0 <= charAsInt && charAsInt <= 0xFDEF) ||
           const [
-        0x000B,
-        0xFFFE,
-        0xFFFF,
-        0x1FFFE,
-        0x1FFFF,
-        0x2FFFE,
-        0x2FFFF,
-        0x3FFFE,
-        0x3FFFF,
-        0x4FFFE,
-        0x4FFFF,
-        0x5FFFE,
-        0x5FFFF,
-        0x6FFFE,
-        0x6FFFF,
-        0x7FFFE,
-        0x7FFFF,
-        0x8FFFE,
-        0x8FFFF,
-        0x9FFFE,
-        0x9FFFF,
-        0xAFFFE,
-        0xAFFFF,
-        0xBFFFE,
-        0xBFFFF,
-        0xCFFFE,
-        0xCFFFF,
-        0xDFFFE,
-        0xDFFFF,
-        0xEFFFE,
-        0xEFFFF,
-        0xFFFFE,
-        0xFFFFF,
-        0x10FFFE,
-        0x10FFFF
-      ].contains(charAsInt)) {
+            0x000B,
+            0xFFFE,
+            0xFFFF,
+            0x1FFFE,
+            0x1FFFF,
+            0x2FFFE,
+            0x2FFFF,
+            0x3FFFE,
+            0x3FFFF,
+            0x4FFFE,
+            0x4FFFF,
+            0x5FFFE,
+            0x5FFFF,
+            0x6FFFE,
+            0x6FFFF,
+            0x7FFFE,
+            0x7FFFF,
+            0x8FFFE,
+            0x8FFFF,
+            0x9FFFE,
+            0x9FFFF,
+            0xAFFFE,
+            0xAFFFF,
+            0xBFFFE,
+            0xBFFFF,
+            0xCFFFE,
+            0xCFFFF,
+            0xDFFFE,
+            0xDFFFF,
+            0xEFFFE,
+            0xEFFFF,
+            0xFFFFE,
+            0xFFFFF,
+            0x10FFFE,
+            0x10FFFF
+          ].contains(charAsInt)) {
         _addToken(new ParseErrorToken("illegal-codepoint-for-numeric-entity",
             messageParams: {"charAsInt": charAsInt}));
       }
@@ -297,7 +302,7 @@ class HtmlTokenizer implements Iterator<Token> {
         filteredEntityList =
             filteredEntityList.where((e) => e.startsWith(name)).toList();
 
-        if (filteredEntityList.length == 0) {
+        if (filteredEntityList.isEmpty) {
           break;
         }
         charStack.add(stream.char());
@@ -305,7 +310,7 @@ class HtmlTokenizer implements Iterator<Token> {
 
       // At this point we have a string that starts with some characters
       // that may match an entity
-      String entityName = null;
+      String entityName;
 
       // Try to find the longest entity the string will match to take care
       // of &noti for instance.
@@ -344,7 +349,7 @@ class HtmlTokenizer implements Iterator<Token> {
     if (fromAttribute) {
       _attributeValue.write(output);
     } else {
-      var token;
+      Token token;
       if (isWhitespace(output)) {
         token = new SpaceCharactersToken(output);
       } else {
@@ -1311,7 +1316,7 @@ class HtmlTokenizer implements Iterator<Token> {
       }
     } else if (charStack.last == "[" &&
         parser != null &&
-        parser.tree.openElements.length > 0 &&
+        parser.tree.openElements.isNotEmpty &&
         parser.tree.openElements.last.namespaceUri !=
             parser.tree.defaultNamespace) {
       var matched = true;
@@ -1330,7 +1335,7 @@ class HtmlTokenizer implements Iterator<Token> {
 
     _addToken(new ParseErrorToken("expected-dashes-or-doctype"));
 
-    while (charStack.length > 0) {
+    while (charStack.isNotEmpty) {
       stream.unget(charStack.removeLast());
     }
     state = bogusCommentState;
@@ -1899,7 +1904,7 @@ class HtmlTokenizer implements Iterator<Token> {
       }
     }
 
-    if (data.length > 0) {
+    if (data.isNotEmpty) {
       _addToken(new CharactersToken(data.join()));
     }
     state = dataState;

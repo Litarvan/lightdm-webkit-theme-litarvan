@@ -2,11 +2,10 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.domain.analysis.hover;
-
 import 'dart:async';
 
-import 'package:analysis_server/plugin/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol_generated.dart';
 import 'package:test/test.dart';
 import 'package:test_reflective_loader/test_reflective_loader.dart';
 
@@ -306,6 +305,48 @@ class A {
     expect(hover.propagatedType, isNull);
     // no parameter
     expect(hover.parameter, isNull);
+  }
+
+  test_expression_parameter_fieldFormal_declaration() async {
+    addTestFile('''
+class A {
+  /// The field documentation.
+  final int fff;
+  A({this.fff});
+}
+main() {
+  new A(fff: 42);
+}
+''');
+    HoverInformation hover = await prepareHover('fff});');
+    expect(hover.containingLibraryName, isNull);
+    expect(hover.containingLibraryPath, isNull);
+    expect(hover.containingClassDescription, isNull);
+    expect(hover.dartdoc, 'The field documentation.');
+    expect(hover.elementDescription, '{int fff}');
+    expect(hover.elementKind, 'parameter');
+    expect(hover.staticType, 'int');
+  }
+
+  test_expression_parameter_fieldFormal_use() async {
+    addTestFile('''
+class A {
+  /// The field documentation.
+  final int fff;
+  A({this.fff});
+}
+main() {
+  new A(fff: 42);
+}
+''');
+    HoverInformation hover = await prepareHover('fff: 42');
+    expect(hover.containingLibraryName, isNull);
+    expect(hover.containingLibraryPath, isNull);
+    expect(hover.containingClassDescription, isNull);
+    expect(hover.dartdoc, 'The field documentation.');
+    expect(hover.elementDescription, '{int fff}');
+    expect(hover.elementKind, 'parameter');
+    expect(hover.staticType, 'int');
   }
 
   test_expression_syntheticGetter_invocation() async {

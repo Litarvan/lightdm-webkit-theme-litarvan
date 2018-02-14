@@ -25,7 +25,7 @@ import 'package:analyzer/src/generated/java_engine_io.dart';
 import 'package:analyzer/src/generated/java_io.dart';
 import 'package:analyzer/src/generated/resolver.dart';
 import 'package:analyzer/src/generated/sdk.dart';
-import 'package:analyzer/src/generated/sdk_io.dart';
+import 'package:analyzer/src/generated/sdk_io.dart'; // ignore: deprecated_member_use
 import 'package:analyzer/src/generated/source.dart';
 import 'package:analyzer/src/generated/source_io.dart';
 import 'package:analyzer/src/generated/testing/ast_test_factory.dart';
@@ -1742,8 +1742,7 @@ on String catch (e, s) { return 1; }''');
   }
 
   void _assertHasReturn(bool expectedResult, String source) {
-    Statement statement = ParserTestCase.parseStatement(
-        source, [], enableLazyAssignmentOperators);
+    Statement statement = parseStatement(source, enableLazyAssignmentOperators);
     expect(ExitDetector.exits(statement), expectedResult);
   }
 

@@ -111,9 +111,8 @@ class Stopwatch {
     return (elapsedTicks * 1000) ~/ frequency;
   }
 
-
   /**
-   * Whether the [StopWatch] is currently running.
+   * Whether the [Stopwatch] is currently running.
    */
   bool get isRunning => _stop == null;
 

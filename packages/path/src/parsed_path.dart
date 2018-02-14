@@ -129,10 +129,13 @@ class ParsedPath {
 
     // Canonicalize separators.
     var newSeparators = new List<String>.generate(
-        newParts.length, (_) => style.separator, growable: true);
-    newSeparators.insert(0, isAbsolute &&
-        newParts.length > 0 &&
-        style.needsSeparator(root) ? style.separator : '');
+        newParts.length, (_) => style.separator,
+        growable: true);
+    newSeparators.insert(
+        0,
+        isAbsolute && newParts.length > 0 && style.needsSeparator(root)
+            ? style.separator
+            : '');
 
     parts = newParts;
     separators = newSeparators;

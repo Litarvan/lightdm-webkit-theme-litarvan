@@ -35,8 +35,10 @@ class DocumentStartEvent implements Event {
   /// `===` sequence).
   final bool isImplicit;
 
-  DocumentStartEvent(this.span, {this.versionDirective,
-          List<TagDirective> tagDirectives, this.isImplicit: true})
+  DocumentStartEvent(this.span,
+      {this.versionDirective,
+      List<TagDirective> tagDirectives,
+      this.isImplicit: true})
       : tagDirectives = tagDirectives == null ? [] : tagDirectives;
 
   String toString() => "DOCUMENT_START";

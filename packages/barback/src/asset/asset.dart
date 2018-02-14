@@ -24,14 +24,12 @@ abstract class Asset {
   factory Asset.fromBytes(AssetId id, List<int> bytes) =>
       new BinaryAsset(id, bytes);
 
-  factory Asset.fromFile(AssetId id, File file) =>
-      new FileAsset(id, file.path);
+  factory Asset.fromFile(AssetId id, File file) => new FileAsset(id, file.path);
 
   factory Asset.fromString(AssetId id, String content) =>
       new StringAsset(id, content);
 
-  factory Asset.fromPath(AssetId id, String path) =>
-      new FileAsset(id, path);
+  factory Asset.fromPath(AssetId id, String path) => new FileAsset(id, path);
 
   factory Asset.fromStream(AssetId id, Stream<List<int>> stream) =>
       new StreamAsset(id, stream);

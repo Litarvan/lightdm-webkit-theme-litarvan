@@ -2,10 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library services.completion.contributor.dart.static_member;
-
 import 'dart:async';
 
+import 'package:analysis_server/src/ide_options.dart';
 import 'package:analysis_server/src/provisional/completion/dart/completion_dart.dart';
 import 'package:analysis_server/src/services/completion/dart/suggestion_builder.dart';
 import 'package:analyzer/dart/ast/ast.dart';
@@ -22,16 +21,6 @@ class StaticMemberContributor extends DartCompletionContributor {
   @override
   Future<List<CompletionSuggestion>> computeSuggestions(
       DartCompletionRequest request) async {
-    // Determine if the target looks like a static method invocation,
-    // or a static property access
-    if (request.dotTarget is! Identifier || request.target.isCascade) {
-      return EMPTY_LIST;
-    }
-
-    // Resolve the expression and the containing library
-    await request.resolveContainingExpression(request.dotTarget);
-
-    // Recompute the target since resolution may have changed it
     Expression targetId = request.dotTarget;
     if (targetId is Identifier && !request.target.isCascade) {
       Element elem = targetId.bestElement;
@@ -43,7 +32,8 @@ class StaticMemberContributor extends DartCompletionContributor {
           return EMPTY_LIST;
         }
 
-        _SuggestionBuilder builder = new _SuggestionBuilder(containingLibrary);
+        _SuggestionBuilder builder =
+            new _SuggestionBuilder(containingLibrary, request.ideOptions);
         elem.accept(builder);
         return builder.suggestions;
       }
@@ -67,7 +57,12 @@ class _SuggestionBuilder extends GeneralizingElementVisitor {
    */
   final List<CompletionSuggestion> suggestions = <CompletionSuggestion>[];
 
-  _SuggestionBuilder(this.containingLibrary);
+  /**
+   * Ide options.
+   */
+  final IdeOptions options;
+
+  _SuggestionBuilder(this.containingLibrary, this.options);
 
   @override
   visitClassElement(ClassElement element) {
@@ -121,7 +116,7 @@ class _SuggestionBuilder extends GeneralizingElementVisitor {
       return;
     }
     CompletionSuggestion suggestion =
-        createSuggestion(element, completion: completion);
+        createSuggestion(element, options, completion: completion);
     if (suggestion != null) {
       suggestions.add(suggestion);
     }

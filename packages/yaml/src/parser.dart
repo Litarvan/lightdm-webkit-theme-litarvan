@@ -214,8 +214,8 @@ class Parser {
       _scanner.scan();
       return new DocumentEndEvent(token.span, isImplicit: false);
     } else {
-      return new DocumentEndEvent(
-          token.span.start.pointSpan(), isImplicit: true);
+      return new DocumentEndEvent(token.span.start.pointSpan(),
+          isImplicit: true);
     }
   }
 
@@ -305,8 +305,7 @@ class Parser {
 
       _state = _states.removeLast();
       _scanner.scan();
-      return new ScalarEvent(
-          span.expand(token.span), token.value, token.style,
+      return new ScalarEvent(span.expand(token.span), token.value, token.style,
           anchor: anchor, tag: tag);
     }
 
@@ -331,7 +330,6 @@ class Parser {
           anchor: anchor, tag: tag);
     }
 
-
     if (block && token.type == TokenType.BLOCK_MAPPING_START) {
       _state = _State.BLOCK_MAPPING_FIRST_KEY;
       return new MappingStartEvent(
@@ -341,8 +339,7 @@ class Parser {
 
     if (anchor != null || tag != null) {
       _state = _states.removeLast();
-      return new ScalarEvent(
-          span, '', ScalarStyle.PLAIN,
+      return new ScalarEvent(span, '', ScalarStyle.PLAIN,
           anchor: anchor, tag: tag);
     }
 
@@ -514,8 +511,7 @@ class Parser {
       if (token.type == TokenType.KEY) {
         _state = _State.FLOW_SEQUENCE_ENTRY_MAPPING_KEY;
         _scanner.scan();
-        return new MappingStartEvent(
-            token.span, CollectionStyle.FLOW);
+        return new MappingStartEvent(token.span, CollectionStyle.FLOW);
       } else if (token.type != TokenType.FLOW_SEQUENCE_END) {
         _states.add(_State.FLOW_SEQUENCE_ENTRY);
         return _parseNode();
@@ -579,8 +575,8 @@ class Parser {
   ///                                                   *
   Event _parseFlowSequenceEntryMappingEnd() {
     _state = _State.FLOW_SEQUENCE_ENTRY;
-    return new Event(EventType.MAPPING_END,
-        _scanner.peek().span.start.pointSpan());
+    return new Event(
+        EventType.MAPPING_END, _scanner.peek().span.start.pointSpan());
   }
 
   /// Parses the productions:
@@ -670,7 +666,7 @@ class Parser {
     VersionDirective versionDirective;
     var tagDirectives = <TagDirective>[];
     while (token.type == TokenType.VERSION_DIRECTIVE ||
-           token.type == TokenType.TAG_DIRECTIVE) {
+        token.type == TokenType.TAG_DIRECTIVE) {
       if (token is VersionDirectiveToken) {
         if (versionDirective != null) {
           throw new YamlException("Duplicate %YAML directive.", token.span);
@@ -679,7 +675,7 @@ class Parser {
         if (token.major != 1 || token.minor == 0) {
           throw new YamlException(
               "Incompatible YAML document. This parser only supports YAML 1.1 "
-                "and 1.2.",
+              "and 1.2.",
               token.span);
         } else if (token.minor > 2) {
           // TODO(nweiz): Print to stderr when issue 6943 is fixed and dart:io
@@ -699,11 +695,9 @@ class Parser {
     }
 
     _appendTagDirective(
-        new TagDirective("!", "!"),
-        token.span.start.pointSpan(),
+        new TagDirective("!", "!"), token.span.start.pointSpan(),
         allowDuplicates: true);
-    _appendTagDirective(
-        new TagDirective("!!", "tag:yaml.org,2002:"),
+    _appendTagDirective(new TagDirective("!!", "tag:yaml.org,2002:"),
         token.span.start.pointSpan(),
         allowDuplicates: true);
 

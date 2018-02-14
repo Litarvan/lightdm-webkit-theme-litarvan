@@ -37,7 +37,7 @@ class AssetSet extends IterableBase<Asset> {
 
   /// Gets the [Asset] in the set with [id], or returns `null` if no asset with
   /// that ID is present.
-  Asset operator[](AssetId id) => _assets[id];
+  Asset operator [](AssetId id) => _assets[id];
 
   /// Adds [asset] to the set.
   ///

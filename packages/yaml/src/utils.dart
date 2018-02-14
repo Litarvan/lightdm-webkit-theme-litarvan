@@ -38,5 +38,3 @@ YamlWarningCallback yamlWarningCallback = (message, [span]) {
   if (span != null) message = span.message(message);
   print(message);
 };
-
-

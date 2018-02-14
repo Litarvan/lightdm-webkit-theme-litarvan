@@ -120,8 +120,7 @@ class Parser {
 
         if (end < char) {
           _scanner.error("Range out of order.",
-              position: start,
-              length: _scanner.position - start);
+              position: start, length: _scanner.position - start);
         }
         ranges.add(new Range(char, end));
       } else {
@@ -156,8 +155,8 @@ class Parser {
   AstNode _parseLiteral({bool inOptions: false}) {
     // If we're in an options block, we want to stop parsing as soon as we hit a
     // comma. Otherwise, commas are fair game for literals.
-    var regExp = new RegExp(
-        inOptions ? r'[^*{[?\\}\],()]*' : r'[^*{[?\\}\]()]*');
+    var regExp =
+        new RegExp(inOptions ? r'[^*{[?\\}\],()]*' : r'[^*{[?\\}\]()]*');
 
     _scanner.scan(regExp);
     var buffer = new StringBuffer()..write(_scanner.lastMatch[0]);

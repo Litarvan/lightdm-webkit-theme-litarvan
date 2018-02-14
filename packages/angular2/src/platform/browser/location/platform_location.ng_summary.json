@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "PlatformLocation": {
+      "class": "Identifier",
+      "name": "PlatformLocation",
+      "moduleUrl": "asset:angular2/lib/src/platform/browser/location/platform_location.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

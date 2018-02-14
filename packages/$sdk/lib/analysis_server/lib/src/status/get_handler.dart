@@ -2,14 +2,13 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library analysis_server.src.status.get_handler;
-
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:analysis_server/plugin/protocol/protocol.dart' hide Element;
+import 'package:analysis_server/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol_generated.dart';
 import 'package:analysis_server/src/analysis_server.dart';
 import 'package:analysis_server/src/domain_completion.dart';
 import 'package:analysis_server/src/domain_diagnostic.dart';
@@ -531,7 +530,6 @@ class GetHandler implements AbstractGetHandler {
         results.add(LIBRARY_ERRORS_READY);
         results.add(PARSE_ERRORS);
         results.add(PARSED_UNIT);
-        results.add(REFERENCED_NAMES);
         results.add(SCAN_ERRORS);
         results.add(SOURCE_KIND);
         results.add(TOKEN_STREAM);
@@ -2186,7 +2184,7 @@ class GetHandler implements AbstractGetHandler {
         }
         buffer.write('<p>element count: ');
         buffer.write(counter.counts.values
-            .fold(0, (int prev, int element) => prev + element));
+            .fold<int>(0, (int prev, int element) => prev + element));
         buffer.write('</p>');
         buffer.write('<p>  (w/docs): ');
         buffer.write(counter.elementsWithDocs);
@@ -2202,7 +2200,7 @@ class GetHandler implements AbstractGetHandler {
     buffer.write('</h3></p>');
     buffer.write('<p>element count: ');
     buffer.write(sdkCounter.counts.values
-        .fold(0, (int prev, int element) => prev + element));
+        .fold<int>(0, (int prev, int element) => prev + element));
     buffer.write('</p>');
     buffer.write('<p>  (w/docs): ');
     buffer.write(sdkCounter.elementsWithDocs);
@@ -2527,8 +2525,11 @@ class GetHandler implements AbstractGetHandler {
         buffer.write('Inactive');
       }
       buffer.write('<br>');
-      buffer.write('Version: ');
+      buffer.write('Server version: ');
       buffer.write(AnalysisServer.VERSION);
+      buffer.write('<br>');
+      buffer.write('SDK: ');
+      buffer.write(Platform.version);
       buffer.write('<br>');
       buffer.write('Process ID: ');
       buffer.write(pid);

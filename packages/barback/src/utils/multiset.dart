@@ -29,12 +29,10 @@ class Multiset<E> extends IterableBase<E> {
         .iterator;
   }
 
-  Multiset()
-      : super();
+  Multiset() : super();
 
   /// Creates a multi-set and initializes it using the contents of [other].
-  Multiset.from(Iterable<E> other)
-      : super() {
+  Multiset.from(Iterable<E> other) : super() {
     other.forEach(add);
   }
 

@@ -42,7 +42,8 @@ class _NativeFileWatcher implements FileWatcher, ManuallyClosedWatcher {
 
   void _listen() {
     // Batch the events together so that we can dedup them.
-    _subscription = new File(path).watch()
+    _subscription = new File(path)
+        .watch()
         .transform(new BatchedStreamTransformer<FileSystemEvent>())
         .listen(_onBatch, onError: _eventsController.addError, onDone: _onDone);
   }

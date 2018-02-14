@@ -2,9 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.services.src.index.abstract_single_file;
-
 import 'dart:async';
+
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/error/error.dart';
@@ -102,9 +101,8 @@ class AbstractSingleUnitTest extends AbstractContextTest {
       testUnit = (result).unit;
       if (verifyNoTestUnitErrors) {
         expect(result.errors.where((AnalysisError error) {
-          return
-            error.errorCode != HintCode.DEAD_CODE &&
-            error.errorCode != HintCode.UNUSED_CATCH_CLAUSE &&
+          return error.errorCode != HintCode.DEAD_CODE &&
+              error.errorCode != HintCode.UNUSED_CATCH_CLAUSE &&
               error.errorCode != HintCode.UNUSED_CATCH_STACK &&
               error.errorCode != HintCode.UNUSED_ELEMENT &&
               error.errorCode != HintCode.UNUSED_FIELD &&

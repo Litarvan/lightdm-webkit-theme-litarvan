@@ -2,20 +2,18 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.services.completion.dart.arglist;
-
-import 'package:analysis_server/plugin/protocol/protocol.dart';
 import 'package:analysis_server/src/provisional/completion/dart/completion_dart.dart';
 import 'package:analysis_server/src/services/completion/dart/arglist_contributor.dart';
+import 'package:analyzer_plugin/protocol/protocol_common.dart';
 import 'package:test/test.dart';
 import 'package:test_reflective_loader/test_reflective_loader.dart';
 
+import '../../correction/flutter_util.dart';
 import 'completion_contributor_util.dart';
 
 main() {
   defineReflectiveSuite(() {
     defineReflectiveTests(ArgListContributorTest);
-    defineReflectiveTests(ArgListContributorTest_Driver);
   });
 }
 
@@ -28,6 +26,20 @@ class ArgListContributorTest extends DartCompletionContributorTest {
             '${suggestion.completion}\n  $suggestion');
       }
     }
+  }
+
+  /**
+   * Assert that there is a suggestion with the given parameter [name] that has
+   * the given [completion], [selectionOffset] and [selectionLength].
+   */
+  void assertSuggestArgumentAndCompletion(String name,
+      {String completion, int selectionOffset, int selectionLength: 0}) {
+    CompletionSuggestion suggestion =
+        suggestions.firstWhere((s) => s.parameterName == name);
+    expect(suggestion, isNotNull);
+    expect(suggestion.completion, completion);
+    expect(suggestion.selectionOffset, selectionOffset);
+    expect(suggestion.selectionLength, selectionLength);
   }
 
   void assertSuggestArgumentList(
@@ -82,15 +94,23 @@ class ArgListContributorTest extends DartCompletionContributorTest {
    * the only suggestions.
    */
   void assertSuggestArgumentsAndTypes(
-      {Map<String, String> namedArgumentsWithTypes, bool includeColon: true}) {
+      {Map<String, String> namedArgumentsWithTypes,
+      bool includeColon: true,
+      bool includeComma: false}) {
     List<CompletionSuggestion> expected = new List<CompletionSuggestion>();
     namedArgumentsWithTypes.forEach((String name, String type) {
       String completion = includeColon ? '$name: ' : name;
+      // Selection should be before any trailing commas.
+      int selectionOffset = completion.length;
+      if (includeComma) {
+        completion = '$completion,';
+      }
       expected.add(assertSuggest(completion,
           csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
           relevance: DART_RELEVANCE_NAMED_PARAMETER,
           paramName: name,
-          paramType: type));
+          paramType: type,
+          selectionOffset: selectionOffset));
     });
     assertNoOtherSuggestions(expected);
   }
@@ -101,9 +121,13 @@ class ArgListContributorTest extends DartCompletionContributorTest {
   void assertSuggestions(List<String> suggestions) {
     List<CompletionSuggestion> expected = new List<CompletionSuggestion>();
     for (String suggestion in suggestions) {
+      // Selection offset should be before any trailing commas.
+      int selectionOffset =
+          suggestion.endsWith(',') ? suggestion.length - 1 : suggestion.length;
       expected.add(assertSuggest('$suggestion',
           csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
-          relevance: DART_RELEVANCE_NAMED_PARAMETER));
+          relevance: DART_RELEVANCE_NAMED_PARAMETER,
+          selectionOffset: selectionOffset));
     }
     assertNoOtherSuggestions(expected);
   }
@@ -222,6 +246,173 @@ class A { const A(int one, int two, int three, {int four, String five:
     assertNoSuggestions();
   }
 
+  test_ArgumentList_Flutter_InstanceCreationExpression_0() async {
+    configureFlutterPkg({
+      'src/widgets/framework.dart': flutter_framework_code,
+    });
+
+    addTestSource('''
+import 'package:flutter/src/widgets/framework.dart';
+
+build() => new Row(
+    ^
+  );
+''');
+
+    await computeSuggestions();
+
+    assertSuggest('children: <Widget>[],',
+        csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
+        relevance: DART_RELEVANCE_NAMED_PARAMETER,
+        defaultArgListString: null,
+        selectionOffset: 19,
+        defaultArgumentListTextRanges: null);
+  }
+
+  test_ArgumentList_Flutter_InstanceCreationExpression_01() async {
+    configureFlutterPkg({
+      'src/widgets/framework.dart': flutter_framework_code,
+    });
+
+    addTestSource('''
+import 'package:flutter/src/widgets/framework.dart';
+
+  build() => new Scaffold(
+        appBar: new AppBar(
+          ^
+        ),
+  );
+''');
+
+    await computeSuggestions();
+
+    assertSuggest('color: ,',
+        csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
+        relevance: DART_RELEVANCE_NAMED_PARAMETER,
+        defaultArgListString: null, // No default values.
+        selectionOffset: 7);
+  }
+
+  test_ArgumentList_Flutter_InstanceCreationExpression_1() async {
+    configureFlutterPkg({
+      'src/widgets/framework.dart': flutter_framework_code,
+    });
+
+    addTestSource('''
+import 'package:flutter/src/widgets/framework.dart';
+
+build() => new Row(
+    key: null,
+    ^
+  );
+''');
+
+    await computeSuggestions();
+
+    assertSuggest('children: <Widget>[],',
+        csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
+        relevance: DART_RELEVANCE_NAMED_PARAMETER,
+        defaultArgListString: null,
+        selectionOffset: 19,
+        defaultArgumentListTextRanges: null);
+  }
+
+  test_ArgumentList_Flutter_InstanceCreationExpression_2() async {
+    configureFlutterPkg({
+      'src/widgets/framework.dart': flutter_framework_code,
+    });
+
+    addTestSource('''
+import 'package:flutter/src/widgets/framework.dart';
+
+build() => new Row(
+    ^
+    key: null,
+  );
+''');
+
+    await computeSuggestions();
+
+    assertSuggest('children: <Widget>[],',
+        csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
+        relevance: DART_RELEVANCE_NAMED_PARAMETER,
+        defaultArgListString: null,
+        selectionOffset: 19,
+        defaultArgumentListTextRanges: null);
+  }
+
+  test_ArgumentList_Flutter_InstanceCreationExpression_children_dynamic() async {
+    // Ensure we don't generate unneeded <dynamic> param if a future API doesn't
+    // type it's children.
+    configureFlutterPkg({
+      'src/widgets/framework.dart': flutter_framework_code +
+          '\nclass DynamicRow extends Widget { DynamicRow({List children: null}){}}'
+    });
+
+    addTestSource('''
+import 'package:flutter/src/widgets/framework.dart';
+
+build() => new Container(
+    child: new DynamicRow(^);
+  );
+''');
+
+    await computeSuggestions();
+
+    assertSuggest('children: [],',
+        csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
+        relevance: DART_RELEVANCE_NAMED_PARAMETER,
+        defaultArgListString: null,
+        selectionOffset: 11,
+        defaultArgumentListTextRanges: null);
+  }
+
+  test_ArgumentList_Flutter_InstanceCreationExpression_children_Map() async {
+    // Ensure we don't generate Map params for a future API
+    configureFlutterPkg({
+      'src/widgets/framework.dart': flutter_framework_code +
+          '\nclass MapRow extends Widget { MapRow({Map<Object,Object> children: null}){}}'
+    });
+
+    addTestSource('''
+import 'package:flutter/src/widgets/framework.dart';
+
+build() => new Container(
+    child: new MapRow(^);
+  );
+''');
+
+    await computeSuggestions();
+
+    assertSuggest('children: ,',
+        csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
+        relevance: DART_RELEVANCE_NAMED_PARAMETER,
+        selectionOffset: 10,
+        defaultArgListString: null);
+  }
+
+  test_ArgumentList_Flutter_MethodExpression_children() async {
+    // Ensure we don't generate params for a method call
+    configureFlutterPkg({
+      'src/widgets/framework.dart':
+          flutter_framework_code + '\nfoo({String children})'
+    });
+
+    addTestSource('''
+import 'package:flutter/src/widgets/framework.dart';
+
+main() {
+foo(^);
+''');
+
+    await computeSuggestions();
+
+    assertSuggest('children: ',
+        csKind: CompletionSuggestionKind.NAMED_ARGUMENT,
+        relevance: DART_RELEVANCE_NAMED_PARAMETER,
+        defaultArgListString: null);
+  }
+
   test_ArgumentList_getter() async {
     addTestSource('class A {int get foo => 7; main() {foo(^)}');
     await computeSuggestions();
@@ -229,7 +420,7 @@ class A { const A(int one, int two, int three, {int four, String five:
   }
 
   test_ArgumentList_imported_constructor_named_param() async {
-    //
+    // ArgumentList  InstanceCreationExpression  ExpressionStatement
     addSource('/libA.dart', 'library libA; class A{A({int one}); }');
     addTestSource('import "/libA.dart"; main() { new A(^);}');
     await computeSuggestions();
@@ -237,7 +428,7 @@ class A { const A(int one, int two, int three, {int four, String five:
   }
 
   test_ArgumentList_imported_constructor_named_param2() async {
-    //
+    // ArgumentList  InstanceCreationExpression  ExpressionStatement
     addSource('/libA.dart', 'library libA; class A{A.foo({int one}); }');
     addTestSource('import "/libA.dart"; main() { new A.foo(^);}');
     await computeSuggestions();
@@ -245,9 +436,37 @@ class A { const A(int one, int two, int three, {int four, String five:
   }
 
   test_ArgumentList_imported_constructor_named_typed_param() async {
-    //
+    // ArgumentList  InstanceCreationExpression  VariableDeclaration
     addSource(
         '/libA.dart', 'library libA; class A { A({int i, String s, d}) {} }}');
+    addTestSource('import "/libA.dart"; main() { var a = new A(^);}');
+    await computeSuggestions();
+    assertSuggestArgumentsAndTypes(
+        namedArgumentsWithTypes: {'i': 'int', 's': 'String', 'd': 'dynamic'});
+  }
+
+  test_ArgumentList_imported_factory_named_param() async {
+    // ArgumentList  InstanceCreationExpression  ExpressionStatement
+    addSource(
+        '/libA.dart', 'library libA; class A{factory A({int one}) => null;}');
+    addTestSource('import "/libA.dart"; main() { new A(^);}');
+    await computeSuggestions();
+    assertSuggestArgumentsAndTypes(namedArgumentsWithTypes: {'one': 'int'});
+  }
+
+  test_ArgumentList_imported_factory_named_param2() async {
+    // ArgumentList  InstanceCreationExpression  ExpressionStatement
+    addSource('/libA.dart',
+        'library libA; abstract class A{factory A.foo({int one});}');
+    addTestSource('import "/libA.dart"; main() { new A.foo(^);}');
+    await computeSuggestions();
+    assertSuggestArgumentsAndTypes(namedArgumentsWithTypes: {'one': 'int'});
+  }
+
+  test_ArgumentList_imported_factory_named_typed_param() async {
+    // ArgumentList  InstanceCreationExpression  VariableDeclaration
+    addSource('/libA.dart',
+        'library libA; class A {factory A({int i, String s, d}) {} }}');
     addTestSource('import "/libA.dart"; main() { var a = new A(^);}');
     await computeSuggestions();
     assertSuggestArgumentsAndTypes(
@@ -453,17 +672,136 @@ class A { const A(int one, int two, int three, {int four, String five:
         namedArgumentsWithTypes: {'radix': 'int', 'onError': '(String) → int'});
   }
 
+  test_ArgumentList_local_constructor_named_fieldFormal_documentation() async {
+    String content = '''
+class A {
+  /// aaa
+  ///
+  /// bbb
+  /// ccc
+  int fff;
+  A({this.fff});
+}
+main() {
+  new A(^);
+}
+''';
+    addTestSource(content);
+    await computeSuggestions();
+    expect(suggestions, hasLength(1));
+
+    CompletionSuggestion suggestion = suggestions[0];
+    expect(suggestion.docSummary, 'aaa');
+    expect(suggestion.docComplete, 'aaa\n\nbbb\nccc');
+
+    Element element = suggestion.element;
+    expect(element, isNotNull);
+    expect(element.kind, ElementKind.PARAMETER);
+    expect(element.name, 'fff');
+    expect(element.location.offset, content.indexOf('fff})'));
+  }
+
+  test_ArgumentList_local_constructor_named_fieldFormal_noDocumentation() async {
+    String content = '''
+class A {
+  int fff;
+  A({this.fff});
+}
+main() {
+  new A(^);
+}
+''';
+    addTestSource(content);
+    await computeSuggestions();
+    expect(suggestions, hasLength(1));
+
+    CompletionSuggestion suggestion = suggestions[0];
+    expect(suggestion.docSummary, isNull);
+    expect(suggestion.docComplete, isNull);
+
+    Element element = suggestion.element;
+    expect(element, isNotNull);
+    expect(element.kind, ElementKind.PARAMETER);
+    expect(element.name, 'fff');
+    expect(element.location.offset, content.indexOf('fff})'));
+  }
+
   test_ArgumentList_local_constructor_named_param() async {
     //
     addTestSource('''
 class A { A({int one, String two: 'defaultValue'}) { } }
 main() { new A(^);}''');
     await computeSuggestions();
+
     assertSuggestArgumentsAndTypes(
         namedArgumentsWithTypes: {'one': 'int', 'two': 'String'});
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
   }
 
-  test_ArgumentList_local_constructor_named_param2() async {
+  test_ArgumentList_local_constructor_named_param_1() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(o^);}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(
+        namedArgumentsWithTypes: {'one': 'int', 'two': 'String'});
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_2() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(^o,);}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(
+        namedArgumentsWithTypes: {'one': 'int', 'two': 'String'});
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_3() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(two: 'foo', ^);}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(namedArgumentsWithTypes: {'one': 'int'});
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_4() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(two: 'foo', o^);}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(namedArgumentsWithTypes: {'one': 'int'});
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_5() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(two: 'foo', o^,);}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(namedArgumentsWithTypes: {'one': 'int'});
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_6() async {
     //
     addTestSource('''
 class A { A.foo({int one, String two: 'defaultValue'}) { } }
@@ -471,6 +809,58 @@ main() { new A.foo(^);}''');
     await computeSuggestions();
     assertSuggestArgumentsAndTypes(
         namedArgumentsWithTypes: {'one': 'int', 'two': 'String'});
+  }
+
+  test_ArgumentList_local_constructor_named_param_prefixed_prepend() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(o^ two: 'foo');}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(
+        namedArgumentsWithTypes: {'one': 'int'}, includeComma: true);
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ,', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_prepend() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(^ two: 'foo');}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(
+        namedArgumentsWithTypes: {'one': 'int'}, includeComma: true);
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ,', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_prepend_1() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(o^, two: 'foo');}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(
+        namedArgumentsWithTypes: {'one': 'int'}, includeComma: false);
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
+  }
+
+  test_ArgumentList_local_constructor_named_param_prepend_2() async {
+    //
+    addTestSource('''
+class A { A({int one, String two: 'defaultValue'}) { } }
+main() { new A(^, two: 'foo');}''');
+    await computeSuggestions();
+
+    assertSuggestArgumentsAndTypes(
+        namedArgumentsWithTypes: {'one': 'int'}, includeComma: false);
+    assertSuggestArgumentAndCompletion('one',
+        completion: 'one: ', selectionOffset: 5);
   }
 
   test_ArgumentList_local_function_1() async {
@@ -631,10 +1021,4 @@ main() { f("16", radix: ^);}''');
     await computeSuggestions();
     assertSuggestArgumentList(['arg', 'blat'], ['dynamic', 'int']);
   }
-}
-
-@reflectiveTest
-class ArgListContributorTest_Driver extends ArgListContributorTest {
-  @override
-  bool get enableNewAnalysisDriver => true;
 }

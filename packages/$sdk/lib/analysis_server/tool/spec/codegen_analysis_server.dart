@@ -5,9 +5,8 @@
 /**
  * Code generation for the file "AnalysisServer.java".
  */
-library java.generator.server;
-
 import 'package:analyzer/src/codegen/tools.dart';
+import 'package:front_end/src/codegen/tools.dart';
 
 import 'api.dart';
 import 'codegen_java.dart';
@@ -117,6 +116,9 @@ class CodegenAnalysisServer extends CodegenJavaVisitor {
         toHtmlVisitor.write('{@code ${request.longMethod }}');
         toHtmlVisitor.translateHtml(request.html);
         toHtmlVisitor.javadocParams(request.params);
+        if (request.deprecated) {
+          toHtmlVisitor.p(() => toHtmlVisitor.write('@deprecated'));
+        }
       }));
       write('public void $methodName(');
       List<String> arguments = [];

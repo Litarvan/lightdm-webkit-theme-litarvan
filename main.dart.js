@@ -674,11 +674,11 @@
       }],
       noSuchMethod$1: ["super$Interceptor$noSuchMethod", function(receiver, invocation) {
         throw H.wrapException(P.NoSuchMethodError$(receiver, invocation.get$memberName(), invocation.get$positionalArguments(), invocation.get$namedArguments(), null));
-      }, null, "get$noSuchMethod", 2, 0, null, 43],
+      }, null, "get$noSuchMethod", 2, 0, null, 41],
       get$runtimeType: function(receiver) {
         return new H.TypeImpl(H.getRuntimeTypeString(receiver), null);
       },
-      "%": "ANGLEInstancedArrays|ANGLE_instanced_arrays|AnimationEffectReadOnly|AnimationEffectTiming|AnimationTimeline|AppBannerPromptResult|AudioListener|BarProp|Bluetooth|BluetoothGATTCharacteristic|BluetoothGATTRemoteServer|BluetoothGATTService|BluetoothUUID|Body|CHROMIUMSubscribeUniform|CHROMIUMValuebuffer|CSS|Cache|CacheStorage|CanvasGradient|CanvasPattern|Clients|ConsoleBase|Coordinates|CredentialsContainer|Crypto|DOMFileSystemSync|DOMImplementation|DOMMatrix|DOMMatrixReadOnly|DOMParser|DOMPoint|DOMPointReadOnly|DataTransfer|Database|DeprecatedStorageInfo|DeprecatedStorageQuota|DeviceAcceleration|DeviceRotationRate|DirectoryEntrySync|DirectoryReader|DirectoryReaderSync|EXTBlendMinMax|EXTFragDepth|EXTShaderTextureLOD|EXTTextureFilterAnisotropic|EXT_blend_minmax|EXT_frag_depth|EXT_sRGB|EXT_shader_texture_lod|EXT_texture_filter_anisotropic|EXTsRGB|EffectModel|EntrySync|FileEntrySync|FileReaderSync|FileWriterSync|Geofencing|Geolocation|Geoposition|HMDVRDevice|HTMLAllCollection|Headers|IDBFactory|ImageBitmap|InjectedScriptHost|InputDevice|KeyframeEffect|MIDIInputMap|MIDIOutputMap|MediaDeviceInfo|MediaDevices|MediaError|MediaKeyError|MediaKeyStatusMap|MediaKeySystemAccess|MediaKeys|MediaSession|MemoryInfo|MessageChannel|Metadata|MutationObserver|NavigatorStorageUtils|NodeFilter|NonDocumentTypeChildNode|NonElementParentNode|OESElementIndexUint|OESStandardDerivatives|OESTextureFloat|OESTextureFloatLinear|OESTextureHalfFloat|OESTextureHalfFloatLinear|OESVertexArrayObject|OES_element_index_uint|OES_standard_derivatives|OES_texture_float|OES_texture_float_linear|OES_texture_half_float|OES_texture_half_float_linear|OES_vertex_array_object|PagePopupController|PerformanceTiming|PeriodicSyncManager|PeriodicSyncRegistration|PeriodicWave|Permissions|PositionError|PositionSensorVRDevice|PushManager|PushMessageData|PushSubscription|RTCIceCandidate|Range|Request|Response|SQLError|SQLResultSet|SQLTransaction|SVGAnimatedAngle|SVGAnimatedBoolean|SVGAnimatedEnumeration|SVGAnimatedInteger|SVGAnimatedLength|SVGAnimatedLengthList|SVGAnimatedNumber|SVGAnimatedNumberList|SVGAnimatedPreserveAspectRatio|SVGAnimatedRect|SVGAnimatedString|SVGAnimatedTransformList|SVGMatrix|SVGPoint|SVGPreserveAspectRatio|SVGRect|SVGUnitTypes|Screen|ScrollState|SharedArrayBuffer|StorageInfo|StorageQuota|SubtleCrypto|SyncManager|SyncRegistration|TextMetrics|VRDevice|VREyeParameters|VRFieldOfView|VRPositionState|ValidityState|VideoPlaybackQuality|WEBGL_compressed_texture_atc|WEBGL_compressed_texture_etc1|WEBGL_compressed_texture_pvrtc|WEBGL_compressed_texture_s3tc|WEBGL_debug_renderer_info|WEBGL_debug_shaders|WEBGL_depth_texture|WEBGL_draw_buffers|WEBGL_lose_context|WebGLBuffer|WebGLCompressedTextureATC|WebGLCompressedTextureETC1|WebGLCompressedTexturePVRTC|WebGLCompressedTextureS3TC|WebGLDebugRendererInfo|WebGLDebugShaders|WebGLDepthTexture|WebGLDrawBuffers|WebGLExtensionLoseContext|WebGLFramebuffer|WebGLLoseContext|WebGLProgram|WebGLQuery|WebGLRenderbuffer|WebGLSampler|WebGLShader|WebGLShaderPrecisionFormat|WebGLSync|WebGLTexture|WebGLTransformFeedback|WebGLUniformLocation|WebGLVertexArrayObject|WebGLVertexArrayObjectOES|WebKitCSSMatrix|WebKitMutationObserver|WorkerConsole|XMLSerializer|XPathEvaluator|XPathExpression|XPathNSResolver|XPathResult|XSLTProcessor|mozRTCIceCandidate"
+      "%": "ANGLEInstancedArrays|ANGLE_instanced_arrays|AnimationEffectReadOnly|AnimationEffectTiming|AnimationTimeline|AppBannerPromptResult|AudioListener|BarProp|Bluetooth|BluetoothAdvertisingData|BluetoothCharacteristicProperties|BluetoothRemoteGATTServer|BluetoothRemoteGATTService|BluetoothUUID|Body|CHROMIUMSubscribeUniform|CHROMIUMValuebuffer|CSS|Cache|CacheStorage|CanvasGradient|CanvasPattern|ConsoleBase|Coordinates|Crypto|CryptoKey|DOMFileSystemSync|DOMImplementation|DOMMatrix|DOMMatrixReadOnly|DOMParser|DOMPoint|DOMPointReadOnly|DataTransfer|Database|DeprecatedStorageInfo|DeprecatedStorageQuota|DeviceAcceleration|DeviceRotationRate|DirectoryEntrySync|DirectoryReader|DirectoryReaderSync|EXTBlendMinMax|EXTColorBufferFloat|EXTDisjointTimerQuery|EXTFragDepth|EXTShaderTextureLOD|EXTTextureFilterAnisotropic|EXT_blend_minmax|EXT_frag_depth|EXT_sRGB|EXT_shader_texture_lod|EXT_texture_filter_anisotropic|EXTsRGB|EffectModel|EntrySync|FileEntrySync|FileReaderSync|FileWriterSync|Geofencing|Geolocation|Geoposition|HMDVRDevice|HTMLAllCollection|Headers|IDBFactory|IdleDeadline|ImageBitmap|ImageBitmapRenderingContext|InjectedScriptHost|InputDeviceCapabilities|IntersectionObserver|IntersectionObserverEntry|KeyframeEffect|MIDIInputMap|MIDIOutputMap|MediaDeviceInfo|MediaDevices|MediaError|MediaKeyStatusMap|MediaKeySystemAccess|MediaKeys|MediaMetadata|MediaSession|MemoryInfo|MessageChannel|Metadata|MutationObserver|MutationRecord|NFC|NavigatorStorageUtils|NodeFilter|NonDocumentTypeChildNode|NonElementParentNode|OESElementIndexUint|OESStandardDerivatives|OESTextureFloat|OESTextureFloatLinear|OESTextureHalfFloat|OESTextureHalfFloatLinear|OESVertexArrayObject|OES_element_index_uint|OES_standard_derivatives|OES_texture_float|OES_texture_float_linear|OES_texture_half_float|OES_texture_half_float_linear|OES_vertex_array_object|OffscreenCanvas|PagePopupController|PerformanceNavigation|PerformanceObserver|PerformanceObserverEntryList|PerformanceTiming|PeriodicWave|Permissions|PositionError|PositionSensorVRDevice|Presentation|PushManager|PushMessageData|PushSubscription|RTCCertificate|RTCIceCandidate|RTCSessionDescription|Range|Request|Response|SQLError|SQLResultSet|SQLTransaction|SVGAnimatedAngle|SVGAnimatedBoolean|SVGAnimatedEnumeration|SVGAnimatedInteger|SVGAnimatedLength|SVGAnimatedLengthList|SVGAnimatedNumber|SVGAnimatedNumberList|SVGAnimatedPreserveAspectRatio|SVGAnimatedRect|SVGAnimatedString|SVGAnimatedTransformList|SVGMatrix|SVGPoint|SVGPreserveAspectRatio|SVGRect|SVGUnitTypes|Screen|ScrollState|Selection|SharedArrayBuffer|StorageInfo|StorageManager|StorageQuota|Stream|StyleMedia|SubtleCrypto|SyncManager|TextMetrics|USBAlternateInterface|USBConfiguration|USBDevice|USBEndpoint|USBInTransferResult|USBInterface|USBIsochronousInTransferPacket|USBIsochronousInTransferResult|USBIsochronousOutTransferPacket|USBIsochronousOutTransferResult|USBOutTransferResult|VRDevice|VREyeParameters|VRFieldOfView|VRPositionState|ValidityState|VideoPlaybackQuality|WEBGL_compressed_texture_atc|WEBGL_compressed_texture_etc1|WEBGL_compressed_texture_pvrtc|WEBGL_compressed_texture_s3tc|WEBGL_debug_renderer_info|WEBGL_debug_shaders|WEBGL_depth_texture|WEBGL_draw_buffers|WEBGL_lose_context|WebGLBuffer|WebGLCompressedTextureASTC|WebGLCompressedTextureATC|WebGLCompressedTextureETC1|WebGLCompressedTexturePVRTC|WebGLCompressedTextureS3TC|WebGLDebugRendererInfo|WebGLDebugShaders|WebGLDepthTexture|WebGLDrawBuffers|WebGLExtensionLoseContext|WebGLFramebuffer|WebGLLoseContext|WebGLProgram|WebGLQuery|WebGLRenderbuffer|WebGLSampler|WebGLShader|WebGLShaderPrecisionFormat|WebGLSync|WebGLTexture|WebGLTimerQueryEXT|WebGLTransformFeedback|WebGLUniformLocation|WebGLVertexArrayObject|WebGLVertexArrayObjectOES|WebKitCSSMatrix|WebKitMutationObserver|WorkerConsole|Worklet|WorkletGlobalScope|XMLSerializer|XPathEvaluator|XPathExpression|XPathNSResolver|XPathResult|XSLTProcessor|mozRTCIceCandidate|mozRTCSessionDescription"
     },
     JSBool: {
       "^": "Interceptor;",
@@ -709,7 +709,8 @@
       },
       noSuchMethod$1: [function(receiver, invocation) {
         return this.super$Interceptor$noSuchMethod(receiver, invocation);
-      }, null, "get$noSuchMethod", 2, 0, null, 43]
+      }, null, "get$noSuchMethod", 2, 0, null, 41],
+      $isNull: 1
     },
     JavaScriptObject: {
       "^": "Interceptor;",
@@ -764,10 +765,12 @@
         return receiver.splice(index, 1)[0];
       },
       insert$2: function(receiver, index, value) {
+        var t1;
         this.checkGrowable$1(receiver, "insert");
         if (typeof index !== "number" || Math.floor(index) !== index)
           throw H.wrapException(H.argumentErrorValue(index));
-        if (index > receiver.length)
+        t1 = receiver.length;
+        if (index > t1)
           throw H.wrapException(P.RangeError$value(index, null, null));
         receiver.splice(index, 0, value);
       },
@@ -790,9 +793,6 @@
         for (t1 = J.get$iterator$ax(collection); t1.moveNext$0();)
           receiver.push(t1.get$current());
       },
-      clear$0: function(receiver) {
-        this.set$length(receiver, 0);
-      },
       forEach$1: function(receiver, f) {
         var end, i;
         end = receiver.length;
@@ -803,7 +803,7 @@
         }
       },
       map$1: function(receiver, f) {
-        return new H.MappedListIterable(receiver, f, [null, null]);
+        return new H.MappedListIterable(receiver, f, [H.getTypeArgumentByIndex(receiver, 0), null]);
       },
       join$1: function(receiver, separator) {
         var t1, list, i, t2;
@@ -877,34 +877,26 @@
         throw H.wrapException(H.IterableElementError_noElement());
       },
       setRange$4: function(receiver, start, end, iterable, skipCount) {
-        var $length, t1, t2, t3, i, t4, element;
-        this.checkMutable$1(receiver, "set range");
+        var $length, t1, t2, i;
+        this.checkMutable$1(receiver, "setRange");
         P.RangeError_checkValidRange(start, end, receiver.length, null, null, null);
-        $length = J.$sub$n(end, start);
-        t1 = J.getInterceptor($length);
-        if (t1.$eq($length, 0))
+        if (typeof start !== "number")
+          return H.iae(start);
+        $length = end - start;
+        if ($length === 0)
           return;
-        t2 = J.getInterceptor$n(skipCount);
-        if (t2.$lt(skipCount, 0))
+        t1 = J.getInterceptor$n(skipCount);
+        if (t1.$lt(skipCount, 0))
           H.throwExpression(P.RangeError$range(skipCount, 0, null, "skipCount", null));
-        t3 = J.getInterceptor$asx(iterable);
-        if (J.$gt$n(t2.$add(skipCount, $length), t3.get$length(iterable)))
+        t2 = J.getInterceptor$asx(iterable);
+        if (t1.$add(skipCount, $length) > t2.get$length(iterable))
           throw H.wrapException(H.IterableElementError_tooFew());
-        if (t2.$lt(skipCount, start))
-          for (i = t1.$sub($length, 1), t1 = J.getInterceptor$ns(start); t4 = J.getInterceptor$n(i), t4.$ge(i, 0); i = t4.$sub(i, 1)) {
-            element = t3.$index(iterable, t2.$add(skipCount, i));
-            receiver[t1.$add(start, i)] = element;
-          }
-        else {
-          if (typeof $length !== "number")
-            return H.iae($length);
-          t1 = J.getInterceptor$ns(start);
-          i = 0;
-          for (; i < $length; ++i) {
-            element = t3.$index(iterable, t2.$add(skipCount, i));
-            receiver[t1.$add(start, i)] = element;
-          }
-        }
+        if (t1.$lt(skipCount, start))
+          for (i = $length - 1; i >= 0; --i)
+            receiver[start + i] = t2.$index(iterable, t1.$add(skipCount, i));
+        else
+          for (i = 0; i < $length; ++i)
+            receiver[start + i] = t2.$index(iterable, t1.$add(skipCount, i));
       },
       any$1: function(receiver, test) {
         var end, i;
@@ -921,17 +913,14 @@
         return new H.ReversedListIterable(receiver, [H.getTypeArgumentByIndex(receiver, 0)]);
       },
       indexOf$2: function(receiver, element, start) {
-        var i, t1;
+        var i;
         if (start >= receiver.length)
           return -1;
         if (start < 0)
           start = 0;
-        for (i = start; t1 = receiver.length, i < t1; ++i) {
-          if (i < 0)
-            return H.ioore(receiver, i);
+        for (i = start; i < receiver.length; ++i)
           if (J.$eq$(receiver[i], element))
             return i;
-        }
         return -1;
       },
       indexOf$1: function($receiver, element) {
@@ -951,7 +940,8 @@
         return P.IterableBase_iterableToFullString(receiver, "[", "]");
       },
       toList$1$growable: function(receiver, growable) {
-        return H.setRuntimeTypeInfo(receiver.slice(), [H.getTypeArgumentByIndex(receiver, 0)]);
+        var t1 = H.setRuntimeTypeInfo(receiver.slice(0), [H.getTypeArgumentByIndex(receiver, 0)]);
+        return t1;
       },
       toList$0: function($receiver) {
         return this.toList$1$growable($receiver, true);
@@ -1019,13 +1009,13 @@
       "^": "JSArray;$ti"
     },
     ArrayIterator: {
-      "^": "Object;_iterable,__interceptors$_length,_index,__interceptors$_current,$ti",
+      "^": "Object;__interceptors$_iterable,__interceptors$_length,_index,__interceptors$_current,$ti",
       get$current: function() {
         return this.__interceptors$_current;
       },
       moveNext$0: function() {
         var t1, $length, t2;
-        t1 = this._iterable;
+        t1 = this.__interceptors$_iterable;
         $length = t1.length;
         if (this.__interceptors$_length !== $length)
           throw H.wrapException(H.throwConcurrentModificationError(t1));
@@ -1190,6 +1180,11 @@
         if (index < 0)
           throw H.wrapException(H.diagnoseIndexError(receiver, index));
         if (index >= receiver.length)
+          H.throwExpression(H.diagnoseIndexError(receiver, index));
+        return receiver.charCodeAt(index);
+      },
+      _codeUnitAt$1: function(receiver, index) {
+        if (index >= receiver.length)
           throw H.wrapException(H.diagnoseIndexError(receiver, index));
         return receiver.charCodeAt(index);
       },
@@ -1213,10 +1208,10 @@
         if (t1.$lt(start, 0) || t1.$gt(start, string.length))
           throw H.wrapException(P.RangeError$range(start, 0, string.length, null, null));
         t2 = receiver.length;
-        if (J.$gt$n(t1.$add(start, t2), string.length))
+        if (t1.$add(start, t2) > string.length)
           return;
         for (i = 0; i < t2; ++i)
-          if (this.codeUnitAt$1(string, t1.$add(start, i)) !== this.codeUnitAt$1(receiver, i))
+          if (this.codeUnitAt$1(string, t1.$add(start, i)) !== this._codeUnitAt$1(receiver, i))
             return;
         return new H.StringMatch(start, string, receiver);
       },
@@ -1230,7 +1225,8 @@
         return H.stringReplaceAllUnchecked(receiver, from, to);
       },
       split$1: function(receiver, pattern) {
-        return receiver.split(pattern);
+        var t1 = receiver.split(pattern);
+        return t1;
       },
       startsWith$2: function(receiver, pattern, index) {
         var t1, endIndex;
@@ -1240,7 +1236,7 @@
           throw H.wrapException(P.RangeError$range(index, 0, receiver.length, null, null));
         if (typeof pattern === "string") {
           endIndex = t1.$add(index, pattern.length);
-          if (J.$gt$n(endIndex, receiver.length))
+          if (endIndex > receiver.length)
             return false;
           return pattern === receiver.substring(index, endIndex);
         }
@@ -1278,7 +1274,7 @@
         endIndex = result.length;
         if (endIndex === 0)
           return result;
-        if (this.codeUnitAt$1(result, 0) === 133) {
+        if (this._codeUnitAt$1(result, 0) === 133) {
           startIndex = J.JSString__skipLeadingWhitespace(result, 1);
           if (startIndex === endIndex)
             return "";
@@ -1317,9 +1313,11 @@
         return this.$mul(padding, delta) + receiver;
       },
       indexOf$2: function(receiver, pattern, start) {
+        var t1;
         if (start < 0 || start > receiver.length)
           throw H.wrapException(P.RangeError$range(start, 0, receiver.length, null, null));
-        return receiver.indexOf(pattern, start);
+        t1 = receiver.indexOf(pattern, start);
+        return t1;
       },
       indexOf$1: function($receiver, pattern) {
         return this.indexOf$2($receiver, pattern, 0);
@@ -1331,8 +1329,6 @@
         else if (start < 0 || start > receiver.length)
           throw H.wrapException(P.RangeError$range(start, 0, receiver.length, null, null));
         t1 = pattern.length;
-        if (typeof start !== "number")
-          return start.$add();
         t2 = receiver.length;
         if (start + t1 > t2)
           start = t2 - t1;
@@ -1399,7 +1395,6 @@
             }
           switch (codeUnit) {
             case 5760:
-            case 6158:
             case 8192:
             case 8193:
             case 8194:
@@ -1425,7 +1420,7 @@
         JSString__skipLeadingWhitespace: function(string, index) {
           var t1, codeUnit;
           for (t1 = string.length; index < t1;) {
-            codeUnit = C.JSString_methods.codeUnitAt$1(string, index);
+            codeUnit = C.JSString_methods._codeUnitAt$1(string, index);
             if (codeUnit !== 32 && codeUnit !== 13 && !J.JSString__isWhitespace(codeUnit))
               break;
             ++index;
@@ -1467,20 +1462,17 @@
       forEach$1: function(_, action) {
         var $length, i;
         $length = this.get$length(this);
-        if (typeof $length !== "number")
-          return H.iae($length);
-        i = 0;
-        for (; i < $length; ++i) {
+        for (i = 0; i < $length; ++i) {
           action.call$1(this.elementAt$1(0, i));
           if ($length !== this.get$length(this))
             throw H.wrapException(new P.ConcurrentModificationError(this));
         }
       },
       get$isEmpty: function(_) {
-        return J.$eq$(this.get$length(this), 0);
+        return this.get$length(this) === 0;
       },
       get$first: function(_) {
-        if (J.$eq$(this.get$length(this), 0))
+        if (this.get$length(this) === 0)
           throw H.wrapException(H.IterableElementError_noElement());
         return this.elementAt$1(0, 0);
       },
@@ -1493,11 +1485,7 @@
       fold$2: function(_, initialValue, combine) {
         var $length, value, i;
         $length = this.get$length(this);
-        if (typeof $length !== "number")
-          return H.iae($length);
-        value = initialValue;
-        i = 0;
-        for (; i < $length; ++i) {
+        for (value = initialValue, i = 0; i < $length; ++i) {
           value = combine.call$2(value, this.elementAt$1(0, i));
           if ($length !== this.get$length(this))
             throw H.wrapException(new P.ConcurrentModificationError(this));
@@ -1508,18 +1496,11 @@
         var result, i, t1;
         result = H.setRuntimeTypeInfo([], [H.getRuntimeTypeArgument(this, "ListIterable", 0)]);
         C.JSArray_methods.set$length(result, this.get$length(this));
-        i = 0;
-        while (true) {
-          t1 = this.get$length(this);
-          if (typeof t1 !== "number")
-            return H.iae(t1);
-          if (!(i < t1))
-            break;
+        for (i = 0; i < this.get$length(this); ++i) {
           t1 = this.elementAt$1(0, i);
           if (i >= result.length)
             return H.ioore(result, i);
           result[i] = t1;
-          ++i;
         }
         return result;
       },
@@ -1528,18 +1509,18 @@
       }
     },
     SubListIterable: {
-      "^": "ListIterable;__internal$_iterable,__internal$_start,_endOrLength,$ti",
+      "^": "ListIterable;_iterable,__internal$_start,_endOrLength,$ti",
       get$_endIndex: function() {
         var $length, t1;
-        $length = J.get$length$asx(this.__internal$_iterable);
+        $length = J.get$length$asx(this._iterable);
         t1 = this._endOrLength;
-        if (t1 == null || J.$gt$n(t1, $length))
+        if (t1 == null || t1 > $length)
           return $length;
         return t1;
       },
       get$_startIndex: function() {
         var $length, t1;
-        $length = J.get$length$asx(this.__internal$_iterable);
+        $length = J.get$length$asx(this._iterable);
         t1 = this.__internal$_start;
         if (J.$gt$n(t1, $length))
           return $length;
@@ -1547,69 +1528,82 @@
       },
       get$length: function(_) {
         var $length, t1, t2;
-        $length = J.get$length$asx(this.__internal$_iterable);
+        $length = J.get$length$asx(this._iterable);
         t1 = this.__internal$_start;
         if (J.$ge$n(t1, $length))
           return 0;
         t2 = this._endOrLength;
-        if (t2 == null || J.$ge$n(t2, $length))
-          return J.$sub$n($length, t1);
-        return J.$sub$n(t2, t1);
+        if (t2 == null || t2 >= $length) {
+          if (typeof t1 !== "number")
+            return H.iae(t1);
+          return $length - t1;
+        }
+        if (typeof t2 !== "number")
+          return t2.$sub();
+        if (typeof t1 !== "number")
+          return H.iae(t1);
+        return t2 - t1;
       },
       elementAt$1: function(_, index) {
-        var realIndex = J.$add$ns(this.get$_startIndex(), index);
-        if (J.$lt$n(index, 0) || J.$ge$n(realIndex, this.get$_endIndex()))
+        var realIndex, t1;
+        realIndex = J.$add$ns(this.get$_startIndex(), index);
+        if (!(index < 0)) {
+          t1 = this.get$_endIndex();
+          if (typeof t1 !== "number")
+            return H.iae(t1);
+          t1 = realIndex >= t1;
+        } else
+          t1 = true;
+        if (t1)
           throw H.wrapException(P.IndexError$(index, this, "index", null, null));
-        return J.elementAt$1$ax(this.__internal$_iterable, realIndex);
+        return J.elementAt$1$ax(this._iterable, realIndex);
       },
       take$1: function(_, count) {
         var t1, t2, newEnd;
-        if (J.$lt$n(count, 0))
+        if (count < 0)
           H.throwExpression(P.RangeError$range(count, 0, null, "count", null));
         t1 = this._endOrLength;
         t2 = this.__internal$_start;
         if (t1 == null)
-          return H.SubListIterable$(this.__internal$_iterable, t2, J.$add$ns(t2, count), H.getTypeArgumentByIndex(this, 0));
+          return H.SubListIterable$(this._iterable, t2, J.$add$ns(t2, count), H.getTypeArgumentByIndex(this, 0));
         else {
           newEnd = J.$add$ns(t2, count);
-          if (J.$lt$n(t1, newEnd))
+          if (t1 < newEnd)
             return this;
-          return H.SubListIterable$(this.__internal$_iterable, t2, newEnd, H.getTypeArgumentByIndex(this, 0));
+          return H.SubListIterable$(this._iterable, t2, newEnd, H.getTypeArgumentByIndex(this, 0));
         }
       },
       toList$1$growable: function(_, growable) {
         var start, t1, t2, end, end0, $length, t3, result, t4, i;
         start = this.__internal$_start;
-        t1 = this.__internal$_iterable;
+        t1 = this._iterable;
         t2 = J.getInterceptor$asx(t1);
         end = t2.get$length(t1);
         end0 = this._endOrLength;
-        if (end0 != null && J.$lt$n(end0, end))
+        if (end0 != null && end0 < end)
           end = end0;
-        $length = J.$sub$n(end, start);
-        if (J.$lt$n($length, 0))
+        if (typeof end !== "number")
+          return end.$sub();
+        if (typeof start !== "number")
+          return H.iae(start);
+        $length = end - start;
+        if ($length < 0)
           $length = 0;
         t3 = this.$ti;
         if (growable) {
           result = H.setRuntimeTypeInfo([], t3);
           C.JSArray_methods.set$length(result, $length);
         } else {
-          if (typeof $length !== "number")
-            return H.iae($length);
           t4 = new Array($length);
           t4.fixed$length = Array;
           result = H.setRuntimeTypeInfo(t4, t3);
         }
-        if (typeof $length !== "number")
-          return H.iae($length);
-        t3 = J.getInterceptor$ns(start);
-        i = 0;
-        for (; i < $length; ++i) {
-          t4 = t2.elementAt$1(t1, t3.$add(start, i));
+        for (i = 0; i < $length; ++i) {
+          t3 = t2.elementAt$1(t1, start + i);
           if (i >= result.length)
             return H.ioore(result, i);
-          result[i] = t4;
-          if (J.$lt$n(t2.get$length(t1), end))
+          result[i] = t3;
+          if (t2.get$length(t1) < end)
             throw H.wrapException(new P.ConcurrentModificationError(this));
         }
         return result;
@@ -1625,7 +1619,7 @@
           H.throwExpression(P.RangeError$range(t1, 0, null, "start", null));
         t3 = this._endOrLength;
         if (t3 != null) {
-          if (J.$lt$n(t3, 0))
+          if (t3 < 0)
             H.throwExpression(P.RangeError$range(t3, 0, null, "end", null));
           if (t2.$gt(t1, t3))
             throw H.wrapException(P.RangeError$range(t1, 0, t3, "start", null));
@@ -1640,20 +1634,18 @@
       }
     },
     ListIterator: {
-      "^": "Object;__internal$_iterable,__internal$_length,__internal$_index,__internal$_current,$ti",
+      "^": "Object;_iterable,__internal$_length,__internal$_index,__internal$_current,$ti",
       get$current: function() {
         return this.__internal$_current;
       },
       moveNext$0: function() {
         var t1, t2, $length, t3;
-        t1 = this.__internal$_iterable;
+        t1 = this._iterable;
         t2 = J.getInterceptor$asx(t1);
         $length = t2.get$length(t1);
-        if (!J.$eq$(this.__internal$_length, $length))
+        if (this.__internal$_length !== $length)
           throw H.wrapException(new P.ConcurrentModificationError(t1));
         t3 = this.__internal$_index;
-        if (typeof $length !== "number")
-          return H.iae($length);
         if (t3 >= $length) {
           this.__internal$_current = null;
           return false;
@@ -1664,18 +1656,18 @@
       }
     },
     MappedIterable: {
-      "^": "Iterable;__internal$_iterable,_f,$ti",
+      "^": "Iterable;_iterable,_f,$ti",
       get$iterator: function(_) {
-        return new H.MappedIterator(null, J.get$iterator$ax(this.__internal$_iterable), this._f, this.$ti);
+        return new H.MappedIterator(null, J.get$iterator$ax(this._iterable), this._f, this.$ti);
       },
       get$length: function(_) {
-        return J.get$length$asx(this.__internal$_iterable);
+        return J.get$length$asx(this._iterable);
       },
       get$isEmpty: function(_) {
-        return J.get$isEmpty$asx(this.__internal$_iterable);
+        return J.get$isEmpty$asx(this._iterable);
       },
       get$first: function(_) {
-        return this._f.call$1(J.get$first$ax(this.__internal$_iterable));
+        return this._f.call$1(J.get$first$ax(this._iterable));
       },
       $asIterable: function($S, $T) {
         return [$T];
@@ -1689,7 +1681,7 @@
       }
     },
     EfficientLengthMappedIterable: {
-      "^": "MappedIterable;__internal$_iterable,_f,$ti",
+      "^": "MappedIterable;_iterable,_f,$ti",
       $isEfficientLengthIterable: 1,
       $asEfficientLengthIterable: function($S, $T) {
         return [$T];
@@ -1735,9 +1727,9 @@
       }
     },
     WhereIterable: {
-      "^": "Iterable;__internal$_iterable,_f,$ti",
+      "^": "Iterable;_iterable,_f,$ti",
       get$iterator: function(_) {
-        return new H.WhereIterator(J.get$iterator$ax(this.__internal$_iterable), this._f, this.$ti);
+        return new H.WhereIterator(J.get$iterator$ax(this._iterable), this._f, this.$ti);
       },
       map$1: function(_, f) {
         return new H.MappedIterable(this, f, [H.getTypeArgumentByIndex(this, 0), null]);
@@ -1769,9 +1761,6 @@
       },
       remove$1: function(receiver, element) {
         throw H.wrapException(new P.UnsupportedError("Cannot remove from a fixed-length list"));
-      },
-      clear$0: function(receiver) {
-        throw H.wrapException(new P.UnsupportedError("Cannot clear a fixed-length list"));
       }
     },
     ReversedListIterable: {
@@ -1780,13 +1769,10 @@
         return J.get$length$asx(this._source);
       },
       elementAt$1: function(_, index) {
-        var t1, t2, t3;
+        var t1, t2;
         t1 = this._source;
         t2 = J.getInterceptor$asx(t1);
-        t3 = t2.get$length(t1);
-        if (typeof index !== "number")
-          return H.iae(index);
-        return t2.elementAt$1(t1, t3 - 1 - index);
+        return t2.elementAt$1(t1, t2.get$length(t1) - 1 - index);
       }
     },
     Symbol: {
@@ -1870,18 +1856,16 @@
       if (init.globalState.isWorker === true)
         return;
       t2 = init.globalState.nextIsolateId++;
-      t4 = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [t3, H.RawReceivePortImpl]);
-      t3 = P.LinkedHashSet_LinkedHashSet(null, null, null, t3);
+      t4 = P.LinkedHashSet_LinkedHashSet(null, null, null, t3);
       t5 = new H.RawReceivePortImpl(0, null, false);
-      rootContext = new H._IsolateContext(t2, t4, t3, init.createNewIsolate(), t5, new H.CapabilityImpl(H.random64()), new H.CapabilityImpl(H.random64()), false, false, [], P.LinkedHashSet_LinkedHashSet(null, null, null, null), null, null, false, true, P.LinkedHashSet_LinkedHashSet(null, null, null, null));
-      t3.add$1(0, 0);
+      rootContext = new H._IsolateContext(t2, new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [t3, H.RawReceivePortImpl]), t4, init.createNewIsolate(), t5, new H.CapabilityImpl(H.random64()), new H.CapabilityImpl(H.random64()), false, false, [], P.LinkedHashSet_LinkedHashSet(null, null, null, null), null, null, false, true, P.LinkedHashSet_LinkedHashSet(null, null, null, null));
+      t4.add$1(0, 0);
       rootContext._addRegistration$2(0, t5);
       init.globalState.rootContext = rootContext;
       init.globalState.currentContext = rootContext;
-      t2 = H.getDynamicRuntimeType();
-      if (H.buildFunctionType(t2, [t2])._isTest$1(entry))
+      if (H.functionTypeTest(entry, {func: 1, args: [,]}))
         rootContext.eval$1(new H.startRootIsolate_closure(t1, entry));
-      else if (H.buildFunctionType(t2, [t2, t2])._isTest$1(entry))
+      else if (H.functionTypeTest(entry, {func: 1, args: [,,]}))
         rootContext.eval$1(new H.startRootIsolate_closure0(t1, entry));
       else
         rootContext.eval$1(entry);
@@ -1915,7 +1899,7 @@
       matches = stack.match(new RegExp("^[^@]*@(.*):[0-9]*$", "m"));
       if (matches != null)
         return matches[1];
-      throw H.wrapException(new P.UnsupportedError('Cannot extract URI from "' + H.S(stack) + '"'));
+      throw H.wrapException(new P.UnsupportedError('Cannot extract URI from "' + stack + '"'));
     },
     IsolateNatives__processWorkerMessage: [function(sender, e) {
       var msg, t1, functionName, entryPoint, args, message, isSpawnUri, startPaused, replyTo, t2, t3, t4, context;
@@ -1933,11 +1917,10 @@
           replyTo = new H._Deserializer(true, []).deserialize$1(t1.$index(msg, "replyTo"));
           t1 = init.globalState.nextIsolateId++;
           t2 = P.int;
-          t3 = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [t2, H.RawReceivePortImpl]);
-          t2 = P.LinkedHashSet_LinkedHashSet(null, null, null, t2);
+          t3 = P.LinkedHashSet_LinkedHashSet(null, null, null, t2);
           t4 = new H.RawReceivePortImpl(0, null, false);
-          context = new H._IsolateContext(t1, t3, t2, init.createNewIsolate(), t4, new H.CapabilityImpl(H.random64()), new H.CapabilityImpl(H.random64()), false, false, [], P.LinkedHashSet_LinkedHashSet(null, null, null, null), null, null, false, true, P.LinkedHashSet_LinkedHashSet(null, null, null, null));
-          t2.add$1(0, 0);
+          context = new H._IsolateContext(t1, new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [t2, H.RawReceivePortImpl]), t3, init.createNewIsolate(), t4, new H.CapabilityImpl(H.random64()), new H.CapabilityImpl(H.random64()), false, false, [], P.LinkedHashSet_LinkedHashSet(null, null, null, null), null, null, false, true, P.LinkedHashSet_LinkedHashSet(null, null, null, null));
+          t3.add$1(0, 0);
           context._addRegistration$2(0, t4);
           init.globalState.topEventLoop.events._add$1(0, new H._IsolateEvent(context, new H.IsolateNatives__processWorkerMessage_closure(entryPoint, args, message, isSpawnUri, startPaused, replyTo), "worker-start"));
           init.globalState.currentContext = context;
@@ -1971,7 +1954,7 @@
         case "error":
           throw H.wrapException(t1.$index(msg, "msg"));
       }
-    }, null, null, 4, 0, null, 63, 28],
+    }, null, null, 4, 0, null, 63, 34],
     IsolateNatives__log: function(msg) {
       var trace, t1, t2, exception;
       if (init.globalState.isWorker === true) {
@@ -1986,7 +1969,8 @@
         } catch (exception) {
           H.unwrapException(exception);
           trace = H.getTraceFromException(exception);
-          throw H.wrapException(P.Exception_Exception(trace));
+          t1 = P.Exception_Exception(trace);
+          throw H.wrapException(t1);
         }
     },
     IsolateNatives__startIsolate: function(topLevel, args, message, isSpawnUri, startPaused, replyTo) {
@@ -2027,7 +2011,7 @@
         _Manager__serializePrintMessage: [function(object) {
           var t1 = P.LinkedHashMap__makeLiteral(["command", "print", "msg", object]);
           return new H._Serializer(true, P._LinkedIdentityHashMap__LinkedIdentityHashMap$es6(null, P.int)).serialize$1(t1);
-        }, null, null, 2, 0, null, 62]
+        }, null, null, 2, 0, null, 61]
       }
     },
     _IsolateContext: {
@@ -2141,7 +2125,7 @@
         }
         t1._add$1(0, this.get$kill());
       },
-      handleUncaughtError$2: [function(error, stackTrace) {
+      handleUncaughtError$2: function(error, stackTrace) {
         var t1, message, t2;
         t1 = this.errorPorts;
         if (t1._collection$_length === 0) {
@@ -2162,7 +2146,7 @@
         message[1] = stackTrace == null ? null : J.toString$0$(stackTrace);
         for (t2 = new P._LinkedHashSetIterator(t1, t1._collection$_modifications, null, null, [null]), t2._collection$_cell = t1._collection$_first; t2.moveNext$0();)
           J.send$1$x(t2._collection$_current, message);
-      }, "call$2", "get$handleUncaughtError", 4, 0, 21],
+      },
       eval$1: function(code) {
         var old, result, oldIsExecutingEvent, e, s, exception, t1;
         old = init.globalState.currentContext;
@@ -2174,8 +2158,7 @@
         try {
           result = code.call$0();
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           this.handleUncaughtError$2(e, s);
           if (this.errorsAreFatal === true) {
@@ -2321,7 +2304,7 @@
           for (; this.runIteration$0();)
             ;
       },
-      run$0: [function() {
+      run$0: function() {
         var e, trace, exception, t1, t2;
         if (init.globalState.isWorker !== true)
           this._runHelper$0();
@@ -2329,8 +2312,7 @@
           try {
             this._runHelper$0();
           } catch (exception) {
-            t1 = H.unwrapException(exception);
-            e = t1;
+            e = H.unwrapException(exception);
             trace = H.getTraceFromException(exception);
             t1 = init.globalState.mainManager;
             t2 = P.LinkedHashMap__makeLiteral(["command", "error", "msg", H.S(e) + "\n" + H.S(trace)]);
@@ -2338,7 +2320,7 @@
             t1.toString;
             self.postMessage(t2);
           }
-      }, "call$0", "get$run", 0, 0, 2]
+      }
     },
     _EventLoop__runHelper_next: {
       "^": "Closure:2;$this",
@@ -2371,17 +2353,16 @@
     IsolateNatives__startIsolate_runStartFunction: {
       "^": "Closure:2;topLevel,args,message,isSpawnUri,context",
       call$0: function() {
-        var t1, t2, t3;
+        var t1, t2;
         t1 = this.context;
         t1.set$initialized(true);
         if (this.isSpawnUri !== true)
           this.topLevel.call$1(this.message);
         else {
           t2 = this.topLevel;
-          t3 = H.getDynamicRuntimeType();
-          if (H.buildFunctionType(t3, [t3, t3])._isTest$1(t2))
+          if (H.functionTypeTest(t2, {func: 1, args: [,,]}))
             t2.call$2(this.args, this.message);
-          else if (H.buildFunctionType(t3, [t3])._isTest$1(t2))
+          else if (H.functionTypeTest(t2, {func: 1, args: [,]}))
             t2.call$1(this.args);
           else
             t2.call$0();
@@ -2625,9 +2606,9 @@
         if (!(x instanceof P.Object))
           this.unsupported$1(x);
         return ["dart", init.classIdExtractor(x), this.serializeArrayInPlace$1(init.classFieldsExtractor(x))];
-      }, "call$1", "get$serialize", 2, 0, 1, 35],
+      }, "call$1", "get$serialize", 2, 0, 1, 33],
       unsupported$2: function(x, message) {
-        throw H.wrapException(new P.UnsupportedError(H.S(message == null ? "Can't transmit:" : message) + " " + H.S(x)));
+        throw H.wrapException(new P.UnsupportedError((message == null ? "Can't transmit:" : message) + " " + H.S(x)));
       },
       unsupported$1: function(x) {
         return this.unsupported$2(x, null);
@@ -2782,7 +2763,7 @@
           default:
             throw H.wrapException("couldn't deserialize: " + H.S(x));
         }
-      }, "call$1", "get$deserialize", 2, 0, 1, 35],
+      }, "call$1", "get$deserialize", 2, 0, 1, 33],
       deserializeArrayInPlace$1: function(x) {
         var t1, i, t2;
         t1 = J.getInterceptor$asx(x);
@@ -2870,9 +2851,6 @@
     ConstantMap__throwUnmodifiable: function() {
       throw H.wrapException(new P.UnsupportedError("Cannot modify unmodifiable Map"));
     },
-    jsConstructorNameToRti: function(constructorName) {
-      return init.getTypeFromName(constructorName);
-    },
     getType: function(index) {
       return init.types[index];
     },
@@ -2940,7 +2918,7 @@
         maxCharCode = radix <= 10 ? 47 + radix : 86 + radix;
         digitsPart = match[1];
         for (t1 = digitsPart.length, i = 0; i < t1; ++i)
-          if ((C.JSString_methods.codeUnitAt$1(digitsPart, i) | 32) > maxCharCode)
+          if ((C.JSString_methods._codeUnitAt$1(digitsPart, i) | 32) > maxCharCode)
             return H.Primitives__parseIntError(source, handleError);
       }
       return parseInt(source, radix);
@@ -2955,7 +2933,7 @@
       } else
         $name = null;
       if ($name == null || interceptor === C.Interceptor_methods || !!J.getInterceptor(object).$isUnknownJavaScriptObject) {
-        dispatchName = C.JS_CONST_TSE(object);
+        dispatchName = C.JS_CONST_u2C(object);
         if (dispatchName === "Object") {
           objectConstructor = object.constructor;
           if (typeof objectConstructor == "function") {
@@ -2970,7 +2948,7 @@
           $name = dispatchName;
       }
       $name = $name;
-      if ($name.length > 1 && C.JSString_methods.codeUnitAt$1($name, 0) === 36)
+      if ($name.length > 1 && C.JSString_methods._codeUnitAt$1($name, 0) === 36)
         $name = C.JSString_methods.substring$1($name, 1);
       return function(str, names) {
         return str.replace(/[^<,> ]+/g, function(m) {
@@ -3014,6 +2992,15 @@
     },
     Primitives_getMinutes: function(receiver) {
       return receiver.isUtc ? H.Primitives_lazyAsJsDate(receiver).getUTCMinutes() + 0 : H.Primitives_lazyAsJsDate(receiver).getMinutes() + 0;
+    },
+    Primitives_getSeconds: function(receiver) {
+      return receiver.isUtc ? H.Primitives_lazyAsJsDate(receiver).getUTCSeconds() + 0 : H.Primitives_lazyAsJsDate(receiver).getSeconds() + 0;
+    },
+    Primitives_getMilliseconds: function(receiver) {
+      return receiver.isUtc ? H.Primitives_lazyAsJsDate(receiver).getUTCMilliseconds() + 0 : H.Primitives_lazyAsJsDate(receiver).getMilliseconds() + 0;
+    },
+    Primitives_getWeekday: function(receiver) {
+      return C.JSInt_methods.$mod((receiver.isUtc ? H.Primitives_lazyAsJsDate(receiver).getUTCDay() + 0 : H.Primitives_lazyAsJsDate(receiver).getDay() + 0) + 6, 7) + 1;
     },
     Primitives_getProperty: function(object, key) {
       if (object == null || typeof object === "boolean" || typeof object === "number" || typeof object === "string")
@@ -3288,7 +3275,7 @@
           return H._callInIsolate(isolate, new H.invokeClosure_closure3(closure, arg1, arg2, arg3, arg4));
       }
       throw H.wrapException(P.Exception_Exception("Unsupported number of arguments for wrapped closure"));
-    }, null, null, 14, 0, null, 89, 100, 136, 10, 31, 64, 87],
+    }, null, null, 14, 0, null, 107, 135, 59, 10, 31, 98, 102],
     convertDartClosureToJS: function(closure, arity) {
       var $function;
       if (closure == null)
@@ -3322,8 +3309,7 @@
       else {
         t1 = $.Closure_functionCounter;
         $.Closure_functionCounter = J.$add$ns(t1, 1);
-        t1 = new Function("a,b,c,d" + t1, "this.$initialize(a,b,c,d" + t1 + ")");
-        $constructor = t1;
+        $constructor = new Function("a,b,c,d" + t1, "this.$initialize(a,b,c,d" + t1 + ")");
       }
       $prototype.constructor = $constructor;
       $constructor.prototype = $prototype;
@@ -3566,24 +3552,29 @@
         return value;
       throw H.wrapException(H.CastErrorImplementation$(H.Primitives_objectTypeName(value), "List"));
     },
-    throwCyclicInit: function(staticName) {
-      throw H.wrapException(new P.CyclicInitializationError(staticName));
-    },
     extractFunctionTypeObjectFrom: function(o) {
       var interceptor = J.getInterceptor(o);
       return "$signature" in interceptor ? interceptor.$signature() : null;
     },
-    buildFunctionType: function(returnType, parameterTypes, optionalParameterTypes) {
-      return new H.RuntimeFunctionType(returnType, parameterTypes, optionalParameterTypes, null);
+    functionTypeTest: function(value, functionTypeRti) {
+      var functionTypeObject;
+      if (value == null)
+        return false;
+      functionTypeObject = H.extractFunctionTypeObjectFrom(value);
+      return functionTypeObject == null ? false : H.isFunctionSubtype(functionTypeObject, functionTypeRti);
     },
-    buildInterfaceType: function(rti, typeArguments) {
-      var jsConstructorName = rti.builtin$cls;
-      if (typeArguments == null || typeArguments.length === 0)
-        return new H.RuntimeTypePlain(jsConstructorName);
-      return new H.RuntimeTypeGeneric(jsConstructorName, typeArguments, null);
+    functionTypeCast: function(value, functionTypeRti) {
+      var $self, functionTypeObject;
+      if (value == null)
+        return value;
+      if (H.functionTypeTest(value, functionTypeRti))
+        return value;
+      $self = H.runtimeTypeToString(functionTypeRti, null);
+      functionTypeObject = H.extractFunctionTypeObjectFrom(value);
+      throw H.wrapException(H.CastErrorImplementation$(functionTypeObject != null ? H.runtimeTypeToString(functionTypeObject, null) : H.Primitives_objectTypeName(value), $self));
     },
-    getDynamicRuntimeType: function() {
-      return C.C_DynamicRuntimeType;
+    throwCyclicInit: function(staticName) {
+      throw H.wrapException(new P.CyclicInitializationError(staticName));
     },
     random64: function() {
       return (Math.random() * 0x100000000 >>> 0) + (Math.random() * 0x100000000 >>> 0) * 4294967296;
@@ -3684,9 +3675,11 @@
     },
     getRuntimeTypeString: function(object) {
       var functionRti, className;
-      functionRti = H.extractFunctionTypeObjectFrom(object);
-      if (functionRti != null)
-        return H.runtimeTypeToString(functionRti, null);
+      if (object instanceof H.Closure) {
+        functionRti = H.extractFunctionTypeObjectFrom(object);
+        if (functionRti != null)
+          return H.runtimeTypeToString(functionRti, null);
+      }
       className = J.getInterceptor(object).constructor.builtin$cls;
       if (object == null)
         return className;
@@ -3715,13 +3708,15 @@
       return H.areSubtypes(H.substitute(interceptor[asField], $arguments), checks);
     },
     subtypeCast: function(object, isField, checks, asField) {
-      if (object != null && !H.checkSubtype(object, isField, checks, asField))
-        throw H.wrapException(H.CastErrorImplementation$(H.Primitives_objectTypeName(object), function(str, names) {
-          return str.replace(/[^<,> ]+/g, function(m) {
-            return names[m] || m;
-          });
-        }(isField.substring(3) + H.joinArguments(checks, 0, null), init.mangledGlobalNames)));
-      return object;
+      if (object == null)
+        return object;
+      if (H.checkSubtype(object, isField, checks, asField))
+        return object;
+      throw H.wrapException(H.CastErrorImplementation$(H.Primitives_objectTypeName(object), function(str, names) {
+        return str.replace(/[^<,> ]+/g, function(m) {
+          return names[m] || m;
+        });
+      }(isField.substring(3) + H.joinArguments(checks, 0, null), init.mangledGlobalNames)));
     },
     areSubtypes: function(s, t) {
       var len, i;
@@ -4012,8 +4007,8 @@
     },
     initHooks: function() {
       var hooks, transformers, i, transformer, getTag, getUnknownTag, prototypeForTag;
-      hooks = C.JS_CONST_4IJ();
-      hooks = H.applyHooksTransformer(C.JS_CONST_EKH, H.applyHooksTransformer(C.JS_CONST_EyN, H.applyHooksTransformer(C.JS_CONST_AgZ, H.applyHooksTransformer(C.JS_CONST_AgZ, H.applyHooksTransformer(C.JS_CONST_c0o, H.applyHooksTransformer(C.JS_CONST_LlX, H.applyHooksTransformer(C.JS_CONST_nuk(C.JS_CONST_TSE), hooks)))))));
+      hooks = C.JS_CONST_bDt();
+      hooks = H.applyHooksTransformer(C.JS_CONST_0, H.applyHooksTransformer(C.JS_CONST_rr7, H.applyHooksTransformer(C.JS_CONST_Fs4, H.applyHooksTransformer(C.JS_CONST_Fs4, H.applyHooksTransformer(C.JS_CONST_gkc, H.applyHooksTransformer(C.JS_CONST_4hp, H.applyHooksTransformer(C.JS_CONST_QJm(C.JS_CONST_u2C), hooks)))))));
       if (typeof dartNativeDispatchHooksTransformer != "undefined") {
         transformers = dartNativeDispatchHooksTransformer;
         if (typeof transformers == "function")
@@ -4097,9 +4092,6 @@
       remove$1: function(_, key) {
         return H.ConstantMap__throwUnmodifiable();
       },
-      clear$0: function(_) {
-        return H.ConstantMap__throwUnmodifiable();
-      },
       addAll$1: function(_, other) {
         return H.ConstantMap__throwUnmodifiable();
       },
@@ -4107,9 +4099,9 @@
       $asMap: null
     },
     ConstantStringMap: {
-      "^": "ConstantMap;__js_helper$_length,_jsObject,_keys,$ti",
+      "^": "ConstantMap;_length,_jsObject,__js_helper$_keys,$ti",
       get$length: function(_) {
-        return this.__js_helper$_length;
+        return this._length;
       },
       containsKey$1: function(_, key) {
         if (typeof key !== "string")
@@ -4128,7 +4120,7 @@
       },
       forEach$1: function(_, f) {
         var keys, t1, i, key;
-        keys = this._keys;
+        keys = this.__js_helper$_keys;
         for (t1 = keys.length, i = 0; i < t1; ++i) {
           key = keys[i];
           f.call$2(key, this._fetch$1(key));
@@ -4138,23 +4130,23 @@
         return new H._ConstantMapKeyIterable(this, [H.getTypeArgumentByIndex(this, 0)]);
       },
       get$values: function(_) {
-        return H.MappedIterable_MappedIterable(this._keys, new H.ConstantStringMap_values_closure(this), H.getTypeArgumentByIndex(this, 0), H.getTypeArgumentByIndex(this, 1));
+        return H.MappedIterable_MappedIterable(this.__js_helper$_keys, new H.ConstantStringMap_values_closure(this), H.getTypeArgumentByIndex(this, 0), H.getTypeArgumentByIndex(this, 1));
       }
     },
     ConstantStringMap_values_closure: {
       "^": "Closure:1;$this",
       call$1: [function(key) {
         return this.$this._fetch$1(key);
-      }, null, null, 2, 0, null, 32, "call"]
+      }, null, null, 2, 0, null, 20, "call"]
     },
     _ConstantMapKeyIterable: {
       "^": "Iterable;_map,$ti",
       get$iterator: function(_) {
-        var t1 = this._map._keys;
+        var t1 = this._map.__js_helper$_keys;
         return new J.ArrayIterator(t1, t1.length, 0, null, [H.getTypeArgumentByIndex(t1, 0)]);
       },
       get$length: function(_) {
-        return this._map._keys.length;
+        return this._map.__js_helper$_keys.length;
       }
     },
     GeneralConstantMap: {
@@ -4193,7 +4185,8 @@
     JSInvocationMirror: {
       "^": "Object;__js_helper$_memberName,_internalName,_kind,_arguments,_namedArgumentNames,_namedIndices",
       get$memberName: function() {
-        return this.__js_helper$_memberName;
+        var t1 = this.__js_helper$_memberName;
+        return t1;
       },
       get$positionalArguments: function() {
         var t1, argumentCount, list, index;
@@ -4260,7 +4253,7 @@
       }
     },
     Primitives_functionNoSuchMethod_closure: {
-      "^": "Closure:97;_box_0,$arguments,namedArgumentList",
+      "^": "Closure:36;_box_0,$arguments,namedArgumentList",
       call$2: function($name, argument) {
         var t1 = this._box_0;
         t1.names = t1.names + "$" + H.S($name);
@@ -4347,8 +4340,8 @@
           return "NoSuchMethodError: " + H.S(this._message);
         t2 = this._receiver;
         if (t2 == null)
-          return "NoSuchMethodError: method not found: '" + H.S(t1) + "' (" + H.S(this._message) + ")";
-        return "NoSuchMethodError: method not found: '" + H.S(t1) + "' on '" + H.S(t2) + "' (" + H.S(this._message) + ")";
+          return "NoSuchMethodError: method not found: '" + t1 + "' (" + H.S(this._message) + ")";
+        return "NoSuchMethodError: method not found: '" + t1 + "' on '" + t2 + "' (" + H.S(this._message) + ")";
       },
       static: {
         JsNoSuchMethodError$: function(_message, match) {
@@ -4425,7 +4418,7 @@
     Closure: {
       "^": "Object;",
       toString$0: function(_) {
-        return "Closure '" + H.Primitives_objectTypeName(this) + "'";
+        return "Closure '" + H.Primitives_objectTypeName(this).trim() + "'";
       },
       get$$call: function() {
         return this;
@@ -4502,17 +4495,6 @@
         }
       }
     },
-    TypeErrorImplementation: {
-      "^": "Error;message",
-      toString$0: function(_) {
-        return this.message;
-      },
-      static: {
-        TypeErrorImplementation$: function(value, type) {
-          return new H.TypeErrorImplementation("type '" + H.Primitives_objectTypeName(value) + "' is not a subtype of type '" + type + "'");
-        }
-      }
-    },
     CastErrorImplementation: {
       "^": "Error;message",
       toString$0: function(_) {
@@ -4528,155 +4510,6 @@
       "^": "Error;message",
       toString$0: function(_) {
         return "RuntimeError: " + H.S(this.message);
-      }
-    },
-    RuntimeType: {
-      "^": "Object;"
-    },
-    RuntimeFunctionType: {
-      "^": "RuntimeType;returnType,parameterTypes,optionalParameterTypes,namedParameters",
-      _isTest$1: function(expression) {
-        var functionTypeObject = H.extractFunctionTypeObjectFrom(expression);
-        return functionTypeObject == null ? false : H.isFunctionSubtype(functionTypeObject, this.toRti$0());
-      },
-      _asCheck$1: function(expression) {
-        return this._check$2(expression, true);
-      },
-      _check$2: function(expression, isCast) {
-        var $self, functionTypeObject;
-        if (expression == null)
-          return;
-        if (this._isTest$1(expression))
-          return expression;
-        $self = H.runtimeTypeToString(this.toRti$0(), null);
-        if (isCast) {
-          functionTypeObject = H.extractFunctionTypeObjectFrom(expression);
-          throw H.wrapException(H.CastErrorImplementation$(functionTypeObject != null ? H.runtimeTypeToString(functionTypeObject, null) : H.Primitives_objectTypeName(expression), $self));
-        } else
-          throw H.wrapException(H.TypeErrorImplementation$(expression, $self));
-      },
-      toRti$0: function() {
-        var result, t1, t2, namedRti, keys, i, $name;
-        result = {func: "dynafunc"};
-        t1 = this.returnType;
-        t2 = J.getInterceptor(t1);
-        if (!!t2.$isVoidRuntimeType)
-          result.v = true;
-        else if (!t2.$isDynamicRuntimeType)
-          result.ret = t1.toRti$0();
-        t1 = this.parameterTypes;
-        if (t1 != null && t1.length !== 0)
-          result.args = H.RuntimeFunctionType_listToRti(t1);
-        t1 = this.optionalParameterTypes;
-        if (t1 != null && t1.length !== 0)
-          result.opt = H.RuntimeFunctionType_listToRti(t1);
-        t1 = this.namedParameters;
-        if (t1 != null) {
-          namedRti = Object.create(null);
-          keys = H.extractKeys(t1);
-          for (t2 = keys.length, i = 0; i < t2; ++i) {
-            $name = keys[i];
-            namedRti[$name] = t1[$name].toRti$0();
-          }
-          result.named = namedRti;
-        }
-        return result;
-      },
-      toString$0: function(_) {
-        var t1, t2, result, needsComma, i, type, keys, $name;
-        t1 = this.parameterTypes;
-        if (t1 != null)
-          for (t2 = t1.length, result = "(", needsComma = false, i = 0; i < t2; ++i, needsComma = true) {
-            type = t1[i];
-            if (needsComma)
-              result += ", ";
-            result += H.S(type);
-          }
-        else {
-          result = "(";
-          needsComma = false;
-        }
-        t1 = this.optionalParameterTypes;
-        if (t1 != null && t1.length !== 0) {
-          result = (needsComma ? result + ", " : result) + "[";
-          for (t2 = t1.length, needsComma = false, i = 0; i < t2; ++i, needsComma = true) {
-            type = t1[i];
-            if (needsComma)
-              result += ", ";
-            result += H.S(type);
-          }
-          result += "]";
-        } else {
-          t1 = this.namedParameters;
-          if (t1 != null) {
-            result = (needsComma ? result + ", " : result) + "{";
-            keys = H.extractKeys(t1);
-            for (t2 = keys.length, needsComma = false, i = 0; i < t2; ++i, needsComma = true) {
-              $name = keys[i];
-              if (needsComma)
-                result += ", ";
-              result += H.S(t1[$name].toRti$0()) + " " + $name;
-            }
-            result += "}";
-          }
-        }
-        return result + (") -> " + H.S(this.returnType));
-      },
-      static: {
-        RuntimeFunctionType_listToRti: function(list) {
-          var result, t1, i;
-          list = list;
-          result = [];
-          for (t1 = list.length, i = 0; i < t1; ++i)
-            result.push(list[i].toRti$0());
-          return result;
-        }
-      }
-    },
-    DynamicRuntimeType: {
-      "^": "RuntimeType;",
-      toString$0: function(_) {
-        return "dynamic";
-      },
-      toRti$0: function() {
-        return;
-      }
-    },
-    RuntimeTypePlain: {
-      "^": "RuntimeType;_jsConstructorName",
-      toRti$0: function() {
-        var t1, rti;
-        t1 = this._jsConstructorName;
-        rti = H.jsConstructorNameToRti(t1);
-        if (rti == null)
-          throw H.wrapException("no type for '" + t1 + "'");
-        return rti;
-      },
-      toString$0: function(_) {
-        return this._jsConstructorName;
-      }
-    },
-    RuntimeTypeGeneric: {
-      "^": "RuntimeType;_jsConstructorName,$arguments,rti",
-      toRti$0: function() {
-        var t1, result, t2, _i;
-        t1 = this.rti;
-        if (t1 != null)
-          return t1;
-        t1 = this._jsConstructorName;
-        result = [H.jsConstructorNameToRti(t1)];
-        if (0 >= result.length)
-          return H.ioore(result, 0);
-        if (result[0] == null)
-          throw H.wrapException("no type for '" + t1 + "<...>'");
-        for (t1 = this.$arguments, t2 = t1.length, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i)
-          result.push(t1[_i].toRti$0());
-        this.rti = result;
-        return result;
-      },
-      toString$0: function(_) {
-        var t1 = this.$arguments;
-        return this._jsConstructorName + "<" + (t1 && C.JSArray_methods).join$1(t1, ", ") + ">";
       }
     },
     TypeImpl: {
@@ -4705,12 +4538,12 @@
       $isType: 1
     },
     JsLinkedHashMap: {
-      "^": "Object;__js_helper$_length,_strings,_nums,_rest,_first,_last,_modifications,$ti",
+      "^": "Object;_length,_strings,_nums,_rest,_first,_last,_modifications,$ti",
       get$length: function(_) {
-        return this.__js_helper$_length;
+        return this._length;
       },
       get$isEmpty: function(_) {
-        return this.__js_helper$_length === 0;
+        return this._length === 0;
       },
       get$keys: function(_) {
         return new H.LinkedHashMapKeyIterable(this, [H.getTypeArgumentByIndex(this, 0)]);
@@ -4830,13 +4663,13 @@
         return cell.get$hashMapCellValue();
       },
       clear$0: function(_) {
-        if (this.__js_helper$_length > 0) {
+        if (this._length > 0) {
           this._last = null;
           this._first = null;
           this._rest = null;
           this._nums = null;
           this._strings = null;
-          this.__js_helper$_length = 0;
+          this._length = 0;
           this._modifications = this._modifications + 1 & 67108863;
         }
       },
@@ -4881,7 +4714,7 @@
           last._next = cell;
           this._last = cell;
         }
-        ++this.__js_helper$_length;
+        ++this._length;
         this._modifications = this._modifications + 1 & 67108863;
         return cell;
       },
@@ -4897,7 +4730,7 @@
           this._last = previous;
         else
           next._previous = previous;
-        --this.__js_helper$_length;
+        --this._length;
         this._modifications = this._modifications + 1 & 67108863;
       },
       internalComputeHashCode$1: function(key) {
@@ -4950,13 +4783,13 @@
       "^": "Closure:1;$this",
       call$1: [function(each) {
         return this.$this.$index(0, each);
-      }, null, null, 2, 0, null, 57, "call"]
+      }, null, null, 2, 0, null, 53, "call"]
     },
     JsLinkedHashMap_addAll_closure: {
       "^": "Closure;$this",
       call$2: [function(key, value) {
         this.$this.$indexSet(0, key, value);
-      }, null, null, 4, 0, null, 32, 5, "call"],
+      }, null, null, 4, 0, null, 20, 2, "call"],
       $signature: function() {
         return H.computeSignature(function(K, V) {
           return {func: 1, args: [K, V]};
@@ -4969,10 +4802,10 @@
     LinkedHashMapKeyIterable: {
       "^": "EfficientLengthIterable;_map,$ti",
       get$length: function(_) {
-        return this._map.__js_helper$_length;
+        return this._map._length;
       },
       get$isEmpty: function(_) {
-        return this._map.__js_helper$_length === 0;
+        return this._map._length === 0;
       },
       get$iterator: function(_) {
         var t1, t2;
@@ -4998,9 +4831,9 @@
       }
     },
     LinkedHashMapKeyIterator: {
-      "^": "Object;_map,_modifications,_cell,__js_helper$_current,$ti",
+      "^": "Object;_map,_modifications,_cell,_current,$ti",
       get$current: function() {
-        return this.__js_helper$_current;
+        return this._current;
       },
       moveNext$0: function() {
         var t1 = this._map;
@@ -5009,10 +4842,10 @@
         else {
           t1 = this._cell;
           if (t1 == null) {
-            this.__js_helper$_current = null;
+            this._current = null;
             return false;
           } else {
-            this.__js_helper$_current = t1.hashMapCellKey;
+            this._current = t1.hashMapCellKey;
             this._cell = t1._next;
             return true;
           }
@@ -5026,7 +4859,7 @@
       }
     },
     initHooks_closure0: {
-      "^": "Closure:115;getUnknownTag",
+      "^": "Closure:100;getUnknownTag",
       call$2: function(o, tag) {
         return this.getUnknownTag(o, tag);
       }
@@ -5151,9 +4984,9 @@
       }
     },
     _AllMatchesIterator: {
-      "^": "Object;_regExp,_string,_nextIndex,__js_helper$_current",
+      "^": "Object;_regExp,_string,_nextIndex,_current",
       get$current: function() {
-        return this.__js_helper$_current;
+        return this._current;
       },
       moveNext$0: function() {
         var t1, t2, match, nextIndex;
@@ -5164,7 +4997,7 @@
         if (t2 <= t1.length) {
           match = this._regExp._execGlobal$2(t1, t2);
           if (match != null) {
-            this.__js_helper$_current = match;
+            this._current = match;
             t1 = match._match;
             t2 = t1.index;
             nextIndex = t2 + t1[0].length;
@@ -5172,7 +5005,7 @@
             return true;
           }
         }
-        this.__js_helper$_current = null;
+        this._current = null;
         this._string = null;
         return false;
       }
@@ -5208,30 +5041,34 @@
       }
     },
     _StringAllMatchesIterator: {
-      "^": "Object;_input,_pattern,__js_helper$_index,__js_helper$_current",
+      "^": "Object;_input,_pattern,__js_helper$_index,_current",
       moveNext$0: function() {
-        var t1, t2, t3, t4, index, end;
-        t1 = this._pattern;
-        t2 = t1.length;
-        t3 = this._input;
-        t4 = J.getInterceptor$asx(t3);
-        if (J.$gt$n(J.$add$ns(this.__js_helper$_index, t2), t4.get$length(t3))) {
-          this.__js_helper$_current = null;
+        var t1, t2, t3, t4, t5, t6, index, end;
+        t1 = this.__js_helper$_index;
+        t2 = this._pattern;
+        t3 = t2.length;
+        t4 = this._input;
+        t5 = J.getInterceptor$asx(t4);
+        t6 = t5.get$length(t4);
+        if (typeof t6 !== "number")
+          return H.iae(t6);
+        if (t1 + t3 > t6) {
+          this._current = null;
           return false;
         }
-        index = t3.indexOf(t1, this.__js_helper$_index);
+        index = t4.indexOf(t2, this.__js_helper$_index);
         if (index < 0) {
-          this.__js_helper$_index = J.$add$ns(t4.get$length(t3), 1);
-          this.__js_helper$_current = null;
+          this.__js_helper$_index = J.$add$ns(t5.get$length(t4), 1);
+          this._current = null;
           return false;
         }
-        end = index + t2;
-        this.__js_helper$_current = new H.StringMatch(index, t3, t1);
+        end = index + t3;
+        this._current = new H.StringMatch(index, t4, t2);
         this.__js_helper$_index = end === this.__js_helper$_index ? end + 1 : end;
         return true;
       },
       get$current: function() {
-        return this.__js_helper$_current;
+        return this._current;
       }
     }
   }], ["dart._js_names", "dart:_js_names",, H, {
@@ -5310,14 +5147,14 @@
         this._checkPosition$3(receiver, end, targetLength, "end");
         if (J.$gt$n(start, end))
           throw H.wrapException(P.RangeError$range(start, 0, end, null, null));
-        count = J.$sub$n(end, start);
+        if (typeof start !== "number")
+          return H.iae(start);
+        count = end - start;
         if (J.$lt$n(skipCount, 0))
           throw H.wrapException(P.ArgumentError$(skipCount));
         sourceLength = source.length;
         if (typeof skipCount !== "number")
           return H.iae(skipCount);
-        if (typeof count !== "number")
-          return H.iae(count);
         if (sourceLength - skipCount < count)
           throw H.wrapException(new P.StateError("Not enough elements"));
         if (skipCount !== 0 || sourceLength !== count)
@@ -5688,24 +5525,26 @@
     _AsyncRun__scheduleImmediateJsOverride: [function(callback) {
       ++init.globalState.topEventLoop._activeJsAsyncCount;
       self.scheduleImmediate(H.convertDartClosureToJS(new P._AsyncRun__scheduleImmediateJsOverride_internalCallback(callback), 0));
-    }, "call$1", "async__AsyncRun__scheduleImmediateJsOverride$closure", 2, 0, 7],
+    }, "call$1", "async__AsyncRun__scheduleImmediateJsOverride$closure", 2, 0, 17],
     _AsyncRun__scheduleImmediateWithSetImmediate: [function(callback) {
       ++init.globalState.topEventLoop._activeJsAsyncCount;
       self.setImmediate(H.convertDartClosureToJS(new P._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback(callback), 0));
-    }, "call$1", "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", 2, 0, 7],
+    }, "call$1", "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", 2, 0, 17],
     _AsyncRun__scheduleImmediateWithTimer: [function(callback) {
       P.Timer__createTimer(C.Duration_0, callback);
-    }, "call$1", "async__AsyncRun__scheduleImmediateWithTimer$closure", 2, 0, 7],
-    _asyncHelper: function(object, bodyFunctionOrErrorCode, completer) {
-      if (bodyFunctionOrErrorCode === 0) {
-        J.complete$1$x(completer, object);
-        return;
-      } else if (bodyFunctionOrErrorCode === 1) {
-        completer.completeError$2(H.unwrapException(object), H.getTraceFromException(object));
-        return;
-      }
-      P._awaitOnObject(object, bodyFunctionOrErrorCode);
+    }, "call$1", "async__AsyncRun__scheduleImmediateWithTimer$closure", 2, 0, 17],
+    _asyncStart: function(bodyFunction, completer) {
+      P._awaitOnObject(null, bodyFunction);
       return completer.get$future();
+    },
+    _asyncAwait: function(object, bodyFunction) {
+      P._awaitOnObject(object, bodyFunction);
+    },
+    _asyncReturn: function(object, completer) {
+      J.complete$1$x(completer, object);
+    },
+    _asyncRethrow: function(object, completer) {
+      completer.completeError$2(H.unwrapException(object), H.getTraceFromException(object));
     },
     _awaitOnObject: function(object, bodyFunction) {
       var thenCallback, errorCallback, t1, future;
@@ -5739,33 +5578,28 @@
       return $.Zone__current.registerBinaryCallback$1(new P._wrapJsFunctionForAsync_closure($protected));
     },
     _invokeErrorHandler: function(errorHandler, error, stackTrace) {
-      var t1 = H.getDynamicRuntimeType();
-      if (H.buildFunctionType(t1, [t1, t1])._isTest$1(errorHandler))
+      if (H.functionTypeTest(errorHandler, {func: 1, args: [P.Null, P.Null]}))
         return errorHandler.call$2(error, stackTrace);
       else
         return errorHandler.call$1(error);
     },
     _registerErrorHandler: function(errorHandler, zone) {
-      var t1 = H.getDynamicRuntimeType();
-      if (H.buildFunctionType(t1, [t1, t1])._isTest$1(errorHandler))
+      if (H.functionTypeTest(errorHandler, {func: 1, args: [P.Null, P.Null]}))
         return zone.registerBinaryCallback$1(errorHandler);
       else
         return zone.registerUnaryCallback$1(errorHandler);
     },
-    Future_Future$value: function(value, $T) {
-      var t1 = new P._Future(0, $.Zone__current, null, [$T]);
-      t1._asyncComplete$1(value);
-      return t1;
-    },
     Future_Future$error: function(error, stackTrace, $T) {
       var t1, replacement;
-      error = error != null ? error : new P.NullThrownError();
+      if (error == null)
+        error = new P.NullThrownError();
       t1 = $.Zone__current;
       if (t1 !== C.C__RootZone) {
         replacement = t1.errorCallback$2(error, stackTrace);
         if (replacement != null) {
           error = J.get$error$x(replacement);
-          error = error != null ? error : new P.NullThrownError();
+          if (error == null)
+            error = new P.NullThrownError();
           stackTrace = replacement.get$stackTrace();
         }
       }
@@ -5775,43 +5609,42 @@
     },
     Future_Future$delayed: function(duration, computation, $T) {
       var result = new P._Future(0, $.Zone__current, null, [$T]);
-      P.Timer_Timer(duration, new P.closure1(computation, result));
+      P.Timer_Timer(duration, new P.closure2(computation, result));
       return result;
     },
     Future_wait: function(futures, cleanUp, eagerError) {
-      var t1, result, handleError, future, pos, e, st, t2, values, exception;
-      t1 = {};
+      var _box_0, result, handleError, future, pos, e, st, t1, values, exception;
+      _box_0 = {};
       result = new P._Future(0, $.Zone__current, null, [P.List]);
-      t1.values = null;
-      t1.remaining = 0;
-      t1.error = null;
-      t1.stackTrace = null;
-      handleError = new P.Future_wait_handleError(t1, false, cleanUp, result);
+      _box_0.values = null;
+      _box_0.remaining = 0;
+      _box_0.error = null;
+      _box_0.stackTrace = null;
+      handleError = new P.Future_wait_handleError(_box_0, false, cleanUp, result);
       try {
-        for (t2 = J.get$iterator$ax(futures); t2.moveNext$0();) {
-          future = t2.get$current();
-          pos = t1.remaining;
-          future.then$2$onError(new P.Future_wait_closure(t1, false, cleanUp, result, pos), handleError);
-          ++t1.remaining;
+        for (t1 = J.get$iterator$ax(futures); t1.moveNext$0();) {
+          future = t1.get$current();
+          pos = _box_0.remaining;
+          future.then$2$onError(new P.Future_wait_closure(_box_0, false, cleanUp, result, pos), handleError);
+          ++_box_0.remaining;
         }
-        t2 = t1.remaining;
-        if (t2 === 0) {
-          t2 = new P._Future(0, $.Zone__current, null, [null]);
-          t2._asyncComplete$1(C.List_empty);
-          return t2;
+        t1 = _box_0.remaining;
+        if (t1 === 0) {
+          t1 = new P._Future(0, $.Zone__current, null, [null]);
+          t1._asyncComplete$1(C.List_empty);
+          return t1;
         }
-        values = new Array(t2);
+        values = new Array(t1);
         values.fixed$length = Array;
-        t1.values = values;
+        _box_0.values = values;
       } catch (exception) {
-        t2 = H.unwrapException(exception);
-        e = t2;
+        e = H.unwrapException(exception);
         st = H.getTraceFromException(exception);
-        if (t1.remaining === 0 || false)
+        if (_box_0.remaining === 0 || false)
           return P.Future_Future$error(e, st, null);
         else {
-          t1.error = e;
-          t1.stackTrace = st;
+          _box_0.error = e;
+          _box_0.stackTrace = st;
         }
       }
       return result;
@@ -5823,7 +5656,8 @@
       var replacement = $.Zone__current.errorCallback$2(error, stackTrace);
       if (replacement != null) {
         error = J.get$error$x(replacement);
-        error = error != null ? error : new P.NullThrownError();
+        if (error == null)
+          error = new P.NullThrownError();
         stackTrace = replacement.get$stackTrace();
       }
       result._completeError$2(error, stackTrace);
@@ -5903,58 +5737,47 @@
       t1.scheduleMicrotask$1(t1.bindCallback$2$runGuarded(callback, true));
     },
     Stream_Stream$fromFuture: function(future, $T) {
-      var controller = P.StreamController_StreamController(null, null, null, null, true, $T);
-      future.then$2$onError(new P.closure9(controller), new P.closure10(controller));
-      return new P._ControllerStream(controller, [H.getTypeArgumentByIndex(controller, 0)]);
+      var controller = new P._SyncStreamController(null, 0, null, null, null, null, null, [$T]);
+      future.then$2$onError(new P.closure10(controller), new P.closure11(controller));
+      return new P._ControllerStream(controller, [$T]);
     },
     StreamIterator_StreamIterator: function(stream, $T) {
       return new P._StreamIterator(null, stream, false, [$T]);
     },
-    StreamController_StreamController: function(onCancel, onListen, onPause, onResume, sync, $T) {
-      return new P._SyncStreamController(null, 0, null, onListen, onPause, onResume, onCancel, [$T]);
-    },
-    StreamController_StreamController$broadcast: function(onCancel, onListen, sync, $T) {
-      return sync ? new P._SyncBroadcastStreamController(onListen, onCancel, 0, null, null, null, null, [$T]) : new P._AsyncBroadcastStreamController(onListen, onCancel, 0, null, null, null, null, [$T]);
-    },
     _runGuarded: function(notificationHandler) {
-      var result, e, s, exception, t1;
+      var e, s, exception;
       if (notificationHandler == null)
         return;
       try {
-        result = notificationHandler.call$0();
-        if (!!J.getInterceptor(result).$isFuture)
-          return result;
-        return;
+        notificationHandler.call$0();
       } catch (exception) {
-        t1 = H.unwrapException(exception);
-        e = t1;
+        e = H.unwrapException(exception);
         s = H.getTraceFromException(exception);
         $.Zone__current.handleUncaughtError$2(e, s);
       }
     },
     _nullDataHandler: [function(value) {
-    }, "call$1", "async___nullDataHandler$closure", 2, 0, 121, 5],
+    }, "call$1", "async___nullDataHandler$closure", 2, 0, 104, 2],
     _nullErrorHandler: [function(error, stackTrace) {
       $.Zone__current.handleUncaughtError$2(error, stackTrace);
     }, function(error) {
       return P._nullErrorHandler(error, null);
-    }, "call$2", "call$1", "async___nullErrorHandler$closure", 2, 2, 38, 1, 6, 7],
+    }, "call$2", "call$1", "async___nullErrorHandler$closure", 2, 2, 12, 1, 7, 9],
     _nullDoneHandler: [function() {
     }, "call$0", "async___nullDoneHandler$closure", 0, 0, 2],
     _runUserCode: function(userCode, onSuccess, onError) {
-      var e, s, replacement, error, stackTrace, exception, t1, error0;
+      var e, s, replacement, error, stackTrace, exception, error0;
       try {
         onSuccess.call$1(userCode.call$0());
       } catch (exception) {
-        t1 = H.unwrapException(exception);
-        e = t1;
+        e = H.unwrapException(exception);
         s = H.getTraceFromException(exception);
         replacement = $.Zone__current.errorCallback$2(e, s);
         if (replacement == null)
           onError.call$2(e, s);
         else {
           error0 = J.get$error$x(replacement);
-          error = error0 != null ? error0 : new P.NullThrownError();
+          error = error0 == null ? new P.NullThrownError() : error0;
           stackTrace = replacement.get$stackTrace();
           onError.call$2(error, stackTrace);
         }
@@ -5971,7 +5794,8 @@
       var replacement = $.Zone__current.errorCallback$2(error, stackTrace);
       if (replacement != null) {
         error = J.get$error$x(replacement);
-        error = error != null ? error : new P.NullThrownError();
+        if (error == null)
+          error = new P.NullThrownError();
         stackTrace = replacement.get$stackTrace();
       }
       P._cancelAndError(subscription, future, error, stackTrace);
@@ -5990,7 +5814,8 @@
       var replacement = $.Zone__current.errorCallback$2(error, stackTrace);
       if (replacement != null) {
         error = J.get$error$x(replacement);
-        error = error != null ? error : new P.NullThrownError();
+        if (error == null)
+          error = new P.NullThrownError();
         stackTrace = replacement.get$stackTrace();
       }
       sink._addError$2(error, stackTrace);
@@ -6028,7 +5853,7 @@
       P._schedulePriorityAsyncCallback(new P._rootHandleUncaughtError_closure(t1, stackTrace));
     }, "call$5", "async___rootHandleUncaughtError$closure", 10, 0, function() {
       return {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone,, P.StackTrace]};
-    }, 2, 3, 4, 6, 7],
+    }, 3, 4, 5, 7, 9],
     _rootRun: [function($self, $parent, zone, f) {
       var old, previous, t1;
       if (J.$eq$($.Zone__current, zone))
@@ -6044,7 +5869,7 @@
       }
     }, "call$4", "async___rootRun$closure", 8, 0, function() {
       return {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]};
-    }, 2, 3, 4, 11],
+    }, 3, 4, 5, 32],
     _rootRunUnary: [function($self, $parent, zone, f, arg) {
       var old, previous, t1;
       if (J.$eq$($.Zone__current, zone))
@@ -6060,7 +5885,7 @@
       }
     }, "call$5", "async___rootRunUnary$closure", 10, 0, function() {
       return {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]},,]};
-    }, 2, 3, 4, 11, 23],
+    }, 3, 4, 5, 32, 22],
     _rootRunBinary: [function($self, $parent, zone, f, arg1, arg2) {
       var old, previous, t1;
       if (J.$eq$($.Zone__current, zone))
@@ -6076,45 +5901,45 @@
       }
     }, "call$6", "async___rootRunBinary$closure", 12, 0, function() {
       return {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]},,,]};
-    }, 2, 3, 4, 11, 10, 31],
+    }, 3, 4, 5, 32, 10, 31],
     _rootRegisterCallback: [function($self, $parent, zone, f) {
       return f;
     }, "call$4", "async___rootRegisterCallback$closure", 8, 0, function() {
       return {func: 1, ret: {func: 1}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]};
-    }, 2, 3, 4, 11],
+    }],
     _rootRegisterUnaryCallback: [function($self, $parent, zone, f) {
       return f;
     }, "call$4", "async___rootRegisterUnaryCallback$closure", 8, 0, function() {
       return {func: 1, ret: {func: 1, args: [,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]}]};
-    }, 2, 3, 4, 11],
+    }],
     _rootRegisterBinaryCallback: [function($self, $parent, zone, f) {
       return f;
     }, "call$4", "async___rootRegisterBinaryCallback$closure", 8, 0, function() {
       return {func: 1, ret: {func: 1, args: [,,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]}]};
-    }, 2, 3, 4, 11],
+    }],
     _rootErrorCallback: [function($self, $parent, zone, error, stackTrace) {
       return;
-    }, "call$5", "async___rootErrorCallback$closure", 10, 0, 122, 2, 3, 4, 6, 7],
+    }, "call$5", "async___rootErrorCallback$closure", 10, 0, 105],
     _rootScheduleMicrotask: [function($self, $parent, zone, f) {
       var t1 = C.C__RootZone !== zone;
       if (t1)
         f = zone.bindCallback$2$runGuarded(f, !(!t1 || C.C__RootZone.get$errorZone() === zone.get$errorZone()));
       P._scheduleAsyncCallback(f);
-    }, "call$4", "async___rootScheduleMicrotask$closure", 8, 0, 123, 2, 3, 4, 11],
+    }, "call$4", "async___rootScheduleMicrotask$closure", 8, 0, 106],
     _rootCreateTimer: [function($self, $parent, zone, duration, callback) {
       return P.Timer__createTimer(duration, C.C__RootZone !== zone ? zone.bindCallback$1(callback) : callback);
-    }, "call$5", "async___rootCreateTimer$closure", 10, 0, 124, 2, 3, 4, 27, 12],
+    }, "call$5", "async___rootCreateTimer$closure", 10, 0, 107],
     _rootCreatePeriodicTimer: [function($self, $parent, zone, duration, callback) {
       return P.Timer__createPeriodicTimer(duration, C.C__RootZone !== zone ? zone.bindUnaryCallback$1(callback) : callback);
-    }, "call$5", "async___rootCreatePeriodicTimer$closure", 10, 0, 125, 2, 3, 4, 27, 12],
+    }, "call$5", "async___rootCreatePeriodicTimer$closure", 10, 0, 108],
     _rootPrint: [function($self, $parent, zone, line) {
       H.printString(H.S(line));
-    }, "call$4", "async___rootPrint$closure", 8, 0, 126, 2, 3, 4, 65],
+    }, "call$4", "async___rootPrint$closure", 8, 0, 109],
     _printToZone: [function(line) {
       J.print$1$x($.Zone__current, line);
-    }, "call$1", "async___printToZone$closure", 2, 0, 14],
+    }, "call$1", "async___printToZone$closure", 2, 0, 110],
     _rootFork: [function($self, $parent, zone, specification, zoneValues) {
-      var valueMap, t1;
+      var valueMap, t1, t2;
       $.printToZone = P.async___printToZone$closure();
       if (specification == null)
         specification = C._ZoneSpecification_ALf;
@@ -6125,24 +5950,34 @@
       else
         valueMap = P.HashMap_HashMap$from(zoneValues, null, null);
       t1 = new P._CustomZone(null, null, null, null, null, null, null, null, null, null, null, null, null, null, zone, valueMap);
-      t1._async$_run = specification.get$run() != null ? new P._ZoneFunction(t1, specification.get$run(), [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}]) : zone.get$_async$_run();
-      t1._async$_runUnary = specification.get$runUnary() != null ? new P._ZoneFunction(t1, specification.get$runUnary(), [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]},,]}]) : zone.get$_async$_runUnary();
-      t1._async$_runBinary = specification.get$runBinary() != null ? new P._ZoneFunction(t1, specification.get$runBinary(), [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]},,,]}]) : zone.get$_async$_runBinary();
-      t1._registerCallback = specification.get$registerCallback() != null ? new P._ZoneFunction(t1, specification.get$registerCallback(), [{func: 1, ret: {func: 1}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}]) : zone.get$_registerCallback();
-      t1._registerUnaryCallback = specification.get$registerUnaryCallback() != null ? new P._ZoneFunction(t1, specification.get$registerUnaryCallback(), [{func: 1, ret: {func: 1, args: [,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]}]}]) : zone.get$_registerUnaryCallback();
-      t1._registerBinaryCallback = specification.get$registerBinaryCallback() != null ? new P._ZoneFunction(t1, specification.get$registerBinaryCallback(), [{func: 1, ret: {func: 1, args: [,,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]}]}]) : zone.get$_registerBinaryCallback();
-      t1._errorCallback = specification.get$errorCallback() != null ? new P._ZoneFunction(t1, specification.get$errorCallback(), [{func: 1, ret: P.AsyncError, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Object, P.StackTrace]}]) : zone.get$_errorCallback();
-      t1._scheduleMicrotask = specification.get$scheduleMicrotask() != null ? new P._ZoneFunction(t1, specification.get$scheduleMicrotask(), [{func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, v: true}]}]) : zone.get$_scheduleMicrotask();
-      t1._async$_createTimer = specification.get$createTimer() != null ? new P._ZoneFunction(t1, specification.get$createTimer(), [{func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1, v: true}]}]) : zone.get$_async$_createTimer();
-      specification.get$createPeriodicTimer();
-      t1._createPeriodicTimer = zone.get$_createPeriodicTimer();
-      J.get$print$x(specification);
-      t1._print = zone.get$_print();
-      specification.get$fork();
-      t1._fork = zone.get$_fork();
-      t1._handleUncaughtError = specification.get$handleUncaughtError() != null ? new P._ZoneFunction(t1, specification.get$handleUncaughtError(), [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone,, P.StackTrace]}]) : zone.get$_handleUncaughtError();
+      t2 = specification.run;
+      t1._async$_run = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}]) : zone.get$_async$_run();
+      t2 = specification.runUnary;
+      t1._async$_runUnary = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]},,]}]) : zone.get$_async$_runUnary();
+      t2 = specification.runBinary;
+      t1._async$_runBinary = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]},,,]}]) : zone.get$_async$_runBinary();
+      t2 = specification.registerCallback;
+      t1._registerCallback = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, ret: {func: 1}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}]) : zone.get$_registerCallback();
+      t2 = specification.registerUnaryCallback;
+      t1._registerUnaryCallback = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, ret: {func: 1, args: [,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]}]}]) : zone.get$_registerUnaryCallback();
+      t2 = specification.registerBinaryCallback;
+      t1._registerBinaryCallback = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, ret: {func: 1, args: [,,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]}]}]) : zone.get$_registerBinaryCallback();
+      t2 = specification.errorCallback;
+      t1._errorCallback = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, ret: P.AsyncError, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Object, P.StackTrace]}]) : zone.get$_errorCallback();
+      t2 = specification.scheduleMicrotask;
+      t1._scheduleMicrotask = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, v: true}]}]) : zone.get$_scheduleMicrotask();
+      t2 = specification.createTimer;
+      t1._async$_createTimer = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1, v: true}]}]) : zone.get$_async$_createTimer();
+      t2 = zone.get$_createPeriodicTimer();
+      t1._createPeriodicTimer = t2;
+      t2 = zone.get$_print();
+      t1._print = t2;
+      t2 = zone.get$_fork();
+      t1._fork = t2;
+      t2 = specification.handleUncaughtError;
+      t1._handleUncaughtError = t2 != null ? new P._ZoneFunction(t1, t2, [{func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone,, P.StackTrace]}]) : zone.get$_handleUncaughtError();
       return t1;
-    }, "call$5", "async___rootFork$closure", 10, 0, 127, 2, 3, 4, 69, 85],
+    }, "call$5", "async___rootFork$closure", 10, 0, 111, 3, 4, 5, 70, 85],
     _AsyncRun__initializeScheduleImmediate_internalCallback: {
       "^": "Closure:1;_box_0",
       call$1: [function(_) {
@@ -6155,7 +5990,7 @@
       }, null, null, 2, 0, null, 8, "call"]
     },
     _AsyncRun__initializeScheduleImmediate_closure: {
-      "^": "Closure:94;_box_0,div,span",
+      "^": "Closure:75;_box_0,div,span",
       call$1: function(callback) {
         var t1, t2;
         ++init.globalState.topEventLoop._activeJsAsyncCount;
@@ -6183,19 +6018,19 @@
       "^": "Closure:1;bodyFunction",
       call$1: [function(result) {
         return this.bodyFunction.call$2(0, result);
-      }, null, null, 2, 0, null, 21, "call"]
+      }, null, null, 2, 0, null, 23, "call"]
     },
     _awaitOnObject_closure0: {
       "^": "Closure:24;bodyFunction",
       call$2: [function(error, stackTrace) {
         this.bodyFunction.call$2(1, new H.ExceptionAndStackTrace(error, stackTrace));
-      }, null, null, 4, 0, null, 6, 7, "call"]
+      }, null, null, 4, 0, null, 7, 9, "call"]
     },
     _wrapJsFunctionForAsync_closure: {
-      "^": "Closure:81;$protected",
+      "^": "Closure:112;$protected",
       call$2: [function(errorCode, result) {
         this.$protected(errorCode, result);
-      }, null, null, 4, 0, null, 93, 21, "call"]
+      }, null, null, 4, 0, null, 62, 23, "call"]
     },
     _BroadcastStream: {
       "^": "_ControllerStream;_async$_controller,$ti"
@@ -6304,7 +6139,7 @@
         if (!this.get$_mayAddEvent())
           throw H.wrapException(this._addEventError$0());
         this._sendData$1(data);
-      }, null, "get$add", 2, 0, null, 34],
+      }, null, "get$add", 2, 0, null, 35],
       _forEachListener$1: function(action) {
         var t1, subscription, id, next;
         t1 = this._state;
@@ -6340,7 +6175,7 @@
     _SyncBroadcastStreamController: {
       "^": "_BroadcastStreamController;onListen,onCancel,_state,_firstSubscription,_lastSubscription,_addStreamState,_doneFuture,$ti",
       get$_mayAddEvent: function() {
-        return P._BroadcastStreamController.prototype.get$_mayAddEvent.call(this) && (this._state & 2) === 0;
+        return P._BroadcastStreamController.prototype.get$_mayAddEvent.call(this) === true && (this._state & 2) === 0;
       },
       _addEventError$0: function() {
         if ((this._state & 2) !== 0)
@@ -6348,12 +6183,10 @@
         return this.super$_BroadcastStreamController$_addEventError();
       },
       _sendData$1: function(data) {
-        var t1, t2;
-        t1 = this._firstSubscription;
+        var t1 = this._firstSubscription;
         if (t1 == null)
           return;
-        t2 = this._lastSubscription;
-        if (t1 == null ? t2 == null : t1 === t2) {
+        if (t1 === this._lastSubscription) {
           this._state |= 2;
           t1._async$_add$1(0, data);
           this._state &= 4294967293;
@@ -6386,7 +6219,7 @@
     Future: {
       "^": "Object;$ti"
     },
-    closure1: {
+    closure2: {
       "^": "Closure:0;computation,result",
       call$0: [function() {
         var e, s, t1, exception;
@@ -6394,15 +6227,14 @@
           t1 = this.computation.call$0();
           this.result._complete$1(t1);
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           P._completeWithErrorCallback(this.result, e, s);
         }
       }, null, null, 0, 0, null, "call"]
     },
     Future_wait_handleError: {
-      "^": "Closure:47;_box_0,eagerError,cleanUp,result",
+      "^": "Closure:3;_box_0,eagerError,cleanUp,result",
       call$2: [function(theError, theStackTrace) {
         var t1, t2;
         t1 = this._box_0;
@@ -6417,7 +6249,7 @@
           }
         } else if (t2 === 0 && !this.eagerError)
           this.result._completeError$2(t1.error, t1.stackTrace);
-      }, null, null, 4, 0, null, 101, 108, "call"]
+      }, null, null, 4, 0, null, 79, 87, "call"]
     },
     Future_wait_closure: {
       "^": "Closure;_box_0,eagerError,cleanUp,result,pos",
@@ -6435,7 +6267,7 @@
             this.result._completeWithValue$1(t3);
         } else if (t1.remaining === 0 && !this.eagerError)
           this.result._completeError$2(t1.error, t1.stackTrace);
-      }, null, null, 2, 0, null, 5, "call"],
+      }, null, null, 2, 0, null, 2, "call"],
       $signature: function() {
         return {func: 1, args: [,]};
       }
@@ -6444,19 +6276,21 @@
       "^": "Object;future<,$ti",
       completeError$2: [function(error, stackTrace) {
         var replacement;
-        error = error != null ? error : new P.NullThrownError();
+        if (error == null)
+          error = new P.NullThrownError();
         if (this.future._state !== 0)
           throw H.wrapException(new P.StateError("Future already completed"));
         replacement = $.Zone__current.errorCallback$2(error, stackTrace);
         if (replacement != null) {
           error = J.get$error$x(replacement);
-          error = error != null ? error : new P.NullThrownError();
+          if (error == null)
+            error = new P.NullThrownError();
           stackTrace = replacement.get$stackTrace();
         }
         this._completeError$2(error, stackTrace);
       }, function(error) {
         return this.completeError$2(error, null);
-      }, "completeError$1", "call$2", "call$1", "get$completeError", 2, 2, 67, 1]
+      }, "completeError$1", "call$2", "call$1", "get$completeError", 2, 2, 12, 1]
     },
     _AsyncCompleter: {
       "^": "_Completer;future,$ti",
@@ -6486,7 +6320,7 @@
       }
     },
     _FutureListener: {
-      "^": "Object;_nextListener@,result>,state,callback<,errorCallback<,$ti",
+      "^": "Object;_nextListener@,result>,state,callback<,errorCallback,$ti",
       get$_zone: function() {
         return this.result._zone;
       },
@@ -6511,15 +6345,14 @@
         return this.result._zone.runUnary$2(this.callback, J.get$error$x(asyncError));
       },
       handleError$1: function(asyncError) {
-        var t1, t2, t3, t4;
+        var t1, t2, t3;
         t1 = this.errorCallback;
-        t2 = H.getDynamicRuntimeType();
-        t3 = J.getInterceptor$x(asyncError);
-        t4 = this.result._zone;
-        if (H.buildFunctionType(t2, [t2, t2])._isTest$1(t1))
-          return t4.runBinary$3(t1, t3.get$error(asyncError), asyncError.get$stackTrace());
+        t2 = J.getInterceptor$x(asyncError);
+        t3 = this.result._zone;
+        if (H.functionTypeTest(t1, {func: 1, args: [,,]}))
+          return t3.runBinary$3(t1, t2.get$error(asyncError), asyncError.get$stackTrace());
         else
-          return t4.runUnary$2(t1, t3.get$error(asyncError));
+          return t3.runUnary$2(t1, t2.get$error(asyncError));
       },
       handleWhenComplete$0: function() {
         return this.result._zone.run$1(this.callback);
@@ -6616,13 +6449,13 @@
         }
       },
       _prependListeners$1: function(listeners) {
-        var t1, t2, existingListeners, cursor, source;
-        t1 = {};
-        t1.listeners = listeners;
+        var _box_0, t1, existingListeners, cursor, source;
+        _box_0 = {};
+        _box_0.listeners = listeners;
         if (listeners == null)
           return;
-        t2 = this._state;
-        if (t2 <= 1) {
+        t1 = this._state;
+        if (t1 <= 1) {
           existingListeners = this._resultOrListeners;
           this._resultOrListeners = listeners;
           if (existingListeners != null) {
@@ -6631,7 +6464,7 @@
             cursor.set$_nextListener(existingListeners);
           }
         } else {
-          if (t2 === 2) {
+          if (t1 === 2) {
             source = this._resultOrListeners;
             if (!source.get$_isComplete()) {
               source._prependListeners$1(listeners);
@@ -6640,8 +6473,8 @@
             this._state = source.get$_state();
             this._resultOrListeners = source.get$_resultOrListeners();
           }
-          t1.listeners = this._reverseListeners$1(listeners);
-          this._zone.scheduleMicrotask$1(new P._Future__prependListeners_closure(t1, this));
+          _box_0.listeners = this._reverseListeners$1(listeners);
+          this._zone.scheduleMicrotask$1(new P._Future__prependListeners_closure(_box_0, this));
         }
       },
       _removeListeners$0: function() {
@@ -6658,9 +6491,13 @@
         return prev;
       },
       _complete$1: function(value) {
-        var listeners;
-        if (!!J.getInterceptor(value).$isFuture)
-          P._Future__chainCoreFuture(value, this);
+        var t1, listeners;
+        t1 = this.$ti;
+        if (H.checkSubtype(value, "$isFuture", t1, "$asFuture"))
+          if (H.checkSubtype(value, "$is_Future", t1, null))
+            P._Future__chainCoreFuture(value, this);
+          else
+            P._Future__chainForeignFuture(value, this);
         else {
           listeners = this._removeListeners$0();
           this._state = 4;
@@ -6681,18 +6518,25 @@
         P._Future__propagateToListeners(this, listeners);
       }, function(error) {
         return this._completeError$2(error, null);
-      }, "_completeError$1", "call$2", "call$1", "get$_completeError", 2, 2, 38, 1, 6, 7],
+      }, "_completeError$1", "call$2", "call$1", "get$_completeError", 2, 2, 12, 1, 7, 9],
       _asyncComplete$1: function(value) {
-        if (!!J.getInterceptor(value).$isFuture) {
+        if (H.checkSubtype(value, "$isFuture", this.$ti, "$asFuture")) {
+          this._chainFuture$1(value);
+          return;
+        }
+        this._state = 1;
+        this._zone.scheduleMicrotask$1(new P._Future__asyncComplete_closure(this, value));
+      },
+      _chainFuture$1: function(value) {
+        if (H.checkSubtype(value, "$is_Future", this.$ti, null)) {
           if (value._state === 8) {
             this._state = 1;
-            this._zone.scheduleMicrotask$1(new P._Future__asyncComplete_closure(this, value));
+            this._zone.scheduleMicrotask$1(new P._Future__chainFuture_closure(this, value));
           } else
             P._Future__chainCoreFuture(value, this);
           return;
         }
-        this._state = 1;
-        this._zone.scheduleMicrotask$1(new P._Future__asyncComplete_closure0(this, value));
+        P._Future__chainForeignFuture(value, this);
       },
       _asyncCompleteError$2: function(error, stackTrace) {
         this._state = 1;
@@ -6700,14 +6544,19 @@
       },
       $isFuture: 1,
       static: {
+        _Future$value: function(value, $T) {
+          var t1 = new P._Future(0, $.Zone__current, null, [$T]);
+          t1._state = 4;
+          t1._resultOrListeners = value;
+          return t1;
+        },
         _Future__chainForeignFuture: function(source, target) {
-          var e, s, exception, t1;
+          var e, s, exception;
           target._setPendingComplete$0();
           try {
             source.then$2$onError(new P._Future__chainForeignFuture_closure(target), new P._Future__chainForeignFuture_closure0(target));
           } catch (exception) {
-            t1 = H.unwrapException(exception);
-            e = t1;
+            e = H.unwrapException(exception);
             s = H.getTraceFromException(exception);
             P.scheduleMicrotask(new P._Future__chainForeignFuture_closure1(target, e, s));
           }
@@ -6727,33 +6576,33 @@
           }
         },
         _Future__propagateToListeners: function(source, listeners) {
-          var t1, t2, t3, hasError, asyncError, listeners0, sourceResult, zone, oldZone, t4, result;
-          t1 = {};
-          t1.source = source;
-          for (t2 = source; true;) {
-            t3 = {};
-            hasError = t2.get$_hasError();
+          var _box_1, t1, _box_0, hasError, asyncError, listeners0, sourceResult, zone, oldZone, result, t2;
+          _box_1 = {};
+          _box_1.source = source;
+          for (t1 = source; true;) {
+            _box_0 = {};
+            hasError = t1.get$_hasError();
             if (listeners == null) {
               if (hasError) {
-                asyncError = t1.source.get$_error();
-                t1.source.get$_zone().handleUncaughtError$2(J.get$error$x(asyncError), asyncError.get$stackTrace());
+                asyncError = _box_1.source.get$_error();
+                _box_1.source.get$_zone().handleUncaughtError$2(J.get$error$x(asyncError), asyncError.get$stackTrace());
               }
               return;
             }
             for (; listeners.get$_nextListener() != null; listeners = listeners0) {
               listeners0 = listeners.get$_nextListener();
               listeners.set$_nextListener(null);
-              P._Future__propagateToListeners(t1.source, listeners);
+              P._Future__propagateToListeners(_box_1.source, listeners);
             }
-            sourceResult = t1.source.get$_resultOrListeners();
-            t3.listenerHasError = hasError;
-            t3.listenerValueOrError = sourceResult;
-            t2 = !hasError;
-            if (!t2 || listeners.get$handlesValue() || listeners.get$handlesComplete()) {
+            sourceResult = _box_1.source.get$_resultOrListeners();
+            _box_0.listenerHasError = hasError;
+            _box_0.listenerValueOrError = sourceResult;
+            t1 = !hasError;
+            if (!t1 || listeners.get$handlesValue() || listeners.get$handlesComplete()) {
               zone = listeners.get$_zone();
-              if (hasError && !t1.source.get$_zone().inSameErrorZone$1(zone)) {
-                asyncError = t1.source.get$_error();
-                t1.source.get$_zone().handleUncaughtError$2(J.get$error$x(asyncError), asyncError.get$stackTrace());
+              if (hasError && !_box_1.source.get$_zone().inSameErrorZone$1(zone)) {
+                asyncError = _box_1.source.get$_error();
+                _box_1.source.get$_zone().handleUncaughtError$2(J.get$error$x(asyncError), asyncError.get$stackTrace());
                 return;
               }
               oldZone = $.Zone__current;
@@ -6762,41 +6611,37 @@
               else
                 oldZone = null;
               if (listeners.get$handlesComplete())
-                new P._Future__propagateToListeners_handleWhenCompleteCallback(t1, t3, hasError, listeners).call$0();
-              else if (t2) {
+                new P._Future__propagateToListeners_handleWhenCompleteCallback(_box_1, _box_0, hasError, listeners).call$0();
+              else if (t1) {
                 if (listeners.get$handlesValue())
-                  new P._Future__propagateToListeners_handleValueCallback(t3, listeners, sourceResult).call$0();
+                  new P._Future__propagateToListeners_handleValueCallback(_box_0, listeners, sourceResult).call$0();
               } else if (listeners.get$handlesError())
-                new P._Future__propagateToListeners_handleError(t1, t3, listeners).call$0();
+                new P._Future__propagateToListeners_handleError(_box_1, _box_0, listeners).call$0();
               if (oldZone != null)
                 $.Zone__current = oldZone;
-              t2 = t3.listenerValueOrError;
-              t4 = J.getInterceptor(t2);
-              if (!!t4.$isFuture) {
+              t1 = _box_0.listenerValueOrError;
+              if (!!J.getInterceptor(t1).$isFuture) {
                 result = J.get$result$x(listeners);
-                if (!!t4.$is_Future)
-                  if (t2._state >= 4) {
-                    listeners = result._removeListeners$0();
-                    result._cloneResult$1(t2);
-                    t1.source = t2;
-                    continue;
-                  } else
-                    P._Future__chainCoreFuture(t2, result);
-                else
-                  P._Future__chainForeignFuture(t2, result);
+                if (t1._state >= 4) {
+                  listeners = result._removeListeners$0();
+                  result._cloneResult$1(t1);
+                  _box_1.source = t1;
+                  continue;
+                } else
+                  P._Future__chainCoreFuture(t1, result);
                 return;
               }
             }
             result = J.get$result$x(listeners);
             listeners = result._removeListeners$0();
-            t2 = t3.listenerHasError;
-            t3 = t3.listenerValueOrError;
-            if (!t2)
-              result._setValue$1(t3);
+            t1 = _box_0.listenerHasError;
+            t2 = _box_0.listenerValueOrError;
+            if (!t1)
+              result._setValue$1(t2);
             else
-              result._setErrorObject$1(t3);
-            t1.source = result;
-            t2 = result;
+              result._setErrorObject$1(t2);
+            _box_1.source = result;
+            t1 = result;
           }
         }
       }
@@ -6819,15 +6664,15 @@
         var t1 = this.target;
         t1._clearPendingComplete$0();
         t1._complete$1(value);
-      }, null, null, 2, 0, null, 5, "call"]
+      }, null, null, 2, 0, null, 2, "call"]
     },
     _Future__chainForeignFuture_closure0: {
-      "^": "Closure:36;target",
+      "^": "Closure:34;target",
       call$2: [function(error, stackTrace) {
         this.target._completeError$2(error, stackTrace);
       }, function(error) {
         return this.call$2(error, null);
-      }, "call$1", null, null, null, 2, 2, null, 1, 6, 7, "call"]
+      }, "call$1", null, null, null, 2, 2, null, 1, 7, 9, "call"]
     },
     _Future__chainForeignFuture_closure1: {
       "^": "Closure:0;target,e,s",
@@ -6836,15 +6681,15 @@
       }, null, null, 0, 0, null, "call"]
     },
     _Future__asyncComplete_closure: {
-      "^": "Closure:0;$this,coreFuture",
-      call$0: [function() {
-        P._Future__chainCoreFuture(this.coreFuture, this.$this);
-      }, null, null, 0, 0, null, "call"]
-    },
-    _Future__asyncComplete_closure0: {
       "^": "Closure:0;$this,typedValue",
       call$0: [function() {
         this.$this._completeWithValue$1(this.typedValue);
+      }, null, null, 0, 0, null, "call"]
+    },
+    _Future__chainFuture_closure: {
+      "^": "Closure:0;$this,value",
+      call$0: [function() {
+        P._Future__chainCoreFuture(this.value, this.$this);
       }, null, null, 0, 0, null, "call"]
     },
     _Future__asyncCompleteError_closure: {
@@ -6861,8 +6706,7 @@
         try {
           completeResult = this.listener.handleWhenComplete$0();
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           if (this.hasError) {
             t1 = J.get$error$x(this._box_1.source.get$_error());
@@ -6908,8 +6752,7 @@
         try {
           this._box_0.listenerValueOrError = this.listener.handleValue$1(this.sourceResult);
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           t1 = this._box_0;
           t1.listenerValueOrError = new P.AsyncError(e, s);
@@ -6930,8 +6773,7 @@
             t2.listenerHasError = false;
           }
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           t1 = this._box_1;
           t2 = J.get$error$x(t1.source.get$_error());
@@ -7019,28 +6861,28 @@
         return future;
       }
     },
-    closure9: {
+    closure10: {
       "^": "Closure:1;controller",
       call$1: [function(value) {
         var t1 = this.controller;
         t1._async$_add$1(0, value);
         t1._closeUnchecked$0();
-      }, null, null, 2, 0, null, 5, "call"]
+      }, null, null, 2, 0, null, 2, "call"]
     },
-    closure10: {
+    closure11: {
       "^": "Closure:3;controller",
       call$2: [function(error, stackTrace) {
         var t1 = this.controller;
         t1._addError$2(error, stackTrace);
         t1._closeUnchecked$0();
-      }, null, null, 4, 0, null, 6, 7, "call"]
+      }, null, null, 4, 0, null, 7, 9, "call"]
     },
     Stream_fold_closure: {
       "^": "Closure;_box_0,$this,combine,result",
       call$1: [function(element) {
         var t1 = this._box_0;
         P._runUserCode(new P.Stream_fold__closure(t1, this.combine, element), new P.Stream_fold__closure0(t1, this.$this), P._cancelAndErrorClosure(t1.subscription, this.result));
-      }, null, null, 2, 0, null, 16, "call"],
+      }, null, null, 2, 0, null, 14, "call"],
       $signature: function() {
         return H.computeSignature(function(T) {
           return {func: 1, args: [T]};
@@ -7066,7 +6908,7 @@
       "^": "Closure:3;result",
       call$2: [function(e, st) {
         this.result._completeError$2(e, st);
-      }, null, null, 4, 0, null, 28, 61, "call"]
+      }, null, null, 4, 0, null, 34, 99, "call"]
     },
     Stream_fold_closure0: {
       "^": "Closure:0;_box_0,result",
@@ -7078,7 +6920,7 @@
       "^": "Closure;_box_0,$this,action,future",
       call$1: [function(element) {
         P._runUserCode(new P.Stream_forEach__closure(this.action, element), new P.Stream_forEach__closure0(), P._cancelAndErrorClosure(this._box_0.subscription, this.future));
-      }, null, null, 2, 0, null, 16, "call"],
+      }, null, null, 2, 0, null, 14, "call"],
       $signature: function() {
         return H.computeSignature(function(T) {
           return {func: 1, args: [T]};
@@ -7130,7 +6972,7 @@
       "^": "Closure;$this,result",
       call$1: [function(data) {
         this.result.push(data);
-      }, null, null, 2, 0, null, 34, "call"],
+      }, null, null, 2, 0, null, 35, "call"],
       $signature: function() {
         return H.computeSignature(function(T) {
           return {func: 1, args: [T]};
@@ -7147,7 +6989,7 @@
       "^": "Closure;_box_0,$this,future",
       call$1: [function(value) {
         P._cancelAndValue(this._box_0.subscription, this.future, value);
-      }, null, null, 2, 0, null, 5, "call"],
+      }, null, null, 2, 0, null, 2, "call"],
       $signature: function() {
         return H.computeSignature(function(T) {
           return {func: 1, args: [T]};
@@ -7162,8 +7004,7 @@
           t1 = H.IterableElementError_noElement();
           throw H.wrapException(t1);
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           P._completeWithErrorCallback(this.future, e, s);
         }
@@ -7179,8 +7020,7 @@
             t2 = H.IterableElementError_tooMany();
             throw H.wrapException(t2);
           } catch (exception) {
-            t2 = H.unwrapException(exception);
-            e = t2;
+            e = H.unwrapException(exception);
             s = H.getTraceFromException(exception);
             P._cancelAndErrorWithReplacement(t1.subscription, this.future, e, s);
           }
@@ -7188,7 +7028,7 @@
         }
         t1.foundResult = true;
         t1.result = value;
-      }, null, null, 2, 0, null, 5, "call"],
+      }, null, null, 2, 0, null, 2, "call"],
       $signature: function() {
         return H.computeSignature(function(T) {
           return {func: 1, args: [T]};
@@ -7208,8 +7048,7 @@
           t1 = H.IterableElementError_noElement();
           throw H.wrapException(t1);
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           P._completeWithErrorCallback(this.future, e, s);
         }
@@ -7312,8 +7151,7 @@
             try {
               result = t1.call$0();
             } catch (exception) {
-              t1 = H.unwrapException(exception);
-              e = t1;
+              e = H.unwrapException(exception);
               s = H.getTraceFromException(exception);
               result0 = new P._Future(0, $.Zone__current, null, [null]);
               result0._asyncCompleteError$2(e, s);
@@ -7394,9 +7232,6 @@
       _onResume$0: [function() {
         this._async$_controller._recordResume$1(this);
       }, "call$0", "get$_onResume", 0, 0, 2]
-    },
-    _EventSink: {
-      "^": "Object;$ti"
     },
     _BufferingStreamSubscription: {
       "^": "Object;_zone<,_state<,$ti",
@@ -7534,19 +7369,14 @@
         this._checkState$1((t1 & 4) !== 0);
       },
       _sendError$2: function(error, stackTrace) {
-        var t1, t2, t3;
+        var t1, t2;
         t1 = this._state;
         t2 = new P._BufferingStreamSubscription__sendError_sendError(this, error, stackTrace);
         if ((t1 & 1) !== 0) {
           this._state = (t1 | 16) >>> 0;
           this._cancel$0();
           t1 = this._cancelFuture;
-          if (!!J.getInterceptor(t1).$isFuture) {
-            t3 = $.$get$Future__nullFuture();
-            t3 = t1 == null ? t3 != null : t1 !== t3;
-          } else
-            t3 = false;
-          if (t3)
+          if (!!J.getInterceptor(t1).$isFuture && t1 !== $.$get$Future__nullFuture())
             t1.whenComplete$1(t2);
           else
             t2.call$0();
@@ -7556,17 +7386,12 @@
         }
       },
       _sendDone$0: function() {
-        var t1, t2, t3;
+        var t1, t2;
         t1 = new P._BufferingStreamSubscription__sendDone_sendDone(this);
         this._cancel$0();
         this._state = (this._state | 16) >>> 0;
         t2 = this._cancelFuture;
-        if (!!J.getInterceptor(t2).$isFuture) {
-          t3 = $.$get$Future__nullFuture();
-          t3 = t2 == null ? t3 != null : t2 !== t3;
-        } else
-          t3 = false;
-        if (t3)
+        if (!!J.getInterceptor(t2).$isFuture && t2 !== $.$get$Future__nullFuture())
           t2.whenComplete$1(t1);
         else
           t1.call$0();
@@ -7626,8 +7451,7 @@
         this._onData = t1.registerUnaryCallback$1(handleData);
         this.onError$1(0, onError);
         this._onDone = t1.registerCallback$1(onDone == null ? P.async___nullDoneHandler$closure() : onDone);
-      },
-      $is_EventSink: 1
+      }
     },
     _BufferingStreamSubscription__sendError_sendError: {
       "^": "Closure:2;$this,error,stackTrace",
@@ -7639,7 +7463,7 @@
           return;
         t1._state = (t2 | 32) >>> 0;
         t2 = t1._onError;
-        t3 = H.buildFunctionType(H.getDynamicRuntimeType(), [H.buildInterfaceType(P.Object), H.buildInterfaceType(P.StackTrace)])._isTest$1(t2);
+        t3 = H.functionTypeTest(t2, {func: 1, args: [P.Object, P.StackTrace]});
         t4 = t1._zone;
         t5 = this.error;
         t6 = t1._onError;
@@ -7752,12 +7576,6 @@
           J.set$next$x(t1, $event);
           this.lastPendingEvent = $event;
         }
-      },
-      clear$0: function(_) {
-        if (this._state === 1)
-          this._state = 3;
-        this.lastPendingEvent = null;
-        this.firstPendingEvent = null;
       }
     },
     _DoneStreamSubscription: {
@@ -7898,10 +7716,10 @@
         return H.computeSignature(function(S, T) {
           return {func: 1, v: true, args: [S]};
         }, this.$receiver, "_ForwardingStreamSubscription");
-      }, 34],
+      }, 35],
       _handleError$2: [function(error, stackTrace) {
         this._stream._handleError$3(error, stackTrace, this);
-      }, "call$2", "get$_handleError", 4, 0, 21, 6, 7],
+      }, "call$2", "get$_handleError", 4, 0, 80, 7, 9],
       _handleDone$0: [function() {
         this._async$_close$0();
       }, "call$0", "get$_handleDone", 0, 0, 2],
@@ -7926,13 +7744,12 @@
     _MapStream: {
       "^": "_ForwardingStream;_transform,_async$_source,$ti",
       _handleData$2: function(inputEvent, sink) {
-        var outputEvent, e, s, exception, t1;
+        var outputEvent, e, s, exception;
         outputEvent = null;
         try {
           outputEvent = this._transform.call$1(inputEvent);
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
           P._addErrorWithReplacement(sink, e, s);
           return;
@@ -7949,8 +7766,7 @@
           try {
             P._invokeErrorHandler(this._transform, error, stackTrace);
           } catch (exception) {
-            t1 = H.unwrapException(exception);
-            e = t1;
+            e = H.unwrapException(exception);
             s = H.getTraceFromException(exception);
             t1 = e;
             if (t1 == null ? error == null : t1 === error)
@@ -7984,7 +7800,7 @@
       "^": "Object;"
     },
     _ZoneSpecification: {
-      "^": "Object;handleUncaughtError<,run<,runUnary<,runBinary<,registerCallback<,registerUnaryCallback<,registerBinaryCallback<,errorCallback<,scheduleMicrotask<,createTimer<,createPeriodicTimer<,print>,fork<",
+      "^": "Object;handleUncaughtError,run,runUnary,runBinary,registerCallback,registerUnaryCallback,registerBinaryCallback,errorCallback,scheduleMicrotask,createTimer,createPeriodicTimer,print,fork",
       handleUncaughtError$2: function(arg0, arg1) {
         return this.handleUncaughtError.call$2(arg0, arg1);
       },
@@ -8042,100 +7858,24 @@
     },
     _ZoneDelegate: {
       "^": "Object;_delegationTarget",
-      handleUncaughtError$3: [function(zone, error, stackTrace) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_handleUncaughtError();
-        implZone = implementation.zone;
-        return implementation.$function.call$5(implZone, P._parentDelegate(implZone), zone, error, stackTrace);
-      }, "call$3", "get$handleUncaughtError", 6, 0, function() {
-        return {func: 1, args: [P.Zone,, P.StackTrace]};
-      }],
-      run$2: [function(zone, f) {
+      run$2: function(zone, f) {
         var implementation, implZone;
         implementation = this._delegationTarget.get$_async$_run();
         implZone = implementation.zone;
         return implementation.$function.call$4(implZone, P._parentDelegate(implZone), zone, f);
-      }, "call$2", "get$run", 4, 0, function() {
-        return {func: 1, args: [P.Zone, {func: 1}]};
-      }],
-      runUnary$3: [function(zone, f, arg) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_async$_runUnary();
-        implZone = implementation.zone;
-        return implementation.$function.call$5(implZone, P._parentDelegate(implZone), zone, f, arg);
-      }, "call$3", "get$runUnary", 6, 0, function() {
-        return {func: 1, args: [P.Zone, {func: 1, args: [,]},,]};
-      }],
-      runBinary$4: [function(zone, f, arg1, arg2) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_async$_runBinary();
-        implZone = implementation.zone;
-        return implementation.$function.call$6(implZone, P._parentDelegate(implZone), zone, f, arg1, arg2);
-      }, "call$4", "get$runBinary", 8, 0, function() {
-        return {func: 1, args: [P.Zone, {func: 1, args: [,,]},,,]};
-      }],
-      registerCallback$2: [function(zone, f) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_registerCallback();
-        implZone = implementation.zone;
-        return implementation.$function.call$4(implZone, P._parentDelegate(implZone), zone, f);
-      }, "call$2", "get$registerCallback", 4, 0, function() {
-        return {func: 1, ret: {func: 1}, args: [P.Zone, {func: 1}]};
-      }],
-      registerUnaryCallback$2: [function(zone, f) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_registerUnaryCallback();
-        implZone = implementation.zone;
-        return implementation.$function.call$4(implZone, P._parentDelegate(implZone), zone, f);
-      }, "call$2", "get$registerUnaryCallback", 4, 0, function() {
-        return {func: 1, ret: {func: 1, args: [,]}, args: [P.Zone, {func: 1, args: [,]}]};
-      }],
-      registerBinaryCallback$2: [function(zone, f) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_registerBinaryCallback();
-        implZone = implementation.zone;
-        return implementation.$function.call$4(implZone, P._parentDelegate(implZone), zone, f);
-      }, "call$2", "get$registerBinaryCallback", 4, 0, function() {
-        return {func: 1, ret: {func: 1, args: [,,]}, args: [P.Zone, {func: 1, args: [,,]}]};
-      }],
-      errorCallback$3: [function(zone, error, stackTrace) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_errorCallback();
-        implZone = implementation.zone;
-        if (implZone === C.C__RootZone)
-          return;
-        return implementation.$function.call$5(implZone, P._parentDelegate(implZone), zone, error, stackTrace);
-      }, "call$3", "get$errorCallback", 6, 0, 117],
-      scheduleMicrotask$2: [function(zone, f) {
+      },
+      scheduleMicrotask$2: function(zone, f) {
         var implementation, implZone;
         implementation = this._delegationTarget.get$_scheduleMicrotask();
         implZone = implementation.zone;
         implementation.$function.call$4(implZone, P._parentDelegate(implZone), zone, f);
-      }, "call$2", "get$scheduleMicrotask", 4, 0, 120],
-      createTimer$3: [function(zone, duration, f) {
+      },
+      createTimer$3: function(zone, duration, f) {
         var implementation, implZone;
         implementation = this._delegationTarget.get$_async$_createTimer();
         implZone = implementation.zone;
         return implementation.$function.call$5(implZone, P._parentDelegate(implZone), zone, duration, f);
-      }, "call$3", "get$createTimer", 6, 0, 140],
-      createPeriodicTimer$3: [function(zone, period, f) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_createPeriodicTimer();
-        implZone = implementation.zone;
-        return implementation.$function.call$5(implZone, P._parentDelegate(implZone), zone, period, f);
-      }, "call$3", "get$createPeriodicTimer", 6, 0, 128],
-      print$2: [function(_, zone, line) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_print();
-        implZone = implementation.zone;
-        implementation.$function.call$4(implZone, P._parentDelegate(implZone), zone, line);
-      }, "call$2", "get$print", 4, 0, 116],
-      fork$3: [function(zone, specification, zoneValues) {
-        var implementation, implZone;
-        implementation = this._delegationTarget.get$_fork();
-        implZone = implementation.zone;
-        return implementation.$function.call$5(implZone, P._parentDelegate(implZone), zone, specification, zoneValues);
-      }, "call$3", "get$fork", 6, 0, 95]
+      }
     },
     _Zone: {
       "^": "Object;",
@@ -8162,10 +7902,10 @@
           t1 = this.run$1(f);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
-          return this.handleUncaughtError$2(e, s);
+          t1 = this.handleUncaughtError$2(e, s);
+          return t1;
         }
       },
       runUnaryGuarded$2: function(f, arg) {
@@ -8174,10 +7914,10 @@
           t1 = this.runUnary$2(f, arg);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
-          return this.handleUncaughtError$2(e, s);
+          t1 = this.handleUncaughtError$2(e, s);
+          return t1;
         }
       },
       runBinaryGuarded$3: function(f, arg1, arg2) {
@@ -8186,10 +7926,10 @@
           t1 = this.runBinary$3(f, arg1, arg2);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
-          return this.handleUncaughtError$2(e, s);
+          t1 = this.handleUncaughtError$2(e, s);
+          return t1;
         }
       },
       bindCallback$2$runGuarded: function(f, runGuarded) {
@@ -8224,79 +7964,63 @@
         }
         return;
       },
-      handleUncaughtError$2: [function(error, stackTrace) {
+      handleUncaughtError$2: function(error, stackTrace) {
         var implementation, t1, parentDelegate;
         implementation = this._handleUncaughtError;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$5(t1, parentDelegate, this, error, stackTrace);
-      }, "call$2", "get$handleUncaughtError", 4, 0, function() {
-        return {func: 1, args: [, P.StackTrace]};
-      }],
-      fork$2$specification$zoneValues: [function(specification, zoneValues) {
+      },
+      fork$2$specification$zoneValues: function(specification, zoneValues) {
         var implementation, t1, parentDelegate;
         implementation = this._fork;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$5(t1, parentDelegate, this, specification, zoneValues);
-      }, function() {
-        return this.fork$2$specification$zoneValues(null, null);
-      }, "fork$0", "call$2$specification$zoneValues", "call$0", "get$fork", 0, 5, 19, 1, 1],
-      run$1: [function(f) {
+      },
+      run$1: function(f) {
         var implementation, t1, parentDelegate;
         implementation = this._async$_run;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$4(t1, parentDelegate, this, f);
-      }, "call$1", "get$run", 2, 0, function() {
-        return {func: 1, args: [{func: 1}]};
-      }],
-      runUnary$2: [function(f, arg) {
+      },
+      runUnary$2: function(f, arg) {
         var implementation, t1, parentDelegate;
         implementation = this._async$_runUnary;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$5(t1, parentDelegate, this, f, arg);
-      }, "call$2", "get$runUnary", 4, 0, function() {
-        return {func: 1, args: [{func: 1, args: [,]},,]};
-      }],
-      runBinary$3: [function(f, arg1, arg2) {
+      },
+      runBinary$3: function(f, arg1, arg2) {
         var implementation, t1, parentDelegate;
         implementation = this._async$_runBinary;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$6(t1, parentDelegate, this, f, arg1, arg2);
-      }, "call$3", "get$runBinary", 6, 0, function() {
-        return {func: 1, args: [{func: 1, args: [,,]},,,]};
-      }],
-      registerCallback$1: [function(callback) {
+      },
+      registerCallback$1: function(callback) {
         var implementation, t1, parentDelegate;
         implementation = this._registerCallback;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$4(t1, parentDelegate, this, callback);
-      }, "call$1", "get$registerCallback", 2, 0, function() {
-        return {func: 1, ret: {func: 1}, args: [{func: 1}]};
-      }],
-      registerUnaryCallback$1: [function(callback) {
+      },
+      registerUnaryCallback$1: function(callback) {
         var implementation, t1, parentDelegate;
         implementation = this._registerUnaryCallback;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$4(t1, parentDelegate, this, callback);
-      }, "call$1", "get$registerUnaryCallback", 2, 0, function() {
-        return {func: 1, ret: {func: 1, args: [,]}, args: [{func: 1, args: [,]}]};
-      }],
-      registerBinaryCallback$1: [function(callback) {
+      },
+      registerBinaryCallback$1: function(callback) {
         var implementation, t1, parentDelegate;
         implementation = this._registerBinaryCallback;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$4(t1, parentDelegate, this, callback);
-      }, "call$1", "get$registerBinaryCallback", 2, 0, function() {
-        return {func: 1, ret: {func: 1, args: [,,]}, args: [{func: 1, args: [,,]}]};
-      }],
-      errorCallback$2: [function(error, stackTrace) {
+      },
+      errorCallback$2: function(error, stackTrace) {
         var implementation, implementationZone, parentDelegate;
         implementation = this._errorCallback;
         implementationZone = implementation.zone;
@@ -8304,35 +8028,35 @@
           return;
         parentDelegate = P._parentDelegate(implementationZone);
         return implementation.$function.call$5(implementationZone, parentDelegate, this, error, stackTrace);
-      }, "call$2", "get$errorCallback", 4, 0, 20],
-      scheduleMicrotask$1: [function(f) {
+      },
+      scheduleMicrotask$1: function(f) {
         var implementation, t1, parentDelegate;
         implementation = this._scheduleMicrotask;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$4(t1, parentDelegate, this, f);
-      }, "call$1", "get$scheduleMicrotask", 2, 0, 7],
-      createTimer$2: [function(duration, f) {
+      },
+      createTimer$2: function(duration, f) {
         var implementation, t1, parentDelegate;
         implementation = this._async$_createTimer;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$5(t1, parentDelegate, this, duration, f);
-      }, "call$2", "get$createTimer", 4, 0, 22],
-      createPeriodicTimer$2: [function(duration, f) {
+      },
+      createPeriodicTimer$2: function(duration, f) {
         var implementation, t1, parentDelegate;
         implementation = this._createPeriodicTimer;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$5(t1, parentDelegate, this, duration, f);
-      }, "call$2", "get$createPeriodicTimer", 4, 0, 23],
-      print$1: [function(_, line) {
+      },
+      print$1: function(_, line) {
         var implementation, t1, parentDelegate;
         implementation = this._print;
         t1 = implementation.zone;
         parentDelegate = P._parentDelegate(t1);
         return implementation.$function.call$4(t1, parentDelegate, this, line);
-      }, "call$1", "get$print", 2, 0, 14]
+      }
     },
     _CustomZone_bindCallback_closure: {
       "^": "Closure:0;$this,registered",
@@ -8350,7 +8074,7 @@
       "^": "Closure:1;$this,registered",
       call$1: [function(arg) {
         return this.$this.runUnaryGuarded$2(this.registered, arg);
-      }, null, null, 2, 0, null, 23, "call"]
+      }, null, null, 2, 0, null, 22, "call"]
     },
     _rootHandleUncaughtError_closure: {
       "^": "Closure:0;_box_0,stackTrace",
@@ -8440,10 +8164,10 @@
           t1 = P._rootRun(null, null, this, f);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
-          return P._rootHandleUncaughtError(null, null, this, e, s);
+          t1 = P._rootHandleUncaughtError(null, null, this, e, s);
+          return t1;
         }
       },
       runUnaryGuarded$2: function(f, arg) {
@@ -8456,10 +8180,10 @@
           t1 = P._rootRunUnary(null, null, this, f, arg);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
-          return P._rootHandleUncaughtError(null, null, this, e, s);
+          t1 = P._rootHandleUncaughtError(null, null, this, e, s);
+          return t1;
         }
       },
       runBinaryGuarded$3: function(f, arg1, arg2) {
@@ -8472,10 +8196,10 @@
           t1 = P._rootRunBinary(null, null, this, f, arg1, arg2);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           s = H.getTraceFromException(exception);
-          return P._rootHandleUncaughtError(null, null, this, e, s);
+          t1 = P._rootHandleUncaughtError(null, null, this, e, s);
+          return t1;
         }
       },
       bindCallback$2$runGuarded: function(f, runGuarded) {
@@ -8496,67 +8220,51 @@
       $index: function(_, key) {
         return;
       },
-      handleUncaughtError$2: [function(error, stackTrace) {
+      handleUncaughtError$2: function(error, stackTrace) {
         return P._rootHandleUncaughtError(null, null, this, error, stackTrace);
-      }, "call$2", "get$handleUncaughtError", 4, 0, function() {
-        return {func: 1, args: [, P.StackTrace]};
-      }],
-      fork$2$specification$zoneValues: [function(specification, zoneValues) {
+      },
+      fork$2$specification$zoneValues: function(specification, zoneValues) {
         return P._rootFork(null, null, this, specification, zoneValues);
-      }, function() {
-        return this.fork$2$specification$zoneValues(null, null);
-      }, "fork$0", "call$2$specification$zoneValues", "call$0", "get$fork", 0, 5, 19, 1, 1],
-      run$1: [function(f) {
+      },
+      run$1: function(f) {
         if ($.Zone__current === C.C__RootZone)
           return f.call$0();
         return P._rootRun(null, null, this, f);
-      }, "call$1", "get$run", 2, 0, function() {
-        return {func: 1, args: [{func: 1}]};
-      }],
-      runUnary$2: [function(f, arg) {
+      },
+      runUnary$2: function(f, arg) {
         if ($.Zone__current === C.C__RootZone)
           return f.call$1(arg);
         return P._rootRunUnary(null, null, this, f, arg);
-      }, "call$2", "get$runUnary", 4, 0, function() {
-        return {func: 1, args: [{func: 1, args: [,]},,]};
-      }],
-      runBinary$3: [function(f, arg1, arg2) {
+      },
+      runBinary$3: function(f, arg1, arg2) {
         if ($.Zone__current === C.C__RootZone)
           return f.call$2(arg1, arg2);
         return P._rootRunBinary(null, null, this, f, arg1, arg2);
-      }, "call$3", "get$runBinary", 6, 0, function() {
-        return {func: 1, args: [{func: 1, args: [,,]},,,]};
-      }],
-      registerCallback$1: [function(f) {
+      },
+      registerCallback$1: function(f) {
         return f;
-      }, "call$1", "get$registerCallback", 2, 0, function() {
-        return {func: 1, ret: {func: 1}, args: [{func: 1}]};
-      }],
-      registerUnaryCallback$1: [function(f) {
+      },
+      registerUnaryCallback$1: function(f) {
         return f;
-      }, "call$1", "get$registerUnaryCallback", 2, 0, function() {
-        return {func: 1, ret: {func: 1, args: [,]}, args: [{func: 1, args: [,]}]};
-      }],
-      registerBinaryCallback$1: [function(f) {
+      },
+      registerBinaryCallback$1: function(f) {
         return f;
-      }, "call$1", "get$registerBinaryCallback", 2, 0, function() {
-        return {func: 1, ret: {func: 1, args: [,,]}, args: [{func: 1, args: [,,]}]};
-      }],
-      errorCallback$2: [function(error, stackTrace) {
+      },
+      errorCallback$2: function(error, stackTrace) {
         return;
-      }, "call$2", "get$errorCallback", 4, 0, 20],
-      scheduleMicrotask$1: [function(f) {
+      },
+      scheduleMicrotask$1: function(f) {
         P._rootScheduleMicrotask(null, null, this, f);
-      }, "call$1", "get$scheduleMicrotask", 2, 0, 7],
-      createTimer$2: [function(duration, f) {
+      },
+      createTimer$2: function(duration, f) {
         return P.Timer__createTimer(duration, f);
-      }, "call$2", "get$createTimer", 4, 0, 22],
-      createPeriodicTimer$2: [function(duration, f) {
+      },
+      createPeriodicTimer$2: function(duration, f) {
         return P.Timer__createPeriodicTimer(duration, f);
-      }, "call$2", "get$createPeriodicTimer", 4, 0, 23],
-      print$1: [function(_, line) {
+      },
+      print$1: function(_, line) {
         H.printString(line);
-      }, "call$1", "get$print", 2, 0, 14]
+      }
     },
     _RootZone_bindCallback_closure: {
       "^": "Closure:0;$this,f",
@@ -8574,7 +8282,7 @@
       "^": "Closure:1;$this,f",
       call$1: [function(arg) {
         return this.$this.runUnaryGuarded$2(this.f, arg);
-      }, null, null, 2, 0, null, 23, "call"]
+      }, null, null, 2, 0, null, 22, "call"]
     }
   }], ["dart.collection", "dart:collection",, P, {
     "^": "",
@@ -8595,7 +8303,7 @@
     },
     HashMap_HashMap$from: function(other, $K, $V) {
       var result = P.HashMap_HashMap(null, null, null, $K, $V);
-      J.forEach$1$ax(other, new P.closure19(result));
+      J.forEach$1$ax(other, new P.closure(result));
       return result;
     },
     IterableBase_iterableToShortString: function(iterable, leftDelimiter, rightDelimiter) {
@@ -8785,7 +8493,7 @@
         throw H.wrapException(P.ArgumentError$("Iterables do not have same length."));
     },
     _HashMap: {
-      "^": "Object;_collection$_length,_collection$_strings,_collection$_nums,_collection$_rest,_collection$_keys,$ti",
+      "^": "Object;_collection$_length,_collection$_strings,_collection$_nums,_collection$_rest,_keys,$ti",
       get$length: function(_) {
         return this._collection$_length;
       },
@@ -8882,7 +8590,7 @@
         if (bucket == null) {
           P._HashMap__setTableEntry(rest, hash, [key, value]);
           ++this._collection$_length;
-          this._collection$_keys = null;
+          this._keys = null;
         } else {
           index = this._findBucketIndex$2(bucket, key);
           if (index >= 0)
@@ -8890,7 +8598,7 @@
           else {
             bucket.push(key, value);
             ++this._collection$_length;
-            this._collection$_keys = null;
+            this._keys = null;
           }
         }
       },
@@ -8912,17 +8620,8 @@
         if (index < 0)
           return;
         --this._collection$_length;
-        this._collection$_keys = null;
+        this._keys = null;
         return bucket.splice(index, 2)[1];
-      },
-      clear$0: function(_) {
-        if (this._collection$_length > 0) {
-          this._collection$_keys = null;
-          this._collection$_rest = null;
-          this._collection$_nums = null;
-          this._collection$_strings = null;
-          this._collection$_length = 0;
-        }
       },
       forEach$1: function(_, action) {
         var keys, $length, i, key;
@@ -8930,13 +8629,13 @@
         for ($length = keys.length, i = 0; i < $length; ++i) {
           key = keys[i];
           action.call$2(key, this.$index(0, key));
-          if (keys !== this._collection$_keys)
+          if (keys !== this._keys)
             throw H.wrapException(new P.ConcurrentModificationError(this));
         }
       },
       _computeKeys$0: function() {
         var t1, result, strings, names, entries, index, i, nums, rest, bucket, $length, i0;
-        t1 = this._collection$_keys;
+        t1 = this._keys;
         if (t1 != null)
           return t1;
         result = new Array(this._collection$_length);
@@ -8973,13 +8672,13 @@
             }
           }
         }
-        this._collection$_keys = result;
+        this._keys = result;
         return result;
       },
       _collection$_addHashTableEntry$3: function(table, key, value) {
         if (table[key] == null) {
           ++this._collection$_length;
-          this._collection$_keys = null;
+          this._keys = null;
         }
         P._HashMap__setTableEntry(table, key, value);
       },
@@ -8989,7 +8688,7 @@
           value = P._HashMap__getTableEntry(table, key);
           delete table[key];
           --this._collection$_length;
-          this._collection$_keys = null;
+          this._keys = null;
           return value;
         } else
           return;
@@ -9032,13 +8731,13 @@
       "^": "Closure:1;$this",
       call$1: [function(each) {
         return this.$this.$index(0, each);
-      }, null, null, 2, 0, null, 57, "call"]
+      }, null, null, 2, 0, null, 53, "call"]
     },
     _HashMap_addAll_closure: {
       "^": "Closure;$this",
       call$2: [function(key, value) {
         this.$this.$indexSet(0, key, value);
-      }, null, null, 4, 0, null, 32, 5, "call"],
+      }, null, null, 4, 0, null, 20, 2, "call"],
       $signature: function() {
         return H.computeSignature(function(K, V) {
           return {func: 1, args: [K, V]};
@@ -9046,7 +8745,7 @@
       }
     },
     _IdentityHashMap: {
-      "^": "_HashMap;_collection$_length,_collection$_strings,_collection$_nums,_collection$_rest,_collection$_keys,$ti",
+      "^": "_HashMap;_collection$_length,_collection$_strings,_collection$_nums,_collection$_rest,_keys,$ti",
       _computeHashCode$1: function(key) {
         return H.objectHashCode(key) & 0x3ffffff;
       },
@@ -9081,22 +8780,22 @@
         keys = t1._computeKeys$0();
         for ($length = keys.length, i = 0; i < $length; ++i) {
           f.call$1(keys[i]);
-          if (keys !== t1._collection$_keys)
+          if (keys !== t1._keys)
             throw H.wrapException(new P.ConcurrentModificationError(t1));
         }
       }
     },
     _HashMapKeyIterator: {
-      "^": "Object;_collection$_map,_collection$_keys,_offset,_collection$_current,$ti",
+      "^": "Object;_collection$_map,_keys,_offset,_collection$_current,$ti",
       get$current: function() {
         return this._collection$_current;
       },
       moveNext$0: function() {
         var keys, offset, t1;
-        keys = this._collection$_keys;
+        keys = this._keys;
         offset = this._offset;
         t1 = this._collection$_map;
-        if (keys !== t1._collection$_keys)
+        if (keys !== t1._keys)
           throw H.wrapException(new P.ConcurrentModificationError(t1));
         else if (offset >= keys.length) {
           this._collection$_current = null;
@@ -9109,7 +8808,7 @@
       }
     },
     _LinkedIdentityHashMap: {
-      "^": "JsLinkedHashMap;__js_helper$_length,_strings,_nums,_rest,_first,_last,_modifications,$ti",
+      "^": "JsLinkedHashMap;_length,_strings,_nums,_rest,_first,_last,_modifications,$ti",
       internalComputeHashCode$1: function(key) {
         return H.objectHashCode(key) & 0x3ffffff;
       },
@@ -9377,11 +9076,11 @@
         }
       }
     },
-    closure19: {
+    closure: {
       "^": "Closure:3;result",
       call$2: [function(k, v) {
         this.result.$indexSet(0, k, v);
-      }, null, null, 4, 0, null, 22, 13, "call"]
+      }, null, null, 4, 0, null, 24, 11, "call"]
     },
     _HashSetBase: {
       "^": "SetBase;$ti"
@@ -9486,15 +9185,13 @@
           }
         return false;
       },
-      clear$0: function(receiver) {
-        this.set$length(receiver, 0);
-      },
       setRange$4: ["super$ListMixin$setRange", function(receiver, start, end, iterable, skipCount) {
-        var $length, t1, otherStart, otherList, t2, t3, i, t4;
+        var $length, otherStart, otherList, t1, t2, i;
         P.RangeError_checkValidRange(start, end, this.get$length(receiver), null, null, null);
-        $length = J.$sub$n(end, start);
-        t1 = J.getInterceptor($length);
-        if (t1.$eq($length, 0))
+        if (typeof start !== "number")
+          return H.iae(start);
+        $length = end - start;
+        if ($length === 0)
           return;
         if (J.$lt$n(skipCount, 0))
           H.throwExpression(P.RangeError$range(skipCount, 0, null, "skipCount", null));
@@ -9507,21 +9204,16 @@
           otherList = new H.SubListIterable(iterable, skipCount, null, [H.getRuntimeTypeArgument(iterable, "ListMixin", 0)]).toList$1$growable(0, false);
           otherStart = 0;
         }
-        t2 = J.getInterceptor$ns(otherStart);
-        t3 = J.getInterceptor$asx(otherList);
-        if (J.$gt$n(t2.$add(otherStart, $length), t3.get$length(otherList)))
+        t1 = J.getInterceptor$ns(otherStart);
+        t2 = J.getInterceptor$asx(otherList);
+        if (t1.$add(otherStart, $length) > t2.get$length(otherList))
           throw H.wrapException(H.IterableElementError_tooFew());
-        if (t2.$lt(otherStart, start))
-          for (i = t1.$sub($length, 1), t1 = J.getInterceptor$ns(start); t4 = J.getInterceptor$n(i), t4.$ge(i, 0); i = t4.$sub(i, 1))
-            this.$indexSet(receiver, t1.$add(start, i), t3.$index(otherList, t2.$add(otherStart, i)));
-        else {
-          if (typeof $length !== "number")
-            return H.iae($length);
-          t1 = J.getInterceptor$ns(start);
-          i = 0;
-          for (; i < $length; ++i)
-            this.$indexSet(receiver, t1.$add(start, i), t3.$index(otherList, t2.$add(otherStart, i)));
-        }
+        if (t1.$lt(otherStart, start))
+          for (i = $length - 1; i >= 0; --i)
+            this.$indexSet(receiver, start + i, t2.$index(otherList, t1.$add(otherStart, i)));
+        else
+          for (i = 0; i < $length; ++i)
+            this.$indexSet(receiver, start + i, t2.$index(otherList, t1.$add(otherStart, i)));
       }],
       get$reversed: function(receiver) {
         return new H.ReversedListIterable(receiver, [H.getRuntimeTypeArgument(receiver, "ListMixin", 0)]);
@@ -9544,9 +9236,6 @@
       addAll$1: function(_, other) {
         throw H.wrapException(new P.UnsupportedError("Cannot modify unmodifiable map"));
       },
-      clear$0: function(_) {
-        throw H.wrapException(new P.UnsupportedError("Cannot modify unmodifiable map"));
-      },
       remove$1: function(_, key) {
         throw H.wrapException(new P.UnsupportedError("Cannot modify unmodifiable map"));
       },
@@ -9563,9 +9252,6 @@
       },
       addAll$1: function(_, other) {
         this._collection$_map.addAll$1(0, other);
-      },
-      clear$0: function(_) {
-        this._collection$_map.clear$0(0);
       },
       containsKey$1: function(_, key) {
         return this._collection$_map.containsKey$1(0, key);
@@ -9653,8 +9339,6 @@
       elementAt$1: function(_, index) {
         var $length, t1, t2, t3;
         $length = (this._tail - this._head & this._table.length - 1) >>> 0;
-        if (typeof index !== "number")
-          return H.iae(index);
         if (0 > index || index >= $length)
           H.throwExpression(P.IndexError$(index, this, "index", null, $length));
         t1 = this._table;
@@ -9901,18 +9585,10 @@
       get$isEmpty: function(_) {
         return this._collection$_length === 0;
       },
-      clear$0: function(_) {
-        this.removeAll$1(this.toList$0(0));
-      },
       addAll$1: function(_, elements) {
         var t1;
         for (t1 = J.get$iterator$ax(elements); t1.moveNext$0();)
           this.add$1(0, t1.get$current());
-      },
-      removeAll$1: function(elements) {
-        var t1, _i;
-        for (t1 = elements.length, _i = 0; _i < elements.length; elements.length === t1 || (0, H.throwConcurrentModificationError)(elements), ++_i)
-          this.remove$1(0, elements[_i]);
       },
       toList$1$growable: function(_, growable) {
         var result, t1, i, element, i0;
@@ -10035,7 +9711,7 @@
       return new H.JSSyntaxRegExp(source, H.JSSyntaxRegExp_makeNative(source, multiLine, caseSensitive, false), null, null);
     },
     NoSuchMethodError_toString_closure: {
-      "^": "Closure:92;_box_0,sb",
+      "^": "Closure:97;_box_0,sb",
       call$2: function(key, value) {
         var t1, t2, t3;
         t1 = this.sb;
@@ -10071,16 +9747,15 @@
         return (t1 ^ C.JSNumber_methods._shrOtherPositive$1(t1, 30)) & 1073741823;
       },
       toString$0: function(_) {
-        var y, m, d, h, min, t1, sec, ms;
+        var y, m, d, h, min, sec, ms;
         y = P.DateTime__fourDigits(H.Primitives_getYear(this));
         m = P.DateTime__twoDigits(H.Primitives_getMonth(this));
         d = P.DateTime__twoDigits(H.Primitives_getDay(this));
         h = P.DateTime__twoDigits(H.Primitives_getHours(this));
         min = P.DateTime__twoDigits(H.Primitives_getMinutes(this));
-        t1 = this.isUtc;
-        sec = P.DateTime__twoDigits(t1 ? H.Primitives_lazyAsJsDate(this).getUTCSeconds() + 0 : H.Primitives_lazyAsJsDate(this).getSeconds() + 0);
-        ms = P.DateTime__threeDigits(t1 ? H.Primitives_lazyAsJsDate(this).getUTCMilliseconds() + 0 : H.Primitives_lazyAsJsDate(this).getMilliseconds() + 0);
-        if (t1)
+        sec = P.DateTime__twoDigits(H.Primitives_getSeconds(this));
+        ms = P.DateTime__threeDigits(H.Primitives_getMilliseconds(this));
+        if (this.isUtc)
           return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + sec + "." + ms + "Z";
         else
           return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + sec + "." + ms;
@@ -10092,11 +9767,10 @@
         return this._value;
       },
       DateTime$_withValue$2$isUtc: function(_value, isUtc) {
-        var t1 = Math.abs(this._value);
-        if (!(t1 > 864e13)) {
-          t1 === 864e13;
+        var t1;
+        if (!(Math.abs(this._value) > 864e13))
           t1 = false;
-        } else
+        else
           t1 = true;
         if (t1)
           throw H.wrapException(P.ArgumentError$(this.get$millisecondsSinceEpoch()));
@@ -10142,22 +9816,16 @@
       $add: function(_, other) {
         return new P.Duration(this._duration + other.get$_duration());
       },
-      $sub: function(_, other) {
-        return new P.Duration(this._duration - other.get$_duration());
-      },
       $tdiv: function(_, quotient) {
         if (quotient === 0)
           throw H.wrapException(new P.IntegerDivisionByZeroException());
         return new P.Duration(C.JSInt_methods.$tdiv(this._duration, quotient));
       },
       $lt: function(_, other) {
-        return this._duration < other.get$_duration();
+        return C.JSInt_methods.$lt(this._duration, other.get$_duration());
       },
       $gt: function(_, other) {
-        return this._duration > other.get$_duration();
-      },
-      $ge: function(_, other) {
-        return this._duration >= other.get$_duration();
+        return C.JSInt_methods.$gt(this._duration, other.get$_duration());
       },
       get$inMilliseconds: function() {
         return C.JSInt_methods._tdivFast$1(this._duration, 1000);
@@ -10177,7 +9845,7 @@
         t1 = new P.Duration_toString_twoDigits();
         t2 = this._duration;
         if (t2 < 0)
-          return "-" + new P.Duration(-t2).toString$0(0);
+          return "-" + new P.Duration(0 - t2).toString$0(0);
         twoDigitMinutes = t1.call$1(C.JSInt_methods._tdivFast$1(t2, 60000000) % 60);
         twoDigitSeconds = t1.call$1(C.JSInt_methods._tdivFast$1(t2, 1000000) % 60);
         sixDigitUs = new P.Duration_toString_sixDigits().call$1(t2 % 1000000);
@@ -10236,7 +9904,7 @@
       toString$0: function(_) {
         var t1, nameString, message, prefix, explanation, errorValue;
         t1 = this.name;
-        nameString = t1 != null ? " (" + H.S(t1) + ")" : "";
+        nameString = t1 != null ? " (" + t1 + ")" : "";
         t1 = this.message;
         message = t1 == null ? "" : ": " + H.S(t1);
         prefix = this.get$_errorName() + nameString + message;
@@ -10337,7 +10005,7 @@
         if (J.$lt$n(this.invalidValue, 0))
           return ": index must not be negative";
         var t1 = this.length;
-        if (J.$eq$(t1, 0))
+        if (t1 === 0)
           return ": no indices are valid";
         return ": index should be less than " + H.S(t1);
       },
@@ -10354,20 +10022,21 @@
     NoSuchMethodError: {
       "^": "Error;_core$_receiver,_memberName,_core$_arguments,_namedArguments,_existingArgumentNames",
       toString$0: function(_) {
-        var t1, sb, t2, t3, _i, argument, receiverText, actualParameters;
-        t1 = {};
+        var _box_0, sb, t1, t2, _i, argument, receiverText, actualParameters;
+        _box_0 = {};
         sb = new P.StringBuffer("");
-        t1.comma = "";
-        for (t2 = this._core$_arguments, t3 = t2.length, _i = 0; _i < t3; ++_i) {
-          argument = t2[_i];
-          sb._contents += t1.comma;
+        _box_0.comma = "";
+        for (t1 = this._core$_arguments, t2 = t1.length, _i = 0; _i < t2; ++_i) {
+          argument = t1[_i];
+          sb._contents += _box_0.comma;
           sb._contents += H.S(P.Error_safeToString(argument));
-          t1.comma = ", ";
+          _box_0.comma = ", ";
         }
-        this._namedArguments.forEach$1(0, new P.NoSuchMethodError_toString_closure(t1, sb));
+        this._namedArguments.forEach$1(0, new P.NoSuchMethodError_toString_closure(_box_0, sb));
         receiverText = P.Error_safeToString(this._core$_receiver);
         actualParameters = sb.toString$0(0);
-        return "NoSuchMethodError: method not found: '" + H.S(this._memberName.__internal$_name) + "'\nReceiver: " + H.S(receiverText) + "\nArguments: [" + actualParameters + "]";
+        t1 = "NoSuchMethodError: method not found: '" + H.S(this._memberName.__internal$_name) + "'\nReceiver: " + H.S(receiverText) + "\nArguments: [" + actualParameters + "]";
+        return t1;
       },
       static: {
         NoSuchMethodError$: function(receiver, memberName, positionalArguments, namedArguments, existingArgumentNames) {
@@ -10442,7 +10111,7 @@
     FormatException: {
       "^": "Object;message,source,offset",
       toString$0: function(_) {
-        var t1, report, offset, source, lineNum, lineStart, lastWasCR, i, char, lineEnd, t2, end, start, prefix, postfix, slice;
+        var t1, report, offset, source, lineNum, lineStart, previousCharWasCR, i, char, lineEnd, end, start, prefix, postfix, slice;
         t1 = this.message;
         report = t1 != null && "" !== t1 ? "FormatException: " + H.S(t1) : "FormatException";
         offset = this.offset;
@@ -10451,63 +10120,53 @@
           return offset != null ? report + (" (at offset " + H.S(offset) + ")") : report;
         if (offset != null) {
           t1 = J.getInterceptor$n(offset);
-          t1 = t1.$lt(offset, 0) || t1.$gt(offset, J.get$length$asx(source));
+          t1 = t1.$lt(offset, 0) || t1.$gt(offset, source.length);
         } else
           t1 = false;
         if (t1)
           offset = null;
         if (offset == null) {
-          t1 = J.getInterceptor$asx(source);
-          if (J.$gt$n(t1.get$length(source), 78))
-            source = t1.substring$2(source, 0, 75) + "...";
-          return report + "\n" + H.S(source);
+          if (source.length > 78)
+            source = C.JSString_methods.substring$2(source, 0, 75) + "...";
+          return report + "\n" + source;
         }
         if (typeof offset !== "number")
           return H.iae(offset);
-        t1 = J.getInterceptor$asx(source);
         lineNum = 1;
         lineStart = 0;
-        lastWasCR = null;
+        previousCharWasCR = false;
         i = 0;
         for (; i < offset; ++i) {
-          char = t1.codeUnitAt$1(source, i);
+          char = C.JSString_methods._codeUnitAt$1(source, i);
           if (char === 10) {
-            if (lineStart !== i || lastWasCR !== true)
+            if (lineStart !== i || !previousCharWasCR)
               ++lineNum;
             lineStart = i + 1;
-            lastWasCR = false;
+            previousCharWasCR = false;
           } else if (char === 13) {
             ++lineNum;
             lineStart = i + 1;
-            lastWasCR = true;
+            previousCharWasCR = true;
           }
         }
         report = lineNum > 1 ? report + (" (at line " + lineNum + ", character " + H.S(offset - lineStart + 1) + ")\n") : report + (" (at character " + H.S(offset + 1) + ")\n");
-        lineEnd = t1.get$length(source);
-        i = offset;
-        while (true) {
-          t2 = t1.get$length(source);
-          if (typeof t2 !== "number")
-            return H.iae(t2);
-          if (!(i < t2))
-            break;
-          char = t1.codeUnitAt$1(source, i);
+        lineEnd = source.length;
+        for (i = offset; i < source.length; ++i) {
+          char = C.JSString_methods.codeUnitAt$1(source, i);
           if (char === 10 || char === 13) {
             lineEnd = i;
             break;
           }
-          ++i;
         }
-        t2 = J.getInterceptor$n(lineEnd);
-        if (J.$gt$n(t2.$sub(lineEnd, lineStart), 78))
+        if (lineEnd - lineStart > 78)
           if (offset - lineStart < 75) {
             end = lineStart + 75;
             start = lineStart;
             prefix = "";
             postfix = "...";
           } else {
-            if (J.$lt$n(t2.$sub(lineEnd, offset), 75)) {
-              start = t2.$sub(lineEnd, 75);
+            if (lineEnd - offset < 75) {
+              start = lineEnd - 75;
               end = lineEnd;
               postfix = "";
             } else {
@@ -10523,9 +10182,7 @@
           prefix = "";
           postfix = "";
         }
-        slice = t1.substring$2(source, start, end);
-        if (typeof start !== "number")
-          return H.iae(start);
+        slice = C.JSString_methods.substring$2(source, start, end);
         return report + prefix + slice + postfix + "\n" + C.JSString_methods.$mul(" ", offset - start + prefix.length) + "^\n";
       }
     },
@@ -10669,9 +10326,10 @@
     List: {
       "^": "Object;$ti",
       $asList: null,
-      $isIterable: 1,
       $isEfficientLengthIterable: 1,
-      $asEfficientLengthIterable: null
+      $asEfficientLengthIterable: null,
+      $isIterable: 1,
+      $asIterable: null
     },
     "+List": 0,
     Map: {
@@ -10731,9 +10389,6 @@
       get$isEmpty: function(_) {
         return this._contents.length === 0;
       },
-      clear$0: function(_) {
-        this._contents = "";
-      },
       toString$0: function(_) {
         var t1 = this._contents;
         return t1.charCodeAt(0) == 0 ? t1 : t1;
@@ -10765,14 +10420,16 @@
   }], ["dart.dom.html", "dart:html",, W, {
     "^": "",
     CssStyleDeclaration__camelCase: function(hyphenated) {
-      return hyphenated.replace(/^-ms-/, "ms-").replace(/-([\da-z])/ig, C.JS_CONST_s8I);
+      return hyphenated.replace(/^-ms-/, "ms-").replace(/-([\da-z])/ig, function(_, letter) {
+        return letter.toUpperCase();
+      });
     },
     Element_Element$html: function(html, treeSanitizer, validator) {
       var t1, fragment;
       t1 = document.body;
       fragment = (t1 && C.BodyElement_methods).createFragment$3$treeSanitizer$validator(t1, html, treeSanitizer, validator);
       fragment.toString;
-      t1 = new H.WhereIterable(new W._ChildNodeListLazy(fragment), new W.closure2(), [W.Node]);
+      t1 = new H.WhereIterable(new W._ChildNodeListLazy(fragment), new W.closure3(), [W.Node]);
       return t1.get$single(t1);
     },
     Element__safeTagName: function(element) {
@@ -10823,10 +10480,10 @@
     },
     HtmlElement: {
       "^": "Element;",
-      "%": "HTMLAppletElement|HTMLBRElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFontElement|HTMLFrameElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLLabelElement|HTMLLegendElement|HTMLMarqueeElement|HTMLModElement|HTMLOptGroupElement|HTMLParagraphElement|HTMLPictureElement|HTMLPreElement|HTMLQuoteElement|HTMLShadowElement|HTMLSpanElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableHeaderCellElement|HTMLTitleElement|HTMLTrackElement|HTMLUListElement|HTMLUnknownElement|PluginPlaceholderElement;HTMLElement"
+      "%": "HTMLBRElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFontElement|HTMLFrameElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLLabelElement|HTMLLegendElement|HTMLMarqueeElement|HTMLMenuElement|HTMLMenuItemElement|HTMLModElement|HTMLOptGroupElement|HTMLParagraphElement|HTMLPictureElement|HTMLPreElement|HTMLQuoteElement|HTMLScriptElement|HTMLShadowElement|HTMLSourceElement|HTMLSpanElement|HTMLStyleElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableHeaderCellElement|HTMLTitleElement|HTMLTrackElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"
     },
     AnchorElement: {
-      "^": "HtmlElement;type=,hostname=,href},port=,protocol=,username=",
+      "^": "HtmlElement;href},username=",
       toString$0: function(receiver) {
         return String(receiver);
       },
@@ -10835,7 +10492,7 @@
       "%": "HTMLAnchorElement"
     },
     Animation: {
-      "^": "EventTarget;",
+      "^": "EventTarget;id=",
       cancel$0: function(receiver) {
         return receiver.cancel();
       },
@@ -10849,7 +10506,7 @@
       "%": "ApplicationCache|DOMApplicationCache|OfflineResourceList"
     },
     AreaElement: {
-      "^": "HtmlElement;hostname=,href},port=,protocol=,username=",
+      "^": "HtmlElement;href},username=",
       toString$0: function(receiver) {
         return String(receiver);
       },
@@ -10859,24 +10516,96 @@
     },
     AudioTrack: {
       "^": "Interceptor;id=,language=",
+      $isObject: 1,
       "%": "AudioTrack"
     },
     AudioTrackList: {
-      "^": "EventTarget;length=",
+      "^": "EventTarget_ListMixin_ImmutableListMixin;",
+      get$length: function(receiver) {
+        return receiver.length;
+      },
+      $index: function(receiver, index) {
+        if (index >>> 0 !== index || index >= receiver.length)
+          throw H.wrapException(P.IndexError$(index, receiver, null, null, null));
+        return receiver[index];
+      },
+      $indexSet: function(receiver, index, value) {
+        throw H.wrapException(new P.UnsupportedError("Cannot assign element of immutable List."));
+      },
+      set$length: function(receiver, value) {
+        throw H.wrapException(new P.UnsupportedError("Cannot resize immutable List."));
+      },
+      get$first: function(receiver) {
+        if (receiver.length > 0)
+          return receiver[0];
+        throw H.wrapException(new P.StateError("No elements"));
+      },
+      elementAt$1: function(receiver, index) {
+        if (index >>> 0 !== index || index >= receiver.length)
+          return H.ioore(receiver, index);
+        return receiver[index];
+      },
+      $isList: 1,
+      $asList: function() {
+        return [W.AudioTrack];
+      },
+      $isEfficientLengthIterable: 1,
+      $asEfficientLengthIterable: function() {
+        return [W.AudioTrack];
+      },
+      $isIterable: 1,
+      $asIterable: function() {
+        return [W.AudioTrack];
+      },
+      $isObject: 1,
+      $isJavaScriptIndexingBehavior: 1,
+      $asJavaScriptIndexingBehavior: function() {
+        return [W.AudioTrack];
+      },
+      $isJSIndexable: 1,
+      $asJSIndexable: function() {
+        return [W.AudioTrack];
+      },
       "%": "AudioTrackList"
+    },
+    EventTarget_ListMixin: {
+      "^": "EventTarget+ListMixin;",
+      $asList: function() {
+        return [W.AudioTrack];
+      },
+      $asEfficientLengthIterable: function() {
+        return [W.AudioTrack];
+      },
+      $asIterable: function() {
+        return [W.AudioTrack];
+      },
+      $isList: 1,
+      $isEfficientLengthIterable: 1,
+      $isIterable: 1
+    },
+    EventTarget_ListMixin_ImmutableListMixin: {
+      "^": "EventTarget_ListMixin+ImmutableListMixin;",
+      $asList: function() {
+        return [W.AudioTrack];
+      },
+      $asEfficientLengthIterable: function() {
+        return [W.AudioTrack];
+      },
+      $asIterable: function() {
+        return [W.AudioTrack];
+      },
+      $isList: 1,
+      $isEfficientLengthIterable: 1,
+      $isIterable: 1
     },
     BaseElement: {
       "^": "HtmlElement;href}",
       "%": "HTMLBaseElement"
     },
     Blob: {
-      "^": "Interceptor;type=",
+      "^": "Interceptor;",
       $isBlob: 1,
       "%": ";Blob"
-    },
-    BluetoothDevice: {
-      "^": "Interceptor;name=",
-      "%": "BluetoothDevice"
     },
     BodyElement: {
       "^": "HtmlElement;",
@@ -10890,7 +10619,7 @@
       "%": "HTMLBodyElement"
     },
     ButtonElement: {
-      "^": "HtmlElement;name=,type=,value%",
+      "^": "HtmlElement;name=,value%",
       "%": "HTMLButtonElement"
     },
     CanvasElement: {
@@ -10912,6 +10641,13 @@
     Client: {
       "^": "Interceptor;id=",
       "%": "Client|WindowClient"
+    },
+    Clients: {
+      "^": "Interceptor;",
+      $get$1: function(receiver, id) {
+        return receiver.get(id);
+      },
+      "%": "Clients"
     },
     Comment: {
       "^": "CharacterData;",
@@ -10936,12 +10672,17 @@
       "%": "CompositorWorker"
     },
     Credential: {
-      "^": "Interceptor;id=,name=,type=",
+      "^": "Interceptor;id=,name=",
       "%": "Credential|FederatedCredential|PasswordCredential"
     },
-    CryptoKey: {
-      "^": "Interceptor;type=",
-      "%": "CryptoKey"
+    CredentialsContainer: {
+      "^": "Interceptor;",
+      $get$1: function(receiver, options) {
+        if (options != null)
+          return receiver.get(P.convertDartToNative_Dictionary(options, null));
+        return receiver.get();
+      },
+      "%": "CredentialsContainer"
     },
     CssFontFaceRule: {
       "^": "CssRule;style=",
@@ -10960,10 +10701,10 @@
       "%": "CSSPageRule"
     },
     CssRule: {
-      "^": "Interceptor;type=",
+      "^": "Interceptor;",
       $isCssRule: 1,
       $isObject: 1,
-      "%": "CSSCharsetRule|CSSGroupingRule|CSSImportRule|CSSMediaRule|CSSSupportsRule;CSSRule"
+      "%": "CSSCharsetRule|CSSGroupingRule|CSSImportRule|CSSMediaRule|CSSNamespaceRule|CSSSupportsRule;CSSRule"
     },
     CssStyleDeclaration: {
       "^": "Interceptor_CssStyleDeclarationBase;length=",
@@ -10980,25 +10721,13 @@
       item$1: [function(receiver, index) {
         return receiver.item(index);
       }, "call$1", "get$item", 2, 0, 5, 0],
-      get$clear: function(receiver) {
-        return receiver.clear;
-      },
-      clear$0: function($receiver) {
-        return this.get$clear($receiver).call$0();
-      },
       "%": "CSS2Properties|CSSStyleDeclaration|MSStyleCSSProperties"
     },
     Interceptor_CssStyleDeclarationBase: {
       "^": "Interceptor+CssStyleDeclarationBase;"
     },
     CssStyleDeclarationBase: {
-      "^": "Object;",
-      get$clear: function(receiver) {
-        return this.getPropertyValue$1(receiver, "clear");
-      },
-      clear$0: function($receiver) {
-        return this.get$clear($receiver).call$0();
-      }
+      "^": "Object;"
     },
     CssStyleRule: {
       "^": "CssRule;style=",
@@ -11009,7 +10738,7 @@
       "%": "CSSViewportRule"
     },
     DataTransferItem: {
-      "^": "Interceptor;type=",
+      "^": "Interceptor;",
       $isDataTransferItem: 1,
       $isObject: 1,
       "%": "DataTransferItem"
@@ -11022,12 +10751,9 @@
       add$1: function($receiver, data_OR_file) {
         return $receiver.add(data_OR_file);
       },
-      clear$0: function(receiver) {
-        return receiver.clear();
-      },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 91, 0],
+      }, "call$1", "get$item", 2, 0, 102, 0],
       remove$1: function(receiver, index) {
         return receiver.remove(index);
       },
@@ -11078,7 +10804,7 @@
         return receiver.next(value);
       }, function($receiver) {
         return $receiver.next();
-      }, "next$0", "call$1", "call$0", "get$next", 0, 2, 85, 1],
+      }, "next$0", "call$1", "call$0", "get$next", 0, 2, 103, 1],
       "%": "Iterator"
     },
     DomRectReadOnly: {
@@ -11120,10 +10846,6 @@
       $isObject: 1,
       "%": ";DOMRectReadOnly"
     },
-    DomSettableTokenList: {
-      "^": "DomTokenList;value=",
-      "%": "DOMSettableTokenList"
-    },
     DomStringList: {
       "^": "Interceptor_ListMixin_ImmutableListMixin;",
       get$length: function(receiver) {
@@ -11132,7 +10854,7 @@
       $index: function(receiver, index) {
         if (index >>> 0 !== index || index >= receiver.length)
           throw H.wrapException(P.IndexError$(index, receiver, null, null, null));
-        return receiver.item(index);
+        return receiver[index];
       },
       $indexSet: function(receiver, index, value) {
         throw H.wrapException(new P.UnsupportedError("Cannot assign element of immutable List."));
@@ -11146,7 +10868,9 @@
         throw H.wrapException(new P.StateError("No elements"));
       },
       elementAt$1: function(receiver, index) {
-        return this.$index(receiver, index);
+        if (index >>> 0 !== index || index >= receiver.length)
+          return H.ioore(receiver, index);
+        return receiver[index];
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
@@ -11164,6 +10888,14 @@
         return [P.String];
       },
       $isObject: 1,
+      $isJavaScriptIndexingBehavior: 1,
+      $asJavaScriptIndexingBehavior: function() {
+        return [P.String];
+      },
+      $isJSIndexable: 1,
+      $asJSIndexable: function() {
+        return [P.String];
+      },
       "%": "DOMStringList"
     },
     Interceptor_ListMixin: {
@@ -11200,11 +10932,11 @@
       "^": "Interceptor;",
       item$1: [function(receiver, $name) {
         return receiver.item($name);
-      }, "call$1", "get$item", 2, 0, 25, 70],
+      }, "call$1", "get$item", 2, 0, 22, 139],
       "%": "DOMStringMap"
     },
     DomTokenList: {
-      "^": "Interceptor;length=",
+      "^": "Interceptor;length=,value=",
       add$1: function(receiver, tokens) {
         return receiver.add(tokens);
       },
@@ -11214,10 +10946,13 @@
       remove$1: function(receiver, tokens) {
         return receiver.remove(tokens);
       },
-      "%": ";DOMTokenList"
+      supports$1: function(receiver, token) {
+        return receiver.supports(token);
+      },
+      "%": "DOMTokenList"
     },
     Element: {
-      "^": "Node;style=,id=,tagName=",
+      "^": "Node;style=,id=,_namespaceUri:namespaceURI=,tagName=",
       get$attributes: function(receiver) {
         return new W._ElementAttributeMap(receiver);
       },
@@ -11263,6 +10998,12 @@
           base = t2.createElement("base");
           J.set$href$x(base, t1.baseURI);
           $.Element__parseDocument.head.appendChild(base);
+        }
+        t1 = $.Element__parseDocument;
+        if (t1.body == null) {
+          t1.toString;
+          t2 = t1.createElement("body");
+          t1.body = t2;
         }
         t1 = $.Element__parseDocument;
         if (!!this.$isBodyElement)
@@ -11314,14 +11055,14 @@
       $isInterceptor: 1,
       "%": ";Element"
     },
-    closure2: {
+    closure3: {
       "^": "Closure:1;",
       call$1: function(e) {
         return !!J.getInterceptor(e).$isElement;
       }
     },
     EmbedElement: {
-      "^": "HtmlElement;name=,type=",
+      "^": "HtmlElement;name=",
       "%": "HTMLEmbedElement"
     },
     Entry: {
@@ -11348,20 +11089,20 @@
       "^": "Closure:1;completer",
       call$1: [function(error) {
         this.completer.completeError$1(error);
-      }, null, null, 2, 0, null, 6, "call"]
+      }, null, null, 2, 0, null, 7, "call"]
     },
     ErrorEvent: {
       "^": "Event;error=",
       "%": "ErrorEvent"
     },
     Event: {
-      "^": "Interceptor;path=,type=",
+      "^": "Interceptor;path=",
       preventDefault$0: function(receiver) {
         return receiver.preventDefault();
       },
       $isEvent: 1,
       $isObject: 1,
-      "%": "AnimationEvent|AnimationPlayerEvent|ApplicationCacheErrorEvent|AudioProcessingEvent|AutocompleteErrorEvent|BeforeInstallPromptEvent|BeforeUnloadEvent|ClipboardEvent|CloseEvent|CrossOriginConnectEvent|CustomEvent|DefaultSessionStartEvent|DeviceMotionEvent|DeviceOrientationEvent|ExtendableEvent|FetchEvent|FontFaceSetLoadEvent|GamepadEvent|HashChangeEvent|IDBVersionChangeEvent|MIDIConnectionEvent|MIDIMessageEvent|MediaEncryptedEvent|MediaKeyEvent|MediaKeyMessageEvent|MediaQueryListEvent|MediaStreamEvent|MediaStreamTrackEvent|MessageEvent|NotificationEvent|OfflineAudioCompletionEvent|PageTransitionEvent|PeriodicSyncEvent|PopStateEvent|ProgressEvent|PromiseRejectionEvent|PushEvent|RTCDTMFToneChangeEvent|RTCDataChannelEvent|RTCIceCandidateEvent|RTCPeerConnectionIceEvent|RelatedEvent|ResourceProgressEvent|SecurityPolicyViolationEvent|ServicePortConnectEvent|ServiceWorkerMessageEvent|SpeechRecognitionEvent|SyncEvent|TrackEvent|TransitionEvent|WebGLContextEvent|WebKitTransitionEvent|XMLHttpRequestProgressEvent;Event|InputEvent"
+      "%": "AnimationEvent|AnimationPlayerEvent|ApplicationCacheErrorEvent|AudioProcessingEvent|AutocompleteErrorEvent|BeforeInstallPromptEvent|BeforeUnloadEvent|BlobEvent|ClipboardEvent|CloseEvent|CustomEvent|DeviceMotionEvent|DeviceOrientationEvent|ExtendableEvent|ExtendableMessageEvent|FetchEvent|FontFaceSetLoadEvent|GamepadEvent|HashChangeEvent|IDBVersionChangeEvent|InstallEvent|MIDIConnectionEvent|MIDIMessageEvent|MediaEncryptedEvent|MediaKeyMessageEvent|MediaQueryListEvent|MediaStreamEvent|MediaStreamTrackEvent|MessageEvent|NotificationEvent|OfflineAudioCompletionEvent|PageTransitionEvent|PopStateEvent|PresentationConnectionAvailableEvent|PresentationConnectionCloseEvent|ProgressEvent|PromiseRejectionEvent|PushEvent|RTCDTMFToneChangeEvent|RTCDataChannelEvent|RTCIceCandidateEvent|RTCPeerConnectionIceEvent|RelatedEvent|ResourceProgressEvent|SecurityPolicyViolationEvent|ServicePortConnectEvent|ServiceWorkerMessageEvent|SpeechRecognitionEvent|SyncEvent|TrackEvent|TransitionEvent|USBConnectionEvent|WebGLContextEvent|WebKitTransitionEvent;Event|InputEvent"
     },
     EventSource: {
       "^": "EventTarget;",
@@ -11401,18 +11142,18 @@
         if (listener != null)
           this._removeEventListener$3(receiver, type, listener, false);
       },
-      _addEventListener$3: function(receiver, type, listener, capture) {
-        return receiver.addEventListener(type, H.convertDartClosureToJS(listener, 1), capture);
+      _addEventListener$3: function(receiver, type, listener, options) {
+        return receiver.addEventListener(type, H.convertDartClosureToJS(listener, 1), options);
       },
-      _removeEventListener$3: function(receiver, type, listener, capture) {
+      _removeEventListener$3: function(receiver, type, listener, options) {
         return receiver.removeEventListener(type, H.convertDartClosureToJS(listener, 1), false);
       },
       $isEventTarget: 1,
       $isObject: 1,
-      "%": "AudioContext|BatteryManager|CrossOriginServiceWorkerClient|MIDIAccess|MediaController|MediaQueryList|MediaSource|OfflineAudioContext|Performance|PermissionStatus|Presentation|RTCDTMFSender|RTCPeerConnection|ServicePortCollection|ServiceWorkerContainer|ServiceWorkerRegistration|StashedPortCollection|WorkerPerformance|mozRTCPeerConnection|webkitAudioContext|webkitRTCPeerConnection;EventTarget;EventTarget_ListMixin|EventTarget_ListMixin_ImmutableListMixin|EventTarget_ListMixin0|EventTarget_ListMixin_ImmutableListMixin0"
+      "%": "AudioContext|BatteryManager|BluetoothDevice|BluetoothRemoteGATTCharacteristic|CrossOriginServiceWorkerClient|MIDIAccess|MediaQueryList|MediaSource|MessagePort|NetworkInformation|OfflineAudioContext|Performance|PermissionStatus|PresentationReceiver|PresentationRequest|RTCDTMFSender|RTCPeerConnection|ScreenOrientation|ServicePortCollection|ServiceWorkerContainer|ServiceWorkerRegistration|USB|WorkerPerformance|mozRTCPeerConnection|webkitAudioContext|webkitRTCPeerConnection;EventTarget;EventTarget_ListMixin|EventTarget_ListMixin_ImmutableListMixin|EventTarget_ListMixin0|EventTarget_ListMixin_ImmutableListMixin0|EventTarget_ListMixin1|EventTarget_ListMixin_ImmutableListMixin1"
     },
     FieldSetElement: {
-      "^": "HtmlElement;name=,type=",
+      "^": "HtmlElement;name=",
       "%": "HTMLFieldSetElement"
     },
     File: {
@@ -11449,7 +11190,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 82, 0],
+      }, "call$1", "get$item", 2, 0, 124, 0],
       $isFileList: 1,
       $isJavaScriptIndexingBehavior: 1,
       $asJavaScriptIndexingBehavior: function() {
@@ -11507,19 +11248,18 @@
     FileReader: {
       "^": "EventTarget;error=",
       get$result: function(receiver) {
-        var res = receiver.result;
-        if (!!J.getInterceptor(res).$isByteBuffer)
-          return new Uint8Array(res, 0);
+        var res, t1;
+        res = receiver.result;
+        if (!!J.getInterceptor(res).$isByteBuffer) {
+          t1 = new Uint8Array(res, 0);
+          return t1;
+        }
         return res;
       },
       get$onError: function(receiver) {
         return new W._EventStream(receiver, "error", false, [W.Event]);
       },
       "%": "FileReader"
-    },
-    FileStream: {
-      "^": "Interceptor;type=",
-      "%": "Stream"
     },
     FileSystem: {
       "^": "Interceptor;name=",
@@ -11534,17 +11274,12 @@
     },
     FontFace: {
       "^": "Interceptor;style=",
-      $isFontFace: 1,
-      $isObject: 1,
       "%": "FontFace"
     },
     FontFaceSet: {
       "^": "EventTarget;",
-      add$1: function(receiver, fontFace) {
-        return receiver.add(fontFace);
-      },
-      clear$0: function(receiver) {
-        return receiver.clear();
+      add$1: function(receiver, arg) {
+        return receiver.add(arg);
       },
       forEach$2: function(receiver, callback, thisArg) {
         return receiver.forEach(H.convertDartClosureToJS(callback, 3), thisArg);
@@ -11566,7 +11301,7 @@
       "^": "HtmlElement;length=,name=",
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 26, 0],
+      }, "call$1", "get$item", 2, 0, 19, 0],
       "%": "HTMLFormElement"
     },
     Gamepad: {
@@ -11620,7 +11355,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 27, 0],
+      }, "call$1", "get$item", 2, 0, 18, 0],
       $isList: 1,
       $asList: function() {
         return [W.Node];
@@ -11678,7 +11413,7 @@
       "^": "HtmlCollection;",
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 27, 0],
+      }, "call$1", "get$item", 2, 0, 18, 0],
       "%": "HTMLFormControlsCollection"
     },
     HttpRequest: {
@@ -11740,7 +11475,7 @@
       "%": "HTMLImageElement"
     },
     InputElement: {
-      "^": "HtmlElement;name=,type=,value%",
+      "^": "HtmlElement;name=,value%",
       $isInputElement: 1,
       $isElement: 1,
       $isInterceptor: 1,
@@ -11750,25 +11485,29 @@
       "%": "HTMLInputElement"
     },
     KeyboardEvent: {
-      "^": "UIEvent;altKey=,ctrlKey=,key=,metaKey=,shiftKey=",
-      get$keyCode: function(receiver) {
-        return receiver.keyCode;
-      },
+      "^": "UIEvent;keyCode=,altKey=,ctrlKey=,key=,metaKey=,shiftKey=",
       $isKeyboardEvent: 1,
       $isEvent: 1,
       $isObject: 1,
       "%": "KeyboardEvent"
     },
     KeygenElement: {
-      "^": "HtmlElement;name=,type=",
+      "^": "HtmlElement;name=",
       "%": "HTMLKeygenElement"
     },
     LIElement: {
       "^": "HtmlElement;value%",
       "%": "HTMLLIElement"
     },
+    LengthValue: {
+      "^": "StyleValue;",
+      add$1: function(receiver, other) {
+        return receiver.add(other);
+      },
+      "%": "CalcLength;LengthValue"
+    },
     LinkElement: {
-      "^": "HtmlElement;href},type=",
+      "^": "HtmlElement;href}",
       "%": "HTMLLinkElement"
     },
     Location: {
@@ -11785,12 +11524,6 @@
     },
     MediaElement: {
       "^": "HtmlElement;error=",
-      addKey$4: function(receiver, keySystem, key, initData, sessionId) {
-        return receiver.webkitAddKey(keySystem, key, initData, sessionId);
-      },
-      addKey$2: function($receiver, keySystem, key) {
-        return $receiver.webkitAddKey(keySystem, key);
-      },
       "%": "HTMLAudioElement;HTMLMediaElement"
     },
     MediaKeySession: {
@@ -11807,28 +11540,23 @@
       }, "call$1", "get$item", 2, 0, 5, 0],
       "%": "MediaList"
     },
+    MediaRecorder: {
+      "^": "EventTarget;",
+      start$1: function(receiver, timeslice) {
+        return receiver.start(timeslice);
+      },
+      get$onError: function(receiver) {
+        return new W._EventStream(receiver, "error", false, [W.Event]);
+      },
+      "%": "MediaRecorder"
+    },
     MediaStream: {
       "^": "EventTarget;id=",
       "%": "MediaStream"
     },
     MediaStreamTrack: {
       "^": "EventTarget;id=",
-      "%": "MediaStreamTrack"
-    },
-    MenuElement: {
-      "^": "HtmlElement;type=",
-      "%": "HTMLMenuElement"
-    },
-    MenuItemElement: {
-      "^": "HtmlElement;type=",
-      "%": "HTMLMenuItemElement"
-    },
-    MessagePort: {
-      "^": "EventTarget;",
-      $isMessagePort: 1,
-      $isEventTarget: 1,
-      $isObject: 1,
-      "%": ";MessagePort"
+      "%": "CanvasCaptureMediaStreamTrack|MediaStreamTrack"
     },
     MetaElement: {
       "^": "HtmlElement;name=",
@@ -11849,11 +11577,11 @@
       "%": "MIDIOutput"
     },
     MidiPort: {
-      "^": "EventTarget;id=,name=,type=",
+      "^": "EventTarget;id=,name=",
       "%": "MIDIInput;MIDIPort"
     },
     MimeType: {
-      "^": "Interceptor;type=",
+      "^": "Interceptor;",
       $isMimeType: 1,
       $isObject: 1,
       "%": "MimeType"
@@ -11886,7 +11614,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 28, 0],
+      }, "call$1", "get$item", 2, 0, 20, 0],
       $isJavaScriptIndexingBehavior: 1,
       $asJavaScriptIndexingBehavior: function() {
         return [W.MimeType];
@@ -11944,10 +11672,6 @@
       "^": "UIEvent;altKey=,ctrlKey=,metaKey=,shiftKey=",
       "%": "DragEvent|MouseEvent|PointerEvent|WheelEvent"
     },
-    MutationRecord: {
-      "^": "Interceptor;type=",
-      "%": "MutationRecord"
-    },
     Navigator: {
       "^": "Interceptor;",
       get$language: function(receiver) {
@@ -11960,10 +11684,6 @@
     NavigatorUserMediaError: {
       "^": "Interceptor;name=",
       "%": "NavigatorUserMediaError"
-    },
-    NetworkInformation: {
-      "^": "EventTarget;type=",
-      "%": "NetworkInformation"
     },
     _ChildNodeListLazy: {
       "^": "ListBase;_this",
@@ -12009,9 +11729,6 @@
           return false;
         t1.removeChild(object);
         return true;
-      },
-      clear$0: function(_) {
-        J._clearChildren$0$x(this._this);
       },
       $indexSet: function(_, index, value) {
         var t1, t2;
@@ -12063,7 +11780,7 @@
       },
       set$nodes: function(receiver, value) {
         var copy, t1, _i;
-        copy = H.setRuntimeTypeInfo(value.slice(), [H.getTypeArgumentByIndex(value, 0)]);
+        copy = H.setRuntimeTypeInfo(value.slice(0), [H.getTypeArgumentByIndex(value, 0)]);
         receiver.textContent = "";
         for (t1 = copy.length, _i = 0; _i < copy.length; copy.length === t1 || (0, H.throwConcurrentModificationError)(copy), ++_i)
           receiver.appendChild(copy[_i]);
@@ -12072,11 +11789,6 @@
         var t1 = receiver.parentNode;
         if (t1 != null)
           t1.removeChild(receiver);
-      },
-      _clearChildren$0: function(receiver) {
-        var t1;
-        for (; t1 = receiver.firstChild, t1 != null;)
-          receiver.removeChild(t1);
       },
       toString$0: function(receiver) {
         var value = receiver.nodeValue;
@@ -12094,7 +11806,7 @@
       "^": "Interceptor;",
       previousNode$0: [function(receiver) {
         return receiver.previousNode();
-      }, "call$0", "get$previousNode", 0, 0, 15],
+      }, "call$0", "get$previousNode", 0, 0, 14],
       "%": "NodeIterator"
     },
     NodeList: {
@@ -12183,15 +11895,19 @@
       },
       "%": "Notification"
     },
+    NumberValue: {
+      "^": "StyleValue;value=",
+      "%": "NumberValue"
+    },
     OListElement: {
-      "^": "HtmlElement;reversed=,type=",
+      "^": "HtmlElement;reversed=",
       start$1: function($receiver, arg0) {
         return $receiver.start.call$1(arg0);
       },
       "%": "HTMLOListElement"
     },
     ObjectElement: {
-      "^": "HtmlElement;name=,type=",
+      "^": "HtmlElement;name=",
       "%": "HTMLObjectElement"
     },
     OptionElement: {
@@ -12199,7 +11915,7 @@
       "%": "HTMLOptionElement"
     },
     OutputElement: {
-      "^": "HtmlElement;name=,type=,value%",
+      "^": "HtmlElement;name=,value%",
       "%": "HTMLOutputElement"
     },
     ParamElement: {
@@ -12216,15 +11932,15 @@
       "^": "Interceptor;name=",
       "%": "PerformanceCompositeTiming|PerformanceEntry|PerformanceMark|PerformanceMeasure|PerformanceRenderTiming|PerformanceResourceTiming"
     },
-    PerformanceNavigation: {
-      "^": "Interceptor;type=",
-      "%": "PerformanceNavigation"
+    Perspective: {
+      "^": "TransformComponent;length=",
+      "%": "Perspective"
     },
     Plugin: {
       "^": "Interceptor;length=,name=",
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 28, 0],
+      }, "call$1", "get$item", 2, 0, 20, 0],
       $isPlugin: 1,
       $isObject: 1,
       "%": "Plugin"
@@ -12257,7 +11973,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 78, 0],
+      }, "call$1", "get$item", 2, 0, 99, 0],
       $isList: 1,
       $asList: function() {
         return [W.Plugin];
@@ -12315,12 +12031,12 @@
       "^": "EventTarget;value=",
       "%": "PresentationAvailability"
     },
-    PresentationSession: {
+    PresentationConnection: {
       "^": "EventTarget;id=",
       send$1: function(receiver, data_OR_message) {
         return receiver.send(data_OR_message);
       },
-      "%": "PresentationSession"
+      "%": "PresentationConnection"
     },
     ProgressElement: {
       "^": "HtmlElement;value%",
@@ -12346,16 +12062,6 @@
       },
       "%": "ReadableByteStreamReader"
     },
-    ReadableStream: {
-      "^": "Interceptor;",
-      cancel$1: function(receiver, reason) {
-        return receiver.cancel(reason);
-      },
-      cancel$0: function($receiver) {
-        return $receiver.cancel();
-      },
-      "%": "ReadableStream"
-    },
     ReadableStreamReader: {
       "^": "Interceptor;",
       cancel$1: function(receiver, reason) {
@@ -12376,12 +12082,8 @@
       },
       "%": "DataChannel|RTCDataChannel"
     },
-    RtcSessionDescription: {
-      "^": "Interceptor;type=",
-      "%": "RTCSessionDescription|mozRTCSessionDescription"
-    },
     RtcStatsReport: {
-      "^": "Interceptor;id=,type=",
+      "^": "Interceptor;id=",
       $isRtcStatsReport: 1,
       $isObject: 1,
       "%": "RTCStatsReport"
@@ -12390,27 +12092,15 @@
       "^": "Interceptor;",
       result$0: [function(receiver) {
         return receiver.result();
-      }, "call$0", "get$result", 0, 0, 72],
+      }, "call$0", "get$result", 0, 0, 98],
       "%": "RTCStatsResponse"
     },
-    ScreenOrientation: {
-      "^": "EventTarget;type=",
-      "%": "ScreenOrientation"
-    },
-    ScriptElement0: {
-      "^": "HtmlElement;type=",
-      "%": "HTMLScriptElement"
-    },
     SelectElement: {
-      "^": "HtmlElement;length=,name=,type=,value%",
+      "^": "HtmlElement;length=,name=,value%",
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 26, 0],
+      }, "call$1", "get$item", 2, 0, 19, 0],
       "%": "HTMLSelectElement"
-    },
-    Selection: {
-      "^": "Interceptor;type=",
-      "%": "Selection"
     },
     ServicePort: {
       "^": "Interceptor;name=",
@@ -12435,6 +12125,14 @@
       "^": "WorkerGlobalScope;name=",
       "%": "SharedWorkerGlobalScope"
     },
+    SimpleLength: {
+      "^": "LengthValue;value=",
+      "%": "SimpleLength"
+    },
+    SlotElement: {
+      "^": "HtmlElement;name=",
+      "%": "HTMLSlotElement"
+    },
     SourceBuffer: {
       "^": "EventTarget;",
       $isSourceBuffer: 1,
@@ -12443,7 +12141,7 @@
       "%": "SourceBuffer"
     },
     SourceBufferList: {
-      "^": "EventTarget_ListMixin_ImmutableListMixin;",
+      "^": "EventTarget_ListMixin_ImmutableListMixin0;",
       get$length: function(receiver) {
         return receiver.length;
       },
@@ -12470,7 +12168,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 71, 0],
+      }, "call$1", "get$item", 2, 0, 78, 0],
       $isList: 1,
       $asList: function() {
         return [W.SourceBuffer];
@@ -12494,7 +12192,7 @@
       },
       "%": "SourceBufferList"
     },
-    EventTarget_ListMixin: {
+    EventTarget_ListMixin0: {
       "^": "EventTarget+ListMixin;",
       $asList: function() {
         return [W.SourceBuffer];
@@ -12509,8 +12207,8 @@
       $isEfficientLengthIterable: 1,
       $isIterable: 1
     },
-    EventTarget_ListMixin_ImmutableListMixin: {
-      "^": "EventTarget_ListMixin+ImmutableListMixin;",
+    EventTarget_ListMixin_ImmutableListMixin0: {
+      "^": "EventTarget_ListMixin0+ImmutableListMixin;",
       $asList: function() {
         return [W.SourceBuffer];
       },
@@ -12523,10 +12221,6 @@
       $isList: 1,
       $isEfficientLengthIterable: 1,
       $isIterable: 1
-    },
-    SourceElement: {
-      "^": "HtmlElement;type=",
-      "%": "HTMLSourceElement"
     },
     SourceInfo: {
       "^": "Interceptor;id=",
@@ -12566,7 +12260,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 70, 0],
+      }, "call$1", "get$item", 2, 0, 77, 0],
       $isList: 1,
       $asList: function() {
         return [W.SpeechGrammar];
@@ -12641,7 +12335,7 @@
       "^": "Interceptor;length=",
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 65, 0],
+      }, "call$1", "get$item", 2, 0, 76, 0],
       $isSpeechRecognitionResult: 1,
       $isObject: 1,
       "%": "SpeechRecognitionResult"
@@ -12668,14 +12362,6 @@
       "^": "Interceptor;name=",
       "%": "SpeechSynthesisVoice"
     },
-    StashedMessagePort: {
-      "^": "MessagePort;name=",
-      $isStashedMessagePort: 1,
-      $isMessagePort: 1,
-      $isEventTarget: 1,
-      $isObject: 1,
-      "%": "StashedMessagePort"
-    },
     Storage: {
       "^": "Interceptor;",
       addAll$1: function(receiver, other) {
@@ -12691,9 +12377,6 @@
         var value = receiver.getItem(key);
         receiver.removeItem(key);
         return value;
-      },
-      clear$0: function(receiver) {
-        return receiver.clear();
       },
       forEach$1: function(receiver, f) {
         var i, key;
@@ -12731,7 +12414,7 @@
       "^": "Closure:3;$this",
       call$2: [function(k, v) {
         this.$this.setItem(k, v);
-      }, null, null, 4, 0, null, 22, 13, "call"]
+      }, null, null, 4, 0, null, 24, 11, "call"]
     },
     Storage_keys_closure: {
       "^": "Closure:3;keys",
@@ -12749,19 +12432,22 @@
       "^": "Event;key=",
       "%": "StorageEvent"
     },
-    StyleElement: {
-      "^": "HtmlElement;type=",
-      "%": "HTMLStyleElement"
-    },
-    StyleMedia: {
-      "^": "Interceptor;type=",
-      "%": "StyleMedia"
+    StylePropertyMap: {
+      "^": "Interceptor;",
+      $get$1: function(receiver, property) {
+        return receiver.get(property);
+      },
+      "%": "StylePropertyMap"
     },
     StyleSheet: {
-      "^": "Interceptor;type=",
+      "^": "Interceptor;",
       $isStyleSheet: 1,
       $isObject: 1,
       "%": "CSSStyleSheet|StyleSheet"
+    },
+    StyleValue: {
+      "^": "Interceptor;",
+      "%": "KeywordValue|PositionValue|TransformValue;StyleValue"
     },
     TableElement: {
       "^": "HtmlElement;",
@@ -12785,7 +12471,7 @@
           return this.super$Element$createFragment(receiver, html, treeSanitizer, validator);
         t1 = document;
         fragment = t1.createDocumentFragment();
-        t1 = J.createFragment$3$treeSanitizer$validator$x(t1.createElement("table"), html, treeSanitizer, validator);
+        t1 = C.TableElement_methods.createFragment$3$treeSanitizer$validator(t1.createElement("table"), html, treeSanitizer, validator);
         t1.toString;
         t1 = new W._ChildNodeListLazy(t1);
         section = t1.get$single(t1);
@@ -12807,7 +12493,7 @@
           return this.super$Element$createFragment(receiver, html, treeSanitizer, validator);
         t1 = document;
         fragment = t1.createDocumentFragment();
-        t1 = J.createFragment$3$treeSanitizer$validator$x(t1.createElement("table"), html, treeSanitizer, validator);
+        t1 = C.TableElement_methods.createFragment$3$treeSanitizer$validator(t1.createElement("table"), html, treeSanitizer, validator);
         t1.toString;
         t1 = new W._ChildNodeListLazy(t1);
         section = t1.get$single(t1);
@@ -12838,19 +12524,17 @@
       "%": "CDATASection|Text"
     },
     TextAreaElement: {
-      "^": "HtmlElement;name=,type=,value%",
+      "^": "HtmlElement;name=,value%",
       "%": "HTMLTextAreaElement"
     },
     TextTrack: {
       "^": "EventTarget;id=,language=",
-      $isTextTrack: 1,
       $isEventTarget: 1,
       $isObject: 1,
       "%": "TextTrack"
     },
     TextTrackCue: {
       "^": "EventTarget;id=",
-      $isTextTrackCue: 1,
       $isEventTarget: 1,
       $isObject: 1,
       "%": "TextTrackCue|VTTCue"
@@ -12881,9 +12565,6 @@
           return H.ioore(receiver, index);
         return receiver[index];
       },
-      item$1: [function(receiver, index) {
-        return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 54, 0],
       $isJavaScriptIndexingBehavior: 1,
       $asJavaScriptIndexingBehavior: function() {
         return [W.TextTrackCue];
@@ -12938,7 +12619,7 @@
       $isIterable: 1
     },
     TextTrackList: {
-      "^": "EventTarget_ListMixin_ImmutableListMixin0;",
+      "^": "EventTarget_ListMixin_ImmutableListMixin1;",
       get$length: function(receiver) {
         return receiver.length;
       },
@@ -12963,9 +12644,6 @@
           return H.ioore(receiver, index);
         return receiver[index];
       },
-      item$1: [function(receiver, index) {
-        return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 44, 0],
       $isJavaScriptIndexingBehavior: 1,
       $asJavaScriptIndexingBehavior: function() {
         return [W.TextTrack];
@@ -12989,7 +12667,7 @@
       },
       "%": "TextTrackList"
     },
-    EventTarget_ListMixin0: {
+    EventTarget_ListMixin1: {
       "^": "EventTarget+ListMixin;",
       $asList: function() {
         return [W.TextTrack];
@@ -13004,8 +12682,8 @@
       $isEfficientLengthIterable: 1,
       $isIterable: 1
     },
-    EventTarget_ListMixin_ImmutableListMixin0: {
-      "^": "EventTarget_ListMixin0+ImmutableListMixin;",
+    EventTarget_ListMixin_ImmutableListMixin1: {
+      "^": "EventTarget_ListMixin1+ImmutableListMixin;",
       $asList: function() {
         return [W.TextTrack];
       },
@@ -13064,7 +12742,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 45, 0],
+      }, "call$1", "get$item", 2, 0, 74, 0],
       $isList: 1,
       $asList: function() {
         return [W.Touch];
@@ -13119,7 +12797,7 @@
       $isIterable: 1
     },
     TrackDefault: {
-      "^": "Interceptor;language=,type=",
+      "^": "Interceptor;language=",
       $isTrackDefault: 1,
       $isObject: 1,
       "%": "TrackDefault"
@@ -13128,22 +12806,33 @@
       "^": "Interceptor;length=",
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 46, 0],
+      }, "call$1", "get$item", 2, 0, 68, 0],
       "%": "TrackDefaultList"
+    },
+    TransformComponent: {
+      "^": "Interceptor;",
+      "%": "Matrix|Rotation|Skew|Translation;TransformComponent"
     },
     TreeWalker: {
       "^": "Interceptor;",
       parentNode$0: [function(receiver) {
         return receiver.parentNode();
-      }, "call$0", "get$parentNode", 0, 0, 15],
+      }, "call$0", "get$parentNode", 0, 0, 14],
       previousNode$0: [function(receiver) {
         return receiver.previousNode();
-      }, "call$0", "get$previousNode", 0, 0, 15],
+      }, "call$0", "get$previousNode", 0, 0, 14],
       "%": "TreeWalker"
     },
     UIEvent: {
       "^": "Event;",
       "%": "CompositionEvent|FocusEvent|SVGZoomEvent|TextEvent;UIEvent"
+    },
+    UnderlyingSourceBase: {
+      "^": "Interceptor;",
+      start$1: function(receiver, stream) {
+        return receiver.start(stream);
+      },
+      "%": "UnderlyingSourceBase"
     },
     Url: {
       "^": "Interceptor;username=",
@@ -13153,6 +12842,13 @@
       $isInterceptor: 1,
       $isObject: 1,
       "%": "URL"
+    },
+    UrlSearchParams: {
+      "^": "Interceptor;",
+      $get$1: function(receiver, $name) {
+        return receiver.get($name);
+      },
+      "%": "URLSearchParams"
     },
     VideoElement: {
       "^": "MediaElement;",
@@ -13177,7 +12873,7 @@
       "^": "Interceptor;length=",
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 118, 0],
+      }, "call$1", "get$item", 2, 0, 65, 0],
       "%": "VTTRegionList"
     },
     WebSocket: {
@@ -13195,9 +12891,6 @@
       get$parent: function(receiver) {
         return W._convertNativeToDart_Window(receiver.parent);
       },
-      print$0: [function(receiver) {
-        return receiver.print();
-      }, "call$0", "get$print", 0, 0, 2],
       get$onError: function(receiver) {
         return new W._EventStream(receiver, "error", false, [W.Event]);
       },
@@ -13227,7 +12920,7 @@
       "%": "CompositorWorkerGlobalScope|DedicatedWorkerGlobalScope|ServiceWorkerGlobalScope;WorkerGlobalScope"
     },
     _Attr: {
-      "^": "Node;name=,value=",
+      "^": "Node;name=,_namespaceUri:namespaceURI=,value=",
       $is_Attr: 1,
       $isNode: 1,
       $isEventTarget: 1,
@@ -13287,7 +12980,7 @@
       $index: function(receiver, index) {
         if (index >>> 0 !== index || index >= receiver.length)
           throw H.wrapException(P.IndexError$(index, receiver, null, null, null));
-        return receiver.item(index);
+        return receiver[index];
       },
       $indexSet: function(receiver, index, value) {
         throw H.wrapException(new P.UnsupportedError("Cannot assign element of immutable List."));
@@ -13301,11 +12994,22 @@
         throw H.wrapException(new P.StateError("No elements"));
       },
       elementAt$1: function(receiver, index) {
-        return this.$index(receiver, index);
+        if (index >>> 0 !== index || index >= receiver.length)
+          return H.ioore(receiver, index);
+        return receiver[index];
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 48, 0],
+      }, "call$1", "get$item", 2, 0, 56, 0],
+      $isJavaScriptIndexingBehavior: 1,
+      $asJavaScriptIndexingBehavior: function() {
+        return [P.Rectangle];
+      },
+      $isJSIndexable: 1,
+      $asJSIndexable: function() {
+        return [P.Rectangle];
+      },
+      $isObject: 1,
       $isList: 1,
       $asList: function() {
         return [P.Rectangle];
@@ -13318,7 +13022,6 @@
       $asIterable: function() {
         return [P.Rectangle];
       },
-      $isObject: 1,
       "%": "ClientRectList|DOMRectList"
     },
     Interceptor_ListMixin8: {
@@ -13379,7 +13082,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 49, 0],
+      }, "call$1", "get$item", 2, 0, 55, 0],
       $isList: 1,
       $asList: function() {
         return [W.CssRule];
@@ -13477,7 +13180,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 50, 0],
+      }, "call$1", "get$item", 2, 0, 51, 0],
       $isJavaScriptIndexingBehavior: 1,
       $asJavaScriptIndexingBehavior: function() {
         return [W.Gamepad];
@@ -13566,7 +13269,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 51, 0],
+      }, "call$1", "get$item", 2, 0, 49, 0],
       $isList: 1,
       $asList: function() {
         return [W.Node];
@@ -13655,7 +13358,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 52, 0],
+      }, "call$1", "get$item", 2, 0, 41, 0],
       $isList: 1,
       $asList: function() {
         return [W.SpeechRecognitionResult];
@@ -13737,7 +13440,7 @@
       },
       item$1: [function(receiver, index) {
         return receiver.item(index);
-      }, "call$1", "get$item", 2, 0, 53, 0],
+      }, "call$1", "get$item", 2, 0, 38, 0],
       $isJavaScriptIndexingBehavior: 1,
       $asJavaScriptIndexingBehavior: function() {
         return [W.StyleSheet];
@@ -13808,14 +13511,6 @@
       addAll$1: function(_, other) {
         J.forEach$1$ax(other, new W._AttributeMap_addAll_closure(this));
       },
-      clear$0: function(_) {
-        var t1, t2, t3, _i, key;
-        for (t1 = this.get$keys(this), t2 = t1.length, t3 = this._html$_element, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i) {
-          key = t1[_i];
-          t3.getAttribute(key);
-          t3.removeAttribute(key);
-        }
-      },
       forEach$1: function(_, f) {
         var t1, t2, t3, _i, key;
         for (t1 = this.get$keys(this), t2 = t1.length, t3 = this._html$_element, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i) {
@@ -13824,28 +13519,30 @@
         }
       },
       get$keys: function(_) {
-        var attributes, keys, len, i, attr;
+        var attributes, keys, len, i, attr, t1;
         attributes = this._html$_element.attributes;
         keys = H.setRuntimeTypeInfo([], [P.String]);
         for (len = attributes.length, i = 0; i < len; ++i) {
           if (i >= attributes.length)
             return H.ioore(attributes, i);
           attr = attributes[i];
-          if (attr.namespaceURI == null)
-            keys.push(J.get$name$x(attr));
+          t1 = J.getInterceptor$x(attr);
+          if (t1.get$_namespaceUri(attr) == null)
+            keys.push(t1.get$name(attr));
         }
         return keys;
       },
       get$values: function(_) {
-        var attributes, values, len, i, attr;
+        var attributes, values, len, i, attr, t1;
         attributes = this._html$_element.attributes;
         values = H.setRuntimeTypeInfo([], [P.String]);
         for (len = attributes.length, i = 0; i < len; ++i) {
           if (i >= attributes.length)
             return H.ioore(attributes, i);
           attr = attributes[i];
-          if (attr.namespaceURI == null)
-            values.push(J.get$value$x(attr));
+          t1 = J.getInterceptor$x(attr);
+          if (t1.get$_namespaceUri(attr) == null)
+            values.push(t1.get$value(attr));
         }
         return values;
       },
@@ -13861,7 +13558,7 @@
       "^": "Closure:3;$this",
       call$2: [function(k, v) {
         this.$this._html$_element.setAttribute(k, v);
-      }, null, null, 4, 0, null, 22, 13, "call"]
+      }, null, null, 4, 0, null, 24, 11, "call"]
     },
     _ElementAttributeMap: {
       "^": "_AttributeMap;_html$_element",
@@ -13902,9 +13599,6 @@
       },
       get$isEmpty: function(_) {
         return this._html$_element.classList.length === 0;
-      },
-      clear$0: function(_) {
-        this._html$_element.className = "";
       },
       contains$1: function(_, value) {
         return typeof value === "string" && this._html$_element.classList.contains(value);
@@ -13963,7 +13657,7 @@
         this._html$_target = null;
         this._html$_onData = null;
         return;
-      }, "call$0", "get$cancel", 0, 0, 43],
+      }, "call$0", "get$cancel", 0, 0, 37],
       onError$1: [function(_, handleError) {
       }, "call$1", "get$onError", 2, 0, 13],
       pause$1: function(_, resumeSignal) {
@@ -14010,7 +13704,7 @@
       "^": "Closure:1;onData",
       call$1: [function(e) {
         return this.onData.call$1(e);
-      }, null, null, 2, 0, null, 28, "call"]
+      }, null, null, 2, 0, null, 34, "call"]
     },
     _Html5NodeValidator: {
       "^": "Object;uriPolicy<",
@@ -14041,9 +13735,8 @@
       $isNodeValidator: 1,
       static: {
         _Html5NodeValidator$: function(uriPolicy) {
-          var t1, e;
-          t1 = document;
-          e = t1.createElement("a");
+          var e, t1;
+          e = document.createElement("a");
           t1 = new W._SameOriginUriPolicy(e, window.location);
           t1 = new W._Html5NodeValidator(t1);
           t1._Html5NodeValidator$1$uriPolicy(uriPolicy);
@@ -14051,21 +13744,20 @@
         },
         _Html5NodeValidator__standardAttributeValidator: [function(element, attributeName, value, context) {
           return true;
-        }, "call$4", "html__Html5NodeValidator__standardAttributeValidator$closure", 8, 0, 32, 16, 52, 5, 50],
+        }, "call$4", "html__Html5NodeValidator__standardAttributeValidator$closure", 8, 0, 21, 14, 55, 2, 48],
         _Html5NodeValidator__uriAttributeValidator: [function(element, attributeName, value, context) {
           var t1, t2, t3, t4, t5;
           t1 = context.get$uriPolicy();
           t2 = t1._hiddenAnchor;
-          t3 = J.getInterceptor$x(t2);
-          t3.set$href(t2, value);
-          t4 = t3.get$hostname(t2);
+          t2.href = value;
+          t3 = t2.hostname;
           t1 = t1._loc;
-          t5 = t1.hostname;
-          if (t4 == null ? t5 == null : t4 === t5) {
-            t4 = t3.get$port(t2);
+          t4 = t1.hostname;
+          if (t3 == null ? t4 == null : t3 === t4) {
+            t4 = t2.port;
             t5 = t1.port;
             if (t4 == null ? t5 == null : t4 === t5) {
-              t4 = t3.get$protocol(t2);
+              t4 = t2.protocol;
               t1 = t1.protocol;
               t1 = t4 == null ? t1 == null : t4 === t1;
             } else
@@ -14073,17 +13765,18 @@
           } else
             t1 = false;
           if (!t1)
-            if (t3.get$hostname(t2) === "")
-              if (t3.get$port(t2) === "")
-                t1 = t3.get$protocol(t2) === ":" || t3.get$protocol(t2) === "";
-              else
+            if (t3 === "")
+              if (t2.port === "") {
+                t1 = t2.protocol;
+                t1 = t1 === ":" || t1 === "";
+              } else
                 t1 = false;
             else
               t1 = false;
           else
             t1 = true;
           return t1;
-        }, "call$4", "html__Html5NodeValidator__uriAttributeValidator$closure", 8, 0, 32, 16, 52, 5, 50]
+        }, "call$4", "html__Html5NodeValidator__uriAttributeValidator$closure", 8, 0, 21, 14, 55, 2, 48]
       }
     },
     ImmutableListMixin: {
@@ -14200,7 +13893,7 @@
         _TemplatingNodeValidator$: function() {
           var t1 = P.String;
           t1 = new W._TemplatingNodeValidator(P.LinkedHashSet_LinkedHashSet$from(C.List_wSV, t1), P.LinkedHashSet_LinkedHashSet(null, null, null, t1), P.LinkedHashSet_LinkedHashSet(null, null, null, t1), P.LinkedHashSet_LinkedHashSet(null, null, null, t1), null);
-          t1._SimpleNodeValidator$4$allowedAttributes$allowedElements$allowedUriAttributes(null, new H.MappedListIterable(C.List_wSV, new W._TemplatingNodeValidator_closure(), [null, null]), ["TEMPLATE"], null);
+          t1._SimpleNodeValidator$4$allowedAttributes$allowedElements$allowedUriAttributes(null, new H.MappedListIterable(C.List_wSV, new W._TemplatingNodeValidator_closure(), [H.getTypeArgumentByIndex(C.List_wSV, 0), null]), ["TEMPLATE"], null);
           return t1;
         }
       }
@@ -14209,7 +13902,7 @@
       "^": "Closure:1;",
       call$1: [function(attr) {
         return "TEMPLATE::" + H.S(attr);
-      }, null, null, 2, 0, null, 72, "call"]
+      }, null, null, 2, 0, null, 137, "call"]
     },
     _SvgNodeValidator: {
       "^": "Object;",
@@ -14232,22 +13925,22 @@
       $isNodeValidator: 1
     },
     FixedSizeListIterator: {
-      "^": "Object;_array,_length,_position,_current,$ti",
+      "^": "Object;_array,_html$_length,_position,_html$_current,$ti",
       moveNext$0: function() {
         var nextPosition, t1;
         nextPosition = this._position + 1;
-        t1 = this._length;
+        t1 = this._html$_length;
         if (nextPosition < t1) {
-          this._current = J.$index$asx(this._array, nextPosition);
+          this._html$_current = J.$index$asx(this._array, nextPosition);
           this._position = nextPosition;
           return true;
         }
-        this._current = null;
+        this._html$_current = null;
         this._position = t1;
         return false;
       },
       get$current: function() {
-        return this._current;
+        return this._html$_current;
       }
     },
     _DOMWindowCrossFrame: {
@@ -14375,7 +14068,7 @@
             return;
           }
         t1 = attrs.get$keys(attrs);
-        keys = H.setRuntimeTypeInfo(t1.slice(), [H.getTypeArgumentByIndex(t1, 0)]);
+        keys = H.setRuntimeTypeInfo(t1.slice(0), [H.getTypeArgumentByIndex(t1, 0)]);
         for (i = attrs.get$keys(attrs).length - 1, t1 = attrs._html$_element; i >= 0; --i) {
           if (i >= keys.length)
             return H.ioore(keys, i);
@@ -14394,7 +14087,7 @@
       }
     },
     _ValidatingTreeSanitizer_sanitizeTree_walk: {
-      "^": "Closure:55;$this",
+      "^": "Closure:39;$this",
       call$2: function(node, $parent) {
         var child, nextChild, t1, exception, t2, t3;
         t1 = this.$this;
@@ -14449,6 +14142,11 @@
       }
       return dict;
     },
+    convertDartToNative_Dictionary: function(dict, postCreate) {
+      var object = {};
+      J.forEach$1$ax(dict, new P.convertDartToNative_Dictionary_closure(object));
+      return object;
+    },
     convertNativePromiseToDartFuture: function(promise) {
       var t1, completer;
       t1 = new P._Future(0, $.Zone__current, null, [null]);
@@ -14482,7 +14180,7 @@
         t1 = J.contains$2$asx(window.navigator.userAgent, "Firefox", 0);
         $.Device__isFirefox = t1;
       }
-      if (t1 === true)
+      if (t1)
         prefix = "-moz-";
       else {
         t1 = $.Device__isIE;
@@ -14490,7 +14188,7 @@
           t1 = P.Device_isOpera() !== true && J.contains$2$asx(window.navigator.userAgent, "Trident/", 0);
           $.Device__isIE = t1;
         }
-        if (t1 === true)
+        if (t1)
           prefix = "-ms-";
         else
           prefix = P.Device_isOpera() === true ? "-o-" : "-webkit-";
@@ -14607,8 +14305,8 @@
         return $length;
       },
       walk$1: function(e) {
-        var t1, millisSinceEpoch, proto, slot, t2, t3, copy, $length, i;
-        t1 = {};
+        var _box_0, millisSinceEpoch, t1, proto, slot, t2, copy, $length, i;
+        _box_0 = {};
         if (e == null)
           return e;
         if (typeof e === "boolean")
@@ -14630,21 +14328,21 @@
         proto = Object.getPrototypeOf(e);
         if (proto === Object.prototype || proto === null) {
           slot = this.findSlot$1(e);
-          t2 = this.copies;
-          t3 = t2.length;
-          if (slot >= t3)
-            return H.ioore(t2, slot);
-          copy = t2[slot];
-          t1.copy = copy;
+          t1 = this.copies;
+          t2 = t1.length;
+          if (slot >= t2)
+            return H.ioore(t1, slot);
+          copy = t1[slot];
+          _box_0.copy = copy;
           if (copy != null)
             return copy;
           copy = P.LinkedHashMap__makeEmpty();
-          t1.copy = copy;
-          if (slot >= t3)
-            return H.ioore(t2, slot);
-          t2[slot] = copy;
-          this.forEachJsField$2(e, new P._AcceptStructuredClone_walk_closure(t1, this));
-          return t1.copy;
+          _box_0.copy = copy;
+          if (slot >= t2)
+            return H.ioore(t1, slot);
+          t1[slot] = copy;
+          this.forEachJsField$2(e, new P._AcceptStructuredClone_walk_closure(_box_0, this));
+          return _box_0.copy;
         }
         if (e instanceof Array) {
           slot = this.findSlot$1(e);
@@ -14681,6 +14379,12 @@
         return t2;
       }
     },
+    convertDartToNative_Dictionary_closure: {
+      "^": "Closure:36;object",
+      call$2: [function(key, value) {
+        this.object[key] = value;
+      }, null, null, 4, 0, null, 20, 2, "call"]
+    },
     _StructuredCloneDart2Js: {
       "^": "_StructuredClone;values,copies"
     },
@@ -14698,13 +14402,13 @@
       "^": "Closure:1;completer",
       call$1: [function(result) {
         return this.completer.complete$1(0, result);
-      }, null, null, 2, 0, null, 21, "call"]
+      }, null, null, 2, 0, null, 23, "call"]
     },
     convertNativePromiseToDartFuture_closure0: {
       "^": "Closure:1;completer",
       call$1: [function(result) {
         return this.completer.completeError$1(result);
-      }, null, null, 2, 0, null, 21, "call"]
+      }, null, null, 2, 0, null, 23, "call"]
     },
     CssClassSetImpl: {
       "^": "Object;",
@@ -14712,7 +14416,7 @@
         if ($.$get$CssClassSetImpl__validTokenRE()._nativeRegExp.test(H.checkString(value)))
           return value;
         throw H.wrapException(P.ArgumentError$value(value, "value", "Not a valid class token"));
-      }, "call$1", "get$_validateToken", 2, 0, 25, 5],
+      }, "call$1", "get$_validateToken", 2, 0, 22, 2],
       toString$0: function(_) {
         return this.readClasses$0().join$1(0, " ");
       },
@@ -14775,9 +14479,6 @@
       toList$0: function($receiver) {
         return this.toList$1$growable($receiver, true);
       },
-      clear$0: function(_) {
-        this.modify$1(0, new P.CssClassSetImpl_clear_closure());
-      },
       modify$1: function(_, f) {
         var s, ret;
         s = this.readClasses$0();
@@ -14805,12 +14506,6 @@
       call$1: function(s) {
         return s.addAll$1(0, J.map$1$ax(this.iterable, this.$this.get$_validateToken()));
       }
-    },
-    CssClassSetImpl_clear_closure: {
-      "^": "Closure:1;",
-      call$1: function(s) {
-        return s.clear$0(0);
-      }
     }
   }], ["dart.dom.indexed_db", "dart:indexed_db",, P, {
     "^": "",
@@ -14830,17 +14525,13 @@
         receiver.continue(key);
       }, function($receiver) {
         return this.next$1($receiver, null);
-      }, "next$0", "call$1", "call$0", "get$next", 0, 2, 56, 1],
+      }, "next$0", "call$1", "call$0", "get$next", 0, 2, 40, 1],
       "%": ";IDBCursor"
     },
     CursorWithValue: {
       "^": "Cursor;",
       get$value: function(receiver) {
-        var t1, t2;
-        t1 = receiver.value;
-        t2 = new P._AcceptStructuredCloneDart2Js([], [], false);
-        t2.mustCopy = false;
-        return t2.walk$1(t1);
+        return new P._AcceptStructuredCloneDart2Js([], [], false).walk$1(receiver.value);
       },
       "%": "IDBCursorWithValue"
     },
@@ -14854,11 +14545,7 @@
     _completeRequest_closure: {
       "^": "Closure:1;request,completer",
       call$1: function(e) {
-        var t1, t2;
-        t1 = this.request.result;
-        t2 = new P._AcceptStructuredCloneDart2Js([], [], false);
-        t2.mustCopy = false;
-        this.completer.complete$1(0, t2.walk$1(t1));
+        this.completer.complete$1(0, new P._AcceptStructuredCloneDart2Js([], [], false).walk$1(this.request.result));
       }
     },
     Index: {
@@ -14870,14 +14557,12 @@
           t1 = P._completeRequest(request);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           stacktrace = H.getTraceFromException(exception);
-          return P.Future_Future$error(e, stacktrace, null);
+          t1 = P.Future_Future$error(e, stacktrace, null);
+          return t1;
         }
       },
-      $isIndex: 1,
-      $isObject: 1,
       "%": "IDBIndex"
     },
     KeyRange: {
@@ -14898,26 +14583,14 @@
           t1 = P._completeRequest(request);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           stacktrace = H.getTraceFromException(exception);
-          return P.Future_Future$error(e, stacktrace, null);
+          t1 = P.Future_Future$error(e, stacktrace, null);
+          return t1;
         }
       },
       add$1: function($receiver, value) {
         return this.add$2($receiver, value, null);
-      },
-      clear$0: function(receiver) {
-        var e, stacktrace, t1, exception;
-        try {
-          t1 = P._completeRequest(receiver.clear());
-          return t1;
-        } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
-          stacktrace = H.getTraceFromException(exception);
-          return P.Future_Future$error(e, stacktrace, null);
-        }
       },
       _indexed_db$_add$2: function(receiver, value, key) {
         if (key != null)
@@ -14932,11 +14605,7 @@
     Request: {
       "^": "EventTarget;error=",
       get$result: function(receiver) {
-        var t1, t2;
-        t1 = receiver.result;
-        t2 = new P._AcceptStructuredCloneDart2Js([], [], false);
-        t2.mustCopy = false;
-        return t2.walk$1(t1);
+        return new P._AcceptStructuredCloneDart2Js([], [], false).walk$1(receiver.result);
       },
       get$onError: function(receiver) {
         return new W._EventStream(receiver, "error", false, [W.Event]);
@@ -14953,15 +14622,16 @@
   }], ["dart.js", "dart:js",, P, {
     "^": "",
     _callDartFunction: [function(callback, captureThis, $self, $arguments) {
-      var arguments0, dartArgs;
+      var arguments0, dartArgs, t1;
       if (captureThis === true) {
         arguments0 = [$self];
         C.JSArray_methods.addAll$1(arguments0, $arguments);
         $arguments = arguments0;
       }
       dartArgs = P.List_List$from(J.map$1$ax($arguments, P.js___convertToDart$closure()), true, null);
-      return P._convertToJS(H.Primitives_applyFunctionWithPositionalArguments(callback, dartArgs));
-    }, null, null, 8, 0, null, 12, 81, 2, 46],
+      t1 = H.Primitives_applyFunctionWithPositionalArguments(callback, dartArgs);
+      return P._convertToJS(t1);
+    }, null, null, 8, 0, null, 26, 126, 3, 38],
     _defineProperty: function(o, $name, value) {
       var exception;
       try {
@@ -14993,7 +14663,7 @@
       if (!!t1.$isFunction)
         return P._getJsProxy(o, "$dart_jsFunction", new P._convertToJS_closure());
       return P._getJsProxy(o, "_$dart_jsObject", new P._convertToJS_closure0($.$get$_dartProxyCtor()));
-    }, "call$1", "js___convertToJS$closure", 2, 0, 1, 30],
+    }, "call$1", "js___convertToJS$closure", 2, 0, 1, 29],
     _getJsProxy: function(o, propertyName, createProxy) {
       var jsProxy = P._getOwnProperty(o, propertyName);
       if (jsProxy == null) {
@@ -15003,7 +14673,7 @@
       return jsProxy;
     },
     _convertToDart: [function(o) {
-      var t1, ms;
+      var t1, t2;
       if (o == null || typeof o == "string" || typeof o == "number" || typeof o == "boolean")
         return o;
       else {
@@ -15015,16 +14685,16 @@
         if (t1)
           return o;
         else if (o instanceof Date) {
-          ms = o.getTime();
-          t1 = new P.DateTime(ms, false);
-          t1.DateTime$_withValue$2$isUtc(ms, false);
-          return t1;
+          t1 = 0 + o.getTime();
+          t2 = new P.DateTime(t1, false);
+          t2.DateTime$_withValue$2$isUtc(t1, false);
+          return t2;
         } else if (o.constructor === $.$get$_dartProxyCtor())
           return o.o;
         else
           return P._wrapToDart(o);
       }
-    }, "call$1", "js___convertToDart$closure", 2, 0, 129, 30],
+    }, "call$1", "js___convertToDart$closure", 2, 0, 113, 29],
     _wrapToDart: function(o) {
       if (typeof o == "function")
         return P._getDartProxy(o, $.$get$DART_CLOSURE_PROPERTY_NAME(), new P._wrapToDart_closure());
@@ -15055,8 +14725,9 @@
       return ret;
     },
     _callDartFunctionFast: [function(callback, $arguments) {
-      return H.Primitives_applyFunctionWithPositionalArguments(callback, $arguments);
-    }, null, null, 4, 0, null, 12, 46],
+      var t1 = H.Primitives_applyFunctionWithPositionalArguments(callback, $arguments);
+      return t1;
+    }, null, null, 4, 0, null, 26, 38],
     allowInterop: function(f) {
       if (typeof f == "function")
         return f;
@@ -15095,7 +14766,8 @@
           return t1;
         } catch (exception) {
           H.unwrapException(exception);
-          return this.super$Object$toString(this);
+          t1 = this.super$Object$toString(this);
+          return t1;
         }
       },
       callMethod$2: function(method, args) {
@@ -15127,7 +14799,7 @@
                 return P._wrapToDart(new constr(P._convertToJS($arguments[0]), P._convertToJS($arguments[1]), P._convertToJS($arguments[2]), P._convertToJS($arguments[3])));
             }
           args = [null];
-          C.JSArray_methods.addAll$1(args, new H.MappedListIterable($arguments, P.js___convertToJS$closure(), [null, null]));
+          C.JSArray_methods.addAll$1(args, new H.MappedListIterable($arguments, P.js___convertToJS$closure(), [H.getTypeArgumentByIndex($arguments, 0), null]));
           factoryFunction = constr.bind.apply(constr, args);
           String(factoryFunction);
           return P._wrapToDart(new factoryFunction());
@@ -15166,7 +14838,7 @@
           return convertedList;
         } else
           return P._convertToJS(o);
-      }, null, null, 2, 0, null, 30, "call"]
+      }, null, null, 2, 0, null, 29, "call"]
     },
     JsFunction: {
       "^": "JsObject;_js$_jsObject",
@@ -15224,8 +14896,10 @@
       setRange$4: function(_, start, end, iterable, skipCount) {
         var $length, args;
         P.JsArray__checkRange(start, end, this.get$length(this));
-        $length = J.$sub$n(end, start);
-        if (J.$eq$($length, 0))
+        if (typeof start !== "number")
+          return H.iae(start);
+        $length = end - start;
+        if ($length === 0)
           return;
         if (J.$lt$n(skipCount, 0))
           throw H.wrapException(P.ArgumentError$(skipCount));
@@ -15240,8 +14914,9 @@
           var t1 = J.getInterceptor$n(start);
           if (t1.$lt(start, 0) || t1.$gt(start, $length))
             throw H.wrapException(P.RangeError$range(start, 0, $length, null, null));
-          t1 = J.getInterceptor$n(end);
-          if (t1.$lt(end, start) || t1.$gt(end, $length))
+          if (typeof start !== "number")
+            return H.iae(start);
+          if (end < start || end > $length)
             throw H.wrapException(P.RangeError$range(end, start, $length, null, null));
         }
       }
@@ -15333,7 +15008,7 @@
       "%": "SVGFEBlendElement"
     },
     FEColorMatrixElement: {
-      "^": "SvgElement;type=,result=",
+      "^": "SvgElement;result=",
       $isInterceptor: 1,
       $isObject: 1,
       "%": "SVGFEColorMatrixElement"
@@ -15417,7 +15092,7 @@
       "%": "SVGFETileElement"
     },
     FETurbulenceElement: {
-      "^": "SvgElement;type=,result=",
+      "^": "SvgElement;result=",
       $isInterceptor: 1,
       $isObject: 1,
       "%": "SVGFETurbulenceElement"
@@ -15468,9 +15143,6 @@
       },
       elementAt$1: function(receiver, index) {
         return this.$index(receiver, index);
-      },
-      clear$0: function(receiver) {
-        return receiver.clear();
       },
       $isList: 1,
       $asList: function() {
@@ -15558,9 +15230,6 @@
       elementAt$1: function(receiver, index) {
         return this.$index(receiver, index);
       },
-      clear$0: function(receiver) {
-        return receiver.clear();
-      },
       $isList: 1,
       $asList: function() {
         return [P.Number];
@@ -15606,12 +15275,24 @@
       $isEfficientLengthIterable: 1,
       $isIterable: 1
     },
-    PathSeg: {
-      "^": "Interceptor;",
+    PatternElement: {
+      "^": "SvgElement;",
+      $isInterceptor: 1,
       $isObject: 1,
-      "%": "SVGPathSeg|SVGPathSegArcAbs|SVGPathSegArcRel|SVGPathSegClosePath|SVGPathSegCurvetoCubicAbs|SVGPathSegCurvetoCubicRel|SVGPathSegCurvetoCubicSmoothAbs|SVGPathSegCurvetoCubicSmoothRel|SVGPathSegCurvetoQuadraticAbs|SVGPathSegCurvetoQuadraticRel|SVGPathSegCurvetoQuadraticSmoothAbs|SVGPathSegCurvetoQuadraticSmoothRel|SVGPathSegLinetoAbs|SVGPathSegLinetoHorizontalAbs|SVGPathSegLinetoHorizontalRel|SVGPathSegLinetoRel|SVGPathSegLinetoVerticalAbs|SVGPathSegLinetoVerticalRel|SVGPathSegMovetoAbs|SVGPathSegMovetoRel"
+      "%": "SVGPatternElement"
     },
-    PathSegList: {
+    PointList: {
+      "^": "Interceptor;length=",
+      "%": "SVGPointList"
+    },
+    ScriptElement: {
+      "^": "SvgElement;",
+      $isScriptElement: 1,
+      $isInterceptor: 1,
+      $isObject: 1,
+      "%": "SVGScriptElement"
+    },
+    StringList: {
       "^": "Interceptor_ListMixin_ImmutableListMixin16;",
       get$length: function(receiver) {
         return receiver.length;
@@ -15635,101 +15316,6 @@
       elementAt$1: function(receiver, index) {
         return this.$index(receiver, index);
       },
-      clear$0: function(receiver) {
-        return receiver.clear();
-      },
-      $isList: 1,
-      $asList: function() {
-        return [P.PathSeg];
-      },
-      $isEfficientLengthIterable: 1,
-      $asEfficientLengthIterable: function() {
-        return [P.PathSeg];
-      },
-      $isIterable: 1,
-      $asIterable: function() {
-        return [P.PathSeg];
-      },
-      $isObject: 1,
-      "%": "SVGPathSegList"
-    },
-    Interceptor_ListMixin16: {
-      "^": "Interceptor+ListMixin;",
-      $asList: function() {
-        return [P.PathSeg];
-      },
-      $asEfficientLengthIterable: function() {
-        return [P.PathSeg];
-      },
-      $asIterable: function() {
-        return [P.PathSeg];
-      },
-      $isList: 1,
-      $isEfficientLengthIterable: 1,
-      $isIterable: 1
-    },
-    Interceptor_ListMixin_ImmutableListMixin16: {
-      "^": "Interceptor_ListMixin16+ImmutableListMixin;",
-      $asList: function() {
-        return [P.PathSeg];
-      },
-      $asEfficientLengthIterable: function() {
-        return [P.PathSeg];
-      },
-      $asIterable: function() {
-        return [P.PathSeg];
-      },
-      $isList: 1,
-      $isEfficientLengthIterable: 1,
-      $isIterable: 1
-    },
-    PatternElement: {
-      "^": "SvgElement;",
-      $isInterceptor: 1,
-      $isObject: 1,
-      "%": "SVGPatternElement"
-    },
-    PointList: {
-      "^": "Interceptor;length=",
-      clear$0: function(receiver) {
-        return receiver.clear();
-      },
-      "%": "SVGPointList"
-    },
-    ScriptElement: {
-      "^": "SvgElement;type=",
-      $isScriptElement: 1,
-      $isInterceptor: 1,
-      $isObject: 1,
-      "%": "SVGScriptElement"
-    },
-    StringList: {
-      "^": "Interceptor_ListMixin_ImmutableListMixin17;",
-      get$length: function(receiver) {
-        return receiver.length;
-      },
-      $index: function(receiver, index) {
-        if (index >>> 0 !== index || index >= receiver.length)
-          throw H.wrapException(P.IndexError$(index, receiver, null, null, null));
-        return receiver.getItem(index);
-      },
-      $indexSet: function(receiver, index, value) {
-        throw H.wrapException(new P.UnsupportedError("Cannot assign element of immutable List."));
-      },
-      set$length: function(receiver, value) {
-        throw H.wrapException(new P.UnsupportedError("Cannot resize immutable List."));
-      },
-      get$first: function(receiver) {
-        if (receiver.length > 0)
-          return receiver[0];
-        throw H.wrapException(new P.StateError("No elements"));
-      },
-      elementAt$1: function(receiver, index) {
-        return this.$index(receiver, index);
-      },
-      clear$0: function(receiver) {
-        return receiver.clear();
-      },
       $isList: 1,
       $asList: function() {
         return [P.String];
@@ -15745,7 +15331,7 @@
       $isObject: 1,
       "%": "SVGStringList"
     },
-    Interceptor_ListMixin17: {
+    Interceptor_ListMixin16: {
       "^": "Interceptor+ListMixin;",
       $asList: function() {
         return [P.String];
@@ -15760,8 +15346,8 @@
       $isEfficientLengthIterable: 1,
       $isIterable: 1
     },
-    Interceptor_ListMixin_ImmutableListMixin17: {
-      "^": "Interceptor_ListMixin17+ImmutableListMixin;",
+    Interceptor_ListMixin_ImmutableListMixin16: {
+      "^": "Interceptor_ListMixin16+ImmutableListMixin;",
       $asList: function() {
         return [P.String];
       },
@@ -15775,11 +15361,7 @@
       $isEfficientLengthIterable: 1,
       $isIterable: 1
     },
-    StyleElement0: {
-      "^": "SvgElement;type=",
-      "%": "SVGStyleElement"
-    },
-    _AttributeClassSet: {
+    AttributeClassSet: {
       "^": "CssClassSetImpl;_svg$_element",
       readClasses$0: function() {
         var classname, s, t1, t2, _i, trimmed;
@@ -15801,7 +15383,7 @@
     SvgElement: {
       "^": "Element;",
       get$classes: function(receiver) {
-        return new P._AttributeClassSet(receiver);
+        return new P.AttributeClassSet(receiver);
       },
       set$innerHtml: function(receiver, value) {
         this.setInnerHtml$1(receiver, value);
@@ -15809,11 +15391,10 @@
       createFragment$3$treeSanitizer$validator: function(receiver, svg, treeSanitizer, validator) {
         var t1, html, t2, fragment, svgFragment, root;
         t1 = H.setRuntimeTypeInfo([], [W.NodeValidator]);
-        validator = new W.NodeValidatorBuilder(t1);
         t1.push(W._Html5NodeValidator$(null));
         t1.push(W._TemplatingNodeValidator$());
         t1.push(new W._SvgNodeValidator());
-        treeSanitizer = new W._ValidatingTreeSanitizer(validator);
+        treeSanitizer = new W._ValidatingTreeSanitizer(new W.NodeValidatorBuilder(t1));
         html = '<svg version="1.1">' + H.S(svg) + "</svg>";
         t1 = document;
         t2 = t1.body;
@@ -15833,7 +15414,7 @@
       $isEventTarget: 1,
       $isInterceptor: 1,
       $isObject: 1,
-      "%": "SVGComponentTransferFunctionElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFEPointLightElement|SVGFESpotLightElement|SVGMetadataElement|SVGStopElement|SVGTitleElement;SVGElement"
+      "%": "SVGComponentTransferFunctionElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFEPointLightElement|SVGFESpotLightElement|SVGMetadataElement|SVGStopElement|SVGStyleElement|SVGTitleElement;SVGElement"
     },
     SvgSvgElement: {
       "^": "GraphicsElement;",
@@ -15858,12 +15439,12 @@
       "%": "SVGTextPathElement"
     },
     Transform: {
-      "^": "Interceptor;type=",
+      "^": "Interceptor;",
       $isObject: 1,
       "%": "SVGTransform"
     },
     TransformList: {
-      "^": "Interceptor_ListMixin_ImmutableListMixin18;",
+      "^": "Interceptor_ListMixin_ImmutableListMixin17;",
       get$length: function(receiver) {
         return receiver.length;
       },
@@ -15886,9 +15467,6 @@
       elementAt$1: function(receiver, index) {
         return this.$index(receiver, index);
       },
-      clear$0: function(receiver) {
-        return receiver.clear();
-      },
       $isList: 1,
       $asList: function() {
         return [P.Transform];
@@ -15904,7 +15482,7 @@
       $isObject: 1,
       "%": "SVGTransformList"
     },
-    Interceptor_ListMixin18: {
+    Interceptor_ListMixin17: {
       "^": "Interceptor+ListMixin;",
       $asList: function() {
         return [P.Transform];
@@ -15919,8 +15497,8 @@
       $isEfficientLengthIterable: 1,
       $isIterable: 1
     },
-    Interceptor_ListMixin_ImmutableListMixin18: {
-      "^": "Interceptor_ListMixin18+ImmutableListMixin;",
+    Interceptor_ListMixin_ImmutableListMixin17: {
+      "^": "Interceptor_ListMixin17+ImmutableListMixin;",
       $asList: function() {
         return [P.Transform];
       },
@@ -15997,7 +15575,7 @@
     },
     AudioNode: {
       "^": "EventTarget;",
-      "%": "AnalyserNode|AudioChannelMerger|AudioChannelSplitter|AudioDestinationNode|AudioGainNode|AudioPannerNode|ChannelMergerNode|ChannelSplitterNode|ConvolverNode|DelayNode|DynamicsCompressorNode|GainNode|JavaScriptAudioNode|MediaStreamAudioDestinationNode|PannerNode|RealtimeAnalyserNode|ScriptProcessorNode|StereoPannerNode|WaveShaperNode|webkitAudioPannerNode;AudioNode"
+      "%": "AnalyserNode|AudioChannelMerger|AudioChannelSplitter|AudioDestinationNode|AudioGainNode|AudioPannerNode|BiquadFilterNode|ChannelMergerNode|ChannelSplitterNode|ConvolverNode|DelayNode|DynamicsCompressorNode|GainNode|IIRFilterNode|JavaScriptAudioNode|MediaStreamAudioDestinationNode|PannerNode|RealtimeAnalyserNode|ScriptProcessorNode|StereoPannerNode|WaveShaperNode|webkitAudioPannerNode;AudioNode"
     },
     AudioParam: {
       "^": "Interceptor;value=",
@@ -16007,12 +15585,8 @@
       "^": "AudioNode;",
       "%": "MediaElementAudioSourceNode|MediaStreamAudioSourceNode;AudioSourceNode"
     },
-    BiquadFilterNode: {
-      "^": "AudioNode;type=",
-      "%": "BiquadFilterNode"
-    },
     OscillatorNode: {
-      "^": "AudioSourceNode;type=",
+      "^": "AudioSourceNode;",
       start$1: function(receiver, when) {
         return receiver.start(when);
       },
@@ -16021,7 +15595,7 @@
   }], ["dart.dom.web_gl", "dart:web_gl",, P, {
     "^": "",
     ActiveInfo: {
-      "^": "Interceptor;name=,type=",
+      "^": "Interceptor;name=",
       "%": "WebGLActiveInfo"
     },
     RenderingContext: {
@@ -16044,7 +15618,7 @@
   }], ["dart.dom.web_sql", "dart:web_sql",, P, {
     "^": "",
     SqlResultSetRowList: {
-      "^": "Interceptor_ListMixin_ImmutableListMixin19;",
+      "^": "Interceptor_ListMixin_ImmutableListMixin18;",
       get$length: function(receiver) {
         return receiver.length;
       },
@@ -16069,7 +15643,7 @@
       },
       item$1: [function(receiver, index) {
         return P.convertNativeToDart_Dictionary(receiver.item(index));
-      }, "call$1", "get$item", 2, 0, 57, 0],
+      }, "call$1", "get$item", 2, 0, 62, 0],
       $isList: 1,
       $asList: function() {
         return [P.Map];
@@ -16085,7 +15659,7 @@
       $isObject: 1,
       "%": "SQLResultSetRowList"
     },
-    Interceptor_ListMixin19: {
+    Interceptor_ListMixin18: {
       "^": "Interceptor+ListMixin;",
       $asList: function() {
         return [P.Map];
@@ -16100,8 +15674,8 @@
       $isEfficientLengthIterable: 1,
       $isIterable: 1
     },
-    Interceptor_ListMixin_ImmutableListMixin19: {
-      "^": "Interceptor_ListMixin19+ImmutableListMixin;",
+    Interceptor_ListMixin_ImmutableListMixin18: {
+      "^": "Interceptor_ListMixin18+ImmutableListMixin;",
       $asList: function() {
         return [P.Map];
       },
@@ -16242,10 +15816,10 @@
       L.initReflector5();
     },
     initReflector_closure64: {
-      "^": "Closure:58;",
+      "^": "Closure:42;",
       call$3: [function(_iterableDiffers, _keyValueDiffers, _ngEl) {
         return new Y.NgClass(_iterableDiffers, _keyValueDiffers, _ngEl, null, null, [], null);
-      }, null, null, 6, 0, null, 49, 90, 60, "call"]
+      }, null, null, 6, 0, null, 40, 124, 105, "call"]
     }
   }], ["", "package:angular2/src/common/directives/ng_for.dart",, R, {
     "^": "",
@@ -16307,7 +15881,7 @@
       }
     },
     NgFor__applyChanges_closure: {
-      "^": "Closure:59;$this,insertTuples",
+      "^": "Closure:43;$this,insertTuples",
       call$3: function(item, adjustedPreviousIndex, currentIndex) {
         var t1, view, tuple;
         if (item.get$previousIndex() == null) {
@@ -16353,10 +15927,10 @@
       O.initReflector21();
     },
     initReflector_closure63: {
-      "^": "Closure:60;",
+      "^": "Closure:44;",
       call$4: [function(_viewContainer, _templateRef, _iterableDiffers, _cdr) {
         return new R.NgFor(_viewContainer, _templateRef, _iterableDiffers, _cdr, null, null, null);
-      }, null, null, 8, 0, null, 39, 38, 49, 102, "call"]
+      }, null, null, 8, 0, null, 39, 42, 40, 100, "call"]
     }
   }], ["", "package:angular2/src/common/directives/ng_if.dart",, K, {
     "^": "",
@@ -16373,10 +15947,10 @@
       L.initReflector5();
     },
     initReflector_closure62: {
-      "^": "Closure:61;",
+      "^": "Closure:45;",
       call$2: [function(_viewContainer, _templateRef) {
         return new K.NgIf(_templateRef, _viewContainer, false);
-      }, null, null, 4, 0, null, 39, 38, "call"]
+      }, null, null, 4, 0, null, 39, 42, "call"]
     }
   }], ["", "package:angular2/src/common/directives/ng_plural.dart",, A, {
     "^": "",
@@ -16402,18 +15976,18 @@
       S.initReflector128();
     },
     initReflector_closure60: {
-      "^": "Closure:62;",
+      "^": "Closure:46;",
       call$3: [function(value, template, viewContainer) {
         var t1 = new A.NgPluralCase(value, null);
         t1._ng_plural$_view = new V.SwitchView(viewContainer, template);
         return t1;
-      }, null, null, 6, 0, null, 5, 104, 33, "call"]
+      }, null, null, 6, 0, null, 2, 91, 27, "call"]
     },
     initReflector_closure61: {
-      "^": "Closure:63;",
+      "^": "Closure:47;",
       call$1: [function(_localization) {
         return new A.NgPlural(_localization, null, null, new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [null, V.SwitchView]), null);
-      }, null, null, 2, 0, null, 124, "call"]
+      }, null, null, 2, 0, null, 83, "call"]
     }
   }], ["", "package:angular2/src/common/directives/ng_style.dart",, X, {
     "^": "",
@@ -16431,18 +16005,15 @@
       K.initReflector31();
     },
     initReflector_closure59: {
-      "^": "Closure:64;",
+      "^": "Closure:48;",
       call$2: [function(_differs, elementRef) {
         return new X.NgStyle(_differs, elementRef.get$nativeElement(), null, null);
-      }, null, null, 4, 0, null, 125, 127, "call"]
+      }, null, null, 4, 0, null, 71, 140, "call"]
     }
   }], ["", "package:angular2/src/common/directives/ng_switch.dart",, V, {
     "^": "",
     SwitchView: {
-      "^": "Object;_viewContainerRef,_ng_switch$_templateRef",
-      destroy$0: function() {
-        J.clear$0$ax(this._viewContainerRef);
-      }
+      "^": "Object;_viewContainerRef,_ng_switch$_templateRef"
     },
     NgSwitch: {
       "^": "Object;_ng_switch$_switchValue,_useDefault,_valueViews,_activeViews",
@@ -16478,25 +16049,24 @@
     initReflector_closure56: {
       "^": "Closure:0;",
       call$0: [function() {
-        var t1 = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [null, [P.List, V.SwitchView]]);
-        return new V.NgSwitch(null, false, t1, []);
+        return new V.NgSwitch(null, false, new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [null, [P.List, V.SwitchView]]), []);
       }, null, null, 0, 0, null, "call"]
     },
     initReflector_closure57: {
-      "^": "Closure:42;",
+      "^": "Closure:35;",
       call$3: [function(viewContainer, templateRef, ngSwitch) {
         var t1 = new V.NgSwitchWhen(C.C_Object, null, null);
         t1._switch = ngSwitch;
         t1._ng_switch$_view = new V.SwitchView(viewContainer, templateRef);
         return t1;
-      }, null, null, 6, 0, null, 33, 37, 138, "call"]
+      }, null, null, 6, 0, null, 27, 44, 68, "call"]
     },
     initReflector_closure58: {
-      "^": "Closure:42;",
+      "^": "Closure:35;",
       call$3: [function(viewContainer, templateRef, sswitch) {
         sswitch._registerView$2(C.C_Object, new V.SwitchView(viewContainer, templateRef));
         return new V.NgSwitchDefault();
-      }, null, null, 6, 0, null, 33, 37, 140, "call"]
+      }, null, null, 6, 0, null, 27, 44, 67, "call"]
     }
   }], ["", "package:angular2/src/common/directives/ng_template_outlet.dart",, L, {
     "^": "",
@@ -16513,10 +16083,10 @@
       L.initReflector5();
     },
     initReflector_closure55: {
-      "^": "Closure:66;",
+      "^": "Closure:50;",
       call$1: [function(_viewContainerRef) {
         return new L.NgTemplateOutlet(_viewContainerRef, null);
-      }, null, null, 2, 0, null, 141, "call"]
+      }, null, null, 2, 0, null, 60, "call"]
     }
   }], ["", "package:angular2/src/common/directives/observable_list_diff.template.dart",, K, {
     "^": "",
@@ -16602,12 +16172,12 @@
     CheckboxControlValueAccessor: {
       "^": "Object;_checkbox_value_accessor$_elementRef,onChange,onTouched"
     },
-    closure15: {
+    closure16: {
       "^": "Closure:1;",
       call$1: function(_) {
       }
     },
-    closure16: {
+    closure17: {
       "^": "Closure:0;",
       call$0: function() {
       }
@@ -16623,10 +16193,10 @@
       R.initReflector104();
     },
     initReflector_closure51: {
-      "^": "Closure:10;",
+      "^": "Closure:9;",
       call$1: [function(_elementRef) {
-        return new N.CheckboxControlValueAccessor(_elementRef, new N.closure15(), new N.closure16());
-      }, null, null, 2, 0, null, 14, "call"]
+        return new N.CheckboxControlValueAccessor(_elementRef, new N.closure16(), new N.closure17());
+      }, null, null, 2, 0, null, 17, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/control_container.dart",, K, {
     "^": "",
@@ -16670,12 +16240,12 @@
     DefaultValueAccessor: {
       "^": "Object;_default_value_accessor$_elementRef,onChange,onTouched"
     },
-    closure13: {
+    closure14: {
       "^": "Closure:1;",
       call$1: function(_) {
       }
     },
-    closure14: {
+    closure15: {
       "^": "Closure:0;",
       call$0: function() {
       }
@@ -16691,10 +16261,10 @@
       R.initReflector104();
     },
     initReflector_closure50: {
-      "^": "Closure:10;",
+      "^": "Closure:9;",
       call$1: [function(_elementRef) {
-        return new O.DefaultValueAccessor(_elementRef, new O.closure13(), new O.closure14());
-      }, null, null, 2, 0, null, 14, "call"]
+        return new O.DefaultValueAccessor(_elementRef, new O.closure14(), new O.closure15());
+      }, null, null, 2, 0, null, 17, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/form_interface.template.dart",, Q, {
     "^": "",
@@ -16758,10 +16328,10 @@
       L.initReflector116();
     },
     initReflector_closure49: {
-      "^": "Closure:68;",
+      "^": "Closure:52;",
       call$3: [function(_parent, _validators, _asyncValidators) {
         return new A.NgControlGroup(_validators, _asyncValidators, _parent, null);
-      }, null, null, 6, 0, null, 59, 20, 19, "call"]
+      }, null, null, 6, 0, null, 58, 18, 16, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/ng_control_name.dart",, N, {
     "^": "",
@@ -16798,12 +16368,12 @@
       L.initReflector116();
     },
     initReflector_closure48: {
-      "^": "Closure:69;",
+      "^": "Closure:53;",
       call$4: [function(_parent, _validators, _asyncValidators, valueAccessors) {
         var t1 = new N.NgControlName(_parent, _validators, _asyncValidators, B.EventEmitter$(true, null), null, null, false, null, null);
         t1.valueAccessor = X.selectValueAccessor(t1, valueAccessors);
         return t1;
-      }, null, null, 8, 0, null, 59, 20, 19, 36, "call"]
+      }, null, null, 8, 0, null, 58, 18, 16, 28, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/ng_control_status.dart",, Q, {
     "^": "",
@@ -16821,12 +16391,12 @@
       G.initReflector107();
     },
     initReflector_closure47: {
-      "^": "Closure:141;",
+      "^": "Closure:54;",
       call$1: [function(cd) {
         var t1 = new Q.NgControlStatus(null);
         t1._cd = cd;
         return t1;
-      }, null, null, 2, 0, null, 66, "call"]
+      }, null, null, 2, 0, null, 64, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/ng_form.dart",, L, {
     "^": "",
@@ -16877,13 +16447,13 @@
       O.initReflector119();
     },
     initReflector_closure46: {
-      "^": "Closure:40;",
+      "^": "Closure:33;",
       call$2: [function(validators, asyncValidators) {
         var t1 = Z.ControlGroup;
         t1 = new L.NgForm(null, B.EventEmitter$(false, t1), B.EventEmitter$(false, t1), null);
         t1.form = Z.ControlGroup$(P.LinkedHashMap__makeEmpty(), null, X.composeValidators(validators), X.composeAsyncValidators(asyncValidators));
         return t1;
-      }, null, null, 4, 0, null, 67, 68, "call"]
+      }, null, null, 4, 0, null, 65, 66, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/ng_form_control.dart",, T, {
     "^": "",
@@ -16912,12 +16482,12 @@
       L.initReflector116();
     },
     initReflector_closure45: {
-      "^": "Closure:39;",
+      "^": "Closure:32;",
       call$3: [function(_validators, _asyncValidators, valueAccessors) {
         var t1 = new T.NgFormControl(_validators, _asyncValidators, null, B.EventEmitter$(true, null), null, null, null, null);
         t1.valueAccessor = X.selectValueAccessor(t1, valueAccessors);
         return t1;
-      }, null, null, 6, 0, null, 20, 19, 36, "call"]
+      }, null, null, 6, 0, null, 18, 16, 28, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/ng_form_model.dart",, K, {
     "^": "",
@@ -16969,11 +16539,11 @@
       O.initReflector119();
     },
     initReflector_closure44: {
-      "^": "Closure:40;",
+      "^": "Closure:33;",
       call$2: [function(_validators, _asyncValidators) {
         var t1 = Z.ControlGroup;
         return new K.NgFormModel(_validators, _asyncValidators, null, [], B.EventEmitter$(false, t1), B.EventEmitter$(false, t1), null);
-      }, null, null, 4, 0, null, 20, 19, "call"]
+      }, null, null, 4, 0, null, 18, 16, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/ng_model.dart",, U, {
     "^": "",
@@ -17002,12 +16572,12 @@
       L.initReflector116();
     },
     initReflector_closure42: {
-      "^": "Closure:39;",
+      "^": "Closure:32;",
       call$3: [function(_validators, _asyncValidators, valueAccessors) {
         var t1 = new U.NgModel(_validators, _asyncValidators, Z.Control$(null, null, null), false, B.EventEmitter$(false, null), null, null, null, null);
         t1.valueAccessor = X.selectValueAccessor(t1, valueAccessors);
         return t1;
-      }, null, null, 6, 0, null, 20, 19, 36, "call"]
+      }, null, null, 6, 0, null, 18, 16, 28, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/normalize_validator.dart",, D, {
     "^": "",
@@ -17015,25 +16585,25 @@
       if (!!J.getInterceptor(validator).$isValidator)
         return new D.normalizeValidator_closure(validator);
       else
-        return H.buildFunctionType(H.buildInterfaceType(P.Map, [H.buildInterfaceType(P.String), H.getDynamicRuntimeType()]), [H.buildInterfaceType(Z.AbstractControl)])._asCheck$1(validator);
-    }, "call$1", "normalize_validator__normalizeValidator$closure", 2, 0, 130, 40],
+        return H.functionTypeCast(validator, {func: 1, ret: [P.Map, P.String,,], args: [Z.AbstractControl]});
+    }, "call$1", "normalize_validator__normalizeValidator$closure", 2, 0, 114, 57],
     normalizeAsyncValidator: [function(validator) {
       if (!!J.getInterceptor(validator).$isValidator)
         return new D.normalizeAsyncValidator_closure(validator);
       else
         return validator;
-    }, "call$1", "normalize_validator__normalizeAsyncValidator$closure", 2, 0, 131, 40],
+    }, "call$1", "normalize_validator__normalizeAsyncValidator$closure", 2, 0, 115, 57],
     normalizeValidator_closure: {
       "^": "Closure:1;validator",
       call$1: [function(c) {
         return this.validator.validate$1(c);
-      }, null, null, 2, 0, null, 41, "call"]
+      }, null, null, 2, 0, null, 56, "call"]
     },
     normalizeAsyncValidator_closure: {
       "^": "Closure:1;validator",
       call$1: [function(c) {
         return this.validator.validate$1(c);
-      }, null, null, 2, 0, null, 41, "call"]
+      }, null, null, 2, 0, null, 56, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/normalize_validator.template.dart",, R, {
     "^": "",
@@ -17048,12 +16618,12 @@
     NumberValueAccessor: {
       "^": "Object;_number_value_accessor$_elementRef,onChange,onTouched"
     },
-    closure11: {
+    closure12: {
       "^": "Closure:1;",
       call$1: function(_) {
       }
     },
-    closure12: {
+    closure13: {
       "^": "Closure:0;",
       call$0: function() {
       }
@@ -17069,10 +16639,10 @@
       R.initReflector104();
     },
     initReflector_closure43: {
-      "^": "Closure:10;",
+      "^": "Closure:9;",
       call$1: [function(_elementRef) {
-        return new O.NumberValueAccessor(_elementRef, new O.closure11(), new O.closure12());
-      }, null, null, 2, 0, null, 14, "call"]
+        return new O.NumberValueAccessor(_elementRef, new O.closure12(), new O.closure13());
+      }, null, null, 2, 0, null, 17, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/radio_control_value_accessor.dart",, G, {
     "^": "",
@@ -17089,16 +16659,14 @@
       }
     },
     RadioControlValueAccessor: {
-      "^": "Object;_radio_control_value_accessor$_elementRef,_registry,_radio_control_value_accessor$_injector,_radio_control_value_accessor$_state,_radio_control_value_accessor$_control,name>,_fn,onChange,onTouched",
-      $isControlValueAccessor: 1,
-      $asControlValueAccessor: Isolate.functionThatReturnsNull
+      "^": "Object;_radio_control_value_accessor$_elementRef,_registry,_radio_control_value_accessor$_injector,_radio_control_value_accessor$_state,_radio_control_value_accessor$_control,name>,_fn,onChange,onTouched"
     },
-    closure17: {
+    closure18: {
       "^": "Closure:0;",
       call$0: function() {
       }
     },
-    closure18: {
+    closure19: {
       "^": "Closure:0;",
       call$0: function() {
       }
@@ -17123,10 +16691,10 @@
       }, null, null, 0, 0, null, "call"]
     },
     initReflector_closure54: {
-      "^": "Closure:73;",
+      "^": "Closure:57;",
       call$3: [function(_elementRef, _registry, _injector) {
-        return new G.RadioControlValueAccessor(_elementRef, _registry, _injector, null, null, null, null, new G.closure17(), new G.closure18());
-      }, null, null, 6, 0, null, 14, 71, 42, "call"]
+        return new G.RadioControlValueAccessor(_elementRef, _registry, _injector, null, null, null, null, new G.closure18(), new G.closure19());
+      }, null, null, 6, 0, null, 17, 69, 36, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/select_control_value_accessor.dart",, X, {
     "^": "",
@@ -17138,12 +16706,12 @@
       $isControlValueAccessor: 1,
       $asControlValueAccessor: Isolate.functionThatReturnsNull
     },
-    closure7: {
+    closure8: {
       "^": "Closure:1;",
       call$1: function(_) {
       }
     },
-    closure8: {
+    closure9: {
       "^": "Closure:0;",
       call$0: function() {
       }
@@ -17164,20 +16732,19 @@
       R.initReflector104();
     },
     initReflector_closure40: {
-      "^": "Closure:10;",
+      "^": "Closure:9;",
       call$1: [function(_elementRef) {
-        var t1 = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [P.String, null]);
-        return new X.SelectControlValueAccessor(_elementRef, null, t1, 0, new X.closure7(), new X.closure8());
-      }, null, null, 2, 0, null, 14, "call"]
+        return new X.SelectControlValueAccessor(_elementRef, null, new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [P.String, null]), 0, new X.closure8(), new X.closure9());
+      }, null, null, 2, 0, null, 17, "call"]
     },
     initReflector_closure41: {
-      "^": "Closure:74;",
+      "^": "Closure:58;",
       call$2: [function(_element, _select) {
         var t1 = new X.NgSelectOption(_element, _select, null);
         if (_select != null)
           t1.id = _select._registerOption$0();
         return t1;
-      }, null, null, 4, 0, null, 73, 74, "call"]
+      }, null, null, 4, 0, null, 88, 72, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/shared.dart",, X, {
     "^": "",
@@ -17212,7 +16779,7 @@
       X._throwError(dir, "No valid value accessor for");
     },
     selectValueAccessor_closure: {
-      "^": "Closure:75;_box_0,dir",
+      "^": "Closure:59;_box_0,dir",
       call$1: [function(v) {
         var t1 = J.getInterceptor(v);
         if (t1.get$runtimeType(v).$eq(0, C.Type_DefaultValueAccessor_EOZ))
@@ -17228,7 +16795,7 @@
             X._throwError(this.dir, "More than one custom value accessor matches");
           t1.customAccessor = v;
         }
-      }, null, null, 2, 0, null, 13, "call"]
+      }, null, null, 2, 0, null, 11, "call"]
     }
   }], ["", "package:angular2/src/common/forms/directives/shared.template.dart",, O, {
     "^": "",
@@ -17305,7 +16872,7 @@
         var t1 = new B.MinLengthValidator(null);
         t1._validator = B.Validators_minLength(H.Primitives_parseInt(minLength, 10, null));
         return t1;
-      }, null, null, 2, 0, null, 75, "call"]
+      }, null, null, 2, 0, null, 73, "call"]
     },
     initReflector_closure38: {
       "^": "Closure:6;",
@@ -17313,7 +16880,7 @@
         var t1 = new B.MaxLengthValidator(null);
         t1._validator = B.Validators_maxLength(H.Primitives_parseInt(maxLength, 10, null));
         return t1;
-      }, null, null, 2, 0, null, 76, "call"]
+      }, null, null, 2, 0, null, 74, "call"]
     },
     initReflector_closure39: {
       "^": "Closure:6;",
@@ -17321,7 +16888,7 @@
         var t1 = new B.PatternValidator(null);
         t1._validator = B.Validators_pattern(pattern);
         return t1;
-      }, null, null, 2, 0, null, 77, "call"]
+      }, null, null, 2, 0, null, 75, "call"]
     }
   }], ["", "package:angular2/src/common/forms/form_builder.dart",, O, {
     "^": "",
@@ -17351,9 +16918,10 @@
       var t1 = J.getInterceptor(path);
       if (!t1.$isList)
         path = t1.split$1(H.stringTypeCast(path), "/");
-      if (!!J.getInterceptor(path).$isList && path.length === 0)
+      t1 = path.length;
+      if (t1 === 0)
         return;
-      return C.JSArray_methods.fold$2(H.listTypeCast(path), control, new Z._find_closure());
+      return C.JSArray_methods.fold$2(path, control, new Z._find_closure());
     },
     _find_closure: {
       "^": "Closure:3;",
@@ -17452,7 +17020,7 @@
       }
     },
     AbstractControl__runAsyncValidator_closure: {
-      "^": "Closure:76;$this,emitEvent",
+      "^": "Closure:60;$this,emitEvent",
       call$1: [function(res) {
         var t1, t2, t3;
         t1 = this.$this;
@@ -17474,7 +17042,7 @@
         }
         t1.markAsDirty$0();
         return;
-      }, null, null, 2, 0, null, 78, "call"]
+      }, null, null, 2, 0, null, 76, "call"]
     },
     Control: {
       "^": "AbstractControl;_onChange,validator,asyncValidator,_model$_value,_valueChanges,_statusChanges,_status,_errors,_pristine,_touched,_model$_parent,_asyncValidationSubscription",
@@ -17547,7 +17115,7 @@
       }
     },
     ControlGroup__reduceValue_closure: {
-      "^": "Closure:77;",
+      "^": "Closure:61;",
       call$3: function(acc, control, $name) {
         J.$indexSet$ax(acc, $name, J.get$value$x(control));
         return acc;
@@ -17606,19 +17174,19 @@
       if (!!t1.$isStream)
         return t1.get$single(futureOrStream);
       return futureOrStream;
-    }, "call$1", "validators0___toFuture$closure", 2, 0, 132, 79],
+    }, "call$1", "validators0___toFuture$closure", 2, 0, 116, 77],
     _executeValidators: function(control, validators) {
-      return new H.MappedListIterable(validators, new B._executeValidators_closure(control), [null, null]).toList$0(0);
+      return new H.MappedListIterable(validators, new B._executeValidators_closure(control), [H.getTypeArgumentByIndex(validators, 0), null]).toList$0(0);
     },
     _executeAsyncValidators: function(control, validators) {
-      return new H.MappedListIterable(validators, new B._executeAsyncValidators_closure(control), [null, null]).toList$0(0);
+      return new H.MappedListIterable(validators, new B._executeAsyncValidators_closure(control), [H.getTypeArgumentByIndex(validators, 0), null]).toList$0(0);
     },
     _mergeErrors: [function(arrayOfErrors) {
       var res = J.fold$2$ax(arrayOfErrors, P.LinkedHashMap__makeEmpty(), new B._mergeErrors_closure());
       return J.get$isEmpty$asx(res) === true ? null : res;
-    }, "call$1", "validators0___mergeErrors$closure", 2, 0, 133, 80],
+    }, "call$1", "validators0___mergeErrors$closure", 2, 0, 117, 78],
     Validators_minLength_closure: {
-      "^": "Closure:8;minLength",
+      "^": "Closure:7;minLength",
       call$1: [function(control) {
         var v, t1, t2;
         if (B.Validators_required(control) != null)
@@ -17627,10 +17195,10 @@
         t1 = J.getInterceptor$asx(v);
         t2 = this.minLength;
         return J.$lt$n(t1.get$length(v), t2) ? P.LinkedHashMap__makeLiteral(["minlength", P.LinkedHashMap__makeLiteral(["requiredLength", t2, "actualLength", t1.get$length(v)])]) : null;
-      }, null, null, 2, 0, null, 18, "call"]
+      }, null, null, 2, 0, null, 13, "call"]
     },
     Validators_maxLength_closure: {
-      "^": "Closure:8;maxLength",
+      "^": "Closure:7;maxLength",
       call$1: [function(control) {
         var v, t1, t2;
         if (B.Validators_required(control) != null)
@@ -17639,10 +17207,10 @@
         t1 = J.getInterceptor$asx(v);
         t2 = this.maxLength;
         return J.$gt$n(t1.get$length(v), t2) ? P.LinkedHashMap__makeLiteral(["maxlength", P.LinkedHashMap__makeLiteral(["requiredLength", t2, "actualLength", t1.get$length(v)])]) : null;
-      }, null, null, 2, 0, null, 18, "call"]
+      }, null, null, 2, 0, null, 13, "call"]
     },
     Validators_pattern_closure: {
-      "^": "Closure:8;pattern",
+      "^": "Closure:7;pattern",
       call$1: [function(control) {
         var t1, regex, v;
         if (B.Validators_required(control) != null)
@@ -17651,7 +17219,7 @@
         regex = P.RegExp_RegExp("^" + H.S(t1) + "$", true, false);
         v = J.get$value$x(control);
         return regex._nativeRegExp.test(H.checkString(v)) ? null : P.LinkedHashMap__makeLiteral(["pattern", P.LinkedHashMap__makeLiteral(["requiredPattern", "^" + H.S(t1) + "$", "actualValue", v])]);
-      }, null, null, 2, 0, null, 18, "call"]
+      }, null, null, 2, 0, null, 13, "call"]
     },
     Validators_compose_closure: {
       "^": "Closure:1;",
@@ -17660,10 +17228,10 @@
       }
     },
     Validators_compose_closure0: {
-      "^": "Closure:8;presentValidators",
+      "^": "Closure:7;presentValidators",
       call$1: [function(control) {
         return B._mergeErrors(B._executeValidators(control, this.presentValidators));
-      }, null, null, 2, 0, null, 18, "call"]
+      }, null, null, 2, 0, null, 13, "call"]
     },
     Validators_composeAsync_closure: {
       "^": "Closure:1;",
@@ -17672,25 +17240,26 @@
       }
     },
     Validators_composeAsync_closure0: {
-      "^": "Closure:8;presentValidators",
+      "^": "Closure:7;presentValidators",
       call$1: [function(control) {
-        return P.Future_wait(new H.MappedListIterable(B._executeAsyncValidators(control, this.presentValidators), B.validators0___toFuture$closure(), [null, null]), null, false).then$1(B.validators0___mergeErrors$closure());
-      }, null, null, 2, 0, null, 18, "call"]
+        var t1 = B._executeAsyncValidators(control, this.presentValidators);
+        return P.Future_wait(new H.MappedListIterable(t1, B.validators0___toFuture$closure(), [H.getTypeArgumentByIndex(t1, 0), null]), null, false).then$1(B.validators0___mergeErrors$closure());
+      }, null, null, 2, 0, null, 13, "call"]
     },
     _executeValidators_closure: {
       "^": "Closure:1;control",
       call$1: [function(v) {
         return v.call$1(this.control);
-      }, null, null, 2, 0, null, 13, "call"]
+      }, null, null, 2, 0, null, 11, "call"]
     },
     _executeAsyncValidators_closure: {
       "^": "Closure:1;control",
       call$1: [function(v) {
         return v.call$1(this.control);
-      }, null, null, 2, 0, null, 13, "call"]
+      }, null, null, 2, 0, null, 11, "call"]
     },
     _mergeErrors_closure: {
-      "^": "Closure:79;",
+      "^": "Closure:63;",
       call$2: function(res, errors) {
         J.addAll$1$ax(res, errors == null ? C.Map_empty0 : errors);
         return res;
@@ -17738,12 +17307,12 @@
       X.initReflector97();
     },
     initReflector_closure35: {
-      "^": "Closure:80;",
+      "^": "Closure:64;",
       call$1: [function(_ref) {
         var t1 = new B.AsyncPipe(null, null, null, null, null, null);
         t1._ref = _ref;
         return t1;
-      }, null, null, 2, 0, null, 82, "call"]
+      }, null, null, 2, 0, null, 80, "call"]
     }
   }], ["", "package:angular2/src/common/pipes/common_pipes.template.dart",, D, {
     "^": "",
@@ -17971,7 +17540,7 @@
       "^": "Closure:6;",
       call$1: [function(_packagePrefix) {
         return new D.UrlResolver(_packagePrefix);
-      }, null, null, 2, 0, null, 83, "call"]
+      }, null, null, 2, 0, null, 81, "call"]
     }
   }], ["", "package:angular2/src/compiler/xhr.dart",, U, {
     "^": "",
@@ -17999,7 +17568,7 @@
     "^": "",
     createNgZone: [function() {
       return Y.NgZone$(false);
-    }, "call$0", "application_ref__createNgZone$closure", 0, 0, 134],
+    }, "call$0", "application_ref__createNgZone$closure", 0, 0, 118],
     createPlatform: function(injector) {
       var t1;
       $._inPlatformCreate = true;
@@ -18013,12 +17582,10 @@
       return $._platform;
     },
     coreLoadAndBootstrap: function(injector, componentType) {
-      var $async$goto = 0, $async$completer = new P.Completer_Completer$sync(), $async$returnValue, $async$handler = 2, $async$currentError, appRef;
+      var $async$goto = 0, $async$completer = P.Completer_Completer$sync(), $async$returnValue, appRef;
       var $async$coreLoadAndBootstrap = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
-        if ($async$errorCode === 1) {
-          $async$currentError = $async$result;
-          $async$goto = $async$handler;
-        }
+        if ($async$errorCode === 1)
+          return P._asyncRethrow($async$result, $async$completer);
         while (true)
           switch ($async$goto) {
             case 0:
@@ -18026,7 +17593,7 @@
               $.appViewUtils = injector._getByKey$4($.$get$_globalKeyRegistry().$get$1(0, C.Type_AppViewUtils_NWH), null, null, C.C_Object);
               appRef = injector._getByKey$4($.$get$_globalKeyRegistry().$get$1(0, C.Type_ApplicationRef_Aij), null, null, C.C_Object);
               $async$goto = 3;
-              return P._asyncHelper(appRef.run$1(new Y.coreLoadAndBootstrap_closure(injector, componentType, appRef)), $async$coreLoadAndBootstrap, $async$completer);
+              return P._asyncAwait(appRef.run$1(new Y.coreLoadAndBootstrap_closure(injector, componentType, appRef)), $async$coreLoadAndBootstrap);
             case 3:
               // returning from await.
               $async$returnValue = $async$result;
@@ -18035,35 +17602,30 @@
               break;
             case 1:
               // return
-              return P._asyncHelper($async$returnValue, 0, $async$completer);
-            case 2:
-              // rethrow
-              return P._asyncHelper($async$currentError, 1, $async$completer);
+              return P._asyncReturn($async$returnValue, $async$completer);
           }
       });
-      return P._asyncHelper(null, $async$coreLoadAndBootstrap, $async$completer);
+      return P._asyncStart($async$coreLoadAndBootstrap, $async$completer);
     },
     coreLoadAndBootstrap_closure: {
-      "^": "Closure:43;injector,componentType,appRef",
+      "^": "Closure:37;injector,componentType,appRef",
       call$0: [function() {
-        var $async$goto = 0, $async$completer = new P.Completer_Completer$sync(), $async$returnValue, $async$handler = 2, $async$currentError, $async$self = this, factory, t1;
+        var $async$goto = 0, $async$completer = P.Completer_Completer$sync(), $async$returnValue, $async$self = this, factory, t1;
         var $async$call$0 = P._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
-          if ($async$errorCode === 1) {
-            $async$currentError = $async$result;
-            $async$goto = $async$handler;
-          }
+          if ($async$errorCode === 1)
+            return P._asyncRethrow($async$result, $async$completer);
           while (true)
             switch ($async$goto) {
               case 0:
                 // Function start
                 $async$goto = 3;
-                return P._asyncHelper($async$self.injector._getByKey$4($.$get$_globalKeyRegistry().$get$1(0, C.Type_ComponentResolver_r9K), null, null, C.C_Object).resolveComponent$1($async$self.componentType), $async$call$0, $async$completer);
+                return P._asyncAwait($async$self.injector._getByKey$4($.$get$_globalKeyRegistry().$get$1(0, C.Type_ComponentResolver_r9K), null, null, C.C_Object).resolveComponent$1($async$self.componentType), $async$call$0);
               case 3:
                 // returning from await.
                 factory = $async$result;
                 t1 = $async$self.appRef;
                 $async$goto = 4;
-                return P._asyncHelper(t1.waitForAsyncInitializers$0(), $async$call$0, $async$completer);
+                return P._asyncAwait(t1.waitForAsyncInitializers$0(), $async$call$0);
               case 4:
                 // returning from await.
                 $async$returnValue = t1.bootstrap$1(factory);
@@ -18072,13 +17634,10 @@
                 break;
               case 1:
                 // return
-                return P._asyncHelper($async$returnValue, 0, $async$completer);
-              case 2:
-                // rethrow
-                return P._asyncHelper($async$currentError, 1, $async$completer);
+                return P._asyncReturn($async$returnValue, $async$completer);
             }
         });
-        return P._asyncHelper(null, $async$call$0, $async$completer);
+        return P._asyncStart($async$call$0, $async$completer);
       }, null, null, 0, 0, null, "call"]
     },
     PlatformRef: {
@@ -18114,7 +17673,7 @@
       waitForAsyncInitializers$0: function() {
         return this._asyncInitDonePromise;
       },
-      run$1: [function(callback) {
+      run$1: function(callback) {
         var t1, zone, t2;
         t1 = {};
         zone = J.$get$1$x(this._injector, C.Type_NgZone_6ty);
@@ -18123,7 +17682,7 @@
         zone.run$1(new Y.ApplicationRefImpl_run_closure(t1, this, callback, new P._AsyncCompleter(t2, [null])));
         t1 = t1.result;
         return !!J.getInterceptor(t1).$isFuture ? t2 : t1;
-      }, "call$1", "get$run", 2, 0, 37],
+      },
       bootstrap$1: function(componentFactory) {
         return this.run$1(new Y.ApplicationRefImpl_bootstrap_closure(this, componentFactory));
       },
@@ -18227,10 +17786,10 @@
       }, null, null, 2, 0, null, 8, "call"]
     },
     ApplicationRefImpl_closure1: {
-      "^": "Closure:33;$this",
+      "^": "Closure:31;$this",
       call$1: [function(error) {
         this.$this._exceptionHandler.call$2(J.get$error$x(error), error.get$stackTrace());
-      }, null, null, 2, 0, null, 6, "call"]
+      }, null, null, 2, 0, null, 7, "call"]
     },
     ApplicationRefImpl_closure2: {
       "^": "Closure:1;$this",
@@ -18257,8 +17816,7 @@
             result.then$2$onError(new Y.ApplicationRefImpl_run__closure(t1), new Y.ApplicationRefImpl_run__closure0(this.$this, t1));
           }
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           this.$this._exceptionHandler.call$2(e, e_stack);
           throw exception;
@@ -18269,14 +17827,14 @@
       "^": "Closure:1;completer",
       call$1: [function(ref) {
         this.completer.complete$1(0, ref);
-      }, null, null, 2, 0, null, 84, "call"]
+      }, null, null, 2, 0, null, 82, "call"]
     },
     ApplicationRefImpl_run__closure0: {
       "^": "Closure:3;$this,completer",
       call$2: [function(err, stackTrace) {
         this.completer.completeError$2(err, stackTrace);
         this.$this._exceptionHandler.call$2(err, stackTrace);
-      }, null, null, 4, 0, null, 44, 7, "call"]
+      }, null, null, 4, 0, null, 52, 9, "call"]
     },
     ApplicationRefImpl_bootstrap_closure: {
       "^": "Closure:0;$this,componentFactory",
@@ -18333,17 +17891,17 @@
       }, null, null, 0, 0, null, "call"]
     },
     initReflector_closure8: {
-      "^": "Closure:83;",
+      "^": "Closure:66;",
       call$3: [function(_platform, _zone, _injector) {
         return Y.ApplicationRefImpl$(_platform, _zone, _injector);
-      }, null, null, 6, 0, null, 86, 45, 42, "call"]
+      }, null, null, 6, 0, null, 84, 51, 36, "call"]
     }
   }], ["", "package:angular2/src/core/application_tokens.dart",, Y, {
     "^": "",
     appIdRandomProviderFactory: [function() {
       var t1 = $.$get$_random();
       return H.Primitives_stringFromCharCode(97 + t1.nextInt$1(25)) + H.Primitives_stringFromCharCode(97 + t1.nextInt$1(25)) + H.Primitives_stringFromCharCode(97 + t1.nextInt$1(25));
-    }, "call$0", "application_tokens__appIdRandomProviderFactory$closure", 0, 0, 93]
+    }, "call$0", "application_tokens__appIdRandomProviderFactory$closure", 0, 0, 83]
   }], ["", "package:angular2/src/core/application_tokens.template.dart",, B, {
     "^": "",
     initReflector8: function() {
@@ -18404,15 +17962,15 @@
   }], ["", "package:angular2/src/core/change_detection/constants.dart",, A, {
     "^": "",
     ChangeDetectorState: {
-      "^": "Object;index",
+      "^": "Object;index,_constants$_name",
       toString$0: function(_) {
-        return C.Map_sgtm6.$index(0, this.index);
+        return this._constants$_name;
       }
     },
     ChangeDetectionStrategy: {
-      "^": "Object;index",
+      "^": "Object;index,_constants$_name",
       toString$0: function(_) {
-        return C.Map_E7LB7.$index(0, this.index);
+        return this._constants$_name;
       }
     }
   }], ["", "package:angular2/src/core/change_detection/differs/default_iterable_differ.dart",, R, {
@@ -18444,10 +18002,10 @@
       }
     },
     closure20: {
-      "^": "Closure:84;",
+      "^": "Closure:67;",
       call$2: [function(index, item) {
         return item;
-      }, null, null, 4, 0, null, 0, 88, "call"]
+      }, null, null, 4, 0, null, 0, 86, "call"]
     },
     DefaultIterableDiffer: {
       "^": "Object;_trackByFn,_default_iterable_differ$_length,_collection,_linkedRecords,_unlinkedRecords,_previousItHead,_itHead,_itTail,_additionsHead,_additionsTail,_movesHead,_movesTail,_removalsHead,_removalsTail,_identityChangesHead,_identityChangesTail",
@@ -18601,8 +18159,7 @@
           itemTrackBy = this._trackByFn.call$2(t3, item);
           if (t1 != null) {
             t4 = t1.get$trackById();
-            t4 = t4 == null ? itemTrackBy == null : t4 === itemTrackBy;
-            t4 = !t4;
+            t4 = t4 == null ? itemTrackBy != null : t4 !== itemTrackBy;
           } else
             t4 = true;
           if (t4) {
@@ -18613,8 +18170,7 @@
             if (t2)
               t1 = this._verifyReinsertion$4(t1, item, itemTrackBy, t3);
             t4 = J.get$item$x(t1);
-            t4 = t4 == null ? item == null : t4 === item;
-            if (!t4)
+            if (t4 == null ? item != null : t4 !== item)
               this._addIdentityChange$2(t1, item);
           }
           record = t1.get$_default_iterable_differ$_next();
@@ -18667,8 +18223,7 @@
         }
         if (record != null) {
           t1 = J.get$item$x(record);
-          t1 = t1 == null ? item == null : t1 === item;
-          if (!t1)
+          if (t1 == null ? item != null : t1 !== item)
             this._addIdentityChange$2(record, item);
           this._unlink$1(record);
           this._insertAfter$3(record, previousRecord, index);
@@ -18683,8 +18238,7 @@
           }
           if (record != null) {
             t1 = J.get$item$x(record);
-            t1 = t1 == null ? item == null : t1 === item;
-            if (!t1)
+            if (t1 == null ? item != null : t1 !== item)
               this._addIdentityChange$2(record, item);
             this._reinsertAfter$3(record, previousRecord, index);
           } else {
@@ -18986,15 +18540,12 @@
         t1 = this.map;
         if (J.remove$1$ax(t1.$index(0, key), record) === true)
           if (t1.containsKey$1(0, key))
-            t1.remove$1(0, key) == null;
+            t1.remove$1(0, key);
         return record;
       },
       get$isEmpty: function(_) {
         var t1 = this.map;
         return t1.get$length(t1) === 0;
-      },
-      clear$0: function(_) {
-        this.map.clear$0(0);
       },
       toString$0: function(_) {
         return C.JSString_methods.$add("_DuplicateMap(", L.stringify(this.map)) + ")";
@@ -19067,10 +18618,11 @@
     KeyValueDiffers: {
       "^": "Object;factories",
       find$1: function(_, kv) {
-        var i;
+        var i, t1;
         for (i = 0; i < 1; ++i)
           ;
-        throw H.wrapException(new T.BaseException("Cannot find a differ supporting object '" + H.S(kv) + "'"));
+        t1 = "Cannot find a differ supporting object '" + H.S(kv) + "'";
+        throw H.wrapException(new T.BaseException(t1));
       }
     }
   }], ["", "package:angular2/src/core/change_detection/differs/keyvalue_differs.template.dart",, V, {
@@ -19208,9 +18760,9 @@
   }], ["", "package:angular2/src/core/di/reflective_exceptions.dart",, Y, {
     "^": "",
     findFirstClosedCycleReversed: function(keys) {
-      var res, t1, i, t2;
+      var res, t1, i;
       res = [];
-      for (t1 = J.getInterceptor$asx(keys), i = J.$sub$n(t1.get$length(keys), 1); t2 = J.getInterceptor$n(i), t2.$ge(i, 0); i = t2.$sub(i, 1))
+      for (t1 = J.getInterceptor$asx(keys), i = J.$sub$n(t1.get$length(keys), 1); i >= 0; --i)
         if (C.JSArray_methods.contains$1(res, t1.$index(keys, i))) {
           res.push(t1.$index(keys, i));
           return res;
@@ -19219,20 +18771,22 @@
       return res;
     },
     constructResolvingPath: function(keys) {
-      if (J.$gt$n(J.get$length$asx(keys), 1))
-        return " (" + C.JSArray_methods.join$1(new H.MappedListIterable(Y.findFirstClosedCycleReversed(keys), new Y.constructResolvingPath_closure(), [null, null]).toList$0(0), " -> ") + ")";
-      else
+      var reversed;
+      if (J.$gt$n(J.get$length$asx(keys), 1)) {
+        reversed = Y.findFirstClosedCycleReversed(keys);
+        return " (" + C.JSArray_methods.join$1(new H.MappedListIterable(reversed, new Y.constructResolvingPath_closure(), [H.getTypeArgumentByIndex(reversed, 0), null]).toList$0(0), " -> ") + ")";
+      } else
         return "";
     },
     constructResolvingPath_closure: {
       "^": "Closure:1;",
       call$1: [function(k) {
         return H.S(B.Inject_tokenToString(k.get$token()));
-      }, null, null, 2, 0, null, 22, "call"]
+      }, null, null, 2, 0, null, 24, "call"]
     },
     AbstractProviderError: {
       "^": "BaseException;message>,keys,injectors,constructResolvingMessage,_exceptions$_message",
-      addKey$2: function(_, injector, key) {
+      addKey$2: function(injector, key) {
         var t1;
         this.injectors.push(injector);
         this.keys.push(key);
@@ -19258,10 +18812,10 @@
       }
     },
     NoProviderError_closure: {
-      "^": "Closure:31;",
+      "^": "Closure:30;",
       call$1: [function(keys) {
         return "No provider for " + H.S(B.Inject_tokenToString(J.get$first$ax(keys).get$token())) + "!" + Y.constructResolvingPath(keys);
-      }, null, null, 2, 0, null, 29, "call"]
+      }, null, null, 2, 0, null, 30, "call"]
     },
     CyclicDependencyError: {
       "^": "AbstractProviderError;message,keys,injectors,constructResolvingMessage,_exceptions$_message",
@@ -19274,14 +18828,14 @@
       }
     },
     CyclicDependencyError_closure: {
-      "^": "Closure:31;",
+      "^": "Closure:30;",
       call$1: [function(keys) {
         return "Cannot instantiate cyclic dependency!" + Y.constructResolvingPath(keys);
-      }, null, null, 2, 0, null, 29, "call"]
+      }, null, null, 2, 0, null, 30, "call"]
     },
     InstantiationError: {
       "^": "WrappedException;keys,injectors,_context,_wrapperMessage,originalException,originalStack",
-      addKey$2: function(_, injector, key) {
+      addKey$2: function(injector, key) {
         this.injectors.push(injector);
         this.keys.push(key);
       },
@@ -19326,7 +18880,7 @@
           i = 0;
           for (; i < ii; ++i) {
             parameter = t1.$index(params, i);
-            if (parameter == null || J.$eq$(J.get$length$asx(parameter), 0))
+            if (parameter == null || J.get$length$asx(parameter) === 0)
               signature.push("?");
             else
               signature.push(J.join$1$ax(J.toList$0$ax(J.map$1$ax(parameter, new Y.NoAnnotationError__genMessage_closure())), " "));
@@ -19340,7 +18894,7 @@
       "^": "Closure:1;",
       call$1: [function(x) {
         return B.Inject_tokenToString(x);
-      }, null, null, 2, 0, null, 35, "call"]
+      }, null, null, 2, 0, null, 33, "call"]
     },
     OutOfBoundsError: {
       "^": "BaseException;_exceptions$_message"
@@ -19917,10 +19471,9 @@
             d190 = null;
           d19 = d190;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           if (e instanceof Y.AbstractProviderError || e instanceof Y.InstantiationError)
-            J.addKey$2$x(e, this, J.get$key$x(provider));
+            e.addKey$2(this, J.get$key$x(provider));
           throw exception;
         }
         obj = null;
@@ -19994,8 +19547,7 @@
               throw H.wrapException(new T.BaseException(t1));
           }
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e0 = t1;
+          e0 = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           t1 = e0;
           t2 = e_stack;
@@ -20026,7 +19578,6 @@
         var inj, t1, t2, obj;
         inj = lowerBoundVisibility instanceof B.SkipSelf ? this._reflective_injector$_parent : this;
         for (t1 = J.getInterceptor$x(key); t2 = J.getInterceptor(inj), !!t2.$isReflectiveInjectorImpl;) {
-          H.interceptedTypeCast(inj, "$isReflectiveInjectorImpl");
           obj = inj._strategy.getObjByKeyId$1(t1.get$id(key));
           if (obj !== C.C_Object)
             return obj;
@@ -20045,7 +19596,7 @@
       }
     },
     ReflectiveInjectorImpl_displayName_closure: {
-      "^": "Closure:86;",
+      "^": "Closure:69;",
       call$1: function(b) {
         return ' "' + H.S(J.get$key$x(b).get$displayName()) + '" ';
       }
@@ -20101,7 +19652,7 @@
     "^": "",
     _identityPostProcess: [function(obj) {
       return obj;
-    }, "call$1", "reflective_provider___identityPostProcess$closure", 2, 0, 1, 47],
+    }, "call$1", "reflective_provider___identityPostProcess$closure", 2, 0, 1, 43],
     resolveReflectiveFactory: function(provider) {
       var factoryFn, t1, resolvedDeps, useClass;
       if (provider.get$useExisting() != null) {
@@ -20130,7 +19681,7 @@
     resolveReflectiveProvider: [function(provider) {
       var t1 = provider.get$token();
       return new U.ResolvedReflectiveProviderImpl($.$get$_globalKeyRegistry().$get$1(0, t1), [U.resolveReflectiveFactory(provider)], provider.get$multi());
-    }, "call$1", "reflective_provider__resolveReflectiveProvider$closure", 2, 0, 135, 91],
+    }, "call$1", "reflective_provider__resolveReflectiveProvider$closure", 2, 0, 119, 89],
     mergeResolvedReflectiveProviders: function(providers, normalizedProvidersMap) {
       var i, provider, t1, existing, j, t2, resolvedProvider;
       for (i = 0; i < providers.length; ++i) {
@@ -20166,7 +19717,7 @@
       if (dependencies == null)
         return U._dependenciesFor(typeOrFunc);
       else {
-        t1 = [null, null];
+        t1 = [H.getTypeArgumentByIndex(dependencies, 0), null];
         return new H.MappedListIterable(dependencies, new U.constructDependencies_closure(typeOrFunc, new H.MappedListIterable(dependencies, new U.constructDependencies_closure0(), t1).toList$0(0)), t1).toList$0(0);
       }
     },
@@ -20238,7 +19789,7 @@
       "^": "Closure:1;",
       call$1: [function(aliasInstance) {
         return aliasInstance;
-      }, null, null, 2, 0, null, 92, "call"]
+      }, null, null, 2, 0, null, 90, "call"]
     },
     resolveReflectiveFactory_closure0: {
       "^": "Closure:0;provider",
@@ -20270,13 +19821,13 @@
       "^": "Closure:1;",
       call$1: [function(t) {
         return [t];
-      }, null, null, 2, 0, null, 48, "call"]
+      }, null, null, 2, 0, null, 50, "call"]
     },
     constructDependencies_closure: {
       "^": "Closure:1;typeOrFunc,params",
       call$1: [function(t) {
         return U._extractToken(this.typeOrFunc, t, this.params);
-      }, null, null, 2, 0, null, 48, "call"]
+      }, null, null, 2, 0, null, 50, "call"]
     }
   }], ["", "package:angular2/src/core/di/reflective_provider.template.dart",, N, {
     "^": "",
@@ -20310,13 +19861,12 @@
       return node;
     },
     _flattenNestedViewRenderNodes: function(nodes, renderNodes) {
-      var nodeCount, i, node;
+      var nodeCount, i;
       nodeCount = nodes.length;
       for (i = 0; i < nodeCount; ++i) {
         if (i >= nodes.length)
           return H.ioore(nodes, i);
-        node = nodes[i];
-        renderNodes.push(node);
+        renderNodes.push(nodes[i]);
       }
       return renderNodes;
     },
@@ -20418,19 +19968,13 @@
         return el;
       }],
       createElement$3: ["super$AppView$createElement", function(_, $parent, $name, debugInfo) {
-        var nsAndName, t1, t2, t3, el, contentAttr;
+        var nsAndName, t1, el, contentAttr;
         nsAndName = Q.splitNamespace($name);
         t1 = nsAndName[0];
-        if (t1 != null) {
-          t2 = document;
-          t1 = C.Map_6yUng.$index(0, t1);
-          t3 = nsAndName[1];
-          el = t2.createElementNS(t1, t3);
-        } else {
-          t1 = document;
-          t2 = nsAndName[1];
-          el = t1.createElement(t2);
-        }
+        if (t1 != null)
+          el = document.createElementNS(C.Map_6yUng.$index(0, t1), nsAndName[1]);
+        else
+          el = document.createElement(nsAndName[1]);
         contentAttr = this.componentType._contentAttr;
         if (contentAttr != null)
           el.setAttribute(contentAttr, "");
@@ -20451,20 +19995,7 @@
         if (nodeIndex == null)
           return this.parentInjector;
         return new U.ElementInjector(this, nodeIndex);
-      }, "call$1", "get$injector", 2, 0, 87, 142],
-      destroy$0: function() {
-        var t1, t2;
-        if (this._hasExternalHostElement === true)
-          this.detachViewNodes$1(S._flattenNestedViewRenderNodes(this.rootNodesOrViewContainers, H.setRuntimeTypeInfo([], [W.Node])));
-        else {
-          t1 = this.viewContainerElement;
-          if (!(t1 == null)) {
-            t2 = t1.nestedViews;
-            t1.detachView$1((t2 && C.JSArray_methods).indexOf$1(t2, this));
-          }
-        }
-        this._destroyRecurse$0();
-      },
+      }, "call$1", "get$injector", 2, 0, 70, 92],
       detachViewNodes$1: ["super$AppView$detachViewNodes", function(viewRootNodes) {
         var len, i;
         len = viewRootNodes.length;
@@ -20526,9 +20057,6 @@
         var t1 = this.declarationViewContainer;
         return t1 == null ? t1 : t1.parentView;
       },
-      get$flatRootNodes: function() {
-        return S._flattenNestedViewRenderNodes(this.rootNodesOrViewContainers, H.setRuntimeTypeInfo([], [W.Node]));
-      },
       get$lastRootNode: function() {
         var t1 = this.rootNodesOrViewContainers;
         return S._findLastRenderNode(t1.length !== 0 ? (t1 && C.JSArray_methods).get$last(t1) : null);
@@ -20567,10 +20095,6 @@
             return H.ioore(t1, i);
           t1[i].detectChanges$0();
         }
-      },
-      removeFromContentChildren$1: function(renderViewContainer) {
-        C.JSArray_methods.remove$1(renderViewContainer.parentView.contentChildren, this);
-        this.viewContainerElement = null;
       },
       markPathToRootAsCheckOnce$0: function() {
         var view, cdMode, parentEl;
@@ -20629,11 +20153,11 @@
       }
     },
     AppView_listen_closure: {
-      "^": "Closure:88;callback",
+      "^": "Closure:71;callback",
       call$1: [function($event) {
         if (this.callback.call$1($event) === false)
           J.preventDefault$0$x($event);
-      }, null, null, 2, 0, null, 95, "call"]
+      }, null, null, 2, 0, null, 141, "call"]
     }
   }], ["", "package:angular2/src/core/linker/app_view.template.dart",, E, {
     "^": "",
@@ -20692,7 +20216,7 @@
           throw H.wrapException(new T.ExpressionChangedAfterItHasBeenCheckedException("Expression has changed after it was checked. " + ("Previous value: '" + H.S(oldValue) + "'. Current value: '" + H.S(newValue) + "'")));
         return false;
       } else
-        return !(oldValue == null ? newValue == null : oldValue === newValue);
+        return oldValue == null ? newValue != null : oldValue !== newValue;
     },
     splitNamespace: function($name) {
       var t1, t2, t3;
@@ -20735,10 +20259,10 @@
       O.initReflector37();
     },
     initReflector_closure2: {
-      "^": "Closure:89;",
+      "^": "Closure:72;",
       call$3: [function(_appId, sanitizer, eventManager) {
         return new Q.AppViewUtils(_appId, eventManager, sanitizer);
-      }, null, null, 6, 0, null, 96, 97, 98, "call"]
+      }, null, null, 6, 0, null, 94, 95, 96, "call"]
     }
   }], ["", "package:angular2/src/core/linker/component_factory.dart",, D, {
     "^": "",
@@ -20749,14 +20273,11 @@
       "^": "ComponentRef;hostElement,componentType,metadata",
       get$injector: function() {
         return this.hostElement.get$injector();
-      },
-      destroy$0: function() {
-        this.hostElement.get$parentView().destroy$0();
       }
     },
     ComponentFactory: {
       "^": "Object;selector<,_viewFactory,_componentType,_metadataPairs",
-      get$metadata: function() {
+      get$metadata: function(_) {
         var t1, t2, i;
         for (t1 = this._metadataPairs, t2 = this._componentType, i = 0; i < 2; i += 2)
           if (t1[i] === t2) {
@@ -20770,7 +20291,7 @@
       create$3: function(injector, projectableNodes, selector) {
         if (projectableNodes == null)
           projectableNodes = [];
-        return new D.ComponentRefImpl(this._viewFactory.call$2(injector, null).create$2(projectableNodes, selector), this._componentType, this.get$metadata());
+        return new D.ComponentRefImpl(this._viewFactory.call$2(injector, null).create$2(projectableNodes, selector), this._componentType, this.get$metadata(this));
       },
       create$2: function(injector, projectableNodes) {
         return this.create$3(injector, projectableNodes, null);
@@ -20859,10 +20380,10 @@
       K.initReflector40();
     },
     initReflector_closure5: {
-      "^": "Closure:90;",
+      "^": "Closure:73;",
       call$1: [function(_compiler) {
         return new L.DynamicComponentLoaderImpl(_compiler);
-      }, null, null, 2, 0, null, 99, "call"]
+      }, null, null, 2, 0, null, 97, "call"]
     }
   }], ["", "package:angular2/src/core/linker/element_injector.dart",, U, {
     "^": "",
@@ -20957,7 +20478,7 @@
         var t1 = this.nestedViews;
         if (index >>> 0 !== index || index >= t1.length)
           return H.ioore(t1, index);
-        return t1[index].get$ref();
+        return t1[index].ref;
       },
       get$length: function(_) {
         var t1 = this.nestedViews;
@@ -20984,7 +20505,7 @@
           t2 = H.setRuntimeTypeInfo([], [S.AppView]);
           this.nestedViews = t2;
         }
-        (t2 && C.JSArray_methods).insert$2(t2, index, t1);
+        C.JSArray_methods.insert$2(t2, index, t1);
         t2 = J.getInterceptor$n(index);
         if (t2.$gt(index, 0)) {
           t3 = this.nestedViews;
@@ -21015,7 +20536,7 @@
           views = H.setRuntimeTypeInfo([], [S.AppView]);
           this.nestedViews = views;
         }
-        (views && C.JSArray_methods).removeAt$1(views, previousIndex);
+        C.JSArray_methods.removeAt$1(views, previousIndex);
         C.JSArray_methods.insert$2(views, currentIndex, t1);
         if (currentIndex > 0) {
           t2 = currentIndex - 1;
@@ -21029,40 +20550,36 @@
         return viewRef;
       },
       remove$1: function(_, index) {
-        var t1;
+        var t1, view, t2;
         if (J.$eq$(index, -1)) {
           t1 = this.nestedViews;
           t1 = t1 == null ? t1 : t1.length;
           index = J.$sub$n(t1 == null ? 0 : t1, 1);
         }
-        this.detachView$1(index).destroy$0();
+        view = this.detachView$1(index);
+        if (view._hasExternalHostElement === true)
+          view.detachViewNodes$1(S._flattenNestedViewRenderNodes(view.rootNodesOrViewContainers, H.setRuntimeTypeInfo([], [W.Node])));
+        else {
+          t1 = view.viewContainerElement;
+          if (!(t1 == null)) {
+            t2 = t1.nestedViews;
+            t1.detachView$1((t2 && C.JSArray_methods).indexOf$1(t2, view));
+          }
+        }
+        view._destroyRecurse$0();
       },
       remove$0: function($receiver) {
         return this.remove$1($receiver, -1);
-      },
-      clear$0: function(_) {
-        var t1, i, index;
-        t1 = this.nestedViews;
-        t1 = t1 == null ? t1 : t1.length;
-        i = J.$sub$n(t1 == null ? 0 : t1, 1);
-        for (; i >= 0; --i) {
-          if (i === -1) {
-            t1 = this.nestedViews;
-            t1 = t1 == null ? t1 : t1.length;
-            index = J.$sub$n(t1 == null ? 0 : t1, 1);
-          } else
-            index = i;
-          this.detachView$1(index).destroy$0();
-        }
       },
       detachView$1: function(viewIndex) {
         var t1, view;
         t1 = this.nestedViews;
         view = (t1 && C.JSArray_methods).removeAt$1(t1, viewIndex);
-        if (J.$eq$(J.get$type$x(view), C.ViewType_1))
+        if (view.type === C.ViewType_1)
           throw H.wrapException(new T.BaseException("Component views can't be moved!"));
-        view.detachViewNodes$1(view.get$flatRootNodes());
-        view.removeFromContentChildren$1(this);
+        view.detachViewNodes$1(S._flattenNestedViewRenderNodes(view.rootNodesOrViewContainers, H.setRuntimeTypeInfo([], [W.Node])));
+        C.JSArray_methods.remove$1(this.parentView.contentChildren, view);
+        view.viewContainerElement = null;
         return view;
       },
       $isViewContainerRef: 1
@@ -21103,9 +20620,6 @@
       "^": "Object;appView",
       setLocal$2: function(variableName, value) {
         this.appView.locals.$indexSet(0, variableName, value);
-      },
-      destroy$0: function() {
-        this.appView.destroy$0();
       }
     }
   }], ["", "package:angular2/src/core/linker/view_ref.template.dart",, A, {
@@ -21120,9 +20634,9 @@
   }], ["", "package:angular2/src/core/linker/view_type.dart",, R, {
     "^": "",
     ViewType: {
-      "^": "Object;index",
+      "^": "Object;index,_view_type$_name",
       toString$0: function(_) {
-        return C.Map_sge5T.$index(0, this.index);
+        return this._view_type$_name;
       }
     }
   }], ["", "package:angular2/src/core/metadata.dart",, O, {
@@ -21167,9 +20681,9 @@
   }], ["", "package:angular2/src/core/metadata/view.dart",, A, {
     "^": "",
     ViewEncapsulation: {
-      "^": "Object;index",
+      "^": "Object;index,_view$_name",
       toString$0: function(_) {
-        return C.Map_sgI28.$index(0, this.index);
+        return this._view$_name;
       }
     }
   }], ["", "package:angular2/src/core/platform_common_providers.template.dart",, U, {
@@ -21199,9 +20713,9 @@
       return U.noopScope(arg0, null);
     }, function() {
       return U.noopScope(null, null);
-    }, "call$2", "call$1", "call$0", "profile__noopScope$closure", 0, 4, 11, 1, 1, 25, 10],
-    closure0: {
-      "^": "Closure:30;",
+    }, "call$2", "call$1", "call$0", "profile__noopScope$closure", 0, 4, 10, 1, 1, 25, 10],
+    closure1: {
+      "^": "Closure:29;",
       call$2: function(signature, flags) {
         return U.profile__noopScope$closure();
       },
@@ -21209,8 +20723,8 @@
         return this.call$2(signature, null);
       }
     },
-    closure: {
-      "^": "Closure:36;",
+    closure0: {
+      "^": "Closure:34;",
       call$2: function(s, r) {
         return r;
       },
@@ -21285,7 +20799,7 @@
       }
     }, function(signature) {
       return V.createScope(signature, null);
-    }, "call$2", "call$1", "wtf_impl__createScope$closure", 2, 2, 30, 1],
+    }, "call$2", "call$1", "wtf_impl__createScope$closure", 2, 2, 29, 1],
     leave: [function(scope, $returnValue) {
       var t1, t2;
       t1 = $.$get$_arg2();
@@ -21300,9 +20814,9 @@
       return $returnValue;
     }, function(scope) {
       return V.leave(scope, null);
-    }, "call$2", "call$1", "wtf_impl__leave$closure", 2, 2, 136, 1],
+    }, "call$2", "call$1", "wtf_impl__leave$closure", 2, 2, 120, 1],
     createScope_closure: {
-      "^": "Closure:11;jsScope",
+      "^": "Closure:10;jsScope",
       call$2: [function(arg0, arg1) {
         return this.jsScope.apply$1(C.List_empty);
       }, function(arg0) {
@@ -21312,7 +20826,7 @@
       }, "call$0", null, null, null, null, 0, 4, null, 1, 1, 25, 10, "call"]
     },
     createScope_closure0: {
-      "^": "Closure:11;jsScope",
+      "^": "Closure:10;jsScope",
       call$2: [function(arg0, arg1) {
         var t1 = $.$get$_arg1();
         if (0 >= t1.length)
@@ -21326,7 +20840,7 @@
       }, "call$0", null, null, null, null, 0, 4, null, 1, 1, 25, 10, "call"]
     },
     createScope_closure1: {
-      "^": "Closure:11;jsScope",
+      "^": "Closure:10;jsScope",
       call$2: [function(arg0, arg1) {
         var t1, t2;
         t1 = $.$get$_arg2();
@@ -21364,13 +20878,13 @@
       "^": "Object;",
       factory$1: [function(type) {
         return H.throwExpression(O.NoReflectionCapabilitiesError_NoReflectionCapabilitiesError$_noInfo(type));
-      }, "call$1", "get$factory", 2, 0, 41, 24],
+      }, "call$1", "get$factory", 2, 0, 28, 21],
       parameters$1: [function(type) {
         return H.throwExpression(O.NoReflectionCapabilitiesError_NoReflectionCapabilitiesError$_noInfo(type));
-      }, "call$1", "get$parameters", 2, 0, 35, 24],
+      }, "call$1", "get$parameters", 2, 0, 27, 21],
       annotations$1: [function(type) {
         return H.throwExpression(new O.NoReflectionCapabilitiesError("Cannot find reflection information on " + H.S(L.stringify(type))));
-      }, "call$1", "get$annotations", 2, 0, 29, 24]
+      }, "call$1", "get$annotations", 2, 0, 26, 21]
     },
     NoReflectionCapabilitiesError: {
       "^": "Error;message",
@@ -21405,7 +20919,7 @@
           return t1.$index(0, type).get$factory();
         else
           return this.reflectionCapabilities.factory$1(type);
-      }, "call$1", "get$factory", 2, 0, 41, 24],
+      }, "call$1", "get$factory", 2, 0, 28, 21],
       parameters$1: [function(typeOrFunc) {
         var t1, res;
         t1 = this._injectableInfo;
@@ -21414,7 +20928,7 @@
           return res;
         } else
           return this.reflectionCapabilities.parameters$1(typeOrFunc);
-      }, "call$1", "get$parameters", 2, 0, 35, 51],
+      }, "call$1", "get$parameters", 2, 0, 27, 49],
       annotations$1: [function(typeOrFunc) {
         var t1, res;
         t1 = this._injectableInfo;
@@ -21423,7 +20937,7 @@
           return res;
         } else
           return this.reflectionCapabilities.annotations$1(typeOrFunc);
-      }, "call$1", "get$annotations", 2, 0, 29, 51],
+      }, "call$1", "get$annotations", 2, 0, 26, 49],
       Reflector$1: function(reflectionCapabilities) {
         this._usedKeys = null;
         this.reflectionCapabilities = reflectionCapabilities;
@@ -21576,18 +21090,17 @@
       E.initReflector22();
     },
     initReflector_closure0: {
-      "^": "Closure:96;",
+      "^": "Closure:79;",
       call$1: [function(_ngZone) {
         var t1 = new D.Testability(_ngZone, 0, true, false, []);
         t1._watchAngularEvents$0();
         return t1;
-      }, null, null, 2, 0, null, 103, "call"]
+      }, null, null, 2, 0, null, 101, "call"]
     },
     initReflector_closure1: {
       "^": "Closure:0;",
       call$0: [function() {
-        var t1 = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [null, D.Testability]);
-        return new D.TestabilityRegistry(t1, new D._NoopGetTestability());
+        return new D.TestabilityRegistry(new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [null, D.Testability]), new D._NoopGetTestability());
       }, null, null, 0, 0, null, "call"]
     }
   }], ["", "package:angular2/src/core/zone.template.dart",, D, {
@@ -21637,9 +21150,9 @@
       get$hasPendingMacrotasks: function() {
         return this._hasPendingMacrotasks;
       },
-      run$1: [function(fn) {
+      run$1: function(fn) {
         return this._zoneImpl._innerZone.run$1(fn);
-      }, "call$1", "get$run", 2, 0, 37],
+      },
       runGuarded$1: function(fn) {
         return this._zoneImpl._innerZone.runGuarded$1(fn);
       },
@@ -21680,7 +21193,7 @@
       }
     },
     NgZone_closure3: {
-      "^": "Closure:16;$this",
+      "^": "Closure:15;$this",
       call$1: function(hasMicrotasks) {
         var t1 = this.$this;
         t1._hasPendingMicrotasks = hasMicrotasks;
@@ -21688,13 +21201,13 @@
       }
     },
     NgZone_closure2: {
-      "^": "Closure:16;$this",
+      "^": "Closure:15;$this",
       call$1: function(hasMacrotasks) {
         this.$this._hasPendingMacrotasks = hasMacrotasks;
       }
     },
     NgZone_closure0: {
-      "^": "Closure:33;$this",
+      "^": "Closure:31;$this",
       call$1: function(error) {
         var t1 = this.$this._onErrorEvents._controller;
         if (!t1.get$_mayAddEvent())
@@ -21739,9 +21252,6 @@
       _createInnerZone$2$handleUncaughtError: function(zone, handleUncaughtError) {
         return zone.fork$2$specification$zoneValues(new P._ZoneSpecification(handleUncaughtError, this.get$_run(), this.get$_runUnary(), this.get$_runBinary(), null, null, null, null, this.get$_ng_zone_impl$_scheduleMicrotask(), this.get$_createTimer(), null, null, null), P.LinkedHashMap__makeLiteral(["isAngularZone", true]));
       },
-      _createInnerZone$1: function(zone) {
-        return this._createInnerZone$2$handleUncaughtError(zone, null);
-      },
       _run$4: [function($self, $parent, zone, fn) {
         var t1;
         try {
@@ -21751,23 +21261,23 @@
         } finally {
           this.onLeave.call$0();
         }
-      }, "call$4", "get$_run", 8, 0, 98, 2, 3, 4, 17],
+      }, "call$4", "get$_run", 8, 0, 81, 3, 4, 5, 12],
       _runUnary$5: [function($self, $parent, zone, fn, arg) {
         return this._run$4($self, $parent, zone, new Q.NgZoneImpl__runUnary_closure(fn, arg));
-      }, "call$5", "get$_runUnary", 10, 0, 99, 2, 3, 4, 17, 23],
+      }, "call$5", "get$_runUnary", 10, 0, 82, 3, 4, 5, 12, 22],
       _runBinary$6: [function($self, $parent, zone, fn, arg1, arg2) {
         return this._run$4($self, $parent, zone, new Q.NgZoneImpl__runBinary_closure(fn, arg1, arg2));
-      }, "call$6", "get$_runBinary", 12, 0, 100, 2, 3, 4, 17, 10, 31],
+      }, "call$6", "get$_runBinary", 12, 0, 125, 3, 4, 5, 12, 10, 31],
       _ng_zone_impl$_scheduleMicrotask$4: [function($self, $parent, zone, fn) {
         if (this._pendingMicrotasks === 0)
           this.setMicrotask.call$1(true);
         ++this._pendingMicrotasks;
         $parent.scheduleMicrotask$2(zone, new Q.NgZoneImpl__scheduleMicrotask_closure(this, fn));
-      }, "call$4", "get$_ng_zone_impl$_scheduleMicrotask", 8, 0, 101, 2, 3, 4, 17],
+      }, "call$4", "get$_ng_zone_impl$_scheduleMicrotask", 8, 0, 84, 3, 4, 5, 12],
       _onErrorWithoutLongStackTrace$5: [function($self, $parent, zone, error, trace) {
         var t1 = J.toString$0$(trace);
         this.onError.call$1(new Q.NgZoneError(error, [t1]));
-      }, "call$5", "get$_onErrorWithoutLongStackTrace", 10, 0, 102, 2, 3, 4, 6, 105],
+      }, "call$5", "get$_onErrorWithoutLongStackTrace", 10, 0, 85, 3, 4, 5, 7, 103],
       _createTimer$5: [function($self, $parent, zone, duration, fn) {
         var t1, wrappedTimer;
         t1 = {};
@@ -21779,7 +21289,7 @@
         this._pendingTimers.push(wrappedTimer);
         this.setMacrotask.call$1(true);
         return t1.wrappedTimer;
-      }, "call$5", "get$_createTimer", 10, 0, 103, 2, 3, 4, 27, 17],
+      }, "call$5", "get$_createTimer", 10, 0, 86, 3, 4, 5, 104, 12],
       NgZoneImpl$6$onEnter$onError$onLeave$setMacrotask$setMicrotask$trace: function(onEnter, onError, onLeave, setMacrotask, setMicrotask, trace) {
         var t1 = $.Zone__current;
         this._outerZone = t1;
@@ -21854,8 +21364,7 @@
           t1 = this.super$AppView$create(givenProjectableNodes, selectorOrNode);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           this._rethrowWithContext$2(e, e_stack);
           throw exception;
@@ -21868,8 +21377,7 @@
           t1 = this.super$AppView$createComp(givenProjectableNodes, selectorOrNode);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           this._rethrowWithContext$2(e, e_stack);
           throw exception;
@@ -21882,8 +21390,7 @@
           t1 = this.super$AppView$createHost(givenProjectableNodes, selectorOrNode);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           this._rethrowWithContext$2(e, e_stack);
           throw exception;
@@ -21896,28 +21403,26 @@
           t1 = this.super$AppView$injectorGet(token, nodeIndex, notFoundResult);
           return t1;
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           this._rethrowWithContext$2(e, e_stack);
           throw exception;
         }
       },
       destroyLocal$0: function() {
-        var e, e_stack, exception, t1;
+        var e, e_stack, exception;
         this._currentDebugContext = null;
         try {
           this.super$AppView$destroyLocal();
         } catch (exception) {
-          t1 = H.unwrapException(exception);
-          e = t1;
+          e = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           this._rethrowWithContext$2(e, e_stack);
           throw exception;
         }
       },
       detectChanges$0: function() {
-        var s, s0, e, e_stack, e0, exception, t1;
+        var s, s0, e, e_stack, e0, exception;
         this._currentDebugContext = null;
         if ($.DebugAppView_profilingEnabled) {
           s = null;
@@ -21926,8 +21431,7 @@
             this.super$AppView$detectChanges();
             $.$get$wtfLeave().call$1(s0);
           } catch (exception) {
-            t1 = H.unwrapException(exception);
-            e = t1;
+            e = H.unwrapException(exception);
             e_stack = H.getTraceFromException(exception);
             $.$get$wtfLeave().call$1(s);
             this._rethrowWithContext$2(e, e_stack);
@@ -21937,8 +21441,7 @@
           try {
             this.super$AppView$detectChanges();
           } catch (exception) {
-            t1 = H.unwrapException(exception);
-            e0 = t1;
+            e0 = H.unwrapException(exception);
             if (!(e0 instanceof T.ExpressionChangedAfterItHasBeenCheckedException))
               this.set$cdState(C.ChangeDetectorState_2);
             throw exception;
@@ -21965,7 +21468,8 @@
         } else {
           t2 = element.parentNode;
           debugEl = T.DebugElement$(element, t2 == null ? null : $.$get$_nativeNodeToDebugNode().$index(0, t2), debugInfo);
-          debugEl.name = t1.get$tagName(element).toLowerCase();
+          t1 = t1.get$tagName(element).toLowerCase();
+          debugEl.name = t1;
           this._currentDebugContext = debugInfo;
         }
         $.$get$_nativeNodeToDebugNode().$indexSet(0, debugEl.nativeNode, debugEl);
@@ -22022,7 +21526,7 @@
           if (debugNode == null)
             continue;
           if ($.$get$_nativeNodeToDebugNode().containsKey$1(0, debugNode.get$nativeNode()))
-            $.$get$_nativeNodeToDebugNode().remove$1(0, debugNode.get$nativeNode()) == null;
+            $.$get$_nativeNodeToDebugNode().remove$1(0, debugNode.get$nativeNode());
         }
         this.super$AppView$destroyViewNodes(hostElement, viewAllNodes);
       },
@@ -22053,8 +21557,7 @@
           t2 = this.superHandler.call$1($event);
           return t2;
         } catch (exception) {
-          t2 = H.unwrapException(exception);
-          e = t2;
+          e = H.unwrapException(exception);
           e_stack = H.getTraceFromException(exception);
           t1._rethrowWithContext$2(e, e_stack);
           throw exception;
@@ -22087,7 +21590,7 @@
     "^": "",
     inspectNativeElement: [function(element) {
       return $.$get$_nativeNodeToDebugNode().$index(0, element);
-    }, "call$1", "debug_node__inspectNativeElement$closure", 2, 0, 137, 16],
+    }, "call$1", "debug_node__inspectNativeElement$closure", 2, 0, 121, 14],
     DebugEventListener: {
       "^": "Object;name>,callback<"
     },
@@ -22095,7 +21598,8 @@
       "^": "Object;_debugInfo,nativeNode<,listeners<,parent*",
       get$injector: function() {
         var t1 = this._debugInfo;
-        return t1._view.injector$1(t1._debug_context$_nodeIndex);
+        t1 = t1._view.injector$1(t1._debug_context$_nodeIndex);
+        return t1;
       },
       DebugNode$3: function(nativeNode, $parent, _debugInfo) {
         this.nativeNode = nativeNode;
@@ -22187,7 +21691,7 @@
         t1._sendData$1(value);
       },
       EventEmitter$1: function(isAsync, $T) {
-        this._controller = P.StreamController_StreamController$broadcast(null, null, !isAsync, $T);
+        this._controller = !isAsync ? new P._SyncBroadcastStreamController(null, null, 0, null, null, null, null, [$T]) : new P._AsyncBroadcastStreamController(null, null, 0, null, null, null, null, [$T]);
       },
       static: {
         EventEmitter$: function(isAsync, $T) {
@@ -22222,7 +21726,7 @@
       }
     },
     ExceptionHandler: {
-      "^": "Object:104;_logger,_rethrowException",
+      "^": "Object:87;_logger,_rethrowException",
       call$3: [function(exception, stackTrace, reason) {
         var originalException, originalStack, context, t1, t2;
         originalException = this._findOriginalException$1(exception);
@@ -22254,7 +21758,7 @@
         return this.call$3(exception, null, null);
       }, "call$1", function(exception, stackTrace) {
         return this.call$3(exception, stackTrace, null);
-      }, "call$2", null, null, null, "get$$call", 2, 4, null, 1, 1, 106, 7, 107],
+      }, "call$2", null, null, null, "get$$call", 2, 4, null, 1, 1, 123, 9, 106],
       _longStackTrace$1: function(stackTrace) {
         var t1 = J.getInterceptor(stackTrace);
         return !!t1.$isIterable ? t1.join$1(H.listTypeCast(stackTrace), "\n\n-----async gap-----\n") : t1.toString$0(stackTrace);
@@ -22394,10 +21898,7 @@
       },
       on$3: [function(_, element, $event, callback) {
         element.get$on(element).$index(0, $event).listen$1(callback);
-      }, "call$3", "get$on", 6, 0, 105],
-      type$1: [function(_, el) {
-        return el.get$type(el);
-      }, "call$1", "get$type", 2, 0, 106],
+      }, "call$3", "get$on", 6, 0, 88],
       remove$1: function(_, el) {
         J.remove$0$ax(el);
       },
@@ -22441,19 +21942,19 @@
     GenericBrowserDomAdapter: {
       "^": "DomAdapter;$ti",
       GenericBrowserDomAdapter$0: function($T, $N, ET) {
-        var element, transitionNames, transitionEndNames, i, key, t1, propValue, exception;
+        var element, transitionNames, transitionEndNames, i, key, doc, element0, exception;
         try {
-          t1 = document;
-          element = t1.createElement("div");
+          doc = document;
+          element0 = doc.createElement("div");
+          element = element0;
           J.getPropertyValue$1$x(J.get$style$x(element), "animationName");
           this._animationPrefix = "";
           transitionNames = C.List_Pgy;
           transitionEndNames = C.List_QcT;
           for (i = 0; J.$lt$n(i, J.get$length$asx(transitionNames)); i = J.$add$ns(i, 1)) {
             key = J.$index$asx(transitionNames, i);
-            propValue = J._getPropertyValueHelper$1$x(J.get$style$x(element), key);
-            if ((propValue != null ? propValue : "") != null)
-              this._transitionEnd = J.$index$asx(transitionEndNames, i);
+            J._getPropertyValueHelper$1$x(J.get$style$x(element), key);
+            this._transitionEnd = J.$index$asx(transitionEndNames, i);
           }
         } catch (exception) {
           H.unwrapException(exception);
@@ -22480,7 +21981,8 @@
       }(P._callDartFunction, new D._jsFunction_closure(fn, C.C_Object), true));
     },
     __invokeFn: function(fn, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10) {
-      var args = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o10];
+      var args, t1;
+      args = [o1, o2, o3, o4, o5, o6, o7, o8, o9, o10];
       while (true) {
         if (!(args.length > 0 && C.JSArray_methods.get$last(args) === C.C_Object))
           break;
@@ -22488,7 +21990,8 @@
           return H.ioore(args, -1);
         args.pop();
       }
-      return D._jsify(H.Primitives_applyFunctionWithPositionalArguments(fn, args));
+      t1 = H.Primitives_applyFunctionWithPositionalArguments(fn, args);
+      return D._jsify(t1);
     },
     _jsify: [function(obj) {
       var t1, t2, mappedObj;
@@ -22510,9 +22013,9 @@
           return P.JsObject_JsObject$jsify(mappedObj);
       }
       return obj;
-    }, "call$1", "testability0___jsify$closure", 2, 0, 1, 47],
+    }, "call$1", "testability0___jsify$closure", 2, 0, 1, 43],
     _jsFunction_closure: {
-      "^": "Closure:107;fn,X",
+      "^": "Closure:89;fn,X",
       call$11: [function(thisArg, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10) {
         return D.__invokeFn(this.fn, o1, o2, o3, o4, o5, o6, o7, o8, o9, o10);
       }, function(thisArg) {
@@ -22535,7 +22038,7 @@
         return this.call$11(thisArg, o1, o2, o3, o4, o5, o6, o7, o8, C.C_Object, C.C_Object);
       }, "call$9", function(thisArg, o1, o2, o3, o4, o5, o6, o7, o8, o9) {
         return this.call$11(thisArg, o1, o2, o3, o4, o5, o6, o7, o8, o9, C.C_Object);
-      }, "call$10", null, null, null, null, null, null, null, null, null, null, null, null, 2, 20, null, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, "call"]
+      }, "call$10", null, null, null, null, null, null, null, null, null, null, null, null, 2, 20, null, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, "call"]
     },
     PublicTestability: {
       "^": "Object;_testability",
@@ -22556,14 +22059,14 @@
       $is_JsObjectProxyable: 1
     },
     PublicTestability__toJsObject_closure: {
-      "^": "Closure:108;$this",
+      "^": "Closure:90;$this",
       call$3: [function(bindingString, exactMatch, allowNonElementNodes) {
         return this.$this._testability.findBindings$3(bindingString, exactMatch, allowNonElementNodes);
       }, function(bindingString) {
         return this.call$3(bindingString, null, null);
       }, "call$1", function(bindingString, exactMatch) {
         return this.call$3(bindingString, exactMatch, null);
-      }, "call$2", null, null, null, null, 2, 4, null, 1, 1, 120, 121, 122, "call"]
+      }, "call$2", null, null, null, null, 2, 4, null, 1, 1, 119, 120, 121, "call"]
     },
     PublicTestability__toJsObject_closure0: {
       "^": "Closure:0;$this",
@@ -22576,7 +22079,7 @@
       call$1: [function(callback) {
         this.$this._testability.whenStable$1(new D.PublicTestability__toJsObject__closure(callback));
         return;
-      }, null, null, 2, 0, null, 12, "call"]
+      }, null, null, 2, 0, null, 26, "call"]
     },
     PublicTestability__toJsObject__closure: {
       "^": "Closure:1;callback",
@@ -22629,7 +22132,7 @@
       }
     },
     BrowserGetTestability_addToWindow_closure: {
-      "^": "Closure:109;",
+      "^": "Closure:91;",
       call$2: [function(elem, findInAncestors) {
         var registry, t1, i, t2, result;
         registry = J.$index$asx($.$get$context0(), "ngTestabilityRegistries");
@@ -22649,7 +22152,7 @@
         throw H.wrapException("Could not find testability for element.");
       }, function(elem) {
         return this.call$2(elem, true);
-      }, "call$1", null, null, null, 2, 2, null, 123, 54, 55, "call"]
+      }, "call$1", null, null, null, 2, 2, null, 122, 37, 45, "call"]
     },
     BrowserGetTestability_addToWindow_closure0: {
       "^": "Closure:0;",
@@ -22683,28 +22186,28 @@
         t1.count = t2.get$length(testabilities);
         t1.didWork = false;
         t2.forEach$1(testabilities, new D.BrowserGetTestability_addToWindow__closure(D._jsify(new D.BrowserGetTestability_addToWindow__closure0(t1, callback))));
-      }, null, null, 2, 0, null, 12, "call"]
+      }, null, null, 2, 0, null, 26, "call"]
     },
     BrowserGetTestability_addToWindow__closure0: {
-      "^": "Closure:16;_box_0,callback",
+      "^": "Closure:15;_box_0,callback",
       call$1: [function(didWork_) {
         var t1, count;
         t1 = this._box_0;
         t1.didWork = t1.didWork || didWork_ === true;
         count = J.$sub$n(t1.count, 1);
         t1.count = count;
-        if (J.$eq$(count, 0))
+        if (count === 0)
           this.callback.apply$1([t1.didWork]);
-      }, null, null, 2, 0, null, 126, "call"]
+      }, null, null, 2, 0, null, 125, "call"]
     },
     BrowserGetTestability_addToWindow__closure: {
       "^": "Closure:1;decrement",
       call$1: [function(testability) {
         testability.callMethod$2("whenStable", [this.decrement]);
-      }, null, null, 2, 0, null, 56, "call"]
+      }, null, null, 2, 0, null, 47, "call"]
     },
     BrowserGetTestability__createRegistry_closure: {
-      "^": "Closure:110;registry",
+      "^": "Closure:92;registry",
       call$2: [function(elem, findInAncestors) {
         var t1, testability;
         t1 = this.registry;
@@ -22717,14 +22220,15 @@
           t1 = D._jsify(t1);
         }
         return t1;
-      }, null, null, 4, 0, null, 54, 55, "call"]
+      }, null, null, 4, 0, null, 37, 45, "call"]
     },
     BrowserGetTestability__createRegistry_closure0: {
       "^": "Closure:0;registry",
       call$0: [function() {
         var t1 = this.registry._applications;
         t1 = t1.get$values(t1);
-        return D._jsify(new H.MappedListIterable(P.List_List$from(t1, true, H.getRuntimeTypeArgument(t1, "Iterable", 0)), new D.BrowserGetTestability__createRegistry__closure(), [null, null]));
+        t1 = P.List_List$from(t1, true, H.getRuntimeTypeArgument(t1, "Iterable", 0));
+        return D._jsify(new H.MappedListIterable(t1, new D.BrowserGetTestability__createRegistry__closure(), [H.getTypeArgumentByIndex(t1, 0), null]));
       }, null, null, 0, 0, null, "call"]
     },
     BrowserGetTestability__createRegistry__closure: {
@@ -22733,7 +22237,7 @@
         var t1 = new D.PublicTestability(null);
         t1._testability = testability;
         return t1;
-      }, null, null, 2, 0, null, 56, "call"]
+      }, null, null, 2, 0, null, 47, "call"]
     }
   }], ["", "package:angular2/src/platform/browser/testability.template.dart",, F, {
     "^": "",
@@ -22825,10 +22329,10 @@
       }
     },
     XHRImpl_get_closure: {
-      "^": "Closure:111;",
+      "^": "Closure:93;",
       call$1: [function(req) {
         return J.get$responseText$x(req);
-      }, null, null, 2, 0, null, 128, "call"]
+      }, null, null, 2, 0, null, 127, "call"]
     },
     XHRImpl_get_closure0: {
       "^": "Closure:1;url",
@@ -22855,14 +22359,14 @@
     "^": "",
     exceptionHandler: [function() {
       return new U.ExceptionHandler($.DOM, false);
-    }, "call$0", "browser_common__exceptionHandler$closure", 0, 0, 138],
+    }, "call$0", "browser_common__exceptionHandler$closure", 0, 0, 122],
     document: [function() {
       $.DOM.toString;
       return document;
     }, "call$0", "browser_common__document$closure", 0, 0, 0],
     createEventPlugins: [function(dom, keys, hammer) {
       return P.List_List$unmodifiable([dom, keys, hammer], N.EventManagerPlugin);
-    }, "call$3", "browser_common__createEventPlugins$closure", 6, 0, 139, 129, 29, 130],
+    }, "call$3", "browser_common__createEventPlugins$closure", 6, 0, 123, 128, 30, 129],
     createInitDomAdapter: function(testabilityRegistry) {
       return new L.createInitDomAdapter_closure(testabilityRegistry);
     },
@@ -23003,7 +22507,7 @@
         var t1 = this.$this;
         p.set$manager(t1);
         return t1;
-      }, null, null, 2, 0, null, 131, "call"]
+      }, null, null, 2, 0, null, 130, "call"]
     },
     EventManagerPlugin: {
       "^": "Object;manager?",
@@ -23023,10 +22527,10 @@
       O.initReflector21();
     },
     initReflector_closure3: {
-      "^": "Closure:112;",
+      "^": "Closure:94;",
       call$2: [function(plugins, _zone) {
         return N.EventManager$(plugins, _zone);
-      }, null, null, 4, 0, null, 132, 45, "call"]
+      }, null, null, 4, 0, null, 131, 51, "call"]
     }
   }], ["", "package:angular2/src/platform/dom/events/hammer_common.dart",, Y, {
     "^": "",
@@ -23061,7 +22565,7 @@
       }
     },
     HammerGestureConfig_buildHammer_closure: {
-      "^": "Closure:113;mc",
+      "^": "Closure:95;mc",
       call$2: function(config, eventName) {
         return V.overrideDefault(this.mc, eventName, config);
       }
@@ -23097,7 +22601,7 @@
       "^": "Closure:1;handler,zone",
       call$1: [function(eventObj) {
         this.zone.runGuarded$1(new V.HammerGesturesPlugin_addEventListener___closure(this.handler, eventObj));
-      }, null, null, 2, 0, null, 133, "call"]
+      }, null, null, 2, 0, null, 132, "call"]
     },
     HammerGesturesPlugin_addEventListener___closure: {
       "^": "Closure:0;handler,eventObj",
@@ -23136,7 +22640,7 @@
       }
     },
     HammerEvent: {
-      "^": "Object;angle,centerX,centerY,deltaTime,deltaX,deltaY,direction,distance,rotation,scale,target,timeStamp,type>,velocity,velocityX,velocityY,jsEvent"
+      "^": "Object;angle,centerX,centerY,deltaTime,deltaX,deltaY,direction,distance,rotation,scale,target,timeStamp,type,velocity,velocityX,velocityY,jsEvent"
     }
   }], ["", "package:angular2/src/platform/dom/events/hammer_gestures.template.dart",, Z, {
     "^": "",
@@ -23158,33 +22662,33 @@
       }, null, null, 0, 0, null, "call"]
     },
     initReflector_closure22: {
-      "^": "Closure:114;",
+      "^": "Closure:96;",
       call$1: [function(_config) {
         return new V.HammerGesturesPlugin(_config, null);
-      }, null, null, 2, 0, null, 134, "call"]
+      }, null, null, 2, 0, null, 133, "call"]
     }
   }], ["", "package:angular2/src/platform/dom/events/key_events.dart",, N, {
     "^": "",
-    closure3: {
-      "^": "Closure:12;",
+    closure4: {
+      "^": "Closure:11;",
       call$1: function($event) {
         return J.get$altKey$x($event);
       }
     },
-    closure4: {
-      "^": "Closure:12;",
+    closure5: {
+      "^": "Closure:11;",
       call$1: function($event) {
         return J.get$ctrlKey$x($event);
       }
     },
-    closure5: {
-      "^": "Closure:12;",
+    closure6: {
+      "^": "Closure:11;",
       call$1: function($event) {
         return J.get$metaKey$x($event);
       }
     },
-    closure6: {
-      "^": "Closure:12;",
+    closure7: {
+      "^": "Closure:11;",
       call$1: function($event) {
         return J.get$shiftKey$x($event);
       }
@@ -23325,7 +22829,7 @@
     DomSharedStylesHost: {
       "^": "Object;_shared_styles_host$_styles,_stylesSet,_nativeHosts,_rootHost",
       addStyles$1: function(styles) {
-        var styleCount, additions, t1, t2, t3, i, style, t4, el;
+        var styleCount, additions, t1, t2, t3, i, style, el;
         styleCount = styles.length;
         additions = H.setRuntimeTypeInfo([], [P.String]);
         for (t1 = this._stylesSet, t2 = this._shared_styles_host$_styles, t3 = this._rootHost, i = 0; i < styleCount; ++i) {
@@ -23337,8 +22841,7 @@
           t1.add$1(0, style);
           t2.push(style);
           additions.push(style);
-          t4 = document;
-          el = t4.createElement("STYLE");
+          el = document.createElement("STYLE");
           el.textContent = style;
           t3.appendChild(el);
         }
@@ -23584,11 +23087,11 @@
         this._el_10.setAttribute("id", "reboot");
         this._appEl_10 = new V.ViewContainer(10, null, this, this._el_10, null, null, null, null);
         compView_10 = E.viewFactory_PowerButtonComponent0(this.injector$1(10), this._appEl_10);
-        t3 = new O.PowerButtonComponent(t4.$get$1(t3, C.Type_LightDM_6L0), "/images/shutdown.svg", "shutdown");
-        this._PowerButtonComponent_10_3 = t3;
-        t4 = this._appEl_10;
-        t4.component = t3;
-        t4.componentView = compView_10;
+        t1 = new O.PowerButtonComponent(t4.$get$1(t3, C.Type_LightDM_6L0), "/images/shutdown.svg", "shutdown");
+        this._PowerButtonComponent_10_3 = t1;
+        t2 = this._appEl_10;
+        t2.component = t1;
+        t2.componentView = compView_10;
         compView_10.createComp$2([], null);
         this.init$3([], [this._app_component_template$_el_0, _text_1, this._app_component_template$_el_2, _text_3, this._app_component_template$_el_4, _text_5, this._app_component_template$_el_6, _text_7, this._app_component_template$_el_8, _text_9, this._el_10], []);
         return;
@@ -23659,7 +23162,7 @@
         t2 = this._app_component_template$_appEl_0;
         t3 = $.renderType_AppComponent;
         if (t3 == null) {
-          t3 = $.appViewUtils.createRenderComponentType$4("asset:lightdm_webkit_theme_litarvan/lib/components/app/app_component.html", 0, C.ViewEncapsulation_0, C.List_QcD);
+          t3 = $.appViewUtils.createRenderComponentType$4("asset:lightdm_webkit_theme_litarvan/lib/components/app/app_component.html", 0, C.ViewEncapsulation_0, C.List_00);
           $.renderType_AppComponent = t3;
         }
         t4 = $.uninitialized;
@@ -23720,8 +23223,7 @@
         t5 = C.JSInt_methods.toString$0(H.Primitives_getDay(date));
         t4.toString;
         t5 = H.stringReplaceAllUnchecked(t4, "day", t5);
-        t4 = t3.$index(t2, "days");
-        t4 = J.$index$asx(t4, C.JSInt_methods.$mod(H.Primitives_lazyAsJsDate(date).getDay() + 0 + 6, 7) + 1 - 1);
+        t4 = J.$index$asx(t3.$index(t2, "days"), H.Primitives_getWeekday(date) - 1);
         H.checkString(t4);
         t4 = H.stringReplaceAllUnchecked(t5, "weekd", t4);
         t2 = J.$index$asx(t3.$index(t2, "months"), H.Primitives_getMonth(date) - 1);
@@ -23867,10 +23369,10 @@
       $asAppView: Isolate.functionThatReturnsNull
     },
     initReflector_closure14: {
-      "^": "Closure:34;",
+      "^": "Closure:25;",
       call$1: [function(_trans) {
         return new Y.ClockComponent(_trans, "00", "00", "");
-      }, null, null, 2, 0, null, 135, "call"]
+      }, null, null, 2, 0, null, 134, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/components/desktops/desktops_component.dart",, L, {
     "^": "",
@@ -23896,13 +23398,12 @@
         t1 = $.appViewUtils.createRenderComponentType$4("asset:lightdm_webkit_theme_litarvan/lib/components/desktops/desktops_component.html", 0, C.ViewEncapsulation_0, C.List_mT8);
         $.renderType_DesktopsComponent = t1;
       }
-      t2 = $.uninitialized;
-      t3 = P.LinkedHashMap__makeEmpty();
-      t4 = L.DesktopsComponent;
-      t2 = new E.ViewDesktopsComponent0(null, null, null, null, t2, C.List_Zme, null, C.Type_ViewDesktopsComponent0_6F1, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
-      t2.AppView$7(C.Type_ViewDesktopsComponent0_6F1, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t4);
-      t2.DebugAppView$8(C.Type_ViewDesktopsComponent0_6F1, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_Zme, t4);
-      return t2;
+      t2 = P.LinkedHashMap__makeEmpty();
+      t3 = L.DesktopsComponent;
+      t4 = new E.ViewDesktopsComponent0(null, null, null, null, $.uninitialized, C.List_Zme, null, C.Type_ViewDesktopsComponent0_6F1, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
+      t4.AppView$7(C.Type_ViewDesktopsComponent0_6F1, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t3);
+      t4.DebugAppView$8(C.Type_ViewDesktopsComponent0_6F1, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_Zme, t3);
+      return t4;
     },
     viewFactory_DesktopsComponent1: [function(parentInjector, declarationEl) {
       var t1, t2, t3, t4;
@@ -24015,13 +23516,13 @@
         this._el_0.appendChild(this._el_2);
         this.dbgElm$4(this._el_2, 2, 2, 8);
         this._el_2.className = "fa fa-angle-left";
-        t2 = doc.createTextNode("");
-        this._text_3 = t2;
-        this._el_0.appendChild(t2);
+        t1 = doc.createTextNode("");
+        this._text_3 = t1;
+        this._el_0.appendChild(t1);
         this.dbgElm$4(this._text_3, 3, 2, 40);
         this.listen$3(this._el_0, "click", this.evt$1(this.get$_handle_click_0_0()));
-        t2 = this._el_0;
-        this.init$3([t2], [t2, _text_1, this._el_2, this._text_3], []);
+        t1 = this._el_0;
+        this.init$3([t1], [t1, _text_1, this._el_2, this._text_3], []);
         return;
       },
       detectChangesInternal$0: function() {
@@ -24040,7 +23541,7 @@
         this._currentDebugContext = new Z.DebugContext(this, 0, 1, 41, [null]);
         t1 = this.ctx.apply$1(this.locals.$index(0, "$implicit"));
         return t1 !== false;
-      }, "call$1", "get$_handle_click_0_0", 2, 0, 9, 15],
+      }, "call$1", "get$_handle_click_0_0", 2, 0, 8, 15],
       $asDebugAppView: function() {
         return [L.DesktopsComponent];
       },
@@ -24081,12 +23582,12 @@
       $asAppView: Isolate.functionThatReturnsNull
     },
     initReflector_closure17: {
-      "^": "Closure:18;",
+      "^": "Closure:23;",
       call$2: [function(_lightDM, _greeter) {
         var t1 = new L.DesktopsComponent(_lightDM, _greeter, null);
         t1.desktops = _lightDM.get$desktops();
         return t1;
-      }, null, null, 4, 0, null, 137, 58, "call"]
+      }, null, null, 4, 0, null, 136, 54, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/components/login/login_component.dart",, D, {
     "^": "",
@@ -24164,7 +23665,7 @@
         var t1 = document.querySelector("#error");
         J.set$innerHtml$x(t1, J.$eq$(err, "auth") ? "Invalid password" : err);
         this.setEnabled.call$0();
-      }, null, null, 2, 0, null, 44, "call"]
+      }, null, null, 2, 0, null, 52, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/components/login/login_component.template.dart",, B, {
     "^": "",
@@ -24341,14 +23842,14 @@
         this._currentDebugContext = new Z.DebugContext(this, 0, 0, 17, [null]);
         t1 = this.ctx.users$0();
         return t1 !== false;
-      }, "call$1", "get$_login_component_template$_handle_click_0_0", 2, 0, 9, 15],
+      }, "call$1", "get$_login_component_template$_handle_click_0_0", 2, 0, 8, 15],
       _handle_click_14_0$1: [function($$event) {
         var t1;
         this.markPathToRootAsCheckOnce$0();
         this._currentDebugContext = new Z.DebugContext(this, 14, 6, 21, [null]);
         t1 = this.ctx.desktops$0();
         return t1 !== false;
-      }, "call$1", "get$_handle_click_14_0", 2, 0, 9, 15],
+      }, "call$1", "get$_handle_click_14_0", 2, 0, 8, 15],
       $asDebugAppView: function() {
         return [D.LoginComponent];
       },
@@ -24394,15 +23895,15 @@
       $asAppView: Isolate.functionThatReturnsNull
     },
     initReflector_closure16: {
-      "^": "Closure:119;",
+      "^": "Closure:101;",
       call$3: [function(greeter, _lightdm, trans) {
         return new D.LoginComponent(_lightdm, greeter, trans, null);
-      }, null, null, 6, 0, null, 139, 26, 53, "call"]
+      }, null, null, 6, 0, null, 138, 19, 46, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/components/power_button/power_button_component.dart",, O, {
     "^": "",
     PowerButtonComponent: {
-      "^": "Object;_power_button_component$_lightdm,image<,type>",
+      "^": "Object;_power_button_component$_lightdm,image<,type",
       apply$0: function() {
         J.get$classes$x(document.querySelector("app")).add$1(0, "hidden");
         P.Future_Future$delayed(C.Duration_500000, new O.PowerButtonComponent_apply_closure(this), null);
@@ -24431,13 +23932,12 @@
         t1 = $.appViewUtils.createRenderComponentType$4("asset:lightdm_webkit_theme_litarvan/lib/components/power_button/power_button_component.html", 0, C.ViewEncapsulation_0, C.List_V2V);
         $.renderType_PowerButtonComponent = t1;
       }
-      t2 = $.uninitialized;
-      t3 = P.LinkedHashMap__makeEmpty();
-      t4 = O.PowerButtonComponent;
-      t2 = new E.ViewPowerButtonComponent0(null, null, null, t2, C.List_2Vk, null, C.Type_ViewPowerButtonComponent0_6j1, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
-      t2.AppView$7(C.Type_ViewPowerButtonComponent0_6j1, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t4);
-      t2.DebugAppView$8(C.Type_ViewPowerButtonComponent0_6j1, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_2Vk, t4);
-      return t2;
+      t2 = P.LinkedHashMap__makeEmpty();
+      t3 = O.PowerButtonComponent;
+      t4 = new E.ViewPowerButtonComponent0(null, null, null, $.uninitialized, C.List_2Vk, null, C.Type_ViewPowerButtonComponent0_6j1, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
+      t4.AppView$7(C.Type_ViewPowerButtonComponent0_6j1, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t3);
+      t4.DebugAppView$8(C.Type_ViewPowerButtonComponent0_6j1, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_2Vk, t3);
+      return t4;
     },
     viewFactory_PowerButtonComponentHost0: [function(parentInjector, declarationEl) {
       var t1, t2, t3;
@@ -24522,7 +24022,7 @@
         this._currentDebugContext = new Z.DebugContext(this, 0, 0, 23, [null]);
         this.ctx.apply$0();
         return true;
-      }, "call$1", "get$_power_button_component_template$_handle_click_0_0", 2, 0, 9, 15],
+      }, "call$1", "get$_power_button_component_template$_handle_click_0_0", 2, 0, 8, 15],
       $asDebugAppView: function() {
         return [O.PowerButtonComponent];
       },
@@ -24559,10 +24059,10 @@
       $asAppView: Isolate.functionThatReturnsNull
     },
     initReflector_closure15: {
-      "^": "Closure:17;",
+      "^": "Closure:16;",
       call$1: [function(_lightdm) {
         return new O.PowerButtonComponent(_lightdm, "/images/shutdown.svg", "shutdown");
-      }, null, null, 2, 0, null, 26, "call"]
+      }, null, null, 2, 0, null, 19, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/components/splash/splash_component.dart",, V, {
     "^": "",
@@ -24599,13 +24099,12 @@
         t1 = $.appViewUtils.createRenderComponentType$4("asset:lightdm_webkit_theme_litarvan/lib/components/splash/splash_component.html", 0, C.ViewEncapsulation_0, C.List_UW2);
         $.renderType_SplashComponent = t1;
       }
-      t2 = $.uninitialized;
-      t3 = P.LinkedHashMap__makeEmpty();
-      t4 = V.SplashComponent;
-      t2 = new X.ViewSplashComponent0(null, null, null, null, null, t2, C.List_2vL, null, C.Type_ViewSplashComponent0_Feh, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
-      t2.AppView$7(C.Type_ViewSplashComponent0_Feh, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t4);
-      t2.DebugAppView$8(C.Type_ViewSplashComponent0_Feh, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_2vL, t4);
-      return t2;
+      t2 = P.LinkedHashMap__makeEmpty();
+      t3 = V.SplashComponent;
+      t4 = new X.ViewSplashComponent0(null, null, null, null, null, $.uninitialized, C.List_2vL, null, C.Type_ViewSplashComponent0_Feh, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
+      t4.AppView$7(C.Type_ViewSplashComponent0_Feh, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t3);
+      t4.DebugAppView$8(C.Type_ViewSplashComponent0_Feh, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_2vL, t3);
+      return t4;
     },
     viewFactory_SplashComponentHost0: [function(parentInjector, declarationEl) {
       var t1, t2, t3;
@@ -24725,10 +24224,10 @@
       $asAppView: Isolate.functionThatReturnsNull
     },
     initReflector_closure13: {
-      "^": "Closure:34;",
+      "^": "Closure:25;",
       call$1: [function(trans) {
         return new V.SplashComponent(trans);
-      }, null, null, 2, 0, null, 53, "call"]
+      }, null, null, 2, 0, null, 46, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/components/users/users_component.dart",, E, {
     "^": "",
@@ -24751,13 +24250,12 @@
         t1 = $.appViewUtils.createRenderComponentType$4("asset:lightdm_webkit_theme_litarvan/lib/components/users/users_component.html", 0, C.ViewEncapsulation_0, C.List_GVx);
         $.renderType_UsersComponent = t1;
       }
-      t2 = $.uninitialized;
-      t3 = P.LinkedHashMap__makeEmpty();
-      t4 = E.UsersComponent;
-      t2 = new N.ViewUsersComponent0(null, null, null, null, t2, C.List_Zme, null, C.Type_ViewUsersComponent0_sU9, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
-      t2.AppView$7(C.Type_ViewUsersComponent0_sU9, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t4);
-      t2.DebugAppView$8(C.Type_ViewUsersComponent0_sU9, t1, C.ViewType_1, t3, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_Zme, t4);
-      return t2;
+      t2 = P.LinkedHashMap__makeEmpty();
+      t3 = E.UsersComponent;
+      t4 = new N.ViewUsersComponent0(null, null, null, null, $.uninitialized, C.List_Zme, null, C.Type_ViewUsersComponent0_sU9, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, false, null, null, null, H.setRuntimeTypeInfo([], [{func: 1, v: true}]), null, [], [], null, null, C.ChangeDetectorState_0, null, null, false, null);
+      t4.AppView$7(C.Type_ViewUsersComponent0_sU9, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, t3);
+      t4.DebugAppView$8(C.Type_ViewUsersComponent0_sU9, t1, C.ViewType_1, t2, parentInjector, declarationEl, C.ChangeDetectionStrategy_2, C.List_Zme, t3);
+      return t4;
     },
     viewFactory_UsersComponent1: [function(parentInjector, declarationEl) {
       var t1, t2, t3, t4;
@@ -24895,8 +24393,8 @@
         this._users_component_template$_el_0.appendChild(_text_8);
         this.dbgElm$4(_text_8, 8, 2, 117);
         this.listen$3(this._users_component_template$_el_0, "click", this.evt$1(this.get$_users_component_template$_handle_click_0_0()));
-        t2 = this._users_component_template$_el_0;
-        this.init$3([t2], [t2, _text_1, this._users_component_template$_el_2, this._users_component_template$_text_3, this._users_component_template$_el_4, this._users_component_template$_text_5, _text_6, this._el_7, _text_8], []);
+        t1 = this._users_component_template$_el_0;
+        this.init$3([t1], [t1, _text_1, this._users_component_template$_el_2, this._users_component_template$_text_3, this._users_component_template$_el_4, this._users_component_template$_text_5, _text_6, this._el_7, _text_8], []);
         return;
       },
       detectChangesInternal$0: function() {
@@ -24930,7 +24428,7 @@
         this._currentDebugContext = new Z.DebugContext(this, 0, 1, 43, [null]);
         t1 = this.ctx.apply$1(this.locals.$index(0, "$implicit"));
         return t1 !== false;
-      }, "call$1", "get$_users_component_template$_handle_click_0_0", 2, 0, 9, 15],
+      }, "call$1", "get$_users_component_template$_handle_click_0_0", 2, 0, 8, 15],
       $asDebugAppView: function() {
         return [E.UsersComponent];
       },
@@ -24969,10 +24467,10 @@
       $asAppView: Isolate.functionThatReturnsNull
     },
     initReflector_closure12: {
-      "^": "Closure:18;",
+      "^": "Closure:23;",
       call$2: [function(lightDM, _greeter) {
         return new E.UsersComponent(lightDM, _greeter);
-      }, null, null, 4, 0, null, 94, 58, "call"]
+      }, null, null, 4, 0, null, 93, 54, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/desktop.dart",, K, {
     "^": "",
@@ -25043,10 +24541,10 @@
       Q.initReflector3();
     },
     initReflector_closure10: {
-      "^": "Closure:17;",
+      "^": "Closure:16;",
       call$1: [function(_lightdm) {
         return F.GreeterService$(_lightdm);
-      }, null, null, 2, 0, null, 26, "call"]
+      }, null, null, 2, 0, null, 19, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/lightdm.dart",, G, {
     "^": "",
@@ -25140,13 +24638,18 @@
     Translations: {
       "^": "Object;_lightdm",
       $get$1: function(_, key) {
-        var t1, t2;
-        t1 = this._lightdm;
-        t2 = J.getInterceptor$x(t1);
-        if (t2.get$language(t1) != null && J.toLowerCase$0$s(t2.get$language(t1)) === "fran\xe7ais")
-          return C.Map_8Oa1A.$index(0, key);
-        else
-          return C.Map_8OuHZ.$index(0, key);
+        switch (J.toLowerCase$0$s(J.get$language$x(this._lightdm))) {
+          case "fran\xe7ais":
+            return C.Map_8Oa1A.$index(0, key);
+          case "nederlands":
+            return C.Map_8Oxry.$index(0, key);
+          case "polski":
+            return C.Map_8Oato.$index(0, key);
+          case "deutsch":
+            return C.Map_8OwW3.$index(0, key);
+          default:
+            return C.Map_8OuHZ.$index(0, key);
+        }
       },
       $index: function(_, key) {
         return this.$get$1(0, key);
@@ -25163,10 +24666,10 @@
       Q.initReflector3();
     },
     initReflector_closure: {
-      "^": "Closure:17;",
+      "^": "Closure:16;",
       call$1: [function(_lightdm) {
         return new M.Translations(_lightdm);
-      }, null, null, 2, 0, null, 26, "call"]
+      }, null, null, 2, 0, null, 19, "call"]
     }
   }], ["", "package:lightdm_webkit_theme_litarvan/user.dart",, N, {
     "^": "",
@@ -25206,18 +24709,11 @@
         H.interceptedTypeCast(document.querySelector("#password"), "$isInputElement").focus();
       }
     }
-  }], ["", "package:stack_trace/src/chain.dart",, U, {
-    "^": "",
-    Chain: {
-      "^": "Object;",
-      $isStackTrace: 1
-    }
   }], ["", "main.dart",, F, {
     "^": "",
     main: [function() {
-      var appProviders, t1, platform, tokens, testabilityRegistry, resolved, t2, ResolvedReflectiveProviders, t3, appInjector;
+      var t1, platform, tokens, testabilityRegistry, values, normalized, resolved, t2, ResolvedReflectiveProviders, t3, appInjector;
       new F.main_closure().call$0();
-      appProviders = [C.List_FCG, [C.Type_GreeterService_8Gl, C.Type_LightDM_6L0, C.Type_Translations_PBq]];
       t1 = $._platform;
       if (t1 != null) {
         t1.get$disposed();
@@ -25231,17 +24727,18 @@
         tokens.$indexSet(0, C.Type_PlatformRef_99U, platform);
         tokens.$indexSet(0, C.Type_PlatformRefImpl_Eok, platform);
         tokens.$indexSet(0, C.Type_Reflector_mQk, $.$get$reflector());
-        t1 = new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [null, D.Testability]);
-        testabilityRegistry = new D.TestabilityRegistry(t1, new D._NoopGetTestability());
+        testabilityRegistry = new D.TestabilityRegistry(new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [null, D.Testability]), new D._NoopGetTestability());
         tokens.$indexSet(0, C.Type_TestabilityRegistry_IMm, testabilityRegistry);
         tokens.$indexSet(0, C.OpaqueToken_jOL, [L.createInitDomAdapter(testabilityRegistry)]);
         t1 = new A.MapInjector(null, null);
-        t1._values = tokens;
+        values = tokens;
+        t1._values = values;
         t1._parent = $.$get$Injector_NULL();
         Y.createPlatform(t1);
       }
       t1 = platform.get$injector();
-      resolved = new H.MappedListIterable(U._normalizeProviders(appProviders, []), U.reflective_provider__resolveReflectiveProvider$closure(), [null, null]).toList$0(0);
+      normalized = U._normalizeProviders([C.List_FCG, [C.Type_GreeterService_8Gl, C.Type_LightDM_6L0, C.Type_Translations_PBq]], []);
+      resolved = new H.MappedListIterable(normalized, U.reflective_provider__resolveReflectiveProvider$closure(), [H.getTypeArgumentByIndex(normalized, 0), null]).toList$0(0);
       t2 = U.mergeResolvedReflectiveProviders(resolved, new H.JsLinkedHashMap(0, null, null, null, null, null, 0, [P.num, U.ResolvedReflectiveProvider]));
       t2 = t2.get$values(t2);
       ResolvedReflectiveProviders = P.List_List$from(t2, true, H.getRuntimeTypeArgument(t2, "Iterable", 0));
@@ -25426,6 +24923,9 @@
   J.get$keyCode$x = function(receiver) {
     return J.getInterceptor$x(receiver).get$keyCode(receiver);
   };
+  J.get$language$x = function(receiver) {
+    return J.getInterceptor$x(receiver).get$language(receiver);
+  };
   J.get$length$asx = function(receiver) {
     return J.getInterceptor$asx(receiver).get$length(receiver);
   };
@@ -25456,9 +24956,6 @@
   J.get$previousNode$x = function(receiver) {
     return J.getInterceptor$x(receiver).get$previousNode(receiver);
   };
-  J.get$print$x = function(receiver) {
-    return J.getInterceptor$x(receiver).get$print(receiver);
-  };
   J.get$responseText$x = function(receiver) {
     return J.getInterceptor$x(receiver).get$responseText(receiver);
   };
@@ -25473,9 +24970,6 @@
   };
   J.get$style$x = function(receiver) {
     return J.getInterceptor$x(receiver).get$style(receiver);
-  };
-  J.get$type$x = function(receiver) {
-    return J.getInterceptor$x(receiver).get$type(receiver);
   };
   J.get$username$x = function(receiver) {
     return J.getInterceptor$x(receiver).get$username(receiver);
@@ -25538,9 +25032,6 @@
   J.__isolate_helper$_add$1$x = function(receiver, a0) {
     return J.getInterceptor$x(receiver).__isolate_helper$_add$1(receiver, a0);
   };
-  J._clearChildren$0$x = function(receiver) {
-    return J.getInterceptor$x(receiver)._clearChildren$0(receiver);
-  };
   J._getPropertyValueHelper$1$x = function(receiver, a0) {
     return J.getInterceptor$x(receiver)._getPropertyValueHelper$1(receiver, a0);
   };
@@ -25553,26 +25044,17 @@
   J.addEventListener$3$x = function(receiver, a0, a1, a2) {
     return J.getInterceptor$x(receiver).addEventListener$3(receiver, a0, a1, a2);
   };
-  J.addKey$2$x = function(receiver, a0, a1) {
-    return J.getInterceptor$x(receiver).addKey$2(receiver, a0, a1);
-  };
   J.append$1$x = function(receiver, a0) {
     return J.getInterceptor$x(receiver).append$1(receiver, a0);
   };
   J.cancel$0$x = function(receiver) {
     return J.getInterceptor$x(receiver).cancel$0(receiver);
   };
-  J.clear$0$ax = function(receiver) {
-    return J.getInterceptor$ax(receiver).clear$0(receiver);
-  };
   J.complete$1$x = function(receiver, a0) {
     return J.getInterceptor$x(receiver).complete$1(receiver, a0);
   };
   J.contains$2$asx = function(receiver, a0, a1) {
     return J.getInterceptor$asx(receiver).contains$2(receiver, a0, a1);
-  };
-  J.createFragment$3$treeSanitizer$validator$x = function(receiver, a0, a1, a2) {
-    return J.getInterceptor$x(receiver).createFragment$3$treeSanitizer$validator(receiver, a0, a1, a2);
   };
   J.elementAt$1$ax = function(receiver, a0) {
     return J.getInterceptor$ax(receiver).elementAt$1(receiver, a0);
@@ -25680,8 +25162,8 @@
   C.JSString_methods = J.JSString.prototype;
   C.JavaScriptFunction_methods = J.JavaScriptFunction.prototype;
   C.PlainJavaScriptObject_methods = J.PlainJavaScriptObject.prototype;
+  C.TableElement_methods = W.TableElement.prototype;
   C.UnknownJavaScriptObject_methods = J.UnknownJavaScriptObject.prototype;
-  C.C_DynamicRuntimeType = new H.DynamicRuntimeType();
   C.C_NoReflectionCapabilities = new O.NoReflectionCapabilities();
   C.C_Object = new P.Object();
   C.C_OutOfMemoryError = new P.OutOfMemoryError();
@@ -25689,28 +25171,141 @@
   C.C__DevModeEquality = new A._DevModeEquality();
   C.C__JSRandom = new P._JSRandom();
   C.C__RootZone = new P._RootZone();
-  C.ChangeDetectionStrategy_0 = new A.ChangeDetectionStrategy(0);
-  C.ChangeDetectionStrategy_1 = new A.ChangeDetectionStrategy(1);
-  C.ChangeDetectionStrategy_2 = new A.ChangeDetectionStrategy(2);
-  C.ChangeDetectionStrategy_3 = new A.ChangeDetectionStrategy(3);
-  C.ChangeDetectorState_0 = new A.ChangeDetectorState(0);
-  C.ChangeDetectorState_1 = new A.ChangeDetectorState(1);
-  C.ChangeDetectorState_2 = new A.ChangeDetectorState(2);
+  C.ChangeDetectionStrategy_0 = new A.ChangeDetectionStrategy(0, "ChangeDetectionStrategy.CheckOnce");
+  C.ChangeDetectionStrategy_1 = new A.ChangeDetectionStrategy(1, "ChangeDetectionStrategy.Checked");
+  C.ChangeDetectionStrategy_2 = new A.ChangeDetectionStrategy(2, "ChangeDetectionStrategy.CheckAlways");
+  C.ChangeDetectionStrategy_3 = new A.ChangeDetectionStrategy(3, "ChangeDetectionStrategy.Detached");
+  C.ChangeDetectorState_0 = new A.ChangeDetectorState(0, "ChangeDetectorState.NeverChecked");
+  C.ChangeDetectorState_1 = new A.ChangeDetectorState(1, "ChangeDetectorState.CheckedBefore");
+  C.ChangeDetectorState_2 = new A.ChangeDetectorState(2, "ChangeDetectorState.Errored");
   C.Duration_0 = new P.Duration(0);
   C.Duration_1000000 = new P.Duration(1000000);
   C.Duration_2000000 = new P.Duration(2000000);
   C.Duration_400000 = new P.Duration(400000);
   C.Duration_500000 = new P.Duration(500000);
   C.IterableEquality__DevModeEquality = new U.IterableEquality(C.C__DevModeEquality, [null]);
-  C.JS_CONST_4IJ = function() {  var toStringFunction = Object.prototype.toString;  function getTag(o) {    var s = toStringFunction.call(o);    return s.substring(8, s.length - 1);  }  function getUnknownTag(object, tag) {    if (/^HTML[A-Z].*Element$/.test(tag)) {      var name = toStringFunction.call(object);      if (name == "[object Object]") return null;      return "HTMLElement";    }  }  function getUnknownTagGenericBrowser(object, tag) {    if (self.HTMLElement && object instanceof HTMLElement) return "HTMLElement";    return getUnknownTag(object, tag);  }  function prototypeForTag(tag) {    if (typeof window == "undefined") return null;    if (typeof window[tag] == "undefined") return null;    var constructor = window[tag];    if (typeof constructor != "function") return null;    return constructor.prototype;  }  function discriminator(tag) { return null; }  var isBrowser = typeof navigator == "object";  return {    getTag: getTag,    getUnknownTag: isBrowser ? getUnknownTagGenericBrowser : getUnknownTag,    prototypeForTag: prototypeForTag,    discriminator: discriminator };};
-  C.JS_CONST_AgZ = function(hooks) { return hooks; };
-  C.JS_CONST_EKH = function(hooks) {  if (typeof dartExperimentalFixupGetTag != "function") return hooks;  hooks.getTag = dartExperimentalFixupGetTag(hooks.getTag);};
-  C.JS_CONST_EyN = function(hooks) {  var getTag = hooks.getTag;  var prototypeForTag = hooks.prototypeForTag;  function getTagFixed(o) {    var tag = getTag(o);    if (tag == "Document") {      // "Document", so we check for the xmlVersion property, which is the empty      if (!!o.xmlVersion) return "!Document";      return "!HTMLDocument";    }    return tag;  }  function prototypeForTagFixed(tag) {    if (tag == "Document") return null;    return prototypeForTag(tag);  }  hooks.getTag = getTagFixed;  hooks.prototypeForTag = prototypeForTagFixed;};
-  C.JS_CONST_LlX = function(hooks) {  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";  if (userAgent.indexOf("Firefox") == -1) return hooks;  var getTag = hooks.getTag;  var quickMap = {    "BeforeUnloadEvent": "Event",    "DataTransfer": "Clipboard",    "GeoGeolocation": "Geolocation",    "Location": "!Location",    "WorkerMessageEvent": "MessageEvent",    "XMLDocument": "!Document"};  function getTagFirefox(o) {    var tag = getTag(o);    return quickMap[tag] || tag;  }  hooks.getTag = getTagFirefox;};
-  C.JS_CONST_TSE = function getTagFallback(o) {  var s = Object.prototype.toString.call(o);  return s.substring(8, s.length - 1);};
-  C.JS_CONST_c0o = function(hooks) {  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";  if (userAgent.indexOf("Trident/") == -1) return hooks;  var getTag = hooks.getTag;  var quickMap = {    "BeforeUnloadEvent": "Event",    "DataTransfer": "Clipboard",    "HTMLDDElement": "HTMLElement",    "HTMLDTElement": "HTMLElement",    "HTMLPhraseElement": "HTMLElement",    "Position": "Geoposition"  };  function getTagIE(o) {    var tag = getTag(o);    var newTag = quickMap[tag];    if (newTag) return newTag;    if (tag == "Object") {      if (window.DataView && (o instanceof window.DataView)) return "DataView";    }    return tag;  }  function prototypeForTagIE(tag) {    var constructor = window[tag];    if (constructor == null) return null;    return constructor.prototype;  }  hooks.getTag = getTagIE;  hooks.prototypeForTag = prototypeForTagIE;};
-  C.JS_CONST_nuk = function(getTagFallback) {  return function(hooks) {    if (typeof navigator != "object") return hooks;    var ua = navigator.userAgent;    if (ua.indexOf("DumpRenderTree") >= 0) return hooks;    if (ua.indexOf("Chrome") >= 0) {      function confirm(p) {        return typeof window == "object" && window[p] && window[p].name == p;      }      if (confirm("Window") && confirm("HTMLElement")) return hooks;    }    hooks.getTag = getTagFallback;  };};
-  C.JS_CONST_s8I = function(_, letter) { return letter.toUpperCase(); };
+  C.JS_CONST_0 = function(hooks) {
+  if (typeof dartExperimentalFixupGetTag != "function") return hooks;
+  hooks.getTag = dartExperimentalFixupGetTag(hooks.getTag);
+};
+  C.JS_CONST_4hp = function(hooks) {
+  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";
+  if (userAgent.indexOf("Firefox") == -1) return hooks;
+  var getTag = hooks.getTag;
+  var quickMap = {
+    "BeforeUnloadEvent": "Event",
+    "DataTransfer": "Clipboard",
+    "GeoGeolocation": "Geolocation",
+    "Location": "!Location",
+    "WorkerMessageEvent": "MessageEvent",
+    "XMLDocument": "!Document"};
+  function getTagFirefox(o) {
+    var tag = getTag(o);
+    return quickMap[tag] || tag;
+  }
+  hooks.getTag = getTagFirefox;
+};
+  C.JS_CONST_Fs4 = function(hooks) { return hooks; }
+;
+  C.JS_CONST_QJm = function(getTagFallback) {
+  return function(hooks) {
+    if (typeof navigator != "object") return hooks;
+    var ua = navigator.userAgent;
+    if (ua.indexOf("DumpRenderTree") >= 0) return hooks;
+    if (ua.indexOf("Chrome") >= 0) {
+      function confirm(p) {
+        return typeof window == "object" && window[p] && window[p].name == p;
+      }
+      if (confirm("Window") && confirm("HTMLElement")) return hooks;
+    }
+    hooks.getTag = getTagFallback;
+  };
+};
+  C.JS_CONST_bDt = function() {
+  var toStringFunction = Object.prototype.toString;
+  function getTag(o) {
+    var s = toStringFunction.call(o);
+    return s.substring(8, s.length - 1);
+  }
+  function getUnknownTag(object, tag) {
+    if (/^HTML[A-Z].*Element$/.test(tag)) {
+      var name = toStringFunction.call(object);
+      if (name == "[object Object]") return null;
+      return "HTMLElement";
+    }
+  }
+  function getUnknownTagGenericBrowser(object, tag) {
+    if (self.HTMLElement && object instanceof HTMLElement) return "HTMLElement";
+    return getUnknownTag(object, tag);
+  }
+  function prototypeForTag(tag) {
+    if (typeof window == "undefined") return null;
+    if (typeof window[tag] == "undefined") return null;
+    var constructor = window[tag];
+    if (typeof constructor != "function") return null;
+    return constructor.prototype;
+  }
+  function discriminator(tag) { return null; }
+  var isBrowser = typeof navigator == "object";
+  return {
+    getTag: getTag,
+    getUnknownTag: isBrowser ? getUnknownTagGenericBrowser : getUnknownTag,
+    prototypeForTag: prototypeForTag,
+    discriminator: discriminator };
+};
+  C.JS_CONST_gkc = function(hooks) {
+  var userAgent = typeof navigator == "object" ? navigator.userAgent : "";
+  if (userAgent.indexOf("Trident/") == -1) return hooks;
+  var getTag = hooks.getTag;
+  var quickMap = {
+    "BeforeUnloadEvent": "Event",
+    "DataTransfer": "Clipboard",
+    "HTMLDDElement": "HTMLElement",
+    "HTMLDTElement": "HTMLElement",
+    "HTMLPhraseElement": "HTMLElement",
+    "Position": "Geoposition"
+  };
+  function getTagIE(o) {
+    var tag = getTag(o);
+    var newTag = quickMap[tag];
+    if (newTag) return newTag;
+    if (tag == "Object") {
+      if (window.DataView && (o instanceof window.DataView)) return "DataView";
+    }
+    return tag;
+  }
+  function prototypeForTagIE(tag) {
+    var constructor = window[tag];
+    if (constructor == null) return null;
+    return constructor.prototype;
+  }
+  hooks.getTag = getTagIE;
+  hooks.prototypeForTag = prototypeForTagIE;
+};
+  C.JS_CONST_rr7 = function(hooks) {
+  var getTag = hooks.getTag;
+  var prototypeForTag = hooks.prototypeForTag;
+  function getTagFixed(o) {
+    var tag = getTag(o);
+    if (tag == "Document") {
+      if (!!o.xmlVersion) return "!Document";
+      return "!HTMLDocument";
+    }
+    return tag;
+  }
+  function prototypeForTagFixed(tag) {
+    if (tag == "Document") return null;
+    return prototypeForTag(tag);
+  }
+  hooks.getTag = getTagFixed;
+  hooks.prototypeForTag = prototypeForTagFixed;
+};
+  C.JS_CONST_u2C = function getTagFallback(o) {
+  var s = Object.prototype.toString.call(o);
+  return s.substring(8, s.length - 1);
+};
+  C.List_01 = Isolate.makeConstantList(["[_nghost-%COMP%] {\n    background: url('images/background.jpg');\n    background-size: cover;\n    color: white;\n    text-align: center;\n}\n\n[_nghost-%COMP%], splash[_ngcontent-%COMP%] {\n    width: 100%;\n    height: 100vh;\n}\n\n#shutdown[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n}\n\n#reboot[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\nlogin[_ngcontent-%COMP%] {\n    margin-top: 10vh;\n    display: none;\n}"]);
+  C.List_00 = Isolate.makeConstantList([C.List_01]);
   C.Type_NgControl_GNi = H.createRuntimeType("NgControl");
   C.C_Self = new B.Self();
   C.List_Type_NgControl_GNi_Self = Isolate.makeConstantList([C.Type_NgControl_GNi, C.C_Self]);
@@ -25935,8 +25530,6 @@
   C.List_Pipe_slice_false_Injectable = Isolate.makeConstantList([C.Pipe_slice_false, C.C_Injectable]);
   C.Pipe_uppercase_null = new O.Pipe("uppercase", null);
   C.List_Pipe_uppercase_null_Injectable = Isolate.makeConstantList([C.Pipe_uppercase_null, C.C_Injectable]);
-  C.List_8eb = Isolate.makeConstantList(["[_nghost-%COMP%] {\n    background: url('images/background.jpg');\n\n    color: white;\n    text-align: center;\n}\n\n[_nghost-%COMP%], splash[_ngcontent-%COMP%] {\n    width: 100%;\n    height: 100vh;\n}\n\n#shutdown[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    left: 20px;\n}\n\n#reboot[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom: 20px;\n    right: 20px;\n}\n\nlogin[_ngcontent-%COMP%] {\n    margin-top: 10vh;\n    display: none;\n}"]);
-  C.List_QcD = Isolate.makeConstantList([C.List_8eb]);
   C.List_QcT = Isolate.makeConstantList(["webkitTransitionEnd", "transitionend", "oTransitionEnd otransitionend", "transitionend"]);
   C.List_wMy = Isolate.makeConstantList([C.Type_UsersComponent_lzO, C.List_empty]);
   C.ComponentFactory_chs = new D.ComponentFactory("users", N.users_component_template__viewFactory_UsersComponentHost0$closure(), C.Type_UsersComponent_lzO, C.List_wMy);
@@ -26025,8 +25618,8 @@
   C.List_sBb = Isolate.makeConstantList([C.List_Rgf]);
   C.List_wSV = H.setRuntimeTypeInfo(Isolate.makeConstantList(["bind", "if", "ref", "repeat", "syntax"]), [P.String]);
   C.Inject_OpaqueToken_EventManagerPlugins = new B.Inject(C.OpaqueToken_EventManagerPlugins);
-  C.List_00 = Isolate.makeConstantList([C.Type_List_naM, C.Inject_OpaqueToken_EventManagerPlugins]);
-  C.List_weJ = Isolate.makeConstantList([C.List_00, C.List_Type_NgZone_6ty]);
+  C.List_02 = Isolate.makeConstantList([C.Type_List_naM, C.Inject_OpaqueToken_EventManagerPlugins]);
+  C.List_weJ = Isolate.makeConstantList([C.List_02, C.List_Type_NgZone_6ty]);
   C.List_wwi = Isolate.makeConstantList([C.List_Type_GreeterService_8Gl, C.List_Type_LightDM_6L0, C.List_Type_Translations_PBq]);
   C.OpaqueToken_XjJ = new S.OpaqueToken("Application Packages Root URL");
   C.Inject_UOM = new B.Inject(C.OpaqueToken_XjJ);
@@ -26045,17 +25638,22 @@
   C.List_6ld = Isolate.makeConstantList(["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]);
   C.List_edh = Isolate.makeConstantList(["Janvier", "F\xe9vrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Ao\xfbt", "Septembre", "Octobre", "Novembre", "Decembre"]);
   C.Map_8Oa1A = new H.ConstantStringMap(5, {password: "Mot de passe...", splash: 'Appuyez sur "Espace" ou "Entr\xe9e" pour vous connecter', date: "weekd day month year", days: C.List_6ld, months: C.List_edh}, C.List_8OV, [null, null]);
+  C.List_MX3 = Isolate.makeConstantList(["Poniedzia\u0142ek", "Wtorek", "\u015aroda", "Czwartek", "Pi\u0105tek", "Sobota", "Niedziela"]);
+  C.List_jvJ = Isolate.makeConstantList(["Stycznia", "Lutego", "Marca", "Kwietnia", "Maja", "Czerwca", "Lipca", "Sierpnia", "Wrze\u015bnia", "Pa\u017adziernika", "Listopada", "Grudnia"]);
+  C.Map_8Oato = new H.ConstantStringMap(5, {password: "Has\u0142o...", splash: 'Naci\u015bnij "Spacj\u0119" lub "Enter" aby kontynuowa\u0107', date: "weekd, day month year", days: C.List_MX3, months: C.List_jvJ}, C.List_8OV, [null, null]);
   C.List_ALf = Isolate.makeConstantList(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]);
   C.List_cIc0 = Isolate.makeConstantList(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
   C.Map_8OuHZ = new H.ConstantStringMap(5, {password: "Password...", splash: 'Press "Space" or "Enter" to login', date: "weekd,  month day,  year", days: C.List_ALf, months: C.List_cIc0}, C.List_8OV, [null, null]);
-  C.Map_E7LB7 = new H.GeneralConstantMap([0, "ChangeDetectionStrategy.CheckOnce", 1, "ChangeDetectionStrategy.Checked", 2, "ChangeDetectionStrategy.CheckAlways", 3, "ChangeDetectionStrategy.Detached", 4, "ChangeDetectionStrategy.OnPush", 5, "ChangeDetectionStrategy.Stateful", 6, "ChangeDetectionStrategy.Default"], [null, null]);
+  C.List_69t = Isolate.makeConstantList(["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]);
+  C.List_yvw = Isolate.makeConstantList(["Januar", "Februar", "M\xe4rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]);
+  C.Map_8OwW3 = new H.ConstantStringMap(5, {password: "Passwort...", splash: 'Dr\xfccken Sie "Leertaste" oder "Enter" um sich einzuloggen', date: "weekd day month year", days: C.List_69t, months: C.List_yvw}, C.List_8OV, [null, null]);
+  C.List_OPN = Isolate.makeConstantList(["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"]);
+  C.List_4QF = Isolate.makeConstantList(["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "October", "November", "December"]);
+  C.Map_8Oxry = new H.ConstantStringMap(5, {password: "Wachtwoord...", splash: 'Druk op "Spatie" of "Enter" om aan te melden', date: "weekd day month year", days: C.List_OPN, months: C.List_4QF}, C.List_8OV, [null, null]);
   C.List_empty2 = H.setRuntimeTypeInfo(Isolate.makeConstantList([]), [P.Symbol0]);
   C.Map_empty = new H.ConstantStringMap(0, {}, C.List_empty2, [P.Symbol0, null]);
   C.Map_empty0 = new H.ConstantStringMap(0, {}, C.List_empty, [null, null]);
   C.Map_qsUoh = new H.GeneralConstantMap([8, "Backspace", 9, "Tab", 12, "Clear", 13, "Enter", 16, "Shift", 17, "Control", 18, "Alt", 19, "Pause", 20, "CapsLock", 27, "Escape", 32, " ", 33, "PageUp", 34, "PageDown", 35, "End", 36, "Home", 37, "ArrowLeft", 38, "ArrowUp", 39, "ArrowRight", 40, "ArrowDown", 45, "Insert", 46, "Delete", 65, "a", 66, "b", 67, "c", 68, "d", 69, "e", 70, "f", 71, "g", 72, "h", 73, "i", 74, "j", 75, "k", 76, "l", 77, "m", 78, "n", 79, "o", 80, "p", 81, "q", 82, "r", 83, "s", 84, "t", 85, "u", 86, "v", 87, "w", 88, "x", 89, "y", 90, "z", 91, "OS", 93, "ContextMenu", 96, "0", 97, "1", 98, "2", 99, "3", 100, "4", 101, "5", 102, "6", 103, "7", 104, "8", 105, "9", 106, "*", 107, "+", 109, "-", 110, ".", 111, "/", 112, "F1", 113, "F2", 114, "F3", 115, "F4", 116, "F5", 117, "F6", 118, "F7", 119, "F8", 120, "F9", 121, "F10", 122, "F11", 123, "F12", 144, "NumLock", 145, "ScrollLock"], [null, null]);
-  C.Map_sgI28 = new H.GeneralConstantMap([0, "ViewEncapsulation.Emulated", 1, "ViewEncapsulation.Native", 2, "ViewEncapsulation.None"], [null, null]);
-  C.Map_sge5T = new H.GeneralConstantMap([0, "ViewType.HOST", 1, "ViewType.COMPONENT", 2, "ViewType.EMBEDDED"], [null, null]);
-  C.Map_sgtm6 = new H.GeneralConstantMap([0, "ChangeDetectorState.NeverChecked", 1, "ChangeDetectorState.CheckedBefore", 2, "ChangeDetectorState.Errored"], [null, null]);
   C.OpaqueToken_erm = new S.OpaqueToken("Application Initializer");
   C.OpaqueToken_jOL = new S.OpaqueToken("Platform Initializer");
   C.Symbol_call = new H.Symbol("call");
@@ -26100,11 +25698,11 @@
   C.Type_double_K1J = H.createRuntimeType("double");
   C.Type_int_tHn = H.createRuntimeType("int");
   C.Type_num_cv7 = H.createRuntimeType("num");
-  C.ViewEncapsulation_0 = new A.ViewEncapsulation(0);
-  C.ViewEncapsulation_1 = new A.ViewEncapsulation(1);
-  C.ViewType_0 = new R.ViewType(0);
-  C.ViewType_1 = new R.ViewType(1);
-  C.ViewType_2 = new R.ViewType(2);
+  C.ViewEncapsulation_0 = new A.ViewEncapsulation(0, "ViewEncapsulation.Emulated");
+  C.ViewEncapsulation_1 = new A.ViewEncapsulation(1, "ViewEncapsulation.Native");
+  C.ViewType_0 = new R.ViewType(0, "ViewType.HOST");
+  C.ViewType_1 = new R.ViewType(1, "ViewType.COMPONENT");
+  C.ViewType_2 = new R.ViewType(2, "ViewType.EMBEDDED");
   C._ZoneFunction_3bB = new P._ZoneFunction(C.C__RootZone, P.async___rootCreatePeriodicTimer$closure(), [{func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1, v: true, args: [P.Timer]}]}]);
   C._ZoneFunction_7G2 = new P._ZoneFunction(C.C__RootZone, P.async___rootRegisterBinaryCallback$closure(), [{func: 1, ret: {func: 1, args: [,,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]}]}]);
   C._ZoneFunction_Eeh = new P._ZoneFunction(C.C__RootZone, P.async___rootRegisterUnaryCallback$closure(), [{func: 1, ret: {func: 1, args: [,]}, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]}]}]);
@@ -26402,7 +26000,7 @@
   }, "TypeErrorDecoder_undefinedLiteralPropertyPattern", "_AsyncRun__scheduleImmediateClosure", "$get$_AsyncRun__scheduleImmediateClosure", function() {
     return P._AsyncRun__initializeScheduleImmediate();
   }, "_AsyncRun__scheduleImmediateClosure", "Future__nullFuture", "$get$Future__nullFuture", function() {
-    return P.Future_Future$value(null, null);
+    return P._Future$value(null, P.Null);
   }, "Future__nullFuture", "_RootZone__rootMap", "$get$_RootZone__rootMap", function() {
     return P.HashMap_HashMap(null, null, null, null, null);
   }, "_RootZone__rootMap", "_toStringVisiting", "$get$_toStringVisiting", function() {
@@ -26440,9 +26038,9 @@
   }, "NS_PREFIX_RE", "wtfEnabled", "$get$wtfEnabled", function() {
     return V.detectWTF();
   }, "wtfEnabled", "wtfCreateScope", "$get$wtfCreateScope", function() {
-    return $.$get$wtfEnabled() === true ? V.wtf_impl__createScope$closure() : new U.closure0();
+    return $.$get$wtfEnabled() === true ? V.wtf_impl__createScope$closure() : new U.closure1();
   }, "wtfCreateScope", "wtfLeave", "$get$wtfLeave", function() {
-    return $.$get$wtfEnabled() === true ? V.wtf_impl__leave$closure() : new U.closure();
+    return $.$get$wtfEnabled() === true ? V.wtf_impl__leave$closure() : new U.closure0();
   }, "wtfLeave", "_arg1", "$get$_arg1", function() {
     return [null];
   }, "_arg1", "_arg2", "$get$_arg2", function() {
@@ -26463,7 +26061,7 @@
   }, "_eventNames", "modifierKeys", "$get$modifierKeys", function() {
     return ["alt", "control", "meta", "shift"];
   }, "modifierKeys", "modifierKeyGetters", "$get$modifierKeyGetters", function() {
-    return P.LinkedHashMap__makeLiteral(["alt", new N.closure3(), "control", new N.closure4(), "meta", new N.closure5(), "shift", new N.closure6()]);
+    return P.LinkedHashMap__makeLiteral(["alt", new N.closure4(), "control", new N.closure5(), "meta", new N.closure6(), "shift", new N.closure7()]);
   }, "modifierKeyGetters", "SAFE_URL_PATTERN", "$get$SAFE_URL_PATTERN", function() {
     return P.RegExp_RegExp("^(?:(?:https?|mailto|ftp|tel|file):|[^&:/?#]*(?:[/?#]|$))", false, false);
   }, "SAFE_URL_PATTERN", "DATA_URL_PATTERN", "$get$DATA_URL_PATTERN", function() {
@@ -26471,8 +26069,8 @@
   }, "DATA_URL_PATTERN"]);
   Isolate = Isolate.$finishIsolateConstructor(Isolate);
   $ = new Isolate();
-  init.metadata = ["index", null, "self", "parent", "zone", "value", "error", "stackTrace", "_", C.C_Object, "arg1", "f", "callback", "v", "_elementRef", "$event", "element", "fn", "control", "_asyncValidators", "_validators", "result", "k", "arg", "type", "arg0", "_lightdm", "duration", "e", "keys", "o", "arg2", "key", "viewContainer", "data", "x", "valueAccessors", "templateRef", "_templateRef", "_viewContainer", "validator", "c", "_injector", "invocation", "err", "_zone", "arguments", "obj", "t", "_iterableDiffers", "context", "typeOrFunc", "attributeName", "trans", "elem", "findInAncestors", "testability", "each", "_greeter", "_parent", "_ngEl", "st", "object", "sender", "arg3", "line", "cd", "validators", "asyncValidators", "specification", "name", "_registry", "attr", "_element", "_select", "minLength", "maxLength", "pattern", "res", "futureOrStream", "arrayOfErrors", "captureThis", "_ref", "_packagePrefix", "ref", "zoneValues", "_platform", "arg4", "item", "closure", "_keyValueDiffers", "provider", "aliasInstance", "errorCode", "lightDM", "event", "_appId", "sanitizer", "eventManager", "_compiler", "isolate", "theError", "_cdr", "_ngZone", "template", "trace", "exception", "reason", "theStackTrace", "thisArg", "o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8", "o9", "o10", "bindingString", "exactMatch", "allowNonElementNodes", true, "_localization", "_differs", "didWork_", "elementRef", "req", "dom", "hammer", "p", "plugins", "eventObj", "_config", "_trans", "numberOfArguments", "_lightDM", "ngSwitch", "greeter", "sswitch", "_viewContainerRef", "nodeIndex"];
-  init.types = [{func: 1}, {func: 1, args: [,]}, {func: 1, v: true}, {func: 1, args: [,,]}, {func: 1, ret: S.AppView, args: [M.Injector, V.ViewContainer]}, {func: 1, ret: P.String, args: [P.int]}, {func: 1, args: [P.String]}, {func: 1, v: true, args: [{func: 1, v: true}]}, {func: 1, args: [Z.AbstractControl]}, {func: 1, ret: P.bool, args: [,]}, {func: 1, args: [Z.ElementRef]}, {func: 1, opt: [,,]}, {func: 1, args: [W.KeyboardEvent]}, {func: 1, v: true, args: [P.Function]}, {func: 1, v: true, args: [P.String]}, {func: 1, ret: W.Node}, {func: 1, args: [P.bool]}, {func: 1, args: [G.LightDM]}, {func: 1, args: [G.LightDM, F.GreeterService]}, {func: 1, ret: P.Zone, named: {specification: P.ZoneSpecification, zoneValues: P.Map}}, {func: 1, ret: P.AsyncError, args: [P.Object, P.StackTrace]}, {func: 1, v: true, args: [, P.StackTrace]}, {func: 1, ret: P.Timer, args: [P.Duration, {func: 1, v: true}]}, {func: 1, ret: P.Timer, args: [P.Duration, {func: 1, v: true, args: [P.Timer]}]}, {func: 1, args: [, P.StackTrace]}, {func: 1, ret: P.String, args: [P.String]}, {func: 1, ret: W.Element, args: [P.int]}, {func: 1, ret: W.Node, args: [P.int]}, {func: 1, ret: W.MimeType, args: [P.int]}, {func: 1, ret: P.List, args: [,]}, {func: 1, args: [P.String], opt: [,]}, {func: 1, args: [P.List]}, {func: 1, ret: P.bool, args: [W.Element, P.String, P.String, W._Html5NodeValidator]}, {func: 1, args: [Q.NgZoneError]}, {func: 1, args: [M.Translations]}, {func: 1, ret: [P.List, P.List], args: [,]}, {func: 1, args: [,], opt: [,]}, {func: 1, args: [{func: 1}]}, {func: 1, v: true, args: [,], opt: [P.StackTrace]}, {func: 1, args: [P.List, P.List, [P.List, L.ControlValueAccessor]]}, {func: 1, args: [P.List, P.List]}, {func: 1, ret: P.Function, args: [P.Type]}, {func: 1, args: [R.ViewContainerRef, D.TemplateRef, V.NgSwitch]}, {func: 1, ret: P.Future}, {func: 1, ret: W.TextTrack, args: [P.int]}, {func: 1, ret: W.Touch, args: [P.int]}, {func: 1, ret: W.TrackDefault, args: [P.int]}, {func: 1, v: true, args: [,,]}, {func: 1, ret: P.Rectangle, args: [P.int]}, {func: 1, ret: W.CssRule, args: [P.int]}, {func: 1, ret: W.Gamepad, args: [P.int]}, {func: 1, ret: W._Attr, args: [P.int]}, {func: 1, ret: W.SpeechRecognitionResult, args: [P.int]}, {func: 1, ret: W.StyleSheet, args: [P.int]}, {func: 1, ret: W.TextTrackCue, args: [P.int]}, {func: 1, v: true, args: [W.Node, W.Node]}, {func: 1, v: true, opt: [P.Object]}, {func: 1, ret: P.Map, args: [P.int]}, {func: 1, args: [T.IterableDiffers, D.KeyValueDiffers, Z.ElementRef]}, {func: 1, args: [R.CollectionChangeRecord, P.int, P.int]}, {func: 1, args: [R.ViewContainerRef, D.TemplateRef, T.IterableDiffers, S.ChangeDetectorRef]}, {func: 1, args: [R.ViewContainerRef, D.TemplateRef]}, {func: 1, args: [P.String, D.TemplateRef, R.ViewContainerRef]}, {func: 1, args: [A.NgLocalization]}, {func: 1, args: [D.KeyValueDiffers, Z.ElementRef]}, {func: 1, ret: W.SpeechRecognitionAlternative, args: [P.int]}, {func: 1, args: [R.ViewContainerRef]}, {func: 1, v: true, args: [P.Object], opt: [P.StackTrace]}, {func: 1, args: [K.ControlContainer, P.List, P.List]}, {func: 1, args: [K.ControlContainer, P.List, P.List, [P.List, L.ControlValueAccessor]]}, {func: 1, ret: W.SpeechGrammar, args: [P.int]}, {func: 1, ret: W.SourceBuffer, args: [P.int]}, {func: 1, ret: [P.List, W.RtcStatsReport]}, {func: 1, args: [Z.ElementRef, G.RadioControlRegistry, M.Injector]}, {func: 1, args: [Z.ElementRef, X.SelectControlValueAccessor]}, {func: 1, args: [L.ControlValueAccessor]}, {func: 1, args: [[P.Map, P.String,,]]}, {func: 1, args: [[P.Map, P.String,,], Z.AbstractControl, P.String]}, {func: 1, ret: W.Plugin, args: [P.int]}, {func: 1, args: [[P.Map, P.String,,], [P.Map, P.String,,]]}, {func: 1, args: [S.ChangeDetectorRef]}, {func: 1, args: [P.int,,]}, {func: 1, ret: W.File, args: [P.int]}, {func: 1, args: [Y.PlatformRefImpl, Y.NgZone, M.Injector]}, {func: 1, args: [P.num,,]}, {func: 1, ret: P.Object, opt: [P.Object]}, {func: 1, args: [U.ResolvedReflectiveProvider]}, {func: 1, ret: M.Injector, args: [P.int]}, {func: 1, args: [W.Event]}, {func: 1, args: [P.String, E.SanitizationService, N.EventManager]}, {func: 1, args: [V.ComponentResolver]}, {func: 1, ret: W.DataTransferItem, args: [P.int]}, {func: 1, args: [P.Symbol0,,]}, {func: 1, ret: P.String}, {func: 1, args: [{func: 1, v: true}]}, {func: 1, ret: P.Zone, args: [P.Zone, P.ZoneSpecification, P.Map]}, {func: 1, args: [Y.NgZone]}, {func: 1, args: [P.String,,]}, {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}, {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]},,]}, {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]},,,]}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, v: true}]}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone,, P.StackTrace]}, {func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1}]}, {func: 1, v: true, args: [,], opt: [, P.String]}, {func: 1, v: true, args: [W.EventTarget, P.String, {func: 1, args: [,]}]}, {func: 1, ret: P.String, args: [,]}, {func: 1, args: [,], opt: [,,,,,,,,,,]}, {func: 1, args: [,], opt: [,,]}, {func: 1, args: [W.Element], opt: [P.bool]}, {func: 1, args: [W.Element, P.bool]}, {func: 1, args: [W.HttpRequest]}, {func: 1, args: [[P.List, N.EventManagerPlugin], Y.NgZone]}, {func: 1, args: [P.Object, P.String]}, {func: 1, args: [V.HammerGestureConfig]}, {func: 1, args: [, P.String]}, {func: 1, v: true, args: [P.Zone, P.String]}, {func: 1, ret: P.AsyncError, args: [P.Zone, P.Object, P.StackTrace]}, {func: 1, ret: W.VttRegion, args: [P.int]}, {func: 1, args: [F.GreeterService, G.LightDM, M.Translations]}, {func: 1, v: true, args: [P.Zone, {func: 1}]}, {func: 1, v: true, args: [,]}, {func: 1, ret: P.AsyncError, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Object, P.StackTrace]}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}, {func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1, v: true}]}, {func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1, v: true, args: [P.Timer]}]}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, P.String]}, {func: 1, ret: P.Zone, args: [P.Zone, P.ZoneDelegate, P.Zone, P.ZoneSpecification, P.Map]}, {func: 1, ret: P.Timer, args: [P.Zone, P.Duration, {func: 1, v: true, args: [P.Timer]}]}, {func: 1, ret: P.Object, args: [,]}, {func: 1, ret: {func: 1, ret: [P.Map, P.String,,], args: [Z.AbstractControl]}, args: [,]}, {func: 1, ret: P.Function, args: [,]}, {func: 1, ret: P.Future, args: [,]}, {func: 1, ret: [P.Map, P.String,,], args: [P.List]}, {func: 1, ret: Y.NgZone}, {func: 1, ret: U.ResolvedReflectiveProvider, args: [Y.Provider]}, {func: 1, v: true, args: [,], opt: [,]}, {func: 1, ret: T.DebugNode, args: [,]}, {func: 1, ret: U.ExceptionHandler}, {func: 1, ret: [P.List, N.EventManagerPlugin], args: [L.DomEventsPlugin, N.KeyEventsPlugin, V.HammerGesturesPlugin]}, {func: 1, ret: P.Timer, args: [P.Zone, P.Duration, {func: 1, v: true}]}, {func: 1, args: [T.NgControl]}];
+  init.metadata = ["index", null, "value", "self", "parent", "zone", C.C_Object, "error", "_", "stackTrace", "arg1", "v", "fn", "control", "element", "$event", "_asyncValidators", "_elementRef", "_validators", "_lightdm", "key", "type", "arg", "result", "k", "arg0", "callback", "viewContainer", "valueAccessors", "o", "keys", "arg2", "f", "x", "e", "data", "_injector", "elem", "arguments", "_viewContainer", "_iterableDiffers", "invocation", "_templateRef", "obj", "templateRef", "findInAncestors", "trans", "testability", "context", "typeOrFunc", "t", "_zone", "err", "each", "_greeter", "attributeName", "c", "validator", "_parent", "numberOfArguments", "_viewContainerRef", "object", "errorCode", "sender", "cd", "validators", "asyncValidators", "sswitch", "ngSwitch", "_registry", "specification", "_differs", "_select", "minLength", "maxLength", "pattern", "res", "futureOrStream", "arrayOfErrors", "theError", "_ref", "_packagePrefix", "ref", "_localization", "_platform", "zoneValues", "item", "theStackTrace", "_element", "provider", "aliasInstance", "template", "nodeIndex", "lightDM", "_appId", "sanitizer", "eventManager", "_compiler", "arg3", "st", "_cdr", "_ngZone", "arg4", "trace", "duration", "_ngEl", "reason", "closure", "thisArg", "o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8", "o9", "o10", "bindingString", "exactMatch", "allowNonElementNodes", true, "exception", "_keyValueDiffers", "didWork_", "captureThis", "req", "dom", "hammer", "p", "plugins", "eventObj", "_config", "_trans", "isolate", "_lightDM", "attr", "greeter", "name", "elementRef", "event"];
+  init.types = [{func: 1}, {func: 1, args: [,]}, {func: 1, v: true}, {func: 1, args: [,,]}, {func: 1, ret: S.AppView, args: [M.Injector, V.ViewContainer]}, {func: 1, ret: P.String, args: [P.int]}, {func: 1, args: [P.String]}, {func: 1, args: [Z.AbstractControl]}, {func: 1, ret: P.bool, args: [,]}, {func: 1, args: [Z.ElementRef]}, {func: 1, opt: [,,]}, {func: 1, args: [W.KeyboardEvent]}, {func: 1, v: true, args: [P.Object], opt: [P.StackTrace]}, {func: 1, v: true, args: [P.Function]}, {func: 1, ret: W.Node}, {func: 1, args: [P.bool]}, {func: 1, args: [G.LightDM]}, {func: 1, v: true, args: [{func: 1, v: true}]}, {func: 1, ret: W.Node, args: [P.int]}, {func: 1, ret: W.Element, args: [P.int]}, {func: 1, ret: W.MimeType, args: [P.int]}, {func: 1, ret: P.bool, args: [W.Element, P.String, P.String, W._Html5NodeValidator]}, {func: 1, ret: P.String, args: [P.String]}, {func: 1, args: [G.LightDM, F.GreeterService]}, {func: 1, args: [, P.StackTrace]}, {func: 1, args: [M.Translations]}, {func: 1, ret: P.List, args: [,]}, {func: 1, ret: [P.List, P.List], args: [,]}, {func: 1, ret: P.Function, args: [P.Type]}, {func: 1, args: [P.String], opt: [,]}, {func: 1, args: [P.List]}, {func: 1, args: [Q.NgZoneError]}, {func: 1, args: [P.List, P.List, [P.List, L.ControlValueAccessor]]}, {func: 1, args: [P.List, P.List]}, {func: 1, args: [,], opt: [,]}, {func: 1, args: [R.ViewContainerRef, D.TemplateRef, V.NgSwitch]}, {func: 1, args: [P.String,,]}, {func: 1, ret: P.Future}, {func: 1, ret: W.StyleSheet, args: [P.int]}, {func: 1, v: true, args: [W.Node, W.Node]}, {func: 1, v: true, opt: [P.Object]}, {func: 1, ret: W.SpeechRecognitionResult, args: [P.int]}, {func: 1, args: [T.IterableDiffers, D.KeyValueDiffers, Z.ElementRef]}, {func: 1, args: [R.CollectionChangeRecord, P.int, P.int]}, {func: 1, args: [R.ViewContainerRef, D.TemplateRef, T.IterableDiffers, S.ChangeDetectorRef]}, {func: 1, args: [R.ViewContainerRef, D.TemplateRef]}, {func: 1, args: [P.String, D.TemplateRef, R.ViewContainerRef]}, {func: 1, args: [A.NgLocalization]}, {func: 1, args: [D.KeyValueDiffers, Z.ElementRef]}, {func: 1, ret: W._Attr, args: [P.int]}, {func: 1, args: [R.ViewContainerRef]}, {func: 1, ret: W.Gamepad, args: [P.int]}, {func: 1, args: [K.ControlContainer, P.List, P.List]}, {func: 1, args: [K.ControlContainer, P.List, P.List, [P.List, L.ControlValueAccessor]]}, {func: 1, args: [T.NgControl]}, {func: 1, ret: W.CssRule, args: [P.int]}, {func: 1, ret: P.Rectangle, args: [P.int]}, {func: 1, args: [Z.ElementRef, G.RadioControlRegistry, M.Injector]}, {func: 1, args: [Z.ElementRef, X.SelectControlValueAccessor]}, {func: 1, args: [L.ControlValueAccessor]}, {func: 1, args: [[P.Map, P.String,,]]}, {func: 1, args: [[P.Map, P.String,,], Z.AbstractControl, P.String]}, {func: 1, ret: P.Map, args: [P.int]}, {func: 1, args: [[P.Map, P.String,,], [P.Map, P.String,,]]}, {func: 1, args: [S.ChangeDetectorRef]}, {func: 1, ret: W.VttRegion, args: [P.int]}, {func: 1, args: [Y.PlatformRefImpl, Y.NgZone, M.Injector]}, {func: 1, args: [P.num,,]}, {func: 1, ret: W.TrackDefault, args: [P.int]}, {func: 1, args: [U.ResolvedReflectiveProvider]}, {func: 1, ret: M.Injector, args: [P.int]}, {func: 1, args: [W.Event]}, {func: 1, args: [P.String, E.SanitizationService, N.EventManager]}, {func: 1, args: [V.ComponentResolver]}, {func: 1, ret: W.Touch, args: [P.int]}, {func: 1, args: [{func: 1, v: true}]}, {func: 1, ret: W.SpeechRecognitionAlternative, args: [P.int]}, {func: 1, ret: W.SpeechGrammar, args: [P.int]}, {func: 1, ret: W.SourceBuffer, args: [P.int]}, {func: 1, args: [Y.NgZone]}, {func: 1, v: true, args: [, P.StackTrace]}, {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}, {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,]},,]}, {func: 1, ret: P.String}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, v: true}]}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone,, P.StackTrace]}, {func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1}]}, {func: 1, v: true, args: [,], opt: [, P.String]}, {func: 1, v: true, args: [W.EventTarget, P.String, {func: 1, args: [,]}]}, {func: 1, args: [,], opt: [,,,,,,,,,,]}, {func: 1, args: [,], opt: [,,]}, {func: 1, args: [W.Element], opt: [P.bool]}, {func: 1, args: [W.Element, P.bool]}, {func: 1, args: [W.HttpRequest]}, {func: 1, args: [[P.List, N.EventManagerPlugin], Y.NgZone]}, {func: 1, args: [P.Object, P.String]}, {func: 1, args: [V.HammerGestureConfig]}, {func: 1, args: [P.Symbol0,,]}, {func: 1, ret: [P.List, W.RtcStatsReport]}, {func: 1, ret: W.Plugin, args: [P.int]}, {func: 1, args: [, P.String]}, {func: 1, args: [F.GreeterService, G.LightDM, M.Translations]}, {func: 1, ret: W.DataTransferItem, args: [P.int]}, {func: 1, ret: P.Object, opt: [P.Object]}, {func: 1, v: true, args: [P.Object]}, {func: 1, ret: P.AsyncError, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Object, P.StackTrace]}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1}]}, {func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1, v: true}]}, {func: 1, ret: P.Timer, args: [P.Zone, P.ZoneDelegate, P.Zone, P.Duration, {func: 1, v: true, args: [P.Timer]}]}, {func: 1, v: true, args: [P.Zone, P.ZoneDelegate, P.Zone, P.String]}, {func: 1, v: true, args: [P.String]}, {func: 1, ret: P.Zone, args: [P.Zone, P.ZoneDelegate, P.Zone, P.ZoneSpecification, P.Map]}, {func: 1, args: [P.int,,]}, {func: 1, ret: P.Object, args: [,]}, {func: 1, ret: {func: 1, ret: [P.Map, P.String,,], args: [Z.AbstractControl]}, args: [,]}, {func: 1, ret: P.Function, args: [,]}, {func: 1, ret: P.Future, args: [,]}, {func: 1, ret: [P.Map, P.String,,], args: [P.List]}, {func: 1, ret: Y.NgZone}, {func: 1, ret: U.ResolvedReflectiveProvider, args: [Y.Provider]}, {func: 1, v: true, args: [,], opt: [,]}, {func: 1, ret: T.DebugNode, args: [,]}, {func: 1, ret: U.ExceptionHandler}, {func: 1, ret: [P.List, N.EventManagerPlugin], args: [L.DomEventsPlugin, N.KeyEventsPlugin, V.HammerGesturesPlugin]}, {func: 1, ret: W.File, args: [P.int]}, {func: 1, args: [P.Zone, P.ZoneDelegate, P.Zone, {func: 1, args: [,,]},,,]}];
   function convertToFastObject(properties) {
     function MyClass() {
     }

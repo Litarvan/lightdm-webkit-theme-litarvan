@@ -69,6 +69,18 @@ class CanonicalizedMap<C, K, V> implements Map<K, V> {
     other.forEach((key, value) => this[key] = value);
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  void addEntries(Iterable<Object> entries) {
+    // Change Iterable<Object> to Iterable<MapEntry<K, V>> when
+    // the MapEntry class has been added.
+    throw new UnimplementedError('addEntries');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Map<K2, V2> cast<K2, V2>() {
+    throw new UnimplementedError('cast');
+  }
+
   void clear() {
     _base.clear();
   }
@@ -80,6 +92,13 @@ class CanonicalizedMap<C, K, V> implements Map<K, V> {
 
   bool containsValue(Object value) =>
       _base.values.any((pair) => pair.last == value);
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Iterable<Null> get entries {
+    // Change Iterable<Null> to Iterable<MapEntry<K, V>> when
+    // the MapEntry class has been added.
+    throw new UnimplementedError('entries');
+  }
 
   void forEach(void f(K key, V value)) {
     _base.forEach((key, pair) => f(pair.first, pair.last));
@@ -93,6 +112,13 @@ class CanonicalizedMap<C, K, V> implements Map<K, V> {
 
   int get length => _base.length;
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Map<K2, V2> map<K2, V2>(Object transform(K key, V value)) {
+    // Change Object to MapEntry<K2, V2> when
+    // the MapEntry class has been added.
+    throw new UnimplementedError('map');
+  }
+
   V putIfAbsent(K key, V ifAbsent()) {
     return _base
         .putIfAbsent(_canonicalize(key), () => new Pair(key, ifAbsent()))
@@ -103,6 +129,26 @@ class CanonicalizedMap<C, K, V> implements Map<K, V> {
     if (!_isValidKey(key)) return null;
     var pair = _base.remove(_canonicalize(key as K));
     return pair == null ? null : pair.last;
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  void removeWhere(bool test(K key, V value)) {
+    throw new UnimplementedError('removeWhere');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Map<K2, V2> retype<K2, V2>() {
+    throw new UnimplementedError('retype');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  V update(K key, V update(V value), {V ifAbsent()}) {
+    throw new UnimplementedError('update');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  void updateAll(V update(K key, V value)) {
+    throw new UnimplementedError('updateAll');
   }
 
   Iterable<V> get values => _base.values.map((pair) => pair.last);

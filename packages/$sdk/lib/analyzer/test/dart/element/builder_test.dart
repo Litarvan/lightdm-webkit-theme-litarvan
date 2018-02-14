@@ -11,6 +11,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/src/dart/ast/ast.dart';
 import 'package:analyzer/src/dart/element/builder.dart';
 import 'package:analyzer/src/dart/element/element.dart';
+import 'package:analyzer/src/dart/error/syntactic_errors.dart';
 import 'package:analyzer/src/generated/engine.dart';
 import 'package:analyzer/src/generated/resolver.dart';
 import 'package:analyzer/src/generated/source.dart';
@@ -1030,7 +1031,7 @@ class LocalElementBuilderTest extends _BaseTest {
   }
 
   void test_buildLocalElements() {
-    CompilationUnit unit = ParserTestCase.parseCompilationUnit(r'''
+    CompilationUnit unit = parseCompilationUnit(r'''
 main() {
   int v1;
   f1() {
@@ -1074,7 +1075,7 @@ main() {
   }
 
   void test_buildParameterInitializer() {
-    CompilationUnit unit = ParserTestCase.parseCompilationUnit('f({p: 42}) {}');
+    CompilationUnit unit = parseCompilationUnit('f({p: 42}) {}');
     var function = unit.declarations.single as FunctionDeclaration;
     var parameter = function.functionExpression.parameters.parameters.single
         as DefaultFormalParameter;
@@ -1094,7 +1095,7 @@ main() {
   }
 
   void test_buildVariableInitializer() {
-    CompilationUnit unit = ParserTestCase.parseCompilationUnit('var V = 42;');
+    CompilationUnit unit = parseCompilationUnit('var V = 42;');
     TopLevelVariableDeclaration topLevelDecl =
         unit.declarations[0] as TopLevelVariableDeclaration;
     VariableDeclaration variable = topLevelDecl.variables.variables.single;
@@ -1113,8 +1114,21 @@ main() {
     expect(variableElement.initializer, isNotNull);
   }
 
+  void test_genericFunction_isExpression() {
+    buildElementsForText('main(p) { p is Function(int a, String); }');
+    var main = compilationUnit.declarations[0] as FunctionDeclaration;
+    var body = main.functionExpression.body as BlockFunctionBody;
+    var statement = body.block.statements[0] as ExpressionStatement;
+    var expression = statement.expression as IsExpression;
+    var typeNode = expression.type as GenericFunctionType;
+    var typeElement = typeNode.type.element as GenericFunctionTypeElementImpl;
+    expect(typeElement.parameters, hasLength(2));
+    expect(typeElement.parameters[0].name, 'a');
+    expect(typeElement.parameters[1].name, '');
+  }
+
   void test_visitDefaultFormalParameter_local() {
-    CompilationUnit unit = ParserTestCase.parseCompilationUnit('''
+    CompilationUnit unit = parseCompilationUnit('''
 main() {
   f({bool b: false}) {}
 }
@@ -1137,6 +1151,43 @@ main() {
     FunctionElement f = main.functions[0];
     expect(f.parameters, hasLength(1));
     expect(f.parameters[0].initializer, isNotNull);
+  }
+
+  void test_visitFieldFormalParameter() {
+    CompilationUnit unit = parseCompilationUnit(
+        r'''
+main() {
+  f(a, this.b) {}
+}
+''',
+        [ParserErrorCode.FIELD_INITIALIZER_OUTSIDE_CONSTRUCTOR]);
+    var main = unit.declarations[0] as FunctionDeclaration;
+    var mainBody = main.functionExpression.body as BlockFunctionBody;
+    var mainBlock = mainBody.block;
+    var statement = mainBlock.statements[0] as FunctionDeclarationStatement;
+    FunctionDeclaration f = statement.functionDeclaration;
+
+    // Build API elements.
+    {
+      ElementHolder holder = new ElementHolder();
+      unit.accept(new ApiElementBuilder(holder, compilationUnitElement));
+    }
+
+    // Build local elements.
+    ElementHolder holder = new ElementHolder();
+    var builder = new LocalElementBuilder(holder, compilationUnitElement);
+    f.accept(builder);
+
+    List<FormalParameter> parameters =
+        f.functionExpression.parameters.parameters;
+
+    ParameterElement a = parameters[0].element;
+    expect(a, isNotNull);
+    expect(a.name, 'a');
+
+    ParameterElement b = parameters[1].element;
+    expect(b, isNotNull);
+    expect(b.name, 'b');
   }
 
   void test_visitVariableDeclaration_local() {
@@ -1182,6 +1233,16 @@ abstract class _ApiElementBuilderTestMixin {
    * [ElementAnnotationImpl] is unresolved.
    */
   void checkMetadata(Element element);
+
+  void test_genericFunction_asTopLevelVariableType() {
+    buildElementsForText('int Function(int a, String) v;');
+    var v = compilationUnit.declarations[0] as TopLevelVariableDeclaration;
+    var typeNode = v.variables.type as GenericFunctionType;
+    var typeElement = typeNode.type.element as GenericFunctionTypeElementImpl;
+    expect(typeElement.parameters, hasLength(2));
+    expect(typeElement.parameters[0].name, 'a');
+    expect(typeElement.parameters[1].name, '');
+  }
 
   void test_metadata_fieldDeclaration() {
     List<FieldElement> fields =
@@ -2538,7 +2599,7 @@ class A {
   }
 }
 
-abstract class _BaseTest {
+abstract class _BaseTest extends ParserTestCase {
   CompilationUnitElement compilationUnitElement;
   CompilationUnit _compilationUnit;
 
@@ -2619,7 +2680,7 @@ abstract class _BaseTest {
     TestLogger logger = new TestLogger();
     AnalysisEngine.instance.logger = logger;
     try {
-      _compilationUnit = ParserTestCase.parseCompilationUnit(code);
+      _compilationUnit = parseCompilationUnit(code);
       compilationUnit.accept(visitor);
     } finally {
       expect(logger.log, hasLength(0));

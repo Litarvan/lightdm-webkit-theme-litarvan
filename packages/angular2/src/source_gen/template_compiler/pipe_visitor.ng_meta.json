@@ -1,0 +1,64 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:analyzer/dart/element/element.dart",
+        "5": false
+      },
+      {
+        "1": "package:analyzer/dart/element/visitor.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/compiler/compile_metadata.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/source_gen/common/annotation_matcher.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/source_gen/template_compiler/compile_type.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/source_gen/template_compiler/dart_object_utils.dart",
+        "5": false
+      },
+      {
+        "1": "package:build/build.dart",
+        "5": false
+      }
+    ],
+    "6": "pipe_visitor.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/compiler/compile_metadata.template.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/src/source_gen/common/annotation_matcher.template.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:angular2/src/source_gen/template_compiler/compile_type.template.dart",
+        "4": "i2"
+      },
+      {
+        "1": "package:angular2/src/source_gen/template_compiler/dart_object_utils.template.dart",
+        "4": "i3"
+      }
+    ]
+  },
+  "type": {
+    "PipeVisitor": {
+      "class": "Identifier",
+      "name": "PipeVisitor",
+      "moduleUrl": "asset:angular2/lib/src/source_gen/template_compiler/pipe_visitor.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

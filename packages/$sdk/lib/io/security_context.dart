@@ -9,7 +9,7 @@ part of dart.io;
  * a secure client connection, and the certificate chain and
  * private key to serve from a secure server.
  *
- * The [SecureSocket]  and [SecureServer] classes take a SecurityContext
+ * The [SecureSocket]  and [SecureServerSocket] classes take a SecurityContext
  * as an argument to their connect and bind methods.
  *
  * Certificates and keys can be added to a SecurityContext from either PEM
@@ -20,7 +20,21 @@ part of dart.io;
  * be used, by way of [SecurityContext.defaultContext].
  */
 abstract class SecurityContext {
-  external factory SecurityContext();
+  /**
+   * Creates a new [SecurityContext].
+   *
+   * By default, the created [SecurityContext] contains no keys or certificates.
+   * These can be added by calling the methods of this class.
+   *
+   * If `withTrustedRoots` is passed as `true`, the [SecurityContext] will be
+   * seeded by the trusted root certificates provided as explained below. To
+   * obtain a [SecurityContext] containing trusted root certificates,
+   * [SecurityContext.defaultContext] is usually sufficient, and should
+   * be used instead. However, if the [SecurityContext] containing the trusted
+   * root certificates must be modified per-connection, then `withTrustedRoots`
+   * should be used.
+   */
+  external factory SecurityContext({bool withTrustedRoots: false});
 
   /**
    * Secure networking classes with an optional `context` parameter
@@ -45,7 +59,7 @@ abstract class SecurityContext {
    * other contents of [file] are ignored. An unencrypted file can be used,
    * but this is not usual.
    *
-   * NB: This function calls [ReadFileAsBytesSync], and will block on file IO.
+   * NB: This function calls [File.readAsBytesSync], and will block on file IO.
    * Prefer using [usePrivateKeyBytes].
    *
    * iOS note: Only PKCS12 data is supported. It should contain both the private
@@ -73,7 +87,7 @@ abstract class SecurityContext {
    * ignored. Assuming it is well-formatted, all other contents of [file] are
    * ignored.
    *
-   * NB: This function calls [ReadFileAsBytesSync], and will block on file IO.
+   * NB: This function calls [File.readAsBytesSync], and will block on file IO.
    * Prefer using [setTrustedCertificatesBytes].
    *
    * iOS note: On iOS, this call takes only the bytes for a single DER
@@ -94,7 +108,7 @@ abstract class SecurityContext {
   void setTrustedCertificatesBytes(List<int> certBytes, {String password});
 
   /**
-   * Sets the chain of X509 certificates served by [SecureServer]
+   * Sets the chain of X509 certificates served by [SecureServerSocket]
    * when making secure connections, including the server certificate.
    *
    * [file] is a PEM or PKCS12 file containing X509 certificates, starting with
@@ -105,7 +119,7 @@ abstract class SecurityContext {
    * [password] is ignored. Assuming it is well-formatted, all
    * other contents of [file] are ignored.
    *
-   * NB: This function calls [ReadFileAsBytesSync], and will block on file IO.
+   * NB: This function calls [File.readAsBytesSync], and will block on file IO.
    * Prefer using [useCertificateChainBytes].
    *
    * iOS note: As noted above, [usePrivateKey] does the job of both
@@ -114,7 +128,7 @@ abstract class SecurityContext {
   void useCertificateChain(String file, {String password});
 
   /**
-   * Sets the chain of X509 certificates served by [SecureServer]
+   * Sets the chain of X509 certificates served by [SecureServerSocket]
    * when making secure connections, including the server certificate.
    *
    * Like [useCertificateChain] but takes the contents of the file.
@@ -122,7 +136,7 @@ abstract class SecurityContext {
   void useCertificateChainBytes(List<int> chainBytes, {String password});
 
   /**
-   * Sets the list of authority names that a [SecureServer] will advertise
+   * Sets the list of authority names that a [SecureServerSocket] will advertise
    * as accepted when requesting a client certificate from a connecting
    * client.
    *
@@ -132,7 +146,7 @@ abstract class SecurityContext {
    * For PEM files, [password] is ignored. Assuming it is well-formatted, all
    * other contents of [file] are ignored.
    *
-   * NB: This function calls [ReadFileAsBytesSync], and will block on file IO.
+   * NB: This function calls [File.readAsBytesSync], and will block on file IO.
    * Prefer using [setClientAuthoritiesBytes].
    *
    * iOS note: This call is not supported.
@@ -140,11 +154,11 @@ abstract class SecurityContext {
   void setClientAuthorities(String file, {String password});
 
   /**
-   * Sets the list of authority names that a [SecureServer] will advertise
+   * Sets the list of authority names that a [SecureServerSocket] will advertise
    * as accepted, when requesting a client certificate from a connecting
    * client.
    *
-   * Like [setClientAuthority] but takes the contents of the file.
+   * Like [setClientAuthorities] but takes the contents of the file.
    */
   void setClientAuthoritiesBytes(List<int> authCertBytes, {String password});
 
@@ -165,7 +179,7 @@ abstract class SecurityContext {
    * boolean argument specifies whether to set the list for server connections
    * or client connections.
    */
-   void setAlpnProtocols(List<String> protocols, bool isServer);
+  void setAlpnProtocols(List<String> protocols, bool isServer);
 
   /// Encodes a set of supported protocols for ALPN/NPN usage.
   ///

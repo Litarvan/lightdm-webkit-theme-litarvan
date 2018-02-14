@@ -21,7 +21,7 @@ import 'package:analyzer/src/lint/linter.dart';
 import 'package:analyzer/src/lint/project.dart';
 import 'package:analyzer/src/lint/registry.dart';
 import 'package:analyzer/src/services/lint.dart';
-import 'package:cli_util/cli_util.dart' as cli_util;
+import 'package:analyzer/src/util/sdk.dart';
 import 'package:package_config/packages.dart' show Packages;
 import 'package:package_config/packages_file.dart' as pkgfile show parse;
 import 'package:package_config/src/packages_impl.dart' show MapPackages;
@@ -47,11 +47,50 @@ AnalysisOptions _buildAnalyzerOptions(DriverOptions options) {
   analysisOptions.hint = false;
   analysisOptions.lint = options.enableLints;
   analysisOptions.generateSdkErrors = options.showSdkWarnings;
+  analysisOptions.enableAssertInitializer = options.enableAssertInitializer;
   analysisOptions.enableTiming = options.enableTiming;
   return analysisOptions;
 }
 
-class AnalysisDriver {
+class DriverOptions {
+  /// The maximum number of sources for which AST structures should be kept
+  /// in the cache.  The default is 512.
+  int cacheSize = 512;
+
+  /// The path to the dart SDK.
+  String dartSdkPath;
+
+  /// Whether the parser is able to parse asserts in the initializer list of a
+  /// constructor
+  bool enableAssertInitializer = false;
+
+  /// Whether to show lint warnings.
+  bool enableLints = true;
+
+  /// Whether to gather timing data during analysis.
+  bool enableTiming = false;
+
+  /// The path to a `.packages` configuration file
+  String packageConfigPath;
+
+  /// The path to the package root.
+  String packageRootPath;
+
+  /// Whether to show SDK warnings.
+  bool showSdkWarnings = false;
+
+  /// Whether to use Dart's Strong Mode analyzer.
+  bool strongMode = true;
+
+  /// The mock SDK (to speed up testing) or `null` to use the actual SDK.
+  DartSdk mockSdk;
+
+  /// Whether to show lints for the transitive closure of imported and exported
+  /// libraries.
+  bool visitTransitiveClosure = false;
+}
+
+class LintDriver {
   /// The sources which have been analyzed so far.  This is used to avoid
   /// analyzing a source more than once, and to compute the total number of
   /// sources analyzed for statistics.
@@ -59,7 +98,7 @@ class AnalysisDriver {
 
   final LinterOptions options;
 
-  AnalysisDriver(this.options) {
+  LintDriver(this.options) {
     _processPlugins();
   }
 
@@ -100,12 +139,8 @@ class AnalysisDriver {
   }
 
   String get sdkDir {
-    if (options.dartSdkPath != null) {
-      return options.dartSdkPath;
-    }
-    // In case no SDK has been specified, fall back to inferring it
-    // TODO: pass args to cli_util
-    return cli_util.getSdkDir().path;
+    // In case no SDK has been specified, fall back to inferring it.
+    return options.dartSdkPath ?? getSdkPath();
   }
 
   List<AnalysisErrorInfo> analyze(Iterable<io.File> files) {
@@ -214,40 +249,6 @@ class AnalysisDriver {
     ExtensionManager manager = new ExtensionManager();
     manager.processPlugins(plugins);
   }
-}
-
-class DriverOptions {
-  /// The maximum number of sources for which AST structures should be kept
-  /// in the cache.  The default is 512.
-  int cacheSize = 512;
-
-  /// The path to the dart SDK.
-  String dartSdkPath;
-
-  /// Whether to show lint warnings.
-  bool enableLints = true;
-
-  /// Whether to gather timing data during analysis.
-  bool enableTiming = false;
-
-  /// The path to a `.packages` configuration file
-  String packageConfigPath;
-
-  /// The path to the package root.
-  String packageRootPath;
-
-  /// Whether to show SDK warnings.
-  bool showSdkWarnings = false;
-
-  /// Whether to use Dart's Strong Mode analyzer.
-  bool strongMode = true;
-
-  /// The mock SDK (to speed up testing) or `null` to use the actual SDK.
-  DartSdk mockSdk;
-
-  /// Whether to show lints for the transitive closure of imported and exported
-  /// libraries.
-  bool visitTransitiveClosure = false;
 }
 
 /// Prints logging information comments to the [outSink] and error messages to

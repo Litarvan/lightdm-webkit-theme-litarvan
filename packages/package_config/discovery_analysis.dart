@@ -91,6 +91,7 @@ abstract class PackageContext {
         contexts = oldContexts;
       }
     }
+
     findRoots(directory);
     // If the root is not itself context root, add a the wrapper context.
     if (contexts.length == 1 && contexts[0].directory == directory) {
@@ -115,6 +116,7 @@ class _PackageContext implements PackageContext {
         recurse(child);
       }
     }
+
     recurse(this);
     return result;
   }

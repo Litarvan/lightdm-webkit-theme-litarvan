@@ -81,10 +81,8 @@ class _MacOSDirectoryWatcher
     //
     // If we do receive a batch of events, [_onBatch] will ensure that these
     // futures don't fire and that the directory is re-listed.
-    Future.wait([
-      _listDir(),
-      _waitForBogusEvents()
-    ]).then((_) => _readyCompleter.complete());
+    Future.wait([_listDir(), _waitForBogusEvents()]).then(
+        (_) => _readyCompleter.complete());
   }
 
   void close() {
@@ -116,8 +114,9 @@ class _MacOSDirectoryWatcher
 
     _sortEvents(batch).forEach((path, eventSet) {
       var canonicalEvent = _canonicalEvent(eventSet);
-      var events = canonicalEvent == null ?
-          _eventsBasedOnFileSystem(path) : [canonicalEvent];
+      var events = canonicalEvent == null
+          ? _eventsBasedOnFileSystem(path)
+          : [canonicalEvent];
 
       for (var event in events) {
         if (event is FileSystemCreateEvent) {
@@ -126,9 +125,8 @@ class _MacOSDirectoryWatcher
             // This can happen if a file is copied on top of an existing one.
             // We'll see an ADD event for the latter file when from the user's
             // perspective, the file's contents just changed.
-            var type = _files.contains(path)
-                ? ChangeType.MODIFY
-                : ChangeType.ADD;
+            var type =
+                _files.contains(path) ? ChangeType.MODIFY : ChangeType.ADD;
 
             _emitEvent(type, path);
             _files.add(path);
@@ -138,8 +136,8 @@ class _MacOSDirectoryWatcher
           if (_files.containsDir(path)) continue;
 
           StreamSubscription<FileSystemEntity> subscription;
-          subscription = new Directory(path).list(recursive: true)
-              .listen((entity) {
+          subscription =
+              new Directory(path).list(recursive: true).listen((entity) {
             if (entity is Directory) return;
             if (_files.contains(path)) return;
 
@@ -259,7 +257,8 @@ class _MacOSDirectoryWatcher
     // from FSEvents reporting an add that happened prior to the watch
     // beginning. If we also received a MODIFY event, we want to report that,
     // but not the CREATE.
-    if (type == FileSystemEvent.CREATE && hadModifyEvent &&
+    if (type == FileSystemEvent.CREATE &&
+        hadModifyEvent &&
         _files.contains(batch.first.path)) {
       type = FileSystemEvent.MODIFY;
     }
@@ -277,7 +276,8 @@ class _MacOSDirectoryWatcher
       case FileSystemEvent.MODIFY:
         return new ConstructableFileSystemModifyEvent(
             batch.first.path, isDir, false);
-      default: throw 'unreachable';
+      default:
+        throw 'unreachable';
     }
   }
 
@@ -347,11 +347,11 @@ class _MacOSDirectoryWatcher
   /// Start or restart the underlying [Directory.watch] stream.
   void _startWatch() {
     // Batch the FSEvent changes together so that we can dedup events.
-    var innerStream = new Directory(path).watch(recursive: true)
+    var innerStream = new Directory(path)
+        .watch(recursive: true)
         .transform(new BatchedStreamTransformer<FileSystemEvent>());
     _watchSubscription = innerStream.listen(_onBatch,
-        onError: _eventsController.addError,
-        onDone: _onDone);
+        onError: _eventsController.addError, onDone: _onDone);
   }
 
   /// Starts or restarts listing the watched directory to get an initial picture
@@ -365,10 +365,7 @@ class _MacOSDirectoryWatcher
     var stream = new Directory(path).list(recursive: true);
     _initialListSubscription = stream.listen((entity) {
       if (entity is! Directory) _files.add(entity.path);
-    },
-        onError: _emitError,
-        onDone: completer.complete,
-        cancelOnError: true);
+    }, onError: _emitError, onDone: completer.complete, cancelOnError: true);
     return completer.future;
   }
 
@@ -379,9 +376,8 @@ class _MacOSDirectoryWatcher
   /// bogus events will be signaled in that time frame.
   Future _waitForBogusEvents() {
     var completer = new Completer();
-    _bogusEventTimer = new Timer(
-        new Duration(milliseconds: 200),
-        completer.complete);
+    _bogusEventTimer =
+        new Timer(new Duration(milliseconds: 200), completer.complete);
     return completer.future;
   }
 

@@ -2,12 +2,9 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library services.src.refactoring.rename_constructor;
-
 import 'dart:async';
 
 import 'package:analysis_server/src/protocol_server.dart' hide Element;
-import 'package:analysis_server/src/services/correction/source_range.dart';
 import 'package:analysis_server/src/services/correction/status.dart';
 import 'package:analysis_server/src/services/correction/util.dart';
 import 'package:analysis_server/src/services/refactoring/naming_conventions.dart';
@@ -19,15 +16,19 @@ import 'package:analysis_server/src/services/search/search_engine.dart';
 import 'package:analysis_server/src/services/search/search_engine_internal.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/src/dart/element/ast_provider.dart';
 import 'package:analyzer/src/generated/java_core.dart';
 import 'package:analyzer/src/generated/source.dart';
+import 'package:analyzer_plugin/utilities/range_factory.dart';
 
 /**
  * A [Refactoring] for renaming [ConstructorElement]s.
  */
 class RenameConstructorRefactoringImpl extends RenameRefactoringImpl {
+  final AstProvider astProvider;
+
   RenameConstructorRefactoringImpl(
-      SearchEngine searchEngine, ConstructorElement element)
+      SearchEngine searchEngine, this.astProvider, ConstructorElement element)
       : super(searchEngine, element);
 
   @override
@@ -61,7 +62,7 @@ class RenameConstructorRefactoringImpl extends RenameRefactoringImpl {
     List<SourceReference> references = getSourceReferences(matches);
     // append declaration
     if (element.isSynthetic) {
-      _replaceSynthetic();
+      await _replaceSynthetic();
     } else {
       references.add(_createDeclarationReference());
     }
@@ -92,10 +93,11 @@ class RenameConstructorRefactoringImpl extends RenameRefactoringImpl {
 
   SourceReference _createDeclarationReference() {
     SourceRange sourceRange;
-    if (element.periodOffset != null) {
-      sourceRange = rangeStartEnd(element.periodOffset, element.nameEnd);
+    int offset = element.periodOffset;
+    if (offset != null) {
+      sourceRange = range.startOffsetEndOffset(offset, element.nameEnd);
     } else {
-      sourceRange = rangeStartLength(element.nameEnd, 0);
+      sourceRange = new SourceRange(element.nameEnd, 0);
     }
     return new SourceReference(new SearchMatchImpl(
         element.context,
@@ -107,9 +109,10 @@ class RenameConstructorRefactoringImpl extends RenameRefactoringImpl {
         true));
   }
 
-  void _replaceSynthetic() {
+  Future<Null> _replaceSynthetic() async {
     ClassElement classElement = element.enclosingElement;
-    ClassDeclaration classNode = classElement.computeNode();
+    AstNode name = await astProvider.getResolvedNameForElement(classElement);
+    ClassDeclaration classNode = name.parent as ClassDeclaration;
     CorrectionUtils utils = new CorrectionUtils(classNode.parent);
     ClassMemberLocation location =
         utils.prepareNewConstructorLocation(classNode);

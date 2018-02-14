@@ -640,8 +640,7 @@ class MediaDirective extends Directive {
   final List<MediaQuery> mediaQueries;
   final List<TreeNode> rules;
 
-  MediaDirective(this.mediaQueries, this.rules, SourceSpan span)
-      : super(span);
+  MediaDirective(this.mediaQueries, this.rules, SourceSpan span) : super(span);
 
   MediaDirective clone() {
     var cloneQueries = <MediaQuery>[];

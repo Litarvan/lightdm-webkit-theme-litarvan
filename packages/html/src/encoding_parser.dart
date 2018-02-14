@@ -117,7 +117,7 @@ class EncodingBytes {
   String slice(int start, [int end]) {
     if (end == null) end = length;
     if (end < 0) end += length;
-    return _bytes.substring(start, end - start);
+    return _bytes.substring(start, end);
   }
 }
 
@@ -141,12 +141,12 @@ class EncodingParser {
 
   String getEncoding() {
     final methodDispatch = [
-        new _DispatchEntry("<!--", handleComment),
-        new _DispatchEntry("<meta", handleMeta),
-        new _DispatchEntry("</", handlePossibleEndTag),
-        new _DispatchEntry("<!", handleOther),
-        new _DispatchEntry("<?", handleOther),
-        new _DispatchEntry("<", handlePossibleStartTag),
+      new _DispatchEntry("<!--", handleComment),
+      new _DispatchEntry("<meta", handleMeta),
+      new _DispatchEntry("</", handlePossibleEndTag),
+      new _DispatchEntry("<!", handleOther),
+      new _DispatchEntry("<?", handleOther),
+      new _DispatchEntry("<", handlePossibleStartTag),
     ];
 
     try {
@@ -254,7 +254,7 @@ class EncodingParser {
     while (true) {
       if (c == null) {
         return null;
-      } else if (c == "=" && attrName.length > 0) {
+      } else if (c == "=" && attrName.isNotEmpty) {
         break;
       } else if (isWhitespace(c)) {
         // Step 6!

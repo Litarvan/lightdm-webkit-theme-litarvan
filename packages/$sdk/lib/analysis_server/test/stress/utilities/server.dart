@@ -12,7 +12,9 @@ import 'dart:convert' hide JsonDecoder;
 import 'dart:io';
 import 'dart:math' as math;
 
-import 'package:analysis_server/plugin/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol_generated.dart';
+import 'package:analyzer_plugin/protocol/protocol_common.dart';
 import 'package:path/path.dart' as path;
 
 import 'logger.dart';
@@ -110,7 +112,7 @@ class RequestData {
   RequestData(this.id, this.method, this.params, this.requestTime);
 
   /**
-   * Return the number of milliseconds that elapsed betwee the request and the
+   * Return the number of milliseconds that elapsed between the request and the
    * response. This getter assumes that the response was received.
    */
   int get elapsedTime => responseTime - requestTime;
@@ -188,11 +190,6 @@ class Server {
    * The analysis roots that are included.
    */
   List<String> _analysisRootIncludes = <String>[];
-
-  /**
-   * The analysis roots that are excluded.
-   */
-  List<String> _analysisRootExcludes = <String>[];
 
   /**
    * A list containing the paths of files for which an overlay has been created.
@@ -448,7 +445,6 @@ class Server {
       List<String> included, List<String> excluded,
       {Map<String, String> packageRoots}) {
     _analysisRootIncludes = included;
-    _analysisRootExcludes = excluded;
     var params = new AnalysisSetAnalysisRootsParams(included, excluded,
             packageRoots: packageRoots)
         .toJson();
@@ -614,9 +610,6 @@ class Server {
    *
    * If [checked] is `true`, the server's VM will be running in checked mode.
    *
-   * If [debugServer] is `true`, the server will be started with "--debug",
-   * allowing a debugger to be attached.
-   *
    * If [diagnosticPort] is not `null`, the server will serve status pages to
    * the specified port.
    *
@@ -631,9 +624,7 @@ class Server {
    */
   Future<Null> start(
       {bool checked: true,
-      bool debugServer: false,
       int diagnosticPort,
-      bool enableNewAnalysisDriver: false,
       bool profileServer: false,
       String sdkPath,
       int servicesPort,
@@ -650,9 +641,6 @@ class Server {
     //
     // Add VM arguments.
     //
-    if (debugServer) {
-      arguments.add('--debug');
-    }
     if (profileServer) {
       if (servicesPort == null) {
         arguments.add('--observe');
@@ -688,9 +676,6 @@ class Server {
     }
     if (useAnalysisHighlight2) {
       arguments.add('--useAnalysisHighlight2');
-    }
-    if (enableNewAnalysisDriver) {
-      arguments.add('--enable-new-analysis-driver');
     }
 //    stdout.writeln('Launching $serverPath');
 //    stdout.writeln('$dartBinary ${arguments.join(' ')}');

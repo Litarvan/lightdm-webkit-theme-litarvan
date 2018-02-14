@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library analysis_server.src.single_context_manager;
-
 import 'dart:async';
 import 'dart:core';
 import 'dart:math' as math;
@@ -134,6 +132,14 @@ class SingleContextManager implements ContextManager {
       return <AnalysisContext>[];
     }
     return <AnalysisContext>[context];
+  }
+
+  @override
+  Folder getContextFolderFor(String path) {
+    if (isInAnalysisRoot(path)) {
+      return contextFolder;
+    }
+    return null;
   }
 
   @override

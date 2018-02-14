@@ -49,7 +49,7 @@ class TransformerClassifier {
   /// classifying all available inputs.
   Stream get onDoneClassifying => _onDoneClassifyingController.stream;
   final _onDoneClassifyingController =
-      new StreamController.broadcast(sync: true);
+      new StreamController<Null>.broadcast(sync: true);
 
   /// The number of currently-active calls to [transformer.classifyPrimary].
   ///
@@ -62,13 +62,14 @@ class TransformerClassifier {
   /// How far along [this] is in processing its assets.
   NodeStatus get status {
     if (isClassifying) return NodeStatus.RUNNING;
-    return NodeStatus.dirtiest(
-        _transforms.values.map((transform) => transform.status));
+    return NodeStatus
+        .dirtiest(_transforms.values.map((transform) => transform.status));
   }
 
   TransformerClassifier(this.phase, transformer, this._location)
-      : transformer = transformer is AggregateTransformer ?
-            transformer : new WrappingAggregateTransformer(transformer);
+      : transformer = transformer is AggregateTransformer
+            ? transformer
+            : new WrappingAggregateTransformer(transformer);
 
   /// Adds a new asset as an input for this transformer.
   void addInput(AssetNode input) {
@@ -93,8 +94,8 @@ class TransformerClassifier {
       if (key == null) {
         var forwarder = new AssetForwarder(input);
         _passThroughForwarders.add(forwarder);
-        forwarder.node.whenRemoved(
-            () => _passThroughForwarders.remove(forwarder));
+        forwarder.node
+            .whenRemoved(() => _passThroughForwarders.remove(forwarder));
         _streams.onAssetController.add(forwarder.node);
       } else if (_transforms.containsKey(key)) {
         _transforms[key].addPrimary(input);
@@ -102,8 +103,7 @@ class TransformerClassifier {
         var transform = new TransformNode(this, transformer, key, _location);
         _transforms[key] = transform;
 
-        transform.onStatusChange.listen(
-            (_) => _streams.changeStatus(status),
+        transform.onStatusChange.listen((_) => _streams.changeStatus(status),
             onDone: () {
           _transforms.remove(transform.key);
           if (!_streams.isClosed) _streams.changeStatus(status);

@@ -6,9 +6,10 @@
 library html.dom.src;
 
 import 'dart:collection';
+
 import 'package:html/dom.dart';
 
-class ElementCssClassSet extends CssClassSetImpl {
+class ElementCssClassSet extends _CssClassSetImpl {
   final Element _element;
 
   ElementCssClassSet(this._element);
@@ -19,7 +20,7 @@ class ElementCssClassSet extends CssClassSetImpl {
 
     for (String name in classname.split(' ')) {
       String trimmed = name.trim();
-      if (!trimmed.isEmpty) {
+      if (trimmed.isNotEmpty) {
         s.add(trimmed);
       }
     }
@@ -33,7 +34,6 @@ class ElementCssClassSet extends CssClassSetImpl {
 
 /** A Set that stores the CSS class names for an element. */
 abstract class CssClassSet implements Set<String> {
-
   /**
    * Adds the class [value] to the element if it is not on it, removes it if it
    * is.
@@ -108,7 +108,7 @@ abstract class CssClassSet implements Set<String> {
   void toggleAll(Iterable<String> iterable, [bool shouldAdd]);
 }
 
-abstract class CssClassSetImpl implements CssClassSet {
+abstract class _CssClassSetImpl extends SetBase<String> implements CssClassSet {
   String toString() {
     return readClasses().join(' ');
   }
@@ -140,42 +140,9 @@ abstract class CssClassSetImpl implements CssClassSet {
    */
   bool get frozen => false;
 
-  // interface Iterable - BEGIN
   Iterator<String> get iterator => readClasses().iterator;
-  // interface Iterable - END
-
-  // interface Collection - BEGIN
-  void forEach(void f(String element)) {
-    readClasses().forEach(f);
-  }
-
-  String join([String separator = ""]) => readClasses().join(separator);
-
-  Iterable/*<T>*/ map/*<T>*/(/*=T*/ f(String e)) => readClasses().map(f);
-
-  Iterable<String> where(bool f(String element)) => readClasses().where(f);
-
-  Iterable/*<T>*/ expand/*<T>*/(Iterable/*<T>*/ f(String element)) => readClasses().expand(f);
-
-  bool every(bool f(String element)) => readClasses().every(f);
-
-  bool any(bool f(String element)) => readClasses().any(f);
-
-  bool get isEmpty => readClasses().isEmpty;
-
-  bool get isNotEmpty => readClasses().isNotEmpty;
 
   int get length => readClasses().length;
-
-  String reduce(String combine(String value, String element)) {
-    return readClasses().reduce(combine);
-  }
-
-  dynamic/*=T*/ fold/*<T>*/(var/*=T*/ initialValue,
-      dynamic/*=T*/ combine(var/*=T*/ previousValue, String element)) {
-    return readClasses().fold(initialValue, combine);
-  }
-  // interface Collection - END
 
   // interface Set - BEGIN
   /**
@@ -189,6 +156,8 @@ abstract class CssClassSetImpl implements CssClassSet {
   /** Lookup from the Set interface. Not interesting for a String set. */
   String lookup(Object value) => contains(value) ? value as String : null;
 
+  Set<String> toSet() => readClasses().toSet();
+
   /**
    * Add the class [value] to element.
    *
@@ -198,7 +167,7 @@ abstract class CssClassSetImpl implements CssClassSet {
   bool add(String value) {
     // TODO - figure out if we need to do any validation here
     // or if the browser natively does enough.
-    return modify((s) => s.add(value));
+    return _modify((s) => s.add(value));
   }
 
   /**
@@ -217,27 +186,6 @@ abstract class CssClassSetImpl implements CssClassSet {
   }
 
   /**
-   * Add all classes specified in [iterable] to element.
-   *
-   * This is the Dart equivalent of jQuery's
-   * [addClass](http://api.jquery.com/addClass/).
-   */
-  void addAll(Iterable<String> iterable) {
-    // TODO - see comment above about validation.
-    modify((s) => s.addAll(iterable));
-  }
-
-  /**
-   * Remove all classes specified in [iterable] from element.
-   *
-   * This is the Dart equivalent of jQuery's
-   * [removeClass](http://api.jquery.com/removeClass/).
-   */
-  void removeAll(Iterable<Object> iterable) {
-    modify((s) => s.removeAll(iterable));
-  }
-
-  /**
    * Toggles all classes specified in [iterable] on element.
    *
    * Iterate through [iterable]'s items, and add it if it is not on it, or
@@ -251,53 +199,6 @@ abstract class CssClassSetImpl implements CssClassSet {
     iterable.forEach((e) => toggle(e, shouldAdd));
   }
 
-  void retainAll(Iterable<Object> iterable) {
-    modify((s) => s.retainAll(iterable));
-  }
-
-  void removeWhere(bool test(String name)) {
-    modify((s) => s.removeWhere(test));
-  }
-
-  void retainWhere(bool test(String name)) {
-    modify((s) => s.retainWhere(test));
-  }
-
-  bool containsAll(Iterable<Object> collection) =>
-      readClasses().containsAll(collection);
-
-  Set<String> intersection(Set<Object> other) =>
-      readClasses().intersection(other);
-
-  Set<String> union(Set<String> other) => readClasses().union(other);
-
-  Set<String> difference(Set<Object> other) => readClasses().difference(other);
-
-  String get first => readClasses().first;
-  String get last => readClasses().last;
-  String get single => readClasses().single;
-  List<String> toList({bool growable: true}) =>
-      readClasses().toList(growable: growable);
-  Set<String> toSet() => readClasses().toSet();
-  Iterable<String> take(int n) => readClasses().take(n);
-  Iterable<String> takeWhile(bool test(String value)) =>
-      readClasses().takeWhile(test);
-  Iterable<String> skip(int n) => readClasses().skip(n);
-  Iterable<String> skipWhile(bool test(String value)) =>
-      readClasses().skipWhile(test);
-  String firstWhere(bool test(String value), {String orElse()}) =>
-      readClasses().firstWhere(test, orElse: orElse);
-  String lastWhere(bool test(String value), {String orElse()}) =>
-      readClasses().lastWhere(test, orElse: orElse);
-  String singleWhere(bool test(String value)) =>
-      readClasses().singleWhere(test);
-  String elementAt(int index) => readClasses().elementAt(index);
-
-  void clear() {
-    modify((s) => s.clear());
-  }
-  // interface Set - END
-
   /**
    * Helper method used to modify the set of css classes on this element.
    *
@@ -307,7 +208,7 @@ abstract class CssClassSetImpl implements CssClassSet {
    *   After f returns, the modified set is written to the
    *       className property of this element.
    */
-  modify(f(Set<String> s)) {
+  bool _modify(bool f(Set<String> s)) {
     Set<String> s = readClasses();
     var ret = f(s);
     writeClasses(s);

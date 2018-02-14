@@ -2,12 +2,12 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.analysis.notification.navigation;
-
 import 'dart:async';
 
-import 'package:analysis_server/plugin/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol_generated.dart';
 import 'package:analysis_server/src/constants.dart';
+import 'package:analyzer_plugin/protocol/protocol_common.dart';
 import 'package:test/test.dart';
 import 'package:test_reflective_loader/test_reflective_loader.dart';
 
@@ -179,6 +179,9 @@ class AbstractNavigationTest extends AbstractAnalysisTest {
 
 @reflectiveTest
 class AnalysisNotificationNavigationTest extends AbstractNavigationTest {
+  @override
+  bool get enableNewAnalysisDriver => false;
+
   Future prepareNavigation() async {
     addAnalysisSubscription(AnalysisService.NAVIGATION, testFile);
     await waitForTasksFinished();
@@ -932,5 +935,101 @@ void main() {
 ''');
     await prepareNavigation();
     assertNoRegionAt('void');
+  }
+
+  test_var_declaredVariable() async {
+    addTestFile('''
+class C {}
+f(List<C> items) {
+  for (var item in items) {}
+}
+''');
+    await prepareNavigation();
+    assertHasRegionTarget('var', 'C {}');
+    expect(testTarget.kind, ElementKind.CLASS);
+  }
+
+  test_var_localVariable_multiple_inferred_different() async {
+    addTestFile('''
+class A {}
+class B {}
+void f() {
+  var a = new A(), b = new B();
+}
+''');
+    await prepareNavigation();
+    assertNoRegionAt('var');
+  }
+
+  test_var_localVariable_multiple_inferred_same() async {
+    addTestFile('''
+class C {}
+void f() {
+  var a = new C(), b = new C();
+}
+''');
+    await prepareNavigation();
+    assertHasRegionTarget('var', 'C {}');
+    expect(testTarget.kind, ElementKind.CLASS);
+  }
+
+  test_var_localVariable_single_inferred() async {
+    addTestFile('''
+class C {}
+f() {
+  var c = new C();
+}
+''');
+    await prepareNavigation();
+    assertHasRegionTarget('var', 'C {}');
+    expect(testTarget.kind, ElementKind.CLASS);
+  }
+
+  test_var_localVariable_single_notInferred() async {
+    addTestFile('''
+f() {
+  var x;
+}
+''');
+    await prepareNavigation();
+    assertNoRegionAt('var');
+  }
+
+  test_var_topLevelVariable_multiple_inferred_different() async {
+    addTestFile('''
+class A {}
+class B {}
+var a = new A(), b = new B();
+''');
+    await prepareNavigation();
+    assertNoRegionAt('var');
+  }
+
+  test_var_topLevelVariable_multiple_inferred_same() async {
+    addTestFile('''
+class C {}
+var a = new C(), b = new C();
+''');
+    await prepareNavigation();
+    assertHasRegionTarget('var', 'C {}');
+    expect(testTarget.kind, ElementKind.CLASS);
+  }
+
+  test_var_topLevelVariable_single_inferred() async {
+    addTestFile('''
+class C {}
+var c = new C();
+''');
+    await prepareNavigation();
+    assertHasRegionTarget('var', 'C {}');
+    expect(testTarget.kind, ElementKind.CLASS);
+  }
+
+  test_var_topLevelVariable_single_notInferred() async {
+    addTestFile('''
+var x;
+''');
+    await prepareNavigation();
+    assertNoRegionAt('var');
   }
 }

@@ -626,7 +626,8 @@ class ElementResolver extends SimpleAstVisitor<Object> {
             [(target as SimpleIdentifier).name]);
       }
       LibraryElement importedLibrary = _getImportedLibrary(target);
-      FunctionElement loadLibraryFunction = importedLibrary.loadLibraryFunction;
+      FunctionElement loadLibraryFunction =
+          importedLibrary?.loadLibraryFunction;
       methodName.staticElement = loadLibraryFunction;
       node.staticInvokeType = loadLibraryFunction.type;
       return null;
@@ -894,7 +895,7 @@ class ElementResolver extends SimpleAstVisitor<Object> {
     if (identifier.name == FunctionElement.LOAD_LIBRARY_NAME &&
         _isDeferredPrefix(prefix)) {
       LibraryElement importedLibrary = _getImportedLibrary(prefix);
-      identifier.staticElement = importedLibrary.loadLibraryFunction;
+      identifier.staticElement = importedLibrary?.loadLibraryFunction;
       return null;
     }
     //
@@ -2498,7 +2499,10 @@ class ElementResolver extends SimpleAstVisitor<Object> {
    * [member] in the given [type] and not finding any member.
    */
   bool _shouldReportMissingMember(DartType type, Element member) {
-    return member == null && type != null && !type.isDynamic && !type.isDartCoreNull;
+    return member == null &&
+        type != null &&
+        !type.isDynamic &&
+        !type.isDartCoreNull;
   }
 
   /**

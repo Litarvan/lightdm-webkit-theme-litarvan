@@ -21,7 +21,6 @@ abstract class Exception {
   factory Exception([var message]) => new _Exception(message);
 }
 
-
 /** Default implementation of [Exception] which carries a message. */
 class _Exception implements Exception {
   final message;
@@ -33,7 +32,6 @@ class _Exception implements Exception {
     return "Exception: $message";
   }
 }
-
 
 /**
  * Exception thrown when a string or some other data does not have an expected
@@ -118,19 +116,19 @@ class FormatException implements Exception {
     }
     int lineNum = 1;
     int lineStart = 0;
-    bool lastWasCR;
+    bool previousCharWasCR = false;
     for (int i = 0; i < offset; i++) {
       int char = source.codeUnitAt(i);
       if (char == 0x0a) {
-        if (lineStart != i || !lastWasCR) {
+        if (lineStart != i || !previousCharWasCR) {
           lineNum++;
         }
         lineStart = i + 1;
-        lastWasCR = false;
+        previousCharWasCR = false;
       } else if (char == 0x0d) {
         lineNum++;
         lineStart = i + 1;
-        lastWasCR = true;
+        previousCharWasCR = true;
       }
     }
     if (lineNum > 1) {

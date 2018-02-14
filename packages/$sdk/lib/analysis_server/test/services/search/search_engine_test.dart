@@ -2,14 +2,13 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.services.src.search.search_engine_internal;
-
 import 'dart:async';
 
 import 'package:analysis_server/src/services/index/index.dart';
 import 'package:analysis_server/src/services/search/search_engine.dart';
 import 'package:analysis_server/src/services/search/search_engine_internal.dart';
 import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/src/dart/analysis/ast_provider_context.dart';
 import 'package:analyzer/src/dart/element/element.dart';
 import 'package:analyzer/src/dart/element/member.dart';
 import 'package:analyzer/src/generated/source.dart';
@@ -68,10 +67,14 @@ class SearchEngineImplTest extends AbstractSingleUnitTest {
   Index index;
   SearchEngineImpl searchEngine;
 
+  @override
+  bool get enableNewAnalysisDriver => false;
+
   void setUp() {
     super.setUp();
     index = createMemoryIndex();
-    searchEngine = new SearchEngineImpl(index);
+    searchEngine =
+        new SearchEngineImpl(index, (_) => new AstProviderForContext(context));
   }
 
   test_searchAllSubtypes() async {
@@ -508,8 +511,8 @@ label:
   test_searchReferences_LibraryElement() async {
     var codeA = 'part of lib; // A';
     var codeB = 'part of lib; // B';
-    addSource('/unitA.dart', codeA);
-    addSource('/unitB.dart', codeB);
+    var sourceA = addSource('/unitA.dart', codeA);
+    var sourceB = addSource('/unitB.dart', codeB);
     await _indexTestUnit('''
 library lib;
 part 'unitA.dart';
@@ -518,8 +521,10 @@ part 'unitB.dart';
     LibraryElement element = testLibraryElement;
     CompilationUnitElement unitElementA = element.parts[0];
     CompilationUnitElement unitElementB = element.parts[1];
-    index.indexUnit(unitElementA.computeNode());
-    index.indexUnit(unitElementB.computeNode());
+    index.indexUnit(
+        context.resolveCompilationUnit2(sourceA, testLibraryElement.source));
+    index.indexUnit(
+        context.resolveCompilationUnit2(sourceB, testLibraryElement.source));
     var expected = [
       new ExpectedMatch(unitElementA, MatchKind.REFERENCE,
           codeA.indexOf('lib; // A'), 'lib'.length),

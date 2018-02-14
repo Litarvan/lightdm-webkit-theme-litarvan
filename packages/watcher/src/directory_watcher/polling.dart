@@ -25,9 +25,9 @@ class PollingDirectoryWatcher extends ResubscribableWatcher
   /// and higher CPU usage. Defaults to one second.
   PollingDirectoryWatcher(String directory, {Duration pollingDelay})
       : super(directory, () {
-        return new _PollingDirectoryWatcher(directory,
-            pollingDelay != null ? pollingDelay : new Duration(seconds: 1));
-      });
+          return new _PollingDirectoryWatcher(directory,
+              pollingDelay != null ? pollingDelay : new Duration(seconds: 1));
+        });
 }
 
 class _PollingDirectoryWatcher
@@ -73,8 +73,8 @@ class _PollingDirectoryWatcher
   final _polledFiles = new Set<String>();
 
   _PollingDirectoryWatcher(this.path, this._pollingDelay) {
-    _filesToProcess = new AsyncQueue<String>(_processFile,
-        onError: (e, stackTrace) {
+    _filesToProcess =
+        new AsyncQueue<String>(_processFile, onError: (e, stackTrace) {
       if (!_events.isClosed) _events.addError(e, stackTrace);
     });
 

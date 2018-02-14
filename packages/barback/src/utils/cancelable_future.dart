@@ -29,8 +29,7 @@ class CancelableFuture<T> implements Future<T> {
   Stream<T> asStream() => _completer.future.asStream();
   Future<T> catchError(Function onError, {bool test(Object error)}) =>
       _completer.future.catchError(onError, test: test);
-  Future/*<S>*/ then/*<S>*/(/*=FutureOr<S>*/ onValue(T value),
-          {Function onError}) =>
+  Future<S> then<S>(FutureOr<S> onValue(T value), {Function onError}) =>
       _completer.future.then(onValue, onError: onError);
   Future<T> whenComplete(action()) => _completer.future.whenComplete(action);
   Future<T> timeout(Duration timeLimit, {void onTimeout()}) =>

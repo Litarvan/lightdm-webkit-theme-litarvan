@@ -2,12 +2,12 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library socket.server;
-
-import 'package:analysis_server/plugin/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol_generated.dart';
 import 'package:analysis_server/src/analysis_server.dart';
 import 'package:analysis_server/src/channel/channel.dart';
 import 'package:analysis_server/src/plugin/server_plugin.dart';
+import 'package:analysis_server/src/server/diagnostic_server.dart';
 import 'package:analysis_server/src/services/index/index.dart';
 import 'package:analyzer/file_system/physical_file_system.dart';
 import 'package:analyzer/instrumentation/instrumentation.dart';
@@ -32,6 +32,7 @@ class SocketServer {
 
   final DartSdk defaultSdk;
   final InstrumentationService instrumentationService;
+  final DiagnosticServer diagnosticServer;
   final ServerPlugin serverPlugin;
   final ResolverProvider fileResolverProvider;
   final ResolverProvider packageResolverProvider;
@@ -53,6 +54,7 @@ class SocketServer {
       this.sdkManager,
       this.defaultSdk,
       this.instrumentationService,
+      this.diagnosticServer,
       this.serverPlugin,
       this.fileResolverProvider,
       this.packageResolverProvider,
@@ -84,20 +86,16 @@ class SocketServer {
           'File read mode was set to the unknown mode: $analysisServerOptions.fileReadMode');
     }
 
-    Index index = null;
-    if (!analysisServerOptions.noIndex) {
-      index = createMemoryIndex();
-    }
-
     analysisServer = new AnalysisServer(
         serverChannel,
         resourceProvider,
         new PubPackageMapProvider(resourceProvider, defaultSdk),
-        index,
+        createMemoryIndex(),
         serverPlugin,
         analysisServerOptions,
         sdkManager,
         instrumentationService,
+        diagnosticServer: diagnosticServer,
         fileResolverProvider: fileResolverProvider,
         packageResolverProvider: packageResolverProvider,
         useSingleContextManager: useSingleContextManager,

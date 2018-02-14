@@ -1,0 +1,13 @@
+{
+  "ngDeps": {
+    "1": "angular2.testing_internal",
+    "4": [
+      {
+        "1": "package:angular2/src/testing/internal.dart"
+      }
+    ],
+    "6": "testing_internal.dart"
+  },
+  "type": {},
+  "alias": {}
+}

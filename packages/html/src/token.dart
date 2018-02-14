@@ -32,8 +32,11 @@ class StartTagToken extends TagToken {
   /// The namespace. This is filled in later during tree building.
   String namespace;
 
-  StartTagToken(String name, {this.data, bool selfClosing: false,
-      this.selfClosingAcknowledged: false, this.namespace})
+  StartTagToken(String name,
+      {this.data,
+      bool selfClosing: false,
+      this.selfClosingAcknowledged: false,
+      this.namespace})
       : super(name, selfClosing);
 
   int get kind => TokenKind.startTag;

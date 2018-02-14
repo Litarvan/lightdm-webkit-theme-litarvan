@@ -41,14 +41,16 @@ class MimeTypeResolver {
   /**
    * Create a new empty [MimeTypeResolver].
    */
-  MimeTypeResolver.empty() : _useDefault = false, _magicNumbersMaxLength = 0;
+  MimeTypeResolver.empty()
+      : _useDefault = false,
+        _magicNumbersMaxLength = 0;
 
   /**
    * Create a new [MimeTypeResolver] containing the default scope.
    */
-  MimeTypeResolver() :
-      _useDefault = true,
-      _magicNumbersMaxLength = DEFAULT_MAGIC_NUMBERS_MAX_LENGTH;
+  MimeTypeResolver()
+      : _useDefault = true,
+        _magicNumbersMaxLength = DEFAULT_MAGIC_NUMBERS_MAX_LENGTH;
 
   /**
    * Get the maximum number of bytes required to match all magic numbers, when
@@ -111,8 +113,8 @@ class MimeTypeResolver {
     _magicNumbers.add(new MagicNumber(mimeType, bytes, mask: mask));
   }
 
-  static String _matchMagic(List<int> headerBytes,
-                            List<MagicNumber> magicNumbers) {
+  static String _matchMagic(
+      List<int> headerBytes, List<MagicNumber> magicNumbers) {
     for (var mn in magicNumbers) {
       if (mn.matches(headerBytes)) return mn.mimeType;
     }
@@ -125,4 +127,3 @@ class MimeTypeResolver {
     return path.substring(index + 1).toLowerCase();
   }
 }
-

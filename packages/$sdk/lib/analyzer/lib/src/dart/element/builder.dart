@@ -13,6 +13,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/exception/exception.dart';
+import 'package:analyzer/src/dart/ast/ast.dart';
 import 'package:analyzer/src/dart/element/element.dart';
 import 'package:analyzer/src/dart/element/type.dart';
 import 'package:analyzer/src/error/codes.dart';
@@ -156,6 +157,7 @@ class ApiElementBuilder extends _BaseElementBuilder {
     element.localVariables = holder.localVariables;
     element.parameters = holder.parameters;
     element.isConst = node.constKeyword != null;
+    element.isCycleFree = element.isConst;
     if (body.isAsynchronous) {
       element.asynchronous = true;
     }
@@ -227,39 +229,6 @@ class ApiElementBuilder extends _BaseElementBuilder {
   }
 
   @override
-  Object visitFieldFormalParameter(FieldFormalParameter node) {
-    if (node.parent is! DefaultFormalParameter) {
-      SimpleIdentifier parameterName = node.identifier;
-      FieldElement field =
-          _fieldMap == null ? null : _fieldMap[parameterName.name];
-      FieldFormalParameterElementImpl parameter =
-          new FieldFormalParameterElementImpl.forNode(parameterName);
-      _setCodeRange(parameter, node);
-      parameter.isConst = node.isConst;
-      parameter.isExplicitlyCovariant = node.covariantKeyword != null;
-      parameter.isFinal = node.isFinal;
-      parameter.parameterKind = node.kind;
-      if (field != null) {
-        parameter.field = field;
-      }
-      _currentHolder.addParameter(parameter);
-      parameterName.staticElement = parameter;
-    }
-    //
-    // The children of this parameter include any parameters defined on the type
-    // of this parameter.
-    //
-    ElementHolder holder = new ElementHolder();
-    _visitChildren(holder, node);
-    ParameterElementImpl element = node.element;
-    element.metadata = _createElementAnnotations(node.metadata);
-    element.parameters = holder.parameters;
-    element.typeParameters = holder.typeParameters;
-    holder.validate();
-    return null;
-  }
-
-  @override
   Object visitFunctionDeclaration(FunctionDeclaration node) {
     FunctionExpression expression = node.functionExpression;
     if (expression != null) {
@@ -274,7 +243,7 @@ class ApiElementBuilder extends _BaseElementBuilder {
         _setCodeRange(element, node);
         element.metadata = _createElementAnnotations(node.metadata);
         setElementDocumentationComment(element, node);
-        if (node.externalKeyword != null) {
+        if (node.externalKeyword != null || body is NativeFunctionBody) {
           element.external = true;
         }
         element.functions = holder.functions;
@@ -315,7 +284,7 @@ class ApiElementBuilder extends _BaseElementBuilder {
           _setCodeRange(getter, node);
           getter.metadata = _createElementAnnotations(node.metadata);
           setElementDocumentationComment(getter, node);
-          if (node.externalKeyword != null) {
+          if (node.externalKeyword != null || body is NativeFunctionBody) {
             getter.external = true;
           }
           getter.functions = holder.functions;
@@ -343,7 +312,7 @@ class ApiElementBuilder extends _BaseElementBuilder {
           _setCodeRange(setter, node);
           setter.metadata = _createElementAnnotations(node.metadata);
           setElementDocumentationComment(setter, node);
-          if (node.externalKeyword != null) {
+          if (node.externalKeyword != null || body is NativeFunctionBody) {
             setter.external = true;
           }
           setter.functions = holder.functions;
@@ -429,6 +398,27 @@ class ApiElementBuilder extends _BaseElementBuilder {
   }
 
   @override
+  Object visitGenericTypeAlias(GenericTypeAlias node) {
+    ElementHolder holder = new ElementHolder();
+    _visitChildren(holder, node);
+    SimpleIdentifier aliasName = node.name;
+    List<TypeParameterElement> typeParameters = holder.typeParameters;
+    GenericTypeAliasElementImpl element =
+        new GenericTypeAliasElementImpl.forNode(aliasName);
+    _setCodeRange(element, node);
+    element.metadata = _createElementAnnotations(node.metadata);
+    setElementDocumentationComment(element, node);
+    element.typeParameters = typeParameters;
+    _createTypeParameterTypes(typeParameters);
+    element.type = new FunctionTypeImpl.forTypedef(element);
+    element.function = node.functionType?.type?.element;
+    _currentHolder.addTypeAlias(element);
+    aliasName.staticElement = element;
+    holder.validate();
+    return null;
+  }
+
+  @override
   Object visitImportDirective(ImportDirective node) {
     List<ElementAnnotation> annotations =
         _createElementAnnotations(node.metadata);
@@ -465,7 +455,7 @@ class ApiElementBuilder extends _BaseElementBuilder {
         element.metadata = _createElementAnnotations(node.metadata);
         setElementDocumentationComment(element, node);
         element.abstract = node.isAbstract;
-        if (node.externalKeyword != null) {
+        if (node.externalKeyword != null || body is NativeFunctionBody) {
           element.external = true;
         }
         element.functions = holder.functions;
@@ -503,7 +493,7 @@ class ApiElementBuilder extends _BaseElementBuilder {
           _setCodeRange(getter, node);
           getter.metadata = _createElementAnnotations(node.metadata);
           setElementDocumentationComment(getter, node);
-          if (node.externalKeyword != null) {
+          if (node.externalKeyword != null || body is NativeFunctionBody) {
             getter.external = true;
           }
           getter.functions = holder.functions;
@@ -531,7 +521,7 @@ class ApiElementBuilder extends _BaseElementBuilder {
           _setCodeRange(setter, node);
           setter.metadata = _createElementAnnotations(node.metadata);
           setElementDocumentationComment(setter, node);
-          if (node.externalKeyword != null) {
+          if (node.externalKeyword != null || body is NativeFunctionBody) {
             setter.external = true;
           }
           setter.functions = holder.functions;
@@ -733,10 +723,13 @@ class ApiElementBuilder extends _BaseElementBuilder {
   }
 
   @override
-  void _setFieldParameterField(FieldFormalParameterElementImpl parameter) {
-    FieldElement field = _fieldMap == null ? null : _fieldMap[parameter.name];
-    if (field != null) {
-      parameter.field = field;
+  void _setFieldParameterField(
+      FormalParameter node, FieldFormalParameterElementImpl element) {
+    if (node.parent?.parent is ConstructorDeclaration) {
+      FieldElement field = _fieldMap == null ? null : _fieldMap[element.name];
+      if (field != null) {
+        element.field = field;
+      }
     }
   }
 }
@@ -1175,7 +1168,8 @@ class LocalElementBuilder extends _BaseElementBuilder {
     _setCodeRange(element, node);
     setElementDocumentationComment(element, node);
     element.metadata = _createElementAnnotations(node.metadata);
-    if (node.externalKeyword != null) {
+    FunctionBody body = expression.body;
+    if (node.externalKeyword != null || body is NativeFunctionBody) {
       element.external = true;
     }
     element.functions = holder.functions;
@@ -1184,7 +1178,6 @@ class LocalElementBuilder extends _BaseElementBuilder {
     element.parameters = holder.parameters;
     element.typeParameters = holder.typeParameters;
 
-    FunctionBody body = expression.body;
     if (body.isAsynchronous) {
       element.asynchronous = body.isAsynchronous;
     }
@@ -1388,7 +1381,7 @@ abstract class _BaseElementBuilder extends RecursiveAstVisitor<Object> {
     if (normalParameter is FieldFormalParameter) {
       DefaultFieldFormalParameterElementImpl fieldParameter =
           new DefaultFieldFormalParameterElementImpl.forNode(parameterName);
-      _setFieldParameterField(fieldParameter);
+      _setFieldParameterField(node, fieldParameter);
       parameter = fieldParameter;
     } else {
       parameter = new DefaultParameterElementImpl.forNode(parameterName);
@@ -1405,8 +1398,40 @@ abstract class _BaseElementBuilder extends RecursiveAstVisitor<Object> {
       parameter.hasImplicitType = true;
     }
     _currentHolder.addParameter(parameter);
-    parameterName.staticElement = parameter;
+    if (normalParameter is SimpleFormalParameterImpl) {
+      normalParameter.element = parameter;
+    }
+    parameterName?.staticElement = parameter;
     normalParameter.accept(this);
+    return null;
+  }
+
+  @override
+  Object visitFieldFormalParameter(FieldFormalParameter node) {
+    if (node.parent is! DefaultFormalParameter) {
+      SimpleIdentifier parameterName = node.identifier;
+      FieldFormalParameterElementImpl parameter =
+          new FieldFormalParameterElementImpl.forNode(parameterName);
+      _setCodeRange(parameter, node);
+      _setFieldParameterField(node, parameter);
+      parameter.isConst = node.isConst;
+      parameter.isExplicitlyCovariant = node.covariantKeyword != null;
+      parameter.isFinal = node.isFinal;
+      parameter.parameterKind = node.kind;
+      _currentHolder.addParameter(parameter);
+      parameterName.staticElement = parameter;
+    }
+    //
+    // The children of this parameter include any parameters defined on the type
+    // of this parameter.
+    //
+    ElementHolder holder = new ElementHolder();
+    _visitChildren(holder, node);
+    ParameterElementImpl element = node.element;
+    element.metadata = _createElementAnnotations(node.metadata);
+    element.parameters = holder.parameters;
+    element.typeParameters = holder.typeParameters;
+    holder.validate();
     return null;
   }
 
@@ -1440,11 +1465,27 @@ abstract class _BaseElementBuilder extends RecursiveAstVisitor<Object> {
   }
 
   @override
+  Object visitGenericFunctionType(GenericFunctionType node) {
+    ElementHolder holder = new ElementHolder();
+    _visitChildren(holder, node);
+    GenericFunctionTypeElementImpl element =
+        new GenericFunctionTypeElementImpl.forOffset(node.beginToken.offset);
+    _setCodeRange(element, node);
+    element.parameters = holder.parameters;
+    element.typeParameters = holder.typeParameters;
+    FunctionType type = new FunctionTypeImpl(element);
+    element.type = type;
+    (node as GenericFunctionTypeImpl).type = type;
+    holder.validate();
+    return null;
+  }
+
+  @override
   Object visitSimpleFormalParameter(SimpleFormalParameter node) {
+    ParameterElementImpl parameter;
     if (node.parent is! DefaultFormalParameter) {
       SimpleIdentifier parameterName = node.identifier;
-      ParameterElementImpl parameter =
-          new ParameterElementImpl.forNode(parameterName);
+      parameter = new ParameterElementImpl.forNode(parameterName);
       _setCodeRange(parameter, node);
       parameter.isConst = node.isConst;
       parameter.isExplicitlyCovariant = node.covariantKeyword != null;
@@ -1455,11 +1496,12 @@ abstract class _BaseElementBuilder extends RecursiveAstVisitor<Object> {
         parameter.hasImplicitType = true;
       }
       _currentHolder.addParameter(parameter);
-      parameterName.staticElement = parameter;
+      (node as SimpleFormalParameterImpl).element = parameter;
+      parameterName?.staticElement = parameter;
     }
     super.visitSimpleFormalParameter(node);
-    (node.element as ElementImpl).metadata =
-        _createElementAnnotations(node.metadata);
+    parameter ??= node.element;
+    parameter?.metadata = _createElementAnnotations(node.metadata);
     return null;
   }
 
@@ -1515,7 +1557,8 @@ abstract class _BaseElementBuilder extends RecursiveAstVisitor<Object> {
     element.setCodeRange(node.offset, node.length);
   }
 
-  void _setFieldParameterField(FieldFormalParameterElementImpl parameter) {}
+  void _setFieldParameterField(
+      FormalParameter node, FieldFormalParameterElementImpl element) {}
 
   /**
    * Sets the visible source range for formal parameter.

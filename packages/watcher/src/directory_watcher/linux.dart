@@ -62,10 +62,10 @@ class _LinuxDirectoryWatcher
   /// watcher is closed.
   final _subscriptions = new Set<StreamSubscription>();
 
-  _LinuxDirectoryWatcher(String path)
-      : _files = new PathSet(path) {
-    _nativeEvents.add(new Directory(path).watch().transform(
-        new StreamTransformer.fromHandlers(handleDone: (sink) {
+  _LinuxDirectoryWatcher(String path) : _files = new PathSet(path) {
+    _nativeEvents.add(new Directory(path)
+        .watch()
+        .transform(new StreamTransformer.fromHandlers(handleDone: (sink) {
       // Handle the done event here rather than in the call to [_listen] because
       // [innerStream] won't close until we close the [StreamGroup]. However, if
       // we close the [StreamGroup] here, we run the risk of new-directory
@@ -127,7 +127,8 @@ class _LinuxDirectoryWatcher
   }
 
   /// The callback that's run when a batch of changes comes in.
-  void _onBatch(List<FileSystemEvent> batch) {
+  void _onBatch(Object data) {
+    var batch = data as List<FileSystemEvent>;
     var files = new Set<String>();
     var dirs = new Set<String>();
     var changed = new Set<String>();
@@ -250,8 +251,8 @@ class _LinuxDirectoryWatcher
 
   /// Like [Stream.listen], but automatically adds the subscription to
   /// [_subscriptions] so that it can be canceled when [close] is called.
-  void _listen(Stream stream, void onData(event), {Function onError,
-      void onDone(), bool cancelOnError}) {
+  void _listen(Stream stream, void onData(event),
+      {Function onError, void onDone(), bool cancelOnError}) {
     var subscription;
     subscription = stream.listen(onData, onError: onError, onDone: () {
       _subscriptions.remove(subscription);

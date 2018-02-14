@@ -25,8 +25,8 @@ Future<Transform> newTransform(AggregateTransform aggregate) {
   // key, so we can safely get the first asset emitted. We don't want to wait
   // for the stream to close, since that requires barback to prove that no more
   // new assets will be generated.
-  return aggregate.primaryInputs.first.then((primaryInput) =>
-      new Transform._(aggregate, primaryInput));
+  return aggregate.primaryInputs.first
+      .then((primaryInput) => new Transform._(aggregate, primaryInput));
 }
 
 /// While a [Transformer] represents a *kind* of transformation, this defines

@@ -22,23 +22,11 @@ import 'asset_id.dart';
 Map serializeAsset(Asset asset) {
   var id = serializeId(asset.id);
   if (asset is BinaryAsset) {
-    return {
-      'type': 'binary',
-      'id': id,
-      'contents': asset._contents
-    };
+    return {'type': 'binary', 'id': id, 'contents': asset._contents};
   } else if (asset is FileAsset) {
-    return {
-      'type': 'file',
-      'id': id,
-      'path': asset._path
-    };
+    return {'type': 'file', 'id': id, 'path': asset._path};
   } else if (asset is StringAsset) {
-    return {
-      'type': 'string',
-      'id': id,
-      'contents': asset._contents
-    };
+    return {'type': 'string', 'id': id, 'contents': asset._contents};
   } else {
     // [asset] is probably a [StreamAsset], but it's possible that the user has
     // created a custom subclass, in which case we just serialize the stream
@@ -58,8 +46,10 @@ Asset deserializeAsset(Map asset) {
     case 'binary':
       return new BinaryAsset(
           id, DelegatingList.typed(asset['contents'] as List));
-    case 'file': return new FileAsset(id, asset['path']);
-    case 'string': return new StringAsset(id, asset['contents']);
+    case 'file':
+      return new FileAsset(id, asset['path']);
+    case 'string':
+      return new StringAsset(id, asset['contents']);
     case 'stream':
       return new StreamAsset(
           id, DelegatingStream.typed(deserializeStream(asset['stream'])));
@@ -74,8 +64,7 @@ class BinaryAsset implements Asset {
 
   final Uint8List _contents;
 
-  BinaryAsset(this.id, List<int> contents)
-      : _contents = toUint8List(contents);
+  BinaryAsset(this.id, List<int> contents) : _contents = toUint8List(contents);
 
   Future<String> readAsString({Encoding encoding}) {
     if (encoding == null) encoding = UTF8;
@@ -153,8 +142,9 @@ class StringAsset implements Asset {
     // Don't show the whole string if it's long.
     var contents = _contents;
     if (contents.length > 40) {
-      contents = contents.substring(0, 20) + " ... " +
-                 contents.substring(contents.length - 20);
+      contents = contents.substring(0, 20) +
+          " ... " +
+          contents.substring(contents.length - 20);
     }
 
     contents = _escape(contents);
@@ -183,7 +173,10 @@ class StreamAsset implements Asset {
 
   Future<String> readAsString({Encoding encoding}) {
     if (encoding == null) encoding = UTF8;
-    return _replayer.getReplay().expand((chunk) => chunk).toList()
+    return _replayer
+        .getReplay()
+        .expand((chunk) => chunk)
+        .toList()
         .then((bytes) => encoding.decode(bytes));
   }
 

@@ -76,11 +76,16 @@ class Loader {
   /// Composes a node.
   YamlNode _loadNode(Event firstEvent) {
     switch (firstEvent.type) {
-      case EventType.ALIAS: return _loadAlias(firstEvent);
-      case EventType.SCALAR: return _loadScalar(firstEvent);
-      case EventType.SEQUENCE_START: return _loadSequence(firstEvent);
-      case EventType.MAPPING_START: return _loadMapping(firstEvent);
-      default: throw "Unreachable";
+      case EventType.ALIAS:
+        return _loadAlias(firstEvent);
+      case EventType.SCALAR:
+        return _loadScalar(firstEvent);
+      case EventType.SEQUENCE_START:
+        return _loadSequence(firstEvent);
+      case EventType.MAPPING_START:
+        return _loadMapping(firstEvent);
+      default:
+        throw "Unreachable";
     }
   }
 
@@ -120,14 +125,15 @@ class Loader {
 
   /// Composes a sequence node.
   YamlNode _loadSequence(SequenceStartEvent firstEvent) {
-    if (firstEvent.tag != "!" && firstEvent.tag != null &&
+    if (firstEvent.tag != "!" &&
+        firstEvent.tag != null &&
         firstEvent.tag != "tag:yaml.org,2002:seq") {
       throw new YamlException("Invalid tag for sequence.", firstEvent.span);
     }
 
     var children = <YamlNode>[];
-    var node = new YamlList.internal(
-        children, firstEvent.span, firstEvent.style);
+    var node =
+        new YamlList.internal(children, firstEvent.span, firstEvent.style);
     _registerAnchor(firstEvent.anchor, node);
 
     var event = _parser.parse();
@@ -142,14 +148,15 @@ class Loader {
 
   /// Composes a mapping node.
   YamlNode _loadMapping(MappingStartEvent firstEvent) {
-    if (firstEvent.tag != "!" && firstEvent.tag != null &&
+    if (firstEvent.tag != "!" &&
+        firstEvent.tag != null &&
         firstEvent.tag != "tag:yaml.org,2002:map") {
       throw new YamlException("Invalid tag for mapping.", firstEvent.span);
     }
 
-    var children = deepEqualsMap/*<dynamic, YamlNode>*/();
-    var node = new YamlMap.internal(
-        children, firstEvent.span, firstEvent.style);
+    var children = deepEqualsMap<dynamic, YamlNode>();
+    var node =
+        new YamlMap.internal(children, firstEvent.span, firstEvent.style);
     _registerAnchor(firstEvent.anchor, node);
 
     var event = _parser.parse();
@@ -268,8 +275,8 @@ class Loader {
   /// Parses a numeric scalar.
   ///
   /// Returns `null` if parsing fails.
-  YamlNode _parseNumber(ScalarEvent scalar, {bool allowInt: true,
-      bool allowFloat: true}) {
+  YamlNode _parseNumber(ScalarEvent scalar,
+      {bool allowInt: true, bool allowFloat: true}) {
     var value = _parseNumberValue(scalar.value,
         allowInt: allowInt, allowFloat: allowFloat);
     return value == null ? null : new YamlScalar.internal(value, scalar);
@@ -278,8 +285,8 @@ class Loader {
   /// Parses the value of a number.
   ///
   /// Returns the number if it's parsed successfully, or `null` if it's not.
-  num _parseNumberValue(String contents, {bool allowInt: true,
-      bool allowFloat: true}) {
+  num _parseNumberValue(String contents,
+      {bool allowInt: true, bool allowFloat: true}) {
     assert(allowInt || allowFloat);
 
     var firstChar = contents.codeUnitAt(0);
@@ -307,7 +314,8 @@ class Loader {
     // Int or float starting with a digit or a +/- sign.
     if ((firstChar >= $0 && firstChar <= $9) ||
         ((firstChar == $plus || firstChar == $minus) &&
-            secondChar >= $0 && secondChar <= $9)) {
+            secondChar >= $0 &&
+            secondChar <= $9)) {
       // Try to parse an int or, failing that, a double.
       var result = null;
       if (allowInt) {

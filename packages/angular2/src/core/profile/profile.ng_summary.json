@@ -1,0 +1,31 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "wtf_impl.dart",
+        "4": "impl",
+        "5": false
+      }
+    ],
+    "4": [
+      {
+        "1": "wtf_impl.dart",
+        "2": [
+          "WtfScopeFn"
+        ]
+      }
+    ],
+    "6": "profile.dart"
+  },
+  "type": {
+    "noopScope": {
+      "class": "Identifier",
+      "name": "noopScope",
+      "moduleUrl": "asset:angular2/lib/src/core/profile/profile.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

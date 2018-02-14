@@ -104,13 +104,12 @@ abstract class Stream<T> {
     // to wait for a listener before doing the `then` on the future.
     _StreamController<T> controller = new StreamController<T>(sync: true);
     future.then((value) {
-        controller._add(value);
-        controller._closeUnchecked();
-      },
-      onError: (error, stackTrace) {
-        controller._addError(error, stackTrace);
-        controller._closeUnchecked();
-      });
+      controller._add(value);
+      controller._closeUnchecked();
+    }, onError: (error, stackTrace) {
+      controller._addError(error, stackTrace);
+      controller._closeUnchecked();
+    });
     return controller.stream;
   }
 
@@ -181,7 +180,7 @@ abstract class Stream<T> {
    * If [computation] is omitted the event values will all be `null`.
    */
   factory Stream.periodic(Duration period,
-                          [T computation(int computationCount)]) {
+      [T computation(int computationCount)]) {
     Timer timer;
     int computationCount = 0;
     StreamController<T> controller;
@@ -209,7 +208,8 @@ abstract class Stream<T> {
       });
     }
 
-    controller = new StreamController<T>(sync: true,
+    controller = new StreamController<T>(
+        sync: true,
         onListen: () {
           watch.start();
           startPeriodicTimer();
@@ -277,13 +277,13 @@ abstract class Stream<T> {
    *
    * The resulting stream is a broadcast stream if [source] is.
    */
-  factory Stream.eventTransformed(Stream source,
-                                  EventSink mapSink(EventSink<T> sink)) {
+  factory Stream.eventTransformed(
+      Stream source, EventSink mapSink(EventSink<T> sink)) {
     return new _BoundSinkStream(source, mapSink);
   }
 
   /**
-   * Reports whether this stream is a broadcast stream.
+   * Whether this stream is a broadcast stream.
    */
   bool get isBroadcast => false;
 
@@ -308,9 +308,9 @@ abstract class Stream<T> {
    * while having no subscribers to prevent losing events, or canceling the
    * subscription when there are no listeners.
    */
-  Stream<T> asBroadcastStream({
-      void onListen(StreamSubscription<T> subscription),
-      void onCancel(StreamSubscription<T> subscription) }) {
+  Stream<T> asBroadcastStream(
+      {void onListen(StreamSubscription<T> subscription),
+      void onCancel(StreamSubscription<T> subscription)}) {
     return new _AsBroadcastStream<T>(this, onListen, onCancel);
   }
 
@@ -350,9 +350,7 @@ abstract class Stream<T> {
    * event handler functions are called.
    */
   StreamSubscription<T> listen(void onData(T event),
-                               { Function onError,
-                                 void onDone(),
-                                 bool cancelOnError});
+      {Function onError, void onDone(), bool cancelOnError});
 
   /**
    * Creates a new stream from this stream that discards some data events.
@@ -398,53 +396,53 @@ abstract class Stream<T> {
    *
    * The returned stream is a broadcast stream if this stream is.
    */
-  Stream<E> asyncMap<E>(convert(T event)) {
+  Stream<E> asyncMap<E>(FutureOr<E> convert(T event)) {
     StreamController<E> controller;
     StreamSubscription<T> subscription;
 
     void onListen() {
       final add = controller.add;
       assert(controller is _StreamController ||
-             controller is _BroadcastStreamController);
-      final _EventSink<E> eventSink =
-          controller as Object /*=_EventSink<E>*/;
+          controller is _BroadcastStreamController);
+      final _EventSink<E> eventSink = controller as Object/*=_EventSink<E>*/;
       final addError = eventSink._addError;
-      subscription = this.listen(
-          (T event) {
-            dynamic newValue;
-            try {
-              newValue = convert(event);
-            } catch (e, s) {
-              controller.addError(e, s);
-              return;
-            }
-            if (newValue is Future) {
-              subscription.pause();
-              newValue.then(add, onError: addError)
-                      .whenComplete(subscription.resume);
-            } else {
-              controller.add(newValue as Object/*=E*/);
-            }
-          },
-          onError: addError,
-          onDone: controller.close
-      );
+      subscription = this.listen((T event) {
+        FutureOr<E> newValue;
+        try {
+          newValue = convert(event);
+        } catch (e, s) {
+          controller.addError(e, s);
+          return;
+        }
+        if (newValue is Future<E>) {
+          subscription.pause();
+          newValue
+              .then(add, onError: addError)
+              .whenComplete(subscription.resume);
+        } else {
+          controller.add(newValue as Object/*=E*/);
+        }
+      }, onError: addError, onDone: controller.close);
     }
 
     if (this.isBroadcast) {
       controller = new StreamController<E>.broadcast(
-        onListen: onListen,
-        onCancel: () { subscription.cancel(); },
-        sync: true
-      );
+          onListen: onListen,
+          onCancel: () {
+            subscription.cancel();
+          },
+          sync: true);
     } else {
       controller = new StreamController<E>(
-        onListen: onListen,
-        onPause: () { subscription.pause(); },
-        onResume: () { subscription.resume(); },
-        onCancel: () => subscription.cancel(),
-        sync: true
-      );
+          onListen: onListen,
+          onPause: () {
+            subscription.pause();
+          },
+          onResume: () {
+            subscription.resume();
+          },
+          onCancel: () => subscription.cancel(),
+          sync: true);
     }
     return controller.stream;
   }
@@ -467,42 +465,43 @@ abstract class Stream<T> {
     StreamSubscription<T> subscription;
     void onListen() {
       assert(controller is _StreamController ||
-             controller is _BroadcastStreamController);
-      final _EventSink<E> eventSink =
-          controller as Object /*=_EventSink<E>*/;
-      subscription = this.listen(
-          (T event) {
-            Stream<E> newStream;
-            try {
-              newStream = convert(event);
-            } catch (e, s) {
-              controller.addError(e, s);
-              return;
-            }
-            if (newStream != null) {
-              subscription.pause();
-              controller.addStream(newStream)
-                        .whenComplete(subscription.resume);
-            }
-          },
-          onError: eventSink._addError,  // Avoid Zone error replacement.
-          onDone: controller.close
-      );
+          controller is _BroadcastStreamController);
+      final _EventSink<E> eventSink = controller as Object/*=_EventSink<E>*/;
+      subscription = this.listen((T event) {
+        Stream<E> newStream;
+        try {
+          newStream = convert(event);
+        } catch (e, s) {
+          controller.addError(e, s);
+          return;
+        }
+        if (newStream != null) {
+          subscription.pause();
+          controller.addStream(newStream).whenComplete(subscription.resume);
+        }
+      },
+          onError: eventSink._addError, // Avoid Zone error replacement.
+          onDone: controller.close);
     }
+
     if (this.isBroadcast) {
       controller = new StreamController<E>.broadcast(
-        onListen: onListen,
-        onCancel: () { subscription.cancel(); },
-        sync: true
-      );
+          onListen: onListen,
+          onCancel: () {
+            subscription.cancel();
+          },
+          sync: true);
     } else {
       controller = new StreamController<E>(
-        onListen: onListen,
-        onPause: () { subscription.pause(); },
-        onResume: () { subscription.resume(); },
-        onCancel: () => subscription.cancel(),
-        sync: true
-      );
+          onListen: onListen,
+          onPause: () {
+            subscription.pause();
+          },
+          onResume: () {
+            subscription.resume();
+          },
+          onCancel: () => subscription.cancel(),
+          sync: true);
     }
     return controller.stream;
   }
@@ -535,7 +534,7 @@ abstract class Stream<T> {
    * If a broadcast stream is listened to more than once, each subscription
    * will individually perform the `test` and handle the error.
    */
-  Stream<T> handleError(Function onError, { bool test(error) }) {
+  Stream<T> handleError(Function onError, {bool test(error)}) {
     return new _HandleErrorStream<T>(this, onError, test);
   }
 
@@ -585,8 +584,7 @@ abstract class Stream<T> {
    * The `streamTransformer` can decide whether it wants to return a
    * broadcast stream or not.
    */
-  Stream<S> transform<S>(
-      StreamTransformer<T, S > streamTransformer) {
+  Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer) {
     return streamTransformer.bind(this);
   }
 
@@ -599,55 +597,46 @@ abstract class Stream<T> {
     T value;
     StreamSubscription subscription;
     subscription = this.listen(
-      (T element) {
-        if (seenFirst) {
-          _runUserCode(() => combine(value, element),
-                       (T newValue) { value = newValue; },
-                       _cancelAndErrorClosure(subscription, result));
-        } else {
-          value = element;
-          seenFirst = true;
-        }
-      },
-      onError: result._completeError,
-      onDone: () {
-        if (!seenFirst) {
-          try {
-            throw IterableElementError.noElement();
-          } catch (e, s) {
-            _completeWithErrorCallback(result, e,  s);
+        (T element) {
+          if (seenFirst) {
+            _runUserCode(() => combine(value, element), (T newValue) {
+              value = newValue;
+            }, _cancelAndErrorClosure(subscription, result));
+          } else {
+            value = element;
+            seenFirst = true;
           }
-        } else {
-          result._complete(value);
-        }
-      },
-      cancelOnError: true
-    );
+        },
+        onError: result._completeError,
+        onDone: () {
+          if (!seenFirst) {
+            try {
+              throw IterableElementError.noElement();
+            } catch (e, s) {
+              _completeWithErrorCallback(result, e, s);
+            }
+          } else {
+            result._complete(value);
+          }
+        },
+        cancelOnError: true);
     return result;
   }
 
   /** Reduces a sequence of values by repeatedly applying [combine]. */
-  Future<S> fold<S>(S initialValue,
-      S combine(S previous, T element)) {
-
+  Future<S> fold<S>(S initialValue, S combine(S previous, T element)) {
     _Future<S> result = new _Future<S>();
     S value = initialValue;
     StreamSubscription subscription;
-    subscription = this.listen(
-      (T element) {
-        _runUserCode(
-          () => combine(value, element),
-          (S newValue) { value = newValue; },
-          _cancelAndErrorClosure(subscription, result)
-        );
-      },
-      onError: (e, st) {
-        result._completeError(e, st);
-      },
-      onDone: () {
-        result._complete(value);
-      },
-      cancelOnError: true);
+    subscription = this.listen((T element) {
+      _runUserCode(() => combine(value, element), (S newValue) {
+        value = newValue;
+      }, _cancelAndErrorClosure(subscription, result));
+    }, onError: (e, st) {
+      result._completeError(e, st);
+    }, onDone: () {
+      result._complete(value);
+    }, cancelOnError: true);
     return result;
   }
 
@@ -666,25 +655,21 @@ abstract class Stream<T> {
     StringBuffer buffer = new StringBuffer();
     StreamSubscription subscription;
     bool first = true;
-    subscription = this.listen(
-      (T element) {
-        if (!first) {
-          buffer.write(separator);
-        }
-        first = false;
-        try {
-          buffer.write(element);
-        } catch (e, s) {
-          _cancelAndErrorWithReplacement(subscription, result, e, s);
-        }
-      },
-      onError: (e) {
-        result._completeError(e);
-      },
-      onDone: () {
-        result._complete(buffer.toString());
-      },
-      cancelOnError: true);
+    subscription = this.listen((T element) {
+      if (!first) {
+        buffer.write(separator);
+      }
+      first = false;
+      try {
+        buffer.write(element);
+      } catch (e, s) {
+        _cancelAndErrorWithReplacement(subscription, result, e, s);
+      }
+    }, onError: (e) {
+      result._completeError(e);
+    }, onDone: () {
+      result._complete(buffer.toString());
+    }, cancelOnError: true);
     return result;
   }
 
@@ -699,15 +684,11 @@ abstract class Stream<T> {
     StreamSubscription subscription;
     subscription = this.listen(
         (T element) {
-          _runUserCode(
-            () => (element == needle),
-            (bool isMatch) {
-              if (isMatch) {
-                _cancelAndValue(subscription, future, true);
-              }
-            },
-            _cancelAndErrorClosure(subscription, future)
-          );
+          _runUserCode(() => (element == needle), (bool isMatch) {
+            if (isMatch) {
+              _cancelAndValue(subscription, future, true);
+            }
+          }, _cancelAndErrorClosure(subscription, future));
         },
         onError: future._completeError,
         onDone: () {
@@ -729,11 +710,9 @@ abstract class Stream<T> {
     StreamSubscription subscription;
     subscription = this.listen(
         (T element) {
-          _runUserCode(
-            () => action(element),
-            (_) {},
-            _cancelAndErrorClosure(subscription, future)
-          );
+          // TODO(floitsch): the type should be 'void' and inferred.
+          _runUserCode<dynamic>(() => action(element), (_) {},
+              _cancelAndErrorClosure(subscription, future));
         },
         onError: future._completeError,
         onDone: () {
@@ -754,15 +733,11 @@ abstract class Stream<T> {
     StreamSubscription subscription;
     subscription = this.listen(
         (T element) {
-          _runUserCode(
-            () => test(element),
-            (bool isMatch) {
-              if (!isMatch) {
-                _cancelAndValue(subscription, future, false);
-              }
-            },
-            _cancelAndErrorClosure(subscription, future)
-          );
+          _runUserCode(() => test(element), (bool isMatch) {
+            if (!isMatch) {
+              _cancelAndValue(subscription, future, false);
+            }
+          }, _cancelAndErrorClosure(subscription, future));
         },
         onError: future._completeError,
         onDone: () {
@@ -791,15 +766,11 @@ abstract class Stream<T> {
     StreamSubscription subscription;
     subscription = this.listen(
         (T element) {
-          _runUserCode(
-            () => test(element),
-            (bool isMatch) {
-              if (isMatch) {
-                _cancelAndValue(subscription, future, true);
-              }
-            },
-            _cancelAndErrorClosure(subscription, future)
-          );
+          _runUserCode(() => test(element), (bool isMatch) {
+            if (isMatch) {
+              _cancelAndValue(subscription, future, true);
+            }
+          }, _cancelAndErrorClosure(subscription, future));
         },
         onError: future._completeError,
         onDone: () {
@@ -809,18 +780,19 @@ abstract class Stream<T> {
     return future;
   }
 
-
   /** Counts the elements in the stream. */
   Future<int> get length {
     _Future<int> future = new _Future<int>();
     int count = 0;
     this.listen(
-      (_) { count++; },
-      onError: future._completeError,
-      onDone: () {
-        future._complete(count);
-      },
-      cancelOnError: true);
+        (_) {
+          count++;
+        },
+        onError: future._completeError,
+        onDone: () {
+          future._complete(count);
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -837,14 +809,14 @@ abstract class Stream<T> {
     _Future<bool> future = new _Future<bool>();
     StreamSubscription subscription;
     subscription = this.listen(
-      (_) {
-        _cancelAndValue(subscription, future, false);
-      },
-      onError: future._completeError,
-      onDone: () {
-        future._complete(true);
-      },
-      cancelOnError: true);
+        (_) {
+          _cancelAndValue(subscription, future, false);
+        },
+        onError: future._completeError,
+        onDone: () {
+          future._complete(true);
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -853,14 +825,14 @@ abstract class Stream<T> {
     List<T> result = <T>[];
     _Future<List<T>> future = new _Future<List<T>>();
     this.listen(
-      (T data) {
-        result.add(data);
-      },
-      onError: future._completeError,
-      onDone: () {
-        future._complete(result);
-      },
-      cancelOnError: true);
+        (T data) {
+          result.add(data);
+        },
+        onError: future._completeError,
+        onDone: () {
+          future._complete(result);
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -877,14 +849,14 @@ abstract class Stream<T> {
     Set<T> result = new Set<T>();
     _Future<Set<T>> future = new _Future<Set<T>>();
     this.listen(
-      (T data) {
-        result.add(data);
-      },
-      onError: future._completeError,
-      onDone: () {
-        future._complete(result);
-      },
-      cancelOnError: true);
+        (T data) {
+          result.add(data);
+        },
+        onError: future._completeError,
+        onDone: () {
+          future._complete(result);
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -899,8 +871,8 @@ abstract class Stream<T> {
    * In case of a `done` event the future completes with the given
    * [futureValue].
    */
-  Future<E> drain<E>([E futureValue])
-      => listen(null, cancelOnError: true).asFuture<E>(futureValue);
+  Future<E> drain<E>([E futureValue]) =>
+      listen(null, cancelOnError: true).asFuture<E>(futureValue);
 
   /**
    * Provides at most the first [count] data events of this stream.
@@ -980,9 +952,16 @@ abstract class Stream<T> {
    *
    * The returned stream provides the same events as this stream, except
    * that it never provides two consecutive data events that are equal.
+   * That is, errors are passed through to the returned stream, and
+   * data events are passed through if they are distinct from the most
+   * recently emitted data event.
    *
    * Equality is determined by the provided [equals] method. If that is
    * omitted, the '==' operator on the last provided data element is used.
+   *
+   * If [equals] throws, the data event is replaced by an error event
+   * containing the thrown error. The behavior is equivalent to the
+   * original stream emitting the error event.
    *
    * The returned stream is a broadcast stream if this stream is.
    * If a broadcast stream is listened to more than once, each subscription
@@ -1014,18 +993,18 @@ abstract class Stream<T> {
     _Future<T> future = new _Future<T>();
     StreamSubscription subscription;
     subscription = this.listen(
-      (T value) {
-        _cancelAndValue(subscription, future, value);
-      },
-      onError: future._completeError,
-      onDone: () {
-        try {
-          throw IterableElementError.noElement();
-        } catch (e, s) {
-          _completeWithErrorCallback(future, e, s);
-        }
-      },
-      cancelOnError: true);
+        (T value) {
+          _cancelAndValue(subscription, future, value);
+        },
+        onError: future._completeError,
+        onDone: () {
+          try {
+            throw IterableElementError.noElement();
+          } catch (e, s) {
+            _completeWithErrorCallback(future, e, s);
+          }
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -1043,23 +1022,23 @@ abstract class Stream<T> {
     T result = null;
     bool foundResult = false;
     listen(
-      (T value) {
-        foundResult = true;
-        result = value;
-      },
-      onError: future._completeError,
-      onDone: () {
-        if (foundResult) {
-          future._complete(result);
-          return;
-        }
-        try {
-          throw IterableElementError.noElement();
-        } catch (e, s) {
-          _completeWithErrorCallback(future, e, s);
-        }
-      },
-      cancelOnError: true);
+        (T value) {
+          foundResult = true;
+          result = value;
+        },
+        onError: future._completeError,
+        onDone: () {
+          if (foundResult) {
+            future._complete(result);
+            return;
+          }
+          try {
+            throw IterableElementError.noElement();
+          } catch (e, s) {
+            _completeWithErrorCallback(future, e, s);
+          }
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -1077,32 +1056,32 @@ abstract class Stream<T> {
     bool foundResult = false;
     StreamSubscription subscription;
     subscription = this.listen(
-      (T value) {
-        if (foundResult) {
-          // This is the second element we get.
-          try {
-            throw IterableElementError.tooMany();
-          } catch (e, s) {
-            _cancelAndErrorWithReplacement(subscription, future, e, s);
+        (T value) {
+          if (foundResult) {
+            // This is the second element we get.
+            try {
+              throw IterableElementError.tooMany();
+            } catch (e, s) {
+              _cancelAndErrorWithReplacement(subscription, future, e, s);
+            }
+            return;
           }
-          return;
-        }
-        foundResult = true;
-        result = value;
-      },
-      onError: future._completeError,
-      onDone: () {
-        if (foundResult) {
-          future._complete(result);
-          return;
-        }
-        try {
-          throw IterableElementError.noElement();
-        } catch (e, s) {
-          _completeWithErrorCallback(future, e, s);
-        }
-      },
-      cancelOnError: true);
+          foundResult = true;
+          result = value;
+        },
+        onError: future._completeError,
+        onDone: () {
+          if (foundResult) {
+            future._complete(result);
+            return;
+          }
+          try {
+            throw IterableElementError.noElement();
+          } catch (e, s) {
+            _completeWithErrorCallback(future, e, s);
+          }
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -1131,30 +1110,26 @@ abstract class Stream<T> {
     _Future<dynamic> future = new _Future();
     StreamSubscription subscription;
     subscription = this.listen(
-      (T value) {
-        _runUserCode(
-          () => test(value),
-          (bool isMatch) {
+        (T value) {
+          _runUserCode(() => test(value), (bool isMatch) {
             if (isMatch) {
               _cancelAndValue(subscription, future, value);
             }
-          },
-          _cancelAndErrorClosure(subscription, future)
-        );
-      },
-      onError: future._completeError,
-      onDone: () {
-        if (defaultValue != null) {
-          _runUserCode(defaultValue, future._complete, future._completeError);
-          return;
-        }
-        try {
-          throw IterableElementError.noElement();
-        } catch (e, s) {
-          _completeWithErrorCallback(future, e, s);
-        }
-      },
-      cancelOnError: true);
+          }, _cancelAndErrorClosure(subscription, future));
+        },
+        onError: future._completeError,
+        onDone: () {
+          if (defaultValue != null) {
+            _runUserCode(defaultValue, future._complete, future._completeError);
+            return;
+          }
+          try {
+            throw IterableElementError.noElement();
+          } catch (e, s) {
+            _completeWithErrorCallback(future, e, s);
+          }
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -1171,42 +1146,38 @@ abstract class Stream<T> {
     bool foundResult = false;
     StreamSubscription subscription;
     subscription = this.listen(
-      (T value) {
-        _runUserCode(
-          () => true == test(value),
-          (bool isMatch) {
+        (T value) {
+          _runUserCode(() => true == test(value), (bool isMatch) {
             if (isMatch) {
               foundResult = true;
               result = value;
             }
-          },
-          _cancelAndErrorClosure(subscription, future)
-        );
-      },
-      onError: future._completeError,
-      onDone: () {
-        if (foundResult) {
-          future._complete(result);
-          return;
-        }
-        if (defaultValue != null) {
-          _runUserCode(defaultValue, future._complete, future._completeError);
-          return;
-        }
-        try {
-          throw IterableElementError.noElement();
-        } catch (e, s) {
-          _completeWithErrorCallback(future, e, s);
-        }
-      },
-      cancelOnError: true);
+          }, _cancelAndErrorClosure(subscription, future));
+        },
+        onError: future._completeError,
+        onDone: () {
+          if (foundResult) {
+            future._complete(result);
+            return;
+          }
+          if (defaultValue != null) {
+            _runUserCode(defaultValue, future._complete, future._completeError);
+            return;
+          }
+          try {
+            throw IterableElementError.noElement();
+          } catch (e, s) {
+            _completeWithErrorCallback(future, e, s);
+          }
+        },
+        cancelOnError: true);
     return future;
   }
 
   /**
    * Finds the single element in this stream matching [test].
    *
-   * Like [lastMatch], except that it is an error if more than one
+   * Like [lastWhere], except that it is an error if more than one
    * matching element occurs in the stream.
    */
   Future<T> singleWhere(bool test(T element)) {
@@ -1215,10 +1186,8 @@ abstract class Stream<T> {
     bool foundResult = false;
     StreamSubscription subscription;
     subscription = this.listen(
-      (T value) {
-        _runUserCode(
-          () => true == test(value),
-          (bool isMatch) {
+        (T value) {
+          _runUserCode(() => true == test(value), (bool isMatch) {
             if (isMatch) {
               if (foundResult) {
                 try {
@@ -1231,23 +1200,21 @@ abstract class Stream<T> {
               foundResult = true;
               result = value;
             }
-          },
-          _cancelAndErrorClosure(subscription, future)
-        );
-      },
-      onError: future._completeError,
-      onDone: () {
-        if (foundResult) {
-          future._complete(result);
-          return;
-        }
-        try {
-          throw IterableElementError.noElement();
-        } catch (e, s) {
-          _completeWithErrorCallback(future, e, s);
-        }
-      },
-      cancelOnError: true);
+          }, _cancelAndErrorClosure(subscription, future));
+        },
+        onError: future._completeError,
+        onDone: () {
+          if (foundResult) {
+            future._complete(result);
+            return;
+          }
+          try {
+            throw IterableElementError.noElement();
+          } catch (e, s) {
+            _completeWithErrorCallback(future, e, s);
+          }
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -1273,19 +1240,19 @@ abstract class Stream<T> {
     StreamSubscription subscription;
     int elementIndex = 0;
     subscription = this.listen(
-      (T value) {
-        if (index == elementIndex) {
-          _cancelAndValue(subscription, future, value);
-          return;
-        }
-        elementIndex += 1;
-      },
-      onError: future._completeError,
-      onDone: () {
-        future._completeError(
-            new RangeError.index(index, this, "index", null, elementIndex));
-      },
-      cancelOnError: true);
+        (T value) {
+          if (index == elementIndex) {
+            _cancelAndValue(subscription, future, value);
+            return;
+          }
+          elementIndex += 1;
+        },
+        onError: future._completeError,
+        onDone: () {
+          future._completeError(
+              new RangeError.index(index, this, "index", null, elementIndex));
+        },
+        cancelOnError: true);
     return future;
   }
 
@@ -1324,18 +1291,21 @@ abstract class Stream<T> {
       controller.add(event);
       timer = zone.createTimer(timeLimit, timeout);
     }
+
     void onError(error, StackTrace stackTrace) {
       timer.cancel();
       assert(controller is _StreamController ||
-             controller is _BroadcastStreamController);
+          controller is _BroadcastStreamController);
       dynamic eventSink = controller;
-      eventSink._addError(error, stackTrace);  // Avoid Zone error replacement.
+      eventSink._addError(error, stackTrace); // Avoid Zone error replacement.
       timer = zone.createTimer(timeLimit, timeout);
     }
+
     void onDone() {
       timer.cancel();
       controller.close();
     }
+
     void onListen() {
       // This is the onListen callback for of controller.
       // It runs in the same zone that the subscription was created in.
@@ -1344,18 +1314,17 @@ abstract class Stream<T> {
       zone = Zone.current;
       if (onTimeout == null) {
         timeout = () {
-          controller.addError(new TimeoutException("No stream event",
-                                                   timeLimit), null);
+          controller.addError(
+              new TimeoutException("No stream event", timeLimit), null);
         };
       } else {
         // TODO(floitsch): the return type should be 'void', and the type
         // should be inferred.
         var registeredOnTimeout =
             zone.registerUnaryCallback<dynamic, EventSink<T>>(onTimeout);
-        _ControllerEventSinkWrapper wrapper =
-            new _ControllerEventSinkWrapper(null);
+        var wrapper = new _ControllerEventSinkWrapper<T>(null);
         timeout = () {
-          wrapper._sink = controller;  // Only valid during call.
+          wrapper._sink = controller; // Only valid during call.
           zone.runUnaryGuarded(registeredOnTimeout, wrapper);
           wrapper._sink = null;
         };
@@ -1364,26 +1333,24 @@ abstract class Stream<T> {
       subscription = this.listen(onData, onError: onError, onDone: onDone);
       timer = zone.createTimer(timeLimit, timeout);
     }
+
     Future onCancel() {
       timer.cancel();
       Future result = subscription.cancel();
       subscription = null;
       return result;
     }
+
     controller = isBroadcast
         ? new _SyncBroadcastStreamController<T>(onListen, onCancel)
-        : new _SyncStreamController<T>(
-              onListen,
-              () {
-                // Don't null the timer, onCancel may call cancel again.
-                timer.cancel();
-                subscription.pause();
-              },
-              () {
-                subscription.resume();
-                timer = zone.createTimer(timeLimit, timeout);
-              },
-              onCancel);
+        : new _SyncStreamController<T>(onListen, () {
+            // Don't null the timer, onCancel may call cancel again.
+            timer.cancel();
+            subscription.pause();
+          }, () {
+            subscription.resume();
+            timer = zone.createTimer(timeLimit, timeout);
+          }, onCancel);
     return controller.stream;
   }
 }
@@ -1501,44 +1468,62 @@ abstract class StreamSubscription<T> {
   Future<E> asFuture<E>([E futureValue]);
 }
 
-
 /**
- * An interface that abstracts creation or handling of [Stream] events.
+ * A [Sink] that supports adding errors.
+ *
+ * This makes it suitable for capturing the results of asynchronous
+ * computations, which can complete with a value or an error.
+ *
+ * The [EventSink] has been designed to handle asynchronous events from
+ * [Stream]s. See, for example, [Stream.eventTransformed] which uses
+ * `EventSink`s to transform events.
  */
 abstract class EventSink<T> implements Sink<T> {
-  /** Send a data event to a stream. */
+  /**
+   * Adds a data [event] to the sink.
+   *
+   * Must not be called on a closed sink.
+   */
   void add(T event);
 
-  /** Send an async error to a stream. */
-  void addError(errorEvent, [StackTrace stackTrace]);
+  /**
+   * Adds an [error] to the sink.
+   *
+   * Must not be called on a closed sink.
+   */
+  void addError(Object error, [StackTrace stackTrace]);
 
-  /** Close the sink. No further events can be added after closing. */
+  /**
+   * Closes the sink.
+   *
+   * Calling this method more than once is allowed, but does nothing.
+   *
+   * Neither [add] nor [addError] must be called after this method.
+   */
   void close();
 }
-
 
 /** [Stream] wrapper that only exposes the [Stream] interface. */
 class StreamView<T> extends Stream<T> {
   final Stream<T> _stream;
 
-  const StreamView(Stream<T> stream) : _stream = stream, super._internal();
+  const StreamView(Stream<T> stream)
+      : _stream = stream,
+        super._internal();
 
   bool get isBroadcast => _stream.isBroadcast;
 
   Stream<T> asBroadcastStream(
-      {void onListen(StreamSubscription<T> subscription),
-       void onCancel(StreamSubscription<T> subscription)})
-      => _stream.asBroadcastStream(onListen: onListen, onCancel: onCancel);
+          {void onListen(StreamSubscription<T> subscription),
+          void onCancel(StreamSubscription<T> subscription)}) =>
+      _stream.asBroadcastStream(onListen: onListen, onCancel: onCancel);
 
   StreamSubscription<T> listen(void onData(T value),
-                               { Function onError,
-                                 void onDone(),
-                                 bool cancelOnError }) {
-    return _stream.listen(onData, onError: onError, onDone: onDone,
-                          cancelOnError: cancelOnError);
+      {Function onError, void onDone(), bool cancelOnError}) {
+    return _stream.listen(onData,
+        onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }
 }
-
 
 /**
  * Abstract interface for a "sink" accepting multiple entire streams.
@@ -1546,10 +1531,6 @@ class StreamView<T> extends Stream<T> {
  * A consumer can accept a number of consecutive streams using [addStream],
  * and when no further data need to be added, the [close] method tells the
  * consumer to complete its work and shut down.
- *
- * This class is not just a [Sink<Stream>] because it is also combined with
- * other [Sink] classes, like it's combined with [EventSink] in the
- * [StreamSink] class.
  *
  * The [Stream.pipe] accepts a `StreamConsumer` and will pass the stream
  * to the consumer's [addStream] method. When that completes, it will
@@ -1589,12 +1570,10 @@ abstract class StreamConsumer<S> {
   Future close();
 }
 
-
 /**
  * A object that accepts stream events both synchronously and asynchronously.
  *
- * A [StreamSink] unifies the asynchronous methods from [StreamConsumer] and
- * the synchronous methods from [EventSink].
+ * A [StreamSink] combines the methods from [StreamConsumer] and [EventSink].
  *
  * The [EventSink] methods can't be used while the [addStream] is called.
  * As soon as the [addStream]'s [Future] completes with a value, the
@@ -1648,82 +1627,95 @@ abstract class StreamSink<S> implements EventSink<S>, StreamConsumer<S> {
   Future get done;
 }
 
-
 /**
- * The target of a [Stream.transform] call.
+ * Transforms a Stream.
  *
- * The [Stream.transform] call will pass itself to this object and then return
- * the resulting stream.
+ * When a stream's [Stream.transform] method is invoked with a
+ * [StreamTransformer], the stream calls the [bind] method on the provided
+ * transformer. The resulting stream is then returned from the
+ * [Stream.transform] method.
+ *
+ * Conceptually, a transformer is simply a function from [Stream] to [Stream]
+ * that is encapsulated into a class.
  *
  * It is good practice to write transformers that can be used multiple times.
+ *
+ * All other transforming methods on [Stream], such as [Stream.map],
+ * [Stream.where] or [Stream.expand] can be implemented using
+ * [Stream.transform]. A [StreamTransformer] is thus very powerful but often
+ * also a bit more complicated to use.
  */
 abstract class StreamTransformer<S, T> {
   /**
-   * Creates a [StreamTransformer].
+   * Creates a [StreamTransformer] based on the given [onListen] callback.
    *
-   * The returned instance takes responsibility of implementing ([bind]).
-   * When the user invokes `bind` it returns a new "bound" stream. Only when
-   * the user starts listening to the bound stream, the `listen` method
-   * invokes the given closure [transformer].
+   * The returned stream transformer uses the provided [onListen] callback
+   * when a transformed stream is listened to. At that time, the callback
+   * receives the input stream (the one passed to [bind]) and a
+   * boolean flag `cancelOnError` to create a [StreamSubscription].
    *
-   * The [transformer] closure receives the stream, that was bound, as argument
-   * and returns a [StreamSubscription]. In almost all cases the closure
-   * listens itself to the stream that is given as argument.
+   * The [onListen] callback does *not* receive the handlers that were passed
+   * to [Stream.listen]. These are automatically set after the call to the
+   * [onListen] callback (using [StreamSubscription.onData],
+   * [StreamSubscription.onError] and [StreamSubscription.onDone]).
    *
-   * The result of invoking the [transformer] closure is a [StreamSubscription].
-   * The bound stream-transformer (created by the `bind` method above) then sets
-   * the handlers it received as part of the `listen` call.
-   *
-   * Conceptually this can be summarized as follows:
-   *
-   * 1. `var transformer = new StreamTransformer(transformerClosure);`
-   *   creates a `StreamTransformer` that supports the `bind` method.
-   * 2. `var boundStream = stream.transform(transformer);` binds the `stream`
-   *   and returns a bound stream that has a pointer to `stream`.
-   * 3. `boundStream.listen(f1, onError: f2, onDone: f3, cancelOnError: b)`
-   *   starts the listening and transformation. This is accomplished
-   *   in 2 steps: first the `boundStream` invokes the `transformerClosure` with
-   *   the `stream` it captured: `transformerClosure(stream, b)`.
-   *   The result `subscription`, a [StreamSubscription], is then
-   *   updated to receive its handlers: `subscription.onData(f1)`,
-   *   `subscription.onError(f2)`, `subscription(f3)`. Finally the subscription
-   *   is returned as result of the `listen` call.
+   * Most commonly, an [onListen] callback will first call [Stream.listen] on
+   * the provided stream (with the corresponding `cancelOnError` flag), and then
+   * return a new [StreamSubscription].
    *
    * There are two common ways to create a StreamSubscription:
    *
-   * 1. by creating a new class that implements [StreamSubscription].
+   * 1. by allocating a [StreamController] and to return the result of
+   *    listening to its stream. It's important to forward pause, resume and
+   *    cancel events (unless the transformer intentionally wants to change
+   *    this behavior).
+   * 2. by creating a new class that implements [StreamSubscription].
    *    Note that the subscription should run callbacks in the [Zone] the
-   *    stream was listened to.
-   * 2. by allocating a [StreamController] and to return the result of
-   *    listening to its stream.
+   *    stream was listened to (see [Zone] and [Zone.bindCallback]).
    *
-   * Example use of a duplicating transformer:
+   * Example:
    *
-   *     stringStream.transform(new StreamTransformer<String, String>(
-   *         (Stream<String> input, bool cancelOnError) {
-   *           StreamController<String> controller;
-   *           StreamSubscription<String> subscription;
-   *           controller = new StreamController<String>(
-   *             onListen: () {
-   *               subscription = input.listen((data) {
-   *                   // Duplicate the data.
-   *                   controller.add(data);
-   *                   controller.add(data);
-   *                 },
-   *                 onError: controller.addError,
-   *                 onDone: controller.close,
-   *                 cancelOnError: cancelOnError);
-   *             },
-   *             onPause: () { subscription.pause(); },
-   *             onResume: () { subscription.resume(); },
-   *             onCancel: () => subscription.cancel(),
-   *             sync: true);
-   *           return controller.stream.listen(null);
-   *         });
+   * ```
+   * /// Starts listening to [input] and duplicates all non-error events.
+   * StreamSubscription<int> _onListen(Stream<int> input, bool cancelOnError) {
+   *   StreamSubscription<String> subscription;
+   *   // Create controller that forwards pause, resume and cancel events.
+   *   var controller = new StreamController<String>(
+   *       onPause: () {
+   *         subscription.pause();
+   *       },
+   *       onResume: () {
+   *         subscription.resume();
+   *       },
+   *       onCancel: () => subscription.cancel(),
+   *       sync: true); // "sync" is correct here, since events are forwarded.
+   *
+   *   // Listen to the provided stream using `cancelOnError`.
+   *   subscription = input.listen((data) {
+   *     // Duplicate the data.
+   *     controller.add(data);
+   *     controller.add(data);
+   *   },
+   *       onError: controller.addError,
+   *       onDone: controller.close,
+   *       cancelOnError: cancelOnError);
+   *
+   *   // Return a new [StreamSubscription] by listening to the controller's
+   *   // stream.
+   *   return controller.stream.listen(null);
+   * }
+   *
+   * // Instantiate a transformer:
+   * var duplicator = const StreamTransformer<int, int>(_onListen);
+   *
+   * // Use as follows:
+   * intStream.transform(duplicator);
+   * ```
    */
   const factory StreamTransformer(
-      StreamSubscription<T> transformer(Stream<S> stream, bool cancelOnError))
-      = _StreamSubscriptionTransformer<S, T>;
+          StreamSubscription<T> onListen(
+              Stream<S> stream, bool cancelOnError)) =
+      _StreamSubscriptionTransformer<S, T>;
 
   /**
    * Creates a [StreamTransformer] that delegates events to the given functions.
@@ -1736,21 +1728,31 @@ abstract class StreamTransformer<S, T> {
    *           sink.add(value);  // Duplicate the incoming events.
    *         }));
    */
-  factory StreamTransformer.fromHandlers({
-      void handleData(S data, EventSink<T> sink),
+  factory StreamTransformer.fromHandlers(
+      {void handleData(S data, EventSink<T> sink),
       void handleError(Object error, StackTrace stackTrace, EventSink<T> sink),
-      void handleDone(EventSink<T> sink)})
-          = _StreamHandlerTransformer<S, T>;
+      void handleDone(EventSink<T> sink)}) = _StreamHandlerTransformer<S, T>;
 
   /**
-   * Transform the incoming [stream]'s events.
+   * Transforms the provided [stream].
    *
-   * Creates a new stream.
-   * When this stream is listened to, it will start listening on [stream],
-   * and generate events on the new stream based on the events from [stream].
+   * Returns a new stream with events that are computed from events of the
+   * provided [stream].
    *
-   * Subscriptions on the returned stream should propagate pause state
-   * to the subscription on [stream].
+   * Implementors of the [StreamTransformer] interface should document
+   * differences from the following expected behavior:
+   *
+   * * When the returned stream is listened to, it starts listening to the
+   *   input [stream].
+   * * Subscriptions of the returned stream forward (in a reasonable time)
+   *   a [StreamSubscription.pause] call to the subscription of the input
+   *   [stream].
+   * * Similarly, canceling a subscription of the returned stream eventually
+   *   (in reasonable time) cancels the subscription of the input [stream].
+   *
+   * "Reasonable time" depends on the transformer and stream. Some transformers,
+   * like a "timeout" transformer, might make these operations depend on a
+   * duration. Others might not delay them at all, or just by a microtask.
    */
   Stream<T> bind(Stream<S> stream);
 }
@@ -1761,14 +1763,16 @@ abstract class StreamTransformer<S, T> {
  * This wraps a [Stream] and a subscription on the stream. It listens
  * on the stream, and completes the future returned by [moveNext] when the
  * next value becomes available.
+ *
+ * The stream may be paused between calls to [moveNext].
  */
 abstract class StreamIterator<T> {
-
   /** Create a [StreamIterator] on [stream]. */
   factory StreamIterator(Stream<T> stream)
       // TODO(lrn): use redirecting factory constructor when type
       // arguments are supported.
-      => new _StreamIterator<T>(stream);
+      =>
+      new _StreamIterator<T>(stream);
 
   /**
    * Wait for the next stream value to be available.
@@ -1776,7 +1780,7 @@ abstract class StreamIterator<T> {
    * Returns a future which will complete with either `true` or `false`.
    * Completing with `true` means that another event has been received and
    * can be read as [current].
-   * Completing with `false` means that the stream itearation is done and
+   * Completing with `false` means that the stream iteration is done and
    * no further events will ever be available.
    * The future may complete with an error, if the stream produces an error,
    * which also ends iteration.
@@ -1820,7 +1824,6 @@ abstract class StreamIterator<T> {
   Future cancel();
 }
 
-
 /**
  * Wraps an [_EventSink] so it exposes only the [EventSink] interface.
  */
@@ -1828,9 +1831,15 @@ class _ControllerEventSinkWrapper<T> implements EventSink<T> {
   EventSink _sink;
   _ControllerEventSinkWrapper(this._sink);
 
-  void add(T data) { _sink.add(data); }
+  void add(T data) {
+    _sink.add(data);
+  }
+
   void addError(error, [StackTrace stackTrace]) {
     _sink.addError(error, stackTrace);
   }
-  void close() { _sink.close(); }
+
+  void close() {
+    _sink.close();
+  }
 }

@@ -1,0 +1,84 @@
+{
+  "ngDeps": {
+    "1": "",
+    "4": [
+      {
+        "1": "src/error_matchers.dart",
+        "2": [
+          "throwsInAngular"
+        ]
+      },
+      {
+        "1": "src/ng_test_bed.dart",
+        "2": [
+          "disposeAnyRunningTest",
+          "NgTestBed",
+          "NgTestFixture"
+        ]
+      }
+    ],
+    "6": "testing.dart",
+    "7": [
+      {
+        "1": "src/error_matchers.template.dart",
+        "4": "i0"
+      },
+      {
+        "1": "src/ng_test_bed.template.dart",
+        "4": "i1"
+      }
+    ]
+  },
+  "type": {
+    "throwsInAngular": {
+      "class": "Identifier",
+      "name": "throwsInAngular",
+      "moduleUrl": "asset:angular2/lib/src/modules/testing/lib/src/error_matchers.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_OrWrapped": {
+      "class": "Identifier",
+      "name": "_OrWrapped",
+      "moduleUrl": "asset:angular2/lib/src/modules/testing/lib/src/error_matchers.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_failIfTestRunning": {
+      "class": "Identifier",
+      "name": "_failIfTestRunning",
+      "moduleUrl": "asset:angular2/lib/src/modules/testing/lib/src/ng_test_bed.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_concat": {
+      "class": "Identifier",
+      "name": "_concat",
+      "moduleUrl": "asset:angular2/lib/src/modules/testing/lib/src/ng_test_bed.dart",
+      "prefix": null,
+      "value": null
+    },
+    "disposeAnyRunningTest": {
+      "class": "Identifier",
+      "name": "disposeAnyRunningTest",
+      "moduleUrl": "asset:angular2/lib/src/modules/testing/lib/src/ng_test_bed.dart",
+      "prefix": null,
+      "value": null
+    },
+    "NgTestBed": {
+      "class": "Identifier",
+      "name": "NgTestBed",
+      "moduleUrl": "asset:angular2/lib/src/modules/testing/lib/src/ng_test_bed.dart",
+      "prefix": null,
+      "value": null
+    },
+    "NgTestFixture": {
+      "class": "Identifier",
+      "name": "NgTestFixture",
+      "moduleUrl": "asset:angular2/lib/src/modules/testing/lib/src/ng_test_bed.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

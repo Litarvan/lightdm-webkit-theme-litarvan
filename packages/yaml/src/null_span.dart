@@ -14,6 +14,5 @@ class NullSpan extends SourceSpanMixin {
   SourceLocation get end => start;
   final text = "";
 
-  NullSpan(sourceUrl)
-      : start = new SourceLocation(0, sourceUrl: sourceUrl);
+  NullSpan(sourceUrl) : start = new SourceLocation(0, sourceUrl: sourceUrl);
 }

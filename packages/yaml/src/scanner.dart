@@ -135,7 +135,7 @@ class Scanner {
   ///
   /// Entries in this list may be `null`, indicating that there is no valid
   /// simple key for the associated level of nesting.
-  /// 
+  ///
   /// When a ":" is parsed and there's a simple key available, a [TokenType.KEY]
   /// token is inserted in [_tokens] before that key's token. This allows the
   /// parser to tell that the key is intended to be a mapping key.
@@ -187,8 +187,8 @@ class Scanner {
         return true;
       default:
         return (char >= NUMBER_0 && char <= NUMBER_9) ||
-               (char >= LETTER_A && char <= LETTER_Z) ||
-               (char >= LETTER_CAP_A && char <= LETTER_CAP_Z);
+            (char >= LETTER_A && char <= LETTER_Z) ||
+            (char >= LETTER_CAP_A && char <= LETTER_CAP_Z);
     }
   }
 
@@ -222,8 +222,8 @@ class Scanner {
     var char = _scanner.peekChar();
     if (char == null) return false;
     return (char >= NUMBER_0 && char <= NUMBER_9) ||
-           (char >= LETTER_A && char <= LETTER_F) ||
-           (char >= LETTER_CAP_A && char <= LETTER_CAP_F);
+        (char >= LETTER_A && char <= LETTER_F) ||
+        (char >= LETTER_CAP_A && char <= LETTER_CAP_F);
   }
 
   /// Whether the character at the current position is a plain character.
@@ -248,9 +248,9 @@ class Scanner {
         return true;
       default:
         return (char >= 0x00020 && char <= 0x00007E) ||
-               (char >= 0x000A0 && char <= 0x00D7FF) ||
-               (char >= 0x0E000 && char <= 0x00FFFD) ||
-               (char >= 0x10000 && char <= 0x10FFFF);
+            (char >= 0x000A0 && char <= 0x00D7FF) ||
+            (char >= 0x0E000 && char <= 0x00FFFD) ||
+            (char >= 0x10000 && char <= 0x10FFFF);
     }
   }
 
@@ -271,9 +271,9 @@ class Scanner {
         return true;
       default:
         return (char >= 0x00020 && char <= 0x00007E) ||
-               (char >= 0x000A0 && char <= 0x00D7FF) ||
-               (char >= 0x0E000 && char <= 0x00FFFD) ||
-               (char >= 0x10000 && char <= 0x10FFFF);
+            (char >= 0x000A0 && char <= 0x00D7FF) ||
+            (char >= 0x0E000 && char <= 0x00FFFD) ||
+            (char >= 0x10000 && char <= 0x10FFFF);
     }
   }
 
@@ -282,7 +282,8 @@ class Scanner {
   ///
   /// If so, this sets the scanner's last match to that indicator.
   bool get _isDocumentIndicator {
-    return _scanner.column == 0 && _isBlankOrEndAt(3) &&
+    return _scanner.column == 0 &&
+        _isBlankOrEndAt(3) &&
         (_scanner.matches('---') || _scanner.matches('...'));
   }
 
@@ -300,8 +301,7 @@ class Scanner {
     var token = _tokens.removeFirst();
     _tokenAvailable = false;
     _tokensParsed++;
-    _streamEndProduced = token is Token &&
-        token.type == TokenType.STREAM_END;
+    _streamEndProduced = token is Token && token.type == TokenType.STREAM_END;
     return token;
   }
 
@@ -330,8 +330,8 @@ class Scanner {
         // If the current token could be a simple key, we need to scan more
         // tokens until we determine whether it is or not. Otherwise we might
         // not emit the `KEY` token before we emit the value of the key.
-        if (!_simpleKeys.any((key) =>
-            key != null && key.tokenNumber == _tokensParsed)) {
+        if (!_simpleKeys
+            .any((key) => key != null && key.tokenNumber == _tokensParsed)) {
           break;
         }
       }
@@ -655,14 +655,11 @@ class Scanner {
     if (_inBlockContext) {
       if (!_simpleKeyAllowed) {
         throw new YamlException(
-            "Block sequence entries are not allowed here.",
-            _scanner.emptySpan);
+            "Block sequence entries are not allowed here.", _scanner.emptySpan);
       }
 
       _rollIndent(
-          _scanner.column,
-          TokenType.BLOCK_SEQUENCE_START,
-          _scanner.location);
+          _scanner.column, TokenType.BLOCK_SEQUENCE_START, _scanner.location);
     } else {
       // It is an error for the '-' indicator to occur in the flow context, but
       // we let the Parser detect and report it because it's able to point to
@@ -678,14 +675,12 @@ class Scanner {
   void _fetchKey() {
     if (_inBlockContext) {
       if (!_simpleKeyAllowed) {
-        throw new YamlException("Mapping keys are not allowed here.",
-            _scanner.emptySpan);
+        throw new YamlException(
+            "Mapping keys are not allowed here.", _scanner.emptySpan);
       }
 
       _rollIndent(
-          _scanner.column,
-          TokenType.BLOCK_MAPPING_START,
-          _scanner.location);
+          _scanner.column, TokenType.BLOCK_MAPPING_START, _scanner.location);
     }
 
     // Simple keys are allowed after `?` in a block context.
@@ -705,9 +700,7 @@ class Scanner {
       // In the block context, we may need to add the
       // [TokenType.BLOCK_MAPPING_START] token.
       _rollIndent(
-          simpleKey.column,
-          TokenType.BLOCK_MAPPING_START,
-          simpleKey.location,
+          simpleKey.column, TokenType.BLOCK_MAPPING_START, simpleKey.location,
           tokenNumber: simpleKey.tokenNumber);
 
       // Remove the simple key.
@@ -719,16 +712,14 @@ class Scanner {
       if (!_simpleKeyAllowed) {
         throw new YamlException(
             "Mapping values are not allowed here. Did you miss a colon "
-                "earlier?",
+            "earlier?",
             _scanner.emptySpan);
       }
 
       // If we're here, we've found the ':' indicator following a complex key.
 
       _rollIndent(
-          _scanner.column,
-          TokenType.BLOCK_MAPPING_START,
-          _scanner.location);
+          _scanner.column, TokenType.BLOCK_MAPPING_START, _scanner.location);
       _simpleKeyAllowed = true;
     } else if (_simpleKeyAllowed) {
       // If we're here, we've found the ':' indicator with an empty key. This
@@ -798,7 +789,7 @@ class Scanner {
       // libyaml disallows tabs after "-", "?", or ":", but the spec allows
       // them. See section 6.2: http://yaml.org/spec/1.2/spec.html#id2778241.
       while (_scanner.peekChar() == SP ||
-             ((!_inBlockContext || !afterLineBreak) &&
+          ((!_inBlockContext || !afterLineBreak) &&
               _scanner.peekChar() == TAB)) {
         _scanner.readChar();
       }
@@ -830,7 +821,7 @@ class Scanner {
   ///     %YAML    1.2    # a comment \n
   ///     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   ///     %TAG    !yaml!  tag:yaml.org,2002:  \n
-  ///     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+  ///     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   Token _scanDirective() {
     var start = _scanner.state;
 
@@ -860,8 +851,7 @@ class Scanner {
     _skipComment();
 
     if (!_isBreakOrEnd) {
-      throw new YamlException(
-          "Expected comment or line break after directive.",
+      throw new YamlException("Expected comment or line break after directive.",
           _scanner.spanFrom(start));
     }
 
@@ -967,11 +957,17 @@ class Scanner {
 
     var next = _scanner.peekChar();
     if (name.isEmpty ||
-        (!_isBlankOrEnd  && next != QUESTION     && next != COLON &&
-         next != COMMA   && next != RIGHT_SQUARE && next != RIGHT_CURLY &&
-         next != PERCENT && next != AT           && next != GRAVE_ACCENT)) {
-      throw new YamlException("Expected alphanumeric character.",
-          _scanner.emptySpan);
+        (!_isBlankOrEnd &&
+            next != QUESTION &&
+            next != COLON &&
+            next != COMMA &&
+            next != RIGHT_SQUARE &&
+            next != RIGHT_CURLY &&
+            next != PERCENT &&
+            next != AT &&
+            next != GRAVE_ACCENT)) {
+      throw new YamlException(
+          "Expected alphanumeric character.", _scanner.emptySpan);
     }
 
     if (anchor) {
@@ -1075,7 +1071,8 @@ class Scanner {
     // disallowed.
     var start = _scanner.position;
     var char = _scanner.peekChar();
-    while (_isTagChar || (flowSeparators &&
+    while (_isTagChar ||
+        (flowSeparators &&
             (char == COMMA || char == LEFT_SQUARE || char == RIGHT_SQUARE))) {
       _scanner.readChar();
       char = _scanner.peekChar();
@@ -1134,8 +1131,8 @@ class Scanner {
 
     // Check if we're at the end of the line.
     if (!_isBreakOrEnd) {
-      throw new YamlException("Expected comment or line break.",
-          _scanner.emptySpan);
+      throw new YamlException(
+          "Expected comment or line break.", _scanner.emptySpan);
     }
 
     _skipLine();
@@ -1172,7 +1169,9 @@ class Scanner {
       trailingBlank = _isBlank;
 
       // Check if we need to fold the leading line break.
-      if (!literal && leadingBreak.isNotEmpty && !leadingBlank &&
+      if (!literal &&
+          leadingBreak.isNotEmpty &&
+          !leadingBlank &&
           !trailingBlank) {
         // Do we need to join the lines with a space?
         if (trailingBreaks.isEmpty) buffer.writeCharCode(SP);
@@ -1270,7 +1269,8 @@ class Scanner {
       var leadingBlanks = false;
       while (!_isBlankOrEnd) {
         var char = _scanner.peekChar();
-        if (singleQuote && char == SINGLE_QUOTE &&
+        if (singleQuote &&
+            char == SINGLE_QUOTE &&
             _scanner.peekChar(1) == SINGLE_QUOTE) {
           // An escaped single quote.
           _scanner.readChar();
@@ -1350,8 +1350,8 @@ class Scanner {
               codeLength = 8;
               break;
             default:
-              throw new YamlException("Unknown escape character.",
-                  _scanner.spanFrom(escapeStart));
+              throw new YamlException(
+                  "Unknown escape character.", _scanner.spanFrom(escapeStart));
           }
 
           _scanner.readChar();
@@ -1372,8 +1372,7 @@ class Scanner {
 
             // Check the value and write the character.
             if ((value >= 0xD800 && value <= 0xDFFF) || value > 0x10FFFF) {
-              throw new YamlException(
-                  "Invalid Unicode character escape code.",
+              throw new YamlException("Invalid Unicode character escape code.",
                   _scanner.spanFrom(escapeStart));
             }
 
@@ -1480,7 +1479,8 @@ class Scanner {
       while (_isBlank || _isBreak) {
         if (_isBlank) {
           // Check for a tab character messing up the intendation.
-          if (leadingBreak.isNotEmpty && _scanner.column < indent &&
+          if (leadingBreak.isNotEmpty &&
+              _scanner.column < indent &&
               _scanner.peekChar() == TAB) {
             _scanner.error("Expected a space but found a tab.", length: 1);
           }
@@ -1508,8 +1508,8 @@ class Scanner {
     // Allow a simple key after a plain scalar with leading blanks.
     if (leadingBreak.isNotEmpty) _simpleKeyAllowed = true;
 
-    return new ScalarToken(_scanner.spanFrom(start, end), buffer.toString(),
-        ScalarStyle.PLAIN);
+    return new ScalarToken(
+        _scanner.spanFrom(start, end), buffer.toString(), ScalarStyle.PLAIN);
   }
 
   /// Moves past the current line break, if there is one.
@@ -1554,7 +1554,10 @@ class Scanner {
   // the source.
   bool _isBlankOrEndAt(int offset) {
     var char = _scanner.peekChar(offset);
-    return char == null || char == SP || char == TAB || char == CR ||
+    return char == null ||
+        char == SP ||
+        char == TAB ||
+        char == CR ||
         char == LF;
   }
 
@@ -1597,10 +1600,10 @@ class Scanner {
         return true;
       default:
         return char != null &&
-          ((char >= 0x00020 && char <= 0x00007E) ||
-           (char >= 0x000A0 && char <= 0x00D7FF) ||
-           (char >= 0x0E000 && char <= 0x00FFFD) ||
-           (char >= 0x10000 && char <= 0x10FFFF));
+            ((char >= 0x00020 && char <= 0x00007E) ||
+                (char >= 0x000A0 && char <= 0x00D7FF) ||
+                (char >= 0x0E000 && char <= 0x00FFFD) ||
+                (char >= 0x10000 && char <= 0x10FFFF));
     }
   }
 
@@ -1657,7 +1660,7 @@ class _SimpleKey {
   final bool required;
 
   _SimpleKey(this.tokenNumber, this.line, this.column, this.location,
-          {bool required})
+      {bool required})
       : required = required;
 }
 

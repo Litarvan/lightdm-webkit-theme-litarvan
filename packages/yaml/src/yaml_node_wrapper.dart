@@ -56,8 +56,8 @@ class _YamlMapNodes extends MapBase<dynamic, YamlNode>
 
   final SourceSpan _span;
 
-  Iterable get keys => _dartMap.keys.map((key) =>
-      new YamlScalar.internalWithSpan(key, _span));
+  Iterable get keys =>
+      _dartMap.keys.map((key) => new YamlScalar.internalWithSpan(key, _span));
 
   _YamlMapNodes(this._dartMap, this._span);
 

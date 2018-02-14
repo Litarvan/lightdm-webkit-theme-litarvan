@@ -1,0 +1,99 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "dart:async",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/compiler/offline_compiler.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/asset_reader.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/code/source_module.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/logging.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/names.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/ng_compiler.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/zone.dart",
+        "4": "zone",
+        "5": false
+      },
+      {
+        "1": "package:barback/barback.dart",
+        "5": false
+      }
+    ],
+    "6": "processor.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/compiler/offline_compiler.template.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/src/transform/common/asset_reader.template.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:angular2/src/transform/common/code/source_module.template.dart",
+        "4": "i2"
+      },
+      {
+        "1": "package:angular2/src/transform/common/logging.template.dart",
+        "4": "i3"
+      },
+      {
+        "1": "package:angular2/src/transform/common/names.template.dart",
+        "4": "i4"
+      },
+      {
+        "1": "package:angular2/src/transform/common/ng_compiler.template.dart",
+        "4": "i5"
+      },
+      {
+        "1": "package:angular2/src/transform/common/zone.template.dart",
+        "4": "i6"
+      }
+    ]
+  },
+  "type": {
+    "shimmedStylesheetAssetId": {
+      "class": "Identifier",
+      "name": "shimmedStylesheetAssetId",
+      "moduleUrl": "asset:angular2/lib/src/transform/stylesheet_compiler/processor.dart",
+      "prefix": null,
+      "value": null
+    },
+    "nonShimmedStylesheetAssetId": {
+      "class": "Identifier",
+      "name": "nonShimmedStylesheetAssetId",
+      "moduleUrl": "asset:angular2/lib/src/transform/stylesheet_compiler/processor.dart",
+      "prefix": null,
+      "value": null
+    },
+    "processStylesheet": {
+      "class": "Identifier",
+      "name": "processStylesheet",
+      "moduleUrl": "asset:angular2/lib/src/transform/stylesheet_compiler/processor.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

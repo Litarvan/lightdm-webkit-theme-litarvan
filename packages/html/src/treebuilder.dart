@@ -18,8 +18,6 @@ const Node Marker = null;
 // TODO(jmesserly): this should extend ListBase<Element>, but my simple attempt
 // didn't work.
 class ActiveFormattingElements extends ListProxy<Element> {
-  ActiveFormattingElements() : super();
-
   // Override the "add" method.
   // TODO(jmesserly): I'd rather not override this; can we do this in the
   // calling code instead?
@@ -46,7 +44,7 @@ class ActiveFormattingElements extends ListProxy<Element> {
 // TODO(jmesserly): this should exist in corelib...
 bool _mapEquals(Map a, Map b) {
   if (a.length != b.length) return false;
-  if (a.length == 0) return true;
+  if (a.isEmpty) return true;
 
   for (var keyA in a.keys) {
     var valB = b[keyA];
@@ -159,7 +157,7 @@ class TreeBuilder {
     // code. It should still do the same though.
 
     // Step 1: stop the algorithm when there's nothing to do.
-    if (activeFormattingElements.length == 0) {
+    if (activeFormattingElements.isEmpty) {
       return;
     }
 
@@ -210,7 +208,7 @@ class TreeBuilder {
 
   void clearActiveFormattingElements() {
     var entry = activeFormattingElements.removeLast();
-    while (activeFormattingElements.length > 0 && entry != Marker) {
+    while (activeFormattingElements.isNotEmpty && entry != Marker) {
       entry = activeFormattingElements.removeLast();
     }
   }
@@ -322,7 +320,7 @@ class TreeBuilder {
       [Element refNode]) {
     var nodes = parent.nodes;
     if (refNode == null) {
-      if (nodes.length > 0 && nodes.last is Text) {
+      if (nodes.isNotEmpty && nodes.last is Text) {
         Text last = nodes.last;
         last.appendData(data);
 
@@ -350,9 +348,9 @@ class TreeBuilder {
     // The foster parent element is the one which comes before the most
     // recently opened table element
     // XXX - this is really inelegant
-    Node lastTable = null;
-    Node fosterParent = null;
-    Node insertBefore = null;
+    Node lastTable;
+    Node fosterParent;
+    Node insertBefore;
     for (var elm in openElements.reversed) {
       if (elm.localName == "table") {
         lastTable = elm;
@@ -378,16 +376,8 @@ class TreeBuilder {
     var name = openElements.last.localName;
     // XXX td, th and tr are not actually needed
     if (name != exclude &&
-        const [
-      "dd",
-      "dt",
-      "li",
-      "option",
-      "optgroup",
-      "p",
-      "rp",
-      "rt"
-    ].contains(name)) {
+        const ["dd", "dt", "li", "option", "optgroup", "p", "rp", "rt"]
+            .contains(name)) {
       openElements.removeLast();
       // XXX This is not entirely what the specification says. We should
       // investigate it more closely.

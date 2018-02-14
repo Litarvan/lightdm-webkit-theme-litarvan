@@ -21,6 +21,11 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
 
   bool any(bool test(E element)) => _base.any(_validate(test));
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Iterable<T> cast<T>() {
+    throw new UnimplementedError('cast');
+  }
+
   bool contains(Object element) => _base.contains(element);
 
   E elementAt(int index) => _base.elementAt(index) as E;
@@ -37,6 +42,11 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
   T fold<T>(T initialValue, T combine(T previousValue, E element)) =>
       _base.fold(initialValue,
           (previousValue, element) => combine(previousValue, element as E));
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Iterable<E> followedBy(Iterable<E> other) {
+    throw new UnimplementedError('followedBy');
+  }
 
   void forEach(void f(E element)) => _base.forEach(_validate(f));
 
@@ -60,10 +70,17 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
   E reduce(E combine(E value, E element)) =>
       _base.reduce((value, element) => combine(value as E, element as E)) as E;
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Iterable<T> retype<T>() {
+    throw new UnimplementedError('retype');
+  }
+
   E get single => _base.single as E;
 
-  E singleWhere(bool test(E element)) =>
-      _base.singleWhere(_validate(test)) as E;
+  E singleWhere(bool test(E element), {E orElse()}) {
+    if (orElse != null) throw new UnimplementedError('singleWhere:orElse');
+    return _base.singleWhere(_validate(test)) as E;
+  }
 
   Iterable<E> skip(int n) => new TypeSafeIterable<E>(_base.skip(n));
 
@@ -82,6 +99,11 @@ abstract class _TypeSafeIterableBase<E> implements Iterable<E> {
 
   Iterable<E> where(bool test(E element)) =>
       new TypeSafeIterable<E>(_base.where(_validate(test)));
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Iterable<T> whereType<T>() {
+    throw new UnimplementedError('whereType');
+  }
 
   String toString() => _base.toString();
 
@@ -116,6 +138,11 @@ class TypeSafeList<E> extends TypeSafeIterable<E> implements DelegatingList<E> {
     _listBase[index] = value;
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  List<E> operator +(List<E> other) {
+    throw new UnimplementedError('+');
+  }
+
   void add(E value) {
     _listBase.add(value);
   }
@@ -126,6 +153,11 @@ class TypeSafeList<E> extends TypeSafeIterable<E> implements DelegatingList<E> {
 
   Map<int, E> asMap() => new TypeSafeMap<int, E>(_listBase.asMap());
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  List<T> cast<T>() {
+    throw new UnimplementedError('cast');
+  }
+
   void clear() {
     _listBase.clear();
   }
@@ -134,10 +166,21 @@ class TypeSafeList<E> extends TypeSafeIterable<E> implements DelegatingList<E> {
     _listBase.fillRange(start, end, fillValue);
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  set first(E value) {
+    if (this.isEmpty) throw new RangeError.index(0, this);
+    this[0] = value;
+  }
+
   Iterable<E> getRange(int start, int end) =>
       new TypeSafeIterable<E>(_listBase.getRange(start, end));
 
   int indexOf(E element, [int start = 0]) => _listBase.indexOf(element, start);
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  int indexWhere(bool test(E element), [int start = 0]) {
+    throw new UnimplementedError('indexWhere');
+  }
 
   void insert(int index, E element) {
     _listBase.insert(index, element);
@@ -147,10 +190,21 @@ class TypeSafeList<E> extends TypeSafeIterable<E> implements DelegatingList<E> {
     _listBase.insertAll(index, iterable);
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  set last(E value) {
+    if (this.isEmpty) throw new RangeError.index(0, this);
+    this[this.length - 1] = value;
+  }
+
   int lastIndexOf(E element, [int start]) =>
       _listBase.lastIndexOf(element, start);
 
-  void set length(int newLength) {
+  // TODO: Dart 2.0 requires this method to be implemented.
+  int lastIndexWhere(bool test(E element), [int start]) {
+    throw new UnimplementedError('lastIndexWhere');
+  }
+
+  set length(int newLength) {
     _listBase.length = newLength;
   }
 
@@ -174,6 +228,11 @@ class TypeSafeList<E> extends TypeSafeIterable<E> implements DelegatingList<E> {
 
   void retainWhere(bool test(E element)) {
     _listBase.retainWhere(_validate(test));
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  List<T> retype<T>() {
+    throw new UnimplementedError('retype');
   }
 
   Iterable<E> get reversed => new TypeSafeIterable<E>(_listBase.reversed);
@@ -217,6 +276,11 @@ class TypeSafeSet<E> extends TypeSafeIterable<E> implements DelegatingSet<E> {
     _setBase.addAll(elements);
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Set<T> cast<T>() {
+    throw new UnimplementedError('cast');
+  }
+
   void clear() {
     _setBase.clear();
   }
@@ -249,6 +313,11 @@ class TypeSafeSet<E> extends TypeSafeIterable<E> implements DelegatingSet<E> {
     _setBase.retainWhere(_validate(test));
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Set<T> retype<T>() {
+    throw new UnimplementedError('retype');
+  }
+
   Set<E> union(Set<E> other) => new TypeSafeSet<E>(_setBase.union(other));
 }
 
@@ -278,6 +347,11 @@ class TypeSafeQueue<E> extends TypeSafeIterable<E>
     _baseQueue.addLast(value);
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Queue<T> cast<T>() {
+    throw new UnimplementedError('cast');
+  }
+
   void clear() {
     _baseQueue.clear();
   }
@@ -290,6 +364,11 @@ class TypeSafeQueue<E> extends TypeSafeIterable<E>
 
   void retainWhere(bool test(E element)) {
     _baseQueue.retainWhere(_validate(test));
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Queue<T> retype<T>() {
+    throw new UnimplementedError('retype');
   }
 
   E removeFirst() => _baseQueue.removeFirst() as E;
@@ -316,6 +395,18 @@ class TypeSafeMap<K, V> implements DelegatingMap<K, V> {
     _base.addAll(other);
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  void addEntries(Iterable<Object> entries) {
+    // Change Iterable<Object> to Iterable<MapEntry<K, V>> when
+    // the MapEntry class has been added.
+    throw new UnimplementedError('addEntries');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Map<K2, V2> cast<K2, V2>() {
+    throw new UnimplementedError('cast');
+  }
+
   void clear() {
     _base.clear();
   }
@@ -323,6 +414,13 @@ class TypeSafeMap<K, V> implements DelegatingMap<K, V> {
   bool containsKey(Object key) => _base.containsKey(key);
 
   bool containsValue(Object value) => _base.containsValue(value);
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Iterable<Null> get entries {
+    // Change Iterable<Null> to Iterable<MapEntry<K, V>> when
+    // the MapEntry class has been added.
+    throw new UnimplementedError('entries');
+  }
 
   void forEach(void f(K key, V value)) {
     _base.forEach((key, value) => f(key as K, value as V));
@@ -336,11 +434,38 @@ class TypeSafeMap<K, V> implements DelegatingMap<K, V> {
 
   int get length => _base.length;
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Map<K2, V2> map<K2, V2>(Object transform(K key, V value)) {
+    // Change Object to MapEntry<K2, V2> when
+    // the MapEntry class has been added.
+    throw new UnimplementedError('map');
+  }
+
   V putIfAbsent(K key, V ifAbsent()) => _base.putIfAbsent(key, ifAbsent) as V;
 
   V remove(Object key) => _base.remove(key) as V;
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  void removeWhere(bool test(K key, V value)) {
+    throw new UnimplementedError('removeWhere');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  Map<K2, V2> retype<K2, V2>() {
+    throw new UnimplementedError('retype');
+  }
+
   Iterable<V> get values => new TypeSafeIterable<V>(_base.values);
 
   String toString() => _base.toString();
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  V update(K key, V update(V value), {V ifAbsent()}) {
+    throw new UnimplementedError('update');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  void updateAll(V update(K key, V value)) {
+    throw new UnimplementedError('updateAll');
+  }
 }

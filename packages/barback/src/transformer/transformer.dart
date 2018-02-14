@@ -33,7 +33,8 @@ abstract class Transformer {
   Transformer() {
     if (allowedExtensions == null) return;
 
-    var invalidExtensions = allowedExtensions.split(" ")
+    var invalidExtensions = allowedExtensions
+        .split(" ")
         .where((extension) => !extension.startsWith("."))
         .map((extension) => '"$extension"');
     if (invalidExtensions.isEmpty) return;

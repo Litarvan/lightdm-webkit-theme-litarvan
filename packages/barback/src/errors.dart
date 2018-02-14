@@ -60,8 +60,8 @@ class AggregateException implements BarbackException {
     buffer.writeln("Multiple errors occurred:\n");
 
     for (var error in errors) {
-      buffer.writeln(prefixLines(error.toString(),
-                                 prefix: "  ", firstPrefix: "- "));
+      buffer.writeln(
+          prefixLines(error.toString(), prefix: "  ", firstPrefix: "- "));
     }
 
     return buffer.toString();
@@ -178,10 +178,11 @@ class TransformInfo {
   final AssetId primaryId;
 
   TransformInfo(transformer, this.primaryId)
-      : transformer = transformer is WrappingAggregateTransformer ?
-            transformer.transformer : transformer;
+      : transformer = transformer is WrappingAggregateTransformer
+            ? transformer.transformer
+            : transformer;
 
-  bool operator==(other) =>
+  bool operator ==(other) =>
       other is TransformInfo &&
       other.transformer == transformer &&
       other.primaryId == primaryId;

@@ -42,8 +42,8 @@ class StreamChannelCompleter<T> {
   }
 
   StreamChannelCompleter() {
-    _channel = new StreamChannel<T>(
-        _streamCompleter.stream, _sinkCompleter.sink);
+    _channel =
+        new StreamChannel<T>(_streamCompleter.stream, _sinkCompleter.sink);
   }
 
   /// Set a channel as the source and destination for [channel].

@@ -20,19 +20,14 @@ import 'dart:_interceptors' show Interceptor;
 // https://code.google.com/p/dart/wiki/ContributingHTMLDocumentation
 // Auto-generated dart:svg library.
 
-
-
-
-
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 class _SvgElementFactoryProvider {
   static SvgElement createSvgElement_tag(String tag) {
     final Element temp =
-      document.createElementNS("http://www.w3.org/2000/svg", tag);
+        document.createElementNS("http://www.w3.org/2000/svg", tag);
     return temp;
   }
 }
@@ -40,14 +35,15 @@ class _SvgElementFactoryProvider {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAElement')
 @Unstable()
 @Native("SVGAElement")
 class AElement extends GraphicsElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory AElement._() { throw new UnsupportedError("Not supported"); }
+  factory AElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAElement.SVGAElement')
   @DocsEditable()
@@ -73,14 +69,15 @@ class AElement extends GraphicsElement implements UriReference {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAngle')
 @Unstable()
 @Native("SVGAngle")
 class Angle extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Angle._() { throw new UnsupportedError("Not supported"); }
+  factory Angle._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAngle.SVG_ANGLETYPE_DEG')
   @DocsEditable()
@@ -130,7 +127,6 @@ class Angle extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimateElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -140,11 +136,14 @@ class Angle extends Interceptor {
 @Native("SVGAnimateElement")
 class AnimateElement extends AnimationElement {
   // To suppress missing implicit constructor warnings.
-  factory AnimateElement._() { throw new UnsupportedError("Not supported"); }
+  factory AnimateElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimateElement.SVGAnimateElement')
   @DocsEditable()
-  factory AnimateElement() => _SvgElementFactoryProvider.createSvgElement_tag("animate");
+  factory AnimateElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("animate");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -153,12 +152,13 @@ class AnimateElement extends AnimationElement {
   AnimateElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('animate') && (new SvgElement.tag('animate') is AnimateElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('animate') &&
+      (new SvgElement.tag('animate') is AnimateElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGAnimateMotionElement')
@@ -169,11 +169,14 @@ class AnimateElement extends AnimationElement {
 @Native("SVGAnimateMotionElement")
 class AnimateMotionElement extends AnimationElement {
   // To suppress missing implicit constructor warnings.
-  factory AnimateMotionElement._() { throw new UnsupportedError("Not supported"); }
+  factory AnimateMotionElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimateMotionElement.SVGAnimateMotionElement')
   @DocsEditable()
-  factory AnimateMotionElement() => _SvgElementFactoryProvider.createSvgElement_tag("animateMotion");
+  factory AnimateMotionElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("animateMotion");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -182,12 +185,13 @@ class AnimateMotionElement extends AnimationElement {
   AnimateMotionElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('animateMotion') && (new SvgElement.tag('animateMotion') is AnimateMotionElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('animateMotion') &&
+      (new SvgElement.tag('animateMotion') is AnimateMotionElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGAnimateTransformElement')
@@ -198,11 +202,14 @@ class AnimateMotionElement extends AnimationElement {
 @Native("SVGAnimateTransformElement")
 class AnimateTransformElement extends AnimationElement {
   // To suppress missing implicit constructor warnings.
-  factory AnimateTransformElement._() { throw new UnsupportedError("Not supported"); }
+  factory AnimateTransformElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimateTransformElement.SVGAnimateTransformElement')
   @DocsEditable()
-  factory AnimateTransformElement() => _SvgElementFactoryProvider.createSvgElement_tag("animateTransform");
+  factory AnimateTransformElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("animateTransform");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -211,12 +218,13 @@ class AnimateTransformElement extends AnimationElement {
   AnimateTransformElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('animateTransform') && (new SvgElement.tag('animateTransform') is AnimateTransformElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('animateTransform') &&
+      (new SvgElement.tag('animateTransform') is AnimateTransformElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGAnimatedAngle')
@@ -224,7 +232,9 @@ class AnimateTransformElement extends AnimationElement {
 @Native("SVGAnimatedAngle")
 class AnimatedAngle extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedAngle._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedAngle._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedAngle.animVal')
   @DocsEditable()
@@ -238,14 +248,15 @@ class AnimatedAngle extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedBoolean')
 @Unstable()
 @Native("SVGAnimatedBoolean")
 class AnimatedBoolean extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedBoolean._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedBoolean._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedBoolean.animVal')
   @DocsEditable()
@@ -259,14 +270,15 @@ class AnimatedBoolean extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedEnumeration')
 @Unstable()
 @Native("SVGAnimatedEnumeration")
 class AnimatedEnumeration extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedEnumeration._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedEnumeration._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedEnumeration.animVal')
   @DocsEditable()
@@ -280,14 +292,15 @@ class AnimatedEnumeration extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedInteger')
 @Unstable()
 @Native("SVGAnimatedInteger")
 class AnimatedInteger extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedInteger._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedInteger._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedInteger.animVal')
   @DocsEditable()
@@ -301,14 +314,15 @@ class AnimatedInteger extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedLength')
 @Unstable()
 @Native("SVGAnimatedLength")
 class AnimatedLength extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedLength._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedLength._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedLength.animVal')
   @DocsEditable()
@@ -322,14 +336,15 @@ class AnimatedLength extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedLengthList')
 @Unstable()
 @Native("SVGAnimatedLengthList")
 class AnimatedLengthList extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedLengthList._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedLengthList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedLengthList.animVal')
   @DocsEditable()
@@ -343,14 +358,15 @@ class AnimatedLengthList extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedNumber')
 @Unstable()
 @Native("SVGAnimatedNumber")
 class AnimatedNumber extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedNumber._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedNumber._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedNumber.animVal')
   @DocsEditable()
@@ -364,14 +380,15 @@ class AnimatedNumber extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedNumberList')
 @Unstable()
 @Native("SVGAnimatedNumberList")
 class AnimatedNumberList extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedNumberList._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedNumberList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedNumberList.animVal')
   @DocsEditable()
@@ -385,14 +402,15 @@ class AnimatedNumberList extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedPreserveAspectRatio')
 @Unstable()
 @Native("SVGAnimatedPreserveAspectRatio")
 class AnimatedPreserveAspectRatio extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedPreserveAspectRatio._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedPreserveAspectRatio._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedPreserveAspectRatio.animVal')
   @DocsEditable()
@@ -406,14 +424,15 @@ class AnimatedPreserveAspectRatio extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedRect')
 @Unstable()
 @Native("SVGAnimatedRect")
 class AnimatedRect extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedRect._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedRect._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedRect.animVal')
   @DocsEditable()
@@ -427,14 +446,15 @@ class AnimatedRect extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedString')
 @Unstable()
 @Native("SVGAnimatedString")
 class AnimatedString extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedString._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedString._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedString.animVal')
   @DocsEditable()
@@ -448,14 +468,15 @@ class AnimatedString extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimatedTransformList')
 @Unstable()
 @Native("SVGAnimatedTransformList")
 class AnimatedTransformList extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory AnimatedTransformList._() { throw new UnsupportedError("Not supported"); }
+  factory AnimatedTransformList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimatedTransformList.animVal')
   @DocsEditable()
@@ -469,18 +490,20 @@ class AnimatedTransformList extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGAnimationElement')
 @Unstable()
 @Native("SVGAnimationElement")
 class AnimationElement extends SvgElement implements Tests {
   // To suppress missing implicit constructor warnings.
-  factory AnimationElement._() { throw new UnsupportedError("Not supported"); }
+  factory AnimationElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGAnimationElement.SVGAnimationElement')
   @DocsEditable()
-  factory AnimationElement() => _SvgElementFactoryProvider.createSvgElement_tag("animation");
+  factory AnimationElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("animation");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -533,15 +556,10 @@ class AnimationElement extends SvgElement implements Tests {
   @DomName('SVGAnimationElement.systemLanguage')
   @DocsEditable()
   final StringList systemLanguage;
-
-  @DomName('SVGAnimationElement.hasExtension')
-  @DocsEditable()
-  bool hasExtension(String extension) native;
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGCircleElement')
@@ -549,11 +567,14 @@ class AnimationElement extends SvgElement implements Tests {
 @Native("SVGCircleElement")
 class CircleElement extends GeometryElement {
   // To suppress missing implicit constructor warnings.
-  factory CircleElement._() { throw new UnsupportedError("Not supported"); }
+  factory CircleElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGCircleElement.SVGCircleElement')
   @DocsEditable()
-  factory CircleElement() => _SvgElementFactoryProvider.createSvgElement_tag("circle");
+  factory CircleElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("circle");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -577,18 +598,20 @@ class CircleElement extends GeometryElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGClipPathElement')
 @Unstable()
 @Native("SVGClipPathElement")
 class ClipPathElement extends GraphicsElement {
   // To suppress missing implicit constructor warnings.
-  factory ClipPathElement._() { throw new UnsupportedError("Not supported"); }
+  factory ClipPathElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGClipPathElement.SVGClipPathElement')
   @DocsEditable()
-  factory ClipPathElement() => _SvgElementFactoryProvider.createSvgElement_tag("clipPath");
+  factory ClipPathElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("clipPath");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -604,18 +627,20 @@ class ClipPathElement extends GraphicsElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGDefsElement')
 @Unstable()
 @Native("SVGDefsElement")
 class DefsElement extends GraphicsElement {
   // To suppress missing implicit constructor warnings.
-  factory DefsElement._() { throw new UnsupportedError("Not supported"); }
+  factory DefsElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGDefsElement.SVGDefsElement')
   @DocsEditable()
-  factory DefsElement() => _SvgElementFactoryProvider.createSvgElement_tag("defs");
+  factory DefsElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("defs");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -627,18 +652,20 @@ class DefsElement extends GraphicsElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGDescElement')
 @Unstable()
 @Native("SVGDescElement")
 class DescElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory DescElement._() { throw new UnsupportedError("Not supported"); }
+  factory DescElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGDescElement.SVGDescElement')
   @DocsEditable()
-  factory DescElement() => _SvgElementFactoryProvider.createSvgElement_tag("desc");
+  factory DescElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("desc");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -650,14 +677,15 @@ class DescElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGDiscardElement')
 @Experimental() // untriaged
 @Native("SVGDiscardElement")
 class DiscardElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory DiscardElement._() { throw new UnsupportedError("Not supported"); }
+  factory DiscardElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -669,18 +697,20 @@ class DiscardElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGEllipseElement')
 @Unstable()
 @Native("SVGEllipseElement")
 class EllipseElement extends GeometryElement {
   // To suppress missing implicit constructor warnings.
-  factory EllipseElement._() { throw new UnsupportedError("Not supported"); }
+  factory EllipseElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGEllipseElement.SVGEllipseElement')
   @DocsEditable()
-  factory EllipseElement() => _SvgElementFactoryProvider.createSvgElement_tag("ellipse");
+  factory EllipseElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("ellipse");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -708,7 +738,6 @@ class EllipseElement extends GeometryElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEBlendElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -717,13 +746,17 @@ class EllipseElement extends GeometryElement {
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEBlendElement")
-class FEBlendElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEBlendElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEBlendElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEBlendElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEBlendElement.SVGFEBlendElement')
   @DocsEditable()
-  factory FEBlendElement() => _SvgElementFactoryProvider.createSvgElement_tag("feBlend");
+  factory FEBlendElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feBlend");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -732,7 +765,9 @@ class FEBlendElement extends SvgElement implements FilterPrimitiveStandardAttrib
   FEBlendElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feBlend') && (new SvgElement.tag('feBlend') is FEBlendElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feBlend') &&
+      (new SvgElement.tag('feBlend') is FEBlendElement);
 
   @DomName('SVGFEBlendElement.SVG_FEBLEND_MODE_DARKEN')
   @DocsEditable()
@@ -796,7 +831,6 @@ class FEBlendElement extends SvgElement implements FilterPrimitiveStandardAttrib
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEColorMatrixElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -805,13 +839,17 @@ class FEBlendElement extends SvgElement implements FilterPrimitiveStandardAttrib
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEColorMatrixElement")
-class FEColorMatrixElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEColorMatrixElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEColorMatrixElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEColorMatrixElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEColorMatrixElement.SVGFEColorMatrixElement')
   @DocsEditable()
-  factory FEColorMatrixElement() => _SvgElementFactoryProvider.createSvgElement_tag("feColorMatrix");
+  factory FEColorMatrixElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feColorMatrix");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -820,7 +858,9 @@ class FEColorMatrixElement extends SvgElement implements FilterPrimitiveStandard
   FEColorMatrixElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feColorMatrix') && (new SvgElement.tag('feColorMatrix') is FEColorMatrixElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feColorMatrix') &&
+      (new SvgElement.tag('feColorMatrix') is FEColorMatrixElement);
 
   @DomName('SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_HUEROTATE')
   @DocsEditable()
@@ -880,7 +920,6 @@ class FEColorMatrixElement extends SvgElement implements FilterPrimitiveStandard
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEComponentTransferElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -889,13 +928,17 @@ class FEColorMatrixElement extends SvgElement implements FilterPrimitiveStandard
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEComponentTransferElement")
-class FEComponentTransferElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEComponentTransferElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEComponentTransferElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEComponentTransferElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEComponentTransferElement.SVGFEComponentTransferElement')
   @DocsEditable()
-  factory FEComponentTransferElement() => _SvgElementFactoryProvider.createSvgElement_tag("feComponentTransfer");
+  factory FEComponentTransferElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feComponentTransfer");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -904,7 +947,9 @@ class FEComponentTransferElement extends SvgElement implements FilterPrimitiveSt
   FEComponentTransferElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feComponentTransfer') && (new SvgElement.tag('feComponentTransfer') is FEComponentTransferElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feComponentTransfer') &&
+      (new SvgElement.tag('feComponentTransfer') is FEComponentTransferElement);
 
   @DomName('SVGFEComponentTransferElement.in1')
   @DocsEditable()
@@ -936,14 +981,16 @@ class FEComponentTransferElement extends SvgElement implements FilterPrimitiveSt
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFECompositeElement')
 @Unstable()
 @Native("SVGFECompositeElement")
-class FECompositeElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FECompositeElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FECompositeElement._() { throw new UnsupportedError("Not supported"); }
+  factory FECompositeElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1033,7 +1080,6 @@ class FECompositeElement extends SvgElement implements FilterPrimitiveStandardAt
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEConvolveMatrixElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1042,13 +1088,17 @@ class FECompositeElement extends SvgElement implements FilterPrimitiveStandardAt
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEConvolveMatrixElement")
-class FEConvolveMatrixElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEConvolveMatrixElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEConvolveMatrixElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEConvolveMatrixElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEConvolveMatrixElement.SVGFEConvolveMatrixElement')
   @DocsEditable()
-  factory FEConvolveMatrixElement() => _SvgElementFactoryProvider.createSvgElement_tag("feConvolveMatrix");
+  factory FEConvolveMatrixElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feConvolveMatrix");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1057,7 +1107,9 @@ class FEConvolveMatrixElement extends SvgElement implements FilterPrimitiveStand
   FEConvolveMatrixElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feConvolveMatrix') && (new SvgElement.tag('feConvolveMatrix') is FEConvolveMatrixElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feConvolveMatrix') &&
+      (new SvgElement.tag('feConvolveMatrix') is FEConvolveMatrixElement);
 
   @DomName('SVGFEConvolveMatrixElement.SVG_EDGEMODE_DUPLICATE')
   @DocsEditable()
@@ -1149,7 +1201,6 @@ class FEConvolveMatrixElement extends SvgElement implements FilterPrimitiveStand
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEDiffuseLightingElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1158,13 +1209,17 @@ class FEConvolveMatrixElement extends SvgElement implements FilterPrimitiveStand
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEDiffuseLightingElement")
-class FEDiffuseLightingElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEDiffuseLightingElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEDiffuseLightingElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEDiffuseLightingElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEDiffuseLightingElement.SVGFEDiffuseLightingElement')
   @DocsEditable()
-  factory FEDiffuseLightingElement() => _SvgElementFactoryProvider.createSvgElement_tag("feDiffuseLighting");
+  factory FEDiffuseLightingElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feDiffuseLighting");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1173,7 +1228,9 @@ class FEDiffuseLightingElement extends SvgElement implements FilterPrimitiveStan
   FEDiffuseLightingElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feDiffuseLighting') && (new SvgElement.tag('feDiffuseLighting') is FEDiffuseLightingElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feDiffuseLighting') &&
+      (new SvgElement.tag('feDiffuseLighting') is FEDiffuseLightingElement);
 
   @DomName('SVGFEDiffuseLightingElement.diffuseConstant')
   @DocsEditable()
@@ -1221,7 +1278,6 @@ class FEDiffuseLightingElement extends SvgElement implements FilterPrimitiveStan
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEDisplacementMapElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1230,13 +1286,17 @@ class FEDiffuseLightingElement extends SvgElement implements FilterPrimitiveStan
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEDisplacementMapElement")
-class FEDisplacementMapElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEDisplacementMapElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEDisplacementMapElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEDisplacementMapElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEDisplacementMapElement.SVGFEDisplacementMapElement')
   @DocsEditable()
-  factory FEDisplacementMapElement() => _SvgElementFactoryProvider.createSvgElement_tag("feDisplacementMap");
+  factory FEDisplacementMapElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feDisplacementMap");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1245,7 +1305,9 @@ class FEDisplacementMapElement extends SvgElement implements FilterPrimitiveStan
   FEDisplacementMapElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feDisplacementMap') && (new SvgElement.tag('feDisplacementMap') is FEDisplacementMapElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feDisplacementMap') &&
+      (new SvgElement.tag('feDisplacementMap') is FEDisplacementMapElement);
 
   @DomName('SVGFEDisplacementMapElement.SVG_CHANNEL_A')
   @DocsEditable()
@@ -1313,7 +1375,6 @@ class FEDisplacementMapElement extends SvgElement implements FilterPrimitiveStan
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEDistantLightElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1324,11 +1385,14 @@ class FEDisplacementMapElement extends SvgElement implements FilterPrimitiveStan
 @Native("SVGFEDistantLightElement")
 class FEDistantLightElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory FEDistantLightElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEDistantLightElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEDistantLightElement.SVGFEDistantLightElement')
   @DocsEditable()
-  factory FEDistantLightElement() => _SvgElementFactoryProvider.createSvgElement_tag("feDistantLight");
+  factory FEDistantLightElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feDistantLight");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1337,7 +1401,9 @@ class FEDistantLightElement extends SvgElement {
   FEDistantLightElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feDistantLight') && (new SvgElement.tag('feDistantLight') is FEDistantLightElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feDistantLight') &&
+      (new SvgElement.tag('feDistantLight') is FEDistantLightElement);
 
   @DomName('SVGFEDistantLightElement.azimuth')
   @DocsEditable()
@@ -1351,7 +1417,6 @@ class FEDistantLightElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEFloodElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1360,13 +1425,17 @@ class FEDistantLightElement extends SvgElement {
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEFloodElement")
-class FEFloodElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEFloodElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEFloodElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEFloodElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEFloodElement.SVGFEFloodElement')
   @DocsEditable()
-  factory FEFloodElement() => _SvgElementFactoryProvider.createSvgElement_tag("feFlood");
+  factory FEFloodElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feFlood");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1375,7 +1444,9 @@ class FEFloodElement extends SvgElement implements FilterPrimitiveStandardAttrib
   FEFloodElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feFlood') && (new SvgElement.tag('feFlood') is FEFloodElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feFlood') &&
+      (new SvgElement.tag('feFlood') is FEFloodElement);
 
   // From SVGFilterPrimitiveStandardAttributes
 
@@ -1403,7 +1474,6 @@ class FEFloodElement extends SvgElement implements FilterPrimitiveStandardAttrib
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEFuncAElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1414,11 +1484,14 @@ class FEFloodElement extends SvgElement implements FilterPrimitiveStandardAttrib
 @Native("SVGFEFuncAElement")
 class FEFuncAElement extends _SVGComponentTransferFunctionElement {
   // To suppress missing implicit constructor warnings.
-  factory FEFuncAElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEFuncAElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEFuncAElement.SVGFEFuncAElement')
   @DocsEditable()
-  factory FEFuncAElement() => _SvgElementFactoryProvider.createSvgElement_tag("feFuncA");
+  factory FEFuncAElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feFuncA");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1427,12 +1500,13 @@ class FEFuncAElement extends _SVGComponentTransferFunctionElement {
   FEFuncAElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feFuncA') && (new SvgElement.tag('feFuncA') is FEFuncAElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feFuncA') &&
+      (new SvgElement.tag('feFuncA') is FEFuncAElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGFEFuncBElement')
@@ -1444,11 +1518,14 @@ class FEFuncAElement extends _SVGComponentTransferFunctionElement {
 @Native("SVGFEFuncBElement")
 class FEFuncBElement extends _SVGComponentTransferFunctionElement {
   // To suppress missing implicit constructor warnings.
-  factory FEFuncBElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEFuncBElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEFuncBElement.SVGFEFuncBElement')
   @DocsEditable()
-  factory FEFuncBElement() => _SvgElementFactoryProvider.createSvgElement_tag("feFuncB");
+  factory FEFuncBElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feFuncB");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1457,12 +1534,13 @@ class FEFuncBElement extends _SVGComponentTransferFunctionElement {
   FEFuncBElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feFuncB') && (new SvgElement.tag('feFuncB') is FEFuncBElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feFuncB') &&
+      (new SvgElement.tag('feFuncB') is FEFuncBElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGFEFuncGElement')
@@ -1474,11 +1552,14 @@ class FEFuncBElement extends _SVGComponentTransferFunctionElement {
 @Native("SVGFEFuncGElement")
 class FEFuncGElement extends _SVGComponentTransferFunctionElement {
   // To suppress missing implicit constructor warnings.
-  factory FEFuncGElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEFuncGElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEFuncGElement.SVGFEFuncGElement')
   @DocsEditable()
-  factory FEFuncGElement() => _SvgElementFactoryProvider.createSvgElement_tag("feFuncG");
+  factory FEFuncGElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feFuncG");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1487,12 +1568,13 @@ class FEFuncGElement extends _SVGComponentTransferFunctionElement {
   FEFuncGElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feFuncG') && (new SvgElement.tag('feFuncG') is FEFuncGElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feFuncG') &&
+      (new SvgElement.tag('feFuncG') is FEFuncGElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGFEFuncRElement')
@@ -1504,11 +1586,14 @@ class FEFuncGElement extends _SVGComponentTransferFunctionElement {
 @Native("SVGFEFuncRElement")
 class FEFuncRElement extends _SVGComponentTransferFunctionElement {
   // To suppress missing implicit constructor warnings.
-  factory FEFuncRElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEFuncRElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEFuncRElement.SVGFEFuncRElement')
   @DocsEditable()
-  factory FEFuncRElement() => _SvgElementFactoryProvider.createSvgElement_tag("feFuncR");
+  factory FEFuncRElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feFuncR");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1517,12 +1602,13 @@ class FEFuncRElement extends _SVGComponentTransferFunctionElement {
   FEFuncRElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feFuncR') && (new SvgElement.tag('feFuncR') is FEFuncRElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feFuncR') &&
+      (new SvgElement.tag('feFuncR') is FEFuncRElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGFEGaussianBlurElement')
@@ -1532,13 +1618,17 @@ class FEFuncRElement extends _SVGComponentTransferFunctionElement {
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEGaussianBlurElement")
-class FEGaussianBlurElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEGaussianBlurElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEGaussianBlurElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEGaussianBlurElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEGaussianBlurElement.SVGFEGaussianBlurElement')
   @DocsEditable()
-  factory FEGaussianBlurElement() => _SvgElementFactoryProvider.createSvgElement_tag("feGaussianBlur");
+  factory FEGaussianBlurElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feGaussianBlur");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1547,7 +1637,9 @@ class FEGaussianBlurElement extends SvgElement implements FilterPrimitiveStandar
   FEGaussianBlurElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feGaussianBlur') && (new SvgElement.tag('feGaussianBlur') is FEGaussianBlurElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feGaussianBlur') &&
+      (new SvgElement.tag('feGaussianBlur') is FEGaussianBlurElement);
 
   @DomName('SVGFEGaussianBlurElement.in1')
   @DocsEditable()
@@ -1591,7 +1683,6 @@ class FEGaussianBlurElement extends SvgElement implements FilterPrimitiveStandar
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEImageElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1600,13 +1691,17 @@ class FEGaussianBlurElement extends SvgElement implements FilterPrimitiveStandar
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEImageElement")
-class FEImageElement extends SvgElement implements FilterPrimitiveStandardAttributes, UriReference {
+class FEImageElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes, UriReference {
   // To suppress missing implicit constructor warnings.
-  factory FEImageElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEImageElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEImageElement.SVGFEImageElement')
   @DocsEditable()
-  factory FEImageElement() => _SvgElementFactoryProvider.createSvgElement_tag("feImage");
+  factory FEImageElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feImage");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1615,7 +1710,9 @@ class FEImageElement extends SvgElement implements FilterPrimitiveStandardAttrib
   FEImageElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feImage') && (new SvgElement.tag('feImage') is FEImageElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feImage') &&
+      (new SvgElement.tag('feImage') is FEImageElement);
 
   @DomName('SVGFEImageElement.preserveAspectRatio')
   @DocsEditable()
@@ -1653,7 +1750,6 @@ class FEImageElement extends SvgElement implements FilterPrimitiveStandardAttrib
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEMergeElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1662,13 +1758,17 @@ class FEImageElement extends SvgElement implements FilterPrimitiveStandardAttrib
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEMergeElement")
-class FEMergeElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEMergeElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEMergeElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEMergeElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEMergeElement.SVGFEMergeElement')
   @DocsEditable()
-  factory FEMergeElement() => _SvgElementFactoryProvider.createSvgElement_tag("feMerge");
+  factory FEMergeElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feMerge");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1677,7 +1777,9 @@ class FEMergeElement extends SvgElement implements FilterPrimitiveStandardAttrib
   FEMergeElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feMerge') && (new SvgElement.tag('feMerge') is FEMergeElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feMerge') &&
+      (new SvgElement.tag('feMerge') is FEMergeElement);
 
   // From SVGFilterPrimitiveStandardAttributes
 
@@ -1705,7 +1807,6 @@ class FEMergeElement extends SvgElement implements FilterPrimitiveStandardAttrib
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEMergeNodeElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1716,11 +1817,14 @@ class FEMergeElement extends SvgElement implements FilterPrimitiveStandardAttrib
 @Native("SVGFEMergeNodeElement")
 class FEMergeNodeElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory FEMergeNodeElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEMergeNodeElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEMergeNodeElement.SVGFEMergeNodeElement')
   @DocsEditable()
-  factory FEMergeNodeElement() => _SvgElementFactoryProvider.createSvgElement_tag("feMergeNode");
+  factory FEMergeNodeElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feMergeNode");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1729,7 +1833,9 @@ class FEMergeNodeElement extends SvgElement {
   FEMergeNodeElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feMergeNode') && (new SvgElement.tag('feMergeNode') is FEMergeNodeElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feMergeNode') &&
+      (new SvgElement.tag('feMergeNode') is FEMergeNodeElement);
 
   @DomName('SVGFEMergeNodeElement.in1')
   @DocsEditable()
@@ -1739,7 +1845,6 @@ class FEMergeNodeElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEMorphologyElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1748,9 +1853,12 @@ class FEMergeNodeElement extends SvgElement {
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEMorphologyElement")
-class FEMorphologyElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEMorphologyElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEMorphologyElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEMorphologyElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1812,7 +1920,6 @@ class FEMorphologyElement extends SvgElement implements FilterPrimitiveStandardA
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEOffsetElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1821,13 +1928,17 @@ class FEMorphologyElement extends SvgElement implements FilterPrimitiveStandardA
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFEOffsetElement")
-class FEOffsetElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FEOffsetElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FEOffsetElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEOffsetElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEOffsetElement.SVGFEOffsetElement')
   @DocsEditable()
-  factory FEOffsetElement() => _SvgElementFactoryProvider.createSvgElement_tag("feOffset");
+  factory FEOffsetElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feOffset");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1836,7 +1947,9 @@ class FEOffsetElement extends SvgElement implements FilterPrimitiveStandardAttri
   FEOffsetElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feOffset') && (new SvgElement.tag('feOffset') is FEOffsetElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feOffset') &&
+      (new SvgElement.tag('feOffset') is FEOffsetElement);
 
   @DomName('SVGFEOffsetElement.dx')
   @DocsEditable()
@@ -1876,7 +1989,6 @@ class FEOffsetElement extends SvgElement implements FilterPrimitiveStandardAttri
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEPointLightElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1887,11 +1999,14 @@ class FEOffsetElement extends SvgElement implements FilterPrimitiveStandardAttri
 @Native("SVGFEPointLightElement")
 class FEPointLightElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory FEPointLightElement._() { throw new UnsupportedError("Not supported"); }
+  factory FEPointLightElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFEPointLightElement.SVGFEPointLightElement')
   @DocsEditable()
-  factory FEPointLightElement() => _SvgElementFactoryProvider.createSvgElement_tag("fePointLight");
+  factory FEPointLightElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("fePointLight");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1900,7 +2015,9 @@ class FEPointLightElement extends SvgElement {
   FEPointLightElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('fePointLight') && (new SvgElement.tag('fePointLight') is FEPointLightElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('fePointLight') &&
+      (new SvgElement.tag('fePointLight') is FEPointLightElement);
 
   @DomName('SVGFEPointLightElement.x')
   @DocsEditable()
@@ -1918,7 +2035,6 @@ class FEPointLightElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFESpecularLightingElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -1927,13 +2043,17 @@ class FEPointLightElement extends SvgElement {
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFESpecularLightingElement")
-class FESpecularLightingElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FESpecularLightingElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FESpecularLightingElement._() { throw new UnsupportedError("Not supported"); }
+  factory FESpecularLightingElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFESpecularLightingElement.SVGFESpecularLightingElement')
   @DocsEditable()
-  factory FESpecularLightingElement() => _SvgElementFactoryProvider.createSvgElement_tag("feSpecularLighting");
+  factory FESpecularLightingElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feSpecularLighting");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -1942,7 +2062,9 @@ class FESpecularLightingElement extends SvgElement implements FilterPrimitiveSta
   FESpecularLightingElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feSpecularLighting') && (new SvgElement.tag('feSpecularLighting') is FESpecularLightingElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feSpecularLighting') &&
+      (new SvgElement.tag('feSpecularLighting') is FESpecularLightingElement);
 
   @DomName('SVGFESpecularLightingElement.in1')
   @DocsEditable()
@@ -1996,7 +2118,6 @@ class FESpecularLightingElement extends SvgElement implements FilterPrimitiveSta
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFESpotLightElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -2007,11 +2128,14 @@ class FESpecularLightingElement extends SvgElement implements FilterPrimitiveSta
 @Native("SVGFESpotLightElement")
 class FESpotLightElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory FESpotLightElement._() { throw new UnsupportedError("Not supported"); }
+  factory FESpotLightElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFESpotLightElement.SVGFESpotLightElement')
   @DocsEditable()
-  factory FESpotLightElement() => _SvgElementFactoryProvider.createSvgElement_tag("feSpotLight");
+  factory FESpotLightElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feSpotLight");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2020,7 +2144,9 @@ class FESpotLightElement extends SvgElement {
   FESpotLightElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feSpotLight') && (new SvgElement.tag('feSpotLight') is FESpotLightElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feSpotLight') &&
+      (new SvgElement.tag('feSpotLight') is FESpotLightElement);
 
   @DomName('SVGFESpotLightElement.limitingConeAngle')
   @DocsEditable()
@@ -2058,7 +2184,6 @@ class FESpotLightElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFETileElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -2067,13 +2192,17 @@ class FESpotLightElement extends SvgElement {
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFETileElement")
-class FETileElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FETileElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FETileElement._() { throw new UnsupportedError("Not supported"); }
+  factory FETileElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFETileElement.SVGFETileElement')
   @DocsEditable()
-  factory FETileElement() => _SvgElementFactoryProvider.createSvgElement_tag("feTile");
+  factory FETileElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feTile");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2082,7 +2211,9 @@ class FETileElement extends SvgElement implements FilterPrimitiveStandardAttribu
   FETileElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feTile') && (new SvgElement.tag('feTile') is FETileElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feTile') &&
+      (new SvgElement.tag('feTile') is FETileElement);
 
   @DomName('SVGFETileElement.in1')
   @DocsEditable()
@@ -2114,7 +2245,6 @@ class FETileElement extends SvgElement implements FilterPrimitiveStandardAttribu
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFETurbulenceElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -2123,13 +2253,17 @@ class FETileElement extends SvgElement implements FilterPrimitiveStandardAttribu
 @SupportedBrowser(SupportedBrowser.SAFARI)
 @Unstable()
 @Native("SVGFETurbulenceElement")
-class FETurbulenceElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+class FETurbulenceElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory FETurbulenceElement._() { throw new UnsupportedError("Not supported"); }
+  factory FETurbulenceElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFETurbulenceElement.SVGFETurbulenceElement')
   @DocsEditable()
-  factory FETurbulenceElement() => _SvgElementFactoryProvider.createSvgElement_tag("feTurbulence");
+  factory FETurbulenceElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("feTurbulence");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2138,7 +2272,9 @@ class FETurbulenceElement extends SvgElement implements FilterPrimitiveStandardA
   FETurbulenceElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('feTurbulence') && (new SvgElement.tag('feTurbulence') is FETurbulenceElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('feTurbulence') &&
+      (new SvgElement.tag('feTurbulence') is FETurbulenceElement);
 
   @DomName('SVGFETurbulenceElement.SVG_STITCHTYPE_NOSTITCH')
   @DocsEditable()
@@ -2214,7 +2350,6 @@ class FETurbulenceElement extends SvgElement implements FilterPrimitiveStandardA
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFilterElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -2225,11 +2360,14 @@ class FETurbulenceElement extends SvgElement implements FilterPrimitiveStandardA
 @Native("SVGFilterElement")
 class FilterElement extends SvgElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory FilterElement._() { throw new UnsupportedError("Not supported"); }
+  factory FilterElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGFilterElement.SVGFilterElement')
   @DocsEditable()
-  factory FilterElement() => _SvgElementFactoryProvider.createSvgElement_tag("filter");
+  factory FilterElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("filter");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2238,7 +2376,9 @@ class FilterElement extends SvgElement implements UriReference {
   FilterElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('filter') && (new SvgElement.tag('filter') is FilterElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('filter') &&
+      (new SvgElement.tag('filter') is FilterElement);
 
   @DomName('SVGFilterElement.filterUnits')
   @DocsEditable()
@@ -2274,13 +2414,14 @@ class FilterElement extends SvgElement implements UriReference {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFilterPrimitiveStandardAttributes')
 @Unstable()
 abstract class FilterPrimitiveStandardAttributes extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory FilterPrimitiveStandardAttributes._() { throw new UnsupportedError("Not supported"); }
+  factory FilterPrimitiveStandardAttributes._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   final AnimatedLength height;
 
@@ -2296,13 +2437,14 @@ abstract class FilterPrimitiveStandardAttributes extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFitToViewBox')
 @Unstable()
 abstract class FitToViewBox extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory FitToViewBox._() { throw new UnsupportedError("Not supported"); }
+  factory FitToViewBox._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   final AnimatedPreserveAspectRatio preserveAspectRatio;
 
@@ -2311,7 +2453,6 @@ abstract class FitToViewBox extends Interceptor {
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGForeignObjectElement')
@@ -2322,11 +2463,14 @@ abstract class FitToViewBox extends Interceptor {
 @Native("SVGForeignObjectElement")
 class ForeignObjectElement extends GraphicsElement {
   // To suppress missing implicit constructor warnings.
-  factory ForeignObjectElement._() { throw new UnsupportedError("Not supported"); }
+  factory ForeignObjectElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGForeignObjectElement.SVGForeignObjectElement')
   @DocsEditable()
-  factory ForeignObjectElement() => _SvgElementFactoryProvider.createSvgElement_tag("foreignObject");
+  factory ForeignObjectElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("foreignObject");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2335,7 +2479,9 @@ class ForeignObjectElement extends GraphicsElement {
   ForeignObjectElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('foreignObject') && (new SvgElement.tag('foreignObject') is ForeignObjectElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('foreignObject') &&
+      (new SvgElement.tag('foreignObject') is ForeignObjectElement);
 
   @DomName('SVGForeignObjectElement.height')
   @DocsEditable()
@@ -2357,14 +2503,15 @@ class ForeignObjectElement extends GraphicsElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGGElement')
 @Unstable()
 @Native("SVGGElement")
 class GElement extends GraphicsElement {
   // To suppress missing implicit constructor warnings.
-  factory GElement._() { throw new UnsupportedError("Not supported"); }
+  factory GElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGGElement.SVGGElement')
   @DocsEditable()
@@ -2380,14 +2527,15 @@ class GElement extends GraphicsElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGGeometryElement')
 @Experimental() // untriaged
 @Native("SVGGeometryElement")
 class GeometryElement extends GraphicsElement {
   // To suppress missing implicit constructor warnings.
-  factory GeometryElement._() { throw new UnsupportedError("Not supported"); }
+  factory GeometryElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2409,14 +2557,15 @@ class GeometryElement extends GraphicsElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGGraphicsElement')
 @Experimental() // untriaged
 @Native("SVGGraphicsElement")
 class GraphicsElement extends SvgElement implements Tests {
   // To suppress missing implicit constructor warnings.
-  factory GraphicsElement._() { throw new UnsupportedError("Not supported"); }
+  factory GraphicsElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2456,11 +2605,6 @@ class GraphicsElement extends SvgElement implements Tests {
   @Experimental() // untriaged
   Matrix getScreenCtm() native;
 
-  @DomName('SVGGraphicsElement.getTransformToElement')
-  @DocsEditable()
-  @Experimental() // untriaged
-  Matrix getTransformToElement(SvgElement element) native;
-
   // From SVGTests
 
   @DomName('SVGGraphicsElement.requiredExtensions')
@@ -2477,16 +2621,10 @@ class GraphicsElement extends SvgElement implements Tests {
   @DocsEditable()
   @Experimental() // untriaged
   final StringList systemLanguage;
-
-  @DomName('SVGGraphicsElement.hasExtension')
-  @DocsEditable()
-  @Experimental() // untriaged
-  bool hasExtension(String extension) native;
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGImageElement')
@@ -2494,11 +2632,14 @@ class GraphicsElement extends SvgElement implements Tests {
 @Native("SVGImageElement")
 class ImageElement extends GraphicsElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory ImageElement._() { throw new UnsupportedError("Not supported"); }
+  factory ImageElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGImageElement.SVGImageElement')
   @DocsEditable()
-  factory ImageElement() => _SvgElementFactoryProvider.createSvgElement_tag("image");
+  factory ImageElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("image");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2536,14 +2677,15 @@ class ImageElement extends GraphicsElement implements UriReference {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGLength')
 @Unstable()
 @Native("SVGLength")
 class Length extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Length._() { throw new UnsupportedError("Not supported"); }
+  factory Length._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGLength.SVG_LENGTHTYPE_CM')
   @DocsEditable()
@@ -2617,14 +2759,17 @@ class Length extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGLengthList')
 @Unstable()
 @Native("SVGLengthList")
-class LengthList extends Interceptor with ListMixin<Length>, ImmutableListMixin<Length> implements List<Length> {
+class LengthList extends Interceptor
+    with ListMixin<Length>, ImmutableListMixin<Length>
+    implements List<Length> {
   // To suppress missing implicit constructor warnings.
-  factory LengthList._() { throw new UnsupportedError("Not supported"); }
+  factory LengthList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGLengthList.length')
   @DocsEditable()
@@ -2635,18 +2780,17 @@ class LengthList extends Interceptor with ListMixin<Length>, ImmutableListMixin<
   @DocsEditable()
   final int numberOfItems;
 
-  Length operator[](int index) {
-    if (JS("bool", "# >>> 0 !== # || # >= #", index,
-        index, index, length))
+  Length operator [](int index) {
+    if (JS("bool", "# >>> 0 !== # || # >= #", index, index, index, length))
       throw new RangeError.index(index, this);
     return this.getItem(index);
   }
-  void operator[]=(int index, Length value) {
+
+  void operator []=(int index, Length value) {
     throw new UnsupportedError("Cannot assign element of immutable List.");
   }
   // -- start List<Length> mixins.
   // Length is the element type.
-
 
   set length(int value) {
     throw new UnsupportedError("Cannot resize immutable List.");
@@ -2716,18 +2860,20 @@ class LengthList extends Interceptor with ListMixin<Length>, ImmutableListMixin<
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGLineElement')
 @Unstable()
 @Native("SVGLineElement")
 class LineElement extends GeometryElement {
   // To suppress missing implicit constructor warnings.
-  factory LineElement._() { throw new UnsupportedError("Not supported"); }
+  factory LineElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGLineElement.SVGLineElement')
   @DocsEditable()
-  factory LineElement() => _SvgElementFactoryProvider.createSvgElement_tag("line");
+  factory LineElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("line");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2755,18 +2901,20 @@ class LineElement extends GeometryElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGLinearGradientElement')
 @Unstable()
 @Native("SVGLinearGradientElement")
 class LinearGradientElement extends _GradientElement {
   // To suppress missing implicit constructor warnings.
-  factory LinearGradientElement._() { throw new UnsupportedError("Not supported"); }
+  factory LinearGradientElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGLinearGradientElement.SVGLinearGradientElement')
   @DocsEditable()
-  factory LinearGradientElement() => _SvgElementFactoryProvider.createSvgElement_tag("linearGradient");
+  factory LinearGradientElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("linearGradient");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2794,18 +2942,20 @@ class LinearGradientElement extends _GradientElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGMarkerElement')
 @Unstable()
 @Native("SVGMarkerElement")
 class MarkerElement extends SvgElement implements FitToViewBox {
   // To suppress missing implicit constructor warnings.
-  factory MarkerElement._() { throw new UnsupportedError("Not supported"); }
+  factory MarkerElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGMarkerElement.SVGMarkerElement')
   @DocsEditable()
-  factory MarkerElement() => _SvgElementFactoryProvider.createSvgElement_tag("marker");
+  factory MarkerElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("marker");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2887,18 +3037,20 @@ class MarkerElement extends SvgElement implements FitToViewBox {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGMaskElement')
 @Unstable()
 @Native("SVGMaskElement")
 class MaskElement extends SvgElement implements Tests {
   // To suppress missing implicit constructor warnings.
-  factory MaskElement._() { throw new UnsupportedError("Not supported"); }
+  factory MaskElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGMaskElement.SVGMaskElement')
   @DocsEditable()
-  factory MaskElement() => _SvgElementFactoryProvider.createSvgElement_tag("mask");
+  factory MaskElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("mask");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -2943,15 +3095,10 @@ class MaskElement extends SvgElement implements Tests {
   @DomName('SVGMaskElement.systemLanguage')
   @DocsEditable()
   final StringList systemLanguage;
-
-  @DomName('SVGMaskElement.hasExtension')
-  @DocsEditable()
-  bool hasExtension(String extension) native;
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGMatrix')
@@ -2959,7 +3106,9 @@ class MaskElement extends SvgElement implements Tests {
 @Native("SVGMatrix")
 class Matrix extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Matrix._() { throw new UnsupportedError("Not supported"); }
+  factory Matrix._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGMatrix.a')
   @DocsEditable()
@@ -3033,14 +3182,15 @@ class Matrix extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGMetadataElement')
 @Unstable()
 @Native("SVGMetadataElement")
 class MetadataElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory MetadataElement._() { throw new UnsupportedError("Not supported"); }
+  factory MetadataElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -3052,14 +3202,15 @@ class MetadataElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGNumber')
 @Unstable()
 @Native("SVGNumber")
 class Number extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Number._() { throw new UnsupportedError("Not supported"); }
+  factory Number._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGNumber.value')
   @DocsEditable()
@@ -3069,14 +3220,17 @@ class Number extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGNumberList')
 @Unstable()
 @Native("SVGNumberList")
-class NumberList extends Interceptor with ListMixin<Number>, ImmutableListMixin<Number> implements List<Number> {
+class NumberList extends Interceptor
+    with ListMixin<Number>, ImmutableListMixin<Number>
+    implements List<Number> {
   // To suppress missing implicit constructor warnings.
-  factory NumberList._() { throw new UnsupportedError("Not supported"); }
+  factory NumberList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGNumberList.length')
   @DocsEditable()
@@ -3087,18 +3241,17 @@ class NumberList extends Interceptor with ListMixin<Number>, ImmutableListMixin<
   @DocsEditable()
   final int numberOfItems;
 
-  Number operator[](int index) {
-    if (JS("bool", "# >>> 0 !== # || # >= #", index,
-        index, index, length))
+  Number operator [](int index) {
+    if (JS("bool", "# >>> 0 !== # || # >= #", index, index, index, length))
       throw new RangeError.index(index, this);
     return this.getItem(index);
   }
-  void operator[]=(int index, Number value) {
+
+  void operator []=(int index, Number value) {
     throw new UnsupportedError("Cannot assign element of immutable List.");
   }
   // -- start List<Number> mixins.
   // Number is the element type.
-
 
   set length(int value) {
     throw new UnsupportedError("Cannot resize immutable List.");
@@ -3168,18 +3321,20 @@ class NumberList extends Interceptor with ListMixin<Number>, ImmutableListMixin<
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGPathElement')
 @Unstable()
 @Native("SVGPathElement")
 class PathElement extends GeometryElement {
   // To suppress missing implicit constructor warnings.
-  factory PathElement._() { throw new UnsupportedError("Not supported"); }
+  factory PathElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGPathElement.SVGPathElement')
   @DocsEditable()
-  factory PathElement() => _SvgElementFactoryProvider.createSvgElement_tag("path");
+  factory PathElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("path");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -3187,120 +3342,9 @@ class PathElement extends GeometryElement {
    */
   PathElement.created() : super.created();
 
-  @DomName('SVGPathElement.animatedNormalizedPathSegList')
-  @DocsEditable()
-  final PathSegList animatedNormalizedPathSegList;
-
-  @DomName('SVGPathElement.animatedPathSegList')
-  @DocsEditable()
-  final PathSegList animatedPathSegList;
-
-  @DomName('SVGPathElement.normalizedPathSegList')
-  @DocsEditable()
-  final PathSegList normalizedPathSegList;
-
   @DomName('SVGPathElement.pathLength')
   @DocsEditable()
   final AnimatedNumber pathLength;
-
-  @DomName('SVGPathElement.pathSegList')
-  @DocsEditable()
-  final PathSegList pathSegList;
-
-  @JSName('createSVGPathSegArcAbs')
-  @DomName('SVGPathElement.createSVGPathSegArcAbs')
-  @DocsEditable()
-  PathSegArcAbs createSvgPathSegArcAbs(num x, num y, num r1, num r2, num angle, bool largeArcFlag, bool sweepFlag) native;
-
-  @JSName('createSVGPathSegArcRel')
-  @DomName('SVGPathElement.createSVGPathSegArcRel')
-  @DocsEditable()
-  PathSegArcRel createSvgPathSegArcRel(num x, num y, num r1, num r2, num angle, bool largeArcFlag, bool sweepFlag) native;
-
-  @JSName('createSVGPathSegClosePath')
-  @DomName('SVGPathElement.createSVGPathSegClosePath')
-  @DocsEditable()
-  PathSegClosePath createSvgPathSegClosePath() native;
-
-  @JSName('createSVGPathSegCurvetoCubicAbs')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoCubicAbs')
-  @DocsEditable()
-  PathSegCurvetoCubicAbs createSvgPathSegCurvetoCubicAbs(num x, num y, num x1, num y1, num x2, num y2) native;
-
-  @JSName('createSVGPathSegCurvetoCubicRel')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoCubicRel')
-  @DocsEditable()
-  PathSegCurvetoCubicRel createSvgPathSegCurvetoCubicRel(num x, num y, num x1, num y1, num x2, num y2) native;
-
-  @JSName('createSVGPathSegCurvetoCubicSmoothAbs')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoCubicSmoothAbs')
-  @DocsEditable()
-  PathSegCurvetoCubicSmoothAbs createSvgPathSegCurvetoCubicSmoothAbs(num x, num y, num x2, num y2) native;
-
-  @JSName('createSVGPathSegCurvetoCubicSmoothRel')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoCubicSmoothRel')
-  @DocsEditable()
-  PathSegCurvetoCubicSmoothRel createSvgPathSegCurvetoCubicSmoothRel(num x, num y, num x2, num y2) native;
-
-  @JSName('createSVGPathSegCurvetoQuadraticAbs')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoQuadraticAbs')
-  @DocsEditable()
-  PathSegCurvetoQuadraticAbs createSvgPathSegCurvetoQuadraticAbs(num x, num y, num x1, num y1) native;
-
-  @JSName('createSVGPathSegCurvetoQuadraticRel')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoQuadraticRel')
-  @DocsEditable()
-  PathSegCurvetoQuadraticRel createSvgPathSegCurvetoQuadraticRel(num x, num y, num x1, num y1) native;
-
-  @JSName('createSVGPathSegCurvetoQuadraticSmoothAbs')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoQuadraticSmoothAbs')
-  @DocsEditable()
-  PathSegCurvetoQuadraticSmoothAbs createSvgPathSegCurvetoQuadraticSmoothAbs(num x, num y) native;
-
-  @JSName('createSVGPathSegCurvetoQuadraticSmoothRel')
-  @DomName('SVGPathElement.createSVGPathSegCurvetoQuadraticSmoothRel')
-  @DocsEditable()
-  PathSegCurvetoQuadraticSmoothRel createSvgPathSegCurvetoQuadraticSmoothRel(num x, num y) native;
-
-  @JSName('createSVGPathSegLinetoAbs')
-  @DomName('SVGPathElement.createSVGPathSegLinetoAbs')
-  @DocsEditable()
-  PathSegLinetoAbs createSvgPathSegLinetoAbs(num x, num y) native;
-
-  @JSName('createSVGPathSegLinetoHorizontalAbs')
-  @DomName('SVGPathElement.createSVGPathSegLinetoHorizontalAbs')
-  @DocsEditable()
-  PathSegLinetoHorizontalAbs createSvgPathSegLinetoHorizontalAbs(num x) native;
-
-  @JSName('createSVGPathSegLinetoHorizontalRel')
-  @DomName('SVGPathElement.createSVGPathSegLinetoHorizontalRel')
-  @DocsEditable()
-  PathSegLinetoHorizontalRel createSvgPathSegLinetoHorizontalRel(num x) native;
-
-  @JSName('createSVGPathSegLinetoRel')
-  @DomName('SVGPathElement.createSVGPathSegLinetoRel')
-  @DocsEditable()
-  PathSegLinetoRel createSvgPathSegLinetoRel(num x, num y) native;
-
-  @JSName('createSVGPathSegLinetoVerticalAbs')
-  @DomName('SVGPathElement.createSVGPathSegLinetoVerticalAbs')
-  @DocsEditable()
-  PathSegLinetoVerticalAbs createSvgPathSegLinetoVerticalAbs(num y) native;
-
-  @JSName('createSVGPathSegLinetoVerticalRel')
-  @DomName('SVGPathElement.createSVGPathSegLinetoVerticalRel')
-  @DocsEditable()
-  PathSegLinetoVerticalRel createSvgPathSegLinetoVerticalRel(num y) native;
-
-  @JSName('createSVGPathSegMovetoAbs')
-  @DomName('SVGPathElement.createSVGPathSegMovetoAbs')
-  @DocsEditable()
-  PathSegMovetoAbs createSvgPathSegMovetoAbs(num x, num y) native;
-
-  @JSName('createSVGPathSegMovetoRel')
-  @DomName('SVGPathElement.createSVGPathSegMovetoRel')
-  @DocsEditable()
-  PathSegMovetoRel createSvgPathSegMovetoRel(num x, num y) native;
 
   @DomName('SVGPathElement.getPathSegAtLength')
   @DocsEditable()
@@ -3318,697 +3362,21 @@ class PathElement extends GeometryElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
-@DocsEditable()
-@DomName('SVGPathSeg')
-@Unstable()
-@Native("SVGPathSeg")
-class PathSeg extends Interceptor {
-  // To suppress missing implicit constructor warnings.
-  factory PathSeg._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSeg.PATHSEG_ARC_ABS')
-  @DocsEditable()
-  static const int PATHSEG_ARC_ABS = 10;
-
-  @DomName('SVGPathSeg.PATHSEG_ARC_REL')
-  @DocsEditable()
-  static const int PATHSEG_ARC_REL = 11;
-
-  @DomName('SVGPathSeg.PATHSEG_CLOSEPATH')
-  @DocsEditable()
-  static const int PATHSEG_CLOSEPATH = 1;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_CUBIC_ABS')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_CUBIC_ABS = 6;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_CUBIC_REL')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_CUBIC_REL = 7;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_ABS')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_CUBIC_SMOOTH_ABS = 16;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_REL')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_CUBIC_SMOOTH_REL = 17;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_ABS')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_QUADRATIC_ABS = 8;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_REL')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_QUADRATIC_REL = 9;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS = 18;
-
-  @DomName('SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL')
-  @DocsEditable()
-  static const int PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL = 19;
-
-  @DomName('SVGPathSeg.PATHSEG_LINETO_ABS')
-  @DocsEditable()
-  static const int PATHSEG_LINETO_ABS = 4;
-
-  @DomName('SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_ABS')
-  @DocsEditable()
-  static const int PATHSEG_LINETO_HORIZONTAL_ABS = 12;
-
-  @DomName('SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_REL')
-  @DocsEditable()
-  static const int PATHSEG_LINETO_HORIZONTAL_REL = 13;
-
-  @DomName('SVGPathSeg.PATHSEG_LINETO_REL')
-  @DocsEditable()
-  static const int PATHSEG_LINETO_REL = 5;
-
-  @DomName('SVGPathSeg.PATHSEG_LINETO_VERTICAL_ABS')
-  @DocsEditable()
-  static const int PATHSEG_LINETO_VERTICAL_ABS = 14;
-
-  @DomName('SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL')
-  @DocsEditable()
-  static const int PATHSEG_LINETO_VERTICAL_REL = 15;
-
-  @DomName('SVGPathSeg.PATHSEG_MOVETO_ABS')
-  @DocsEditable()
-  static const int PATHSEG_MOVETO_ABS = 2;
-
-  @DomName('SVGPathSeg.PATHSEG_MOVETO_REL')
-  @DocsEditable()
-  static const int PATHSEG_MOVETO_REL = 3;
-
-  @DomName('SVGPathSeg.PATHSEG_UNKNOWN')
-  @DocsEditable()
-  static const int PATHSEG_UNKNOWN = 0;
-
-  @DomName('SVGPathSeg.pathSegType')
-  @DocsEditable()
-  final int pathSegType;
-
-  @DomName('SVGPathSeg.pathSegTypeAsLetter')
-  @DocsEditable()
-  final String pathSegTypeAsLetter;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegArcAbs')
-@Unstable()
-@Native("SVGPathSegArcAbs")
-class PathSegArcAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegArcAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegArcAbs.angle')
-  @DocsEditable()
-  num angle;
-
-  @DomName('SVGPathSegArcAbs.largeArcFlag')
-  @DocsEditable()
-  bool largeArcFlag;
-
-  @DomName('SVGPathSegArcAbs.r1')
-  @DocsEditable()
-  num r1;
-
-  @DomName('SVGPathSegArcAbs.r2')
-  @DocsEditable()
-  num r2;
-
-  @DomName('SVGPathSegArcAbs.sweepFlag')
-  @DocsEditable()
-  bool sweepFlag;
-
-  @DomName('SVGPathSegArcAbs.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegArcAbs.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegArcRel')
-@Unstable()
-@Native("SVGPathSegArcRel")
-class PathSegArcRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegArcRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegArcRel.angle')
-  @DocsEditable()
-  num angle;
-
-  @DomName('SVGPathSegArcRel.largeArcFlag')
-  @DocsEditable()
-  bool largeArcFlag;
-
-  @DomName('SVGPathSegArcRel.r1')
-  @DocsEditable()
-  num r1;
-
-  @DomName('SVGPathSegArcRel.r2')
-  @DocsEditable()
-  num r2;
-
-  @DomName('SVGPathSegArcRel.sweepFlag')
-  @DocsEditable()
-  bool sweepFlag;
-
-  @DomName('SVGPathSegArcRel.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegArcRel.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegClosePath')
-@Unstable()
-@Native("SVGPathSegClosePath")
-class PathSegClosePath extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegClosePath._() { throw new UnsupportedError("Not supported"); }
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoCubicAbs')
-@Unstable()
-@Native("SVGPathSegCurvetoCubicAbs")
-class PathSegCurvetoCubicAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoCubicAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoCubicAbs.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoCubicAbs.x1')
-  @DocsEditable()
-  num x1;
-
-  @DomName('SVGPathSegCurvetoCubicAbs.x2')
-  @DocsEditable()
-  num x2;
-
-  @DomName('SVGPathSegCurvetoCubicAbs.y')
-  @DocsEditable()
-  num y;
-
-  @DomName('SVGPathSegCurvetoCubicAbs.y1')
-  @DocsEditable()
-  num y1;
-
-  @DomName('SVGPathSegCurvetoCubicAbs.y2')
-  @DocsEditable()
-  num y2;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoCubicRel')
-@Unstable()
-@Native("SVGPathSegCurvetoCubicRel")
-class PathSegCurvetoCubicRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoCubicRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoCubicRel.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoCubicRel.x1')
-  @DocsEditable()
-  num x1;
-
-  @DomName('SVGPathSegCurvetoCubicRel.x2')
-  @DocsEditable()
-  num x2;
-
-  @DomName('SVGPathSegCurvetoCubicRel.y')
-  @DocsEditable()
-  num y;
-
-  @DomName('SVGPathSegCurvetoCubicRel.y1')
-  @DocsEditable()
-  num y1;
-
-  @DomName('SVGPathSegCurvetoCubicRel.y2')
-  @DocsEditable()
-  num y2;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoCubicSmoothAbs')
-@Unstable()
-@Native("SVGPathSegCurvetoCubicSmoothAbs")
-class PathSegCurvetoCubicSmoothAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoCubicSmoothAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoCubicSmoothAbs.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoCubicSmoothAbs.x2')
-  @DocsEditable()
-  num x2;
-
-  @DomName('SVGPathSegCurvetoCubicSmoothAbs.y')
-  @DocsEditable()
-  num y;
-
-  @DomName('SVGPathSegCurvetoCubicSmoothAbs.y2')
-  @DocsEditable()
-  num y2;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoCubicSmoothRel')
-@Unstable()
-@Native("SVGPathSegCurvetoCubicSmoothRel")
-class PathSegCurvetoCubicSmoothRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoCubicSmoothRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoCubicSmoothRel.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoCubicSmoothRel.x2')
-  @DocsEditable()
-  num x2;
-
-  @DomName('SVGPathSegCurvetoCubicSmoothRel.y')
-  @DocsEditable()
-  num y;
-
-  @DomName('SVGPathSegCurvetoCubicSmoothRel.y2')
-  @DocsEditable()
-  num y2;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoQuadraticAbs')
-@Unstable()
-@Native("SVGPathSegCurvetoQuadraticAbs")
-class PathSegCurvetoQuadraticAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoQuadraticAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoQuadraticAbs.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoQuadraticAbs.x1')
-  @DocsEditable()
-  num x1;
-
-  @DomName('SVGPathSegCurvetoQuadraticAbs.y')
-  @DocsEditable()
-  num y;
-
-  @DomName('SVGPathSegCurvetoQuadraticAbs.y1')
-  @DocsEditable()
-  num y1;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoQuadraticRel')
-@Unstable()
-@Native("SVGPathSegCurvetoQuadraticRel")
-class PathSegCurvetoQuadraticRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoQuadraticRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoQuadraticRel.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoQuadraticRel.x1')
-  @DocsEditable()
-  num x1;
-
-  @DomName('SVGPathSegCurvetoQuadraticRel.y')
-  @DocsEditable()
-  num y;
-
-  @DomName('SVGPathSegCurvetoQuadraticRel.y1')
-  @DocsEditable()
-  num y1;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoQuadraticSmoothAbs')
-@Unstable()
-@Native("SVGPathSegCurvetoQuadraticSmoothAbs")
-class PathSegCurvetoQuadraticSmoothAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoQuadraticSmoothAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoQuadraticSmoothAbs.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoQuadraticSmoothAbs.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegCurvetoQuadraticSmoothRel')
-@Unstable()
-@Native("SVGPathSegCurvetoQuadraticSmoothRel")
-class PathSegCurvetoQuadraticSmoothRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegCurvetoQuadraticSmoothRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegCurvetoQuadraticSmoothRel.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegCurvetoQuadraticSmoothRel.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegLinetoAbs')
-@Unstable()
-@Native("SVGPathSegLinetoAbs")
-class PathSegLinetoAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegLinetoAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegLinetoAbs.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegLinetoAbs.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegLinetoHorizontalAbs')
-@Unstable()
-@Native("SVGPathSegLinetoHorizontalAbs")
-class PathSegLinetoHorizontalAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegLinetoHorizontalAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegLinetoHorizontalAbs.x')
-  @DocsEditable()
-  num x;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegLinetoHorizontalRel')
-@Unstable()
-@Native("SVGPathSegLinetoHorizontalRel")
-class PathSegLinetoHorizontalRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegLinetoHorizontalRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegLinetoHorizontalRel.x')
-  @DocsEditable()
-  num x;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegLinetoRel')
-@Unstable()
-@Native("SVGPathSegLinetoRel")
-class PathSegLinetoRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegLinetoRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegLinetoRel.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegLinetoRel.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegLinetoVerticalAbs')
-@Unstable()
-@Native("SVGPathSegLinetoVerticalAbs")
-class PathSegLinetoVerticalAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegLinetoVerticalAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegLinetoVerticalAbs.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegLinetoVerticalRel')
-@Unstable()
-@Native("SVGPathSegLinetoVerticalRel")
-class PathSegLinetoVerticalRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegLinetoVerticalRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegLinetoVerticalRel.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegList')
-@Unstable()
-@Native("SVGPathSegList")
-class PathSegList extends Interceptor with ListMixin<PathSeg>, ImmutableListMixin<PathSeg> implements List<PathSeg> {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegList._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegList.length')
-  @DocsEditable()
-  @Experimental() // untriaged
-  int get length => JS("int", "#.length", this);
-
-  @DomName('SVGPathSegList.numberOfItems')
-  @DocsEditable()
-  final int numberOfItems;
-
-  PathSeg operator[](int index) {
-    if (JS("bool", "# >>> 0 !== # || # >= #", index,
-        index, index, length))
-      throw new RangeError.index(index, this);
-    return this.getItem(index);
-  }
-  void operator[]=(int index, PathSeg value) {
-    throw new UnsupportedError("Cannot assign element of immutable List.");
-  }
-  // -- start List<PathSeg> mixins.
-  // PathSeg is the element type.
-
-
-  set length(int value) {
-    throw new UnsupportedError("Cannot resize immutable List.");
-  }
-
-  PathSeg get first {
-    if (this.length > 0) {
-      return JS('PathSeg', '#[0]', this);
-    }
-    throw new StateError("No elements");
-  }
-
-  PathSeg get last {
-    int len = this.length;
-    if (len > 0) {
-      return JS('PathSeg', '#[#]', this, len - 1);
-    }
-    throw new StateError("No elements");
-  }
-
-  PathSeg get single {
-    int len = this.length;
-    if (len == 1) {
-      return JS('PathSeg', '#[0]', this);
-    }
-    if (len == 0) throw new StateError("No elements");
-    throw new StateError("More than one element");
-  }
-
-  PathSeg elementAt(int index) => this[index];
-  // -- end List<PathSeg> mixins.
-
-  @DomName('SVGPathSegList.__setter__')
-  @DocsEditable()
-  @Experimental() // untriaged
-  void __setter__(int index, PathSeg newItem) native;
-
-  @DomName('SVGPathSegList.appendItem')
-  @DocsEditable()
-  PathSeg appendItem(PathSeg newItem) native;
-
-  @DomName('SVGPathSegList.clear')
-  @DocsEditable()
-  void clear() native;
-
-  @DomName('SVGPathSegList.getItem')
-  @DocsEditable()
-  PathSeg getItem(int index) native;
-
-  @DomName('SVGPathSegList.initialize')
-  @DocsEditable()
-  PathSeg initialize(PathSeg newItem) native;
-
-  @DomName('SVGPathSegList.insertItemBefore')
-  @DocsEditable()
-  PathSeg insertItemBefore(PathSeg newItem, int index) native;
-
-  @DomName('SVGPathSegList.removeItem')
-  @DocsEditable()
-  PathSeg removeItem(int index) native;
-
-  @DomName('SVGPathSegList.replaceItem')
-  @DocsEditable()
-  PathSeg replaceItem(PathSeg newItem, int index) native;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegMovetoAbs')
-@Unstable()
-@Native("SVGPathSegMovetoAbs")
-class PathSegMovetoAbs extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegMovetoAbs._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegMovetoAbs.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegMovetoAbs.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
-@DocsEditable()
-@DomName('SVGPathSegMovetoRel')
-@Unstable()
-@Native("SVGPathSegMovetoRel")
-class PathSegMovetoRel extends PathSeg {
-  // To suppress missing implicit constructor warnings.
-  factory PathSegMovetoRel._() { throw new UnsupportedError("Not supported"); }
-
-  @DomName('SVGPathSegMovetoRel.x')
-  @DocsEditable()
-  num x;
-
-  @DomName('SVGPathSegMovetoRel.y')
-  @DocsEditable()
-  num y;
-}
-// Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-
 @DocsEditable()
 @DomName('SVGPatternElement')
 @Unstable()
 @Native("SVGPatternElement")
-class PatternElement extends SvgElement implements FitToViewBox, UriReference, Tests {
+class PatternElement extends SvgElement
+    implements FitToViewBox, UriReference, Tests {
   // To suppress missing implicit constructor warnings.
-  factory PatternElement._() { throw new UnsupportedError("Not supported"); }
+  factory PatternElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGPatternElement.SVGPatternElement')
   @DocsEditable()
-  factory PatternElement() => _SvgElementFactoryProvider.createSvgElement_tag("pattern");
+  factory PatternElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("pattern");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4068,10 +3436,6 @@ class PatternElement extends SvgElement implements FitToViewBox, UriReference, T
   @DocsEditable()
   final StringList systemLanguage;
 
-  @DomName('SVGPatternElement.hasExtension')
-  @DocsEditable()
-  bool hasExtension(String extension) native;
-
   // From SVGURIReference
 
   @DomName('SVGPatternElement.href')
@@ -4082,14 +3446,15 @@ class PatternElement extends SvgElement implements FitToViewBox, UriReference, T
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGPoint')
 @Unstable()
 @Native("SVGPoint")
 class Point extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Point._() { throw new UnsupportedError("Not supported"); }
+  factory Point._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGPoint.x')
   @DocsEditable()
@@ -4107,14 +3472,15 @@ class Point extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGPointList')
 @Unstable()
 @Native("SVGPointList")
 class PointList extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory PointList._() { throw new UnsupportedError("Not supported"); }
+  factory PointList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGPointList.length')
   @DocsEditable()
@@ -4162,18 +3528,20 @@ class PointList extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGPolygonElement')
 @Unstable()
 @Native("SVGPolygonElement")
 class PolygonElement extends GeometryElement {
   // To suppress missing implicit constructor warnings.
-  factory PolygonElement._() { throw new UnsupportedError("Not supported"); }
+  factory PolygonElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGPolygonElement.SVGPolygonElement')
   @DocsEditable()
-  factory PolygonElement() => _SvgElementFactoryProvider.createSvgElement_tag("polygon");
+  factory PolygonElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("polygon");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4193,18 +3561,20 @@ class PolygonElement extends GeometryElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGPolylineElement')
 @Unstable()
 @Native("SVGPolylineElement")
 class PolylineElement extends GeometryElement {
   // To suppress missing implicit constructor warnings.
-  factory PolylineElement._() { throw new UnsupportedError("Not supported"); }
+  factory PolylineElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGPolylineElement.SVGPolylineElement')
   @DocsEditable()
-  factory PolylineElement() => _SvgElementFactoryProvider.createSvgElement_tag("polyline");
+  factory PolylineElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("polyline");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4224,14 +3594,15 @@ class PolylineElement extends GeometryElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGPreserveAspectRatio')
 @Unstable()
 @Native("SVGPreserveAspectRatio")
 class PreserveAspectRatio extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory PreserveAspectRatio._() { throw new UnsupportedError("Not supported"); }
+  factory PreserveAspectRatio._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGPreserveAspectRatio.SVG_MEETORSLICE_MEET')
   @DocsEditable()
@@ -4301,18 +3672,20 @@ class PreserveAspectRatio extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGRadialGradientElement')
 @Unstable()
 @Native("SVGRadialGradientElement")
 class RadialGradientElement extends _GradientElement {
   // To suppress missing implicit constructor warnings.
-  factory RadialGradientElement._() { throw new UnsupportedError("Not supported"); }
+  factory RadialGradientElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGRadialGradientElement.SVGRadialGradientElement')
   @DocsEditable()
-  factory RadialGradientElement() => _SvgElementFactoryProvider.createSvgElement_tag("radialGradient");
+  factory RadialGradientElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("radialGradient");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4348,14 +3721,15 @@ class RadialGradientElement extends _GradientElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGRect')
 @Unstable()
 @Native("SVGRect")
 class Rect extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Rect._() { throw new UnsupportedError("Not supported"); }
+  factory Rect._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGRect.height')
   @DocsEditable()
@@ -4377,18 +3751,20 @@ class Rect extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGRectElement')
 @Unstable()
 @Native("SVGRectElement")
 class RectElement extends GeometryElement {
   // To suppress missing implicit constructor warnings.
-  factory RectElement._() { throw new UnsupportedError("Not supported"); }
+  factory RectElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGRectElement.SVGRectElement')
   @DocsEditable()
-  factory RectElement() => _SvgElementFactoryProvider.createSvgElement_tag("rect");
+  factory RectElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("rect");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4424,18 +3800,20 @@ class RectElement extends GeometryElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGScriptElement')
 @Unstable()
 @Native("SVGScriptElement")
 class ScriptElement extends SvgElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory ScriptElement._() { throw new UnsupportedError("Not supported"); }
+  factory ScriptElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGScriptElement.SVGScriptElement')
   @DocsEditable()
-  factory ScriptElement() => _SvgElementFactoryProvider.createSvgElement_tag("script");
+  factory ScriptElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("script");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4457,7 +3835,6 @@ class ScriptElement extends SvgElement implements UriReference {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGSetElement')
 @SupportedBrowser(SupportedBrowser.CHROME)
@@ -4467,11 +3844,14 @@ class ScriptElement extends SvgElement implements UriReference {
 @Native("SVGSetElement")
 class SetElement extends AnimationElement {
   // To suppress missing implicit constructor warnings.
-  factory SetElement._() { throw new UnsupportedError("Not supported"); }
+  factory SetElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGSetElement.SVGSetElement')
   @DocsEditable()
-  factory SetElement() => _SvgElementFactoryProvider.createSvgElement_tag("set");
+  factory SetElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("set");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4480,12 +3860,13 @@ class SetElement extends AnimationElement {
   SetElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('set') && (new SvgElement.tag('set') is SetElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('set') &&
+      (new SvgElement.tag('set') is SetElement);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGStopElement')
@@ -4493,11 +3874,14 @@ class SetElement extends AnimationElement {
 @Native("SVGStopElement")
 class StopElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory StopElement._() { throw new UnsupportedError("Not supported"); }
+  factory StopElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGStopElement.SVGStopElement')
   @DocsEditable()
-  factory StopElement() => _SvgElementFactoryProvider.createSvgElement_tag("stop");
+  factory StopElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("stop");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4514,14 +3898,17 @@ class StopElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGStringList')
 @Unstable()
 @Native("SVGStringList")
-class StringList extends Interceptor with ListMixin<String>, ImmutableListMixin<String> implements List<String> {
+class StringList extends Interceptor
+    with ListMixin<String>, ImmutableListMixin<String>
+    implements List<String> {
   // To suppress missing implicit constructor warnings.
-  factory StringList._() { throw new UnsupportedError("Not supported"); }
+  factory StringList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGStringList.length')
   @DocsEditable()
@@ -4532,18 +3919,17 @@ class StringList extends Interceptor with ListMixin<String>, ImmutableListMixin<
   @DocsEditable()
   final int numberOfItems;
 
-  String operator[](int index) {
-    if (JS("bool", "# >>> 0 !== # || # >= #", index,
-        index, index, length))
+  String operator [](int index) {
+    if (JS("bool", "# >>> 0 !== # || # >= #", index, index, index, length))
       throw new RangeError.index(index, this);
     return this.getItem(index);
   }
-  void operator[]=(int index, String value) {
+
+  void operator []=(int index, String value) {
     throw new UnsupportedError("Cannot assign element of immutable List.");
   }
   // -- start List<String> mixins.
   // String is the element type.
-
 
   set length(int value) {
     throw new UnsupportedError("Cannot resize immutable List.");
@@ -4613,7 +3999,6 @@ class StringList extends Interceptor with ListMixin<String>, ImmutableListMixin<
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGStyleElement')
 // http://www.w3.org/TR/SVG/types.html#InterfaceSVGStylable
@@ -4621,11 +4006,14 @@ class StringList extends Interceptor with ListMixin<String>, ImmutableListMixin<
 @Native("SVGStyleElement")
 class StyleElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory StyleElement._() { throw new UnsupportedError("Not supported"); }
+  factory StyleElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGStyleElement.SVGStyleElement')
   @DocsEditable()
-  factory StyleElement() => _SvgElementFactoryProvider.createSvgElement_tag("style");
+  factory StyleElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("style");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -4657,14 +4045,16 @@ class StyleElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
-class _AttributeClassSet extends CssClassSetImpl {
+class AttributeClassSet extends CssClassSetImpl {
   final Element _element;
 
-  _AttributeClassSet(this._element);
+  AttributeClassSet(this._element);
 
   Set<String> readClasses() {
     var classname = _element.attributes['class'];
+    if (classname is AnimatedString) {
+      classname = (classname as AnimatedString).baseVal;
+    }
 
     Set<String> s = new LinkedHashSet<String>();
     if (classname == null) {
@@ -4680,7 +4070,7 @@ class _AttributeClassSet extends CssClassSetImpl {
   }
 
   void writeClasses(Set s) {
-    _element.attributes['class'] = s.join(' ');
+    _element.setAttribute('class', s.join(' '));
   }
 }
 
@@ -4694,7 +4084,6 @@ class SvgElement extends Element implements GlobalEventHandlers {
       document.createElementNS("http://www.w3.org/2000/svg", tag);
   factory SvgElement.svg(String svg,
       {NodeValidator validator, NodeTreeSanitizer treeSanitizer}) {
-
     if (validator == null && treeSanitizer == null) {
       validator = new NodeValidatorBuilder.common()..allowSvg();
     }
@@ -4706,12 +4095,12 @@ class SvgElement extends Element implements GlobalEventHandlers {
     } else {
       parentElement = new SvgSvgElement();
     }
-    var fragment = parentElement.createFragment(svg, validator: validator,
-        treeSanitizer: treeSanitizer);
+    var fragment = parentElement.createFragment(svg,
+        validator: validator, treeSanitizer: treeSanitizer);
     return fragment.nodes.where((e) => e is SvgElement).single;
   }
 
-  CssClassSet get classes => new _AttributeClassSet(this);
+  CssClassSet get classes => new AttributeClassSet(this);
 
   List<Element> get children => new FilteredElementList(this);
 
@@ -4722,14 +4111,14 @@ class SvgElement extends Element implements GlobalEventHandlers {
   }
 
   String get outerHtml {
-    final container = new Element.tag("div");
+    final container = new DivElement();
     final SvgElement cloned = this.clone(true);
     container.children.add(cloned);
     return container.innerHtml;
   }
 
   String get innerHtml {
-    final container = new Element.tag("div");
+    final container = new DivElement();
     final SvgElement cloned = this.clone(true);
     container.children.addAll(cloned.children);
     return container.innerHtml;
@@ -4741,19 +4130,17 @@ class SvgElement extends Element implements GlobalEventHandlers {
 
   DocumentFragment createFragment(String svg,
       {NodeValidator validator, NodeTreeSanitizer treeSanitizer}) {
-
     if (treeSanitizer == null) {
       if (validator == null) {
-        validator = new NodeValidatorBuilder.common()
-          ..allowSvg();
+        validator = new NodeValidatorBuilder.common()..allowSvg();
       }
       treeSanitizer = new NodeTreeSanitizer(validator);
     }
 
     // We create a fragment which will parse in the HTML parser
     var html = '<svg version="1.1">$svg</svg>';
-    var fragment = document.body.createFragment(html,
-        treeSanitizer: treeSanitizer);
+    var fragment =
+        document.body.createFragment(html, treeSanitizer: treeSanitizer);
 
     var svgFragment = new DocumentFragment();
     // The root is the <svg/> element, need to pull out the contents.
@@ -4772,8 +4159,8 @@ class SvgElement extends Element implements GlobalEventHandlers {
   }
 
   @DomName('Element.insertAdjacentHTML')
-  void insertAdjacentHtml(String where, String text, {NodeValidator validator,
-      NodeTreeSanitizer treeSanitizer}) {
+  void insertAdjacentHtml(String where, String text,
+      {NodeValidator validator, NodeTreeSanitizer treeSanitizer}) {
     throw new UnsupportedError("Cannot invoke insertAdjacentHtml on SVG.");
   }
 
@@ -4802,267 +4189,345 @@ class SvgElement extends Element implements GlobalEventHandlers {
   }
 
   // To suppress missing implicit constructor warnings.
-  factory SvgElement._() { throw new UnsupportedError("Not supported"); }
+  factory SvgElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGElement.abortEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> abortEvent = const EventStreamProvider<Event>('abort');
+  static const EventStreamProvider<Event> abortEvent =
+      const EventStreamProvider<Event>('abort');
 
   @DomName('SVGElement.blurEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> blurEvent = const EventStreamProvider<Event>('blur');
+  static const EventStreamProvider<Event> blurEvent =
+      const EventStreamProvider<Event>('blur');
 
   @DomName('SVGElement.canplayEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> canPlayEvent = const EventStreamProvider<Event>('canplay');
+  static const EventStreamProvider<Event> canPlayEvent =
+      const EventStreamProvider<Event>('canplay');
 
   @DomName('SVGElement.canplaythroughEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> canPlayThroughEvent = const EventStreamProvider<Event>('canplaythrough');
+  static const EventStreamProvider<Event> canPlayThroughEvent =
+      const EventStreamProvider<Event>('canplaythrough');
 
   @DomName('SVGElement.changeEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> changeEvent = const EventStreamProvider<Event>('change');
+  static const EventStreamProvider<Event> changeEvent =
+      const EventStreamProvider<Event>('change');
 
   @DomName('SVGElement.clickEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> clickEvent = const EventStreamProvider<MouseEvent>('click');
+  static const EventStreamProvider<MouseEvent> clickEvent =
+      const EventStreamProvider<MouseEvent>('click');
 
   @DomName('SVGElement.contextmenuEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> contextMenuEvent = const EventStreamProvider<MouseEvent>('contextmenu');
+  static const EventStreamProvider<MouseEvent> contextMenuEvent =
+      const EventStreamProvider<MouseEvent>('contextmenu');
 
   @DomName('SVGElement.dblclickEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> doubleClickEvent = const EventStreamProvider<Event>('dblclick');
+  static const EventStreamProvider<Event> doubleClickEvent =
+      const EventStreamProvider<Event>('dblclick');
 
   @DomName('SVGElement.dragEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> dragEvent = const EventStreamProvider<MouseEvent>('drag');
+  static const EventStreamProvider<MouseEvent> dragEvent =
+      const EventStreamProvider<MouseEvent>('drag');
 
   @DomName('SVGElement.dragendEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> dragEndEvent = const EventStreamProvider<MouseEvent>('dragend');
+  static const EventStreamProvider<MouseEvent> dragEndEvent =
+      const EventStreamProvider<MouseEvent>('dragend');
 
   @DomName('SVGElement.dragenterEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> dragEnterEvent = const EventStreamProvider<MouseEvent>('dragenter');
+  static const EventStreamProvider<MouseEvent> dragEnterEvent =
+      const EventStreamProvider<MouseEvent>('dragenter');
 
   @DomName('SVGElement.dragleaveEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> dragLeaveEvent = const EventStreamProvider<MouseEvent>('dragleave');
+  static const EventStreamProvider<MouseEvent> dragLeaveEvent =
+      const EventStreamProvider<MouseEvent>('dragleave');
 
   @DomName('SVGElement.dragoverEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> dragOverEvent = const EventStreamProvider<MouseEvent>('dragover');
+  static const EventStreamProvider<MouseEvent> dragOverEvent =
+      const EventStreamProvider<MouseEvent>('dragover');
 
   @DomName('SVGElement.dragstartEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> dragStartEvent = const EventStreamProvider<MouseEvent>('dragstart');
+  static const EventStreamProvider<MouseEvent> dragStartEvent =
+      const EventStreamProvider<MouseEvent>('dragstart');
 
   @DomName('SVGElement.dropEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> dropEvent = const EventStreamProvider<MouseEvent>('drop');
+  static const EventStreamProvider<MouseEvent> dropEvent =
+      const EventStreamProvider<MouseEvent>('drop');
 
   @DomName('SVGElement.durationchangeEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> durationChangeEvent = const EventStreamProvider<Event>('durationchange');
+  static const EventStreamProvider<Event> durationChangeEvent =
+      const EventStreamProvider<Event>('durationchange');
 
   @DomName('SVGElement.emptiedEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> emptiedEvent = const EventStreamProvider<Event>('emptied');
+  static const EventStreamProvider<Event> emptiedEvent =
+      const EventStreamProvider<Event>('emptied');
 
   @DomName('SVGElement.endedEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> endedEvent = const EventStreamProvider<Event>('ended');
+  static const EventStreamProvider<Event> endedEvent =
+      const EventStreamProvider<Event>('ended');
 
   @DomName('SVGElement.errorEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> errorEvent = const EventStreamProvider<Event>('error');
+  static const EventStreamProvider<Event> errorEvent =
+      const EventStreamProvider<Event>('error');
 
   @DomName('SVGElement.focusEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> focusEvent = const EventStreamProvider<Event>('focus');
+  static const EventStreamProvider<Event> focusEvent =
+      const EventStreamProvider<Event>('focus');
 
   @DomName('SVGElement.inputEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> inputEvent = const EventStreamProvider<Event>('input');
+  static const EventStreamProvider<Event> inputEvent =
+      const EventStreamProvider<Event>('input');
 
   @DomName('SVGElement.invalidEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> invalidEvent = const EventStreamProvider<Event>('invalid');
+  static const EventStreamProvider<Event> invalidEvent =
+      const EventStreamProvider<Event>('invalid');
 
   @DomName('SVGElement.keydownEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<KeyboardEvent> keyDownEvent = const EventStreamProvider<KeyboardEvent>('keydown');
+  static const EventStreamProvider<KeyboardEvent> keyDownEvent =
+      const EventStreamProvider<KeyboardEvent>('keydown');
 
   @DomName('SVGElement.keypressEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<KeyboardEvent> keyPressEvent = const EventStreamProvider<KeyboardEvent>('keypress');
+  static const EventStreamProvider<KeyboardEvent> keyPressEvent =
+      const EventStreamProvider<KeyboardEvent>('keypress');
 
   @DomName('SVGElement.keyupEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<KeyboardEvent> keyUpEvent = const EventStreamProvider<KeyboardEvent>('keyup');
+  static const EventStreamProvider<KeyboardEvent> keyUpEvent =
+      const EventStreamProvider<KeyboardEvent>('keyup');
 
   @DomName('SVGElement.loadEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> loadEvent = const EventStreamProvider<Event>('load');
+  static const EventStreamProvider<Event> loadEvent =
+      const EventStreamProvider<Event>('load');
 
   @DomName('SVGElement.loadeddataEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> loadedDataEvent = const EventStreamProvider<Event>('loadeddata');
+  static const EventStreamProvider<Event> loadedDataEvent =
+      const EventStreamProvider<Event>('loadeddata');
 
   @DomName('SVGElement.loadedmetadataEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> loadedMetadataEvent = const EventStreamProvider<Event>('loadedmetadata');
+  static const EventStreamProvider<Event> loadedMetadataEvent =
+      const EventStreamProvider<Event>('loadedmetadata');
 
   @DomName('SVGElement.mousedownEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> mouseDownEvent = const EventStreamProvider<MouseEvent>('mousedown');
+  static const EventStreamProvider<MouseEvent> mouseDownEvent =
+      const EventStreamProvider<MouseEvent>('mousedown');
 
   @DomName('SVGElement.mouseenterEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> mouseEnterEvent = const EventStreamProvider<MouseEvent>('mouseenter');
+  static const EventStreamProvider<MouseEvent> mouseEnterEvent =
+      const EventStreamProvider<MouseEvent>('mouseenter');
 
   @DomName('SVGElement.mouseleaveEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> mouseLeaveEvent = const EventStreamProvider<MouseEvent>('mouseleave');
+  static const EventStreamProvider<MouseEvent> mouseLeaveEvent =
+      const EventStreamProvider<MouseEvent>('mouseleave');
 
   @DomName('SVGElement.mousemoveEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> mouseMoveEvent = const EventStreamProvider<MouseEvent>('mousemove');
+  static const EventStreamProvider<MouseEvent> mouseMoveEvent =
+      const EventStreamProvider<MouseEvent>('mousemove');
 
   @DomName('SVGElement.mouseoutEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> mouseOutEvent = const EventStreamProvider<MouseEvent>('mouseout');
+  static const EventStreamProvider<MouseEvent> mouseOutEvent =
+      const EventStreamProvider<MouseEvent>('mouseout');
 
   @DomName('SVGElement.mouseoverEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> mouseOverEvent = const EventStreamProvider<MouseEvent>('mouseover');
+  static const EventStreamProvider<MouseEvent> mouseOverEvent =
+      const EventStreamProvider<MouseEvent>('mouseover');
 
   @DomName('SVGElement.mouseupEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<MouseEvent> mouseUpEvent = const EventStreamProvider<MouseEvent>('mouseup');
+  static const EventStreamProvider<MouseEvent> mouseUpEvent =
+      const EventStreamProvider<MouseEvent>('mouseup');
 
   @DomName('SVGElement.mousewheelEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<WheelEvent> mouseWheelEvent = const EventStreamProvider<WheelEvent>('mousewheel');
+  static const EventStreamProvider<WheelEvent> mouseWheelEvent =
+      const EventStreamProvider<WheelEvent>('mousewheel');
 
   @DomName('SVGElement.pauseEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> pauseEvent = const EventStreamProvider<Event>('pause');
+  static const EventStreamProvider<Event> pauseEvent =
+      const EventStreamProvider<Event>('pause');
 
   @DomName('SVGElement.playEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> playEvent = const EventStreamProvider<Event>('play');
+  static const EventStreamProvider<Event> playEvent =
+      const EventStreamProvider<Event>('play');
 
   @DomName('SVGElement.playingEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> playingEvent = const EventStreamProvider<Event>('playing');
+  static const EventStreamProvider<Event> playingEvent =
+      const EventStreamProvider<Event>('playing');
 
   @DomName('SVGElement.ratechangeEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> rateChangeEvent = const EventStreamProvider<Event>('ratechange');
+  static const EventStreamProvider<Event> rateChangeEvent =
+      const EventStreamProvider<Event>('ratechange');
 
   @DomName('SVGElement.resetEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> resetEvent = const EventStreamProvider<Event>('reset');
+  static const EventStreamProvider<Event> resetEvent =
+      const EventStreamProvider<Event>('reset');
 
   @DomName('SVGElement.resizeEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> resizeEvent = const EventStreamProvider<Event>('resize');
+  static const EventStreamProvider<Event> resizeEvent =
+      const EventStreamProvider<Event>('resize');
 
   @DomName('SVGElement.scrollEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> scrollEvent = const EventStreamProvider<Event>('scroll');
+  static const EventStreamProvider<Event> scrollEvent =
+      const EventStreamProvider<Event>('scroll');
 
   @DomName('SVGElement.seekedEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> seekedEvent = const EventStreamProvider<Event>('seeked');
+  static const EventStreamProvider<Event> seekedEvent =
+      const EventStreamProvider<Event>('seeked');
 
   @DomName('SVGElement.seekingEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> seekingEvent = const EventStreamProvider<Event>('seeking');
+  static const EventStreamProvider<Event> seekingEvent =
+      const EventStreamProvider<Event>('seeking');
 
   @DomName('SVGElement.selectEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> selectEvent = const EventStreamProvider<Event>('select');
+  static const EventStreamProvider<Event> selectEvent =
+      const EventStreamProvider<Event>('select');
 
   @DomName('SVGElement.stalledEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> stalledEvent = const EventStreamProvider<Event>('stalled');
+  static const EventStreamProvider<Event> stalledEvent =
+      const EventStreamProvider<Event>('stalled');
 
   @DomName('SVGElement.submitEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> submitEvent = const EventStreamProvider<Event>('submit');
+  static const EventStreamProvider<Event> submitEvent =
+      const EventStreamProvider<Event>('submit');
 
   @DomName('SVGElement.suspendEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> suspendEvent = const EventStreamProvider<Event>('suspend');
+  static const EventStreamProvider<Event> suspendEvent =
+      const EventStreamProvider<Event>('suspend');
 
   @DomName('SVGElement.timeupdateEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> timeUpdateEvent = const EventStreamProvider<Event>('timeupdate');
+  static const EventStreamProvider<Event> timeUpdateEvent =
+      const EventStreamProvider<Event>('timeupdate');
+
+  @DomName('SVGElement.touchcancelEvent')
+  @DocsEditable()
+  @Experimental() // untriaged
+  static const EventStreamProvider<TouchEvent> touchCancelEvent =
+      const EventStreamProvider<TouchEvent>('touchcancel');
+
+  @DomName('SVGElement.touchendEvent')
+  @DocsEditable()
+  @Experimental() // untriaged
+  static const EventStreamProvider<TouchEvent> touchEndEvent =
+      const EventStreamProvider<TouchEvent>('touchend');
+
+  @DomName('SVGElement.touchmoveEvent')
+  @DocsEditable()
+  @Experimental() // untriaged
+  static const EventStreamProvider<TouchEvent> touchMoveEvent =
+      const EventStreamProvider<TouchEvent>('touchmove');
+
+  @DomName('SVGElement.touchstartEvent')
+  @DocsEditable()
+  @Experimental() // untriaged
+  static const EventStreamProvider<TouchEvent> touchStartEvent =
+      const EventStreamProvider<TouchEvent>('touchstart');
 
   @DomName('SVGElement.volumechangeEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> volumeChangeEvent = const EventStreamProvider<Event>('volumechange');
+  static const EventStreamProvider<Event> volumeChangeEvent =
+      const EventStreamProvider<Event>('volumechange');
 
   @DomName('SVGElement.waitingEvent')
   @DocsEditable()
   @Experimental() // untriaged
-  static const EventStreamProvider<Event> waitingEvent = const EventStreamProvider<Event>('waiting');
+  static const EventStreamProvider<Event> waitingEvent =
+      const EventStreamProvider<Event>('waiting');
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5116,7 +4581,8 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @DomName('SVGElement.oncanplaythrough')
   @DocsEditable()
   @Experimental() // untriaged
-  ElementStream<Event> get onCanPlayThrough => canPlayThroughEvent.forElement(this);
+  ElementStream<Event> get onCanPlayThrough =>
+      canPlayThroughEvent.forElement(this);
 
   @DomName('SVGElement.onchange')
   @DocsEditable()
@@ -5131,7 +4597,8 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @DomName('SVGElement.oncontextmenu')
   @DocsEditable()
   @Experimental() // untriaged
-  ElementStream<MouseEvent> get onContextMenu => contextMenuEvent.forElement(this);
+  ElementStream<MouseEvent> get onContextMenu =>
+      contextMenuEvent.forElement(this);
 
   @DomName('SVGElement.ondblclick')
   @DocsEditable()
@@ -5176,7 +4643,8 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @DomName('SVGElement.ondurationchange')
   @DocsEditable()
   @Experimental() // untriaged
-  ElementStream<Event> get onDurationChange => durationChangeEvent.forElement(this);
+  ElementStream<Event> get onDurationChange =>
+      durationChangeEvent.forElement(this);
 
   @DomName('SVGElement.onemptied')
   @DocsEditable()
@@ -5236,7 +4704,8 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @DomName('SVGElement.onloadedmetadata')
   @DocsEditable()
   @Experimental() // untriaged
-  ElementStream<Event> get onLoadedMetadata => loadedMetadataEvent.forElement(this);
+  ElementStream<Event> get onLoadedMetadata =>
+      loadedMetadataEvent.forElement(this);
 
   @DomName('SVGElement.onmousedown')
   @DocsEditable()
@@ -5246,12 +4715,14 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @DomName('SVGElement.onmouseenter')
   @DocsEditable()
   @Experimental() // untriaged
-  ElementStream<MouseEvent> get onMouseEnter => mouseEnterEvent.forElement(this);
+  ElementStream<MouseEvent> get onMouseEnter =>
+      mouseEnterEvent.forElement(this);
 
   @DomName('SVGElement.onmouseleave')
   @DocsEditable()
   @Experimental() // untriaged
-  ElementStream<MouseEvent> get onMouseLeave => mouseLeaveEvent.forElement(this);
+  ElementStream<MouseEvent> get onMouseLeave =>
+      mouseLeaveEvent.forElement(this);
 
   @DomName('SVGElement.onmousemove')
   @DocsEditable()
@@ -5276,7 +4747,8 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @DomName('SVGElement.onmousewheel')
   @DocsEditable()
   @Experimental() // untriaged
-  ElementStream<WheelEvent> get onMouseWheel => mouseWheelEvent.forElement(this);
+  ElementStream<WheelEvent> get onMouseWheel =>
+      mouseWheelEvent.forElement(this);
 
   @DomName('SVGElement.onpause')
   @DocsEditable()
@@ -5348,6 +4820,28 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @Experimental() // untriaged
   ElementStream<Event> get onTimeUpdate => timeUpdateEvent.forElement(this);
 
+  @DomName('SVGElement.ontouchcancel')
+  @DocsEditable()
+  @Experimental() // untriaged
+  ElementStream<TouchEvent> get onTouchCancel =>
+      touchCancelEvent.forElement(this);
+
+  @DomName('SVGElement.ontouchend')
+  @DocsEditable()
+  @Experimental() // untriaged
+  ElementStream<TouchEvent> get onTouchEnd => touchEndEvent.forElement(this);
+
+  @DomName('SVGElement.ontouchmove')
+  @DocsEditable()
+  @Experimental() // untriaged
+  ElementStream<TouchEvent> get onTouchMove => touchMoveEvent.forElement(this);
+
+  @DomName('SVGElement.ontouchstart')
+  @DocsEditable()
+  @Experimental() // untriaged
+  ElementStream<TouchEvent> get onTouchStart =>
+      touchStartEvent.forElement(this);
+
   @DomName('SVGElement.onvolumechange')
   @DocsEditable()
   @Experimental() // untriaged
@@ -5357,17 +4851,16 @@ class SvgElement extends Element implements GlobalEventHandlers {
   @DocsEditable()
   @Experimental() // untriaged
   ElementStream<Event> get onWaiting => waitingEvent.forElement(this);
-
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DomName('SVGSVGElement')
 @Unstable()
 @Native("SVGSVGElement")
-class SvgSvgElement extends GraphicsElement implements FitToViewBox, ZoomAndPan {
+class SvgSvgElement extends GraphicsElement
+    implements FitToViewBox, ZoomAndPan {
   factory SvgSvgElement() {
     final el = new SvgElement.tag("svg");
     // The SVG spec requires the version attribute to match the spec version
@@ -5376,7 +4869,9 @@ class SvgSvgElement extends GraphicsElement implements FitToViewBox, ZoomAndPan 
   }
 
   // To suppress missing implicit constructor warnings.
-  factory SvgSvgElement._() { throw new UnsupportedError("Not supported"); }
+  factory SvgSvgElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5399,22 +4894,6 @@ class SvgSvgElement extends GraphicsElement implements FitToViewBox, ZoomAndPan 
   @DomName('SVGSVGElement.height')
   @DocsEditable()
   final AnimatedLength height;
-
-  @DomName('SVGSVGElement.pixelUnitToMillimeterX')
-  @DocsEditable()
-  final double pixelUnitToMillimeterX;
-
-  @DomName('SVGSVGElement.pixelUnitToMillimeterY')
-  @DocsEditable()
-  final double pixelUnitToMillimeterY;
-
-  @DomName('SVGSVGElement.screenPixelToMillimeterX')
-  @DocsEditable()
-  final double screenPixelToMillimeterX;
-
-  @DomName('SVGSVGElement.screenPixelToMillimeterY')
-  @DocsEditable()
-  final double screenPixelToMillimeterY;
 
   @DomName('SVGSVGElement.useCurrentView')
   @DocsEditable()
@@ -5506,13 +4985,13 @@ class SvgSvgElement extends GraphicsElement implements FitToViewBox, ZoomAndPan 
 
   @DomName('SVGSVGElement.getEnclosureList')
   @DocsEditable()
-  @Returns('NodeList')
+  @Returns('NodeList|Null')
   @Creates('NodeList')
   List<Node> getEnclosureList(Rect rect, SvgElement referenceElement) native;
 
   @DomName('SVGSVGElement.getIntersectionList')
   @DocsEditable()
-  @Returns('NodeList')
+  @Returns('NodeList|Null')
   @Creates('NodeList')
   List<Node> getIntersectionList(Rect rect, SvgElement referenceElement) native;
 
@@ -5555,12 +5034,10 @@ class SvgSvgElement extends GraphicsElement implements FitToViewBox, ZoomAndPan 
   @DomName('SVGSVGElement.zoomAndPan')
   @DocsEditable()
   int zoomAndPan;
-
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGSwitchElement')
@@ -5568,11 +5045,14 @@ class SvgSvgElement extends GraphicsElement implements FitToViewBox, ZoomAndPan 
 @Native("SVGSwitchElement")
 class SwitchElement extends GraphicsElement {
   // To suppress missing implicit constructor warnings.
-  factory SwitchElement._() { throw new UnsupportedError("Not supported"); }
+  factory SwitchElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGSwitchElement.SVGSwitchElement')
   @DocsEditable()
-  factory SwitchElement() => _SvgElementFactoryProvider.createSvgElement_tag("switch");
+  factory SwitchElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("switch");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5584,18 +5064,20 @@ class SwitchElement extends GraphicsElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGSymbolElement')
 @Unstable()
 @Native("SVGSymbolElement")
 class SymbolElement extends SvgElement implements FitToViewBox {
   // To suppress missing implicit constructor warnings.
-  factory SymbolElement._() { throw new UnsupportedError("Not supported"); }
+  factory SymbolElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGSymbolElement.SVGSymbolElement')
   @DocsEditable()
-  factory SymbolElement() => _SvgElementFactoryProvider.createSvgElement_tag("symbol");
+  factory SymbolElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("symbol");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5617,18 +5099,20 @@ class SymbolElement extends SvgElement implements FitToViewBox {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTSpanElement')
 @Unstable()
 @Native("SVGTSpanElement")
 class TSpanElement extends TextPositioningElement {
   // To suppress missing implicit constructor warnings.
-  factory TSpanElement._() { throw new UnsupportedError("Not supported"); }
+  factory TSpanElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGTSpanElement.SVGTSpanElement')
   @DocsEditable()
-  factory TSpanElement() => _SvgElementFactoryProvider.createSvgElement_tag("tspan");
+  factory TSpanElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("tspan");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5640,26 +5124,24 @@ class TSpanElement extends TextPositioningElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTests')
 @Unstable()
 abstract class Tests extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Tests._() { throw new UnsupportedError("Not supported"); }
+  factory Tests._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   final StringList requiredExtensions;
 
   final StringList requiredFeatures;
 
   final StringList systemLanguage;
-
-  bool hasExtension(String extension);
 }
 // Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
 
 @DocsEditable()
 @DomName('SVGTextContentElement')
@@ -5667,7 +5149,9 @@ abstract class Tests extends Interceptor {
 @Native("SVGTextContentElement")
 class TextContentElement extends GraphicsElement {
   // To suppress missing implicit constructor warnings.
-  factory TextContentElement._() { throw new UnsupportedError("Not supported"); }
+  factory TextContentElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5735,18 +5219,20 @@ class TextContentElement extends GraphicsElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTextElement')
 @Unstable()
 @Native("SVGTextElement")
 class TextElement extends TextPositioningElement {
   // To suppress missing implicit constructor warnings.
-  factory TextElement._() { throw new UnsupportedError("Not supported"); }
+  factory TextElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGTextElement.SVGTextElement')
   @DocsEditable()
-  factory TextElement() => _SvgElementFactoryProvider.createSvgElement_tag("text");
+  factory TextElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("text");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5758,14 +5244,15 @@ class TextElement extends TextPositioningElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTextPathElement')
 @Unstable()
 @Native("SVGTextPathElement")
 class TextPathElement extends TextContentElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory TextPathElement._() { throw new UnsupportedError("Not supported"); }
+  factory TextPathElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5819,14 +5306,15 @@ class TextPathElement extends TextContentElement implements UriReference {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTextPositioningElement')
 @Unstable()
 @Native("SVGTextPositioningElement")
 class TextPositioningElement extends TextContentElement {
   // To suppress missing implicit constructor warnings.
-  factory TextPositioningElement._() { throw new UnsupportedError("Not supported"); }
+  factory TextPositioningElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5858,18 +5346,20 @@ class TextPositioningElement extends TextContentElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTitleElement')
 @Unstable()
 @Native("SVGTitleElement")
 class TitleElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory TitleElement._() { throw new UnsupportedError("Not supported"); }
+  factory TitleElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGTitleElement.SVGTitleElement')
   @DocsEditable()
-  factory TitleElement() => _SvgElementFactoryProvider.createSvgElement_tag("title");
+  factory TitleElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("title");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -5881,14 +5371,15 @@ class TitleElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTransform')
 @Unstable()
 @Native("SVGTransform")
 class Transform extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory Transform._() { throw new UnsupportedError("Not supported"); }
+  factory Transform._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGTransform.SVG_TRANSFORM_MATRIX')
   @DocsEditable()
@@ -5958,14 +5449,17 @@ class Transform extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGTransformList')
 @Unstable()
 @Native("SVGTransformList")
-class TransformList extends Interceptor with ListMixin<Transform>, ImmutableListMixin<Transform> implements List<Transform> {
+class TransformList extends Interceptor
+    with ListMixin<Transform>, ImmutableListMixin<Transform>
+    implements List<Transform> {
   // To suppress missing implicit constructor warnings.
-  factory TransformList._() { throw new UnsupportedError("Not supported"); }
+  factory TransformList._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGTransformList.length')
   @DocsEditable()
@@ -5976,18 +5470,17 @@ class TransformList extends Interceptor with ListMixin<Transform>, ImmutableList
   @DocsEditable()
   final int numberOfItems;
 
-  Transform operator[](int index) {
-    if (JS("bool", "# >>> 0 !== # || # >= #", index,
-        index, index, length))
+  Transform operator [](int index) {
+    if (JS("bool", "# >>> 0 !== # || # >= #", index, index, index, length))
       throw new RangeError.index(index, this);
     return this.getItem(index);
   }
-  void operator[]=(int index, Transform value) {
+
+  void operator []=(int index, Transform value) {
     throw new UnsupportedError("Cannot assign element of immutable List.");
   }
   // -- start List<Transform> mixins.
   // Transform is the element type.
-
 
   set length(int value) {
     throw new UnsupportedError("Cannot resize immutable List.");
@@ -6066,14 +5559,15 @@ class TransformList extends Interceptor with ListMixin<Transform>, ImmutableList
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGUnitTypes')
 @Unstable()
 @Native("SVGUnitTypes")
 class UnitTypes extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory UnitTypes._() { throw new UnsupportedError("Not supported"); }
+  factory UnitTypes._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGUnitTypes.SVG_UNIT_TYPE_OBJECTBOUNDINGBOX')
   @DocsEditable()
@@ -6091,13 +5585,14 @@ class UnitTypes extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGURIReference')
 @Unstable()
 abstract class UriReference extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory UriReference._() { throw new UnsupportedError("Not supported"); }
+  factory UriReference._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   final AnimatedString href;
 }
@@ -6105,18 +5600,20 @@ abstract class UriReference extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGUseElement')
 @Unstable()
 @Native("SVGUseElement")
 class UseElement extends GraphicsElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory UseElement._() { throw new UnsupportedError("Not supported"); }
+  factory UseElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGUseElement.SVGUseElement')
   @DocsEditable()
-  factory UseElement() => _SvgElementFactoryProvider.createSvgElement_tag("use");
+  factory UseElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("use");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -6150,18 +5647,20 @@ class UseElement extends GraphicsElement implements UriReference {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGViewElement')
 @Unstable()
 @Native("SVGViewElement")
 class ViewElement extends SvgElement implements FitToViewBox, ZoomAndPan {
   // To suppress missing implicit constructor warnings.
-  factory ViewElement._() { throw new UnsupportedError("Not supported"); }
+  factory ViewElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGViewElement.SVGViewElement')
   @DocsEditable()
-  factory ViewElement() => _SvgElementFactoryProvider.createSvgElement_tag("view");
+  factory ViewElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("view");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -6193,14 +5692,15 @@ class ViewElement extends SvgElement implements FitToViewBox, ZoomAndPan {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGViewSpec')
 @Unstable()
 @Native("SVGViewSpec")
 class ViewSpec extends Interceptor implements FitToViewBox, ZoomAndPan {
   // To suppress missing implicit constructor warnings.
-  factory ViewSpec._() { throw new UnsupportedError("Not supported"); }
+  factory ViewSpec._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGViewSpec.preserveAspectRatioString')
   @DocsEditable()
@@ -6249,13 +5749,14 @@ class ViewSpec extends Interceptor implements FitToViewBox, ZoomAndPan {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGZoomAndPan')
 @Unstable()
 abstract class ZoomAndPan extends Interceptor {
   // To suppress missing implicit constructor warnings.
-  factory ZoomAndPan._() { throw new UnsupportedError("Not supported"); }
+  factory ZoomAndPan._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGZoomAndPan.SVG_ZOOMANDPAN_DISABLE')
   @DocsEditable()
@@ -6275,14 +5776,15 @@ abstract class ZoomAndPan extends Interceptor {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGZoomEvent')
 @Unstable()
 @Native("SVGZoomEvent")
 class ZoomEvent extends UIEvent {
   // To suppress missing implicit constructor warnings.
-  factory ZoomEvent._() { throw new UnsupportedError("Not supported"); }
+  factory ZoomEvent._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGZoomEvent.newScale')
   @DocsEditable()
@@ -6308,14 +5810,15 @@ class ZoomEvent extends UIEvent {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGGradientElement')
 @Unstable()
 @Native("SVGGradientElement")
 class _GradientElement extends SvgElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory _GradientElement._() { throw new UnsupportedError("Not supported"); }
+  factory _GradientElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -6361,14 +5864,15 @@ class _GradientElement extends SvgElement implements UriReference {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGComponentTransferFunctionElement')
 @Unstable()
 @Native("SVGComponentTransferFunctionElement")
 abstract class _SVGComponentTransferFunctionElement extends SvgElement {
   // To suppress missing implicit constructor warnings.
-  factory _SVGComponentTransferFunctionElement._() { throw new UnsupportedError("Not supported"); }
+  factory _SVGComponentTransferFunctionElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -6380,18 +5884,21 @@ abstract class _SVGComponentTransferFunctionElement extends SvgElement {
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGCursorElement')
 @Unstable()
 @Native("SVGCursorElement")
-abstract class _SVGCursorElement extends SvgElement implements UriReference, Tests {
+abstract class _SVGCursorElement extends SvgElement
+    implements UriReference, Tests {
   // To suppress missing implicit constructor warnings.
-  factory _SVGCursorElement._() { throw new UnsupportedError("Not supported"); }
+  factory _SVGCursorElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGCursorElement.SVGCursorElement')
   @DocsEditable()
-  factory _SVGCursorElement() => _SvgElementFactoryProvider.createSvgElement_tag("cursor");
+  factory _SVGCursorElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("cursor");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -6400,7 +5907,9 @@ abstract class _SVGCursorElement extends SvgElement implements UriReference, Tes
   _SVGCursorElement.created() : super.created();
 
   /// Checks if this type is supported on the current platform.
-  static bool get supported => SvgElement.isTagSupported('cursor') && (new SvgElement.tag('cursor') is _SVGCursorElement);
+  static bool get supported =>
+      SvgElement.isTagSupported('cursor') &&
+      (new SvgElement.tag('cursor') is _SVGCursorElement);
 
   // From SVGTests
 
@@ -6412,14 +5921,16 @@ abstract class _SVGCursorElement extends SvgElement implements UriReference, Tes
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGFEDropShadowElement')
 @Experimental() // nonstandard
 @Native("SVGFEDropShadowElement")
-abstract class _SVGFEDropShadowElement extends SvgElement implements FilterPrimitiveStandardAttributes {
+abstract class _SVGFEDropShadowElement extends SvgElement
+    implements FilterPrimitiveStandardAttributes {
   // To suppress missing implicit constructor warnings.
-  factory _SVGFEDropShadowElement._() { throw new UnsupportedError("Not supported"); }
+  factory _SVGFEDropShadowElement._() {
+    throw new UnsupportedError("Not supported");
+  }
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -6435,17 +5946,19 @@ abstract class _SVGFEDropShadowElement extends SvgElement implements FilterPrimi
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-
 @DocsEditable()
 @DomName('SVGMPathElement')
 @Native("SVGMPathElement")
 abstract class _SVGMPathElement extends SvgElement implements UriReference {
   // To suppress missing implicit constructor warnings.
-  factory _SVGMPathElement._() { throw new UnsupportedError("Not supported"); }
+  factory _SVGMPathElement._() {
+    throw new UnsupportedError("Not supported");
+  }
 
   @DomName('SVGMPathElement.SVGMPathElement')
   @DocsEditable()
-  factory _SVGMPathElement() => _SvgElementFactoryProvider.createSvgElement_tag("mpath");
+  factory _SVGMPathElement() =>
+      _SvgElementFactoryProvider.createSvgElement_tag("mpath");
   /**
    * Constructor instantiated by the DOM when a custom element has been created.
    *
@@ -6456,4 +5969,3 @@ abstract class _SVGMPathElement extends SvgElement implements UriReference {
   // From SVGURIReference
 
 }
-

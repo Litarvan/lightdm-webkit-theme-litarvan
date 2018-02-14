@@ -26,8 +26,8 @@ Future<DeclaringTransform> newDeclaringTransform(
   // key, so we can safely get the first asset emitted. We don't want to wait
   // for the stream to close, since that requires barback to prove that no more
   // new assets will be generated.
-  return aggregate.primaryIds.first.then((primaryId) => 
-      new DeclaringTransform._(aggregate, primaryId));
+  return aggregate.primaryIds.first
+      .then((primaryId) => new DeclaringTransform._(aggregate, primaryId));
 }
 
 /// A transform for [DeclaringTransformer]s that allows them to declare the ids

@@ -529,7 +529,7 @@ class CssPrinter extends Visitor {
 
   void visitVarUsage(VarUsage node) {
     emit('var(${node.name}');
-    if (!node.defaultValues.isEmpty) {
+    if (node.defaultValues.isNotEmpty) {
       emit(',');
       for (var defaultValue in node.defaultValues) {
         emit(' ');

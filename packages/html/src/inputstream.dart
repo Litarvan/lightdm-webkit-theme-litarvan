@@ -5,8 +5,8 @@ import 'package:utf/utf.dart';
 import 'package:source_span/source_span.dart';
 import 'char_encodings.dart';
 import 'constants.dart';
-import 'utils.dart';
 import 'encoding_parser.dart';
+import 'utils.dart';
 
 /// Hooks to call into dart:io without directly referencing it.
 class ConsoleSupport {
@@ -68,8 +68,11 @@ class HtmlInputStream {
   /// element)
   ///
   /// [parseMeta] - Look for a <meta> element containing encoding information
-  HtmlInputStream(source, [String encoding, bool parseMeta = true,
-      this.generateSpans = false, this.sourceUrl])
+  HtmlInputStream(source,
+      [String encoding,
+      bool parseMeta = true,
+      this.generateSpans = false,
+      this.sourceUrl])
       : charEncodingName = codecName(encoding) {
     if (source is String) {
       _rawChars = toCodepoints(source);

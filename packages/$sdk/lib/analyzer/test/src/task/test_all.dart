@@ -12,14 +12,13 @@ import 'driver_test.dart' as driver_test;
 import 'general_test.dart' as general_test;
 import 'html_test.dart' as html_test;
 import 'html_work_manager_test.dart' as html_work_manager_test;
-import 'incremental_element_builder_test.dart'
-    as incremental_element_builder_test;
 import 'inputs_test.dart' as inputs_test;
 import 'manager_test.dart' as manager_test;
 import 'model_test.dart' as model_test;
 import 'options_test.dart' as options_test;
 import 'options_work_manager_test.dart' as options_work_manager_test;
 import 'strong/test_all.dart' as strong_mode_test_all;
+import 'strong_mode_driver_test.dart' as strong_mode_driver_test;
 import 'strong_mode_test.dart' as strong_mode_test;
 import 'yaml_test.dart' as yaml_test;
 
@@ -32,13 +31,13 @@ main() {
     general_test.main();
     html_test.main();
     html_work_manager_test.main();
-    incremental_element_builder_test.main();
     inputs_test.main();
     manager_test.main();
     model_test.main();
     options_test.main();
     options_work_manager_test.main();
     strong_mode_test_all.main();
+    strong_mode_driver_test.main();
     strong_mode_test.main();
     yaml_test.main();
   }, name: 'task');

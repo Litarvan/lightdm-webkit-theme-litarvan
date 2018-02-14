@@ -36,12 +36,12 @@ abstract class _TypedDataBuffer<E> extends ListBase<E> {
         this._length = buffer.length;
 
   int get length => _length;
-  E operator[](int index) {
+  E operator [](int index) {
     if (index >= length) throw new RangeError.index(index, this);
     return _buffer[index];
   }
 
-  void operator[]=(int index, E value) {
+  void operator []=(int index, E value) {
     if (index >= length) throw new RangeError.index(index, this);
     _buffer[index] = value;
   }
@@ -73,7 +73,9 @@ abstract class _TypedDataBuffer<E> extends ListBase<E> {
   // We override the default implementation of `add` because it grows the list
   // by setting the length in increments of one. We want to grow by doubling
   // capacity in most cases.
-  void add(E value) { _add(value); }
+  void add(E value) {
+    _add(value);
+  }
 
   /// Appends all objects of [values] to the end of this buffer.
   ///
@@ -111,7 +113,6 @@ abstract class _TypedDataBuffer<E> extends ListBase<E> {
       }
       if (start == end) return;
     }
-
 
     // If we're adding to the end of the list anyway, use [_addAll]. This lets
     // us avoid converting [values] into a list even if [end] is null, since we
@@ -162,7 +163,7 @@ abstract class _TypedDataBuffer<E> extends ListBase<E> {
 
   // Reverses the range [start..end) of buffer.
   static void _reverse(List buffer, int start, int end) {
-    end--;  // Point to last element, not after last element.
+    end--; // Point to last element, not after last element.
     while (start < end) {
       var first = buffer[start];
       var last = buffer[end];
@@ -311,13 +312,13 @@ abstract class _TypedDataBuffer<E> extends ListBase<E> {
 }
 
 abstract class _IntBuffer extends _TypedDataBuffer<int> {
-  _IntBuffer(List<int> buffer): super(buffer);
+  _IntBuffer(List<int> buffer) : super(buffer);
 
   int get _defaultValue => 0;
 }
 
 abstract class _FloatBuffer extends _TypedDataBuffer<double> {
-  _FloatBuffer(List<double> buffer): super(buffer);
+  _FloatBuffer(List<double> buffer) : super(buffer);
 
   double get _defaultValue => 0.0;
 }

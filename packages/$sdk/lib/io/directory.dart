@@ -8,7 +8,7 @@ part of dart.io;
  * A reference to a directory (or _folder_) on the file system.
  *
  * A Directory instance is an object holding a [path] on which operations can
- * be performed. The path to the directory can be [absolute] or [relative].
+ * be performed. The path to the directory can be [absolute] or relative.
  * You can get the parent directory using the getter [parent],
  * a property inherited from [FileSystemEntity].
  *
@@ -280,8 +280,8 @@ abstract class Directory implements FileSystemEntity {
    * The result is a stream of [FileSystemEntity] objects
    * for the directories, files, and links.
    */
-  Stream<FileSystemEntity> list({bool recursive: false,
-                                 bool followLinks: true});
+  Stream<FileSystemEntity> list(
+      {bool recursive: false, bool followLinks: true});
 
   /**
    * Lists the sub-directories and files of this [Directory].
@@ -303,8 +303,8 @@ abstract class Directory implements FileSystemEntity {
    * Returns a [List] containing [FileSystemEntity] objects for the
    * directories, files, and links.
    */
-  List<FileSystemEntity> listSync({bool recursive: false,
-                                   bool followLinks: true});
+  List<FileSystemEntity> listSync(
+      {bool recursive: false, bool followLinks: true});
 
   /**
    * Returns a human readable string for this Directory instance.

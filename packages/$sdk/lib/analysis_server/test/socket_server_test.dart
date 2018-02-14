@@ -2,11 +2,10 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library test.socket.server;
-
 import 'dart:async';
 
-import 'package:analysis_server/plugin/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol.dart';
+import 'package:analysis_server/protocol/protocol_generated.dart';
 import 'package:analysis_server/src/analysis_server.dart';
 import 'package:analysis_server/src/constants.dart';
 import 'package:analysis_server/src/plugin/server_plugin.dart';
@@ -119,6 +118,7 @@ class SocketServerTest {
         new FolderBasedDartSdk(resourceProvider,
             FolderBasedDartSdk.defaultSdkDirectory(resourceProvider)),
         InstrumentationService.NULL_SERVICE,
+        null,
         serverPlugin,
         null,
         null,

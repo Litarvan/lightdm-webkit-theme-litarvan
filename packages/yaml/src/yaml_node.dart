@@ -39,7 +39,7 @@ abstract class YamlNode {
 }
 
 /// A read-only [Map] parsed from YAML.
-class YamlMap extends YamlNode with collection.MapMixin, UnmodifiableMapMixin  {
+class YamlMap extends YamlNode with collection.MapMixin, UnmodifiableMapMixin {
   /// A view of [this] where the keys and values are guaranteed to be
   /// [YamlNode]s.
   ///
@@ -64,8 +64,7 @@ class YamlMap extends YamlNode with collection.MapMixin, UnmodifiableMapMixin  {
   /// is passed, it's used as the [SourceSpan.sourceUrl].
   ///
   /// [sourceUrl] may be either a [String], a [Uri], or `null`.
-  factory YamlMap({sourceUrl}) =>
-      new YamlMapWrapper(const {}, sourceUrl);
+  factory YamlMap({sourceUrl}) => new YamlMapWrapper(const {}, sourceUrl);
 
   /// Wraps a Dart map so that it can be accessed (recursively) like a
   /// [YamlMap].
@@ -114,8 +113,7 @@ class YamlList extends YamlNode with collection.ListMixin {
   /// [sourceUrl] is passed, it's used as the [SourceSpan.sourceUrl].
   ///
   /// [sourceUrl] may be either a [String], a [Uri], or `null`.
-  factory YamlList({sourceUrl}) =>
-      new YamlListWrapper(const [], sourceUrl);
+  factory YamlList({sourceUrl}) => new YamlListWrapper(const [], sourceUrl);
 
   /// Wraps a Dart list so that it can be accessed (recursively) like a
   /// [YamlList].
@@ -156,14 +154,12 @@ class YamlScalar extends YamlNode {
   /// [sourceUrl] is passed, it's used as the [SourceSpan.sourceUrl].
   ///
   /// [sourceUrl] may be either a [String], a [Uri], or `null`.
-  YamlScalar.wrap(this.value, {sourceUrl})
-      : style = ScalarStyle.ANY {
+  YamlScalar.wrap(this.value, {sourceUrl}) : style = ScalarStyle.ANY {
     _span = new NullSpan(sourceUrl);
   }
 
   /// Users of the library should not use this constructor.
-  YamlScalar.internal(this.value, ScalarEvent scalar)
-      : style = scalar.style {
+  YamlScalar.internal(this.value, ScalarEvent scalar) : style = scalar.style {
     _span = scalar.span;
   }
 

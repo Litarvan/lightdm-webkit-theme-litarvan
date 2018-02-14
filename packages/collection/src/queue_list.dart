@@ -80,6 +80,16 @@ class QueueList<E> extends Object with ListMixin<E> implements Queue<E> {
     }
   }
 
+  // TODO: Dart 2.0 requires this method to be implemented.
+  QueueList<T> cast<T>() {
+    throw new UnimplementedError('cast');
+  }
+
+  // TODO: Dart 2.0 requires this method to be implemented.
+  QueueList<T> retype<T>() {
+    throw new UnimplementedError('retype');
+  }
+
   String toString() => IterableBase.iterableToFullString(this, "{", "}");
 
   // Queue interface.
@@ -114,7 +124,7 @@ class QueueList<E> extends Object with ListMixin<E> implements Queue<E> {
 
   int get length => (_tail - _head) & (_table.length - 1);
 
-  void set length(int value) {
+  set length(int value) {
     if (value < 0) throw new RangeError("Length $value may not be negative.");
 
     int delta = value - length;

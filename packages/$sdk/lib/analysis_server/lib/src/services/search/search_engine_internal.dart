@@ -2,17 +2,15 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library analysis_server.src.services.search.search_engine_internal;
-
 import 'dart:async';
 
-import 'package:analysis_server/src/services/correction/source_range.dart';
 import 'package:analysis_server/src/services/index/index.dart';
 import 'package:analysis_server/src/services/search/search_engine.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/visitor.dart';
+import 'package:analyzer/src/dart/element/ast_provider.dart';
 import 'package:analyzer/src/dart/element/element.dart';
 import 'package:analyzer/src/dart/element/member.dart';
 import 'package:analyzer/src/generated/engine.dart' show AnalysisContext;
@@ -20,14 +18,21 @@ import 'package:analyzer/src/generated/resolver.dart' show NamespaceBuilder;
 import 'package:analyzer/src/generated/source.dart' show Source, SourceRange;
 import 'package:analyzer/src/generated/utilities_general.dart';
 import 'package:analyzer/src/summary/idl.dart';
+import 'package:analyzer_plugin/utilities/range_factory.dart';
+
+/**
+ * The type of a function that returns the [AstProvider] managing the [file].
+ */
+typedef AstProvider GetAstProvider(String file);
 
 /**
  * A [SearchEngine] implementation.
  */
 class SearchEngineImpl implements SearchEngine {
   final Index _index;
+  final GetAstProvider _getAstProvider;
 
-  SearchEngineImpl(this._index);
+  SearchEngineImpl(this._index, this._getAstProvider);
 
   @override
   Future<Set<ClassElement>> searchAllSubtypes(ClassElement type) async {
@@ -242,7 +247,7 @@ class SearchEngineImpl implements SearchEngine {
               librarySource.uri.toString(),
               unitSource.uri.toString(),
               MatchKind.REFERENCE,
-              rangeNode(directive.libraryName),
+              range.node(directive.libraryName),
               true,
               false));
         }
@@ -254,8 +259,9 @@ class SearchEngineImpl implements SearchEngine {
   Future<List<SearchMatch>> _searchReferences_Local(
       Element element, bool isRootNode(AstNode n)) async {
     _LocalReferencesVisitor visitor = new _LocalReferencesVisitor(element);
-    AstNode node = element.computeNode();
-    AstNode enclosingNode = node?.getAncestor(isRootNode);
+    AstProvider astProvider = _getAstProvider(element.source.fullName);
+    AstNode name = await astProvider.getResolvedNameForElement(element);
+    AstNode enclosingNode = name?.getAncestor(isRootNode);
     enclosingNode?.accept(visitor);
     return visitor.matches;
   }
@@ -509,15 +515,13 @@ class _ImportElementReferencesVisitor extends RecursiveAstVisitor {
       }
     } else {
       if (importedElements.contains(node.staticElement)) {
-        SourceRange range = rangeStartLength(node, 0);
-        _addMatchForRange(range);
+        _addMatchForRange(range.startLength(node, 0));
       }
     }
   }
 
   void _addMatchForPrefix(SimpleIdentifier prefixNode, AstNode nextNode) {
-    SourceRange range = rangeStartStart(prefixNode, nextNode);
-    _addMatchForRange(range);
+    _addMatchForRange(range.startStart(prefixNode, nextNode));
   }
 
   void _addMatchForRange(SourceRange range) {
@@ -579,6 +583,6 @@ class _LocalReferencesVisitor extends RecursiveAstVisitor {
   void _addMatch(AstNode node, MatchKind kind) {
     bool isQualified = node.parent is Label;
     matches.add(new SearchMatchImpl(context, libraryUri, unitUri, kind,
-        rangeNode(node), true, isQualified));
+        range.node(node), true, isQualified));
   }
 }

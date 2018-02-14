@@ -65,13 +65,21 @@ class Chain implements StackTrace {
   /// parent Zone's `unhandledErrorHandler` will be called with the error and
   /// its chain.
   ///
-  /// Note that even if [onError] isn't passed, this zone will still be an error
-  /// zone. This means that any errors that would cross the zone boundary are
-  /// considered unhandled.
+  /// If [errorZone] is `true`, the zone this creates will be an error zone,
+  /// even if [onError] isn't passed. This means that any errors that would
+  /// cross the zone boundary are considered unhandled. If [errorZone] is
+  /// `false`, [onError] must be `null`.
   ///
   /// If [callback] returns a value, it will be returned by [capture] as well.
   static T capture<T>(T callback(),
-      {void onError(error, Chain chain), bool when: true}) {
+      {void onError(error, Chain chain),
+      bool when: true,
+      bool errorZone: true}) {
+    if (!errorZone && onError != null) {
+      throw new ArgumentError.value(
+          onError, "onError", "must be null if errorZone is false");
+    }
+
     if (!when) {
       var newOnError;
       if (onError != null) {
@@ -87,13 +95,14 @@ class Chain implements StackTrace {
       return runZoned(callback, onError: newOnError);
     }
 
-    var spec = new StackZoneSpecification(onError);
+    var spec = new StackZoneSpecification(onError, errorZone: errorZone);
     return runZoned(() {
       try {
         return callback();
       } catch (error, stackTrace) {
         // TODO(nweiz): Don't special-case this when issue 19566 is fixed.
-        return Zone.current.handleUncaughtError(error, stackTrace);
+        Zone.current.handleUncaughtError(error, stackTrace);
+        return null;
       }
     },
         zoneSpecification: spec.toSpec(),
@@ -104,7 +113,7 @@ class Chain implements StackTrace {
   /// [callback] in a [Zone] in which chain capturing is disabled.
   ///
   /// If [callback] returns a value, it will be returned by [disable] as well.
-  static/*=T*/ disable/*<T>*/(/*=T*/ callback(), {bool when: true}) {
+  static T disable<T>(T callback(), {bool when: true}) {
     var zoneValues =
         when ? {_specKey: null, StackZoneSpecification.disableKey: true} : null;
 
@@ -152,6 +161,7 @@ class Chain implements StackTrace {
   factory Chain.forTrace(StackTrace trace) {
     if (trace is Chain) return trace;
     if (_currentSpec != null) return _currentSpec.chainFor(trace);
+    if (trace is Trace) return new Chain([trace]);
     return new LazyChain(() => new Chain.parse(trace.toString()));
   }
 

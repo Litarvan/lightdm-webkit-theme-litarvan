@@ -8,16 +8,17 @@ library dom;
 // implement that.
 
 import 'dart:collection';
+
 import 'package:source_span/source_span.dart';
 
+import 'dom_parsing.dart';
+import 'parser.dart';
 import 'src/constants.dart';
 import 'src/css_class_set.dart';
 import 'src/list_proxy.dart';
 import 'src/query_selector.dart' as query;
 import 'src/token.dart';
 import 'src/tokenizer.dart';
-import 'dom_parsing.dart';
-import 'parser.dart';
 
 export 'src/css_class_set.dart' show CssClassSet;
 
@@ -110,8 +111,8 @@ abstract class _ElementAndDocument implements _ParentNode {
   List<Element> getElementsByTagName(String localName) =>
       querySelectorAll(localName);
 
-  List<Element> getElementsByClassName(String classNames) => querySelectorAll(
-      classNames.splitMapJoin(' ',
+  List<Element> getElementsByClassName(String classNames) =>
+      querySelectorAll(classNames.splitMapJoin(' ',
           onNonMatch: (m) => m.isNotEmpty ? '.$m' : m, onMatch: (m) => ''));
 }
 
@@ -256,7 +257,7 @@ abstract class Node {
 
   // TODO(jmesserly): should this be a property or remove?
   /// Return true if the node has children or text.
-  bool hasContent() => nodes.length > 0;
+  bool hasContent() => nodes.isNotEmpty;
 
   /// Move all the children of the current node to [newParent].
   /// This is needed so that trees that don't store text as nodes move the
@@ -266,7 +267,7 @@ abstract class Node {
     nodes.clear();
   }
 
-  bool hasChildNodes() => !nodes.isEmpty;
+  bool hasChildNodes() => nodes.isNotEmpty;
 
   bool contains(Node node) => nodes.contains(node);
 
@@ -292,8 +293,8 @@ abstract class Node {
       _attributeSpans[attr.name] =
           sourceSpan.file.span(offset + attr.start, offset + attr.end);
       if (attr.startValue != null) {
-        _attributeValueSpans[attr.name] = sourceSpan.file.span(
-            offset + attr.startValue, offset + attr.endValue);
+        _attributeValueSpans[attr.name] = sourceSpan.file
+            .span(offset + attr.startValue, offset + attr.endValue);
       }
     }
   }
@@ -405,9 +406,11 @@ class Text extends Node {
   /// The text node's data, stored as either a String or StringBuffer.
   /// We support storing a StringBuffer here to support fast [appendData].
   /// It will flatten back to a String on read.
-  var _data;
+  dynamic _data;
 
-  Text(String data) : _data = data != null ? data : '', super._();
+  Text(String data)
+      : _data = data != null ? data : '',
+        super._();
 
   int get nodeType => Node.TEXT_NODE;
 
@@ -476,7 +479,6 @@ class Element extends Node with _ParentNode, _ElementAndDocument {
   // TODO(jmesserly): for our version we can do something smarter in the parser.
   // All we really need is to set the correct parse state.
   factory Element.html(String html) {
-
     // TODO(jacobr): this method can be made more robust and performant.
     // 1) Cache the dummy parent elements required to use innerHTML rather than
     //    creating them every call.
@@ -563,7 +565,7 @@ class Element extends Node with _ParentNode, _ElementAndDocument {
     str.write(_getSerializationPrefix(namespaceUri));
     str.write(localName);
 
-    if (attributes.length > 0) {
+    if (attributes.isNotEmpty) {
       attributes.forEach((key, v) {
         // Note: AttributeName.toString handles serialization of attribute
         // namespace, if needed.
@@ -577,7 +579,7 @@ class Element extends Node with _ParentNode, _ElementAndDocument {
 
     str.write('>');
 
-    if (nodes.length > 0) {
+    if (nodes.isNotEmpty) {
       if (localName == 'pre' ||
           localName == 'textarea' ||
           localName == 'listing') {
@@ -679,8 +681,6 @@ class NodeList extends ListProxy<Node> {
   Node _parent;
 
   NodeList._();
-
-  Node get first => this[0];
 
   Node _setParent(Node node) {
     // Note: we need to remove the node from its previous parent node, if any,
@@ -807,7 +807,8 @@ class NodeList extends ListProxy<Node> {
 /// filtered so that only elements are in the collection.
 // TODO(jmesserly): this was copied from dart:html
 // TODO(jmesserly): "implements List<Element>" is a workaround for analyzer bug.
-class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
+class FilteredElementList extends IterableBase<Element>
+    with ListMixin<Element>
     implements List<Element> {
   final List<Node> _childNodes;
 
@@ -817,9 +818,7 @@ class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
   ///
   ///     var filteredElements = new FilteredElementList(query("#container"));
   ///     // filteredElements is [a, b, c].
-  FilteredElementList(Node node)
-      : _childNodes = node.nodes;
-
+  FilteredElementList(Node node) : _childNodes = node.nodes;
 
   // We can't memoize this, since it's possible that children will be messed
   // with externally to this class.
@@ -837,7 +836,7 @@ class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
     this[index].replaceWith(value);
   }
 
-  void set length(int newLength) {
+  set length(int newLength) {
     final len = this.length;
     if (newLength >= len) {
       return;
@@ -901,10 +900,9 @@ class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
     return result;
   }
 
-  Iterable/*<T>*/ map/*<T>*/(/*=T*/ f(Element element)) => _filtered.map(f);
+  Iterable<T> map<T>(T f(Element element)) => _filtered.map(f);
   Iterable<Element> where(bool f(Element element)) => _filtered.where(f);
-  Iterable/*<T>*/ expand/*<T>*/(Iterable/*<T>*/ f(Element element)) =>
-      _filtered.expand(f);
+  Iterable<T> expand<T>(Iterable<T> f(Element element)) => _filtered.expand(f);
 
   void insert(int index, Element value) {
     _childNodes.insert(index, value);
@@ -936,8 +934,7 @@ class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
     return _filtered.reduce(combine);
   }
 
-  dynamic/*=T*/ fold/*<T>*/(var/*=T*/ initialValue,
-      dynamic/*=T*/ combine(var/*=T*/ previousValue, Element element)) {
+  T fold<T>(T initialValue, T combine(T previousValue, Element element)) {
     return _filtered.fold(initialValue, combine);
   }
 
@@ -954,7 +951,8 @@ class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
     return _filtered.lastWhere(test, orElse: orElse);
   }
 
-  Element singleWhere(bool test(Element value)) {
+  Element singleWhere(bool test(Element value), {Element orElse()}) {
+    if (orElse != null) throw new UnimplementedError('orElse');
     return _filtered.singleWhere(test);
   }
 
@@ -971,12 +969,11 @@ class FilteredElementList extends IterableBase<Element> with ListMixin<Element>
       _filtered.getRange(start, end);
   // TODO(sigmund): this should be typed Element, but we currently run into a
   // bug where ListMixin<E>.indexOf() expects Object as the argument.
-  int indexOf(element, [int start = 0]) =>
-      _filtered.indexOf(element, start);
+  int indexOf(element, [int start = 0]) => _filtered.indexOf(element, start);
 
   // TODO(sigmund): this should be typed Element, but we currently run into a
   // bug where ListMixin<E>.lastIndexOf() expects Object as the argument.
-  int lastIndexOf(element, [int start = null]) {
+  int lastIndexOf(element, [int start]) {
     if (start == null) start = length - 1;
     return _filtered.lastIndexOf(element, start);
   }

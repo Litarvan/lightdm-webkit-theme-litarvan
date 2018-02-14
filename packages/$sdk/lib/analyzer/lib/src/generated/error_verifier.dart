@@ -463,30 +463,15 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
       _checkForMemberWithClassName();
       _checkForNoDefaultSuperConstructorImplicit(node);
       _checkForConflictingTypeVariableErrorCodes(node);
-      ExtendsClause extendsClause = node.extendsClause;
+      TypeName superclass = node.extendsClause?.superclass;
       ImplementsClause implementsClause = node.implementsClause;
       WithClause withClause = node.withClause;
+
       // Only do error checks on the clause nodes if there is a non-null clause
       if (implementsClause != null ||
-          extendsClause != null ||
+          superclass != null ||
           withClause != null) {
-        // Only check for all of the inheritance logic around clauses if there
-        // isn't an error code such as "Cannot extend double" already on the
-        // class.
-        if (!_checkForImplementsDisallowedClass(implementsClause) &&
-            !_checkForExtendsDisallowedClass(extendsClause) &&
-            !_checkForAllMixinErrorCodes(withClause)) {
-          _checkForExtendsDeferredClass(extendsClause);
-          _checkForImplementsDeferredClass(implementsClause);
-          _checkForNonAbstractClassInheritsAbstractMember(node.name);
-          _checkForInconsistentMethodInheritance();
-          _checkForRecursiveInterfaceInheritance(_enclosingClass);
-          _checkForConflictingGetterAndMethod();
-          _checkForConflictingInstanceGetterAndSuperclassMember();
-          _checkImplementsSuperClass(node);
-          _checkImplementsFunctionWithoutCall(node);
-          _checkForMixinHasNoConstructors(node);
-        }
+        _checkClassInheritance(node, superclass, withClause, implementsClause);
       }
       visitClassDeclarationIncrementally(node);
       _checkForFinalNotInitializedInClass(node);
@@ -530,19 +515,8 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
     ClassElementImpl outerClassElement = _enclosingClass;
     try {
       _enclosingClass = AbstractClassElementImpl.getImpl(node.element);
-      ImplementsClause implementsClause = node.implementsClause;
-      // Only check for all of the inheritance logic around clauses if there
-      // isn't an error code such as "Cannot extend double" already on the
-      // class.
-      if (!_checkForExtendsDisallowedClassInTypeAlias(node) &&
-          !_checkForImplementsDisallowedClass(implementsClause) &&
-          !_checkForAllMixinErrorCodes(node.withClause)) {
-        _checkForExtendsDeferredClassInTypeAlias(node);
-        _checkForImplementsDeferredClass(implementsClause);
-        _checkForRecursiveInterfaceInheritance(_enclosingClass);
-        _checkForNonAbstractClassInheritsAbstractMember(node.name);
-        _checkForMixinHasNoConstructors(node);
-      }
+      _checkClassInheritance(
+          node, node.superclass, node.withClause, node.implementsClause);
     } finally {
       _enclosingClass = outerClassElement;
     }
@@ -686,19 +660,14 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
           function is PropertyAccessorElement &&
           function.isSetter;
       if (!isSetterWithImplicitReturn) {
-        _checkForReturnOfInvalidType(node.expression, expectedReturnType);
+        _checkForReturnOfInvalidType(node.expression, expectedReturnType,
+            isArrowFunction: true);
       }
       return super.visitExpressionFunctionBody(node);
     } finally {
       _inAsync = wasInAsync;
       _inGenerator = wasInGenerator;
     }
-  }
-
-  @override
-  Object visitExtendsClause(ExtendsClause node) {
-    _checkForImplicitDynamicType(node.superclass);
-    return super.visitExtendsClause(node);
   }
 
   @override
@@ -857,24 +826,18 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
               [node.identifier]);
         }
       }
+
+      // TODO(paulberry): remove this once dartbug.com/28515 is fixed.
+      if (node.typeParameters != null) {
+        _errorReporter.reportErrorForNode(
+            CompileTimeErrorCode.GENERIC_FUNCTION_TYPED_PARAM_UNSUPPORTED,
+            node);
+      }
+
       return super.visitFunctionTypedFormalParameter(node);
     } finally {
       _isInFunctionTypedFormalParameter = old;
     }
-  }
-
-  @override
-  Object visitGenericFunctionType(GenericFunctionType node) {
-    throw new StateError(
-        'Support for generic function types is not yet implemented');
-//    return super.visitGenericFunctionType(node);
-  }
-
-  @override
-  Object visitGenericTypeAlias(GenericTypeAlias node) {
-    throw new StateError(
-        'Support for generic type aliases is not yet implemented');
-//    return super.visitGenericTypeAlias(node);
   }
 
   @override
@@ -892,6 +855,10 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   @override
   Object visitImportDirective(ImportDirective node) {
     ImportElement importElement = node.element;
+    if (node.prefix != null) {
+      _checkForBuiltInIdentifierAsName(
+          node.prefix, CompileTimeErrorCode.BUILT_IN_IDENTIFIER_AS_PREFIX_NAME);
+    }
     if (importElement != null) {
       _checkForImportDuplicateLibraryName(node, importElement);
       _checkForImportInternalLibrary(node, importElement);
@@ -1309,6 +1276,39 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   }
 
   /**
+   * Checks the class for problems with the superclass, mixins, or implemented
+   * interfaces.
+   */
+  void _checkClassInheritance(
+      NamedCompilationUnitMember node,
+      TypeName superclass,
+      WithClause withClause,
+      ImplementsClause implementsClause) {
+    // Only check for all of the inheritance logic around clauses if there
+    // isn't an error code such as "Cannot extend double" already on the
+    // class.
+    if (!_checkForExtendsDisallowedClass(superclass) &&
+        !_checkForImplementsDisallowedClass(implementsClause) &&
+        !_checkForAllMixinErrorCodes(withClause)) {
+      _checkForImplicitDynamicType(superclass);
+      _checkForExtendsDeferredClass(superclass);
+      _checkForImplementsDeferredClass(implementsClause);
+      _checkForNonAbstractClassInheritsAbstractMember(node.name);
+      _checkForInconsistentMethodInheritance();
+      _checkForRecursiveInterfaceInheritance(_enclosingClass);
+      _checkForConflictingGetterAndMethod();
+      _checkForConflictingInstanceGetterAndSuperclassMember();
+      _checkImplementsSuperClass(implementsClause);
+      _checkImplementsFunctionWithoutCall(node.name);
+      _checkForMixinHasNoConstructors(node);
+
+      if (_options.strongMode) {
+        _checkForMixinWithConflictingPrivateMember(withClause, superclass);
+      }
+    }
+  }
+
+  /**
    * Given a list of [directives] that have the same prefix, generate an error
    * if there is more than one import and any of those imports is deferred.
    *
@@ -1395,7 +1395,12 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   void _checkDuplicateDefinitionInParameterList(FormalParameterList node) {
     Map<String, Element> definedNames = new HashMap<String, Element>();
     for (FormalParameter parameter in node.parameters) {
-      _checkDuplicateIdentifier(definedNames, parameter.identifier);
+      SimpleIdentifier identifier = parameter.identifier;
+      if (identifier != null) {
+        // The identifier can be null if this is a parameter list for a generic
+        // function type.
+        _checkDuplicateIdentifier(definedNames, identifier);
+      }
     }
   }
 
@@ -2300,7 +2305,11 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
         }
       } else if (expectedReturnType.isDynamic ||
           expectedReturnType.isVoid ||
-          expectedReturnType.isDartCoreNull) {
+          (expectedReturnType.isDartCoreNull && _options.strongMode)) {
+        // TODO(leafp): Empty returns shouldn't be allowed for Null in strong
+        // mode either once we allow void as a type argument.  But for now, the
+        // only type we can validly infer for f.then((_) {print("hello");}) is
+        // Future<Null>, so we allow this.
         return;
       }
       _hasReturnWithoutValue = true;
@@ -2574,6 +2583,39 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   }
 
   /**
+   * Verifies that the class is not named `Function` and that it doesn't
+   * extends/implements/mixes in `Function`.
+   */
+  void _checkForBadFunctionUse(ClassDeclaration node) {
+    ExtendsClause extendsClause = node.extendsClause;
+    WithClause withClause = node.withClause;
+
+    if (node.name.name == "Function") {
+      _errorReporter.reportErrorForNode(
+          HintCode.DEPRECATED_FUNCTION_CLASS_DECLARATION, node.name);
+    }
+
+    if (extendsClause != null) {
+      InterfaceType superclassType = _enclosingClass.supertype;
+      ClassElement superclassElement = superclassType?.element;
+      if (superclassElement != null && superclassElement.name == "Function") {
+        _errorReporter.reportErrorForNode(
+            HintCode.DEPRECATED_EXTENDS_FUNCTION, extendsClause.superclass);
+      }
+    }
+
+    if (withClause != null) {
+      for (TypeName type in withClause.mixinTypes) {
+        Element mixinElement = type.name.staticElement;
+        if (mixinElement != null && mixinElement.name == "Function") {
+          _errorReporter.reportErrorForNode(
+              HintCode.DEPRECATED_MIXIN_FUNCTION, type);
+        }
+      }
+    }
+  }
+
+  /**
    * Verify that the given [identifier] is not a keyword, and generates the
    * given [errorCode] on the identifier if it is a keyword.
    *
@@ -2584,7 +2626,7 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   void _checkForBuiltInIdentifierAsName(
       SimpleIdentifier identifier, ErrorCode errorCode) {
     Token token = identifier.token;
-    if (token.type == TokenType.KEYWORD) {
+    if (token.type.isKeyword && token.keyword?.isPseudo != true) {
       _errorReporter
           .reportErrorForNode(errorCode, identifier, [identifier.name]);
     }
@@ -2811,7 +2853,7 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
       // prepare accessor properties
       String name = accessor.displayName;
       bool getter = accessor.isGetter;
-      // if non-final variable, ignore setter - we alreay reported problem for
+      // if non-final variable, ignore setter - we already reported problem for
       // getter
       if (accessor.isSetter && accessor.isSynthetic) {
         continue;
@@ -2938,40 +2980,6 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
           } else {
             memberHashMap[name.name] = member;
           }
-        }
-      }
-    }
-  }
-
-  /**
-   * Verifies that the class is not named `Function` and that it doesn't
-   * extends/implements/mixes in `Function`.
-   */
-  void _checkForBadFunctionUse(ClassDeclaration node) {
-    ExtendsClause extendsClause = node.extendsClause;
-    ImplementsClause implementsClause = node.implementsClause;
-    WithClause withClause = node.withClause;
-
-    if (node.name.name == "Function") {
-      _errorReporter.reportErrorForNode(
-          HintCode.DEPRECATED_FUNCTION_CLASS_DECLARATION, node.name);
-    }
-
-    if (extendsClause != null) {
-      InterfaceType superclassType = _enclosingClass.supertype;
-      ClassElement superclassElement = superclassType?.element;
-      if (superclassElement != null && superclassElement.name == "Function") {
-        _errorReporter.reportErrorForNode(
-            HintCode.DEPRECATED_EXTENDS_FUNCTION, extendsClause.superclass);
-      }
-    }
-
-    if (withClause != null) {
-      for (TypeName type in withClause.mixinTypes) {
-        Element mixinElement = type.name.staticElement;
-        if (mixinElement != null && mixinElement.name == "Function") {
-          _errorReporter.reportErrorForNode(
-              HintCode.DEPRECATED_MIXIN_FUNCTION, type);
         }
       }
     }
@@ -3580,25 +3588,12 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
    *
    * See [CompileTimeErrorCode.EXTENDS_DEFERRED_CLASS].
    */
-  void _checkForExtendsDeferredClass(ExtendsClause clause) {
-    if (clause == null) {
+  void _checkForExtendsDeferredClass(TypeName superclass) {
+    if (superclass == null) {
       return;
     }
     _checkForExtendsOrImplementsDeferredClass(
-        clause.superclass, CompileTimeErrorCode.EXTENDS_DEFERRED_CLASS);
-  }
-
-  /**
-   * Verify that the given type [alias] does not extend a deferred class.
-   *
-   * See [CompileTimeErrorCode.EXTENDS_DISALLOWED_CLASS].
-   */
-  void _checkForExtendsDeferredClassInTypeAlias(ClassTypeAlias alias) {
-    if (alias == null) {
-      return;
-    }
-    _checkForExtendsOrImplementsDeferredClass(
-        alias.superclass, CompileTimeErrorCode.EXTENDS_DEFERRED_CLASS);
+        superclass, CompileTimeErrorCode.EXTENDS_DEFERRED_CLASS);
   }
 
   /**
@@ -3607,26 +3602,12 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
    *
    * See [CompileTimeErrorCode.EXTENDS_DISALLOWED_CLASS].
    */
-  bool _checkForExtendsDisallowedClass(ExtendsClause clause) {
-    if (clause == null) {
+  bool _checkForExtendsDisallowedClass(TypeName superclass) {
+    if (superclass == null) {
       return false;
     }
     return _checkForExtendsOrImplementsDisallowedClass(
-        clause.superclass, CompileTimeErrorCode.EXTENDS_DISALLOWED_CLASS);
-  }
-
-  /**
-   * Verify that the given type [alias] does not extend classes such as 'num' or
-   * 'String'.
-   *
-   * See [CompileTimeErrorCode.EXTENDS_DISALLOWED_CLASS].
-   */
-  bool _checkForExtendsDisallowedClassInTypeAlias(ClassTypeAlias alias) {
-    if (alias == null) {
-      return false;
-    }
-    return _checkForExtendsOrImplementsDisallowedClass(
-        alias.superclass, CompileTimeErrorCode.EXTENDS_DISALLOWED_CLASS);
+        superclass, CompileTimeErrorCode.EXTENDS_DISALLOWED_CLASS);
   }
 
   /**
@@ -3844,9 +3825,10 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   }
 
   /**
-   * Verify that final fields in the given clas [declaration] that are declared,
-   * without any constructors in the enclosing class, are initialized. Cases in
-   * which there is at least one constructor are handled at the end of
+   * Verify that final fields in the given class [declaration] that are
+   * declared, without any constructors in the enclosing class, are
+   * initialized. Cases in which there is at least one constructor are handled
+   * at the end of
    * [_checkForAllFinalInitializedErrorCodes].
    *
    * See [CompileTimeErrorCode.CONST_NOT_INITIALIZED], and
@@ -4000,7 +3982,9 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
     }
     DartType invokeType = node.staticInvokeType;
     DartType declaredType = node.function.staticType;
-    if (invokeType is FunctionType && declaredType is FunctionType) {
+    if (invokeType is FunctionType &&
+        declaredType is FunctionType &&
+        declaredType.typeFormals.isNotEmpty) {
       Iterable<DartType> typeArgs =
           FunctionTypeImpl.recoverTypeArguments(declaredType, invokeType);
       if (typeArgs.any((t) => t.isDynamic)) {
@@ -4881,6 +4865,80 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   }
 
   /**
+   * Check for the declaration of a mixin from a library other than the current
+   * library that defines a private member that conflicts with a private name
+   * from the same library but from a superclass or a different mixin.
+   */
+  void _checkForMixinWithConflictingPrivateMember(
+      WithClause withClause, TypeName superclassName) {
+    if (withClause == null) {
+      return;
+    }
+    DartType declaredSupertype = superclassName?.type;
+    if (declaredSupertype is! InterfaceType) {
+      return;
+    }
+    InterfaceType superclass = declaredSupertype;
+    Map<LibraryElement, Map<String, String>> mixedInNames =
+        <LibraryElement, Map<String, String>>{};
+
+    /**
+     * Report an error and return `true` if the given [name] is a private name
+     * (which is defined in the given [library]) and it conflicts with another
+     * definition of that name inherited from the superclass.
+     */
+    bool isConflictingName(
+        String name, LibraryElement library, TypeName typeName) {
+      if (Identifier.isPrivateName(name)) {
+        Map<String, String> names =
+            mixedInNames.putIfAbsent(library, () => <String, String>{});
+        if (names.containsKey(name)) {
+          _errorReporter.reportErrorForNode(
+              CompileTimeErrorCode.PRIVATE_COLLISION_IN_MIXIN_APPLICATION,
+              typeName,
+              [name, typeName.name.name, names[name]]);
+          return true;
+        }
+        names[name] = typeName.name.name;
+        ExecutableElement inheritedMember =
+            superclass.lookUpMethod(name, library) ??
+                superclass.lookUpGetter(name, library) ??
+                superclass.lookUpSetter(name, library);
+        if (inheritedMember != null) {
+          _errorReporter.reportErrorForNode(
+              CompileTimeErrorCode.PRIVATE_COLLISION_IN_MIXIN_APPLICATION,
+              typeName, [
+            name,
+            typeName.name.name,
+            inheritedMember.enclosingElement.name
+          ]);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    for (TypeName mixinType in withClause.mixinTypes) {
+      DartType type = mixinType.type;
+      if (type is InterfaceType) {
+        LibraryElement library = type.element.library;
+        if (library != _currentLibrary) {
+          for (PropertyAccessorElement accessor in type.accessors) {
+            if (isConflictingName(accessor.name, library, mixinType)) {
+              return;
+            }
+          }
+          for (MethodElement method in type.methods) {
+            if (isConflictingName(method.name, library, mixinType)) {
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
    * Verify that the given [constructor] has at most one 'super' initializer.
    *
    * See [CompileTimeErrorCode.MULTIPLE_SUPER_INITIALIZERS].
@@ -4899,6 +4957,9 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   }
 
   void _checkForMustCallSuper(MethodDeclaration node) {
+    if (node.isStatic) {
+      return;
+    }
     MethodElement element = _findOverriddenMemberThatMustCallSuper(node);
     if (element != null) {
       _InvocationCollector collector = new _InvocationCollector();
@@ -5291,7 +5352,9 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
     }
     // name should start with '_'
     SimpleIdentifier name = parameter.identifier;
-    if (name.isSynthetic || !StringUtilities.startsWithChar(name.name, 0x5F)) {
+    if (name == null ||
+        name.isSynthetic ||
+        !StringUtilities.startsWithChar(name.name, 0x5F)) {
       return;
     }
 
@@ -5536,7 +5599,8 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
    * See [StaticTypeWarningCode.RETURN_OF_INVALID_TYPE].
    */
   void _checkForReturnOfInvalidType(
-      Expression returnExpression, DartType expectedReturnType) {
+      Expression returnExpression, DartType expectedReturnType,
+      {bool isArrowFunction = false}) {
     if (_enclosingFunction == null) {
       return;
     }
@@ -5548,6 +5612,10 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
     }
     DartType staticReturnType = _computeReturnTypeForMethod(returnExpression);
     if (expectedReturnType.isVoid) {
+      if (isArrowFunction) {
+        // "void f(..) => e" admits all types for "e".
+        return;
+      }
       if (staticReturnType.isVoid ||
           staticReturnType.isDynamic ||
           staticReturnType.isBottom ||
@@ -5895,6 +5963,11 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
   }
 
   void _checkForValidField(FieldFormalParameter parameter) {
+    AstNode parent2 = parameter.parent?.parent;
+    if (parent2 is! ConstructorDeclaration &&
+        parent2?.parent is! ConstructorDeclaration) {
+      return;
+    }
     ParameterElement element = parameter.element;
     if (element is FieldFormalParameterElement) {
       FieldElement fieldElement = element.field;
@@ -6099,12 +6172,12 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
    *
    * See [StaticWarningCode.FUNCTION_WITHOUT_CALL].
    */
-  void _checkImplementsFunctionWithoutCall(ClassDeclaration declaration) {
-    if (declaration.isAbstract) {
+  void _checkImplementsFunctionWithoutCall(AstNode className) {
+    ClassElement classElement = _enclosingClass;
+    if (classElement == null) {
       return;
     }
-    ClassElement classElement = declaration.element;
-    if (classElement == null) {
+    if (classElement.isAbstract) {
       return;
     }
     if (!_typeSystem.isSubtypeOf(
@@ -6122,7 +6195,7 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
         callMethod is! MethodElement ||
         (callMethod as MethodElement).isAbstract) {
       _errorReporter.reportErrorForNode(
-          StaticWarningCode.FUNCTION_WITHOUT_CALL, declaration.name);
+          StaticWarningCode.FUNCTION_WITHOUT_CALL, className);
     }
   }
 
@@ -6132,14 +6205,13 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
    *
    * See [CompileTimeErrorCode.IMPLEMENTS_SUPER_CLASS].
    */
-  void _checkImplementsSuperClass(ClassDeclaration declaration) {
+  void _checkImplementsSuperClass(ImplementsClause implementsClause) {
     // prepare super type
     InterfaceType superType = _enclosingClass.supertype;
     if (superType == null) {
       return;
     }
     // prepare interfaces
-    ImplementsClause implementsClause = declaration.implementsClause;
     if (implementsClause == null) {
       return;
     }
@@ -6394,7 +6466,8 @@ class ErrorVerifier extends RecursiveAstVisitor<Object> {
     }
     String name = member.name;
     ClassElement superclass = classElement.supertype?.element;
-    while (superclass != null) {
+    Set<ClassElement> visitedClasses = new Set<ClassElement>();
+    while (superclass != null && visitedClasses.add(superclass)) {
       ExecutableElement member = superclass.getMethod(name) ??
           superclass.getGetter(name) ??
           superclass.getSetter(name);

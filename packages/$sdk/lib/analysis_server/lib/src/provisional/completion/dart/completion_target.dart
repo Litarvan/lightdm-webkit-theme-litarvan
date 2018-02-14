@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library analysis_server.src.provisional.completion.dart.completion_target;
-
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/element/element.dart';
@@ -12,6 +10,10 @@ import 'package:analyzer/src/generated/utilities_dart.dart';
 
 int _computeArgIndex(AstNode containingNode, Object entity) {
   var argList = containingNode;
+  if (argList is NamedExpression) {
+    entity = argList;
+    argList = argList.parent;
+  }
   if (argList is ArgumentList) {
     NodeList<Expression> args = argList.arguments;
     for (int index = 0; index < args.length; ++index) {
@@ -137,13 +139,14 @@ class CompletionTarget {
   /**
    * Compute the appropriate [CompletionTarget] for the given [offset] within
    * the [compilationUnit].
-   * 
+   *
    * Optionally, start the search from within [entryPoint] instead of using
    * the [compilationUnit], which is useful for analyzing ASTs that have no
    * [compilationUnit] such as dart expressions within angular templates.
    */
   factory CompletionTarget.forOffset(
-      CompilationUnit compilationUnit, int offset, {AstNode entryPoint}) {
+      CompilationUnit compilationUnit, int offset,
+      {AstNode entryPoint}) {
     // The precise algorithm is as follows.  We perform a depth-first search of
     // all edges in the parse tree (both those that point to AST nodes and
     // those that point to tokens), visiting parents before children.  The
@@ -160,7 +163,8 @@ class CompletionTarget {
     // to.
     entryPoint ??= compilationUnit;
     AstNode containingNode = entryPoint;
-    outerLoop: while (true) {
+    outerLoop:
+    while (true) {
       if (containingNode is Comment) {
         // Comments are handled specially: we descend into any CommentReference
         // child node that contains the cursor offset.
@@ -284,6 +288,9 @@ class CompletionTarget {
       return false;
     }
     AstNode parent = containingNode.parent;
+    if (parent is ArgumentList) {
+      parent = parent.parent;
+    }
     if (parent is InstanceCreationExpression) {
       DartType instType = parent.bestType;
       if (instType != null) {
@@ -294,7 +301,8 @@ class CompletionTarget {
               ? intTypeElem.getNamedConstructor(constructorName.name)
               : intTypeElem.unnamedConstructor;
           return constructor != null &&
-              _isFunctionalParameter(constructor.parameters, argIndex);
+              _isFunctionalParameter(
+                  constructor.parameters, argIndex, containingNode);
         }
       }
     } else if (parent is MethodInvocation) {
@@ -302,9 +310,11 @@ class CompletionTarget {
       if (methodName != null) {
         Element methodElem = methodName.bestElement;
         if (methodElem is MethodElement) {
-          return _isFunctionalParameter(methodElem.parameters, argIndex);
+          return _isFunctionalParameter(
+              methodElem.parameters, argIndex, containingNode);
         } else if (methodElem is FunctionElement) {
-          return _isFunctionalParameter(methodElem.parameters, argIndex);
+          return _isFunctionalParameter(
+              methodElem.parameters, argIndex, containingNode);
         }
       }
     }
@@ -317,14 +327,17 @@ class CompletionTarget {
    * needs to be resolved so that [isFunctionalArgument] will work.
    */
   bool maybeFunctionalArgument() {
-    if (argIndex == null) {
-      return false;
+    if (argIndex != null) {
+      if (containingNode is ArgumentList) {
+        return true;
+      }
+      if (containingNode is NamedExpression) {
+        if (containingNode.parent is ArgumentList) {
+          return true;
+        }
+      }
     }
-    AstNode argList = containingNode;
-    if (argList is! ArgumentList) {
-      return false;
-    }
-    return true;
+    return false;
   }
 
   /**
@@ -374,8 +387,7 @@ class CompletionTarget {
     // If the node's first token is a keyword or identifier, then the node is a
     // candidate entity if its first token is.
     Token beginToken = node.beginToken;
-    if (beginToken.type == TokenType.KEYWORD ||
-        beginToken.type == TokenType.IDENTIFIER) {
+    if (beginToken.type.isKeyword || beginToken.type == TokenType.IDENTIFIER) {
       return _isCandidateToken(beginToken, offset);
     }
 
@@ -398,7 +410,7 @@ class CompletionTarget {
     if (offset < token.end) {
       return true;
     } else if (offset == token.end) {
-      return token.type == TokenType.KEYWORD ||
+      return token.type.isKeyword ||
           token.type == TokenType.IDENTIFIER ||
           token.length == 0;
     } else if (!token.isSynthetic) {
@@ -410,8 +422,7 @@ class CompletionTarget {
     if (offset < previous.end) {
       return true;
     } else if (offset == previous.end) {
-      return token.type == TokenType.KEYWORD ||
-          previous.type == TokenType.IDENTIFIER;
+      return token.type.isKeyword || previous.type == TokenType.IDENTIFIER;
     } else {
       return false;
     }
@@ -420,18 +431,25 @@ class CompletionTarget {
   /**
    * Return `true` if the parameter is a functional parameter.
    */
-  static bool _isFunctionalParameter(
-      List<ParameterElement> parameters, int paramIndex) {
+  static bool _isFunctionalParameter(List<ParameterElement> parameters,
+      int paramIndex, AstNode containingNode) {
+    DartType paramType;
     if (paramIndex < parameters.length) {
       ParameterElement param = parameters[paramIndex];
-      DartType paramType = param.type;
       if (param.parameterKind == ParameterKind.NAMED) {
-        // TODO(danrubel) handle named parameters
-        return false;
+        if (containingNode is NamedExpression) {
+          String name = containingNode.name?.label?.name;
+          param = parameters.firstWhere(
+              (ParameterElement param) =>
+                  param.parameterKind == ParameterKind.NAMED &&
+                  param.name == name,
+              orElse: () => null);
+          paramType = param?.type;
+        }
       } else {
-        return paramType is FunctionType || paramType is FunctionTypeAlias;
+        paramType = param.type;
       }
     }
-    return false;
+    return paramType is FunctionType || paramType is FunctionTypeAlias;
   }
 }

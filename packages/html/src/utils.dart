@@ -43,7 +43,7 @@ bool startsWithAny(String str, List<String> prefixes) {
 }
 
 // Like the python [:] operator.
-List/*<T>*/ slice/*<T>*/(List/*<T>*/ list, int start, [int end]) {
+List<T> slice<T>(List<T> list, int start, [int end]) {
   if (end == null) end = list.length;
   if (end < 0) end += list.length;
 
@@ -79,8 +79,7 @@ String formatStr(String format, Map data) {
   data.forEach((key, value) {
     var result = new StringBuffer();
     var search = '%($key)';
-    int last = 0,
-        match;
+    int last = 0, match;
     while ((match = format.indexOf(search, last)) >= 0) {
       result.write(format.substring(last, match));
       match += search.length;

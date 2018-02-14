@@ -21,7 +21,8 @@ bool hasUtf8Bom(List<int> bytes, [int offset = 0, int length]) {
 /// Decodes the [bytes] with the provided [encoding] and returns an iterable for
 /// the codepoints. Supports the major unicode encodings as well as ascii and
 /// and windows-1252 encodings.
-Iterable<int> decodeBytes(String encoding, List<int> bytes, [int offset = 0,
+Iterable<int> decodeBytes(String encoding, List<int> bytes,
+    [int offset = 0,
     int length,
     int replacementCodepoint = UNICODE_REPLACEMENT_CHARACTER_CODEPOINT]) {
   if (length == null) length = bytes.length;
@@ -99,7 +100,8 @@ List<int> toCodepoints(String input) {
 /// needed. Set the [replacementCharacter] to null to throw an [ArgumentError]
 /// rather than replace the bad value.
 IterableWindows1252Decoder decodeWindows1252AsIterable(List<int> bytes,
-    [int offset = 0, int length,
+    [int offset = 0,
+    int length,
     int replacementCodepoint = UNICODE_REPLACEMENT_CHARACTER_CODEPOINT]) {
   return new IterableWindows1252Decoder(
       bytes, offset, length, replacementCodepoint);
@@ -114,9 +116,10 @@ class IterableWindows1252Decoder extends IterableBase<int> {
   final int length;
   final int replacementCodepoint;
 
-  IterableWindows1252Decoder(List<int> this.bytes, [int this.offset = 0,
-      int this.length = null,
-      int this.replacementCodepoint = UNICODE_REPLACEMENT_CHARACTER_CODEPOINT]);
+  IterableWindows1252Decoder(this.bytes,
+      [this.offset = 0,
+      this.length,
+      this.replacementCodepoint = UNICODE_REPLACEMENT_CHARACTER_CODEPOINT]);
 
   Windows1252Decoder get iterator =>
       new Windows1252Decoder(bytes, offset, length, replacementCodepoint);
@@ -134,7 +137,9 @@ class Windows1252Decoder implements Iterator<int> {
   int _offset;
   final int _length;
 
-  Windows1252Decoder(List<int> bytes, [int offset = 0, int length,
+  Windows1252Decoder(List<int> bytes,
+      [int offset = 0,
+      int length,
       this.replacementCodepoint = UNICODE_REPLACEMENT_CHARACTER_CODEPOINT])
       : _bytes = bytes,
         _offset = offset - 1,
