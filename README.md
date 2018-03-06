@@ -16,6 +16,10 @@
  - Shutdown/Reboot buttons
  - Fade in on display, fade out on session start
 
+# Changing background
+
+Background is in `web/images/background.jpg`
+
 # How to install
 
 ## AUR
