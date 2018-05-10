@@ -42,6 +42,22 @@ static const POLISH = const {
     'days': const ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'],
     'months': const ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
   };
+  
+  static const PORTUGUESE = const {
+    'password': 'Palavra-passe...',
+    'splash': 'Carrega na tecla "Espaço" ou "Enter" para fazer login',
+    'date': 'weekd,  month day,  year',
+    'days': const ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+    'months': const ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+  };
+  
+    static const SPANISH = const {
+    'password': 'Contraseña...',
+    'splash': 'Presiona "Espacio" o "Enter" para iniciar sesión',
+    'date': 'weekd,  month day,  year',
+    'days': const ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+    'months': const ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+  };
 
 
   LightDM _lightdm;
@@ -61,6 +77,12 @@ static const POLISH = const {
             break;
         case 'deutsch':
             return GERMAN[key];
+            break;
+        case 'portuguese':
+            return PORTUGUESE[key];
+            break;
+        case 'spanish':
+            return SPANISH[key];
             break;
         default:
             return ENGLISH[key];
