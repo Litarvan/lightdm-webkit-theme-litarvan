@@ -65,7 +65,7 @@ static const POLISH = const {
   Translations(this._lightdm);
 
   dynamic get(String key) {
-    var lang = (_lightdm.language || '').toLowerCase();
+    var lang = _lightdm.language?.toLowerCase();
 
     switch(lang) {
         case 'français':
