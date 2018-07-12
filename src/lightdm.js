@@ -119,3 +119,5 @@ function show_message(text, type)
 {
     errorCB(text);
 }
+
+export default window.lightdm;
