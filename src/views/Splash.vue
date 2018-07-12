@@ -7,12 +7,10 @@
 </template>
 
 <script>
-    export default
-    {
+    export default {
         name: 'splash',
 
-        mounted()
-        {
+        mounted() {
             this.show = true;
 
             setTimeout(() => {
@@ -21,8 +19,7 @@
             }, 2000);
         },
 
-        data()
-        {
+        data() {
             return {
                 show: false
             };

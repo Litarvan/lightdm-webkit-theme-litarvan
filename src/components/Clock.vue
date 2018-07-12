@@ -1,6 +1,6 @@
 <template>
     <div class="clock">
-        <span id="hours">{{ hours }}</span>:{{ minutes }}
+        <span id="hours">{{ hours | pad }}</span>:{{ minutes | pad }}
 
         <div id="date">
             {{ date }}
@@ -9,67 +9,66 @@
 </template>
 
 <script>
-    import LightDM from '../lightdm';
+    import { getLocale } from '../translations';
 
-    export default
-    {
+    export default {
         name: 'clock',
 
-        data()
-        {
-            const date = new Date();
+        mounted() {
+            this.interval = setInterval(this.setTime, 1000);
+        },
 
-            let lang = 'en-US';
+        filters: {
+            pad: v => v.toString().padStart(2, '0')
+        },
 
-            LightDM.languages.forEach(l => {
-                if (l.name.toLowerCase() === LightDM.language.toLowerCase())
-                {
-                    lang = l.code.split('.')[0].replace('_', '-');
-                }
-            });
+        methods: {
+            setTime() {
+                const date = new Date();
 
-            return {
-                hours: date.getHours().toString().padStart(2, '0'),
-                minutes: date.getMinutes().toString().padStart(2, '0'),
-                date: date.toLocaleDateString(lang, {
+                this.hours = date.getHours();
+                this.minutes = date.getMinutes();
+                this.date = date.toLocaleDateString(getLocale(), {
                     weekday: 'long',
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric'
-                })
+                });
             }
+        },
+
+        data() {
+            return {
+                hours: '00',
+                minutes: '00',
+                date: ''
+            };
+        },
+
+        beforeDestroy() {
+            clearInterval(this.interval);
         }
     }
 </script>
 
 <style scoped>
-    @font-face {
-        font-family: 'Lato';
-        src: url('../assets/fonts/Lato-Regular.ttf');
-    }
-
-    @font-face {
-        font-family: 'Lato';
-        font-weight: 300;
-        src: url('../assets/fonts/Lato-Light.ttf');
-    }
-
     .clock {
         font-size: 164px;
         font-weight: 300;
         font-family: 'Lato', 'Noto Sans', sans-serif;
+        line-height: 1.1;
 
         text-align: center;
     }
 
     #hours {
         font-weight: bold;
-        font-size: 154px;
+        font-size: 156px;
     }
 
     #date {
         font-weight: normal;
-        margin-top: 1.25vh;
+        margin-top: 2.25vh;
         font-size: 28px;
     }
 </style>

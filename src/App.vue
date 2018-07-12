@@ -7,10 +7,29 @@
 </template>
 
 <style lang="scss">
+    @font-face {
+        font-family: 'Lato';
+        src: url('assets/fonts/Lato-Regular.ttf');
+    }
+
+    @font-face {
+        font-family: 'Lato';
+        font-weight: 300;
+        src: url('assets/fonts/Lato-Light.ttf');
+    }
+
+    @font-face {
+        font-family: "Lato";
+        font-style: italic;
+        font-weight: 300;
+        src: url('assets/fonts/Lato-LightItalic.ttf');
+    }
+
     html, body, #app, #app > * {
         margin: 0;
         padding: 0;
         height: 100vh;
+        overflow-y: auto;
     }
 
     #app {
