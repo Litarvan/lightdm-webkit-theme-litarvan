@@ -9,6 +9,8 @@
 </template>
 
 <script>
+    import LightDM from '../lightdm';
+
     export default
     {
         name: 'clock',
@@ -16,17 +18,25 @@
         data()
         {
             const date = new Date();
-            const template = 'weekd day month year';
-            const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-            const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+
+            let lang = 'en-US';
+
+            LightDM.languages.forEach(l => {
+                if (l.name.toLowerCase() === LightDM.language.toLowerCase())
+                {
+                    lang = l.code.split('.')[0].replace('_', '-');
+                }
+            });
 
             return {
                 hours: date.getHours().toString().padStart(2, '0'),
                 minutes: date.getMinutes().toString().padStart(2, '0'),
-                date: template.replace('day', date.getDate().toString())
-                    .replace('weekd', days[date.getDay() - 1])
-                    .replace('month', months[date.getMonth() - 1])
-                    .replace('year', date.getFullYear().toString())
+                date: date.toLocaleDateString(lang, {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                })
             }
         }
     }
