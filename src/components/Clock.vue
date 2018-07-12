@@ -9,12 +9,13 @@
 </template>
 
 <script>
-    import { getLocale } from '../translations';
+    import { getLocale } from '@/translations';
 
     export default {
         name: 'clock',
 
         mounted() {
+            this.setTime();
             this.interval = setInterval(this.setTime, 1000);
         },
 
@@ -62,8 +63,9 @@
     }
 
     #hours {
-        font-weight: bold;
-        font-size: 156px;
+        font-weight: normal;
+        /*font-weight: bold;
+        font-size: 156px;*/
     }
 
     #date {

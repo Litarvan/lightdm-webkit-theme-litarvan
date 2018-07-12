@@ -1,27 +1,38 @@
 <template>
     <div class="splash">
         <transition name="logo-fade">
-            <img id="logo" src="../assets/images/arch.svg" v-if="show"/>
+            <div id="content" v-if="show">
+                <img v-if="state === 'initial'" id="logo" src="../assets/images/arch.svg" />
+                <p v-if="state !== 'initial'" id="power-text">
+                    {{ text }}
+                </p>
+            </div>
         </transition>
     </div>
 </template>
 
 <script>
+    import { trans } from '@/translations';
+
     export default {
         name: 'splash',
 
         mounted() {
             this.show = true;
 
-            setTimeout(() => {
-                this.show = false;
-                this.$router.push('home');
-            }, 2000);
+            if (this.state === 'initial') {
+                setTimeout(() => {
+                    this.show = false;
+                    this.$router.push('/home');
+                }, 2000);
+            }
         },
 
         data() {
             return {
-                show: false
+                show: false,
+                state: this.$route.params.state,
+                text: trans(this.$route.params.state)
             };
         }
     };
@@ -36,11 +47,21 @@
         text-align: center;
     }
 
-    #logo {
-        height: 250px;
-
+    #content {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    #logo {
+        height: 250px;
+    }
+
+    #power-text {
+        font-family: 'Lato', 'Noto Sans', serif;
+        font-style: italic;
+        font-weight: normal;
+        color: white;
+        font-size: 58px;
     }
 
     .logo-fade-enter-active, .logo-fade-leave-active {

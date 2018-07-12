@@ -3,11 +3,15 @@ import LightDM from './lightdm';
 const translations = {
     'en': {
         trigger: 'Press "Space" or "Enter" to login',
-        password: 'Password...'
+        password: 'Password...',
+        shutdown: 'Shutting down...',
+        reboot: 'Rebooting...'
     },
     'fr': {
         trigger: 'Appuyez sur "Espace" ou "Entrée" pour vous connecter',
-        password: 'Mot de passe...'
+        password: 'Mot de passe...',
+        shutdown: 'Arrêt...',
+        reboot: 'Redémarrage...'
     },
     'nl': {
         trigger: 'Druk op "Spatie" of "Enter" om aan te melden',

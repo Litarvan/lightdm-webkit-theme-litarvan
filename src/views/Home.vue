@@ -5,17 +5,22 @@
         </div>
 
         <div id="trigger" class="hero-foot">{{ trigger }}</div>
+
+        <PowerButton id="shutdown" type="shutdown"></PowerButton>
+        <PowerButton id="reboot" type="reboot"></PowerButton>
     </div>
 </template>
 
 <script>
     import Clock from '@/components/Clock.vue';
-    import { trans } from '../translations';
+    import PowerButton from '@/components/PowerButton.vue';
+    import { trans } from '@/translations';
 
     export default {
         name: 'home',
         components: {
-            Clock
+            Clock,
+            PowerButton
         },
         data() {
             return {
@@ -31,7 +36,7 @@
     }
 
     .clock {
-        margin-top: 5.5vh;
+        margin-top: 6vh;
     }
 
     #trigger {
@@ -40,7 +45,19 @@
         font-style: italic;
         font-size: 32px;
 
-        margin-bottom: 12vh;
+        margin-bottom: 11.5vh;
         letter-spacing: 0.25px;
+    }
+
+    #shutdown {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    #reboot {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
     }
 </style>

@@ -9,6 +9,10 @@ export default new Router({
     routes: [
         {
             path: '/',
+            redirect: '/splash/initial'
+        },
+        {
+            path: '/splash/:state',
             name: 'splash',
             component: Splash
         },

@@ -13,6 +13,12 @@
     }
 
     @font-face {
+        font-family: "Lato";
+        font-style: italic;
+        src: url('assets/fonts/Lato-Italic.ttf');
+    }
+
+    @font-face {
         font-family: 'Lato';
         font-weight: 300;
         src: url('assets/fonts/Lato-Light.ttf');
@@ -28,8 +34,10 @@
     html, body, #app, #app > * {
         margin: 0;
         padding: 0;
+
         height: 100vh;
-        overflow-y: auto;
+
+        overflow-y:hidden;
     }
 
     #app {
