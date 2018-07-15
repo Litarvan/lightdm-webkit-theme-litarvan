@@ -3,7 +3,7 @@
         <transition name="logo-fade">
             <div id="content" v-if="show">
                 <img v-if="state === 'initial'" id="logo" src="../assets/images/arch.svg" />
-                <p v-if="state !== 'initial'" id="power-text">
+                <p v-else id="power-text">
                     {{ text }}
                 </p>
             </div>
@@ -23,7 +23,7 @@
             if (this.state === 'initial') {
                 setTimeout(() => {
                     this.show = false;
-                    this.$router.push('/home');
+                    this.$router.push('/base/home');
                 }, 2000);
             }
         },

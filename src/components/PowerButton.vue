@@ -1,8 +1,8 @@
 <template>
     <div class="power-button">
-        <div id="button-container" v-on:click="apply()">
+        <div id="button-container" @click="apply()">
             <img v-if="type === 'shutdown'" class="power-button-icon" src="../assets/images/shutdown.svg" />
-            <img v-if="type === 'reboot'" class="power-button-icon" src="../assets/images/reboot.svg" />
+            <img v-if="type === 'restart'" class="power-button-icon" src="../assets/images/reboot.svg" />
         </div>
     </div>
 </template>

@@ -5,36 +5,37 @@
         </div>
 
         <div id="trigger" class="hero-foot">{{ trigger }}</div>
-
-        <PowerButton id="shutdown" type="shutdown"></PowerButton>
-        <PowerButton id="reboot" type="reboot"></PowerButton>
     </div>
 </template>
 
 <script>
     import Clock from '@/components/Clock.vue';
-    import PowerButton from '@/components/PowerButton.vue';
     import { trans } from '@/translations';
 
     export default {
         name: 'home',
         components: {
-            Clock,
-            PowerButton
+            Clock
+        },
+        mounted() {
+            window.addEventListener('keyup', this.submit);
         },
         data() {
             return {
                 trigger: trans('trigger')
+            }
+        },
+        methods: {
+            submit(event) {
+                if (event.which === 13 || event.which === 32) {
+                    this.$router.push('/base/login/classic');
+                }
             }
         }
     };
 </script>
 
 <style>
-    .home {
-        background-image: url('../assets/images/background.jpg');
-    }
-
     .clock {
         margin-top: 6vh;
     }
@@ -47,17 +48,5 @@
 
         margin-bottom: 11.5vh;
         letter-spacing: 0.25px;
-    }
-
-    #shutdown {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-    }
-
-    #reboot {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
     }
 </style>

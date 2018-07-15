@@ -5,13 +5,13 @@ const translations = {
         trigger: 'Press "Space" or "Enter" to login',
         password: 'Password...',
         shutdown: 'Shutting down...',
-        reboot: 'Rebooting...'
+        restart: 'Rebooting...'
     },
     'fr': {
         trigger: 'Appuyez sur "Espace" ou "Entrée" pour vous connecter',
         password: 'Mot de passe...',
         shutdown: 'Arrêt...',
-        reboot: 'Redémarrage...'
+        restart: 'Redémarrage...'
     },
     'nl': {
         trigger: 'Druk op "Spatie" of "Enter" om aan te melden',
