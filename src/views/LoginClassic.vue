@@ -1,6 +1,14 @@
 <template>
     <div class="login">
-        Bouh!
+        <div id="avatar">
+            <img id="avatar-image" src="../assets/images/default_user.png" />
+        </div>
+
+        <div id="user">
+            John Doe / <span id="username">johnd</span>
+        </div>
+
+        <input id="password" type="password" :placeholder="passwordLabel" />
 
         <PowerButton id="shutdown" type="shutdown"></PowerButton>
         <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
@@ -11,6 +19,7 @@
 <script>
     import PowerButton from '@/components/PowerButton.vue';
     import LightDM from '@/lightdm';
+    import { trans } from '@/translations';
 
     export default {
         name: 'login-classic',
@@ -19,7 +28,8 @@
         },
         data() {
             return {
-                canSuspend: LightDM.can_suspend
+                canSuspend: LightDM.can_suspend,
+                passwordLabel: trans('password')
             }
         },
         mounted() {
@@ -35,7 +45,50 @@
     }
 </script>
 
-<style>
+<style scoped>
+    #avatar {
+        margin-top: 10vh;
+    }
+
+    #avatar-image {
+        width: 225px;
+    }
+
+    #user, #password {
+        font-family: 'Lato', 'Noto Sans', sans-serif;
+        font-style: italic;
+        font-weight: 300;
+    }
+
+    #user {
+        font-size: 42px;
+        margin-top: 3.5vh;
+    }
+
+    #username {
+        font-weight: bold;
+    }
+
+    #password {
+        margin-top: 4.5vh;
+
+        background: rgba(255, 255, 255, 0.2);
+        caret-color: rgba(255, 255, 255, 0.7);
+        color: white;
+
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 24px;
+
+        width: 415px;
+        height: 54px;
+
+        border: none;
+        border-bottom: solid 3px #249cea;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
     #shutdown {
         position: absolute;
         bottom: 20px;

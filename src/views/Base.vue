@@ -32,7 +32,7 @@
         height: 100vh;
 
         z-index: -1;
-        transition: filter 350ms ease-in-out;
+        transition: filter 500ms ease-in-out;
     }
 
     .blured {

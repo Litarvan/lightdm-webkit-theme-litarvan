@@ -9,6 +9,13 @@
 <style lang="scss">
     @font-face {
         font-family: 'Lato';
+        font-style: italic;
+        font-weight: bold;
+        src: url('assets/fonts/Lato-BoldItalic.ttf');
+    }
+
+    @font-face {
+        font-family: 'Lato';
         src: url('assets/fonts/Lato-Regular.ttf');
     }
 
