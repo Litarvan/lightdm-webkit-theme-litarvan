@@ -2,6 +2,7 @@
     <div class="power-button">
         <div id="button-container" @click="apply()">
             <img v-if="type === 'shutdown'" class="power-button-icon" src="../assets/images/shutdown.svg" />
+            <img v-if="type === 'suspend'" class="power-button-icon suspend" src="../assets/images/suspend.svg" />
             <img v-if="type === 'restart'" class="power-button-icon" src="../assets/images/reboot.svg" />
         </div>
     </div>
@@ -43,5 +44,12 @@
 
         width: 42px;
         height: 42px;
+    }
+
+    .power-button-icon.suspend {
+        width: 52px;
+        height: 52px;
+
+        padding: 5px 5px 2.5px;
     }
 </style>

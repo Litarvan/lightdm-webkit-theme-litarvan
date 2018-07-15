@@ -9,6 +9,7 @@ if (window.debug) {
         is_authenticated: false,
         authentication_user: undefined,
         default_session: 'plasma-shell',
+        can_suspend: true,
         sessions: [
             {
                 name: 'KDE 5',
@@ -68,6 +69,9 @@ if (window.debug) {
         },
         shutdown: () => {
             alert('(DEBUG: System is shutting down)')
+        },
+        suspend: () => {
+            alert('(DEBUG: System is suspending)')
         },
         restart: () => {
             alert('(DEBUG: System is rebooting)')

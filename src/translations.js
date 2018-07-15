@@ -5,12 +5,14 @@ const translations = {
         trigger: 'Press "Space" or "Enter" to login',
         password: 'Password...',
         shutdown: 'Shutting down...',
+        suspend: 'Suspending...',
         restart: 'Rebooting...'
     },
     'fr': {
         trigger: 'Appuyez sur "Espace" ou "Entrée" pour vous connecter',
         password: 'Mot de passe...',
         shutdown: 'Arrêt...',
+        suspend: 'Mise en veille...',
         restart: 'Redémarrage...'
     },
     'nl': {

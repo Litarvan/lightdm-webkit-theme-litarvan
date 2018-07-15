@@ -31,7 +31,7 @@
         src: url('assets/fonts/Lato-LightItalic.ttf');
     }
 
-    html, body, #app, #app > * {
+    html, body, #app, #app > *, .base > * {
         margin: 0;
         padding: 0;
 
