@@ -1,6 +1,6 @@
 <template>
     <div class="base">
-        <div class="bg" :class="{ 'blured': isBlured() }">
+        <div class="bg" :class="{ blured: isBlured() }">
         </div>
 
         <transition name="fade">

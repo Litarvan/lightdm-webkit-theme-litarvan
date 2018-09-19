@@ -8,11 +8,19 @@
             John Doe / <span id="username">johnd</span>
         </div>
 
-        <input id="password" type="password" :placeholder="passwordLabel" />
+        <input v-if="!immutable" id="password" type="password" :placeholder="passwordLabel" />
+        <div v-else id="password" class="immutable"></div>
 
-        <PowerButton id="shutdown" type="shutdown"></PowerButton>
-        <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
-        <PowerButton id="reboot" type="restart"></PowerButton>
+        <div id="desktop">
+            <img id="desktop-icon" src="../assets/images/desktops/gnome.png" />
+            Gnome 3
+        </div>
+
+        <div v-if="!immutable">
+            <PowerButton id="shutdown" type="shutdown"></PowerButton>
+            <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
+            <PowerButton id="reboot" type="restart"></PowerButton>-
+        </div>
     </div>
 </template>
 
@@ -26,6 +34,9 @@
         components: {
             PowerButton
         },
+        props: [
+            'immutable'
+        ],
         data() {
             return {
                 canSuspend: LightDM.can_suspend,
@@ -34,6 +45,7 @@
         },
         mounted() {
             window.addEventListener('keyup', this.submit);
+            setTimeout(() => document.querySelector('#password').focus(), 500);
         },
         methods: {
             submit(event) {
@@ -54,7 +66,7 @@
         width: 225px;
     }
 
-    #user, #password {
+    #user, #password, #desktop {
         font-family: 'Lato', 'Noto Sans', sans-serif;
         font-style: italic;
         font-weight: 300;
@@ -69,11 +81,16 @@
         font-weight: bold;
     }
 
+    #password::placeholder {
+        color: rgba(255, 255, 255, 0.55);
+        opacity: 1;
+    }
+
     #password {
         margin-top: 4.5vh;
 
         background: rgba(255, 255, 255, 0.2);
-        caret-color: rgba(255, 255, 255, 0.7);
+        caret-color: rgba(255, 255, 255, 0.6);
         color: white;
 
         padding-left: 15px;
@@ -87,6 +104,24 @@
         border-bottom: solid 3px #249cea;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
+    }
+
+    #password.immutable {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.35);
+        border-bottom-width: 6px;
+    }
+
+    #desktop {
+        margin-top: 8vh;
+        font-weight: normal;
+        font-size: 44px;
+    }
+
+    #desktop-icon {
+        height: 45px;
+        margin-right: 4px;
+        margin-bottom: -6px;
     }
 
     #shutdown {
