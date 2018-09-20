@@ -4,11 +4,11 @@
 
         <div id="layouts">
             <div id="classic-layout" class="layout" @click="select('classic')" :class="{ selected: this.selected === 'classic' }">
-                <LoginClassic id="classic" immutable="true" />
+                <Login id="classic" :immutable="true" :compact="false" />
             </div>
 
             <div id="compact-layout" class="layout" @click="select('compact')" :class="{ selected: this.selected === 'compact' }">
-                hey
+                <Login id="compact" :immutable="true" :compact="true" />
             </div>
         </div>
 
@@ -17,24 +17,34 @@
             <div class="checkbox-line"><Checkbox v-model="disableSplashText" /><label>Disable splash text (Clock only)</label></div>
             <div class="checkbox-line"><Checkbox v-model="disableIntro" /><label>Disable intro (OS logo)</label></div>
         </div>
+
+        <div id="right-settings" class="settings">
+            <div class="checkbox-line"><Checkbox v-model="disableFade" /><label>Disable fade to black after login </label></div>
+            <div class="checkbox-line"><Checkbox v-model="roundAvatar" /><label>Round avatar</label></div>
+            <div class="checkbox-line"><Checkbox v-model="disableAvatar" /><label>Disable avatar</label></div>
+        </div>
     </div>
 </template>
 
 <script>
-    import LoginClassic from './LoginClassic.vue';
+    import Login from './Login.vue';
     import Checkbox from '../components/Checkbox.vue';
 
     export default {
         components: {
-            LoginClassic,
+            Login,
             Checkbox
         },
         data() {
             return {
                 selected: 'classic',
+
                 disableSplash: false,
                 disableSplashText: false,
-                disableIntro: false
+                disableIntro: false,
+                disableFade: false,
+                roundAvatar: false,
+                disableAvatar: false
             }
         },
         methods: {
@@ -101,19 +111,49 @@
         margin-right: 10%;
     }
 
-    #classic {
+    #classic, #compact {
         height: 0;
         transform: scale(0.4);
+    }
 
+    #classic {
         #avatar {
             margin-top: 5vh;
         }
     }
 
+    #compact {
+        #avatar {
+        }
+    }
+
+    @media (max-height: 850px) {
+        #setup-title {
+            margin-top: 5.5vh;
+        }
+
+        #layouts {
+            margin-top: 5.15vh;
+        }
+
+        #classic #avatar {
+            margin-top: 3.5vh;
+
+            #avatar-image {
+                width: 190px;
+            }
+        }
+    }
+
     .settings {
+        display: inline-block;
+
         margin-top: 7vh;
+
         text-align: left;
         font-size: 30px;
+
+        width: 35%;
 
         .checkbox-line {
             margin-bottom: 15px;
@@ -141,8 +181,21 @@
         }
     }
 
+    #right-settings {
+        margin-left: 11%;
+    }
+
     #left-settings {
-        width: 35%;
-        margin-left: 12.5%;
+        margin-left: 3%;
+    }
+
+    @media (max-height: 775px) {
+        #right-settings {
+            margin-left: 10%;
+        }
+
+        #left-settings {
+            margin-left: 2.25%;
+        }
     }
 </style>

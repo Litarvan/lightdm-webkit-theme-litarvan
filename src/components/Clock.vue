@@ -1,5 +1,5 @@
 <template>
-    <div class="clock">
+    <div class="clock" :class="{ 'small': small }">
         <span id="hours">{{ hours | pad }}</span>:{{ minutes | pad }}
 
         <div id="date">
@@ -13,6 +13,7 @@
 
     export default {
         name: 'clock',
+        props: ['small'],
 
         mounted() {
             this.setTime();
@@ -52,7 +53,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .clock {
         font-size: 164px;
         font-weight: 300;
@@ -60,6 +61,15 @@
         line-height: 1.1;
 
         text-align: center;
+    }
+
+    .clock.small {
+        font-size: 138px;
+
+        #date {
+            font-size: 24px;
+            margin-top: 1.8vh;
+        }
     }
 
     #hours {

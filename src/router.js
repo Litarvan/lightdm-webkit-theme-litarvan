@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import LoginClassic from './views/LoginClassic.vue';
+import Login from './views/Login.vue';
 import Home from './views/Home.vue';
 import Base from './views/Base.vue';
 import Splash from './views/Splash.vue';
@@ -35,9 +35,9 @@ export default new Router({
                     component: Home,
                 },
                 {
-                    path: 'login/classic',
-                    name: 'login-classic',
-                    component: LoginClassic
+                    path: 'login',
+                    name: 'login',
+                    component: Login
                 }
             ]
         }

@@ -1,42 +1,44 @@
 <template>
-    <div class="login">
+    <div class="login" :class="{ 'compact': compact }">
+        <Clock :small="compact" v-if="compact" />
+
         <div id="avatar">
             <img id="avatar-image" src="../assets/images/default_user.png" />
         </div>
 
-        <div id="user">
-            John Doe / <span id="username">johnd</span>
-        </div>
+        <div id="login-content">
+            <div id="user">
+                John Doe / <span id="username">johnd</span>
+            </div>
 
-        <input v-if="!immutable" id="password" type="password" :placeholder="passwordLabel" />
-        <div v-else id="password" class="immutable"></div>
+            <input v-if="!immutable" id="password" type="password" :placeholder="passwordLabel" />
+            <div v-else id="password" class="immutable"></div>
 
-        <div id="desktop">
-            <img id="desktop-icon" src="../assets/images/desktops/gnome.png" />
-            Gnome 3
+            <div id="desktop">
+                <img id="desktop-icon" src="../assets/images/desktops/gnome.png" />
+                Gnome 3
+            </div>
         </div>
 
         <div v-if="!immutable">
             <PowerButton id="shutdown" type="shutdown"></PowerButton>
             <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
-            <PowerButton id="reboot" type="restart"></PowerButton>-
+            <PowerButton id="reboot" type="restart"></PowerButton>
         </div>
     </div>
 </template>
 
 <script>
     import PowerButton from '@/components/PowerButton.vue';
+    import Clock from '@/components/Clock.vue';
     import LightDM from '@/lightdm';
     import { trans } from '@/translations';
 
     export default {
         name: 'login-classic',
-        components: {
-            PowerButton
-        },
-        props: [
-            'immutable'
-        ],
+        components: {PowerButton, Clock},
+        props: ['immutable', 'compact'],
+
         data() {
             return {
                 canSuspend: LightDM.can_suspend,
@@ -57,7 +59,32 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    .login.compact {
+        #avatar, #login-content {
+            display: inline-block;
+        }
+
+        #login-content {
+            text-align: left;
+
+            margin-left: 42px;
+            vertical-align: bottom;
+        }
+
+        #user {
+            margin-top: 0;
+        }
+
+        #password {
+            margin-top: 2.5vh;
+        }
+
+        #desktop {
+            margin-top: 3vh;
+        }
+    }
+
     #avatar {
         margin-top: 10vh;
     }
@@ -140,5 +167,28 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
+    }
+
+    @media (max-height: 850px) {
+        #avatar-image {
+            width: 205px;
+        }
+
+        #password {
+            height: 49px;
+            font-size: 22px;
+        }
+
+        #user {
+            font-size: 40px;
+        }
+
+        #desktop {
+            font-size: 41px;
+        }
+
+        #desktop-icon {
+            margin-bottom: -5px;
+        }
     }
 </style>

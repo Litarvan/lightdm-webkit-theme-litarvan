@@ -28,7 +28,7 @@
         methods: {
             submit(event) {
                 if (event.which === 13 || event.which === 32) {
-                    this.$router.push('/base/login/classic');
+                    this.$router.push('/base/login');
                 }
             }
         }
