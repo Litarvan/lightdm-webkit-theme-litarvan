@@ -124,7 +124,7 @@
     }
 
     #classic {
-        #avatar {
+        #login-content {
             margin-top: 5vh;
         }
     }
