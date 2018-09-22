@@ -23,9 +23,18 @@
         </div>
 
         <div v-if="!immutable">
-            <PowerButton id="shutdown" type="shutdown"></PowerButton>
-            <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
-            <PowerButton id="reboot" type="restart"></PowerButton>
+            <PowerButton id="settings" type="settings"></PowerButton>
+
+            <transition name="power-fade">
+                <div id="power-list" v-if="powerList">
+                    <PowerButton id="suspend" type="suspend"></PowerButton>
+                    <PowerButton id="reboot" type="restart"></PowerButton>
+                </div>
+            </transition>
+
+            <div @click="powerList = !powerList">
+                <PowerButton id="shutdown" type="shutdown" :disabled="!powerList"></PowerButton>
+            </div>
         </div>
     </div>
 </template>
@@ -45,7 +54,8 @@
             return {
                 canSuspend: LightDM.can_suspend,
                 passwordLabel: trans('password'),
-                isCompact: this.compact
+                isCompact: this.compact,
+                powerList: false
             }
         },
         mounted() {
@@ -106,13 +116,13 @@
         }
     }
 
-    #avatar {
-        margin-top: 10vh;
+    #login-content {
+        margin-top: 11vh;
     }
 
     @media (min-height: 850px) {
-        #avatar {
-            margin-top: 12.5vh;
+        #login-content {
+            margin-top: 13.5vh;
         }
     }
 
@@ -178,7 +188,7 @@
         margin-bottom: -6px;
     }
 
-    #shutdown {
+    #settings {
         position: absolute;
         bottom: 20px;
         left: 20px;
@@ -186,11 +196,17 @@
 
     #suspend {
         position: absolute;
-        bottom: 20px;
-        right: calc(50% - 31px);
+        bottom: 170px;
+        right: 20px;
     }
 
     #reboot {
+        position: absolute;
+        bottom: 95px;
+        right: 20px;
+    }
+
+    #shutdown {
         position: absolute;
         bottom: 20px;
         right: 20px;
@@ -217,5 +233,13 @@
         #desktop-icon {
             margin-bottom: -5px;
         }
+    }
+
+    .power-fade-enter-active {
+        transition: all .3s ease;
+    }
+
+    .power-fade-enter {
+        opacity: 0;
     }
 </style>

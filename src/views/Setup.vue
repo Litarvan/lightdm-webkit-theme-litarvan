@@ -23,15 +23,19 @@
             <div class="checkbox-line"><Checkbox v-model="roundAvatar" /><label>Round avatar</label></div>
             <div class="checkbox-line"><Checkbox v-model="disableAvatar" /><label>Disable avatar</label></div>
         </div>
+
+        <PowerButton id="back" type="back" />
     </div>
 </template>
 
 <script>
+    import PowerButton from '../components/PowerButton';
     import Login from './Login.vue';
     import Checkbox from '../components/Checkbox.vue';
 
     export default {
         components: {
+            PowerButton,
             Login,
             Checkbox
         },
@@ -153,6 +157,19 @@
         }
     }
 
+    .checkbox {
+        display: inline-block;
+        vertical-align: super;
+    }
+
+    label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        width: calc(35vw - 110px);
+    }
+
     .settings {
         display: inline-block;
 
@@ -185,6 +202,12 @@
 
     #left-settings {
         margin-left: 3%;
+    }
+
+    #back {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
     }
 
     @media (max-height: 775px) {

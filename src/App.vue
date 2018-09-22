@@ -66,11 +66,11 @@
 
     .fade-enter-active, .fade-leave-active {
         transition-property: opacity;
-        transition-duration: .3s;
+        transition-duration: .4s;
     }
 
     .fade-enter-active {
-        transition-delay: .3s;
+        transition-delay: .4s;
     }
 
     .fade-enter, .fade-leave-active {
