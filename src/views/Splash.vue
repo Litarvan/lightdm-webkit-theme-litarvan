@@ -1,10 +1,7 @@
 <template>
-    <div id="splash" class="home hero is-fullheight" :class="{ 'clock-only': clockOnly }">
-        <div class="hero-head">
-            <Clock />
-        </div>
-
-        <div v-if="!clockOnly" id="trigger" class="hero-foot">{{ trigger }}</div>
+    <div id="splash" :class="{ 'clock-only': clockOnly }">
+        <Clock />
+        <div v-if="!clockOnly" id="trigger">{{ trigger }}</div>
     </div>
 </template>
 
@@ -36,6 +33,12 @@
 </script>
 
 <style lang="scss" scoped>
+    #splash {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
     .clock {
         margin-top: 6vh;
     }

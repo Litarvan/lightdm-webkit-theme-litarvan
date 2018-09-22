@@ -128,6 +128,14 @@
         transform: scale(0.4);
         width: 240%; // Needed, or it is too small for the content
         margin-left: -70%; // When changing the width, this makes the content centered again
+
+        #user, #desktop {
+            display: block;
+        }
+
+        #user:hover, #desktop:hover {
+            background: none;
+        }
     }
 
     #classic {
@@ -168,11 +176,6 @@
         }
     }
 
-    .checkbox {
-        display: inline-block;
-        vertical-align: super;
-    }
-
     label {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -192,12 +195,14 @@
         width: 35%;
 
         .checkbox-line {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .checkbox {
-            margin-right: 17px;
-            margin-bottom: -3px;
+            display: inline-block;
+            vertical-align: super;
+            margin-right: 20px;
+            margin-bottom: -8px;
         }
     }
 

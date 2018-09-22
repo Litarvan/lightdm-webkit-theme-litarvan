@@ -35,6 +35,10 @@
         display: inline-block;
     }
 
+    .checkbox:hover {
+        cursor: pointer;
+    }
+
     .checkbox.checked {
         border-color: #3DA7EE;
         background: #3DA7EE;
