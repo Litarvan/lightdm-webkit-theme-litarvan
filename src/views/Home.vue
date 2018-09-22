@@ -1,16 +1,17 @@
 <template>
-    <div class="home hero is-fullheight">
+    <div class="home hero is-fullheight" :class="{ 'clock-only': clockOnly }">
         <div class="hero-head">
             <Clock />
         </div>
 
-        <div id="trigger" class="hero-foot">{{ trigger }}</div>
+        <div v-if="!clockOnly" id="trigger" class="hero-foot">{{ trigger }}</div>
     </div>
 </template>
 
 <script>
     import Clock from '@/components/Clock.vue';
     import { trans } from '@/translations';
+    import { settings } from '@/settings';
 
     export default {
         name: 'home',
@@ -22,7 +23,8 @@
         },
         data() {
             return {
-                trigger: trans('trigger')
+                trigger: trans('trigger'),
+                clockOnly: settings.disableSplashText
             }
         },
         methods: {
@@ -35,9 +37,13 @@
     };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .clock {
         margin-top: 6vh;
+    }
+
+    .clock-only .clock {
+        margin-top: calc(50vh - 160px);
     }
 
     #trigger {

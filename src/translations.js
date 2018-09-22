@@ -1,48 +1,79 @@
-import LightDM from './lightdm';
-
 const translations = {
+    // English
     'en': {
         trigger: 'Press "Space" or "Enter" to login',
         password: 'Password...',
+
         shutdown: 'Shutting down...',
         suspend: 'Suspending...',
-        restart: 'Rebooting...'
+        restart: 'Rebooting...',
+
+        setup: 'Setup',
+        disableSplash: 'Disable splash ("Press Enter" screen)',
+        disableSplashText: 'Disable splash text (clock only)',
+        disableIntro: 'Disable intro (OS logo)',
+        disableFade: 'Disable fade to black after login',
+        roundAvatar: 'Round avatar',
+        disableAvatar: 'Disable avatar'
     },
+
+    // French
     'fr': {
         trigger: 'Appuyez sur "Espace" ou "Entrée" pour vous connecter',
         password: 'Mot de passe...',
         shutdown: 'Arrêt...',
         suspend: 'Mise en veille...',
-        restart: 'Redémarrage...'
+        restart: 'Redémarrage...',
+
+        setup: 'Réglages',
+        disableSplash: 'Désactiver le splash (écran "Appuyez sur entrer")',
+        disableSplashText: 'Désactiver le texte du splash (seulement l\'horloge)',
+        disableIntro: 'Désactiver l\'introduction (logo de l\'OS)',
+        disableFade: 'Désactiver le fondu au noir lors de la connexion',
+        roundAvatar: 'Arrondir l\'avatar',
+        disableAvatar: 'Désactiver l\'avatar'
+
     },
+
+    // Dutch (TODO)
     'nl': {
         trigger: 'Druk op "Spatie" of "Enter" om aan te melden',
         password: 'Wachtwoord...'
     },
+
+    // Polish (TODO)
     'pl': {
         trigger: 'Naciśnij "Spację" lub "Enter" aby kontynuować',
         password: 'Hasło...'
     },
+
+    // German (TODO)
     'de': {
         trigger: 'Drücken Sie "Leertaste" oder "Enter" um sich einzuloggen',
         password: 'Passwort...'
     },
+
+    // Portuguese (TODO)
     'pt': {
         trigger: 'Carrega na tecla "Espaço" ou "Enter" para fazer login',
         password: 'Palavra-passe...'
     },
+
+    // Spanish (TODO)
     'es': {
         trigger: 'Presiona "Espacio" o "Enter" para iniciar sesión',
         password: 'Contraseña...'
-    }
+    },
+
+    // More ? PR opens !
 };
 
 function getLocale()
 {
     let lang = 'en-US';
 
-    LightDM.languages.forEach(l => {
-        if (l.name.toLowerCase() === LightDM.language.toLowerCase()) {
+    lightdm.languages.forEach(l => {
+        if (l.name.toLowerCase() === lightdm.language.toLowerCase()) {
             lang = l.code.split('.')[0].replace('_', '-');
         }
     });

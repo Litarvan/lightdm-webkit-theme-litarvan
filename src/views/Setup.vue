@@ -1,6 +1,6 @@
 <template>
     <div class="setup">
-        <h1 id="setup-title">Setup</h1>
+        <h1 id="setup-title">{{ texts.setup }}</h1>
 
         <div id="layouts">
             <div id="classic-layout" class="layout" @click="select('classic')" :class="{ selected: settings.mode === 'classic' }">
@@ -13,15 +13,15 @@
         </div>
 
         <div id="left-settings" class="settings">
-            <div class="checkbox-line"><Checkbox v-model="settings.disableSplash" /><label>Disable splash ("Press Enter" screen)</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disableSplashText" /><label>Disable splash text (Clock only)</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disableIntro" /><label>Disable intro (OS logo)</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableSplash" /><label>{{ texts.disableSplash }}</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableSplashText" /><label>{{ texts.disableSplashText }}</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
         </div>
 
         <div id="right-settings" class="settings">
-            <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>Disable fade to black after login </label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>Round avatar</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>Disable avatar</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
         </div>
 
         <div @click="save()">
@@ -35,6 +35,7 @@
     import Login from './Login.vue';
     import Checkbox from '@/components/Checkbox.vue';
 
+    import { trans } from '@/translations';
     import { settings, save } from '@/settings';
 
     export default {
@@ -45,7 +46,16 @@
         },
         data() {
             return {
-                settings: settings
+                settings: settings,
+                texts: {
+                    setup: trans('setup'),
+                    disableSplash: trans('disableSplash'),
+                    disableSplashText: trans('disableSplashText'),
+                    disableIntro: trans('disableIntro'),
+                    disableFade: trans('disableFade'),
+                    roundAvatar: trans('roundAvatar'),
+                    disableAvatar: trans('disableAvatar')
+                }
             }
         },
         methods: {
@@ -126,6 +136,10 @@
     #classic {
         #login-content {
             margin-top: 5vh;
+
+            &.no-avatar {
+                margin-top: calc(15.5vh - 50px);
+            }
         }
     }
 
@@ -167,7 +181,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         display: inline-block;
-        width: calc(35vw - 110px);
+        width: calc(35vw - 120px);
     }
 
     .settings {
@@ -192,7 +206,7 @@
 
     @media (min-width: 1450px) {
         .settings {
-            padding-left: 20px;
+            padding-left: 15px;
         }
     }
 

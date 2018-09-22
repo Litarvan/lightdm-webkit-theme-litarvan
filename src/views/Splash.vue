@@ -14,17 +14,27 @@
 
 <script>
     import { trans } from '@/translations';
+    import { settings } from '@/settings';
 
     export default {
         name: 'splash',
 
         mounted() {
+            if (settings.disableIntro && this.state === 'initial') {
+                this.$router.push(settings.disableSplash ? '/base/login' : '/base/home');
+                return;
+            }
+
+            if (this.state === 'login') {
+                return;
+            }
+
             this.show = true;
 
             if (this.state === 'initial') {
                 setTimeout(() => {
                     this.show = false;
-                    this.$router.push('/base/home');
+                    this.$router.push(settings.first ? '/setup' : (settings.disableSplash ? '/base/login' : '/base/home'));
                 }, 2000);
             }
         },

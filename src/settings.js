@@ -1,6 +1,8 @@
 let local = localStorage.getItem('settings');
 
 let settings = (local ? JSON.parse(local) : null) || {
+    first: true,
+
     mode: 'classic',
 
     disableSplash: false,
@@ -10,8 +12,6 @@ let settings = (local ? JSON.parse(local) : null) || {
     roundAvatar: false,
     disableAvatar: false
 };
-
-console.log(settings);
 
 function save(s) {
     localStorage.setItem('settings', JSON.stringify(settings = s));

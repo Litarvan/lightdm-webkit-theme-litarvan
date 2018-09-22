@@ -10,10 +10,6 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        /*{
-            path: '/',
-            redirect: '/splash/initial'
-        },*/
         {
             path: '/setup',
             name: 'setup',

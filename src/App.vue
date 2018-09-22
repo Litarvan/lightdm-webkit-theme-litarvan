@@ -7,6 +7,8 @@
 </template>
 
 <script>
+    import { settings } from '@/settings';
+
     export default {
         mounted() {
             this.$router.push('/splash/initial');
@@ -15,6 +17,13 @@
 </script>
 
 <style lang="scss">
+    /* HiDPI */
+    @media screen and (min-width: 3000px) and (min-height: 1200px) {
+        html {
+            zoom: 2.0;
+        }
+    }
+
     @font-face {
         font-family: 'Lato';
         font-style: italic;

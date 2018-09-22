@@ -30,12 +30,19 @@
 
                 this.hours = date.getHours();
                 this.minutes = date.getMinutes();
-                this.date = date.toLocaleDateString(getLocale(), {
+
+                let strs = date.toLocaleDateString(getLocale(), {
                     weekday: 'long',
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric'
-                });
+                }).split(' ');
+
+                // Capitalize date
+                let result = '';
+                strs.forEach(s => result += s.charAt(0).toUpperCase() + s.substring(1) + ' ');
+
+                this.date = result.substring(0, result.length - 1);
             }
         },
 

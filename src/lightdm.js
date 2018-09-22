@@ -83,36 +83,34 @@ let password;
 let errorCB;
 let completeCB;
 
-function login(username, pass, cb, errCB) {
+window.lightdm_login = (username, pass, cb, errCB) => {
     completeCB = cb;
     errorCB = errCB;
     password = pass;
 
     lightdm.start_authentication(username);
-}
+};
 
-function start(desktop) {
+window.lightdm_start = (desktop) => {
     lightdm.login(lightdm.authentication_user, desktop);
-}
+};
 
-function show_prompt(text, type) {
+window.show_prompt = (text, type) => {
     if (text === "Password: ")
     {
         lightdm.respond(password);
     }
-}
+};
 
-function authentication_complete() {
+window.authentication_complete = () => {
     if (lightdm.is_authenticated) {
         completeCB();
     } else {
         lightdm.cancel_authentication();
         errorCB('Invalid username/password');
     }
-}
+};
 
-function show_message(text, type) {
+window.show_message = (text, type) => {
     errorCB(text);
-}
-
-export default window.lightdm;
+};

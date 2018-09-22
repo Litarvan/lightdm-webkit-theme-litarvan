@@ -7,14 +7,20 @@
 </template>
 
 <script>
-    import LightDM from '@/lightdm';
+    import { settings } from '@/settings';
 
     export default {
         props: ['type', 'disabled'],
         methods: {
             apply() {
                 if (this.type === 'back') {
-                    this.$router.back();
+
+                    this.$router.push(settings.disableSplash || !settings.first ? '/base/login' : '/base/home');
+
+                    if (settings.first) {
+                        settings.first = false;
+                    }
+
                     return;
                 }
 
@@ -23,7 +29,7 @@
                     return;
                 }
 
-                setTimeout(LightDM[this.type], 1500);
+                setTimeout(lightdm[this.type], 1500);
                 this.$router.push(`/splash/${this.type}`)
             }
         },

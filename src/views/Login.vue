@@ -2,9 +2,9 @@
     <div class="login" :class="{ 'compact': isCompact }">
         <Clock :small="true" v-if="isCompact" />
 
-        <div id="login-content">
-            <div id="avatar">
-                <img id="avatar-image" src="../assets/images/default_user.png" />
+        <div id="login-content" :class="{ 'no-avatar': settings.disableAvatar }">
+            <div id="avatar" v-if="!settings.disableAvatar">
+                <img id="avatar-image" :class="{ 'round': settings.roundAvatar }" src="../assets/images/default_user.png" />
             </div>
 
             <div id="login-form">
@@ -12,7 +12,9 @@
                     John Doe / <span id="username">johnd</span>
                 </div>
 
-                <input v-if="!immutable" id="password" type="password" :placeholder="passwordLabel" />
+                <form v-if="!immutable" @submit.prevent="submit">
+                    <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" />
+                </form>
                 <div v-else id="password" class="immutable"></div>
 
                 <div id="desktop">
@@ -56,18 +58,42 @@
                 canSuspend: LightDM.can_suspend,
                 passwordLabel: trans('password'),
                 isCompact: this.immutable ? this.compact : settings.mode === 'compact',
-                powerList: false
+                settings,
+                powerList: false,
+                logging: false,
+                error: false,
+
+                password: ''
             }
         },
         mounted() {
-            window.addEventListener('keyup', this.submit);
+            window.addEventListener('keyup', this.keyup);
             setTimeout(() => document.querySelector('#password').focus(), 650);
         },
         methods: {
-            submit(event) {
-                if (event.which === 27) {
+            keyup(event) {
+                if (event.which === 27 && !settings.disableSplash) {
                     this.$router.push('/base/home');
                 }
+            },
+            submit() {
+                this.logging = true;
+
+                lightdm_login('johnd', this.password, () => {
+                    let cb = () => lightdm_start('gnome-shell');
+
+                    if (settings.disableFade) {
+                        cb();
+                        return;
+                    }
+
+                    setTimeout(cb, 400);
+                    this.$router.push('/splash/login');
+                }, () => {
+                    this.error = true;
+                    this.password = '';
+                    this.logging = false;
+                })
             }
         }
     }
@@ -95,12 +121,27 @@
         }
 
         #login-content {
-            margin-top: 10vh;
+            margin-top: 10.5vh;
         }
 
         @media (min-height: 900px) {
             #login-content {
-                margin-top: 13.75vh;
+                margin-top: 14.25vh;
+            }
+        }
+
+        #login-content.no-avatar {
+            #user {
+                margin-bottom: 2.0vh;
+            }
+
+            #desktop {
+                margin-top: 4.75vh;
+            }
+
+            #login-form {
+                margin-left: 0;
+                text-align: center;
             }
         }
 
@@ -118,17 +159,33 @@
     }
 
     #login-content {
-        margin-top: 11vh;
+        margin-top: 11.5vh;
     }
 
     @media (min-height: 850px) {
         #login-content {
-            margin-top: 13.5vh;
+            margin-top: 14vh;
+        }
+    }
+
+    #login-content.no-avatar {
+        margin-top: calc(50vh - 165px);
+
+        #user {
+            margin-top: 0;
+        }
+
+        #desktop {
+            margin-top: 6vh;
         }
     }
 
     #avatar-image {
-        width: 225px;
+        height: 200px;
+    }
+
+    .round {
+        border-radius: 100px;
     }
 
     #user, #password, #desktop {
@@ -169,6 +226,10 @@
         border-bottom: solid 3px #249cea;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
+    }
+
+    #password.error {
+        border-bottom-color: #de3c2d;
     }
 
     #password.immutable {
