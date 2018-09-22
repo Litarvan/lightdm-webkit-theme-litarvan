@@ -39,11 +39,8 @@
     import { settings, save } from '@/settings';
 
     export default {
-        components: {
-            PowerButton,
-            Login,
-            Checkbox
-        },
+        name: 'setup',
+        components: { PowerButton, Login, Checkbox },
         data() {
             return {
                 settings: settings,

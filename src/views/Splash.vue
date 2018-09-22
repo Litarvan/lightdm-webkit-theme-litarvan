@@ -1,92 +1,56 @@
 <template>
-    <div class="splash">
-        <transition name="logo-fade">
-            <div id="content" v-if="show">
-                <img v-if="state === 'initial'" id="logo" src="../assets/images/arch.svg" />
-                <p v-else id="power-text">
-                    <img id="power-icon" :src="require('../assets/images/' + state + '.svg')" />
-                    {{ text }}
-                </p>
-            </div>
-        </transition>
+    <div id="splash" class="home hero is-fullheight" :class="{ 'clock-only': clockOnly }">
+        <div class="hero-head">
+            <Clock />
+        </div>
+
+        <div v-if="!clockOnly" id="trigger" class="hero-foot">{{ trigger }}</div>
     </div>
 </template>
 
 <script>
+    import Clock from '@/components/Clock.vue';
     import { trans } from '@/translations';
     import { settings } from '@/settings';
 
     export default {
         name: 'splash',
-
+        components: { Clock },
         mounted() {
-            if (settings.disableIntro && this.state === 'initial') {
-                this.$router.push(settings.disableSplash ? '/base/login' : '/base/home');
-                return;
-            }
-
-            if (this.state === 'login') {
-                return;
-            }
-
-            this.show = true;
-
-            if (this.state === 'initial') {
-                setTimeout(() => {
-                    this.show = false;
-                    this.$router.push(settings.first ? '/setup' : (settings.disableSplash ? '/base/login' : '/base/home'));
-                }, 2000);
-            }
+            window.addEventListener('keyup', this.submit);
         },
-
         data() {
             return {
-                show: false,
-                state: this.$route.params.state,
-                text: trans(this.$route.params.state)
-            };
+                trigger: trans('trigger'),
+                clockOnly: settings.disableSplashText
+            }
+        },
+        methods: {
+            submit(event) {
+                if (event.which === 13 || event.which === 32) {
+                    this.$router.push('/base/login');
+                }
+            }
         }
     };
 </script>
 
-<style scoped>
-    .splash {
-        background-color: black;
-
-        display: flex;
-        align-items: center;
-        text-align: center;
+<style lang="scss" scoped>
+    .clock {
+        margin-top: 6vh;
     }
 
-    #content {
-        margin-left: auto;
-        margin-right: auto;
+    .clock-only .clock {
+        margin-top: calc(50vh - 160px);
     }
 
-    #logo {
-        height: 250px;
-    }
-
-    #power-text {
+    #trigger {
         font-family: 'Lato', 'Noto Sans', serif;
+        font-weight: 300;
         font-style: italic;
-        font-weight: normal;
-        color: white;
-        font-size: 58px;
-    }
+        font-size: 32px;
 
-    .logo-fade-enter-active, .logo-fade-leave-active {
-        transition: opacity 1s;
-    }
-
-    .logo-fade-enter, .logo-fade-leave-to {
-        opacity: 0;
-    }
-
-    #power-icon {
-        width: 50px;
-
-        margin-bottom: -5px;
-        margin-right: 4px;
+        margin-bottom: 11.5vh;
+        letter-spacing: 0.25px;
     }
 </style>

@@ -49,8 +49,8 @@
     import { trans } from '@/translations';
 
     export default {
-        name: 'login-classic',
-        components: {PowerButton, Clock},
+        name: 'login',
+        components: { PowerButton, Clock },
         props: ['immutable', 'compact'],
 
         data() {
@@ -73,7 +73,7 @@
         methods: {
             keyup(event) {
                 if (event.which === 27 && !settings.disableSplash) {
-                    this.$router.push('/base/home');
+                    this.$router.push('/base/splash');
                 }
             },
             submit() {
@@ -88,7 +88,7 @@
                     }
 
                     setTimeout(cb, 400);
-                    this.$router.push('/splash/login');
+                    this.$router.push('/intro/login');
                 }, () => {
                     this.error = true;
                     this.password = '';
@@ -197,6 +197,8 @@
     #user {
         font-size: 42px;
         margin-top: 3.5vh;
+
+        padding: 3px 16px 5px;
     }
 
     #username {
@@ -240,8 +242,21 @@
 
     #desktop {
         margin-top: 8vh;
+        padding: 7px 19px;
+
         font-weight: normal;
         font-size: 44px;
+    }
+
+    #user, #desktop {
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 125ms ease-in-out;
+    }
+
+    #user:hover, #desktop:hover {
+        background: rgba(255, 255, 255, 0.115);
+        cursor: pointer;
     }
 
     #desktop-icon {

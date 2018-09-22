@@ -15,7 +15,7 @@
             apply() {
                 if (this.type === 'back') {
 
-                    this.$router.push(settings.disableSplash || !settings.first ? '/base/login' : '/base/home');
+                    this.$router.push(settings.disableSplash || !settings.first ? '/base/login' : '/base/splash');
 
                     if (settings.first) {
                         settings.first = false;
@@ -30,7 +30,7 @@
                 }
 
                 setTimeout(lightdm[this.type], 1500);
-                this.$router.push(`/splash/${this.type}`)
+                this.$router.push(`/intro/${this.type}`)
             }
         },
         data() {

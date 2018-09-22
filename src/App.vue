@@ -11,7 +11,7 @@
 
     export default {
         mounted() {
-            this.$router.push('/splash/initial');
+            this.$router.push('/intro/initial');
         }
     }
 </script>

@@ -12,6 +12,7 @@
 <script>
     export default {
         name: 'base',
+
         methods: {
             isBlured() {
                 return this.$router.currentRoute.name.startsWith('login');

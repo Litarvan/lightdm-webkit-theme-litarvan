@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Login from './views/Login.vue';
-import Home from './views/Home.vue';
-import Base from './views/Base.vue';
 import Splash from './views/Splash.vue';
+import Base from './views/Base.vue';
+import Intro from './views/Intro.vue';
 import Setup from './views/Setup.vue';
 
 Vue.use(Router);
@@ -16,9 +16,9 @@ export default new Router({
             component: Setup
         },
         {
-            path: '/splash/:state',
-            name: 'splash',
-            component: Splash
+            path: '/intro/:state',
+            name: 'intro',
+            component: Intro
         },
         {
             path: '/base',
@@ -26,9 +26,9 @@ export default new Router({
             component: Base,
             children: [
                 {
-                    path: 'home',
-                    name: 'home',
-                    component: Home,
+                    path: 'splash',
+                    name: 'splash',
+                    component: Splash,
                 },
                 {
                     path: 'login',
