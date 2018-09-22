@@ -1,22 +1,24 @@
 <template>
-    <div class="login" :class="{ 'compact': compact }">
-        <Clock :small="compact" v-if="compact" />
-
-        <div id="avatar">
-            <img id="avatar-image" src="../assets/images/default_user.png" />
-        </div>
+    <div class="login" :class="{ 'compact': isCompact }">
+        <Clock :small="true" v-if="isCompact" />
 
         <div id="login-content">
-            <div id="user">
-                John Doe / <span id="username">johnd</span>
+            <div id="avatar">
+                <img id="avatar-image" src="../assets/images/default_user.png" />
             </div>
 
-            <input v-if="!immutable" id="password" type="password" :placeholder="passwordLabel" />
-            <div v-else id="password" class="immutable"></div>
+            <div id="login-form">
+                <div id="user">
+                    John Doe / <span id="username">johnd</span>
+                </div>
 
-            <div id="desktop">
-                <img id="desktop-icon" src="../assets/images/desktops/gnome.png" />
-                Gnome 3
+                <input v-if="!immutable" id="password" type="password" :placeholder="passwordLabel" />
+                <div v-else id="password" class="immutable"></div>
+
+                <div id="desktop">
+                    <img id="desktop-icon" src="../assets/images/desktops/gnome.png" />
+                    Gnome 3
+                </div>
             </div>
         </div>
 
@@ -42,7 +44,8 @@
         data() {
             return {
                 canSuspend: LightDM.can_suspend,
-                passwordLabel: trans('password')
+                passwordLabel: trans('password'),
+                isCompact: this.compact
             }
         },
         mounted() {
@@ -61,15 +64,33 @@
 
 <style lang="scss" scoped>
     .login.compact {
-        #avatar, #login-content {
+        .clock {
+            margin-top: 6vh;
+        }
+
+        #avatar, #login-form {
             display: inline-block;
         }
 
-        #login-content {
+        #avatar {
+            margin-top: 0;
+        }
+
+        #login-form {
             text-align: left;
 
             margin-left: 42px;
             vertical-align: bottom;
+        }
+
+        #login-content {
+            margin-top: 10vh;
+        }
+
+        @media (min-height: 900px) {
+            #login-content {
+                margin-top: 13.75vh;
+            }
         }
 
         #user {
@@ -87,6 +108,12 @@
 
     #avatar {
         margin-top: 10vh;
+    }
+
+    @media (min-height: 850px) {
+        #avatar {
+            margin-top: 12.5vh;
+        }
     }
 
     #avatar-image {

@@ -70,6 +70,7 @@
 
     #layouts {
         margin-top: 6.5vh;
+        font-style: normal;
     }
 
     #layouts, .layout {
@@ -114,6 +115,8 @@
     #classic, #compact {
         height: 0;
         transform: scale(0.4);
+        width: 240%; // Needed, or it is too small for the content
+        margin-left: -70%; // When changing the width, this makes the content centered again
     }
 
     #classic {
@@ -123,7 +126,12 @@
     }
 
     #compact {
-        #avatar {
+        .clock {
+            margin-top: 3.5vh;
+        }
+
+        #login-content {
+            margin-top: 9vh;
         }
     }
 
@@ -159,25 +167,15 @@
             margin-bottom: 15px;
         }
 
-        /*input[type=checkbox] {
-            vertical-align: sub;
-            margin-right: 17px;
-
-            border: solid 2px white;
-            border-radius: 2px;
-
-            outline: none;
-            background: black;
-
-            width: 30px;
-            height: 30px;
-
-            margin-bottom: 20px;
-        }*/
-
         .checkbox {
             margin-right: 17px;
             margin-bottom: -3px;
+        }
+    }
+
+    @media (min-width: 1450px) {
+        .settings {
+            padding-left: 20px;
         }
     }
 

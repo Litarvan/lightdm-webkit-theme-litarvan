@@ -35,7 +35,7 @@
     };
 </script>
 
-<style>
+<style scoped>
     .clock {
         margin-top: 6vh;
     }
