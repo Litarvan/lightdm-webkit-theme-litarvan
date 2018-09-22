@@ -43,6 +43,7 @@
     import PowerButton from '@/components/PowerButton.vue';
     import Clock from '@/components/Clock.vue';
     import LightDM from '@/lightdm';
+    import { settings } from '@/settings';
     import { trans } from '@/translations';
 
     export default {
@@ -54,13 +55,13 @@
             return {
                 canSuspend: LightDM.can_suspend,
                 passwordLabel: trans('password'),
-                isCompact: this.compact,
+                isCompact: this.immutable ? this.compact : settings.mode === 'compact',
                 powerList: false
             }
         },
         mounted() {
             window.addEventListener('keyup', this.submit);
-            setTimeout(() => document.querySelector('#password').focus(), 500);
+            setTimeout(() => document.querySelector('#password').focus(), 650);
         },
         methods: {
             submit(event) {
@@ -172,7 +173,7 @@
 
     #password.immutable {
         display: inline-block;
-        background: rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.3);
         border-bottom-width: 6px;
     }
 

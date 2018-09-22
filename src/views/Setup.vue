@@ -3,35 +3,39 @@
         <h1 id="setup-title">Setup</h1>
 
         <div id="layouts">
-            <div id="classic-layout" class="layout" @click="select('classic')" :class="{ selected: this.selected === 'classic' }">
+            <div id="classic-layout" class="layout" @click="select('classic')" :class="{ selected: settings.mode === 'classic' }">
                 <Login id="classic" :immutable="true" :compact="false" />
             </div>
 
-            <div id="compact-layout" class="layout" @click="select('compact')" :class="{ selected: this.selected === 'compact' }">
+            <div id="compact-layout" class="layout" @click="select('compact')" :class="{ selected: settings.mode === 'compact' }">
                 <Login id="compact" :immutable="true" :compact="true" />
             </div>
         </div>
 
         <div id="left-settings" class="settings">
-            <div class="checkbox-line"><Checkbox v-model="disableSplash" /><label>Disable splash ("Press Enter" screen)</label></div>
-            <div class="checkbox-line"><Checkbox v-model="disableSplashText" /><label>Disable splash text (Clock only)</label></div>
-            <div class="checkbox-line"><Checkbox v-model="disableIntro" /><label>Disable intro (OS logo)</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableSplash" /><label>Disable splash ("Press Enter" screen)</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableSplashText" /><label>Disable splash text (Clock only)</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableIntro" /><label>Disable intro (OS logo)</label></div>
         </div>
 
         <div id="right-settings" class="settings">
-            <div class="checkbox-line"><Checkbox v-model="disableFade" /><label>Disable fade to black after login </label></div>
-            <div class="checkbox-line"><Checkbox v-model="roundAvatar" /><label>Round avatar</label></div>
-            <div class="checkbox-line"><Checkbox v-model="disableAvatar" /><label>Disable avatar</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>Disable fade to black after login </label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>Round avatar</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>Disable avatar</label></div>
         </div>
 
-        <PowerButton id="back" type="back" />
+        <div @click="save()">
+            <PowerButton id="back" type="back" />
+        </div>
     </div>
 </template>
 
 <script>
-    import PowerButton from '../components/PowerButton';
+    import PowerButton from '@/components/PowerButton';
     import Login from './Login.vue';
-    import Checkbox from '../components/Checkbox.vue';
+    import Checkbox from '@/components/Checkbox.vue';
+
+    import { settings, save } from '@/settings';
 
     export default {
         components: {
@@ -41,19 +45,15 @@
         },
         data() {
             return {
-                selected: 'classic',
-
-                disableSplash: false,
-                disableSplashText: false,
-                disableIntro: false,
-                disableFade: false,
-                roundAvatar: false,
-                disableAvatar: false
+                settings: settings
             }
         },
         methods: {
             select(layout) {
-                this.selected = layout;
+                this.settings.mode = layout;
+            },
+            save() {
+                save(this.settings);
             }
         }
     }

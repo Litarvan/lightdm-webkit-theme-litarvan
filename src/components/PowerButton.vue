@@ -1,11 +1,7 @@
 <template>
     <div class="power-button">
         <div id="button-container" @click="disabled ? '' : apply()">
-            <img v-if="type === 'shutdown'" class="power-button-icon" src="../assets/images/shutdown.svg" />
-            <img v-if="type === 'suspend'" class="power-button-icon suspend" src="../assets/images/suspend.svg" />
-            <img v-if="type === 'restart'" class="power-button-icon" src="../assets/images/reboot.svg" />
-            <img v-if="type === 'settings'" class="power-button-icon" src="../assets/images/settings.svg" />
-            <img v-if="type === 'back'" class="power-button-icon" src="../assets/images/back.svg" />
+            <img id="power-button-icon" :class="{ type }" :src="require('../assets/images/' + type + '.svg')" />
         </div>
     </div>
 </template>
@@ -30,6 +26,11 @@
                 setTimeout(LightDM[this.type], 1500);
                 this.$router.push(`/splash/${this.type}`)
             }
+        },
+        data() {
+            return {
+                types: ['shutdown', 'suspend', 'restart', 'settings', 'back']
+            }
         }
     }
 </script>
@@ -46,7 +47,7 @@
         cursor: pointer;
     }
 
-    .power-button-icon {
+    #power-button-icon {
         box-sizing: initial;
         color: white;
 
@@ -55,11 +56,4 @@
         width: 42px;
         height: 42px;
     }
-
-    /*.power-button-icon.suspend {
-        width: 52px;
-        height: 52px;
-
-        padding: 5px 5px 2.5px;
-    }*/
 </style>

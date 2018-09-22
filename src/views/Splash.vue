@@ -4,6 +4,7 @@
             <div id="content" v-if="show">
                 <img v-if="state === 'initial'" id="logo" src="../assets/images/arch.svg" />
                 <p v-else id="power-text">
+                    <img id="power-icon" :src="require('../assets/images/' + state + '.svg')" />
                     {{ text }}
                 </p>
             </div>
@@ -70,5 +71,12 @@
 
     .logo-fade-enter, .logo-fade-leave-to {
         opacity: 0;
+    }
+
+    #power-icon {
+        width: 50px;
+
+        margin-bottom: -5px;
+        margin-right: 4px;
     }
 </style>
