@@ -15,7 +15,8 @@
 
         methods: {
             isBlured() {
-                return this.$router.currentRoute.name.startsWith('login');
+                let name = this.$router.currentRoute.name;
+                return name === 'login' || name === 'select';
             }
         }
     };
@@ -23,7 +24,7 @@
 
 <style>
     .bg {
-        background-image: url('../assets/images/background.jpg');
+        background-image: url('../assets/images/background.png');
         position: fixed;
         left: 0;
         right: 0;

@@ -39,12 +39,18 @@
         flex-direction: column;
     }
 
-    .clock {
+    #splash:not(.clock-only) .clock {
         margin-top: 6vh;
     }
 
-    .clock-only .clock {
-        margin-top: calc(50vh - 160px);
+    #splash.clock-only {
+        align-items: center;
+        justify-content: center;
+        flex-direction: initial;
+
+        .clock {
+            padding-bottom: 25px; /* Text size compensation */
+        }
     }
 
     #trigger {

@@ -22,6 +22,18 @@ if (window.debug) {
             {
                 name: 'XFCE 4',
                 key: 'xfce'
+            },
+            {
+                name: 'Cinnamon',
+                key: 'cinnamon'
+            },
+            {
+                name: 'Pantheon',
+                key: 'pantheon'
+            },
+            {
+                name: 'i3wm',
+                key: 'i3'
             }
         ],
         users: [{
@@ -30,7 +42,7 @@ if (window.debug) {
         }, {
             display_name: 'Adrien Navratil',
             username: 'litarvan',
-            image: 'images/litarvan.png'
+            image: 'litarvan'
         }],
         languages: [{
             name: 'American English',

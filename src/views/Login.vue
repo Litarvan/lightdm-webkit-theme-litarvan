@@ -4,23 +4,18 @@
 
         <div id="login-content" :class="{ 'no-avatar': settings.disableAvatar }">
             <div id="avatar" v-if="!settings.disableAvatar">
-                <img id="avatar-image" :class="{ 'round': settings.roundAvatar }" src="../assets/images/default_user.png" />
+                <img id="avatar-image" :class="{ 'round': settings.roundAvatar }" :src="avatar(settings.user.image)" />
             </div>
 
             <div id="login-form">
-                <div id="user">
-                    John Doe / <span id="username">johnd</span>
-                </div>
+                <SelectItem mode="user" :item="settings.user" @select="!immutable && $router.push('/base/select/user')" :noicon="true" />
 
                 <form v-if="!immutable" @submit.prevent="submit">
                     <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" />
                 </form>
                 <div v-else id="password" class="immutable"></div>
 
-                <div id="desktop">
-                    <img id="desktop-icon" src="../assets/images/desktops/gnome.png" />
-                    Gnome 3
-                </div>
+                <SelectItem mode="desktop" :item="settings.desktop" @select="!immutable && $router.push('/base/select/desktop')" />
             </div>
         </div>
 
@@ -45,12 +40,13 @@
     import PowerButton from '@/components/PowerButton.vue';
     import Clock from '@/components/Clock.vue';
     import LightDM from '@/lightdm';
-    import { settings } from '@/settings';
+    import { avatar, settings } from '@/settings';
     import { trans } from '@/translations';
+    import SelectItem from '../components/SelectItem';
 
     export default {
         name: 'login',
-        components: { PowerButton, Clock },
+        components: { SelectItem, PowerButton, Clock },
         props: ['immutable', 'compact'],
 
         data() {
@@ -71,29 +67,33 @@
             setTimeout(() => document.querySelector('#password').focus(), 650);
         },
         methods: {
+            avatar,
             keyup(event) {
-                if (event.which === 27 && !settings.disableSplash) {
-                    this.$router.push('/base/splash');
+                if (event.which === 27) {
+                    this.$router.push(settings.disableSplash ? '/base/login' : '/base/splash');
                 }
             },
             submit() {
                 this.logging = true;
 
-                lightdm_login('johnd', this.password, () => {
-                    let cb = () => lightdm_start('gnome-shell');
+                // Workaround for a form submit bug reloading the route
+                setTimeout(() => {
+                    lightdm_login(this.settings.user.username, this.password, () => {
+                        let cb = () => lightdm_start(this.settings.desktop.key);
 
-                    if (settings.disableFade) {
-                        cb();
-                        return;
-                    }
+                        if (settings.disableFade) {
+                            cb();
+                            return;
+                        }
 
-                    setTimeout(cb, 400);
-                    this.$router.push('/intro/login');
-                }, () => {
-                    this.error = true;
-                    this.password = '';
-                    this.logging = false;
-                })
+                        setTimeout(cb, 400);
+                        this.$router.push('/intro/login');
+                    }, () => {
+                        this.error = true;
+                        this.password = '';
+                        this.logging = false;
+                    })
+                }, 150);
             }
         }
     }
@@ -115,9 +115,11 @@
 
         #login-form {
             text-align: left;
-
             margin-left: 42px;
-            vertical-align: bottom;
+        }
+
+        .item.user {
+            margin-bottom: 0;
         }
 
         #login-content {
@@ -131,11 +133,11 @@
         }
 
         #login-content.no-avatar {
-            #user {
+            .item.user {
                 margin-bottom: 2.0vh;
             }
 
-            #desktop {
+            .item.desktop {
                 margin-top: 4.75vh;
             }
 
@@ -145,7 +147,7 @@
             }
         }
 
-        #user {
+        .item.user {
             margin-top: 0;
         }
 
@@ -153,7 +155,7 @@
             margin-top: 2.5vh;
         }
 
-        #desktop {
+        .item.desktop {
             margin-top: 3vh;
         }
     }
@@ -171,11 +173,11 @@
     #login-content.no-avatar {
         margin-top: calc(50vh - 165px);
 
-        #user {
+        .item.user {
             margin-top: 0;
         }
 
-        #desktop {
+        .item.desktop {
             margin-top: 6vh;
         }
     }
@@ -188,24 +190,16 @@
         border-radius: 100px;
     }
 
-    #user, #password, #desktop {
-        font-family: 'Lato', 'Noto Sans', sans-serif;
-        font-style: italic;
+    .item.user {
+        margin-top: 3.5vh;
+    }
+
+    #password {
         font-weight: 300;
     }
 
-    #user {
-        font-size: 42px;
-        margin-top: 3.5vh;
-
-        padding: 3px 16px 5px;
-    }
-
-    #username {
-        font-weight: bold;
-    }
-
     #password::placeholder {
+        font-style: italic;
         color: rgba(255, 255, 255, 0.55);
         opacity: 1;
     }
@@ -240,29 +234,13 @@
         border-bottom-width: 6px;
     }
 
-    #desktop {
+    .item.desktop {
         margin-top: 8vh;
-        padding: 7px 19px;
-
-        font-weight: normal;
-        font-size: 44px;
-    }
-
-    #user, #desktop {
         display: inline-block;
-        border-radius: 5px;
-        transition: background-color 125ms ease-in-out;
     }
 
-    #user:hover, #desktop:hover {
-        background: rgba(255, 255, 255, 0.115);
-        cursor: pointer;
-    }
-
-    #desktop-icon {
-        height: 45px;
-        margin-right: 4px;
-        margin-bottom: -6px;
+    .item.user {
+        display: inline-block;
     }
 
     #settings {
@@ -290,25 +268,9 @@
     }
 
     @media (max-height: 850px) {
-        #avatar-image {
-            width: 205px;
-        }
-
         #password {
             height: 49px;
             font-size: 22px;
-        }
-
-        #user {
-            font-size: 40px;
-        }
-
-        #desktop {
-            font-size: 41px;
-        }
-
-        #desktop-icon {
-            margin-bottom: -5px;
         }
     }
 

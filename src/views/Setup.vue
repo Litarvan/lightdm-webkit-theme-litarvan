@@ -41,6 +41,7 @@
     export default {
         name: 'setup',
         components: { PowerButton, Login, Checkbox },
+
         data() {
             return {
                 settings: settings,
@@ -129,11 +130,11 @@
         width: 240%; // Needed, or it is too small for the content
         margin-left: -70%; // When changing the width, this makes the content centered again
 
-        #user, #desktop {
+        .item.user, .item.desktop {
             display: block;
         }
 
-        #user:hover, #desktop:hover {
+        .item.user:hover, .item.desktop:hover {
             background: none;
         }
     }
@@ -169,10 +170,6 @@
 
         #classic #avatar {
             margin-top: 3.5vh;
-
-            #avatar-image {
-                width: 190px;
-            }
         }
     }
 

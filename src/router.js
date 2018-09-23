@@ -37,7 +37,7 @@ export default new Router({
                     component: Login
                 },
                 {
-                    path: 'select',
+                    path: 'select/:mode',
                     name: 'select',
                     component: Select
                 }

@@ -2,7 +2,7 @@
     <div id="intro">
         <transition name="logo-fade">
             <div id="content" v-if="show">
-                <img v-if="state === 'initial'" id="logo" src="../assets/images/arch.svg" />
+                <img v-if="state === 'initial'" id="logo" src="../assets/images/os.png" />
                 <p v-else id="power-text">
                     <img id="power-icon" :src="require('../assets/images/' + state + '.svg')" />
                     {{ text }}
