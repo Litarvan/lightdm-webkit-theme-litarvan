@@ -1,4 +1,0 @@
-library lightdm_webkit_theme_litarvan_lib_components_users_users_component.css.dart;
-
-
-const List<dynamic> styles = const [':host {\n    position: absolute;\n    top: 35%;\n    left: 50%;\n    transform: translateX(-50%) translateY(-50%);\n\n    font-family: "Lato", "Noto Sans", "Arial", sans-serif;\n    font-size: 26px;\n    font-weight: 300;\n}\n\n#users {\n    list-style: none;\n}\n\n.user {\n    font-size: 32px;\n    text-align: right;\n\n    min-width: 300px;\n    padding: 10px 15px;\n    transition: background-color 150ms ease-in-out;\n}\n\n.user:hover {\n    background: rgba(255, 255, 255, 0.1);\n    cursor: pointer;\n}\n\n.user i {\n    float: left;\n    margin-top: 3px;\n    margin-right: 25px;\n}\n\n.user img {\n    margin-bottom: -4px;\n    margin-left: 15px;\n\n    width: 32px;\n    height: 32px;\n\n    border-radius: 4px;\n}'];
