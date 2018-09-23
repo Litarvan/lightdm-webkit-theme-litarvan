@@ -24,7 +24,7 @@
 
             <transition name="power-fade">
                 <div id="power-list" v-if="powerList">
-                    <PowerButton id="suspend" type="suspend"></PowerButton>
+                    <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
                     <PowerButton id="reboot" type="restart"></PowerButton>
                 </div>
             </transition>
@@ -39,7 +39,6 @@
 <script>
     import PowerButton from '@/components/PowerButton.vue';
     import Clock from '@/components/Clock.vue';
-    import LightDM from '@/lightdm';
     import { avatar, settings } from '@/settings';
     import { trans } from '@/translations';
     import SelectItem from '../components/SelectItem';
@@ -51,7 +50,7 @@
 
         data() {
             return {
-                canSuspend: LightDM.can_suspend,
+                canSuspend: lightdm.can_suspend,
                 passwordLabel: trans('password'),
                 isCompact: this.immutable ? this.compact : settings.mode === 'compact',
                 settings,
@@ -64,7 +63,10 @@
         },
         mounted() {
             window.addEventListener('keyup', this.keyup);
-            setTimeout(() => document.querySelector('#password').focus(), 650);
+            setTimeout(() => {
+                let p = document.querySelector('#password');
+                p && p.focus();
+            }, 650);
         },
         methods: {
             avatar,

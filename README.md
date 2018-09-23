@@ -1,41 +1,31 @@
 # Litarvan's LightDM WebKit2 theme
-[![Latest Release][release]](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) &nbsp;[![AUR Votes][aur]](https://aur.archlinux.org/packages/lightdm-webkit-theme-litarvan)
+
+[![Arch Release](https://img.shields.io/badge/arch-2.0.7-blue.svg?style=flat-square)](https://www.archlinux.org/packages/community/any/lightdm-webkit-theme-litarvan/)&nbsp; [![Latest Release](https://img.shields.io/github/release/Litarvan/lightdm-webkit-theme-litarvan.svg?style=flat-square&label=github)](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) &nbsp;![Github downloads](https://img.shields.io/github/downloads/Litarvan/lightdm-webkit-theme-litarvan/total.svg?style=flat-square)
 
 **=> Screenshots below**
 
 # [Live testing](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
 
-# [AUR page](https://aur.archlinux.org/packages/lightdm-webkit-theme-litarvan)
+# Customize release
 
-# Features
-
- - Arch logo splash
- - English/French language
- - Hour and date
- - User/Desktop switching (saved)
- - Shutdown/Reboot buttons
- - Fade in on display, fade out on session start
-
-# Changing background
-
-Background is in `web/images/background.jpg`
+Background : Edit img/background.xxxxxxxx.png
+OS Logo : Edit img/os.xxxxxxxx.png
 
 # How to install
 
-## AUR
-
-Requires **web-greeter** (aka lightdm-webkit2-greeter)
+## Arch Linux
 
 ```
-yaourt -S lightdm-webkit-theme-litarvan
+pacman -S lightdm-webkit-theme-litarvan
 ```
 
+If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`
 Then edit `/etc/lightdm/lightdm-webkit.conf` and set webkit-theme to litarvan
 
 ## Manual
 
 * Unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
-* Edit `/etc/lightdm/lightdm-webkit.conf` and set `webkit-theme` to litarvan
+* Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `webkit-theme` to litarvan
 
 # Screenshots
 
@@ -44,6 +34,3 @@ Then edit `/etc/lightdm/lightdm-webkit.conf` and set webkit-theme to litarvan
 ![Login screnshot](https://i.gyazo.com/7a282eb525fe973c673b088a2f7e2db8.png)
 
 ![Splash screenshot](https://i.gyazo.com/70686f52d6caa3155d8c6332e14cb19a.png)
-
-[release]: https://img.shields.io/github/release/Litarvan/lightdm-webkit-theme-litarvan.svg?style=flat-square "Latest Release"
-[aur]: https://img.shields.io/aur/votes/lightdm-webkit-theme-litarvan.svg?maxAge=604800&style=flat-square "AUR Votes"

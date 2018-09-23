@@ -2,9 +2,9 @@
 
 const DEBUG_PASSWORD = 'test';
 
-window.debug = window.lightdm === undefined;
+window.lightdm_debug = window.lightdm === undefined;
 
-if (window.debug) {
+if (window.lightdm_debug) {
     window.lightdm = {
         is_authenticated: false,
         authentication_user: undefined,

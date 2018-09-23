@@ -17,8 +17,8 @@ let settings = (local ? JSON.parse(local) : null) || {
 };
 
 // Handle display name change
-lightdm.users.forEach(u => settings.user.username === u.username ? settings.user = u : '');
-lightdm.sessions.forEach(s => settings.desktop.username === s.key ? settings.desktop = s : '');
+lightdm.users.forEach(u => settings.user.username === u.username && (settings.user = u));
+lightdm.sessions.forEach(s => settings.desktop.username === s.key && (settings.desktop = s));
 
 function save(s) {
     localStorage.setItem('settings', JSON.stringify(settings = s));

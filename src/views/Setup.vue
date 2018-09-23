@@ -1,5 +1,5 @@
 <template>
-    <div class="setup">
+    <div class="setup" :class="{ 'fix': fix }">
         <h1 id="setup-title">{{ texts.setup }}</h1>
 
         <div id="layouts">
@@ -45,6 +45,7 @@
         data() {
             return {
                 settings: settings,
+                fix: !lightdm_debug,
                 texts: {
                     setup: trans('setup'),
                     disableSplash: trans('disableSplash'),
@@ -200,6 +201,17 @@
             vertical-align: super;
             margin-right: 20px;
             margin-bottom: -8px;
+        }
+    }
+
+    .fix {
+        .checkbox {
+            vertical-align: initial;
+            margin-bottom: -5px;
+        }
+
+        .checkbox-line {
+            margin-bottom: 28px;
         }
     }
 
