@@ -162,6 +162,10 @@
         }
     }
 
+    .item.user {
+        margin-bottom: 13px;
+    }
+
     #login-content {
         margin-top: 11.5vh;
     }
@@ -200,6 +204,10 @@
         font-weight: 300;
     }
 
+    #password, #password:focus {
+        outline: none;
+    }
+
     #password::placeholder {
         font-style: italic;
         color: rgba(255, 255, 255, 0.55);
@@ -217,7 +225,7 @@
         padding-right: 15px;
         font-size: 24px;
 
-        width: 415px;
+        width: 400px;
         height: 54px;
 
         border: none;

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import { avatar } from '@/settings';
+    import { save, avatar } from '@/settings';
 
     export default {
         name: 'select-item',
@@ -17,6 +17,7 @@
 
         methods: {
             select() {
+                save();
                 this.$emit('select');
             },
             icon() {
@@ -72,6 +73,8 @@
 
         border-radius: 5px;
         transition: background-color 125ms ease-in-out;
+
+        min-width: 150px;
     }
 
     .item.selected {
