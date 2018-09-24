@@ -30,6 +30,11 @@
                     return;
                 }
 
+                if (this.type === 'theming') {
+                    this.$router.push('/theming');
+                    return;
+                }
+
                 setTimeout(lightdm[this.type], 1500);
                 this.$router.push(`/intro/${this.type}`)
             }
@@ -52,7 +57,7 @@
     }
 
     #button-container:hover {
-        background: rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.08);
         cursor: pointer;
     }
 

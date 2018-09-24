@@ -27,6 +27,8 @@
         <div @click="save()">
             <PowerButton id="back" type="back" />
         </div>
+
+        <PowerButton id="theming" type="theming" />
     </div>
 </template>
 
@@ -112,7 +114,7 @@
 
     .layout:hover {
         cursor: pointer;
-        border-color: lighten($primary-color, 3);
+        border-color: lighten($primary-color, 25);
     }
 
     .layout.selected {
@@ -146,7 +148,7 @@
 
     #classic {
         #login-content {
-            margin-top: 5vh;
+            margin-top: 4.65vh;
 
             &.no-avatar {
                 margin-top: calc(15.5vh - 50px);
@@ -165,6 +167,12 @@
     }
 
     @media (max-height: 850px) {
+        #classic {
+            #login-content {
+                margin-top: 3.75vh;
+            }
+        }
+
         #setup-title {
             margin-top: 5.5vh;
         }
@@ -237,6 +245,12 @@
         position: absolute;
         bottom: 20px;
         left: 20px;
+    }
+
+    #theming {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
     }
 
     @media (max-height: 775px) {
