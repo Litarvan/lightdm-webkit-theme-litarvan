@@ -69,10 +69,14 @@
 </script>
 
 <style lang="scss">
+    @import '../theme';
+
     .setup {
         font-family: 'Lato', 'Noto Sans', sans-serif;
         font-weight: 300;
         font-style: italic;
+
+        color: $outer-foreground;
     }
 
     #setup-title {
@@ -94,7 +98,7 @@
     .layout {
         display: inline-block;
 
-        border: solid 2px white;
+        border: solid 2px $outer-foreground;
         border-radius: 2px;
         transition: border-color 125ms ease-in-out;
 
@@ -108,11 +112,11 @@
 
     .layout:hover {
         cursor: pointer;
-        border-color: #90c0e8;
+        border-color: lighten($primary-color, 3);
     }
 
     .layout.selected {
-        border-color: #249cea;
+        border-color: $primary-color;
     }
 
     #classic-layout {

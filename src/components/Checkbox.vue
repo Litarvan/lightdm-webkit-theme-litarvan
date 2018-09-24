@@ -22,9 +22,11 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+    @import '../theme';
+
     .checkbox {
-        border: solid 2px white;
+        border: solid 2px $secondary-color;
         border-radius: 2px;
 
         transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
@@ -40,7 +42,7 @@
     }
 
     .checkbox.checked {
-        border-color: #3DA7EE;
-        background: #3DA7EE;
+        border-color: $primary-color;
+        background: $primary-color;
     }
 </style>

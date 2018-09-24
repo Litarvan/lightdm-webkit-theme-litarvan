@@ -49,9 +49,11 @@
     };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    @import '../theme';
+
     #intro {
-        background-color: black;
+        background-color: $outer-background;
 
         display: flex;
         align-items: center;
@@ -71,7 +73,7 @@
         font-family: 'Lato', 'Noto Sans', serif;
         font-style: italic;
         font-weight: normal;
-        color: white;
+        color: $outer-foreground;
         font-size: 58px;
     }
 

@@ -102,6 +102,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../theme';
+
     .login.compact {
         .clock {
             margin-top: 6vh;
@@ -210,16 +212,16 @@
 
     #password::placeholder {
         font-style: italic;
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba($secondary-color, 0.55);
         opacity: 1;
     }
 
     #password {
         margin-top: 4.5vh;
 
-        background: rgba(255, 255, 255, 0.2);
-        caret-color: rgba(255, 255, 255, 0.6);
-        color: white;
+        background: $password-field-background;
+        caret-color: $password-field-caret;
+        color: $secondary-color;
 
         padding-left: 15px;
         padding-right: 15px;
@@ -229,18 +231,18 @@
         height: 54px;
 
         border: none;
-        border-bottom: solid 3px #249cea;
+        border-bottom: solid 3px $primary-color;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
     }
 
     #password.error {
-        border-bottom-color: #de3c2d;
+        border-bottom-color: $error-color;
     }
 
     #password.immutable {
         display: inline-block;
-        background: rgba(255, 255, 255, 0.3);
+        background: $password-field-background-setup;
         border-bottom-width: 6px;
     }
 

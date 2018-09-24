@@ -66,6 +66,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../theme';
+
     .item {
         font-family: 'Lato', 'Noto Sans', sans-serif;
         font-style: italic;
@@ -77,7 +79,7 @@
     }
 
     .item.selected {
-        border-bottom: solid 2px #249cea;
+        border-bottom: solid 2px $primary-color;
         background: rgba(255, 255, 255, 0.055);
     }
 

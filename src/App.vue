@@ -17,6 +17,12 @@
 </script>
 
 <style lang="scss">
+    @import '_theme';
+
+    html.lightdm {
+        background: $outer-background !important;
+    }
+
     /* HiDPI */
     @media screen and (min-width: 3000px) and (min-height: 1200px) {
         html {
@@ -70,7 +76,7 @@
 
         text-align: center;
 
-        color: white;
+        color: $secondary-color;
     }
 
     .fade-enter-active, .fade-leave-active {

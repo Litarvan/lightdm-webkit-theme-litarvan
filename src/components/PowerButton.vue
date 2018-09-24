@@ -42,7 +42,9 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    @import '../theme';
+
     #button-container {
         transition: background 125ms ease-in-out;
         border-radius: 6px;
@@ -56,7 +58,7 @@
 
     #power-button-icon {
         box-sizing: initial;
-        color: white;
+        color: $secondary-color;
 
         padding: 10px 10px 10px;
 

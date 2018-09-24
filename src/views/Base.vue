@@ -22,9 +22,11 @@
     };
 </script>
 
-<style>
+<style lang="scss">
+    @import '../theme';
+
     .bg {
-        background-image: url('../assets/images/background.png');
+        background-image: $background-image;
         position: fixed;
         left: 0;
         right: 0;
@@ -35,6 +37,8 @@
 
         z-index: -1;
         transition: filter 500ms ease-in-out;
+
+        color: $secondary-color;
     }
 
     .blured {
