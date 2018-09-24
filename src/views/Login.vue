@@ -81,15 +81,8 @@
                 // Workaround for a form submit bug reloading the route
                 setTimeout(() => {
                     lightdm_login(this.settings.user.username, this.password, () => {
-                        let cb = () => lightdm_start(this.settings.desktop.key);
-
-                        if (settings.disableFade) {
-                            cb();
-                            return;
-                        }
-
-                        setTimeout(cb, 400);
-                        this.$router.push('/intro/login');
+                        setTimeout(() => lightdm_start(this.settings.desktop.key), 400);
+                        this.$router.push(settings.disableFade ? '/base' : '/intro/login');
                     }, () => {
                         this.error = true;
                         this.password = '';
