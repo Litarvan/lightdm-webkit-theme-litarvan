@@ -1,9 +1,10 @@
 {
   "name": "lightdm-webkit-theme-litarvan",
   "version": "3.0.0",
-  "license": "BSD-3",
+  "license": "BSD-3-Clause",
   "author": "Adrien 'Litarvan' Navratil <adrien1975@live.fr>",
-  "homepage": "https://github.com/Litarvan/lightdm-webkit-theme-litarvan",
+  "homepage": "https://litarvan.github.io/lightdm-webkit-theme-litarvan/",
+  "repository": "https://github.com/Litarvan/lightdm-webkit-theme-litarvan",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"

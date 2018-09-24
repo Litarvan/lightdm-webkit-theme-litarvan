@@ -1,5 +1,9 @@
 let local = localStorage.getItem('settings');
 
+if (local === 'undefined') {
+    local = null;
+}
+
 let settings = (local ? JSON.parse(local) : null) || {
     first: true,
 
@@ -20,8 +24,10 @@ let settings = (local ? JSON.parse(local) : null) || {
 lightdm.users.forEach(u => settings.user.username === u.username && (settings.user = u));
 lightdm.sessions.forEach(s => settings.desktop.username === s.key && (settings.desktop = s));
 
+save();
+
 function save(s) {
-    localStorage.setItem('settings', JSON.stringify(settings = s));
+    localStorage.setItem('settings', JSON.stringify(s ? settings = s : settings));
 }
 
 function avatar(avatar) {

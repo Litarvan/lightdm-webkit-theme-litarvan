@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import { settings } from '@/settings';
+    import { save, settings } from '@/settings';
     import SelectItem from '../components/SelectItem';
 
     const modes = {
@@ -42,6 +42,7 @@
         methods: {
             select(obj) {
                 settings[this.mode] = obj;
+                save();
                 this.$router.back();
             }
         }
