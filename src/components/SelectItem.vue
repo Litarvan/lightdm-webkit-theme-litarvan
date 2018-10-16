@@ -52,6 +52,8 @@
                         icon = 'liri';
                     } if (key.indexOf('i3') > -1) {
                         icon = 'i3';
+                    } if (key.indexOf('xmonad') > -1) {
+                        icon = 'xmonad';
                     }
 
                     if (!icon) {
