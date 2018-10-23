@@ -28,12 +28,12 @@ if (window.lightdm_debug) {
                 key: 'cinnamon'
             },
             {
-                name: 'Pantheon',
-                key: 'pantheon'
-            },
-            {
                 name: 'i3wm',
                 key: 'i3'
+            },
+            {
+                name: 'xmonad',
+                key: 'xmonad'
             }
         ],
         users: [{

@@ -72,6 +72,10 @@ function getLocale()
 {
     let lang = 'en-US';
 
+    if (!lightdm.language || !lightdm.languages) {
+        return lang;
+    }
+
     lightdm.languages.forEach(l => {
         if (l.name.toLowerCase() === lightdm.language.toLowerCase()) {
             lang = l.code.split('.')[0].replace('_', '-');
