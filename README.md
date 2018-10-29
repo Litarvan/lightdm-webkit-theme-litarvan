@@ -13,7 +13,7 @@ OS Logo : Edit img/os.xxxxxxxx.png
 
 # Installation
 
-## Arch Linux
+## Arch Linux (2.0.X : Stable)
 
 ```
 pacman -S lightdm-webkit-theme-litarvan
@@ -22,7 +22,7 @@ pacman -S lightdm-webkit-theme-litarvan
 If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`
 Then edit `/etc/lightdm/lightdm-webkit.conf` and set webkit-theme to litarvan
 
-## Manual
+## Manual (Any / Pre-release)
 
 * Unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
 * Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `webkit-theme` to litarvan
@@ -37,8 +37,10 @@ Will generate a lightdm-webkit-theme-litarvan-VERSION.tar.gz in the current fold
 
 # Screenshots
 
-![Main screenshot](https://i.gyazo.com/a3d80875d710e63a786eb356822093ef.png)
+![Setup screenshot](https://cdn.discordapp.com/attachments/447725868140331019/506270938468188160/unknown.png)
 
-![Login screnshot](https://i.gyazo.com/7a282eb525fe973c673b088a2f7e2db8.png)
+![Splash screenshot](https://cdn.discordapp.com/attachments/447725868140331019/506270918776061953/unknown.png)
 
-![Splash screenshot](https://i.gyazo.com/70686f52d6caa3155d8c6332e14cb19a.png)
+![Login screnshot](https://cdn.discordapp.com/attachments/447725868140331019/506270689896955916/unknown.png)
+
+![Desktops screenshot](https://cdn.discordapp.com/attachments/447725868140331019/506271052431884288/unknown.png)
