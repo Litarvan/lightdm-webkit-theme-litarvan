@@ -20,12 +20,13 @@ pacman -S lightdm-webkit-theme-litarvan
 ```
 
 If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`
-Then edit `/etc/lightdm/lightdm-webkit.conf` and set webkit-theme to litarvan
+Then edit `/etc/lightdm/lightdm-webkit.conf` and set `theme` or `webkit-theme` to `litarvan`.
 
 ## Manual (Any / Pre-release)
 
+* Install lightdm-webkit2-greeter using pacman if not already done
 * Unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
-* Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `webkit-theme` to litarvan
+* Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` or `webkit-theme` to `litarvan`.
 
 # Building
 
