@@ -54,6 +54,8 @@
                         icon = 'i3';
                     } if (key.indexOf('xmonad') > -1) {
                         icon = 'xmonad';
+                    } if (key.indexOf('budgie') > -1 || key.indexOf('solus') > -1) {
+                        icon = 'budgie';
                     }
 
                     if (!icon) {
