@@ -27,6 +27,7 @@
 
     .bg {
         background-image: $background-image;
+        background-size: cover;
         position: fixed;
         left: 0;
         right: 0;
