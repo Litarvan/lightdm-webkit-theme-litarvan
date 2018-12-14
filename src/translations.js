@@ -14,7 +14,9 @@ const translations = {
         disableIntro: 'Disable intro (OS logo)',
         disableFade: 'Disable fade to black after login',
         roundAvatar: 'Round avatar',
-        disableAvatar: 'Disable avatar'
+        disableAvatar: 'Disable avatar',
+        disableZoom: 'Disable x2 zoom (large screen fix)',
+        clock24: '24-hour clock format'
     },
 
     // French
@@ -31,8 +33,9 @@ const translations = {
         disableIntro: 'Désactiver l\'introduction (logo de l\'OS)',
         disableFade: 'Désactiver le fondu au noir lors de la connexion',
         roundAvatar: 'Arrondir l\'avatar',
-        disableAvatar: 'Désactiver l\'avatar'
-
+        disableAvatar: 'Désactiver l\'avatar',
+        disableZoom: 'Désactiver le zoom x2 (fix des grands écrans)',
+        clock24: 'Format 24 heures de l\'horloge'
     },
 
     // Dutch (TODO)

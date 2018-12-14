@@ -16,12 +16,14 @@
             <div class="checkbox-line"><Checkbox v-model="settings.disableSplash" /><label>{{ texts.disableSplash }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableSplashText" /><label>{{ texts.disableSplashText }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.clock24" /><label>{{ texts.clock24 }}</label></div>
         </div>
 
         <div id="right-settings" class="settings">
             <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
+            <div class="disable-zoom">-<div class="checkbox-line"><Checkbox v-model="settings.disableZoom" /><label>{{ texts.disableZoom }}</label></div></div>
         </div>
 
         <div @click="save()">
@@ -55,7 +57,9 @@
                     disableIntro: trans('disableIntro'),
                     disableFade: trans('disableFade'),
                     roundAvatar: trans('roundAvatar'),
-                    disableAvatar: trans('disableAvatar')
+                    disableAvatar: trans('disableAvatar'),
+                    disableZoom: trans('disableZoom'),
+                    clock24: trans('clock24')
                 }
             }
         },
@@ -205,7 +209,7 @@
         width: 35%;
 
         .checkbox-line {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .checkbox {
@@ -223,7 +227,7 @@
         }
 
         .checkbox-line {
-            margin-bottom: 28px;
+            margin-bottom: 26px;
         }
     }
 
@@ -260,6 +264,21 @@
 
         #left-settings {
             margin-left: 2.25%;
+        }
+    }
+
+    .disable-zoom {
+        color: black
+    }
+
+    .disable-zoom .checkbox-line {
+        display: none;
+        color: white;
+    }
+
+    @media screen and (min-width: 3000px) and (min-height: 1200px) {
+        .disable-zoom .checkbox-line {
+            display: block;
         }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" :class="{ 'disableZoom': disableZoom }">
         <transition name="fade">
             <router-view/>
         </transition>
@@ -12,6 +12,11 @@
     export default {
         mounted() {
             this.$router.push('/intro/initial');
+        },
+        data() {
+            return {
+                disableZoom: settings.disableZoom
+            }
         }
     }
 </script>
@@ -25,7 +30,7 @@
 
     /* HiDPI */
     @media screen and (min-width: 3000px) and (min-height: 1200px) {
-        html {
+        #app:not(.disableZoom) {
             zoom: 2.0;
         }
     }

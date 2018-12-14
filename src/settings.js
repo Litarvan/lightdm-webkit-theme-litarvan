@@ -15,6 +15,8 @@ let settings = (local ? JSON.parse(local) : null) || {
     disableFade: false,
     roundAvatar: false,
     disableAvatar: false,
+    disableZoom: false,
+    clock24: true,
 
     user: lightdm.users[0],
     desktop: lightdm.sessions[0]
