@@ -1,7 +1,7 @@
 const translations = {
     // English
     'en': {
-        trigger: 'Press "Space" or "Enter" to login',
+        trigger: 'Press Space or Enter to login',
         password: 'Password...',
 
         shutdown: 'Shutting down...',
@@ -21,7 +21,7 @@ const translations = {
 
     // French
     'fr': {
-        trigger: 'Appuyez sur "Espace" ou "Entrée" pour vous connecter',
+        trigger: 'Appuyez sur Espace ou Entrée pour vous connecter',
         password: 'Mot de passe...',
         shutdown: 'Arrêt...',
         suspend: 'Mise en veille...',
@@ -40,31 +40,31 @@ const translations = {
 
     // Dutch (TODO)
     'nl': {
-        trigger: 'Druk op "Spatie" of "Enter" om aan te melden',
+        trigger: 'Druk op Spatie of Enter om aan te melden',
         password: 'Wachtwoord...'
     },
 
     // Polish (TODO)
     'pl': {
-        trigger: 'Naciśnij "Spację" lub "Enter" aby kontynuować',
+        trigger: 'Naciśnij Spację lub Enter aby kontynuować',
         password: 'Hasło...'
     },
 
     // German (TODO)
     'de': {
-        trigger: 'Drücken Sie "Leertaste" oder "Enter" um sich einzuloggen',
+        trigger: 'Drücken Sie Leertaste oder Enter um sich einzuloggen',
         password: 'Passwort...'
     },
 
     // Portuguese (TODO)
     'pt': {
-        trigger: 'Carrega na tecla "Espaço" ou "Enter" para fazer login',
+        trigger: 'Carrega na tecla Espaço ou Enter para fazer login',
         password: 'Palavra-passe...'
     },
 
     // Spanish (TODO)
     'es': {
-        trigger: 'Presiona "Espacio" o "Enter" para iniciar sesión',
+        trigger: 'Presiona Espacio o Enter para iniciar sesión',
         password: 'Contraseña...'
     },
 
