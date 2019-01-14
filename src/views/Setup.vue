@@ -16,7 +16,7 @@
             <div class="checkbox-line"><Checkbox v-model="settings.disableSplash" /><label>{{ texts.disableSplash }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableSplashText" /><label>{{ texts.disableSplashText }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.clock24" /><label>{{ texts.clock24 }}</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.clock12" /><label>{{ texts.clock12 }}</label></div>
         </div>
 
         <div id="right-settings" class="settings">
@@ -59,7 +59,7 @@
                     roundAvatar: trans('roundAvatar'),
                     disableAvatar: trans('disableAvatar'),
                     disableZoom: trans('disableZoom'),
-                    clock24: trans('clock24')
+                    clock12: trans('clock12')
                 }
             }
         },

@@ -16,7 +16,7 @@ const translations = {
         roundAvatar: 'Round avatar',
         disableAvatar: 'Disable avatar',
         disableZoom: 'Disable x2 zoom (large screen fix)',
-        clock24: '24-hour clock format'
+        clock12: '12-hours clock format'
     },
 
     // French
@@ -35,7 +35,7 @@ const translations = {
         roundAvatar: 'Arrondir l\'avatar',
         disableAvatar: 'Désactiver l\'avatar',
         disableZoom: 'Désactiver le zoom x2 (fix des grands écrans)',
-        clock24: 'Format 24 heures de l\'horloge'
+        clock12: 'Format 12 heures de l\'horloge'
     },
 
     // Dutch (TODO)
