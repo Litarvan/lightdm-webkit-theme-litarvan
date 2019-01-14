@@ -14,6 +14,9 @@
                     <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" />
                 </form>
                 <div v-else id="password" class="immutable"></div>
+                <div id="info">
+                    {{ info }}
+                </div>
 
                 <SelectItem mode="desktop" :item="settings.desktop" @select="!immutable && $router.push('/base/select/desktop')" />
             </div>
@@ -57,6 +60,7 @@
                 powerList: false,
                 logging: false,
                 error: false,
+                info: '',
 
                 password: ''
             }
@@ -73,6 +77,12 @@
             keyup(event) {
                 if (event.which === 27) {
                     this.$router.push(settings.disableSplash ? '/base/login' : '/base/splash');
+                }
+
+                if (event.getModifierState("CapsLock")) {
+                    this.info = trans('capsLock');
+                } else {
+                    this.info = '';
                 }
             },
             submit() {
@@ -135,7 +145,7 @@
             }
 
             .item.desktop {
-                margin-top: 4.75vh;
+                margin-top: 4vh;
             }
 
             #login-form {
@@ -152,8 +162,14 @@
             margin-top: 2.5vh;
         }
 
+        #info {
+            font-size: 17px;
+            height: 26px;
+            margin-top: 5px;
+        }
+
         .item.desktop {
-            margin-top: 3vh;
+            margin-top: 0;
         }
     }
 
@@ -179,7 +195,7 @@
         }
 
         .item.desktop {
-            margin-top: 6vh;
+            margin-top: 5.5vh;
         }
     }
 
@@ -239,8 +255,21 @@
         border-bottom-width: 6px;
     }
 
+    #info {
+        color: rgba(255, 255, 255, 0.875);
+
+        font-size: 22px;
+        font-weight: 300;
+        font-style: italic;
+
+        text-align: center;
+
+        margin-top: 15px;
+        height: 31px;
+    }
+
     .item.desktop {
-        margin-top: 8vh;
+        margin-top: 6vh;
         display: inline-block;
     }
 

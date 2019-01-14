@@ -16,7 +16,8 @@ const translations = {
         roundAvatar: 'Round avatar',
         disableAvatar: 'Disable avatar',
         disableZoom: 'Disable x2 zoom (large screen fix)',
-        clock12: '12-hours clock format'
+        clock12: '12-hours clock format',
+        capsLock: 'Caps lock is enabled'
     },
 
     // French
@@ -35,7 +36,8 @@ const translations = {
         roundAvatar: 'Arrondir l\'avatar',
         disableAvatar: 'Désactiver l\'avatar',
         disableZoom: 'Désactiver le zoom x2 (fix des grands écrans)',
-        clock12: 'Format 12 heures de l\'horloge'
+        clock12: 'Format 12 heures de l\'horloge',
+        capsLock: 'Verrouillage des majuscules activé'
     },
 
     // Dutch (TODO)
