@@ -33,8 +33,8 @@
                 this.minutes = date.getMinutes();
 
                 if (settings.clock12) {
-                    this.part = this.hours > 12 ? 'PM' : 'AM';
-                    this.hours = this.hours === 12 ? 12 : this.hours % 12;
+                    this.part = this.hours >= 12 ? 'PM' : 'AM';
+                    this.hours = this.hours === 12 || this.hours === 0 ? 12 : this.hours % 12;
                 }
 
                 let strs = date.toLocaleDateString(getLocale(), {
