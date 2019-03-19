@@ -7,9 +7,9 @@
 # [Live testing](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
 
 # Customize release
-
-Background : Edit img/background.xxxxxxxx.png
-OS Logo : Edit img/os.xxxxxxxx.png
+Customize the following items within `/usr/share/lightdm-webkit/themes/litarvan/img/`:
+* Background: `background.xxxxxxxx.png`
+* OS Logo:`os.xxxxxxxx.png`
 
 # Installation
 
@@ -19,7 +19,7 @@ OS Logo : Edit img/os.xxxxxxxx.png
 pacman -S lightdm-webkit-theme-litarvan
 ```
 
-If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`
+If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`.
 Then edit `/etc/lightdm/lightdm-webkit.conf` and set `theme` or `webkit-theme` to `litarvan`.
 
 ## Manual (Any / Pre-release)
