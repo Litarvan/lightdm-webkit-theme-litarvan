@@ -46,10 +46,25 @@ const translations = {
         password: 'Wachtwoord...'
     },
 
-    // Polish (TODO)
+    // Polish
     'pl': {
         trigger: 'Naciśnij Spację lub Enter aby kontynuować',
-        password: 'Hasło...'
+        password: 'Hasło...',
+
+        shutdown: 'Zamykanie...',
+        suspend: 'Wstrzymywanie...',
+        restart: 'Ponowne uruchamianie...',
+
+        setup: 'Konfiguracja',
+        disableSplash: 'Wyłącz ekran powitalny (zawierający tekst "Naciśnij Enter")',
+        disableSplashText: 'Wyłącz tekst na ekranie powitalnym (pozostaw zegar)',
+        disableIntro: 'Wyłącz intro (logo systemu operacyjnego)',
+        disableFade: 'Wyłącz przejście w czerń po logowaniu',
+        roundAvatar: 'Okrągły awatar',
+        disableAvatar: 'Wyłącz awatar',
+        disableZoom: 'Wyłącz powiększenie x2 (poprawka dla dużych ekranów)',
+        clock12: '12-godzinny format wyświetlania czasu',
+        capsLock: 'Przycisk Caps lock jest aktywny'
     },
 
     // German (TODO)
