@@ -10,16 +10,16 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@babel/plugin-proposal-do-expressions": "^7.0.0-beta.53",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.1"
+    "@babel/plugin-proposal-do-expressions": "^7.2.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "postcss": {
     "plugins": {

@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: 'base',
+        name: 'l-base',
 
         methods: {
             isBlured() {
