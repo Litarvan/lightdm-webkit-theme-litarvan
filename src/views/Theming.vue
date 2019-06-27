@@ -3,12 +3,27 @@
         <h1 id="theming-title">Theming</h1>
 
         <div id="theming-content">
-            <div id="themables">
-                <div class="themable" v-for="(themable, i) of themables">
-                    <span class="themable-label">{{ themable.label }}</span>
-                    <div class="clickable" @click="edit(i)">
-                        <span class="themable-value">{{ themable.value }}</span>
-                        <div class="color-preview" :style="'background-color: ' + themable.value + ';'"></div>
+            <div id="color-theming">
+                <div id="colors">
+                    <div class="color" v-for="(themable, i) of colors">
+                        <span class="color-label">{{ themable.label }}</span>
+                        <div class="clickable" @click="edit(i)">
+                            <span class="color-value">{{ themable.hex }}</span>
+                            <div class="color-preview" :style="'background-color: ' + themable.hex + ';'"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="color-picking" v-if="editing >= 0">
+                    <div id="picking-preview" :style="'background-color: ' + colors[editing].hex + ';'"></div>
+                    <div id="picking-title">{{ colors[editing].label }}</div>
+
+                    <div>
+                        <label for="picking-hex">Hex : <input id="picking-hex" v-model="hex" maxlength="9" /></label>
+                    </div>
+                    <div id="rgb">
+                        <label for="picking-r">R : <input id="picking-r" v-model="r" maxlength="3" /></label>
+                        <label for="picking-g">G : <input id="picking-g" v-model="g" maxlength="3" /></label>
+                        <label for="picking-b">B : <input id="picking-b" v-model="b" maxlength="3" /></label>
                     </div>
                 </div>
             </div>
@@ -27,21 +42,56 @@
     import PowerButton from '../components/PowerButton';
 
     export default {
+        name: 'theming',
         components: { PowerButton },
 
         data() {
             return {
-                themables: [
-                    { label: 'Primary color', value: '#249cea' },
-                    { label: 'Secondary color', value: '#ffffff' },
-                    { label: 'Error color', value: '#de3c2d' },
-                    { label: 'Password field background', value: '#ffffff32' }
-                ]
+                colors: [
+                    { label: 'Primary color', hex: '#249cea' },
+                    { label: 'Secondary color', hex: '#ffffff' },
+                    { label: 'Error color', hex: '#de3c2d' },
+                    { label: 'Password field background', hex: '#ffffff32' }
+                ],
+                editing: -1,
+                hex: '',
+                r: 0,
+                g: 0,
+                b: 0
             }
         },
         methods: {
             edit(id) {
+                this.editing = id;
+                this.hex = this.colors[id].hex;
+            },
+            toHex(...rgb) {
+                return (this.hex.startsWith('#') ? '#' : '') + rgb.map(n => {
+                    const hex = Math.min(255, Math.max(0, n)).toString(16);
+                    return hex.length === 1 ? '0' + hex : hex;
+                }).join('');
+            },
+            toRGB(hex) {
+                return (hex.startsWith('#') ? hex.substring(1) : hex).match(/[A-f\d]{2}/g).map(s => parseInt(s, 16));
+            }
+        },
+        watch: {
+            hex(val) {
+                this.colors[this.editing].hex = val;
 
+                const [r, g, b] = this.toRGB(val);
+                this.r = r;
+                this.g = g;
+                this.b = b;
+            },
+            r(val) {
+                this.hex = this.toHex(val, this.g, this.b);
+            },
+            g(val) {
+                this.hex = this.toHex(this.r, val, this.b);
+            },
+            b(val) {
+                this.hex = this.toHex(this.r, this.g, val);
             }
         }
     }
@@ -64,6 +114,8 @@
         font-size: 72px;
         font-weight: 300;
         margin: 0;
+
+        margin-bottom: 15px;
     }
 
     #theming-content {
@@ -73,8 +125,13 @@
         width: 100%;
     }
 
-    #themables {
-        margin-top: 30px;
+    #color-theming {
+        width: 50%;
+        display: flex;
+    }
+
+    #colors {
+        margin-top: 20px;
         margin-left: 20px;
 
         font-size: 24px;
@@ -82,11 +139,11 @@
         width: 50%;
     }
 
-    .themable {
+    .color {
         margin-top: 20px;
     }
 
-    .themable-value {
+    .color-value {
         font-style: italic;
         margin-left: 15px;
         font-weight: 300;
@@ -106,6 +163,65 @@
         height: 15px;
 
         vertical-align: middle;
+    }
+
+    #color-picking {
+        border-left: solid 1px #ffffffaa;
+
+        padding-top: 35px;
+        padding-left: 45px;
+
+        box-sizing: border-box;
+
+        width: 50%;
+
+        label {
+            font-size: 18px;
+        }
+
+        input {
+            border: none;
+            border-bottom: solid 1px #ffffffcc;
+
+            color: $outer-foreground;
+            background: none;
+
+            margin-left: 8px;
+
+            font-size: 18px;
+            font-family: 'Lato', 'Noto Sans', sans-serif;
+            font-style: italic;
+        }
+    }
+
+    #picking-preview {
+        width: 100px;
+        height: 100px;
+
+        border-radius: 50%;
+    }
+
+    #picking-title {
+        margin-top: 25px;
+
+        font-size: 32px;
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    #picking-hex {
+        margin-top: 30px;
+    }
+
+    #rgb {
+        margin-top: 8px;
+
+        input {
+            width: 35px;
+            margin-right: 15px;
+
+            font-style: normal;
+        }
     }
 
     #background-theming {

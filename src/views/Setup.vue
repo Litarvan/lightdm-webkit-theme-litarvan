@@ -190,7 +190,7 @@
         }
     }
 
-    label {
+    #setup label {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
