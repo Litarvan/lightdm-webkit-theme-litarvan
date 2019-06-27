@@ -1,5 +1,5 @@
 <template>
-    <div class="setup" :class="{ 'fix': fix }">
+    <div id="setup" :class="{ 'fix': fix }">
         <h1 id="setup-title">{{ texts.setup }}</h1>
 
         <div id="layouts">
@@ -77,7 +77,7 @@
 <style lang="scss">
     @import '../theme';
 
-    .setup {
+    #setup {
         font-family: 'Lato', 'Noto Sans', sans-serif;
         font-weight: 300;
         font-style: italic;

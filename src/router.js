@@ -6,6 +6,7 @@ import Base from './views/Base.vue';
 import Intro from './views/Intro.vue';
 import Setup from './views/Setup.vue';
 import Select from './views/Select.vue';
+import Theming from './views/Theming';
 
 Vue.use(Router);
 
@@ -15,6 +16,11 @@ export default new Router({
             path: '/setup',
             name: 'setup',
             component: Setup
+        },
+        {
+            path: '/theming',
+            name: 'theming',
+            component: Theming
         },
         {
             path: '/intro/:state',
