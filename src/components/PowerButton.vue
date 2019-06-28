@@ -1,7 +1,7 @@
 <template>
     <div class="power-button">
         <div id="button-container" @click="disabled ? '' : apply()">
-            <img id="power-button-icon" :class="{ type }" :src="require('../assets/images/' + type + '.svg')" />
+            <img id="power-button-icon" :class="{ type }" :src="require('../assets/images/' + type + '.svg')"/>
         </div>
     </div>
 </template>
@@ -63,7 +63,6 @@
 
     #power-button-icon {
         box-sizing: initial;
-        color: $secondary-color;
 
         padding: 10px 10px 10px;
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="checkbox" :class="{ 'checked': checked }" @click="update">
+    <div class="checkbox" :class="{ 'checked': checked }" @click="update" v-theming="{ 'border-color': 'secondary' }">
     </div>
 </template>
 
@@ -26,7 +26,7 @@
     @import '../theme';
 
     .checkbox {
-        border: solid 2px $secondary-color;
+        border: solid 2px;
         border-radius: 2px;
 
         transition: border-color 150ms ease-in-out, background 125ms ease-in-out;

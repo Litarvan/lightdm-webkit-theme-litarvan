@@ -17,7 +17,12 @@ const translations = {
         disableAvatar: 'Disable avatar',
         disableZoom: 'Disable x2 zoom (large screen fix)',
         clock12: '12-hours clock format',
-        capsLock: 'Caps lock is enabled'
+        capsLock: 'Caps lock is enabled',
+
+        colorPrimary: 'Primary color',
+        colorSecondary: 'Secondary color',
+        colorError: 'Error color',
+        colorPasswordField: 'Password field background'
     },
 
     // French
@@ -37,7 +42,12 @@ const translations = {
         disableAvatar: 'Désactiver l\'avatar',
         disableZoom: 'Désactiver le zoom x2 (fix des grands écrans)',
         clock12: 'Format 12 heures de l\'horloge',
-        capsLock: 'Verrouillage des majuscules activé'
+        capsLock: 'Verrouillage des majuscules activé',
+
+        colorPrimary: 'Couleur principale',
+        colorSecondary: 'Couleur secondaire',
+        colorError: 'Couleur d\'erreur',
+        colorPasswordField: 'Fond du champ de mot de passe'
     },
 
     // Dutch (TODO)
@@ -107,7 +117,13 @@ function getLocale()
 
 function trans(key)
 {
-    return translations[getLocale().substring(0, 2)][key];
+    const result = translations[getLocale().substring(0, 2)][key];
+
+    if (!result) {
+        return translations.en[key];
+    }
+
+    return result;
 }
 
 export {

@@ -1,5 +1,5 @@
 <template>
-    <div id="app" :class="{ 'disableZoom': disableZoom }">
+    <div id="app" :class="{ 'disableZoom': disableZoom }" v-theming="{ color: 'secondary' }">
         <transition name="fade">
             <router-view/>
         </transition>
@@ -80,8 +80,6 @@
         -moz-osx-font-smoothing: grayscale;
 
         text-align: center;
-
-        color: $secondary-color;
     }
 
     .fade-enter-active, .fade-leave-active {
