@@ -19,10 +19,7 @@ const translations = {
         clock12: '12-hours clock format',
         capsLock: 'Caps lock is enabled',
 
-        colorPrimary: 'Primary color',
-        colorSecondary: 'Secondary color',
-        colorError: 'Error color',
-        colorPasswordField: 'Password field background'
+        primaryColor: 'Primary color'
     },
 
     // French
@@ -44,10 +41,7 @@ const translations = {
         clock12: 'Format 12 heures de l\'horloge',
         capsLock: 'Verrouillage des majuscules activé',
 
-        colorPrimary: 'Couleur principale',
-        colorSecondary: 'Couleur secondaire',
-        colorError: 'Couleur d\'erreur',
-        colorPasswordField: 'Fond du champ de mot de passe'
+        primaryColor: 'Couleur principale'
     },
 
     // Dutch (TODO)

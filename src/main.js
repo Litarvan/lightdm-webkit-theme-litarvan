@@ -9,7 +9,6 @@ Vue.config.productionTip = false;
 
 Vue.directive('theming', {
     bind(el, { value }) {
-        console.log(el);
         hook(el, value);
     }
 });

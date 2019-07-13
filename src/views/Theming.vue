@@ -5,25 +5,25 @@
         <div id="theming-content">
             <div id="color-theming">
                 <div id="colors">
-                    <div class="color" v-for="(color, i) of colors">
-                        <span class="color-label">{{ color.label }}</span> <img class="color-reset" @click="reset(i)" src="../assets/images/restart.svg" />
-                        <div class="clickable" @click="edit(i)">
-                            <span class="color-value">{{ color.hex }}</span>
-                            <div class="color-preview" :style="'background-color: ' + color.hex + ';'"></div>
+                    <div class="color">
+                        <span class="color-label">{{ colorLabel }}</span> <img class="color-reset" @click="reset()" src="../assets/images/restart.svg" />
+                        <div>
+                            <span class="color-value">{{ color }}</span>
+                            <div class="color-preview" :style="'background-color: ' + color + ';'"></div>
                         </div>
                     </div>
                 </div>
-                <div id="color-picking" v-if="editing >= 0">
-                    <div id="picking-preview" :style="'background-color: ' + colors[editing].hex + ';'"></div>
-                    <div id="picking-title">{{ colors[editing].label }}</div>
+                <div id="color-picking">
+                    <div id="picking-preview" :style="'background-color: ' + color + ';'"></div>
+                    <div id="picking-title">{{ colorLabel }}</div>
 
                     <div>
                         <label for="picking-hex">Hex : <input id="picking-hex" v-model="hex" maxlength="7" @keypress="filterHex" /></label>
                     </div>
                     <div id="rgb">
-                        <label for="picking-r">R : <input id="picking-r" v-model="r" maxlength="3" @keypress="filterRGB" /></label>
-                        <label for="picking-g">G : <input id="picking-g" v-model="g" maxlength="3" @keypress="filterRGB" /></label>
-                        <label for="picking-b">B : <input id="picking-b" v-model="b" maxlength="3" @keypress="filterRGB" /></label>
+                        <label for="picking-r">R : <input id="picking-r" v-model="r" maxlength="3" @keyup="filterRGB" /></label>
+                        <label for="picking-g">G : <input id="picking-g" v-model="g" maxlength="3" @keyup="filterRGB" /></label>
+                        <label for="picking-b">B : <input id="picking-b" v-model="b" maxlength="3" @keyup="filterRGB" /></label>
                     </div>
                 </div>
             </div>
@@ -41,16 +41,20 @@
 <script>
     import Vue from 'vue';
     import PowerButton from '../components/PowerButton';
-    import { getColors, update, DEFAULT } from '../themer';
+    import { color, update, DEFAULT } from '../themer';
+    import { trans } from '../translations';
 
     export default {
         name: 'theming',
         components: { PowerButton },
 
+        mounted() {
+            this.hex = this.color; // To call the watcher
+        },
         data() {
             return {
-                colors: getColors(),
-                editing: -1,
+                color: color,
+                colorLabel: trans('primaryColor'),
                 hex: '',
                 r: 0,
                 g: 0,
@@ -58,12 +62,8 @@
             }
         },
         methods: {
-            edit(id) {
-                this.editing = id;
-                this.hex = this.colors[id].hex;
-            },
-            reset(id) {
-                this.colors[id].hex = DEFAULT[this.colors[id].id];
+            reset() {
+                this.color = DEFAULT;
             },
             filterHex(ev) {
                 if (!(!this.hex.startsWith('#') && ev.location === 0 && ev.key === '#') && !ev.key.match(/[A-f\d]/)) {
@@ -73,12 +73,12 @@
             filterRGB(ev) {
                 if (!ev.key.match(/\d/)) {
                     ev.preventDefault();
-                    return;
                 }
 
                 this.hex = this.toHex(this.r, this.g, this.b); // I use this instead of watch to prevent recursive hex <=> rgb watch
             },
             toHex(...rgb) {
+                console.log(rgb);
                 return (this.hex.startsWith('#') ? '#' : '') + rgb.map(n => {
                     const hex = Math.min(255, Math.max(0, n)).toString(16);
                     return hex.length === 1 ? '0' + hex : hex;
@@ -94,15 +94,14 @@
         },
         watch: {
             hex(val) {
-                console.log('Updating hex to ' + val);
-                this.colors[this.editing].hex = val;
+                this.color = val;
 
                 const [r, g, b] = this.toRGB(val);
                 !isNaN(r) && (this.r = r);
                 !isNaN(g) && (this.g = g);
                 !isNaN(b) && (this.b = b);
 
-                update(this.colors[this.editing].id, val);
+                update(val);
             }
         }
     }
@@ -169,10 +168,6 @@
         font-style: italic;
         margin-left: 15px;
         font-weight: 300;
-    }
-
-    .clickable:hover {
-        cursor: pointer;
     }
 
     .color-preview {

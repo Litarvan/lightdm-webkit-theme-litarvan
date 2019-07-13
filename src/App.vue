@@ -1,5 +1,5 @@
 <template>
-    <div id="app" :class="{ 'disableZoom': disableZoom }" v-theming="{ color: 'secondary' }">
+    <div id="app" :class="{ 'disableZoom': disableZoom }">
         <transition name="fade">
             <router-view/>
         </transition>
@@ -26,6 +26,7 @@
 
     html.lightdm {
         background: $outer-background !important;
+        color: $secondary-color;
     }
 
     /* HiDPI */
