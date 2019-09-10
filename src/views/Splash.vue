@@ -58,6 +58,7 @@
         font-weight: 300;
         font-style: italic;
         font-size: 32px;
+        cursor: default;
 
         margin-bottom: 11.5vh;
         letter-spacing: 0.25px;

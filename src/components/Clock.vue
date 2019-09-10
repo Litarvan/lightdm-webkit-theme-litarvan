@@ -75,6 +75,7 @@
         line-height: 1.1;
 
         text-align: center;
+        cursor: default;
     }
 
     .clock.small {
@@ -101,5 +102,6 @@
         font-weight: normal;
         margin-top: 2.25vh;
         font-size: 28px;
+        cursor: default;
     }
 </style>

@@ -153,6 +153,10 @@
         margin-top: 20px;
     }
 
+    .color-label {
+        cursor: default;
+    }
+
     .color-reset {
         height: 25px;
         vertical-align: bottom;
@@ -254,6 +258,7 @@
     #background-label {
         display: block;
         margin-top: 20px;
+        cursor: default;
 
         font-size: 28px;
         font-weight: 300;
