@@ -11,5 +11,5 @@ export function hook(element, rules) {
 
 export function update(hex) {
     color = hex;
-    localStorage.setItem('colors', color);
+    localStorage.setItem('color', color);
 }

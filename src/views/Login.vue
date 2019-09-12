@@ -11,7 +11,7 @@
                 <SelectItem mode="user" :item="settings.user" @select="!immutable && $router.push('/base/select/user')" :noicon="true" />
 
                 <form v-if="!immutable" @submit.prevent="submit">
-                    <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" v-theming="{ 'border-bottom-color': 'primary' }" />
+                    <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" v-theming="['border-bottom-color']" />
                 </form>
                 <div v-else id="password" class="immutable"></div>
                 <div id="info">

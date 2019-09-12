@@ -4,7 +4,7 @@
 </template>
 
 <script>
-    import { getColor } from '../themer';
+    import { color } from '../themer';
 
     export default {
         name: 'checkbox',
@@ -26,13 +26,10 @@
             },
             updateStyle() {
                 const style = this.$refs.box.style;
-                const color = this.checked ? getColor('primary') : null;
+                const col = this.checked ? color : null;
 
-                style['border-color'] = color;
-                style['background'] = color;
-
-                console.log(color);
-                console.log(style);
+                style['border-color'] = col;
+                style['background'] = col;
             }
         }
     }
