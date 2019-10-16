@@ -88,6 +88,29 @@ const translations = {
         trigger: 'Presiona Espacio o Enter para iniciar sesión',
         password: 'Contraseña...'
     },
+    
+    // Hebrew (TODO)
+    'he': {
+        trigger: 'לחץ על רווח או Enter כדי להכנס',
+        password: 'ססמה...',
+        
+        shutdown: 'מכבה...',
+        suspend: 'משהה...',
+        restart: 'מפעיל מחדש...',
+
+        setup: 'הגדרות',
+        disableSplash: 'בטל מסך קדמי (מסך "לחץ Enter")',
+        disableSplashText: 'בטל טקסט של מסך קדמי (רק שעון)',
+        disableIntro: 'בטל הקדמה (סמל מערגת הפעלה)',
+        disableFade: 'בטל עמעום לשחור בכניסה',
+        roundAvatar: 'יצגן עגול',
+        disableAvatar: 'בטל יצגן',
+        disableZoom: 'בטל מיקוד x2 (תיקון למסך גדול)',
+        clock12: 'תבנית שעון של 12 שעות',
+        capsLock: 'נעילת Caps פעילה',
+
+        primaryColor: 'צבע ראשי'
+    },
 
     // More ? PR opens !
 };
