@@ -4,16 +4,16 @@
 
 **=> Screenshots below**
 
-# [Live testing](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
+# [Live testing (3.0.0)](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
 
 # Customize release
-Customize the following items within `/usr/share/lightdm-webkit/themes/litarvan/img/`:
-* Background: `background.xxxxxxxx.png`
-* OS Logo:`os.xxxxxxxx.png`
+Backgrounds can be added in /usr/share/backgrounds and chosen in the Theming view (bottom right corner of the Setup view).
+
+Customize the OS logo within `/usr/share/lightdm-webkit/themes/litarvan/img/os.xxxxxxxx.png`
 
 # Installation
 
-## Arch Linux (2.0.X : Stable)
+## Arch Linux (2.0.X)
 
 ```
 pacman -S lightdm-webkit-theme-litarvan
@@ -22,7 +22,7 @@ pacman -S lightdm-webkit-theme-litarvan
 If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`.
 Then edit `/etc/lightdm/lightdm-webkit.conf` and set `theme` or `webkit-theme` to `litarvan`.
 
-## Manual (Any / Pre-release)
+## Manual (3.0.0)
 
 * Install lightdm-webkit2-greeter using pacman if not already done
 * Unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
@@ -38,10 +38,12 @@ Will generate a lightdm-webkit-theme-litarvan-VERSION.tar.gz in the current fold
 
 # Screenshots
 
-![Setup screenshot](https://cdn.discordapp.com/attachments/447725868140331019/506270938468188160/unknown.png)
+![Setup screenshot](https://litarvan.github.io/lightdm-webkit-theme-litarvan/setup_view.png)
 
-![Splash screenshot](https://cdn.discordapp.com/attachments/447725868140331019/506270918776061953/unknown.png)
+![Splash screenshot](https://litarvan.github.io/lightdm-webkit-theme-litarvan/splash_view.png)
 
-![Login screnshot](https://cdn.discordapp.com/attachments/447725868140331019/506270689896955916/unknown.png)
+![Login screnshot](https://litarvan.github.io/lightdm-webkit-theme-litarvan/login_view.png)
 
-![Desktops screenshot](https://cdn.discordapp.com/attachments/447725868140331019/506271052431884288/unknown.png)
+![Desktops screenshot](https://litarvan.github.io/lightdm-webkit-theme-litarvan/desktops_view.png)
+
+![Theming screenshot](https://litarvan.github.io/lightdm-webkit-theme-litarvan/theming_view.png)
