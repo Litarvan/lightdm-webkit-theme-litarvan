@@ -46,6 +46,12 @@
         name: 'setup',
         components: { PowerButton, Login, Checkbox },
 
+        mounted() {
+            if (settings.first) {
+                settings.first = false;
+                save();
+            }
+        },
         data() {
             return {
                 settings: settings,

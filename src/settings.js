@@ -4,7 +4,7 @@ if (local === 'undefined') {
     local = null;
 }
 
-let settings = (local ? JSON.parse(local) : null) || {
+export let settings = (local ? JSON.parse(local) : null) || {
     first: true,
 
     mode: 'classic',
@@ -17,6 +17,7 @@ let settings = (local ? JSON.parse(local) : null) || {
     disableAvatar: false,
     disableZoom: false,
     clock12: false,
+    randomizeBG: false,
 
     user: lightdm.users[0],
     desktop: lightdm.sessions[0]
@@ -28,11 +29,11 @@ lightdm.sessions.forEach(s => settings.desktop.username === s.key && (settings.d
 
 save();
 
-function save(s) {
+export function save(s) {
     localStorage.setItem('settings', JSON.stringify(s ? settings = s : settings));
 }
 
-function avatar(avatar) {
+export function avatar(avatar) {
     if (!avatar || avatar === '') {
         return require('./assets/images/default_user.png');
     }
@@ -42,10 +43,4 @@ function avatar(avatar) {
     }
 
     return avatar;
-}
-
-export {
-    settings,
-    avatar,
-    save
 }

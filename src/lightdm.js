@@ -5,6 +5,18 @@ const DEBUG_PASSWORD = 'test';
 window.lightdm_debug = window.lightdm === undefined;
 
 if (window.lightdm_debug) {
+    window.theme_utils = {
+        dirlist(_) {
+            return [];
+        }
+    };
+
+    window.greeter_config = {
+        branding: {
+            background_images: 'no where this is live test'
+        }
+    };
+
     window.lightdm = {
         is_authenticated: false,
         authentication_user: undefined,

@@ -36,8 +36,6 @@
 </script>
 
 <style lang="scss">
-    @import '../theme';
-
     .checkbox {
         border: solid 2px;
         border-radius: 2px;
@@ -52,10 +50,5 @@
 
     .checkbox:hover {
         cursor: pointer;
-    }
-
-    .checkbox.checked {
-        border-color: $primary-color;
-        background: $primary-color;
     }
 </style>

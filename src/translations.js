@@ -9,6 +9,7 @@ const translations = {
         restart: 'Rebooting...',
 
         setup: 'Setup',
+        theming: 'Theming',
         disableSplash: 'Disable splash ("Press Enter" screen)',
         disableSplashText: 'Disable splash text (clock only)',
         disableIntro: 'Disable intro (OS logo)',
@@ -19,7 +20,9 @@ const translations = {
         clock12: '12-hours clock format',
         capsLock: 'Caps lock is enabled',
 
-        primaryColor: 'Primary color'
+        primaryColor: 'Primary color',
+        randomizeBG: 'Select a random one each time',
+        bgAdd: 'Backgrounds can be added in:'
     },
 
     // French
@@ -31,6 +34,7 @@ const translations = {
         restart: 'Redémarrage...',
 
         setup: 'Réglages',
+        theming: 'Personnalisation',
         disableSplash: 'Désactiver le splash (écran "Appuyez sur entrer")',
         disableSplashText: 'Désactiver le texte du splash (seulement l\'horloge)',
         disableIntro: 'Désactiver l\'introduction (logo de l\'OS)',
@@ -41,7 +45,9 @@ const translations = {
         clock12: 'Format 12 heures de l\'horloge',
         capsLock: 'Verrouillage des majuscules activé',
 
-        primaryColor: 'Couleur principale'
+        primaryColor: 'Couleur principale',
+        randomizeBG: 'En choisir un au hasard à chaque fois',
+        bgAdd: 'Des fonds peuvent être ajoutés dans :'
     },
 
     // Dutch (TODO)
@@ -111,7 +117,12 @@ function getLocale()
 
 function trans(key)
 {
-    const result = translations[getLocale().substring(0, 2)][key];
+    let lang = translations[getLocale().substring(0, 2)];
+    if (!lang) {
+        lang = translations['en'];
+    }
+
+    const result = lang[key];
 
     if (!result) {
         return translations.en[key];

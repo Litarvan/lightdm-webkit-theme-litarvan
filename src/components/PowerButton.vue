@@ -15,13 +15,7 @@
         methods: {
             apply() {
                 if (this.type === 'back') {
-
                     this.$router.push(settings.disableSplash || !settings.first ? '/base/login' : '/base/splash');
-
-                    if (settings.first) {
-                        settings.first = false;
-                    }
-
                     return;
                 }
 
