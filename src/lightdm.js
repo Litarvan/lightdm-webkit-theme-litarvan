@@ -44,6 +44,10 @@ if (window.lightdm_debug) {
                 key: 'i3'
             },
             {
+                name: 'awesome wm',
+                key: 'awesome'
+            },
+            {
                 name: 'xmonad',
                 key: 'xmonad'
             }
