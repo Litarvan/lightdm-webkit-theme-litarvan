@@ -44,7 +44,7 @@ export function backgrounds() {
         result.push('file://' + bg);
     }
 
-    return [DEFAULT_BG, ...result];
+    return result;
 }
 
 function getBackground() {
