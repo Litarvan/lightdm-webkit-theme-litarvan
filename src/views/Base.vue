@@ -34,7 +34,7 @@
 
     .bg {
         background-size: cover;
-        position: fixed;
+        position: absolute;
         left: 0;
         right: 0;
 
