@@ -16,15 +16,15 @@ Customize the OS logo within `/usr/share/lightdm-webkit/themes/litarvan/img/os.x
 ## Arch Linux (3.0.0)
 
 ```
-pacman -S lightdm-webkit-theme-litarvan
+pacman -S --needed lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
 ```
 
-* If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`.
-* Then edit `/etc/lightdm/lightdm-webkit.conf` and set `theme` or `webkit-theme` to `litarvan`.
+* If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter` .
+* Then edit `/etc/lightdm/lightdm-webkit.conf` and set `theme` or `webkit-theme` to `litarvan` .
 
 ## Manual (3.1.0)
 
-* Install lightdm-webkit2-greeter using pacman if not already done
+* Install lightdm-webkit2-greeter using your dependency manager if not already done
 * Download and unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
 * Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` or `webkit-theme` to `litarvan`.
 
