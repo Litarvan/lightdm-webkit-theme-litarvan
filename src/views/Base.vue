@@ -34,7 +34,6 @@
 
     .bg {
         background-size: cover;
-        position: absolute;
         left: 0;
         right: 0;
 
@@ -52,5 +51,17 @@
 
     .blured {
         filter: blur(10px);
+    }
+
+    @media screen and (max-width: 2000px) {
+        .bg {
+            position: fixed;
+        }
+    }
+
+    @media screen and (min-width: 2001px) {
+        .bg {
+            position: absolute;
+        }
     }
 </style>

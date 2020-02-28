@@ -4,7 +4,7 @@
 
 **=> Screenshots below**
 
-# [Live testing (3.0.0)](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
+# [Live testing (3.1.0)](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
 
 # Customize release
 Backgrounds can be added in `/usr/share/backgrounds` and chosen in the Theming view (bottom right corner of the Setup view).
@@ -22,7 +22,7 @@ pacman -S lightdm-webkit-theme-litarvan
 * If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter`.
 * Then edit `/etc/lightdm/lightdm-webkit.conf` and set `theme` or `webkit-theme` to `litarvan`.
 
-## Manual (3.0.0)
+## Manual (3.1.0)
 
 * Install lightdm-webkit2-greeter using pacman if not already done
 * Download and unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
@@ -34,7 +34,7 @@ pacman -S lightdm-webkit-theme-litarvan
 $ ./build.sh
 ```
 
-Will generate a lightdm-webkit-theme-litarvan-VERSION.tar.gz in the current folder.
+Will generate a lightdm-webkit-theme-litarvan-3.1.0.tar.gz in the current folder.
 
 # Screenshots
 
