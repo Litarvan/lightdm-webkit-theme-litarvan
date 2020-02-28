@@ -22,6 +22,7 @@ if (window.lightdm_debug) {
         authentication_user: undefined,
         default_session: 'plasma-shell',
         can_suspend: true,
+        can_hibernate: true,
         sessions: [
             {
                 name: 'KDE 5',
@@ -97,6 +98,9 @@ if (window.lightdm_debug) {
         },
         shutdown: () => {
             alert('(DEBUG: System is shutting down)')
+        },
+        hibernate: () => {
+            alert('(DEBUG: System is hibernating)')
         },
         suspend: () => {
             alert('(DEBUG: System is suspending)')

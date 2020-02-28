@@ -5,6 +5,7 @@ const translations = {
         password: 'Password...',
 
         shutdown: 'Shutting down...',
+        hibernate: 'Hibernating...',
         suspend: 'Suspending...',
         restart: 'Rebooting...',
 
@@ -30,6 +31,7 @@ const translations = {
         trigger: 'Appuyez sur Espace ou Entrée pour vous connecter',
         password: 'Mot de passe...',
         shutdown: 'Arrêt...',
+        hibernate: 'Hibernation...',
         suspend: 'Mise en veille...',
         restart: 'Redémarrage...',
 
@@ -94,12 +96,12 @@ const translations = {
         trigger: 'Presiona Espacio o Enter para iniciar sesión',
         password: 'Contraseña...'
     },
-    
+
     // Hebrew (TODO)
     'he': {
         trigger: 'לחץ על רווח או Enter כדי להכנס',
         password: 'ססמה...',
-        
+
         shutdown: 'מכבה...',
         suspend: 'משהה...',
         restart: 'מפעיל מחדש...',

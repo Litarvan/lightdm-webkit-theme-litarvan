@@ -73,7 +73,7 @@
 
         height: 100vh;
 
-        overflow-y:hidden;
+        overflow-y: hidden;
     }
 
     h1, h2, h3, h4, h5, h6 {

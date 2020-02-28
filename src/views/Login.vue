@@ -27,6 +27,7 @@
 
             <transition name="power-fade">
                 <div id="power-list" v-if="powerList">
+                    <PowerButton v-if="canHibernate" id="hibernate" type="hibernate"></PowerButton>
                     <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
                     <PowerButton id="reboot" type="restart"></PowerButton>
                 </div>
@@ -53,6 +54,7 @@
 
         data() {
             return {
+                canHibernate: lightdm.can_hibernate,
                 canSuspend: lightdm.can_suspend,
                 passwordLabel: trans('password'),
                 isCompact: this.immutable ? this.compact : settings.mode === 'compact',
@@ -281,6 +283,12 @@
         position: absolute;
         bottom: 20px;
         left: 20px;
+    }
+
+    #hibernate {
+        position: absolute;
+        bottom: 245px;
+        right: 20px;
     }
 
     #suspend {

@@ -35,7 +35,7 @@
         },
         data() {
             return {
-                types: ['shutdown', 'suspend', 'restart', 'settings', 'back']
+                types: ['shutdown', 'hibernate', 'suspend', 'restart', 'settings', 'back']
             }
         }
     }
