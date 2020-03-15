@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import {background} from '../themer';
+    import { background } from '../themer';
 
     export default {
         name: 'l-base',
