@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import { background } from '../themer';
+    import {background} from '../themer';
 
     export default {
         name: 'l-base',
@@ -42,9 +42,6 @@
         height: 100vh;
 
         z-index: -1;
-
-        filter: blur(0px);
-        transition: filter 500ms ease-in-out;
 
         color: $secondary-color;
     }
