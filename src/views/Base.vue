@@ -34,10 +34,7 @@
 
     .bg {
         background-size: cover;
-        left: 0;
-        right: 0;
 
-        display: block;
         width: 100%;
         height: 100vh;
 
