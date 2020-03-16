@@ -41,7 +41,6 @@
         z-index: -1;
 
         filter: blur(0px);
-        transition: filter 500ms ease-in-out;
 
         color: $secondary-color;
     }
