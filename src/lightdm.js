@@ -51,6 +51,10 @@ if (window.lightdm_debug) {
             {
                 name: 'xmonad',
                 key: 'xmonad'
+            },
+            {
+                name: 'bspwm',
+                key: 'bspwm'
             }
         ],
         users: [{

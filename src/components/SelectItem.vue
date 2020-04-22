@@ -58,6 +58,8 @@
                         icon = 'budgie';
                     } if (key.indexOf('awesome') > -1) {
                         icon = 'awesome';
+                    } if (key.indexOf('bspwm') > -1) {
+                        icon = 'bspwm'
                     }
 
                     if (!icon) {
