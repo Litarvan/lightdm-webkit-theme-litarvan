@@ -41,11 +41,11 @@ if (window.lightdm_debug) {
                 key: 'cinnamon'
             },
             {
-                name: 'i3wm',
+                name: 'i3',
                 key: 'i3'
             },
             {
-                name: 'awesome wm',
+                name: 'awesome',
                 key: 'awesome'
             },
             {
