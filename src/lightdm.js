@@ -51,6 +51,14 @@ if (window.lightdm_debug) {
             {
                 name: 'xmonad',
                 key: 'xmonad'
+            },
+            {
+                name: 'Qtile',
+                key: 'qtile'
+            },
+            {
+                name: 'Kodi',
+                key: 'kodi'
             }
         ],
         users: [{
