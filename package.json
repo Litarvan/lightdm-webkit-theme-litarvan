@@ -1,6 +1,6 @@
 {
   "name": "lightdm-webkit-theme-litarvan",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "license": "BSD-3-Clause",
   "author": "Adrien 'Litarvan' Navratil <adrien1975@live.fr>",
   "homepage": "https://litarvan.github.io/lightdm-webkit-theme-litarvan/",
@@ -10,15 +10,15 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^2.6.11",
-    "vue-router": "^3.1.6"
+    "vue": "^2.6.12",
+    "vue-router": "^3.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.2.3",
-    "@vue/cli-service": "^4.2.3",
-    "sass": "^1.26.1",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
+    "sass": "^1.32.5",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "postcss": {
     "plugins": {
