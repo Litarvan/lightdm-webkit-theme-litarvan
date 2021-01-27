@@ -25,6 +25,10 @@
                 }
 
                 if (this.mode === 'desktop') {
+                    if (!this.item || this.item.key) {
+                        return '';
+                    }
+
                     let key = this.item.key.toLowerCase();
                     let icon;
 
