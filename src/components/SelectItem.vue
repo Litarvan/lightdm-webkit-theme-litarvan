@@ -60,6 +60,10 @@
                         icon = 'awesome';
                     } if (key.indexOf('bspwm') > -1) {
                         icon = 'bspwm'
+                    } if (key.indexOf('qtile') > -1) {
+                        icon = 'qtile';
+                    } if (key.indexOf('kodi') > -1) {
+                        icon = 'kodi';
                     }
 
                     if (!icon) {

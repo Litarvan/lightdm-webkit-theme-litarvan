@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo Building LightDM Webkit theme Litarvan v$(cat version)...
 echo
