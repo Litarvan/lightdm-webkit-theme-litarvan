@@ -299,7 +299,9 @@
     }
 
     #background {
-        width: 75%;
+        max-width: 75%;
+        max-height: calc(100vh - 375px);
+
         border-radius: 5px;
 
         border: solid 1px white;
