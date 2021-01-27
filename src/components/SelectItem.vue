@@ -25,7 +25,7 @@
                 }
 
                 if (this.mode === 'desktop') {
-                    if (!this.item || this.item.key) {
+                    if (!this.item || !this.item.key) {
                         return '';
                     }
 

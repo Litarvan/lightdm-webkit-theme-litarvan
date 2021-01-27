@@ -19,6 +19,7 @@ const translations = {
         disableAvatar: 'Disable avatar',
         disableZoom: 'Disable x2 zoom (large screen fix)',
         clock12: '12-hours clock format',
+        disablePowerTexts: 'Disable "Shutting down..." etc. screens',
         capsLock: 'Caps lock is enabled',
 
         primaryColor: 'Primary color',
@@ -45,6 +46,7 @@ const translations = {
         disableAvatar: 'Désactiver l\'avatar',
         disableZoom: 'Désactiver le zoom x2 (fix des grands écrans)',
         clock12: 'Format 12 heures de l\'horloge',
+        disablePowerTexts: 'Désactiver les écrans "Arrêt..." etc.',
         capsLock: 'Verrouillage des majuscules activé',
 
         primaryColor: 'Couleur principale',

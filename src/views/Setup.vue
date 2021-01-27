@@ -17,6 +17,7 @@
             <div class="checkbox-line"><Checkbox v-model="settings.disableSplashText" /><label>{{ texts.disableSplashText }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.clock12" /><label>{{ texts.clock12 }}</label></div>
+            <div class="checkbox-line"><Checkbox v-model="settings.disablePowerTexts" /><label>{{ texts.disablePowerTexts }}</label></div>
         </div>
 
         <div id="right-settings" class="settings">
@@ -65,7 +66,8 @@
                     roundAvatar: trans('roundAvatar'),
                     disableAvatar: trans('disableAvatar'),
                     disableZoom: trans('disableZoom'),
-                    clock12: trans('clock12')
+                    clock12: trans('clock12'),
+                    disablePowerTexts: trans('disablePowerTexts')
                 }
             }
         },
@@ -209,22 +211,22 @@
     .settings {
         display: inline-block;
 
-        margin-top: 7vh;
+        margin-top: 6vh;
 
         text-align: left;
-        font-size: 30px;
+        font-size: 24px;
 
         width: 35%;
 
         .checkbox-line {
-            margin-bottom: 18px;
+            margin-bottom: 12px;
         }
 
         .checkbox {
             display: inline-block;
             vertical-align: super;
             margin-right: 20px;
-            margin-bottom: -8px;
+            margin-bottom: -7px;
         }
     }
 
@@ -235,7 +237,7 @@
         }
 
         .checkbox-line {
-            margin-bottom: 26px;
+            margin-bottom: 20px;
         }
     }
 

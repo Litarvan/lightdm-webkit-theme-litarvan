@@ -17,6 +17,7 @@ export let settings = (local ? JSON.parse(local) : null) || {
     disableAvatar: false,
     disableZoom: false,
     clock12: false,
+    disablePowerTexts: false,
     randomizeBG: false,
 
     user: lightdm.users[0],

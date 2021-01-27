@@ -42,8 +42,8 @@
 
         transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
 
-        width: 30px;
-        height: 30px;
+        width: 22px;
+        height: 22px;
 
         display: inline-block;
     }

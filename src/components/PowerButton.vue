@@ -15,7 +15,7 @@
         methods: {
             apply() {
                 if (this.type === 'back') {
-                    this.$router.push(settings.disableSplash || !settings.first ? '/base/login' : '/base/splash');
+                    this.$router.back();
                     return;
                 }
 
@@ -29,7 +29,13 @@
                     return;
                 }
 
-                setTimeout(lightdm[this.type], 1500);
+                const action = lightdm[this.type];
+                if (settings.disablePowerTexts) {
+                    action();
+                    return;
+                }
+
+                setTimeout(action, 1500);
                 this.$router.push(`/intro/${this.type}`)
             }
         },
