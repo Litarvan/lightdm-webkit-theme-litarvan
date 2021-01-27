@@ -53,6 +53,10 @@ if (window.lightdm_debug) {
                 key: 'xmonad'
             },
             {
+                name: 'bspwm',
+                key: 'bspwm'
+            },
+            {
                 name: 'Qtile',
                 key: 'qtile'
             },
