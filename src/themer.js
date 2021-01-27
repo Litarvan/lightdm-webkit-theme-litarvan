@@ -25,6 +25,11 @@ export function updateBG(bg) {
 }
 
 export function backgrounds() {
+    const folder = greeter_config.branding.background_images;
+    if (!folder) {
+        return;
+    }
+
     let result = [];
 
     const recDirlist = dir => {
@@ -40,7 +45,7 @@ export function backgrounds() {
         return result;
     };
 
-    for (const bg of recDirlist(greeter_config.branding.background_images)) {
+    for (const bg of recDirlist(folder)) {
         result.push('file://' + bg);
     }
 
