@@ -20,10 +20,10 @@
         </div>
 
         <div id="right-settings" class="settings">
+            <div class="disable-zoom">-<div class="checkbox-line"><Checkbox v-model="settings.disableZoom" /><label>{{ texts.disableZoom }}</label></div></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
-            <div class="disable-zoom">-<div class="checkbox-line"><Checkbox v-model="settings.disableZoom" /><label>{{ texts.disableZoom }}</label></div></div>
         </div>
 
         <div @click="save()">
