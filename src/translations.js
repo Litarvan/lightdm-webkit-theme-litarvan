@@ -122,7 +122,7 @@ const translations = {
         primaryColor: 'צבע ראשי'
     },
     // Chinese (Simplified)
-    'zh_CN': {
+    'zh-CN': {
         trigger: '按空格或回车登录',
         password: '密码……',
 
@@ -149,7 +149,7 @@ const translations = {
         bgAdd: '背景图片可以添加至以下目录：'
     },
     // Chinese (Traditional)
-    'zh_TW': {
+    'zh-TW': {
         trigger: '按下空格鍵或輸入鍵登入',
         password: '密碼……',
 
