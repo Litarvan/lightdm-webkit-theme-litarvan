@@ -121,7 +121,60 @@ const translations = {
 
         primaryColor: 'צבע ראשי'
     },
+    // Chinese (Simplified)
+    'zh_CN': {
+        trigger: '按空格或回车登录',
+        password: '密码……',
 
+        shutdown: '正在关机……',
+        hibernate: '正在休眠……',
+        suspend: '正在挂起……',
+        restart: '正在重新启动……',
+
+        setup: '设置',
+        theming: '主题',
+        disableSplash: '禁用启动屏幕（“按回车登录”界面）',
+        disableSplashText: '禁用启动屏幕文本（仅时钟）',
+        disableIntro: '禁用切入画面（操作系统的Logo）',
+        disableFade: '禁用登录后淡入至黑屏',
+        roundAvatar: '圆形头像',
+        disableAvatar: '禁用头像',
+        disableZoom: '禁用两倍（2x）放大（大屏幕修复）',
+        clock12: '12小时制',
+        disablePowerTexts: '禁用“正在关机……”等屏幕',
+        capsLock: '已启用大写锁定',
+
+        primaryColor: '主题色',
+        randomizeBG: '每一次选择随机背景',
+        bgAdd: '背景图片可以添加至以下目录：'
+    },
+    // Chinese (Traditional)
+    'zh_TW': {
+        trigger: '按下空格鍵或輸入鍵登入',
+        password: '密碼……',
+
+        shutdown: '正在關機……',
+        hibernate: '正在休眠……',
+        suspend: '正在暫停……',
+        restart: '正在重新啟動……',
+
+        setup: '設定',
+        theming: '佈景主題',
+        disableSplash: '停用 Splash Screen（「按下輸入鍵登入」畫面）',
+        disableSplashText: '停用 Splash 文字（僅時鐘）',
+        disableIntro: '停用 Intro（作業系統的Logo）',
+        disableFade: '停用登入後淡入至黑色',
+        roundAvatar: '圓形頭像',
+        disableAvatar: '停用頭像',
+        disableZoom: '停用 2x 放大（大螢幕修復）',
+        clock12: '12小時制',
+        disablePowerTexts: '停用「正在關機……」等畫面',
+        capsLock: '已啟用大寫鎖定',
+
+        primaryColor: '主要顏色',
+        randomizeBG: '每一次選擇隨機桌布',
+        bgAdd: '桌布可加入至：'
+    },
     // More ? PR opens !
 };
 
