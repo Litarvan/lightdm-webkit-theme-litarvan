@@ -63,6 +63,10 @@ if (window.lightdm_debug) {
             {
                 name: 'Kodi',
                 key: 'kodi'
+            },
+            {
+                name: 'exwm',
+                key: 'exwm'
             }
         ],
         users: [{

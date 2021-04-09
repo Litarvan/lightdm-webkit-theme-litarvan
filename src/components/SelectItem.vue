@@ -68,6 +68,8 @@
                         icon = 'qtile';
                     } if (key.indexOf('kodi') > -1) {
                         icon = 'kodi';
+                    } if (key.indexOf('exwm') > -1) {
+                        icon = 'exwm';
                     }
 
                     if (!icon) {
