@@ -123,6 +123,8 @@ const translations = {
     },
     // Chinese (Simplified)
     'zh-CN': {
+        disableItalic: true, // Special key to disable the use of italic fonts
+
         trigger: '按空格或回车登录',
         password: '密码……',
 
@@ -150,6 +152,8 @@ const translations = {
     },
     // Chinese (Traditional)
     'zh-TW': {
+        disableKey: true,
+
         trigger: '按下空格鍵或輸入鍵登入',
         password: '密碼……',
 
@@ -192,24 +196,27 @@ function getLocale()
         }
     });
 
-    return lang;
+    const candidates = [lang, lang.substring(0, 2), 'en'];
+    for (const candidate of candidates) {
+        if (translations[candidate]) {
+            return candidate;
+        }
+    }
+
+    return lang; // Shouldn't happen
 }
 
 function trans(key)
 {
-    let lang = translations[getLocale().substring(0, 2)];
-    if (!lang) {
-        lang = translations['en'];
-    }
-
-    const result = lang[key];
-
+    const result = translations[getLocale()][key];
     if (!result) {
         return translations.en[key];
     }
 
     return result;
 }
+
+console.log(`Locale : '${getLocale()}'`);
 
 export {
     getLocale,
