@@ -11,10 +11,10 @@
                 <SelectItem mode="user" :item="settings.user" @select="!immutable && $router.push('/base/select/user')" :noicon="true" />
 
                 <form v-if="!immutable" @submit.prevent="submit">
-                    <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" v-theming="['border-bottom-color']" />
+                    <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" v-theming="['border-bottom-color']" v-italic.custom />
                 </form>
                 <div v-else id="password" class="immutable"></div>
-                <div id="info">
+                <div id="info" v-italic>
                     {{ info }}
                 </div>
 
@@ -225,9 +225,12 @@
     }
 
     #password::placeholder {
-        font-style: italic;
         color: rgba($secondary-color, 0.55);
         opacity: 1;
+    }
+
+    #password.italic::placeholder {
+        font-style: italic;
     }
 
     #password {
@@ -265,7 +268,6 @@
 
         font-size: 22px;
         font-weight: 300;
-        font-style: italic;
 
         text-align: center;
 

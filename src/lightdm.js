@@ -13,7 +13,7 @@ if (window.lightdm_debug) {
 
     window.greeter_config = {
         branding: {
-            background_images: 'no where this is live test'
+            background_images: 'nowhere this is live test'
         }
     };
 

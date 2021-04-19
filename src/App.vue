@@ -92,6 +92,10 @@
         text-align: center;
     }
 
+    .italic:not(.custom-italic) {
+        font-style: italic;
+    }
+
     .fade-enter-active, .fade-leave-active {
         transition-property: opacity;
         transition-duration: .4s;

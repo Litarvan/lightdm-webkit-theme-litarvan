@@ -1,5 +1,5 @@
 <template>
-    <div id="setup" :class="{ 'fix': fix }">
+    <div id="setup" :class="{ 'fix': fix }" v-italic>
         <h1 id="setup-title">{{ texts.setup }}</h1>
 
         <div id="layouts">
@@ -88,7 +88,6 @@
     #setup {
         font-family: 'Lato', 'Noto Sans', sans-serif;
         font-weight: 300;
-        font-style: italic;
 
         color: $outer-foreground;
     }

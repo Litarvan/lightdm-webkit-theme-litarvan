@@ -8,22 +8,22 @@
                     <div class="color">
                         <span class="color-label">{{ colorLabel }}</span> <img class="color-reset" @click="reset()" src="../assets/images/restart.svg" />
                         <div>
-                            <span class="color-value">{{ color }}</span>
+                            <span class="color-value" v-italic>{{ color }}</span>
                             <div class="color-preview" :style="'background-color: ' + color + ';'"></div>
                         </div>
                     </div>
                 </div>
                 <div id="color-picking">
                     <div id="picking-preview" :style="'background-color: ' + color + ';'"></div>
-                    <div id="picking-title">{{ colorLabel }}</div>
+                    <div id="picking-title" v-italic>{{ colorLabel }}</div>
 
                     <div>
-                        <label for="picking-hex">Hex : <input id="picking-hex" v-model="hex" maxlength="7" @keypress="filterHex" /></label>
+                        <label for="picking-hex">Hex : <input id="picking-hex" v-model="hex" maxlength="7" @keypress="filterHex" v-italic /></label>
                     </div>
                     <div id="rgb">
-                        <label for="picking-r">R : <input id="picking-r" v-model="r" maxlength="3" @keyup="filterRGB" /></label>
-                        <label for="picking-g">G : <input id="picking-g" v-model="g" maxlength="3" @keyup="filterRGB" /></label>
-                        <label for="picking-b">B : <input id="picking-b" v-model="b" maxlength="3" @keyup="filterRGB" /></label>
+                        <label for="picking-r">R : <input id="picking-r" v-model="r" maxlength="3" @keyup="filterRGB" v-italic /></label>
+                        <label for="picking-g">G : <input id="picking-g" v-model="g" maxlength="3" @keyup="filterRGB" v-italic /></label>
+                        <label for="picking-b">B : <input id="picking-b" v-model="b" maxlength="3" @keyup="filterRGB" v-italic /></label>
                     </div>
                 </div>
             </div>
@@ -32,17 +32,17 @@
                 <img id="background" :src="backgrounds[background]" />
                 <div id="background-switch">
                     <img src="../assets/images/back.svg" @click="prevBG" />
-                    <span class="background-label">Background</span>
+                    <span class="background-label" v-italic>Background</span>
                     <img src="../assets/images/next.svg" @click="nextBG" />
                 </div>
 
                 <div id="random-check">
-                    <Checkbox v-model="settings.randomizeBG" /><span class="background-label">{{ randomizeLabel }}</span>
+                    <Checkbox v-model="settings.randomizeBG" /><span class="background-label" v-italic>{{ randomizeLabel }}</span>
                 </div>
             </div>
         </div>
 
-        <div id="background-message">
+        <div id="background-message" v-italic>
             {{ bgAddLabel }} {{ bgPath }}
         </div>
 
@@ -215,7 +215,6 @@
     }
 
     .color-value {
-        font-style: italic;
         margin-left: 15px;
         font-weight: 300;
     }
@@ -257,7 +256,6 @@
 
             font-size: 18px;
             font-family: 'Lato', 'Noto Sans', sans-serif;
-            font-style: italic;
         }
     }
 
@@ -273,7 +271,6 @@
 
         font-size: 32px;
         font-weight: 300;
-        font-style: italic;
     }
 
     #picking-hex {
@@ -312,7 +309,6 @@
 
         font-size: 28px;
         font-weight: 300;
-        font-style: italic;
 
         margin-top: 1px;
     }
@@ -367,6 +363,5 @@
 
         font-size: 28px;
         font-weight: 300;
-        font-style: italic;
     }
 </style>

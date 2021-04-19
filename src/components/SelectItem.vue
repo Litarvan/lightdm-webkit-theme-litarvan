@@ -1,5 +1,5 @@
 <template>
-    <div class="item" :class="{ 'user': mode === 'user', 'desktop': mode === 'desktop', 'selected': selected }" v-theming="['border-bottom-color']" @click="select()">
+    <div class="item" :class="{ 'user': mode === 'user', 'desktop': mode === 'desktop', 'selected': selected }" v-theming="['border-bottom-color']" v-italic @click="select()">
         <div class="icon-container" v-if="!noicon">
             <img class="icon" :src="icon()" />
         </div>
@@ -86,7 +86,6 @@
 <style lang="scss" scoped>
     .item {
         font-family: 'Lato', 'Noto Sans', sans-serif;
-        font-style: italic;
 
         border-radius: 5px;
         transition: background-color 125ms ease-in-out;

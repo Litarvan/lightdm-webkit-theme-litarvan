@@ -3,7 +3,7 @@
         <transition name="logo-fade">
             <div id="content" v-if="show">
                 <img v-if="state === 'initial'" id="logo" src="../assets/images/os.png" />
-                <p v-else id="power-text">
+                <p v-else id="power-text" v-italic>
                     <img id="power-icon" :src="require('../assets/images/' + state + '.svg')" />
                     {{ text }}
                 </p>
@@ -71,7 +71,6 @@
 
     #power-text {
         font-family: 'Lato', 'Noto Sans', serif;
-        font-style: italic;
         font-weight: normal;
         color: $outer-foreground;
         font-size: 58px;

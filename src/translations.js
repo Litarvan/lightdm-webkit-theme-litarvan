@@ -152,7 +152,7 @@ const translations = {
     },
     // Chinese (Traditional)
     'zh-TW': {
-        disableKey: true,
+        disableItalic: true,
 
         trigger: '按下空格鍵或輸入鍵登入',
         password: '密碼……',
@@ -215,8 +215,6 @@ function trans(key)
 
     return result;
 }
-
-console.log(`Locale : '${getLocale()}'`);
 
 export {
     getLocale,

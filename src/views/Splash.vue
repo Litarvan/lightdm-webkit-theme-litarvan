@@ -1,7 +1,7 @@
 <template>
     <div id="splash" :class="{ 'clock-only': clockOnly }">
         <Clock />
-        <div v-if="!clockOnly" id="trigger">{{ trigger }}</div>
+        <div v-if="!clockOnly" id="trigger" v-italic>{{ trigger }}</div>
     </div>
 </template>
 
@@ -22,8 +22,7 @@
         data() {
             return {
                 trigger: trans('trigger'),
-                clockOnly: settings.disableSplashText,
-                submitted: false
+                clockOnly: settings.disableSplashText
             }
         },
         methods: {
@@ -60,7 +59,6 @@
     #trigger {
         font-family: 'Lato', 'Noto Sans', serif;
         font-weight: 300;
-        font-style: italic;
         font-size: 32px;
         cursor: default;
 
