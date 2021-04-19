@@ -1,6 +1,6 @@
 # Litarvan's LightDM WebKit2 theme
 
-[![Arch Release](https://img.shields.io/badge/arch-3.0.0-blue.svg?style=flat-square)](https://www.archlinux.org/packages/community/any/lightdm-webkit-theme-litarvan/)&nbsp; [![Latest Release](https://img.shields.io/github/release/Litarvan/lightdm-webkit-theme-litarvan.svg?style=flat-square&label=github)](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) &nbsp;![Github downloads](https://img.shields.io/github/downloads/Litarvan/lightdm-webkit-theme-litarvan/total.svg?style=flat-square)
+[![Arch Release](https://img.shields.io/badge/arch-3.0.0-blue.svg?style=flat-square)](https://www.archlinux.org/packages/community/any/lightdm-webkit-theme-litarvan/) &nbsp;[![Latest Release](https://img.shields.io/github/release/Litarvan/lightdm-webkit-theme-litarvan.svg?style=flat-square&label=github)](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) &nbsp;![Github downloads](https://img.shields.io/github/downloads/Litarvan/lightdm-webkit-theme-litarvan/total.svg?style=flat-square)
 
 **=> Screenshots below**
 
