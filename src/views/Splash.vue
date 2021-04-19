@@ -16,10 +16,14 @@
         mounted() {
             window.addEventListener('keyup', this.submit);
         },
+        beforeDestroy() {
+            window.removeEventListener('keyup', this.submit);
+        },
         data() {
             return {
                 trigger: trans('trigger'),
-                clockOnly: settings.disableSplashText
+                clockOnly: settings.disableSplashText,
+                submitted: false
             }
         },
         methods: {

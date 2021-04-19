@@ -74,6 +74,9 @@
                 p && p.focus();
             }, 650);
         },
+        beforeDestroy() {
+            window.removeEventListener('keyup', this.keyup);
+        },
         methods: {
             avatar,
             keyup(event) {
