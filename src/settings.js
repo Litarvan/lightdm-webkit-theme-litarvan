@@ -25,10 +25,10 @@ export let settings = (local ? JSON.parse(local) : null) || {
 };
 
 if (!settings.user) {
-    settings.user = lightdm.users[0];
+    settings.user = lightdm.users.find(u => !!u);
 }
 if (!settings.desktop) {
-    settings.desktop = lightdm.sessions[0];
+    settings.desktop = lightdm.sessions.find(s => !!s);
 }
 
 // Handle display name change
