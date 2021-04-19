@@ -70,6 +70,8 @@
                         icon = 'kodi';
                     } if (key.indexOf('exwm') > -1) {
                         icon = 'exwm';
+                    } if (key.indexOf('dwm') > -1) {
+                        icon = 'dwm';
                     }
 
                     if (!icon) {

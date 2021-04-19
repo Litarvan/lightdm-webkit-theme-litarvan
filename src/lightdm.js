@@ -67,6 +67,10 @@ if (window.lightdm_debug) {
             {
                 name: 'exwm',
                 key: 'exwm'
+            },
+            {
+                name: 'dwm',
+                key: 'dwm'
             }
         ],
         users: [{
