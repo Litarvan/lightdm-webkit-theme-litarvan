@@ -32,15 +32,15 @@
                     let key = this.item.key.toLowerCase();
                     let icon;
 
-                    if (key.indexOf('plasma') > -1 || key.indexOf('kde') > -1) {
-                        icon = 'kde';
-                    } if (key.indexOf('gnome') > -1) {
+                    if (key.indexOf('gnome') > -1) {
                         icon = 'gnome';
-                    } if (key.indexOf('xfce') > -1) {
+                    } if (key.indexOf('xfce') > -1 || key.indexOf('xubuntu') > -1) {
                         icon = 'xfce';
-                    } if (key.indexOf('unity') > -1 || key.indexOf('ubuntu') > -1) {
+                    } else if (key.indexOf('plasma') > -1 || key.indexOf('kde') > -1 || key.indexOf('kubuntu') > -1) {
+                        icon = 'kde';
+                    } else if (key.indexOf('unity') > -1 || key.indexOf('ubuntu') > -1) {
                         icon = 'ubuntu';
-                    } if (key.indexOf('dde') > -1 || key.indexOf('deepin') > -1) {
+                    }  if (key.indexOf('dde') > -1 || key.indexOf('deepin') > -1) {
                         icon = 'deepin';
                     } if (key.indexOf('lxde') > -1 || key.indexOf('lxqt') > -1) {
                         icon = 'lxde';

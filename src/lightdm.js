@@ -45,16 +45,8 @@ if (window.lightdm_debug) {
                 key: 'i3'
             },
             {
-                name: 'awesome',
-                key: 'awesome'
-            },
-            {
                 name: 'xmonad',
                 key: 'xmonad'
-            },
-            {
-                name: 'bspwm',
-                key: 'bspwm'
             },
             {
                 name: 'Qtile',
@@ -67,10 +59,6 @@ if (window.lightdm_debug) {
             {
                 name: 'exwm',
                 key: 'exwm'
-            },
-            {
-                name: 'dwm',
-                key: 'dwm'
             }
         ],
         users: [{
