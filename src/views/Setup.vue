@@ -25,7 +25,7 @@
             <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
-            <div class="checkbox-line"><router-link to="/blur" class="blur-settings">Blur settings (for lags/artifacts issues)</router-link></div>
+            <div class="checkbox-line"><router-link to="/blur" class="blur-settings">{{ texts.blurSettings }}</router-link></div>
         </div>
 
         <PowerButton id="back" type="back" />
@@ -65,7 +65,8 @@
                     disableAvatar: trans('disableAvatar'),
                     disableZoom: trans('disableZoom'),
                     clock12: trans('clock12'),
-                    disablePowerTexts: trans('disablePowerTexts')
+                    disablePowerTexts: trans('disablePowerTexts'),
+                    blurSettings: trans('blurSettings')
                 }
             }
         },

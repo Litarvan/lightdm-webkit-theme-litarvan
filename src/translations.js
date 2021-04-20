@@ -20,11 +20,19 @@ const translations = {
         disableZoom: 'Disable x2 zoom (large screen fix)',
         clock12: '12-hours clock format',
         disablePowerTexts: 'Disable "Shutting down..." etc. screens',
+        blurSettings: 'Blur settings (for lags/artifacts issues)',
         capsLock: 'Caps lock is enabled',
 
         primaryColor: 'Primary color',
         randomizeBG: 'Select a random one each time',
-        bgAdd: 'Backgrounds can be added in:'
+        bgAdd: 'Backgrounds can be added in:',
+
+        blur: 'Blur',
+        fixedBlur: 'Blurred background - fixed background',
+        absoluteBlur: 'Blurred background - absolute background',
+        staticBlur: 'Blurred background without transition',
+        disabledBlur: 'Disable background blurring',
+        blurHelp: 'If you are having issues with blur like lags or artifacts, please try a different blur method.\nYou can disable the transition or even the entire blur if nothing is working.'
     },
 
     // French
@@ -47,11 +55,19 @@ const translations = {
         disableZoom: 'Désactiver le zoom x2 (fix des grands écrans)',
         clock12: 'Format 12 heures de l\'horloge',
         disablePowerTexts: 'Désactiver les écrans "Arrêt..." etc.',
+        blurSettings: 'Paramètres du floutage (si problèmes de lags/artifacts)',
         capsLock: 'Verrouillage des majuscules activé',
 
         primaryColor: 'Couleur principale',
         randomizeBG: 'En choisir un au hasard à chaque fois',
-        bgAdd: 'Des fonds peuvent être ajoutés dans :'
+        bgAdd: 'Des fonds peuvent être ajoutés dans :',
+
+        blur: 'Floutage',
+        fixedBlur: 'Floutage du fond - fond \'fixed\'',
+        absoluteBlur: 'Floutage du fond - fond \'absolute\'',
+        staticBlur: 'Floutage du fond sans transition',
+        disabledBlur: 'Désactiver le floutage du fond',
+        blurHelp: 'Si vous avez des problèmes avec le foutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui même si aucune autre option ne fonctionne.'
     },
 
     // Dutch (TODO)

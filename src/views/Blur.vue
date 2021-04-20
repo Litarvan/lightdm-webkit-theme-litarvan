@@ -1,17 +1,14 @@
 <template>
     <div id="blur-view">
-        <h1 id="blur-title" v-italic>Blur</h1>
+        <h1 id="blur-title" v-italic>{{ texts.title }}</h1>
 
         <div id="blur-content">
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="fixed" /><label>Blurred background - fixed background</label></div>
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="absolute" /><label>Blurred background - absolute background</label></div>
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="static" /><label>Blurred background without transition</label></div>
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="disabled" /><label>Disable background blurring</label></div>
+            <div class="radio-line"> <Radio v-model="settings.blur" value-key="fixed" /><label>{{ texts.fixed }}</label></div>
+            <div class="radio-line"> <Radio v-model="settings.blur" value-key="absolute" /><label>{{ texts.absolute }}</label></div>
+            <div class="radio-line"> <Radio v-model="settings.blur" value-key="static" /><label>{{ texts.static }}</label></div>
+            <div class="radio-line"> <Radio v-model="settings.blur" value-key="disabled" /><label>{{ texts.disabled }}</label></div>
 
-            <p id="blur-help">
-                If you are having issues with blur like lags or artifacts, please try a different blur method.<br/>
-                You can disable the transition or even the entire blur if nothing is working.
-            </p>
+            <p id="blur-help" v-html="texts.help" />
         </div>
 
         <div @click="saveSettings()">
@@ -22,8 +19,9 @@
 
 <script>
     import PowerButton from '../components/PowerButton';
-    import { settings, save as saveSettings } from '../settings';
     import Radio from '../components/Radio';
+    import { settings, save as saveSettings } from '../settings';
+    import { trans } from '../translations';
 
     export default {
         name: 'blur',
@@ -32,7 +30,16 @@
         data() {
             return {
                 settings,
-                saveSettings
+                saveSettings,
+
+                texts: {
+                    title: trans('blur'),
+                    fixed: trans('fixedBlur'),
+                    absolute: trans('absoluteBlur'),
+                    static: trans('staticBlur'),
+                    disabled: trans('disabledBlur'),
+                    help: trans('blurHelp').replace('\n', '<br/>')
+                }
             }
         }
     }
