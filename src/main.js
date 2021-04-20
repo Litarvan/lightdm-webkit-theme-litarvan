@@ -15,7 +15,7 @@ Vue.directive('theming', {
 });
 
 Vue.directive('italic', {
-    bind(el, { modifiers }) {
+    update(el, { modifiers }) {
         italicHook(el, modifiers.custom);
     }
 });

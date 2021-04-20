@@ -252,7 +252,7 @@
     }
 
     #password.error {
-        border-bottom-color: $error-color;
+        border-bottom-color: $error-color !important;
     }
 
     #password.immutable {
