@@ -266,6 +266,7 @@
     #info {
         color: rgba(255, 255, 255, 0.875);
 
+        font-family: 'Lato', 'Noto Sans', sans-serif;
         font-size: 22px;
         font-weight: 300;
 
