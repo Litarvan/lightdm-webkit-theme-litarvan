@@ -1,6 +1,6 @@
 <template>
     <div class="base">
-        <div class="bg" :class="{ blured: isBlured() }" :style="{ 'background-image': 'url(' + background + ')' }">
+        <div class="bg" :class="{ blurred: isBlurred(), fixed, absolute, blurrable, transition }" :style="{ 'background-image': 'url(' + background + ')' }">
         </div>
 
         <transition name="fade">
@@ -11,17 +11,24 @@
 
 <script>
     import { background } from '../themer';
+    import { settings } from '../settings';
 
     export default {
         name: 'l-base',
 
         data() {
+            const { blur } = settings;
+
             return {
-                background
+                background,
+                fixed: blur !== 'absolute',
+                absolute: blur === 'absolute',
+                transition: blur !== 'static',
+                blurrable: blur !== 'disabled'
             };
         },
         methods: {
-            isBlured() {
+            isBlurred() {
                 let name = this.$router.currentRoute.name;
                 return name === 'login' || name === 'select';
             }
@@ -43,25 +50,26 @@
 
         z-index: -1;
 
-        filter: blur(0px);
-        transition: filter 500ms ease-in-out;
-
         color: $secondary-color;
-    }
 
-    .blured {
-        filter: blur(10px);
-    }
+        &.absolute {
+            position: absolute;
+        }
 
-    @media screen and (max-width: 2000px) {
-        .bg {
+        &.fixed {
             position: fixed;
         }
-    }
 
-    @media screen and (min-width: 2001px) {
-        .bg {
-            position: absolute;
+        &.blurrable {
+            filter: blur(0px);
+
+            &.transition {
+                transition: filter 500ms ease-in-out;
+            }
+
+            &.blurred {
+                filter: blur(10px);
+            }
         }
     }
 </style>

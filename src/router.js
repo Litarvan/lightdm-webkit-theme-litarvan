@@ -7,6 +7,7 @@ import Intro from './views/Intro.vue';
 import Setup from './views/Setup.vue';
 import Select from './views/Select.vue';
 import Theming from './views/Theming';
+import Blur from './views/Blur';
 
 Vue.use(Router);
 
@@ -21,6 +22,11 @@ export default new Router({
             path: '/theming',
             name: 'theming',
             component: Theming
+        },
+        {
+            path: '/blur',
+            name: 'blur',
+            component: Blur
         },
         {
             path: '/intro/:state',

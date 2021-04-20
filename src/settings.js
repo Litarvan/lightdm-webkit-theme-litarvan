@@ -8,6 +8,7 @@ export let settings = (local ? JSON.parse(local) : null) || {
     first: true,
 
     mode: 'classic',
+    blur: 'fixed',
 
     disableSplash: false,
     disableSplashText: false,
@@ -29,6 +30,10 @@ if (!settings.user) {
 }
 if (!settings.desktop) {
     settings.desktop = lightdm.sessions.find(s => !!s);
+}
+
+if (!settings.blur) {
+    settings.blur = 'fixed'; // 3.2 update
 }
 
 // Handle display name change

@@ -25,6 +25,7 @@
             <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
             <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
+            <div class="checkbox-line"><router-link to="/blur" class="blur-settings">Blur settings (for lags/artifacts issues)</router-link></div>
         </div>
 
         <div @click="save()">
@@ -289,5 +290,10 @@
         .disable-zoom .checkbox-line {
             display: block;
         }
+    }
+
+    .blur-settings {
+        color: white;
+        vertical-align: 7px;
     }
 </style>
