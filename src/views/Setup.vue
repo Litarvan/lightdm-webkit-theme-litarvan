@@ -228,7 +228,7 @@
         }
     }
 
-    .fix {
+    /*.fix {
         .checkbox {
             vertical-align: initial;
             margin-bottom: -5px;
@@ -237,7 +237,7 @@
         .checkbox-line {
             margin-bottom: 20px;
         }
-    }
+    }*/
 
     @media (min-width: 1450px) {
         .settings {
