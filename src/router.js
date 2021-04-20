@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 import Login from './views/Login.vue';
 import Splash from './views/Splash.vue';
 import Base from './views/Base.vue';
