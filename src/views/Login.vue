@@ -69,6 +69,7 @@
         },
         mounted() {
             window.addEventListener('keyup', this.keyup);
+
             setTimeout(() => {
                 let p = document.querySelector('#password');
                 p && p.focus();
@@ -80,10 +81,6 @@
         methods: {
             avatar,
             keyup(event) {
-                if (event.which === 27) {
-                    this.$router.push(settings.disableSplash ? '/base/login' : '/base/splash');
-                }
-
                 if (event.getModifierState("CapsLock")) {
                     this.info = trans('capsLock');
                 } else {

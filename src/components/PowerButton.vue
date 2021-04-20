@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import { settings } from '@/settings';
+    import { settings, save } from '@/settings';
 
     export default {
         name: 'power-button',
@@ -15,7 +15,9 @@
         methods: {
             apply() {
                 if (this.type === 'back') {
+                    save();
                     this.$router.back();
+
                     return;
                 }
 

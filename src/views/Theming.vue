@@ -46,9 +46,7 @@
             {{ bgAddLabel }} {{ bgPath }}
         </div>
 
-        <div @click="saveSettings()">
-            <PowerButton id="back" type="back" />
-        </div>
+        <PowerButton id="back" type="back" />
     </div>
 </template>
 
@@ -57,7 +55,7 @@
     import PowerButton from '../components/PowerButton';
     import { background, color, updateColor, updateBG, DEFAULT_COLOR, backgrounds } from '../themer';
     import { trans } from '../translations';
-    import { settings, save as saveSettings } from '../settings';
+    import { settings } from '../settings';
 
     export default {
         name: 'theming',
@@ -81,7 +79,6 @@
                 bgPath: greeter_config.branding.background_images,
                 bgAddLabel: trans('bgAdd'),
                 settings,
-                saveSettings,
                 randomizeLabel: trans('randomizeBG'),
                 color: color,
                 colorLabel: trans('primaryColor'),

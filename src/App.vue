@@ -7,15 +7,34 @@
 </template>
 
 <script>
-    import { settings } from '@/settings';
+    import { settings, save } from '@/settings';
 
     export default {
         mounted() {
             this.$router.push('/intro/initial');
+            window.addEventListener('keyup', this.keyup);
+        },
+        beforeDestroy() {
+            window.removeEventListener('keyup', this.keyup);
         },
         data() {
             return {
                 disableZoom: settings.disableZoom
+            }
+        },
+        methods: {
+            keyup(event) {
+                if (event.which === 27) {
+                    if (this.$route.name !== 'splash' && this.$route.name !== 'intro') {
+                        save();
+
+                        if (this.$route.name === 'setup') {
+                            this.$router.push('/base/splash');
+                        } else {
+                            this.$router.back();
+                        }
+                    }
+                }
             }
         }
     }

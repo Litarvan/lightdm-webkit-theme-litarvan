@@ -28,10 +28,7 @@
             <div class="checkbox-line"><router-link to="/blur" class="blur-settings">Blur settings (for lags/artifacts issues)</router-link></div>
         </div>
 
-        <div @click="save()">
-            <PowerButton id="back" type="back" />
-        </div>
-
+        <PowerButton id="back" type="back" />
         <PowerButton id="theming" type="theming" />
     </div>
 </template>
