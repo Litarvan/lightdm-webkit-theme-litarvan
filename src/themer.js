@@ -37,7 +37,7 @@ export function backgrounds() {
         for (const file of theme_utils.dirlist(dir)) {
             if (!file.includes('.')) { // I didn't find any good ways to do it
                 result = [...result, ...recDirlist(file)];
-            } else if (!file.endsWith('.xml')) { // Gnome backgrounds have .xml files...
+            } else if (!file.endsWith('.xml') && !file.endsWith('.stw')) { // Gnome and Arch backgrounds have strange files
                 result.push(file);
             }
         }

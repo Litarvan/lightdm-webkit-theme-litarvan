@@ -1,4 +1,5 @@
 import Vue from 'vue';
+
 import './lightdm';
 
 import App from './App.vue';
