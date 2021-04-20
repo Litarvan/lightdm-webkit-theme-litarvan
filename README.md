@@ -28,13 +28,13 @@ pacman -S --needed lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
 * Download and unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
 * Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` or `webkit-theme` to `litarvan`.
 
-# Building
+# Building (3.2.0)
 
 ```
 $ ./build.sh
 ```
 
-Will generate a lightdm-webkit-theme-litarvan-3.1.0.tar.gz in the current folder.
+Will generate a lightdm-webkit-theme-litarvan-3.2.0.tar.gz in the current folder.
 
 # Screenshots
 
