@@ -17,7 +17,7 @@
     import { settings } from '@/settings';
 
     export default {
-        name: 'intro',
+        name: 'l-intro',
 
         mounted() {
             if (settings.disableIntro && this.state === 'initial') {

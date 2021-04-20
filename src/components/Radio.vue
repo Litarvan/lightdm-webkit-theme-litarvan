@@ -4,10 +4,10 @@
 </template>
 
 <script>
-    import { color } from '../themer';
+    import { color } from '@/themer';
 
     export default {
-        name: 'radio',
+        name: 'l-radio',
         props: ['value', 'valueKey'],
 
         mounted() {

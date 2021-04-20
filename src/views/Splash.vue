@@ -1,18 +1,20 @@
 <template>
     <div id="splash" :class="{ 'clock-only': clockOnly }">
-        <Clock />
+        <l-clock />
         <div v-if="!clockOnly" id="trigger" v-italic>{{ trigger }}</div>
     </div>
 </template>
 
 <script>
-    import Clock from '@/components/Clock.vue';
+    import LClock from '@/components/Clock.vue';
+
     import { trans } from '@/translations';
     import { settings } from '@/settings';
 
     export default {
-        name: 'splash',
-        components: { Clock },
+        name: 'l-splash',
+        components: { LClock },
+
         mounted() {
             window.addEventListener('keyup', this.submit);
         },

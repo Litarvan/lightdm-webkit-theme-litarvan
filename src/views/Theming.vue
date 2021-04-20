@@ -37,7 +37,7 @@
                 </div>
 
                 <div id="random-check">
-                    <Checkbox v-model="settings.randomizeBG" /><span class="background-label" v-italic>{{ randomizeLabel }}</span>
+                    <l-checkbox v-model="settings.randomizeBG" /><span class="background-label" v-italic>{{ randomizeLabel }}</span>
                 </div>
             </div>
         </div>
@@ -46,20 +46,21 @@
             {{ bgAddLabel }} {{ bgPath }}
         </div>
 
-        <PowerButton id="back" type="back" />
+        <l-power-button id="back" type="back" />
     </div>
 </template>
 
 <script>
-    import Checkbox from '../components/Checkbox';
-    import PowerButton from '../components/PowerButton';
+    import LCheckbox from '@/components/Checkbox';
+    import LPowerButton from '@/components/PowerButton';
+
     import { background, color, updateColor, updateBG, DEFAULT_COLOR, backgrounds } from '../themer';
-    import { trans } from '../translations';
-    import { settings } from '../settings';
+    import { trans } from '@/translations';
+    import { settings } from '@/settings';
 
     export default {
-        name: 'theming',
-        components: { Checkbox, PowerButton },
+        name: 'l-theming',
+        components: { LCheckbox, LPowerButton },
 
         mounted() {
             this.hex = this.color; // To call the watcher

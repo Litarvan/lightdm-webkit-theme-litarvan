@@ -12,7 +12,7 @@
     import { avatar } from '@/settings';
 
     export default {
-        name: 'select-item',
+        name: 'l-select-item',
         props: ['mode', 'item', 'selected', 'noicon'],
 
         methods: {

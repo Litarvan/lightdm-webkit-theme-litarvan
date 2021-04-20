@@ -4,46 +4,46 @@
 
         <div id="layouts">
             <div id="classic-layout" class="layout" @click="select('classic')" :class="{ selected: settings.mode === 'classic' }">
-                <Login id="classic" :immutable="true" :compact="false" />
+                <l-login id="classic" :immutable="true" :compact="false" />
             </div>
 
             <div id="compact-layout" class="layout" @click="select('compact')" :class="{ selected: settings.mode === 'compact' }">
-                <Login id="compact" :immutable="true" :compact="true" />
+                <l-login id="compact" :immutable="true" :compact="true" />
             </div>
         </div>
 
         <div id="left-settings" class="settings">
-            <div class="checkbox-line"><Checkbox v-model="settings.disableSplash" /><label>{{ texts.disableSplash }}</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disableSplashText" /><label>{{ texts.disableSplashText }}</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.clock12" /><label>{{ texts.clock12 }}</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disablePowerTexts" /><label>{{ texts.disablePowerTexts }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.disableSplash" /><label>{{ texts.disableSplash }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.disableSplashText" /><label>{{ texts.disableSplashText }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.clock12" /><label>{{ texts.clock12 }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.disablePowerTexts" /><label>{{ texts.disablePowerTexts }}</label></div>
         </div>
 
         <div id="right-settings" class="settings">
-            <div class="disable-zoom">-<div class="checkbox-line"><Checkbox v-model="settings.disableZoom" /><label>{{ texts.disableZoom }}</label></div></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
-            <div class="checkbox-line"><Checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
+            <div class="disable-zoom">-<div class="checkbox-line"><l-checkbox v-model="settings.disableZoom" /><label>{{ texts.disableZoom }}</label></div></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
             <div class="checkbox-line"><router-link to="/blur" class="blur-settings">{{ texts.blurSettings }}</router-link></div>
         </div>
 
-        <PowerButton id="back" type="back" />
-        <PowerButton id="theming" type="theming" />
+        <l-power-button id="back" type="back" />
+        <l-power-button id="theming" type="theming" />
     </div>
 </template>
 
 <script>
-    import PowerButton from '@/components/PowerButton';
-    import Login from './Login.vue';
-    import Checkbox from '@/components/Checkbox.vue';
+    import LPowerButton from '@/components/PowerButton';
+    import LCheckbox from '@/components/Checkbox.vue';
+    import LLogin from '@/views/Login.vue';
 
     import { trans } from '@/translations';
     import { settings, save } from '@/settings';
 
     export default {
-        name: 'setup',
-        components: { PowerButton, Login, Checkbox },
+        name: 'l-setup',
+        components: { LPowerButton, LLogin, LCheckbox },
 
         mounted() {
             if (settings.first) {

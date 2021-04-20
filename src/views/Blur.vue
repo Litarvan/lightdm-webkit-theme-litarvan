@@ -3,29 +3,30 @@
         <h1 id="blur-title" v-italic>{{ texts.title }}</h1>
 
         <div id="blur-content">
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="fixed" /><label>{{ texts.fixed }}</label></div>
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="absolute" /><label>{{ texts.absolute }}</label></div>
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="static" /><label>{{ texts.static }}</label></div>
-            <div class="radio-line"> <Radio v-model="settings.blur" value-key="disabled" /><label>{{ texts.disabled }}</label></div>
+            <div class="radio-line"> <l-radio v-model="settings.blur" value-key="fixed" /><label>{{ texts.fixed }}</label></div>
+            <div class="radio-line"> <l-radio v-model="settings.blur" value-key="absolute" /><label>{{ texts.absolute }}</label></div>
+            <div class="radio-line"> <l-radio v-model="settings.blur" value-key="static" /><label>{{ texts.static }}</label></div>
+            <div class="radio-line"> <l-radio v-model="settings.blur" value-key="disabled" /><label>{{ texts.disabled }}</label></div>
 
             <p id="blur-help" v-html="texts.help" />
         </div>
 
         <div @click="saveSettings()">
-            <PowerButton id="back" type="back" />
+            <l-power-button id="back" type="back" />
         </div>
     </div>
 </template>
 
 <script>
-    import PowerButton from '../components/PowerButton';
-    import Radio from '../components/Radio';
-    import { settings, save as saveSettings } from '../settings';
-    import { trans } from '../translations';
+    import LPowerButton from '@/components/PowerButton';
+    import LRadio from '@/components/Radio';
+
+    import { settings, save as saveSettings } from '@/settings';
+    import { trans } from '@/translations';
 
     export default {
-        name: 'blur',
-        components: { Radio, PowerButton },
+        name: 'l-blur',
+        components: { LRadio, LPowerButton },
 
         data() {
             return {

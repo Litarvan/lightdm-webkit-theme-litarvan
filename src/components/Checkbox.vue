@@ -4,10 +4,10 @@
 </template>
 
 <script>
-    import { color } from '../themer';
+    import { color } from '@/themer';
 
     export default {
-        name: 'checkbox',
+        name: 'l-checkbox',
         props: ['value'],
 
         mounted() {

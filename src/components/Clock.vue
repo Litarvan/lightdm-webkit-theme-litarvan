@@ -13,7 +13,7 @@
     import { settings } from '@/settings';
 
     export default {
-        name: 'clock',
+        name: 'l-clock',
         props: ['small'],
 
         mounted() {

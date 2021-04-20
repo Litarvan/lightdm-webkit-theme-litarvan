@@ -1,7 +1,7 @@
 <template>
     <div id="select">
         <div id="content">
-            <SelectItem
+            <l-select-item
                     v-for="item of content"
 
                     :key="item[type.key]"
@@ -16,8 +16,8 @@
 </template>
 
 <script>
+    import LSelectItem from '@/components/SelectItem';
     import { save, settings } from '@/settings';
-    import SelectItem from '../components/SelectItem';
 
     const modes = {
         user: { field: 'users', name: 'display_name', key: 'username' },
@@ -25,8 +25,8 @@
     };
 
     export default {
-        name: 'select',
-        components: { SelectItem },
+        name: 'l-select',
+        components: { LSelectItem },
         data() {
             let mode = this.$route.params.mode;
             let type = modes[mode];

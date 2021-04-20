@@ -10,7 +10,7 @@
     import { settings, save } from '@/settings';
 
     export default {
-        name: 'power-button',
+        name: 'l-power-button',
         props: ['type', 'disabled'],
         methods: {
             apply() {

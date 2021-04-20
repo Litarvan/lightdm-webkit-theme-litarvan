@@ -1,6 +1,6 @@
 <template>
     <div class="login" :class="{ 'compact': isCompact }">
-        <Clock :small="true" v-if="isCompact" />
+        <l-clock :small="true" v-if="isCompact" />
 
         <div id="login-content" :class="{ 'no-avatar': settings.disableAvatar }">
             <div id="avatar" v-if="!settings.disableAvatar">
@@ -8,7 +8,7 @@
             </div>
 
             <div id="login-form">
-                <SelectItem mode="user" :item="settings.user" @select="!immutable && $router.push('/base/select/user')" :noicon="true" />
+                <l-select-item mode="user" :item="settings.user" @select="!immutable && $router.push('/base/select/user')" :noicon="true" />
 
                 <form v-if="!immutable" @submit.prevent="submit">
                     <input id="password" type="password" v-model="password" :placeholder="passwordLabel" :readonly="logging" :class="{'error': error}" v-theming="['border-bottom-color']" v-italic.custom />
@@ -18,38 +18,39 @@
                     {{ info }}
                 </div>
 
-                <SelectItem mode="desktop" :item="settings.desktop" @select="!immutable && $router.push('/base/select/desktop')" />
+                <l-select-item mode="desktop" :item="settings.desktop" @select="!immutable && $router.push('/base/select/desktop')" />
             </div>
         </div>
 
         <div v-if="!immutable">
-            <PowerButton id="settings" type="settings"></PowerButton>
+            <l-power-button id="settings" type="settings"></l-power-button>
 
             <transition name="power-fade">
                 <div id="power-list" v-if="powerList">
-                    <PowerButton v-if="canHibernate" id="hibernate" type="hibernate"></PowerButton>
-                    <PowerButton v-if="canSuspend" id="suspend" type="suspend"></PowerButton>
-                    <PowerButton id="reboot" type="restart"></PowerButton>
+                    <l-power-button v-if="canHibernate" id="hibernate" type="hibernate"></l-power-button>
+                    <l-power-button v-if="canSuspend" id="suspend" type="suspend"></l-power-button>
+                    <l-power-button id="reboot" type="restart"></l-power-button>
                 </div>
             </transition>
 
             <div @click="powerList = !powerList">
-                <PowerButton id="shutdown" type="shutdown" :disabled="!powerList"></PowerButton>
+                <l-power-button id="shutdown" type="shutdown" :disabled="!powerList"></l-power-button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import PowerButton from '@/components/PowerButton.vue';
-    import Clock from '@/components/Clock.vue';
+    import LPowerButton from '@/components/PowerButton.vue';
+    import LClock from '@/components/Clock.vue';
+    import LSelectItem from '@/components/SelectItem';
+
     import { avatar, settings } from '@/settings';
     import { trans } from '@/translations';
-    import SelectItem from '../components/SelectItem';
 
     export default {
-        name: 'login',
-        components: { SelectItem, PowerButton, Clock },
+        name: 'l-login',
+        components: { LSelectItem, LPowerButton, LClock },
         props: ['immutable', 'compact'],
 
         data() {

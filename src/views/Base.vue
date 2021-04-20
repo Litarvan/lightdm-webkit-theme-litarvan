@@ -10,8 +10,8 @@
 </template>
 
 <script>
-    import { background } from '../themer';
-    import { settings } from '../settings';
+    import { background } from '@/themer';
+    import { settings } from '@/settings';
 
     export default {
         name: 'l-base',
