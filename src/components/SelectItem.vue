@@ -72,7 +72,10 @@
                         icon = 'exwm';
                     } if (key.indexOf('dwm') > -1) {
                         icon = 'dwm';
-                    }
+                    } if (key.indexOf('openbox') > -1) {
+                        icon = 'openbox';
+                    } 
+
 
                     if (!icon) {
                         return '';

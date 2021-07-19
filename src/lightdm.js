@@ -59,6 +59,10 @@ if (window.lightdm_debug) {
             {
                 name: 'exwm',
                 key: 'exwm'
+            },
+            {
+                name: 'Openbox',
+                key: 'openbox'
             }
         ],
         users: [{
