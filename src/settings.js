@@ -57,3 +57,6 @@ export function avatar(avatar) {
 
     return avatar;
 }
+
+console.log(' --> Loaded settings :');
+console.log(settings);

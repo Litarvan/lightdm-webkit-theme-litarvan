@@ -5,6 +5,7 @@ const DEBUG_PASSWORD = 'test';
 window.lightdm_debug = window.lightdm === undefined;
 
 if (window.lightdm_debug) {
+    console.log(' --> Theme is running outside LightDM, using placeholder data');
     window.theme_utils = {
         dirlist(_) {
             return [];
@@ -158,3 +159,6 @@ window.authentication_complete = () => {
 window.show_message = (text, type) => {
     errorCB(text);
 };
+
+console.log(' --> LightDM provided data :');
+console.log(window.lightdm);

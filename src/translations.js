@@ -200,11 +200,11 @@ const translations = {
 
 function getLocale()
 {
-    let lang = 'en-US';
-
     if (!lightdm.language || !lightdm.languages) {
-        return lang;
+        return 'en';
     }
+
+    let lang = 'en-US';
 
     lightdm.languages.forEach(l => {
         if (l.name.toLowerCase() === lightdm.language.toLowerCase()) {
@@ -219,7 +219,7 @@ function getLocale()
         }
     }
 
-    return lang; // Shouldn't happen
+    return 'en'; // Shouldn't happen
 }
 
 function trans(key)
