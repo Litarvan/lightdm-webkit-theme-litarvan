@@ -137,7 +137,7 @@ window.lightdm_login = (username, pass, cb, errCB) => {
 };
 
 window.lightdm_start = (desktop) => {
-    lightdm.start_session(lightdm.authentication_user, desktop);
+    lightdm.start_session(desktop);
 };
 
 window.show_prompt = (text, type) => {
