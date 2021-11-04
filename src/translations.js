@@ -207,7 +207,7 @@ function getLocale()
     let lang = 'en-US';
 
     lightdm.languages.forEach(l => {
-        if (l.name.toLowerCase() === lightdm.language.toLowerCase()) {
+        if (l.name.toLowerCase() === lightdm.language.name.toLowerCase()) {
             lang = l.code.split('.')[0].replace('_', '-');
         }
     });

@@ -14,7 +14,7 @@ if (window.lightdm_debug) {
 
     window.greeter_config = {
         branding: {
-            background_images: 'nowhere this is live test'
+            background_images_dir: 'nowhere this is live test'
         }
     };
 
@@ -133,11 +133,11 @@ window.lightdm_login = (username, pass, cb, errCB) => {
     errorCB = errCB;
     password = pass;
 
-    lightdm.start_authentication(username);
+    lightdm.authenticate(username);
 };
 
 window.lightdm_start = (desktop) => {
-    lightdm.login(lightdm.authentication_user, desktop);
+    lightdm.start_session(lightdm.authentication_user, desktop);
 };
 
 window.show_prompt = (text, type) => {
@@ -159,6 +159,9 @@ window.authentication_complete = () => {
 window.show_message = (text, type) => {
     errorCB(text);
 };
+
+lightdm.authentication_complete?.connect(() => authentication_complete());
+lightdm.show_prompt?.connect((text, type) => show_prompt(text, type));
 
 console.log(' --> LightDM provided data :');
 console.log(window.lightdm);
