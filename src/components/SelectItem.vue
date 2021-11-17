@@ -74,6 +74,8 @@
                         icon = 'dwm';
                     } if (key.indexOf('openbox') > -1) {
                         icon = 'openbox';
+                    } if (key.indexOf('sway') > -1) {
+                        icon = 'sway';
                     } 
 
 
