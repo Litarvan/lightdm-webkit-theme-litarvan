@@ -1,7 +1,7 @@
 import { settings } from './settings';
 
 export const DEFAULT_COLOR = '#249cea';
-const DEFAULT_BG = require('./assets/images/background.png');
+const DEFAULT_BG = require('./assets/images/background.jpg');
 
 export let color = localStorage.getItem('color') || DEFAULT_COLOR;
 export let background = getBackground();
