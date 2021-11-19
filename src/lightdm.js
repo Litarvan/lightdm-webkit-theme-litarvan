@@ -81,7 +81,7 @@ if (window.lightdm_debug) {
             name: 'Français',
             code: 'fr_FR.utf8'
         }],
-        language: 'American English',
+        language: {code: "en_US", name: "American English", territory: "United States"},
         start_authentication: (username) => {
             console.log(`Starting authenticating : '${username}'`);
             lightdm.authentication_user = username;
