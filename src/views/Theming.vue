@@ -78,7 +78,8 @@
                 title: trans('theming'),
                 backgrounds: [],
                 background: 0,
-                bgPath: greeter_config.branding.background_images_dir,
+                bgPath: greeter_config.branding.background_images_dir ||
+                        greeter_config.branding.background_images,
                 bgAddLabel: trans('bgAdd'),
                 settings,
                 randomizeLabel: trans('randomizeBG'),

@@ -25,19 +25,24 @@ export function updateBG(bg) {
 }
 
 export async function backgrounds() {
-    const folder = greeter_config.branding.background_images_dir;
+    const folder = greeter_config.branding.background_images_dir ||
+                    greeter_config.branding.background_images;
     if (!folder) {
-        return;
+        return [DEFAULT_BG];
     }
 
     const recDirList = async (dir) => {
         let result = [];
         let dirlist = [];
         await new Promise((resolve) => {
-            theme_utils.dirlist(dir, true, (files) => {
+            let dirl = theme_utils.dirlist(dir, true, (files) => {
                 dirlist = files;
                 resolve();
             })
+            if (Array.isArray(dirl)) {
+                dirlist = dirl;
+                resolve();
+            }
         })
 
         for (const file of dirlist) {
