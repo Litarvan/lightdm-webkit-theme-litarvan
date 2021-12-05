@@ -24,30 +24,38 @@ export function updateBG(bg) {
     localStorage.setItem('background', bg);
 }
 
-export function backgrounds() {
-    const folder = greeter_config.branding.background_images;
+export async function backgrounds() {
+    const folder = greeter_config.branding.background_images_dir ||
+                    greeter_config.branding.background_images;
     if (!folder) {
-        return;
+        return [DEFAULT_BG];
     }
 
-    let result = [];
-
-    const recDirlist = dir => {
+    const recDirList = async (dir) => {
         let result = [];
-        for (const file of theme_utils.dirlist(dir)) {
+        let dirlist = [];
+        await new Promise((resolve) => {
+            let dirl = theme_utils.dirlist(dir, true, (files) => {
+                dirlist = files;
+                resolve();
+            })
+            if (Array.isArray(dirl)) {
+                dirlist = dirl;
+                resolve();
+            }
+        })
+
+        for (const file of dirlist) {
             if (!file.includes('.')) { // I didn't find any good ways to do it
-                result = [...result, ...recDirlist(file)];
+                result = [...result, ...(await recDirList(file))];
             } else if (!file.endsWith('.xml') && !file.endsWith('.stw')) { // Gnome and Arch backgrounds have strange files
                 result.push(file);
             }
         }
-
         return result;
     };
 
-    for (const bg of recDirlist(folder)) {
-        result.push('file://' + bg);
-    }
+    let result = await recDirList(folder);
 
     return [DEFAULT_BG, ...result];
 }

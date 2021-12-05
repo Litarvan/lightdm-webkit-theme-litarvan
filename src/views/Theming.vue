@@ -62,9 +62,10 @@
         name: 'l-theming',
         components: { LCheckbox, LPowerButton },
 
-        mounted() {
+        async mounted() {
             this.hex = this.color; // To call the watcher
 
+            this.backgrounds = await backgrounds();
             for (const bg in this.backgrounds) {
                 if (background === this.backgrounds[bg]) {
                     this.background = +bg;
@@ -75,9 +76,10 @@
         data() {
             return {
                 title: trans('theming'),
-                backgrounds: backgrounds(),
+                backgrounds: [],
                 background: 0,
-                bgPath: greeter_config.branding.background_images,
+                bgPath: greeter_config.branding.background_images_dir ||
+                        greeter_config.branding.background_images,
                 bgAddLabel: trans('bgAdd'),
                 settings,
                 randomizeLabel: trans('randomizeBG'),
