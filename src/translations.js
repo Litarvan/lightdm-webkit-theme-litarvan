@@ -205,13 +205,15 @@ function getLocale()
     }
 
     let lang = 'en-US';
+    let language = lightdm.language;
+    if (typeof(language) === "string")
+        language = language.toLowerCase();
+    else if (language.name != undefined)
+        language = language.name.toLowerCase();
+    else
+        language = lang;
 
     lightdm.languages.forEach(l => {
-        let language = lightdm.language;
-        if (typeof(language) === "string")
-            language = language.toLowerCase();
-        else
-            language = language.name.toLowerCase();
         if (l.name.toLowerCase() === language) {
             lang = l.code.split('.')[0].replace('_', '-');
         }
