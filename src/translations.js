@@ -160,11 +160,19 @@ const translations = {
         disableZoom: '禁用两倍（2x）放大（大屏幕修复）',
         clock12: '12小时制',
         disablePowerTexts: '禁用“正在关机……”等屏幕',
+        blurSettings: '模糊设置（用于解决卡顿/画面瑕疵问题）',
         capsLock: '已启用大写锁定',
 
         primaryColor: '主题色',
         randomizeBG: '每一次选择随机背景',
-        bgAdd: '背景图片可以添加至以下目录：'
+        bgAdd: '背景图片可以添加至以下目录：',
+
+        blur: '模糊',
+        fixedBlur: '模糊背景 - 固定背景',
+        absoluteBlur: '模糊背景 - 绝对背景',
+        staticBlur: '无过渡的模糊背景',
+        disabledBlur: '禁用模糊背景',
+        blurHelp: '如果你在使用模糊功能时遇到卡顿或画面瑕疵等问题，请尝试其他模糊方案。\n如果没有任何效果，你可以禁用过渡动画甚至禁用整个模糊功能。'
     },
     // Chinese (Traditional)
     'zh-TW': {
@@ -189,11 +197,19 @@ const translations = {
         disableZoom: '停用 2x 放大（大螢幕修復）',
         clock12: '12小時制',
         disablePowerTexts: '停用「正在關機……」等畫面',
+        blurSettings: '模糊設定（用於解決延遲/畫面瑕疵問題）',
         capsLock: '已啟用大寫鎖定',
 
         primaryColor: '主要顏色',
         randomizeBG: '每一次選擇隨機桌布',
-        bgAdd: '桌布可加入至：'
+        bgAdd: '桌布可加入至：',
+
+        blur: '模糊',
+        fixedBlur: '模糊桌布 - 固定桌布',
+        absoluteBlur: '模糊桌布 - 絕對桌布',
+        staticBlur: '無過渡的模糊桌布',
+        disabledBlur: '停用模糊桌布',
+        blurHelp: '如果您在使用模糊功能時遇到延遲或畫面瑕疵等問題，請嘗試其他模糊方案。\n如果沒有任何效果，您可以停用過渡動畫甚至停用整個模糊功能。'
     },
     // More ? PR opens !
 };
