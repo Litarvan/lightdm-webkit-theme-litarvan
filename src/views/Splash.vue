@@ -1,6 +1,6 @@
 <template>
     <div id="splash" :class="{ 'clock-only': clockOnly }">
-        <l-clock />
+        <l-clock v-if="showClock" />
         <div v-if="!clockOnly" id="trigger" v-italic>{{ trigger }}</div>
     </div>
 </template>
@@ -10,21 +10,32 @@
 
     import { trans } from '@/translations';
     import { settings } from '@/settings';
+        
+    let isSecondary = document.head.dataset.wintype === "secondary";
 
     export default {
         name: 'l-splash',
         components: { LClock },
 
         mounted() {
-            window.addEventListener('keyup', this.submit);
+            if (isSecondary) {
+                set_complete_cb(() => {
+                    this.$router.push(settings.disableFade ? '/base' : '/intro/login');
+                });
+            } else {
+                window.addEventListener('keyup', this.submit);
+            }
         },
         beforeDestroy() {
-            window.removeEventListener('keyup', this.submit);
+            if (!isSecondary) {
+                window.removeEventListener('keyup', this.submit);
+            }
         },
         data() {
             return {
                 trigger: trans('trigger'),
-                clockOnly: settings.disableSplashText
+                clockOnly: settings.disableSplashText || isSecondary,
+                showClock: !isSecondary
             }
         },
         methods: {

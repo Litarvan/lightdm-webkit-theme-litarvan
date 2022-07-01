@@ -18,7 +18,14 @@
                     {{ info }}
                 </div>
 
+                <div v-if="!isCompact" class="error-msg">
+                    {{ message }}
+                </div>
+
                 <l-select-item mode="desktop" :item="settings.desktop" @select="!immutable && $router.push('/base/select/desktop')" />
+            </div>
+            <div v-if="isCompact" class="error-msg">
+                {{ message }}
             </div>
         </div>
 
@@ -51,7 +58,7 @@
     export default {
         name: 'l-login',
         components: { LSelectItem, LPowerButton, LClock },
-        props: ['immutable', 'compact'],
+        props: ['immutable', 'compact', 'preview'],
 
         data() {
             return {
@@ -64,12 +71,19 @@
                 logging: false,
                 error: false,
                 info: '',
+                message: '',
+                loginInSession: false,
 
                 password: ''
             }
         },
         mounted() {
             window.addEventListener('keyup', this.keyup);
+            
+            if (!this.preview) {
+                this.cancel(); // cancel any old sessions
+                this.begin(); // begin a new login session to get any messages
+            }
 
             setTimeout(() => {
                 let p = document.querySelector('#password');
@@ -88,19 +102,43 @@
                     this.info = '';
                 }
             },
+            begin() {
+                this.loginInSession = true;
+                lightdm_begin_login(this.settings.user.username, () => {
+                    setTimeout(() => lightdm_start(this.settings.desktop.key), 400);
+                    this.$router.push(settings.disableFade ? '/base' : '/intro/login');
+                }, () => {
+                    this.error = true;
+                    this.password = '';
+                    this.logging = false;
+                    this.begin();
+                }, (msg) => {
+                    this.error = true;
+                    this.password = '';
+                    this.logging = false;
+                    // If we receive a message then the login session has already failed
+                    // so wait for the user to submit another password before starting
+                    // a new session to avoid an infinite loop
+                    this.cancel();
+                    if (this.message === '') {
+                        this.message = msg;
+                    } else {
+                        this.message = `${this.message} ${msg}`;
+                    }
+                });
+            },
+            cancel() {
+                this.loginInSession = false;
+                lightdm_cancel_login(); 
+            },
             submit() {
                 this.logging = true;
+                this.error = false;
+                this.message = '';
 
                 // Workaround for a form submit bug reloading the route
                 setTimeout(() => {
-                    lightdm_login(this.settings.user.username, this.password, () => {
-                        setTimeout(() => lightdm_start(this.settings.desktop.key), 400);
-                        this.$router.push(settings.disableFade ? '/base' : '/intro/login');
-                    }, () => {
-                        this.error = true;
-                        this.password = '';
-                        this.logging = false;
-                    })
+                    lightdm_login(this.settings.user.username, this.password, !this.loginInSession);
                 }, 150);
             }
         }
@@ -126,6 +164,7 @@
         #login-form {
             text-align: left;
             margin-left: 42px;
+            margin-top: 31px;
         }
 
         .item.user {
@@ -170,6 +209,12 @@
             height: 26px;
             margin-top: 5px;
         }
+        
+        .error-msg {
+            font-size: 17px;
+            height: 26px;
+            margin-top: 5px;
+        }
 
         .item.desktop {
             margin-top: 0;
@@ -198,7 +243,7 @@
         }
 
         .item.desktop {
-            margin-top: 5.5vh;
+            margin-top: calc(5.5vh - 46px);
         }
     }
 
@@ -233,6 +278,8 @@
 
     #password {
         margin-top: 4.5vh;
+                
+        font-family: 'Lato', 'Noto Sans', sans-serif;
 
         background: $password-field-background;
         caret-color: $password-field-caret;
@@ -273,9 +320,21 @@
         margin-top: 15px;
         height: 31px;
     }
+        
+    .error-msg {
+        color: $error-color;
+
+        font-family: 'Lato', 'Noto Sans', sans-serif;        
+        font-size: 22px;
+
+        text-align: center;
+
+        margin-top: 15px;
+        height: 31px;
+    }
 
     .item.desktop {
-        margin-top: 6vh;
+        margin-top: calc(6vh - 46px);
         display: inline-block;
     }
 

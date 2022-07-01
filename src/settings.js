@@ -20,6 +20,7 @@ export let settings = (local ? JSON.parse(local) : null) || {
     clock12: false,
     disablePowerTexts: false,
     randomizeBG: false,
+    hideUsername: false,
 
     user: lightdm.users[0],
     desktop: lightdm.sessions[0]
