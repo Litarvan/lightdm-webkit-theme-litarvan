@@ -82,7 +82,7 @@ if (window.lightdm_debug) {
             code: 'fr_FR.utf8'
         }],
         language: {code: "en_US", name: "American English", territory: "United States"},
-        start_authentication: (username) => {
+        authenticate: (username) => {
             console.log(`Starting authenticating : '${username}'`);
             lightdm.authentication_user = username;
 
@@ -97,14 +97,12 @@ if (window.lightdm_debug) {
             if (password === DEBUG_PASSWORD)
             {
                 lightdm.is_authenticated = true;
+                authentication_complete();
             }
             else
             {
-                let now = new Date().getTime();
-                while (new Date().getTime() < now + 2000);
+                setTimeout(() => authentication_complete(), 2000);
             }
-
-            authentication_complete();
         },
         login: (user, session) => {
             alert(`Logged with '${user}' (Session: '${session}') !`);
@@ -127,13 +125,33 @@ if (window.lightdm_debug) {
 let password;
 let errorCB;
 let completeCB;
+let messageCB;
 
-window.lightdm_login = (username, pass, cb, errCB) => {
+window.set_complete_cb = (cb) => {
+    completeCB = cb;
+}
+
+window.lightdm_cancel_login = () => {
+    lightdm.cancel_authentication();
+};
+
+window.lightdm_begin_login = (username, cb, errCB, msgCB) => {
     completeCB = cb;
     errorCB = errCB;
-    password = pass;
-
+    messageCB = msgCB;
+    password = undefined;
+    
     lightdm.authenticate(username);
+};
+
+window.lightdm_login = (username, pass, newSession) => {
+    if (newSession) {
+        password = pass;
+        lightdm.authenticate(username);
+    } else {
+        password = undefined;
+        lightdm.respond(pass);
+    }
 };
 
 window.lightdm_start = (desktop) => {
@@ -141,27 +159,30 @@ window.lightdm_start = (desktop) => {
 };
 
 window.show_prompt = (text, type) => {
-    if (text === "Password: ")
+    if (text === "Password: " && password !== undefined)
     {
         lightdm.respond(password);
     }
-};
+}
 
 window.authentication_complete = () => {
     if (lightdm.is_authenticated) {
         completeCB();
-    } else {
+    } else if (document.head.dataset.wintype === "primary") {
         lightdm.cancel_authentication();
-        errorCB('Invalid username/password');
+        errorCB();
     }
 };
 
 window.show_message = (text, type) => {
-    errorCB(text);
+    if (messageCB) {
+        messageCB(text);  
+    }
 };
 
 lightdm.authentication_complete?.connect(() => authentication_complete());
 lightdm.show_prompt?.connect((text, type) => show_prompt(text, type));
+lightdm.show_message?.connect((text, type) => show_message(text, type));
 
 console.log(' --> LightDM provided data :');
 console.log(window.lightdm);

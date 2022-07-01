@@ -4,17 +4,22 @@
             <img class="icon" :src="icon()" />
         </div>
 
-        {{ mode === 'user' ? item.display_name : item.name }} <span v-if="mode === 'user'">/ <span class="username">{{ item.username }}</span></span>
+        {{ mode === 'user' ? item.display_name : item.name }} <span v-if="mode === 'user' && !settings.hideUsername">/ <span class="username">{{ item.username }}</span></span>
     </div>
 </template>
 
 <script>
-    import { avatar } from '@/settings';
+    import { avatar, settings } from '@/settings';
 
     export default {
         name: 'l-select-item',
         props: ['mode', 'item', 'selected', 'noicon'],
 
+        data() {
+            return {
+                settings,
+            };
+        },
         methods: {
             select() {
                 this.$emit('select');

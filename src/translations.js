@@ -21,6 +21,7 @@ const translations = {
         clock12: '12-hours clock format',
         disablePowerTexts: 'Disable "Shutting down..." etc. screens',
         blurSettings: 'Blur settings (for lags/artifacts issues)',
+        hideUsername: 'Hide username when full name is known',
         capsLock: 'Caps lock is enabled',
 
         primaryColor: 'Primary color',
@@ -216,11 +217,11 @@ const translations = {
 
 function getLocale()
 {
-    if (!lightdm.language || !lightdm.languages) {
-        return 'en';
-    }
-
     let lang = 'en-US';
+
+    if (!lightdm.language || !lightdm.languages) {
+        return lang;
+    }
 
     lightdm.languages.forEach(l => {
         let language = lightdm.language;
@@ -232,25 +233,22 @@ function getLocale()
             lang = l.code.split('.')[0].replace('_', '-');
         }
     });
-
-    const candidates = [lang, lang.substring(0, 2), 'en'];
-    for (const candidate of candidates) {
-        if (translations[candidate]) {
-            return candidate;
-        }
-    }
-
-    return 'en'; // Shouldn't happen
+    
+    return lang;
 }
 
 function trans(key)
 {
-    const result = translations[getLocale()][key];
-    if (!result) {
-        return translations.en[key];
+    const lang = getLocale();
+    const candidates = [lang, lang.substring(0, 2), 'en'];
+    for (const candidate of candidates) {
+        const translation = translations[candidate];
+        if (translation) {
+            return translation[key];
+        }
     }
 
-    return result;
+    return '';
 }
 
 export {
