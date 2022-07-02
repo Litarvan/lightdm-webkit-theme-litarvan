@@ -218,6 +218,11 @@ const translations = {
 function getLocale()
 {
     let lang = 'en-US';
+
+    if (!lightdm.language || !lightdm.languages) {
+        return lang;
+    }
+
     let language = lightdm.language;
     if (typeof(language) === "string")
         language = language.toLowerCase();
@@ -226,16 +231,12 @@ function getLocale()
     else
         language = lang;
 
-    if (!lightdm.language || !lightdm.languages) {
-        return lang;
-    }
-
     lightdm.languages.forEach(l => {
         if (l.name.toLowerCase() === language) {
             lang = l.code.split('.')[0].replace('_', '-');
         }
     });
-    
+
     return lang;
 }
 
@@ -245,7 +246,7 @@ function trans(key)
     const candidates = [lang, lang.substring(0, 2), 'en'];
     for (const candidate of candidates) {
         const translation = translations[candidate];
-        if (translation) {
+        if (translation && translation[key]) {
             return translation[key];
         }
     }
