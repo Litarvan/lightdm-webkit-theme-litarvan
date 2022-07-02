@@ -98,9 +98,11 @@
         },
         mounted() {
             if (lightdm?.can_access_battery) {
+                this.on_battery_update();
                 lightdm?.battery_update.connect(this.on_battery_update);
             }
             if (lightdm?.can_access_brightness) {
+                this.on_brightness_update();
                 lightdm?.brightness_update.connect(this.on_brightness_update);
             }
         },
@@ -121,6 +123,7 @@
     #additions {
         display: flex;
         flex-direction: row;
+        font-family: 'Lato', 'Noto Sans', sans-serif;
 
         justify-self: flex-start;
         align-self: center;
