@@ -32,6 +32,16 @@
                 let name = this.$router.currentRoute.name;
                 return name === 'login' || name === 'select';
             }
+        },
+        mounted() {
+            if (window.greeter_comm) {
+                window.addEventListener("GreeterBroadcastEvent", (event) => {
+                    const data = event.data;
+                    if (data.type == "change-background") {
+                        this.background = data.path;
+                    }
+                })
+            }
         }
     };
 </script>
