@@ -1,14 +1,28 @@
 <template>
     <div id="additions" :class="{ 'small': small }">
         <div id="battery-container" v-if="canAccessBattery">
-            <img id="battery-icon" :src="require('../assets/images/battery/' + batteryIcon + '.svg')" />
+            <img
+                id="battery-icon"
+                class="addition-icon"
+                :src="require('../assets/images/battery/' + batteryIcon + '.svg')"
+            />
+            <img
+                id="battery-charging-icon"
+                class="addition-icon"
+                :src="require('../assets/images/battery/bolt.svg')"
+                v-if="batteryIsCharging"
+            />
             <span id="battery-value">
                 {{ batteryValue }}
             </span>
         </div>
 
         <div id="brightness-container" v-if="canAccessBrightness">
-            <img id="brightness-icon" :src="require('../assets/images/brightness/' + brightnessIcon + '.svg')" />
+            <img
+                id="brightness-icon"
+                class="addition-icon"
+                :src="require('../assets/images/brightness/' + brightnessIcon + '.svg')"
+            />
             <span id="brightness-value">
                 {{ brightnessValue }}
             </span>
@@ -25,6 +39,7 @@
             return {
                 batteryIcon: 'battery_1',
                 batteryValue: '15%',
+                batteryIsCharging: false,
                 canAccessBattery: lightdm?.can_access_battery ?? false,
 
                 brightnessIcon: 'brightness_high',
@@ -61,6 +76,7 @@
                     this.batteryIcon = "battery_full";
                 }
                 this.batteryValue = `${level}%`;
+                this.batteryIsCharging = acStatus;
             },
             on_brightness_update() {
                 const brightness = lightdm?.brightness ?? null;
@@ -124,13 +140,19 @@
             background: rgba(255, 255, 255, 0.08);
         }
     }
-    #battery-icon, #brightness-icon {
-        padding: .4em .2em .4em .4em;
-        width: 1.8em;
-        height: 1.8em;
+    .addition-icon {
+        padding: .4em .2em;
+        height: 1.6em;
+        width: 1.1em;
+
+        &#brightness-icon {
+            width: 1.6em;
+            padding: .4em .2em .4em .4em;
+        }
     }
+
     #battery-value, #brightness-value {
-        padding: .4em .4em .4em .2em;
+        padding: .4em;
     }
 
     #additions.small {
@@ -138,13 +160,18 @@
         gap: 0.5em;
 
         #battery-value, #brightness-value {
-            padding: .2em .2em .2em .1em;
+            padding: .2em;
         }
 
-        #battery-icon, #brightness-icon {
-            padding: .2em .1em .2em .2em;
-            width: 1.2em;
-            width: 1.2em;
+        .addition-icon {
+            padding: .2em .1em;
+            height: 1.2em;
+            width: 1em;
+
+            &#brightness-icon {
+                width: 1.2em;
+                padding: .2em .1em .2em .2em;
+            }
         }
 
         #battery-container, #brightness-container {
