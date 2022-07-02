@@ -20,18 +20,26 @@
         name: 'l-intro',
 
         mounted() {
-            if (settings.disableIntro && this.state === 'initial') {
-                this.$router.push(settings.disableSplash ? '/base/login' : '/base/splash');
-                return;
-            }
-
-            if (this.state === 'login') {
-                return;
-            }
-
-            this.show = true;
-
             if (this.state === 'initial') {
+                if (document.head.dataset.wintype === 'secondary') {
+                    if (settings.disableIntro) {
+                        this.$router.push('/base/splash');
+                    } else {
+                        setTimeout(() => {
+                            this.$router.push('/base/splash');
+                        }, 2000);
+                    }
+                    
+                    return;
+                }
+                
+                if (settings.disableIntro) {
+                    this.$router.push(settings.disableSplash ? '/base/login' : '/base/splash');
+                    return;
+                }
+                
+                this.show = true;
+                
                 setTimeout(() => {
                     this.show = false;
                     this.$router.push(settings.first ? '/setup' : (settings.disableSplash ? '/base/login' : '/base/splash'));

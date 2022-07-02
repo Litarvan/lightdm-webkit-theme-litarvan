@@ -4,11 +4,11 @@
 
         <div id="layouts">
             <div id="classic-layout" class="layout" @click="select('classic')" :class="{ selected: settings.mode === 'classic' }">
-                <l-login id="classic" :immutable="true" :compact="false" />
+                <l-login id="classic" :immutable="true" :compact="false" :preview="true" />
             </div>
 
             <div id="compact-layout" class="layout" @click="select('compact')" :class="{ selected: settings.mode === 'compact' }">
-                <l-login id="compact" :immutable="true" :compact="true" />
+                <l-login id="compact" :immutable="true" :compact="true" :preview="true" />
             </div>
         </div>
 
@@ -25,6 +25,7 @@
             <div class="checkbox-line"><l-checkbox v-model="settings.disableFade" /><label>{{ texts.disableFade }}</label></div>
             <div class="checkbox-line"><l-checkbox v-model="settings.roundAvatar" /><label>{{ texts.roundAvatar }}</label></div>
             <div class="checkbox-line"><l-checkbox v-model="settings.disableAvatar" /><label>{{ texts.disableAvatar }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.hideUsername" /><label>{{ texts.hideUsername }}</label></div>
             <div class="checkbox-line"><router-link to="/blur" class="blur-settings">{{ texts.blurSettings }}</router-link></div>
         </div>
 
@@ -66,7 +67,8 @@
                     disableZoom: trans('disableZoom'),
                     clock12: trans('clock12'),
                     disablePowerTexts: trans('disablePowerTexts'),
-                    blurSettings: trans('blurSettings')
+                    blurSettings: trans('blurSettings'),
+                    hideUsername: trans('hideUsername'),
                 }
             }
         },
