@@ -22,6 +22,12 @@ export function updateColor(hex) {
 export function updateBG(bg) {
     background = bg;
     localStorage.setItem('background', bg);
+    if (window.greeter_comm) {
+        greeter_comm.broadcast({
+            type: "change-background",
+            path: bg,
+        })
+    }
 }
 
 export async function backgrounds() {
