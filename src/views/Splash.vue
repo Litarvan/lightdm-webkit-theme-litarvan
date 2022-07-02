@@ -1,12 +1,16 @@
 <template>
     <div id="splash" :class="{ 'clock-only': clockOnly }">
-        <l-clock v-if="showClock" />
+        <div id="top-container">
+            <l-clock v-if="showClock" />
+            <l-additions v-if="showAdditions && !clockOnly" />
+        </div>
         <div v-if="!clockOnly" id="trigger" v-italic>{{ trigger }}</div>
     </div>
 </template>
 
 <script>
     import LClock from '@/components/Clock.vue';
+    import LAdditions from '@/components/Additions.vue';
 
     import { trans } from '@/translations';
     import { settings } from '@/settings';
@@ -15,7 +19,7 @@
 
     export default {
         name: 'l-splash',
-        components: { LClock },
+        components: { LClock, LAdditions },
 
         mounted() {
             if (isSecondary) {
@@ -35,7 +39,8 @@
             return {
                 trigger: trans('trigger'),
                 clockOnly: settings.disableSplashText || isSecondary,
-                showClock: !isSecondary
+                showClock: !isSecondary,
+                showAdditions: !isSecondary,
             }
         },
         methods: {
@@ -67,6 +72,11 @@
         .clock {
             padding-bottom: 25px; /* Text size compensation */
         }
+    }
+
+    #top-container {
+        display: flex;
+        flex-direction: column;
     }
 
     #trigger {
