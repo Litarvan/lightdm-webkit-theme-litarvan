@@ -2,7 +2,7 @@
     <div class="login" :class="{ 'compact': isCompact }">
         <div id="top-container" v-if="isCompact">
             <l-clock :small="true" />
-            <l-additions :small="true" />
+            <l-additions :small="true" :preview="preview" />
         </div>
 
         <div id="login-content" :class="{ 'no-avatar': settings.disableAvatar }">

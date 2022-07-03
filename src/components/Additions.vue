@@ -25,7 +25,7 @@
             id="brightness-container"
             class="addition-container"
             v-if="canAccessBrightness"
-            @mouseover="showBrightnessSlider = true"
+            @mouseover="showBrightnessSlider = !preview ? true : false"
             @mouseleave="showBrightnessSlider = false"
         >
             <img
@@ -54,7 +54,7 @@
 
     export default {
         name: 'l-additions',
-        props: ['small'],
+        props: ['small', 'preview'],
         data() {
             return {
                 batteryIcon: 'battery_1',
