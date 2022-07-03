@@ -1,6 +1,10 @@
 <template>
     <div id="additions" :class="{ 'small': small }">
-        <div id="battery-container" v-if="canAccessBattery">
+        <div
+            id="battery-container"
+            class="addition-container"
+            v-if="canAccessBattery"
+        >
             <img
                 id="battery-icon"
                 class="addition-icon"
@@ -13,18 +17,34 @@
                 v-if="batteryIsCharging"
             />
             <span id="battery-value">
-                {{ batteryValue }}
+                {{ batteryValue }}%
             </span>
         </div>
 
-        <div id="brightness-container" v-if="canAccessBrightness">
+        <div
+            id="brightness-container"
+            class="addition-container"
+            v-if="canAccessBrightness"
+            @mouseover="showBrightnessSlider = true"
+            @mouseleave="showBrightnessSlider = false"
+        >
             <img
                 id="brightness-icon"
                 class="addition-icon"
                 :src="require('../assets/images/brightness/' + brightnessIcon + '.svg')"
             />
-            <span id="brightness-value">
-                {{ brightnessValue }}
+            <transition name="expand">
+                <input
+                    id="brightness-slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    v-model="brightnessValue"
+                    v-show="showBrightnessSlider"
+                />
+            </transition>
+            <span id="brightness-value" >
+                {{ brightnessValue }}%
             </span>
         </div>
     </div>
@@ -38,13 +58,21 @@
         data() {
             return {
                 batteryIcon: 'battery_1',
-                batteryValue: '15%',
+                batteryValue: 15,
                 batteryIsCharging: false,
                 canAccessBattery: lightdm?.can_access_battery ?? false,
 
                 brightnessIcon: 'brightness_high',
-                brightnessValue: '85%',
+                brightnessValue: 85,
                 canAccessBrightness: lightdm?.can_access_brightness ?? false,
+                showBrightnessSlider: false,
+            }
+        },
+        watch: {
+            brightnessValue: function(val, oldValue) {
+                if (val == oldValue)
+                    return;
+                lightdm.brightness = val;
             }
         },
         methods: {
@@ -75,7 +103,7 @@
                 } else {
                     this.batteryIcon = "battery_full";
                 }
-                this.batteryValue = `${level}%`;
+                this.batteryValue = level;
                 this.batteryIsCharging = acStatus;
             },
             on_brightness_update() {
@@ -93,7 +121,7 @@
                     this.brightnessIcon = "brightness_high";
                 }
 
-                this.brightnessValue = `${brightness}%`;
+                this.brightnessValue = brightness;
             },
         },
         mounted() {
@@ -131,7 +159,7 @@
         gap: 1em;
     }
 
-    #battery-container, #brightness-container {
+    .addition-container {
         transition: background 125ms ease-in-out;
         border-radius: 6px;
         width: auto;
@@ -158,6 +186,58 @@
         padding: .4em;
     }
 
+    #brightness-slider {
+        -webkit-appearance: none;
+        width: 12em;
+        background: transparent;
+    }
+    input[type="range"]::-webkit-slider-thumb
+    {
+        -webkit-appearance: none;
+        background: var(--primary-color);
+        width: 1.2em;
+        height: 1.2em;
+        border-radius: 100%;
+        border-width: 0;
+        cursor: pointer;
+        margin-top: -0.4em;
+    }
+    input[type="range"]::-moz-range-thumb
+    {
+        background: #249cea;
+        width: 1.2em;
+        height: 1.2em;
+        border-radius: 100%;
+        border-width: 0;
+        cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track
+    {
+        width: 100%;
+        height: 0.4em;
+        background-color: #ffffff;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    input[type="range"]::-moz-range-track
+    {
+        width: 100%;
+        height: 0.4em;
+        background-color: #ffffff;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .expand-enter-active, .expand-leave-active {
+        transition: .5s;
+        max-width: 12em;
+    }
+    .expand-enter, .expand-leave-to {
+        max-width: 0;
+        opacity: 0;
+    }
+
     #additions.small {
         margin: 1em 0em;
         gap: 0.5em;
@@ -179,6 +259,19 @@
 
         #battery-container, #brightness-container {
             padding: 0.1em;
+        }
+
+        #brightness-slider {
+            width: 6em;
+        }
+
+        .expand-enter-active, .expand-leave-active {
+            transition: .5s;
+            max-width: 6em;
+        }
+        .expand-enter, .expand-leave-to {
+            max-width: 0;
+            opacity: 0;
         }
     }
 </style>
