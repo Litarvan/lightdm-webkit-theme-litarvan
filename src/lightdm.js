@@ -18,6 +18,8 @@ if (window.lightdm_debug) {
         }
     };
 
+    let brightness = 85;
+
     window.lightdm = {
         is_authenticated: false,
         authentication_user: undefined,
@@ -88,7 +90,6 @@ if (window.lightdm_debug) {
             level: 15,
             ac_status: true,
         },
-        brightness: 85,
         battery_update: {
             _callbacks: [],
             _emit: () => {
@@ -164,6 +165,16 @@ if (window.lightdm_debug) {
             alert('(DEBUG: System is rebooting)')
         }
     };
+
+    Object.defineProperty(window.lightdm, 'brightness', {
+        get: () => {
+            return brightness;
+        },
+        set: (value) => {
+            brightness = value;
+            window.lightdm.brightness_update._emit();
+        },
+    })
 }
 
 let password;
