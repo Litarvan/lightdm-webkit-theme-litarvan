@@ -204,7 +204,7 @@
     }
     input[type="range"]::-moz-range-thumb
     {
-        background: #249cea;
+        background: var(--primary-color);
         width: 1.2em;
         height: 1.2em;
         border-radius: 100%;
