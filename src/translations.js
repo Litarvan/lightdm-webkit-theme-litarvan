@@ -110,10 +110,41 @@ const translations = {
         password: 'Palavra-passe...'
     },
 
-    // Spanish (TODO)
+    // Spanish
     'es': {
         trigger: 'Presiona Espacio o Enter para iniciar sesión',
-        password: 'Contraseña...'
+        password: 'Contraseña...',
+
+        shutdown: 'Apagando...',
+        hibernate: 'Hibernando...',
+        suspend: 'Suspendiendo...',
+        restart: 'Reiniciando...',
+
+        setup: 'Configuración',
+        theming: 'Personalización',
+        disableSplash: 'Deshabilitar pantalla de bienvenida (pantalla de "Presiona Enter")',
+        disableSplashText: 'Deshabilitar texto de pantalla de bienvenida (sólo el reloj)',
+        disableIntro: 'Deshabilitar introducción (logo del Sistema)',
+        disableFade: 'Deshabilitar transición a negro al iniciar sesión',
+        roundAvatar: 'Avatar circular',
+        disableAvatar: 'Deshabilitar avatar',
+        disableZoom: 'Deshabilitar el zoom x2 (corrección de pantallas grandes)',
+        clock12: 'Reloj de 12 horas',
+        disablePowerTexts: 'Deshabilitar los mensajes de "Apagando..."',
+        blurSettings: 'Ajustes de desenfoque (por problemas de lag/visuales)',
+        hideUsername: 'Ocultar nombre de usuario cuando el nombre completo está disponible',
+        capsLock: 'Bloq Mayús está habilitado',
+
+        primaryColor: 'Color primario',
+        randomizeBG: 'Selecciona una imagen aleatoria cada vez',
+        bgAdd: 'Los fondos de pantalla se puede añadir en:',
+
+        blur: 'Desenfoque',
+        fixedBlur: 'Fondo de pantalla desenfocado - Fondo fijo',
+        absoluteBlur: 'Fondo de pantalla desenfocado - Fondo absoluto',
+        staticBlur: 'Fondo de pantalla desenfocado sin transición',
+        disabledBlur: 'Deshabilitar desenfoque de fondo de pantalla',
+        blurHelp: 'Si estás teniendo problemas con el desenfoque, como lag o problemas visuales, intenta un método de desenfoque distinto.\nPuedes deshabilitar la transición o incluso el desenfoque por completo si ninguna otra opción funciona.',
     },
 
     // Hebrew (TODO)
