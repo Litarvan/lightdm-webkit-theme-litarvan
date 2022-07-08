@@ -158,6 +158,9 @@
         .item.user:hover, .item.desktop:hover {
             background: none;
         }
+        .addition-container:hover {
+            background: none;
+        }
     }
 
     #classic {

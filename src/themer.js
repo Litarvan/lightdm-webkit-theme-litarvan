@@ -13,10 +13,12 @@ export function hook(element, rules) {
         style[rule] = color;
     }
 }
+document.documentElement.style.setProperty('--primary-color', color)
 
 export function updateColor(hex) {
     color = hex;
     localStorage.setItem('color', color);
+    document.documentElement.style.setProperty('--primary-color', color)
 }
 
 export function updateBG(bg) {

@@ -1,6 +1,9 @@
 <template>
     <div class="login" :class="{ 'compact': isCompact }">
-        <l-clock :small="true" v-if="isCompact" />
+        <div id="top-container" v-if="isCompact">
+            <l-clock :small="true" />
+            <l-additions :small="true" :preview="preview" />
+        </div>
 
         <div id="login-content" :class="{ 'no-avatar': settings.disableAvatar }">
             <div id="avatar" v-if="!settings.disableAvatar">
@@ -51,13 +54,14 @@
     import LPowerButton from '@/components/PowerButton.vue';
     import LClock from '@/components/Clock.vue';
     import LSelectItem from '@/components/SelectItem';
+    import LAdditions from '@/components/Additions.vue';
 
     import { avatar, settings } from '@/settings';
     import { trans } from '@/translations';
 
     export default {
         name: 'l-login',
-        components: { LSelectItem, LPowerButton, LClock },
+        components: { LSelectItem, LPowerButton, LClock, LAdditions },
         props: ['immutable', 'compact', 'preview'],
 
         data() {
@@ -219,6 +223,11 @@
         .item.desktop {
             margin-top: 0;
         }
+    }
+
+    #top-container {
+        display: flex;
+        flex-direction: column;
     }
 
     .item.user {

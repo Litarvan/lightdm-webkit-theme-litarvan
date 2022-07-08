@@ -18,10 +18,14 @@ if (window.lightdm_debug) {
         }
     };
 
+    let brightness = 85;
+
     window.lightdm = {
         is_authenticated: false,
         authentication_user: undefined,
         default_session: 'plasma-shell',
+        can_access_battery: true,
+        can_access_brightness: true,
         can_suspend: true,
         can_hibernate: true,
         sessions: [
@@ -82,6 +86,47 @@ if (window.lightdm_debug) {
             code: 'fr_FR.utf8'
         }],
         language: {code: "en_US", name: "American English", territory: "United States"},
+        battery_data: {
+            level: 15,
+            ac_status: true,
+        },
+        battery_update: {
+            _callbacks: [],
+            _emit: () => {
+                window.lightdm.battery_update._callbacks.forEach((cb) => {
+                    cb();
+                });
+            },
+            connect: (callback) => {
+                window.lightdm.battery_update._callbacks.push(callback);
+            },
+            disconnect: (callback) => {
+                const ind = window.lightdm.battery_update._callbacks.findIndex((v) => {
+                    return callback == v;
+                });
+                if (ind == -1) return;
+
+                window.lightdm.battery_update._callbacks.splice(ind, 1);
+            }
+        },
+        brightness_update: {
+            _callbacks: [],
+            _emit: () => {
+                window.lightdm.brightness_update._callbacks.forEach((cb) => {
+                    cb();
+                });
+            },
+            connect: (callback) => {
+                window.lightdm.brightness_update._callbacks.push(callback);
+            },
+            disconnect: (callback) => {
+                const ind = window.lightdm.brightness_update._callbacks.findIndex((v) => {
+                    return callback == v;
+                });
+                if (ind == -1) return;
+                window.lightdm.brightness_update._callbacks.splice(ind, 1);
+            }
+        },
         authenticate: (username) => {
             console.log(`Starting authenticating : '${username}'`);
             lightdm.authentication_user = username;
@@ -120,6 +165,16 @@ if (window.lightdm_debug) {
             alert('(DEBUG: System is rebooting)')
         }
     };
+
+    Object.defineProperty(window.lightdm, 'brightness', {
+        get: () => {
+            return brightness;
+        },
+        set: (value) => {
+            brightness = value;
+            window.lightdm.brightness_update._emit();
+        },
+    })
 }
 
 let password;
