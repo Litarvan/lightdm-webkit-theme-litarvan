@@ -43,7 +43,7 @@ export async function backgrounds() {
         let result = [];
         let dirlist = [];
         await new Promise((resolve) => {
-            let dirl = theme_utils.dirlist(dir, true, (files) => {
+            let dirl = theme_utils.dirlist(dir, false, (files) => {
                 dirlist = files;
                 resolve();
             })
