@@ -40,6 +40,7 @@ const translations = {
     'fr': {
         trigger: 'Appuyez sur Espace ou Entrée pour vous connecter',
         password: 'Mot de passe...',
+
         shutdown: 'Arrêt...',
         hibernate: 'Hibernation...',
         suspend: 'Mise en veille...',
@@ -57,6 +58,7 @@ const translations = {
         clock12: 'Format 12 heures de l\'horloge',
         disablePowerTexts: 'Désactiver les écrans "Arrêt..." etc.',
         blurSettings: 'Paramètres du floutage (si problèmes de lags/artifacts)',
+        hideUsername: 'Afficher seulement le nom complet si possible',
         capsLock: 'Verrouillage des majuscules activé',
 
         primaryColor: 'Couleur principale',
