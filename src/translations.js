@@ -70,7 +70,7 @@ const translations = {
         absoluteBlur: 'Floutage du fond - fond \'absolute\'',
         staticBlur: 'Floutage du fond sans transition',
         disabledBlur: 'Désactiver le floutage du fond',
-        blurHelp: 'Si vous avez des problèmes avec le foutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui même si aucune autre option ne fonctionne.'
+        blurHelp: 'Si vous avez des problèmes avec le floutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui-même si aucune autre option ne fonctionne.'
     },
 
     // Dutch (TODO)
