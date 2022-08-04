@@ -18,6 +18,7 @@
             <div class="checkbox-line"><l-checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
             <div class="checkbox-line"><l-checkbox v-model="settings.clock12" /><label>{{ texts.clock12 }}</label></div>
             <div class="checkbox-line"><l-checkbox v-model="settings.disablePowerTexts" /><label>{{ texts.disablePowerTexts }}</label></div>
+            <div class="checkbox-line"><router-link to="/layout" class="layout-settings">{{ texts.selectLayout }}</router-link></div>
         </div>
 
         <div id="right-settings" class="settings">
@@ -69,6 +70,7 @@
                     disablePowerTexts: trans('disablePowerTexts'),
                     blurSettings: trans('blurSettings'),
                     hideUsername: trans('hideUsername'),
+                    selectLayout: trans('selectLayout'),
                 }
             }
         },
@@ -295,7 +297,7 @@
         }
     }
 
-    .blur-settings {
+    .blur-settings, .layout-settings {
         color: white;
         vertical-align: 7px;
     }

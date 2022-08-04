@@ -33,7 +33,11 @@ const translations = {
         absoluteBlur: 'Blurred background - absolute background',
         staticBlur: 'Blurred background without transition',
         disabledBlur: 'Disable background blurring',
-        blurHelp: 'If you are having issues with blur like lags or artifacts, please try a different blur method.\nYou can disable the transition or even the entire blur if nothing is working.'
+        blurHelp: 'If you are having issues with blur like lags or artifacts, please try a different blur method.\nYou can disable the transition or even the entire blur if nothing is working.',
+
+        selectLayout: 'Change keyboard layout',
+        layouts: 'Layouts',
+        keyboardPlaceholder: 'Type here to test the keyboard layout...',
     },
 
     // French
@@ -68,7 +72,11 @@ const translations = {
         absoluteBlur: 'Floutage du fond - fond \'absolute\'',
         staticBlur: 'Floutage du fond sans transition',
         disabledBlur: 'Désactiver le floutage du fond',
-        blurHelp: 'Si vous avez des problèmes avec le foutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui même si aucune autre option ne fonctionne.'
+        blurHelp: 'Si vous avez des problèmes avec le foutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui même si aucune autre option ne fonctionne.',
+
+        selectLayout: 'Changer la disposition de clavier',
+        layouts: 'Dispositions',
+        keyboardPlaceholder: 'Tapez ici pour tester la disposition clavier...',
     },
 
     // Dutch (TODO)
