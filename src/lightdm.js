@@ -68,6 +68,10 @@ if (window.lightdm_debug) {
             {
                 name: 'Openbox',
                 key: 'openbox'
+            },
+            {
+                name: 'Sway',
+                key: 'sway'
             }
         ],
         users: [{

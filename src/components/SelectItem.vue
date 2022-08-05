@@ -78,8 +78,10 @@
                     } if (key.indexOf('dwm') > -1) {
                         icon = 'dwm';
                     } if (key.indexOf('openbox') > -1) {
-                        icon = 'openbox';
-                    } 
+                        icon = 'openbox'; 
+                    } if (key.indexOf('sway') > -1) {
+                        icon = 'sway';
+                    }
 
 
                     if (!icon) {
