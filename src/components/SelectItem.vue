@@ -11,6 +11,41 @@
 <script>
     import { avatar, settings } from '@/settings';
 
+    // key is environment name, value is icon name. Sorted by key
+    const environments = {
+        'awesome': 'awesome',
+        'bspwm': 'bspwm',
+        'budgie': 'budgie',
+        'cinnamon': 'cinnamon',
+        'dde': 'deepin',
+        'deepin': 'deepin',
+        'dwm': 'dwm',
+        'elementary': 'elementary',
+        'enlightenment': 'enlightenment',
+        'exwm': 'exwm',
+        'gnome': 'gnome',
+        'i3': 'i3',
+        'kde': 'kde',
+        'kodi': 'kodi',
+        'kubuntu': 'kde',
+        'liri': 'liri',
+        'lxde': 'lxde',
+        'lxqt': 'lxde',
+        'mate': 'mate',
+        'mint': 'cinnamon',
+        'openbox': 'openbox',
+        'pantheon': 'elementary',
+        'plasma': 'kde',
+        'qtitle': 'qtitle',
+        'solus': 'budgie',
+        'sway': 'sway',
+        'ubuntu': 'ubuntu',
+        'unity': 'ubuntu',
+        'xfce': 'xfce',
+        'xmonad': 'xmonad',
+        'xubuntu': 'xfce',
+    }
+
     export default {
         name: 'l-select-item',
         props: ['mode', 'item', 'selected', 'noicon'],
@@ -30,57 +65,15 @@
                 }
 
                 if (this.mode === 'desktop') {
-                    if (!this.item || !this.item.key) {
+                    if (!this.item?.key) {
                         return '';
                     }
 
-                    let key = this.item.key.toLowerCase();
-                    let icon;
+                    const key = this.item.key.toLowerCase();
+                    let icon = environments[Object.keys(environments).find((env) => key.includes(env))];
 
-                    if (key.indexOf('gnome') > -1) {
-                        icon = 'gnome';
-                    } if (key.indexOf('xfce') > -1 || key.indexOf('xubuntu') > -1) {
-                        icon = 'xfce';
-                    } else if (key.indexOf('plasma') > -1 || key.indexOf('kde') > -1 || key.indexOf('kubuntu') > -1) {
-                        icon = 'kde';
-                    } else if (key.indexOf('unity') > -1 || key.indexOf('ubuntu') > -1) {
-                        icon = 'ubuntu';
-                    }  if (key.indexOf('dde') > -1 || key.indexOf('deepin') > -1) {
-                        icon = 'deepin';
-                    } if (key.indexOf('lxde') > -1 || key.indexOf('lxqt') > -1) {
-                        icon = 'lxde';
-                    } if (key.indexOf('pantheon') > -1 || key.indexOf('elementary') > -1) {
-                        icon = 'elementary';
-                    } if (key.indexOf('mate') > -1) {
-                        icon = 'mate';
-                    } if (key.indexOf('cinnamon') > -1 || key.indexOf('mint') > -1) {
-                        icon = 'cinnamon';
-                    } if (key.indexOf('enlightenment') > -1 || (key.length === 3 && /e[1-9]{2}/g.test(key))) {
+                    if (!icon && /e[1-9]{2}/g.test(key)) {
                         icon = 'enlightenment';
-                    } if (key.indexOf('liri') > -1) {
-                        icon = 'liri';
-                    } if (key.indexOf('i3') > -1) {
-                        icon = 'i3';
-                    } if (key.indexOf('xmonad') > -1) {
-                        icon = 'xmonad';
-                    } if (key.indexOf('budgie') > -1 || key.indexOf('solus') > -1) {
-                        icon = 'budgie';
-                    } if (key.indexOf('awesome') > -1) {
-                        icon = 'awesome';
-                    } if (key.indexOf('bspwm') > -1) {
-                        icon = 'bspwm'
-                    } if (key.indexOf('qtile') > -1) {
-                        icon = 'qtile';
-                    } if (key.indexOf('kodi') > -1) {
-                        icon = 'kodi';
-                    } if (key.indexOf('exwm') > -1) {
-                        icon = 'exwm';
-                    } if (key.indexOf('dwm') > -1) {
-                        icon = 'dwm';
-                    } if (key.indexOf('openbox') > -1) {
-                        icon = 'openbox'; 
-                    } if (key.indexOf('sway') > -1) {
-                        icon = 'sway';
                     }
 
 
