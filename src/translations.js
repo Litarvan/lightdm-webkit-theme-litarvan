@@ -44,6 +44,7 @@ const translations = {
     'fr': {
         trigger: 'Appuyez sur Espace ou Entrée pour vous connecter',
         password: 'Mot de passe...',
+
         shutdown: 'Arrêt...',
         hibernate: 'Hibernation...',
         suspend: 'Mise en veille...',
@@ -61,6 +62,7 @@ const translations = {
         clock12: 'Format 12 heures de l\'horloge',
         disablePowerTexts: 'Désactiver les écrans "Arrêt..." etc.',
         blurSettings: 'Paramètres du floutage (si problèmes de lags/artifacts)',
+        hideUsername: 'Afficher seulement le nom complet si possible',
         capsLock: 'Verrouillage des majuscules activé',
 
         primaryColor: 'Couleur principale',
@@ -72,7 +74,7 @@ const translations = {
         absoluteBlur: 'Floutage du fond - fond \'absolute\'',
         staticBlur: 'Floutage du fond sans transition',
         disabledBlur: 'Désactiver le floutage du fond',
-        blurHelp: 'Si vous avez des problèmes avec le foutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui même si aucune autre option ne fonctionne.',
+        blurHelp: 'Si vous avez des problèmes avec le floutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui-même si aucune autre option ne fonctionne.',
 
         selectLayout: 'Changer la disposition de clavier',
         layouts: 'Dispositions',
