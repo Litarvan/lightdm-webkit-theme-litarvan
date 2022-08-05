@@ -1,0 +1,26 @@
+{
+	"env": {
+		"es2022": true,
+		"node": true
+	},
+	"extends": ["prettier"],
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"rules": {
+		"no-else-return": [
+			"error",
+			{
+				"allowElseIf": false
+			}
+		],
+		"linebreak-style": ["error", "unix"],
+		"no-tabs": "off",
+		"no-nested-ternary": "error",
+		"no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+		"no-void": "off",
+		"curly": ["error", "all"],
+		"no-return-await": "error",
+		"yoda": "error"
+	}
+}

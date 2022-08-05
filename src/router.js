@@ -13,48 +13,48 @@ import Blur from './views/Blur';
 Vue.use(Router);
 
 export default new Router({
-    routes: [
-        {
-            path: '/setup',
-            name: 'setup',
-            component: Setup
-        },
-        {
-            path: '/theming',
-            name: 'theming',
-            component: Theming
-        },
-        {
-            path: '/blur',
-            name: 'blur',
-            component: Blur
-        },
-        {
-            path: '/intro/:state',
-            name: 'intro',
-            component: Intro
-        },
-        {
-            path: '/base',
-            name: 'base',
-            component: Base,
-            children: [
-                {
-                    path: 'splash',
-                    name: 'splash',
-                    component: Splash,
-                },
-                {
-                    path: 'login',
-                    name: 'login',
-                    component: Login
-                },
-                {
-                    path: 'select/:mode',
-                    name: 'select',
-                    component: Select
-                }
-            ]
-        }
-    ]
+	routes: [
+		{
+			path: '/setup',
+			name: 'setup',
+			component: Setup,
+		},
+		{
+			path: '/theming',
+			name: 'theming',
+			component: Theming,
+		},
+		{
+			path: '/blur',
+			name: 'blur',
+			component: Blur,
+		},
+		{
+			path: '/intro/:state',
+			name: 'intro',
+			component: Intro,
+		},
+		{
+			path: '/base',
+			name: 'base',
+			component: Base,
+			children: [
+				{
+					path: 'splash',
+					name: 'splash',
+					component: Splash,
+				},
+				{
+					path: 'login',
+					name: 'login',
+					component: Login,
+				},
+				{
+					path: 'select/:mode',
+					name: 'select',
+					component: Select,
+				},
+			],
+		},
+	],
 });
