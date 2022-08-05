@@ -38,6 +38,7 @@
         'plasma': 'kde',
         'qtitle': 'qtitle',
         'solus': 'budgie',
+        'sway': 'sway',
         'ubuntu': 'ubuntu',
         'unity': 'ubuntu',
         'xfce': 'xfce',
