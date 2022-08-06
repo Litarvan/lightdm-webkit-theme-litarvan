@@ -17,22 +17,22 @@ export default new Router({
         {
             path: '/setup',
             name: 'setup',
-            component: Setup
+            component: Setup,
         },
         {
             path: '/theming',
             name: 'theming',
-            component: Theming
+            component: Theming,
         },
         {
             path: '/blur',
             name: 'blur',
-            component: Blur
+            component: Blur,
         },
         {
             path: '/intro/:state',
             name: 'intro',
-            component: Intro
+            component: Intro,
         },
         {
             path: '/base',
@@ -47,14 +47,14 @@ export default new Router({
                 {
                     path: 'login',
                     name: 'login',
-                    component: Login
+                    component: Login,
                 },
                 {
                     path: 'select/:mode',
                     name: 'select',
-                    component: Select
-                }
-            ]
-        }
-    ]
+                    component: Select,
+                },
+            ],
+        },
+    ],
 });

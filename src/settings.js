@@ -23,14 +23,14 @@ export let settings = (local ? JSON.parse(local) : null) || {
     hideUsername: false,
 
     user: lightdm.users[0],
-    desktop: lightdm.sessions[0]
+    desktop: lightdm.sessions[0],
 };
 
 if (!settings.user) {
-    settings.user = lightdm.users.find(u => !!u);
+    settings.user = lightdm.users.find((u) => !!u);
 }
 if (!settings.desktop) {
-    settings.desktop = lightdm.sessions.find(s => !!s);
+    settings.desktop = lightdm.sessions.find((s) => !!s);
 }
 
 if (!settings.blur) {
@@ -38,13 +38,20 @@ if (!settings.blur) {
 }
 
 // Handle display name change
-lightdm.users.forEach(u => settings.user.username === u.username && (settings.user = u));
-lightdm.sessions.forEach(s => settings.desktop.username === s.key && (settings.desktop = s));
+lightdm.users.forEach(
+    (u) => settings.user.username === u.username && (settings.user = u),
+);
+lightdm.sessions.forEach(
+    (s) => settings.desktop.username === s.key && (settings.desktop = s),
+);
 
 save();
 
 export function save(s) {
-    localStorage.setItem('settings', JSON.stringify(s ? settings = s : settings));
+    localStorage.setItem(
+        'settings',
+        JSON.stringify(s ? (settings = s) : settings),
+    );
 }
 
 export function avatar(avatar) {

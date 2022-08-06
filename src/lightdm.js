@@ -5,17 +5,19 @@ const DEBUG_PASSWORD = 'test';
 window.lightdm_debug = window.lightdm === undefined;
 
 if (window.lightdm_debug) {
-    console.log(' --> Theme is running outside LightDM, using placeholder data');
+    console.log(
+        ' --> Theme is running outside LightDM, using placeholder data',
+    );
     window.theme_utils = {
         dirlist(_) {
             return [];
-        }
+        },
     };
 
     window.greeter_config = {
         branding: {
-            background_images_dir: 'nowhere this is live test'
-        }
+            background_images_dir: 'nowhere this is live test',
+        },
     };
 
     let brightness = 85;
@@ -31,65 +33,75 @@ if (window.lightdm_debug) {
         sessions: [
             {
                 name: 'KDE 5',
-                key: 'plasma-shell'
+                key: 'plasma-shell',
             },
             {
                 name: 'Gnome 3',
-                key: 'gnome-shell'
+                key: 'gnome-shell',
             },
             {
                 name: 'XFCE 4',
-                key: 'xfce'
+                key: 'xfce',
             },
             {
                 name: 'Cinnamon',
-                key: 'cinnamon'
+                key: 'cinnamon',
             },
             {
                 name: 'i3',
-                key: 'i3'
+                key: 'i3',
             },
             {
                 name: 'xmonad',
-                key: 'xmonad'
+                key: 'xmonad',
             },
             {
                 name: 'Qtile',
-                key: 'qtile'
+                key: 'qtile',
             },
             {
                 name: 'Kodi',
-                key: 'kodi'
+                key: 'kodi',
             },
             {
                 name: 'exwm',
-                key: 'exwm'
+                key: 'exwm',
             },
             {
                 name: 'Openbox',
-                key: 'openbox'
+                key: 'openbox',
             },
             {
                 name: 'Sway',
-                key: 'sway'
-            }
+                key: 'sway',
+            },
         ],
-        users: [{
-            display_name: 'John Doe',
-            username: 'johnd'
-        }, {
-            display_name: 'Adrien Navratil',
-            username: 'litarvan',
-            image: 'litarvan'
-        }],
-        languages: [{
+        users: [
+            {
+                display_name: 'John Doe',
+                username: 'johnd',
+            },
+            {
+                display_name: 'Adrien Navratil',
+                username: 'litarvan',
+                image: 'litarvan',
+            },
+        ],
+        languages: [
+            {
+                name: 'American English',
+                code: 'en_US.utf8',
+            },
+            {
+                name: 'Français',
+                code: 'fr_FR.utf8',
+            },
+        ],
+        language: {
+            code: 'en_US',
             name: 'American English',
-            code: 'en_US.utf8'
-        }, {
-            name: 'Français',
-            code: 'fr_FR.utf8'
-        }],
-        language: {code: "en_US", name: "American English", territory: "United States"},
+            territory: 'United States',
+        },
         battery_data: {
             level: 15,
             ac_status: true,
@@ -105,13 +117,17 @@ if (window.lightdm_debug) {
                 window.lightdm.battery_update._callbacks.push(callback);
             },
             disconnect: (callback) => {
-                const ind = window.lightdm.battery_update._callbacks.findIndex((v) => {
-                    return callback == v;
-                });
-                if (ind == -1) return;
+                const ind = window.lightdm.battery_update._callbacks.findIndex(
+                    (v) => {
+                        return callback == v;
+                    },
+                );
+                if (ind == -1) {
+                    return;
+                }
 
                 window.lightdm.battery_update._callbacks.splice(ind, 1);
-            }
+            },
         },
         brightness_update: {
             _callbacks: [],
@@ -124,18 +140,23 @@ if (window.lightdm_debug) {
                 window.lightdm.brightness_update._callbacks.push(callback);
             },
             disconnect: (callback) => {
-                const ind = window.lightdm.brightness_update._callbacks.findIndex((v) => {
-                    return callback == v;
-                });
-                if (ind == -1) return;
+                const ind =
+                    window.lightdm.brightness_update._callbacks.findIndex(
+                        (v) => {
+                            return callback == v;
+                        },
+                    );
+                if (ind == -1) {
+                    return;
+                }
                 window.lightdm.brightness_update._callbacks.splice(ind, 1);
-            }
+            },
         },
         authenticate: (username) => {
             console.log(`Starting authenticating : '${username}'`);
             lightdm.authentication_user = username;
 
-            show_prompt("Password: ");
+            show_prompt('Password: ');
         },
         cancel_authentication: () => {
             console.log('Auth cancelled');
@@ -143,13 +164,10 @@ if (window.lightdm_debug) {
         respond: (password) => {
             console.log(`Password provided : '${password}'`);
 
-            if (password === DEBUG_PASSWORD)
-            {
+            if (password === DEBUG_PASSWORD) {
                 lightdm.is_authenticated = true;
                 authentication_complete();
-            }
-            else
-            {
+            } else {
                 setTimeout(() => authentication_complete(), 2000);
             }
         },
@@ -157,17 +175,17 @@ if (window.lightdm_debug) {
             alert(`Logged with '${user}' (Session: '${session}') !`);
         },
         shutdown: () => {
-            alert('(DEBUG: System is shutting down)')
+            alert('(DEBUG: System is shutting down)');
         },
         hibernate: () => {
-            alert('(DEBUG: System is hibernating)')
+            alert('(DEBUG: System is hibernating)');
         },
         suspend: () => {
-            alert('(DEBUG: System is suspending)')
+            alert('(DEBUG: System is suspending)');
         },
         restart: () => {
-            alert('(DEBUG: System is rebooting)')
-        }
+            alert('(DEBUG: System is rebooting)');
+        },
     };
 
     Object.defineProperty(window.lightdm, 'brightness', {
@@ -178,7 +196,7 @@ if (window.lightdm_debug) {
             brightness = value;
             window.lightdm.brightness_update._emit();
         },
-    })
+    });
 }
 
 let password;
@@ -188,7 +206,7 @@ let messageCB;
 
 window.set_complete_cb = (cb) => {
     completeCB = cb;
-}
+};
 
 window.lightdm_cancel_login = () => {
     lightdm.cancel_authentication();
@@ -199,7 +217,7 @@ window.lightdm_begin_login = (username, cb, errCB, msgCB) => {
     errorCB = errCB;
     messageCB = msgCB;
     password = undefined;
-    
+
     lightdm.authenticate(username);
 };
 
@@ -218,16 +236,15 @@ window.lightdm_start = (desktop) => {
 };
 
 window.show_prompt = (text, type) => {
-    if (text === "Password: " && password !== undefined)
-    {
+    if (text === 'Password: ' && password !== undefined) {
         lightdm.respond(password);
     }
-}
+};
 
 window.authentication_complete = () => {
     if (lightdm.is_authenticated) {
         completeCB();
-    } else if (document.head.dataset.wintype === "primary") {
+    } else if (document.head.dataset.wintype === 'primary') {
         lightdm.cancel_authentication();
         errorCB();
     }
@@ -235,7 +252,7 @@ window.authentication_complete = () => {
 
 window.show_message = (text, type) => {
     if (messageCB) {
-        messageCB(text);  
+        messageCB(text);
     }
 };
 

@@ -1,58 +1,57 @@
 <template>
-    <div class="radio" @click="select" ref="box">
-    </div>
+    <div class="radio" @click="select" ref="box"></div>
 </template>
 
 <script>
-    import { color } from '@/themer';
+import { color } from '@/themer';
 
-    export default {
-        name: 'l-radio',
-        props: ['value', 'valueKey'],
+export default {
+    name: 'l-radio',
+    props: ['value', 'valueKey'],
 
-        mounted() {
+    mounted() {
+        this.updateStyle();
+    },
+
+    computed: {
+        checked() {
+            return this.value === this.valueKey;
+        },
+    },
+    watch: {
+        checked() {
             this.updateStyle();
         },
-
-        computed: {
-            checked() {
-                return this.value === this.valueKey
-            }
+    },
+    methods: {
+        select() {
+            this.$emit('input', this.valueKey);
         },
-        watch: {
-            checked() {
-                this.updateStyle();
-            }
-        },
-        methods: {
-            select() {
-                this.$emit('input', this.valueKey);
-            },
-            updateStyle() {
-                const style = this.$refs.box.style;
-                const col = this.checked ? color : null;
+        updateStyle() {
+            const style = this.$refs.box.style;
+            const col = this.checked ? color : null;
 
-                style['border-color'] = col;
-                style['background'] = col;
-            }
-        }
-    }
+            style['border-color'] = col;
+            style['background'] = col;
+        },
+    },
+};
 </script>
 
 <style lang="scss">
-    .radio {
-        border: solid 2px;
-        border-radius: 50%;
+.radio {
+    border: solid 2px;
+    border-radius: 50%;
 
-        transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
+    transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
 
-        width: 30px;
-        height: 30px;
+    width: 30px;
+    height: 30px;
 
-        display: inline-block;
-    }
+    display: inline-block;
+}
 
-    .radio:hover {
-        cursor: pointer;
-    }
+.radio:hover {
+    cursor: pointer;
+}
 </style>

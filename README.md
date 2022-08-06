@@ -7,6 +7,7 @@
 # [Live testing (3.2.0)](https://litarvan.github.io/lightdm-webkit-theme-litarvan/)
 
 # Customize release
+
 Backgrounds can be added in `/usr/share/backgrounds` and chosen in the Theming view (bottom right corner of the Setup view).
 
 Customize the OS logo within `/usr/share/lightdm-webkit/themes/litarvan/img/os.xxxxxxxx.png`
@@ -19,14 +20,14 @@ Customize the OS logo within `/usr/share/lightdm-webkit/themes/litarvan/img/os.x
 pacman -S --needed lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
 ```
 
-* If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter` .
-* Then edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` or `webkit-theme` to `litarvan` .
+-   If not already done, edit `/etc/lightdm/lightdm.conf` and set `greeter-session=lightdm-webkit2-greeter` .
+-   Then edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` or `webkit-theme` to `litarvan` .
 
 ## Manual (3.2.0)
 
-* Install lightdm-webkit2-greeter using your dependency manager if not already done
-* Download and unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
-* Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` to `litarvan`.
+-   Install lightdm-webkit2-greeter using your dependency manager if not already done
+-   Download and unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
+-   Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` to `litarvan`.
 
 # Building (3.2.0)
 

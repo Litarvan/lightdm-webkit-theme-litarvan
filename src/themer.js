@@ -13,12 +13,12 @@ export function hook(element, rules) {
         style[rule] = color;
     }
 }
-document.documentElement.style.setProperty('--primary-color', color)
+document.documentElement.style.setProperty('--primary-color', color);
 
 export function updateColor(hex) {
     color = hex;
     localStorage.setItem('color', color);
-    document.documentElement.style.setProperty('--primary-color', color)
+    document.documentElement.style.setProperty('--primary-color', color);
 }
 
 export function updateBG(bg) {
@@ -26,15 +26,16 @@ export function updateBG(bg) {
     localStorage.setItem('background', bg);
     if (window.greeter_comm) {
         greeter_comm.broadcast({
-            type: "change-background",
+            type: 'change-background',
             path: bg,
-        })
+        });
     }
 }
 
 export async function backgrounds() {
-    const folder = greeter_config.branding.background_images_dir ||
-                    greeter_config.branding.background_images;
+    const folder =
+        greeter_config.branding.background_images_dir ||
+        greeter_config.branding.background_images;
     if (!folder) {
         return [DEFAULT_BG];
     }
@@ -46,17 +47,19 @@ export async function backgrounds() {
             let dirl = theme_utils.dirlist(dir, false, (files) => {
                 dirlist = files;
                 resolve();
-            })
+            });
             if (Array.isArray(dirl)) {
                 dirlist = dirl;
                 resolve();
             }
-        })
+        });
 
         for (const file of dirlist) {
-            if (!file.includes('.')) { // I didn't find any good ways to do it
+            if (!file.includes('.')) {
+                // I didn't find any good ways to do it
                 result = [...result, ...(await recDirList(file))];
-            } else if (!file.endsWith('.xml') && !file.endsWith('.stw')) { // Gnome and Arch backgrounds have strange files
+            } else if (!file.endsWith('.xml') && !file.endsWith('.stw')) {
+                // Gnome and Arch backgrounds have strange files
                 result.push(file);
             }
         }
@@ -69,7 +72,7 @@ export async function backgrounds() {
 }
 
 function getBackground() {
-    if(settings.randomizeBG) {
+    if (settings.randomizeBG) {
         const bgs = backgrounds();
         return bgs[Math.floor(Math.random() * bgs.length)];
     }

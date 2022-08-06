@@ -1,6 +1,6 @@
 const translations = {
     // English
-    'en': {
+    en: {
         trigger: 'Press Space or Enter to login',
         password: 'Password...',
 
@@ -33,11 +33,12 @@ const translations = {
         absoluteBlur: 'Blurred background - absolute background',
         staticBlur: 'Blurred background without transition',
         disabledBlur: 'Disable background blurring',
-        blurHelp: 'If you are having issues with blur like lags or artifacts, please try a different blur method.\nYou can disable the transition or even the entire blur if nothing is working.'
+        blurHelp:
+            'If you are having issues with blur like lags or artifacts, please try a different blur method.\nYou can disable the transition or even the entire blur if nothing is working.',
     },
 
     // French
-    'fr': {
+    fr: {
         trigger: 'Appuyez sur Espace ou Entrée pour vous connecter',
         password: 'Mot de passe...',
 
@@ -49,13 +50,14 @@ const translations = {
         setup: 'Réglages',
         theming: 'Personnalisation',
         disableSplash: 'Désactiver le splash (écran "Appuyez sur entrer")',
-        disableSplashText: 'Désactiver le texte du splash (seulement l\'horloge)',
-        disableIntro: 'Désactiver l\'introduction (logo de l\'OS)',
+        disableSplashText:
+            "Désactiver le texte du splash (seulement l'horloge)",
+        disableIntro: "Désactiver l'introduction (logo de l'OS)",
         disableFade: 'Désactiver le fondu au noir lors de la connexion',
-        roundAvatar: 'Arrondir l\'avatar',
-        disableAvatar: 'Désactiver l\'avatar',
+        roundAvatar: "Arrondir l'avatar",
+        disableAvatar: "Désactiver l'avatar",
         disableZoom: 'Désactiver le zoom x2 (fix des grands écrans)',
-        clock12: 'Format 12 heures de l\'horloge',
+        clock12: "Format 12 heures de l'horloge",
         disablePowerTexts: 'Désactiver les écrans "Arrêt..." etc.',
         blurSettings: 'Paramètres du floutage (si problèmes de lags/artifacts)',
         hideUsername: 'Afficher seulement le nom complet si possible',
@@ -66,21 +68,22 @@ const translations = {
         bgAdd: 'Des fonds peuvent être ajoutés dans :',
 
         blur: 'Floutage',
-        fixedBlur: 'Floutage du fond - fond \'fixed\'',
-        absoluteBlur: 'Floutage du fond - fond \'absolute\'',
+        fixedBlur: "Floutage du fond - fond 'fixed'",
+        absoluteBlur: "Floutage du fond - fond 'absolute'",
         staticBlur: 'Floutage du fond sans transition',
         disabledBlur: 'Désactiver le floutage du fond',
-        blurHelp: 'Si vous avez des problèmes avec le floutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui-même si aucune autre option ne fonctionne.'
+        blurHelp:
+            'Si vous avez des problèmes avec le floutage comme des lags ou des artifacts, essayez une autre option de floutage.\nVous pouvez désactiver la transition ou le floutage lui-même si aucune autre option ne fonctionne.',
     },
 
     // Dutch (TODO)
-    'nl': {
+    nl: {
         trigger: 'Druk op Spatie of Enter om aan te melden',
-        password: 'Wachtwoord...'
+        password: 'Wachtwoord...',
     },
 
     // Polish
-    'pl': {
+    pl: {
         trigger: 'Naciśnij Spację lub Enter aby kontynuować',
         password: 'Hasło...',
 
@@ -89,31 +92,33 @@ const translations = {
         restart: 'Ponowne uruchamianie...',
 
         setup: 'Konfiguracja',
-        disableSplash: 'Wyłącz ekran powitalny (zawierający tekst "Naciśnij Enter")',
-        disableSplashText: 'Wyłącz tekst na ekranie powitalnym (pozostaw zegar)',
+        disableSplash:
+            'Wyłącz ekran powitalny (zawierający tekst "Naciśnij Enter")',
+        disableSplashText:
+            'Wyłącz tekst na ekranie powitalnym (pozostaw zegar)',
         disableIntro: 'Wyłącz intro (logo systemu operacyjnego)',
         disableFade: 'Wyłącz przejście w czerń po logowaniu',
         roundAvatar: 'Okrągły awatar',
         disableAvatar: 'Wyłącz awatar',
         disableZoom: 'Wyłącz powiększenie x2 (poprawka dla dużych ekranów)',
         clock12: '12-godzinny format wyświetlania czasu',
-        capsLock: 'Przycisk Caps lock jest aktywny'
+        capsLock: 'Przycisk Caps lock jest aktywny',
     },
 
     // German (TODO)
-    'de': {
+    de: {
         trigger: 'Drücken Sie Leertaste oder Enter um sich einzuloggen',
-        password: 'Passwort...'
+        password: 'Passwort...',
     },
 
     // Portuguese (TODO)
-    'pt': {
+    pt: {
         trigger: 'Carrega na tecla Espaço ou Enter para fazer login',
-        password: 'Palavra-passe...'
+        password: 'Palavra-passe...',
     },
 
     // Spanish
-    'es': {
+    es: {
         trigger: 'Presiona Espacio o Enter para iniciar sesión',
         password: 'Contraseña...',
 
@@ -124,17 +129,21 @@ const translations = {
 
         setup: 'Configuración',
         theming: 'Personalización',
-        disableSplash: 'Deshabilitar pantalla de bienvenida (pantalla de "Presiona Enter")',
-        disableSplashText: 'Deshabilitar texto de pantalla de bienvenida (sólo el reloj)',
+        disableSplash:
+            'Deshabilitar pantalla de bienvenida (pantalla de "Presiona Enter")',
+        disableSplashText:
+            'Deshabilitar texto de pantalla de bienvenida (sólo el reloj)',
         disableIntro: 'Deshabilitar introducción (logo del Sistema)',
         disableFade: 'Deshabilitar transición a negro al iniciar sesión',
         roundAvatar: 'Avatar circular',
         disableAvatar: 'Deshabilitar avatar',
-        disableZoom: 'Deshabilitar el zoom x2 (corrección de pantallas grandes)',
+        disableZoom:
+            'Deshabilitar el zoom x2 (corrección de pantallas grandes)',
         clock12: 'Reloj de 12 horas',
         disablePowerTexts: 'Deshabilitar los mensajes de "Apagando..."',
         blurSettings: 'Ajustes de desenfoque (por problemas de lag/visuales)',
-        hideUsername: 'Ocultar nombre de usuario cuando el nombre completo está disponible',
+        hideUsername:
+            'Ocultar nombre de usuario cuando el nombre completo está disponible',
         capsLock: 'Bloq Mayús está habilitado',
 
         primaryColor: 'Color primario',
@@ -146,11 +155,12 @@ const translations = {
         absoluteBlur: 'Fondo de pantalla desenfocado - Fondo absoluto',
         staticBlur: 'Fondo de pantalla desenfocado sin transición',
         disabledBlur: 'Deshabilitar desenfoque de fondo de pantalla',
-        blurHelp: 'Si estás teniendo problemas con el desenfoque, como lag o problemas visuales, intenta un método de desenfoque distinto.\nPuedes deshabilitar la transición o incluso el desenfoque por completo si ninguna otra opción funciona.',
+        blurHelp:
+            'Si estás teniendo problemas con el desenfoque, como lag o problemas visuales, intenta un método de desenfoque distinto.\nPuedes deshabilitar la transición o incluso el desenfoque por completo si ninguna otra opción funciona.',
     },
 
     // Hebrew (TODO)
-    'he': {
+    he: {
         trigger: 'לחץ על רווח או Enter כדי להכנס',
         password: 'ססמה...',
 
@@ -169,7 +179,7 @@ const translations = {
         clock12: 'תבנית שעון של 12 שעות',
         capsLock: 'נעילת Caps פעילה',
 
-        primaryColor: 'צבע ראשי'
+        primaryColor: 'צבע ראשי',
     },
     // Chinese (Simplified)
     'zh-CN': {
@@ -206,7 +216,8 @@ const translations = {
         absoluteBlur: '模糊背景 - 绝对背景',
         staticBlur: '无过渡的模糊背景',
         disabledBlur: '禁用模糊背景',
-        blurHelp: '如果你在使用模糊功能时遇到卡顿或画面瑕疵等问题，请尝试其他模糊方案。\n如果没有任何效果，你可以禁用过渡动画甚至禁用整个模糊功能。'
+        blurHelp:
+            '如果你在使用模糊功能时遇到卡顿或画面瑕疵等问题，请尝试其他模糊方案。\n如果没有任何效果，你可以禁用过渡动画甚至禁用整个模糊功能。',
     },
     // Chinese (Traditional)
     'zh-TW': {
@@ -243,10 +254,11 @@ const translations = {
         absoluteBlur: '模糊桌布 - 絕對桌布',
         staticBlur: '無過渡的模糊桌布',
         disabledBlur: '停用模糊桌布',
-        blurHelp: '如果您在使用模糊功能時遇到延遲或畫面瑕疵等問題，請嘗試其他模糊方案。\n如果沒有任何效果，您可以停用過渡動畫甚至停用整個模糊功能。'
+        blurHelp:
+            '如果您在使用模糊功能時遇到延遲或畫面瑕疵等問題，請嘗試其他模糊方案。\n如果沒有任何效果，您可以停用過渡動畫甚至停用整個模糊功能。',
     },
     // Russian
-    'ru': {
+    ru: {
         trigger: 'Нажмите пробел или ввод для входа в систему',
         password: 'Пароль...',
 
@@ -278,13 +290,13 @@ const translations = {
         absoluteBlur: 'Размытый абсолютный фон',
         staticBlur: 'Размытый фон без перехода',
         disabledBlur: 'Выключить размытие фона',
-        blurHelp: 'Если у вас возникли проблемы с размытием, такие как задержки или артефакты, попробуйте другой метод размытия.\nВы можете отключить переход или отключить размытие если оно работат некорректно.'
+        blurHelp:
+            'Если у вас возникли проблемы с размытием, такие как задержки или артефакты, попробуйте другой метод размытия.\nВы можете отключить переход или отключить размытие если оно работат некорректно.',
     },
     // More ? PR opens !
 };
 
-function getLocale()
-{
+function getLocale() {
     let lang = 'en-US';
 
     if (!lightdm.language || !lightdm.languages) {
@@ -292,14 +304,15 @@ function getLocale()
     }
 
     let language = lightdm.language;
-    if (typeof(language) === "string")
+    if (typeof language === 'string') {
         language = language.toLowerCase();
-    else if (language.name != undefined)
+    } else if (language.name != undefined) {
         language = language.name.toLowerCase();
-    else
+    } else {
         language = lang;
+    }
 
-    lightdm.languages.forEach(l => {
+    lightdm.languages.forEach((l) => {
         if (l.name.toLowerCase() === language) {
             lang = l.code.split('.')[0].replace('_', '-');
         }
@@ -308,8 +321,7 @@ function getLocale()
     return lang;
 }
 
-function trans(key)
-{
+function trans(key) {
     const lang = getLocale();
     const candidates = [lang, lang.substring(0, 2), 'en'];
     for (const candidate of candidates) {
@@ -322,7 +334,4 @@ function trans(key)
     return '';
 }
 
-export {
-    getLocale,
-    trans
-}
+export { getLocale, trans };

@@ -1,33 +1,37 @@
 {
-  "name": "lightdm-webkit-theme-litarvan",
-  "version": "3.2.0",
-  "license": "BSD-3-Clause",
-  "author": "Adrien 'Litarvan' Navratil <adrien1975@live.fr>",
-  "homepage": "https://litarvan.github.io/lightdm-webkit-theme-litarvan/",
-  "repository": "https://github.com/Litarvan/lightdm-webkit-theme-litarvan",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
-  },
-  "dependencies": {
-    "vue": "^2.7.8",
-    "vue-router": "^3.5.4"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-service": "^5.0.8",
-    "sass": "^1.54.1",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.7.8"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "name": "lightdm-webkit-theme-litarvan",
+    "version": "3.2.0",
+    "license": "BSD-3-Clause",
+    "author": "Adrien 'Litarvan' Navratil <adrien1975@live.fr>",
+    "homepage": "https://litarvan.github.io/lightdm-webkit-theme-litarvan/",
+    "repository": "https://github.com/Litarvan/lightdm-webkit-theme-litarvan",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "prettier --write . && eslint --fix src/"
+    },
+    "dependencies": {
+        "vue": "^2.7.8",
+        "vue-router": "^3.5.4"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^5.0.8",
+        "@vue/cli-service": "^5.0.8",
+        "eslint": "^8.21.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.7.1",
+        "sass": "^1.54.1",
+        "sass-loader": "^8.0.2",
+        "vue-template-compiler": "^2.7.8"
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
 }
