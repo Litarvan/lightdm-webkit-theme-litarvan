@@ -1,21 +1,21 @@
 <template>
-	<div class="base">
-		<div
-			class="bg"
-			:class="{
-				blurred: isBlurred(),
-				fixed,
-				absolute,
-				blurrable,
-				transition,
-			}"
-			:style="{ 'background-image': 'url(' + background + ')' }"
-		></div>
+    <div class="base">
+        <div
+            class="bg"
+            :class="{
+                blurred: isBlurred(),
+                fixed,
+                absolute,
+                blurrable,
+                transition,
+            }"
+            :style="{ 'background-image': 'url(' + background + ')' }"
+        ></div>
 
-		<transition name="fade">
-			<router-view />
-		</transition>
-	</div>
+        <transition name="fade">
+            <router-view />
+        </transition>
+    </div>
 </template>
 
 <script>
@@ -23,35 +23,35 @@ import { background } from '@/themer';
 import { settings } from '@/settings';
 
 export default {
-	name: 'l-base',
+    name: 'l-base',
 
-	data() {
-		const { blur } = settings;
+    data() {
+        const { blur } = settings;
 
-		return {
-			background,
-			fixed: blur !== 'absolute',
-			absolute: blur === 'absolute',
-			transition: blur !== 'static',
-			blurrable: blur !== 'disabled',
-		};
-	},
-	methods: {
-		isBlurred() {
-			let name = this.$router.currentRoute.name;
-			return name === 'login' || name === 'select';
-		},
-	},
-	mounted() {
-		if (window.greeter_comm) {
-			window.addEventListener('GreeterBroadcastEvent', (event) => {
-				const data = event.data;
-				if (data.type == 'change-background') {
-					this.background = data.path;
-				}
-			});
-		}
-	},
+        return {
+            background,
+            fixed: blur !== 'absolute',
+            absolute: blur === 'absolute',
+            transition: blur !== 'static',
+            blurrable: blur !== 'disabled',
+        };
+    },
+    methods: {
+        isBlurred() {
+            let name = this.$router.currentRoute.name;
+            return name === 'login' || name === 'select';
+        },
+    },
+    mounted() {
+        if (window.greeter_comm) {
+            window.addEventListener('GreeterBroadcastEvent', (event) => {
+                const data = event.data;
+                if (data.type == 'change-background') {
+                    this.background = data.path;
+                }
+            });
+        }
+    },
 };
 </script>
 
@@ -59,36 +59,36 @@ export default {
 @import '../theme';
 
 .bg {
-	background-size: cover;
-	left: 0;
-	right: 0;
+    background-size: cover;
+    left: 0;
+    right: 0;
 
-	display: block;
-	width: 100%;
-	height: 100vh;
+    display: block;
+    width: 100%;
+    height: 100vh;
 
-	z-index: -1;
+    z-index: -1;
 
-	color: $secondary-color;
+    color: $secondary-color;
 
-	&.absolute {
-		position: absolute;
-	}
+    &.absolute {
+        position: absolute;
+    }
 
-	&.fixed {
-		position: fixed;
-	}
+    &.fixed {
+        position: fixed;
+    }
 
-	&.blurrable {
-		filter: blur(0px);
+    &.blurrable {
+        filter: blur(0px);
 
-		&.transition {
-			transition: filter 500ms ease-in-out;
-		}
+        &.transition {
+            transition: filter 500ms ease-in-out;
+        }
 
-		&.blurred {
-			filter: blur(10px);
-		}
-	}
+        &.blurred {
+            filter: blur(10px);
+        }
+    }
 }
 </style>

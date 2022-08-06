@@ -1,62 +1,62 @@
 <template>
-	<div class="power-button">
-		<div id="button-container" @click="disabled ? '' : apply()">
-			<img
-				id="power-button-icon"
-				:class="{ type }"
-				:src="require('../assets/images/' + type + '.svg')"
-			/>
-		</div>
-	</div>
+    <div class="power-button">
+        <div id="button-container" @click="disabled ? '' : apply()">
+            <img
+                id="power-button-icon"
+                :class="{ type }"
+                :src="require('../assets/images/' + type + '.svg')"
+            />
+        </div>
+    </div>
 </template>
 
 <script>
 import { settings, save } from '@/settings';
 
 export default {
-	name: 'l-power-button',
-	props: ['type', 'disabled'],
-	methods: {
-		apply() {
-			if (this.type === 'back') {
-				save();
-				this.$router.back();
+    name: 'l-power-button',
+    props: ['type', 'disabled'],
+    methods: {
+        apply() {
+            if (this.type === 'back') {
+                save();
+                this.$router.back();
 
-				return;
-			}
+                return;
+            }
 
-			if (this.type === 'settings') {
-				this.$router.push('/setup');
-				return;
-			}
+            if (this.type === 'settings') {
+                this.$router.push('/setup');
+                return;
+            }
 
-			if (this.type === 'theming') {
-				this.$router.push('/theming');
-				return;
-			}
+            if (this.type === 'theming') {
+                this.$router.push('/theming');
+                return;
+            }
 
-			const action = lightdm[this.type];
-			if (settings.disablePowerTexts) {
-				action();
-				return;
-			}
+            const action = lightdm[this.type];
+            if (settings.disablePowerTexts) {
+                action();
+                return;
+            }
 
-			setTimeout(action, 1500);
-			this.$router.push(`/intro/${this.type}`);
-		},
-	},
-	data() {
-		return {
-			types: [
-				'shutdown',
-				'hibernate',
-				'suspend',
-				'restart',
-				'settings',
-				'back',
-			],
-		};
-	},
+            setTimeout(action, 1500);
+            this.$router.push(`/intro/${this.type}`);
+        },
+    },
+    data() {
+        return {
+            types: [
+                'shutdown',
+                'hibernate',
+                'suspend',
+                'restart',
+                'settings',
+                'back',
+            ],
+        };
+    },
 };
 </script>
 
@@ -64,22 +64,22 @@ export default {
 @import '../theme';
 
 #button-container {
-	transition: background 125ms ease-in-out;
-	border-radius: 6px;
-	line-height: 1;
+    transition: background 125ms ease-in-out;
+    border-radius: 6px;
+    line-height: 1;
 }
 
 #button-container:hover {
-	background: rgba(255, 255, 255, 0.08);
-	cursor: pointer;
+    background: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
 }
 
 #power-button-icon {
-	box-sizing: initial;
+    box-sizing: initial;
 
-	padding: 10px 10px 10px;
+    padding: 10px 10px 10px;
 
-	width: 42px;
-	height: 42px;
+    width: 42px;
+    height: 42px;
 }
 </style>
