@@ -292,18 +292,22 @@ function getLocale()
     }
 
     let language = lightdm.language;
-    if (typeof(language) === "string")
-        language = language.toLowerCase();
-    else if (language.name != undefined)
-        language = language.name.toLowerCase();
-    else
-        language = lang;
+    let name = typeof(language) === 'string' ? language : language.name != undefined ? language.name : '';
+    let territory = language.territory != undefined ? language.territory : '';
 
-    lightdm.languages.forEach(l => {
-        if (l.name.toLowerCase() === language) {
-            lang = l.code.split('.')[0].replace('_', '-');
-        }
-    });
+    name = name.toLowerCase();
+    territory = territory.toLowerCase();
+
+    if (name !== '' && territory !== '')
+        lightdm.languages.forEach(l => {
+            if (l.name.toLowerCase() === name && l.territory.toLowerCase() === territory)
+                lang = l.code.split('.')[0].replace('_', '-');
+        });
+    else
+        lightdm.languages.forEach(l => {
+            if (l.name.toLowerCase() === name)
+                lang = l.code.split('.')[0].replace('_', '-');
+        });
 
     return lang;
 }
