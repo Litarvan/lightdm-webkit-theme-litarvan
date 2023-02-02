@@ -218,7 +218,7 @@ const translations = {
 
         shutdown: '正在關機……',
         hibernate: '正在休眠……',
-        suspend: '正在暫停……',
+        suspend: '正在睡眠……',
         restart: '正在重新啟動……',
 
         setup: '設定',
