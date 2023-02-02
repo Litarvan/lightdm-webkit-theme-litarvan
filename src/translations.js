@@ -195,6 +195,7 @@ const translations = {
         clock12: '12小时制',
         disablePowerTexts: '禁用“正在关机……”等屏幕',
         blurSettings: '模糊设置（用于解决卡顿/画面瑕疵问题）',
+        hideUsername: '全名已知时隐藏用户名',
         capsLock: '已启用大写锁定',
 
         primaryColor: '主题色',
@@ -217,7 +218,7 @@ const translations = {
 
         shutdown: '正在關機……',
         hibernate: '正在休眠……',
-        suspend: '正在暫停……',
+        suspend: '正在睡眠……',
         restart: '正在重新啟動……',
 
         setup: '設定',
@@ -232,6 +233,7 @@ const translations = {
         clock12: '12小時制',
         disablePowerTexts: '停用「正在關機……」等畫面',
         blurSettings: '模糊設定（用於解決延遲/畫面瑕疵問題）',
+        hideUsername: '全名已知時隱藏使用者名稱',
         capsLock: '已啟用大寫鎖定',
 
         primaryColor: '主要顏色',
