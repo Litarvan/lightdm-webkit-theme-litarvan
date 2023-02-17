@@ -318,7 +318,7 @@ const translations = {
         disabledBlur: 'Desactivar l’enfosquiment del rèireplan',
         blurHelp: 'Se rencontratz de problèmas amb l’enfosquiment coma de laténcias o artifects, mercés de causir un metòde d’enfosquiment diferent.\nPodètz desactivar la transicion o tot l’enfosquiment se res fonciona pas.'
     },
-};
+};// More ? PR opens !
 
 function getLocale()
 {
