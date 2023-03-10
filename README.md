@@ -1,6 +1,6 @@
 # Litarvan's LightDM WebKit2 theme
 
-[![Arch Release](https://img.shields.io/badge/arch-3.1.0-blue.svg?style=flat-square)](https://www.archlinux.org/packages/community/any/lightdm-webkit-theme-litarvan/) &nbsp;[![Latest Release](https://img.shields.io/github/release/Litarvan/lightdm-webkit-theme-litarvan.svg?style=flat-square&label=github)](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) &nbsp;![Github downloads](https://img.shields.io/github/downloads/Litarvan/lightdm-webkit-theme-litarvan/total.svg?style=flat-square)
+[![Arch Release](https://img.shields.io/badge/arch-3.2.0-blue.svg?style=flat-square)](https://www.archlinux.org/packages/community/any/lightdm-webkit-theme-litarvan/) &nbsp;[![Latest Release](https://img.shields.io/github/release/Litarvan/lightdm-webkit-theme-litarvan.svg?style=flat-square&label=github)](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) &nbsp;![Github downloads](https://img.shields.io/github/downloads/Litarvan/lightdm-webkit-theme-litarvan/total.svg?style=flat-square)
 
 **=> Screenshots below**
 
@@ -13,7 +13,7 @@ Customize the OS logo within `/usr/share/lightdm-webkit/themes/litarvan/img/os.x
 
 # Installation
 
-## Arch Linux (3.0.0)
+## Arch Linux (3.2.0)
 
 ```
 pacman -S --needed lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
@@ -28,7 +28,7 @@ pacman -S --needed lightdm-webkit2-greeter lightdm-webkit-theme-litarvan
 * Download and unzip the [tar file](https://github.com/Litarvan/lightdm-webkit-theme-litarvan/releases) in `/usr/share/lightdm-webkit/themes/litarvan/`
 * Edit `/etc/lightdm/lightdm-webkit2-greeter.conf` and set `theme` to `litarvan`.
 
-# Building (3.2.0)
+# Building (latest features in development, future 3.3.0)
 
 ```
 $ ./build.sh
