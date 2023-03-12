@@ -282,8 +282,43 @@ const translations = {
         disabledBlur: 'Выключить размытие фона',
         blurHelp: 'Если у вас возникли проблемы с размытием, такие как задержки или артефакты, попробуйте другой метод размытия.\nВы можете отключить переход или отключить размытие если оно работат некорректно.'
     },
-    // More ? PR opens !
-};
+    // Occitan
+    'oc': {
+        trigger: 'Quichatz la barra d’espaci o Entrada per vos connectar',
+        password: 'Senhal...',
+
+        shutdown: 'Extincion...',
+        hibernate: 'Ivernacion...',
+        suspend: 'Mesa en velha...',
+        restart: 'Reaviada...',
+
+        setup: 'Parametratge',
+        theming: 'Tèma',
+        disableSplash: 'Desactivar l’ecran de lançament (ecran « Quichatz Entrada »)',
+        disableSplashText: 'Desactivar lo tèxte de l’ecran de lançament (relòtge sonque)',
+        disableIntro: 'Desactivar l’intro (logotipe OS)',
+        disableFade: 'Desactivar la transicion al negre aprèp connexion',
+        roundAvatar: 'Arredondir l’avatar',
+        disableAvatar: 'Desactivar l’avatar',
+        disableZoom: 'Desactivar l’agrandiment x2 (solucion ecran larg)',
+        clock12: 'format orari sus 12 oras',
+        disablePowerTexts: 'Desactivar los ecrans "Extincion..." etc.',
+        blurSettings: 'Paramètres d’enfosquiment (pels problèmas de laténcia/rtifacts)',
+        hideUsername: 'Rescondre lo nom d’utilizaire quand lo nom complèt es conegut',
+        capsLock: 'Lo verrolhatge de las majusculas es activat',
+
+        primaryColor: 'Color primària',
+        randomizeBG: 'Ne causir una a l’azard cada còp',
+        bgAdd: 'Se pòt apondre los rèireplans dins :',
+
+        blur: 'Fosc',
+        fixedBlur: 'Rèireplan enfosquit - rèireplan fixat',
+        absoluteBlur: 'Rèireplan enfosquit - rèireplan en posicion absoluta',
+        staticBlur: 'Rèireplan enfosquit sens transicion',
+        disabledBlur: 'Desactivar l’enfosquiment del rèireplan',
+        blurHelp: 'Se rencontratz de problèmas amb l’enfosquiment coma de laténcias o artifects, mercés de causir un metòde d’enfosquiment diferent.\nPodètz desactivar la transicion o tot l’enfosquiment se res fonciona pas.'
+    },
+};// More ? PR opens !
 
 function getLocale()
 {
