@@ -27,7 +27,8 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
+    "last 2 years",
+    "not dead",
     "not ie <= 8"
   ]
 }
