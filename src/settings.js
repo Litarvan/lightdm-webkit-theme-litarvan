@@ -9,6 +9,7 @@ export let settings = (local ? JSON.parse(local) : null) || {
 
     mode: 'classic',
     blur: 'fixed',
+    layout: lightdm.layout,
 
     disableSplash: false,
     disableSplashText: false,
@@ -35,6 +36,12 @@ if (!settings.desktop) {
 
 if (!settings.blur) {
     settings.blur = 'fixed'; // 3.2 update
+}
+
+if (!settings.layout) {
+    settings.layout = lightdm.layout; // 3.3 update
+} else {
+    lightdm.layout = settings.layout; // ensure layout is loaded
 }
 
 // Handle display name change
