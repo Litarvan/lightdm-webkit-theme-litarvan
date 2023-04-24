@@ -6,24 +6,21 @@
   "homepage": "https://litarvan.github.io/lightdm-webkit-theme-litarvan/",
   "repository": "https://github.com/Litarvan/lightdm-webkit-theme-litarvan",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^2.7.8",
-    "vue-router": "^3.5.4"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-service": "^5.0.8",
-    "sass": "^1.54.1",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.7.8"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vue/compiler-sfc": "^3.2.47",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "sass": "^1.62.0",
+    "vite": "^4.3.0"
   },
   "browserslist": [
     "> 1%",

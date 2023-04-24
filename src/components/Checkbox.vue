@@ -1,54 +1,49 @@
-<template>
-    <div class="checkbox" @click="update" ref="box">
-    </div>
-</template>
+<script setup>
+import { ref, onMounted, watch } from 'vue'
+import { color } from '@/themer';
 
-<script>
-    import { color } from '@/themer';
+const props = defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
+const box = ref(null)
 
-    export default {
-        name: 'l-checkbox',
-        props: ['value'],
+function updateStyle(checked) {
+  const style = box.value.style;
+  const col = checked ? color.value : null;
 
-        mounted() {
-            this.updateStyle();
-        },
-        data() {
-            return {
-                checked: this.value
-            }
-        },
+  style['border-color'] = col;
+  style['background'] = col;
+}
 
-        methods: {
-            update() {
-                this.$emit('input', this.checked = !this.checked);
-                this.updateStyle();
-            },
-            updateStyle() {
-                const style = this.$refs.box.style;
-                const col = this.checked ? color : null;
+function update() {
+  emit('update:modelValue', !props.modelValue);
+}
 
-                style['border-color'] = col;
-                style['background'] = col;
-            }
-        }
-    }
+watch(() => props.modelValue, updateStyle)
+
+onMounted(() => {
+  updateStyle(props.modelValue)
+})
 </script>
 
+<template>
+  <div class="checkbox" @click="update" ref="box">
+  </div>
+</template>
+
 <style lang="scss">
-    .checkbox {
-        border: solid 2px;
-        border-radius: 2px;
+.checkbox {
+  border: solid 2px;
+  border-radius: 2px;
 
-        transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
+  transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
 
-        width: 22px;
-        height: 22px;
+  width: 22px;
+  height: 22px;
 
-        display: inline-block;
-    }
+  display: inline-block;
+}
 
-    .checkbox:hover {
-        cursor: pointer;
-    }
+.checkbox:hover {
+  cursor: pointer;
+}
 </style>

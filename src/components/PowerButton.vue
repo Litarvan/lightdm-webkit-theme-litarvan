@@ -1,74 +1,74 @@
-<template>
-    <div class="power-button">
-        <div id="button-container" @click="disabled ? '' : apply()">
-            <img id="power-button-icon" :class="{ type }" :src="require('../assets/images/' + type + '.svg')"/>
-        </div>
-    </div>
-</template>
+<script setup>
+import { useRouter } from 'vue-router'
+import { settings, save } from '@/settings';
 
-<script>
-    import { settings, save } from '@/settings';
+const router = useRouter();
 
-    export default {
-        name: 'l-power-button',
-        props: ['type', 'disabled'],
-        methods: {
-            apply() {
-                if (this.type === 'back') {
-                    save();
-                    this.$router.back();
+// const types = ['shutdown', 'hibernate', 'suspend', 'restart', 'settings', 'back']
+const props = defineProps(['type', 'disabled']);
 
-                    return;
-                }
+function apply() {
+  if (props.type === 'back') {
+    save();
+    router.back();
 
-                if (this.type === 'settings') {
-                    this.$router.push('/setup');
-                    return;
-                }
+    return;
+  }
 
-                if (this.type === 'theming') {
-                    this.$router.push('/theming');
-                    return;
-                }
+  if (props.type === 'settings') {
+    router.push('/setup');
+    return;
+  }
 
-                const action = lightdm[this.type];
-                if (settings.disablePowerTexts) {
-                    action();
-                    return;
-                }
+  if (props.type === 'theming') {
+    router.push('/theming');
+    return;
+  }
 
-                setTimeout(action, 1500);
-                this.$router.push(`/intro/${this.type}`)
-            }
-        },
-        data() {
-            return {
-                types: ['shutdown', 'hibernate', 'suspend', 'restart', 'settings', 'back']
-            }
-        }
-    }
+  const action = lightdm[props.type];
+  if (settings.disablePowerTexts) {
+    action();
+    return;
+  }
+
+  setTimeout(action, 1500);
+  router.push(`/intro/${props.type}`)
+}
+
+function getImageUrl(name) {
+  return new URL(`../assets/images/${name}`, import.meta.url).href
+}
+
 </script>
 
+<template>
+  <div class="power-button">
+    <div id="button-container" @click="disabled ? '' : apply()">
+      <img id="power-button-icon" :class="{ type }" :src="getImageUrl(`${type}.svg`)" />
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
-    @import '../theme';
+@import '../theme';
 
-    #button-container {
-        transition: background 125ms ease-in-out;
-        border-radius: 6px;
-        line-height: 1;
-    }
+#button-container {
+  transition: background 125ms ease-in-out;
+  border-radius: 6px;
+  line-height: 1;
+}
 
-    #button-container:hover {
-        background: rgba(255, 255, 255, 0.08);
-        cursor: pointer;
-    }
+#button-container:hover {
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
 
-    #power-button-icon {
-        box-sizing: initial;
+#power-button-icon {
+  box-sizing: initial;
 
-        padding: 10px 10px 10px;
+  padding: 10px 10px 10px;
 
-        width: 42px;
-        height: 42px;
-    }
+  width: 42px;
+  height: 42px;
+}
 </style>
