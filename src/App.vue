@@ -1,15 +1,18 @@
 <script setup>
-import { settings, save } from '@/settings.js';
 import { onMounted, onUnmounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
+import { settings, save } from '@/settings';
+
 const router = useRouter();
 const route = useRoute();
-const disableZoom = settings.disableZoom
 
 function keyup(event) {
   if (event.which === 27) {
+    console.log(event)
     if (route.name !== 'splash' && route.name !== 'intro') {
+      // TODO: why saving
+      console.log('App.vue keyup event')
       save();
       if (route.name === 'setup') {
         router.push('/base/splash');
@@ -17,7 +20,6 @@ function keyup(event) {
         router.back();
       }
     }
-    console.log('keyup')
   }
 }
 
@@ -27,13 +29,13 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  window.addEventListener('keyup', keyup)
+  window.removeEventListener('keyup', keyup)
 })
 
 </script>
 
 <template>
-  <div id="app" :class="{ 'disableZoom': disableZoom }">
+  <div id="app" :class="{ 'disableZoom': settings.disableZoom }">
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />

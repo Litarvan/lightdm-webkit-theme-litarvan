@@ -1,15 +1,19 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { background } from '@/themer.js';
-import { settings } from '@/settings.js';
+
+import { background } from '@/themer';
+import { settings } from '@/settings';
 
 const router = useRouter()
 
-const fixed = settings.blur !== 'absolute'
-const absolute = settings.blur === 'absolute'
-const transition = settings.blur !== 'static'
-const blurrable = settings.blur !== 'disabled'
+// blur is not reactive, although settings is reactive
+const { blur } = settings
+
+const fixed = blur !== 'absolute'
+const absolute = blur === 'absolute'
+const transition = blur !== 'static'
+const blurrable = blur !== 'disabled'
 
 function isBlurred() {
   let name = router.currentRoute.name;
@@ -41,43 +45,6 @@ onMounted(() => {
     </router-view>
   </div>
 </template>
-
-<!-- <script> -->
-<!--     import { background } from '@/themer.js'; -->
-<!--     import { settings } from '@/settings.js'; -->
-<!---->
-<!--     export default { -->
-<!--         name: 'l-base', -->
-<!---->
-<!--         data() { -->
-<!--             const { blur } = settings; -->
-<!---->
-<!--             return { -->
-<!--                 background, -->
-<!--                 fixed: blur !== 'absolute', -->
-<!--                 absolute: blur === 'absolute', -->
-<!--                 transition: blur !== 'static', -->
-<!--                 blurrable: blur !== 'disabled' -->
-<!--             }; -->
-<!--         }, -->
-<!--         methods: { -->
-<!--             isBlurred() { -->
-<!--                 let name = this.$router.currentRoute.name; -->
-<!--                 return name === 'login' || name === 'select'; -->
-<!--             } -->
-<!--         }, -->
-<!--         mounted() { -->
-<!--             if (window.greeter_comm) { -->
-<!--                 window.addEventListener("GreeterBroadcastEvent", (event) => { -->
-<!--                     const data = event.data; -->
-<!--                     if (data.type == "change-background") { -->
-<!--                         this.background = data.path; -->
-<!--                     } -->
-<!--                 }) -->
-<!--             } -->
-<!--         } -->
-<!--     }; -->
-<!-- </script> -->
 
 <style lang="scss">
 @import '../theme';

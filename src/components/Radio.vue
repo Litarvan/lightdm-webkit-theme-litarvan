@@ -1,6 +1,6 @@
 <script setup>
 import { watch, ref, onMounted } from 'vue'
-import { color } from '@/themer.js';
+import { color } from '@/themer';
 
 const props = defineProps(['modelValue', 'valueKey'])
 const emit = defineEmits(['update:modelValue'])
@@ -29,42 +29,6 @@ onMounted(() => {
   <div class="radio" @click="select" ref="box">
   </div>
 </template>
-
-<!-- <script> -->
-<!--     import { color } from '@/themer'; -->
-<!---->
-<!--     export default { -->
-<!--         name: 'l-radio', -->
-<!--         props: ['value', 'valueKey'], -->
-<!---->
-<!--         mounted() { -->
-<!--             this.updateStyle(); -->
-<!--         }, -->
-<!---->
-<!--         computed: { -->
-<!--             checked() { -->
-<!--                 return this.value === this.valueKey -->
-<!--             } -->
-<!--         }, -->
-<!--         watch: { -->
-<!--             checked() { -->
-<!--                 this.updateStyle(); -->
-<!--             } -->
-<!--         }, -->
-<!--         methods: { -->
-<!--             select() { -->
-<!--                 this.$emit('input', this.valueKey); -->
-<!--             }, -->
-<!--             updateStyle() { -->
-<!--                 const style = this.$refs.box.style; -->
-<!--                 const col = this.checked ? color : null; -->
-<!---->
-<!--                 style['border-color'] = col; -->
-<!--                 style['background'] = col; -->
-<!--             } -->
-<!--         } -->
-<!--     } -->
-<!-- </script> -->
 
 <style lang="scss">
 .radio {

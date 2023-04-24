@@ -202,8 +202,6 @@ window.lightdm_begin_login = (username, cb, errCB, msgCB) => {
 };
 
 window.lightdm_login = (username, pass, newSession) => {
-  console.log("lightdm_login")
-  console.log(username, pass, newSession)
   if (newSession) {
     password = pass;
     lightdm.authenticate(username);
@@ -211,7 +209,6 @@ window.lightdm_login = (username, pass, newSession) => {
     password = undefined;
     lightdm.respond(pass);
   }
-  console.log('lightdm_login end')
 };
 
 window.lightdm_start = (desktop) => {

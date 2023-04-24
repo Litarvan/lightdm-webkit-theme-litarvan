@@ -3,7 +3,7 @@ import { ref, reactive, onMounted, watch } from 'vue'
 import LCheckbox from '@/components/Checkbox.vue';
 import LPowerButton from '@/components/PowerButton.vue';
 
-import { background, color, updateColor, updateBG, DEFAULT_COLOR, backgrounds, getBackgrounds } from '@/themer';
+import { background, color, updateColor, updateBG, DEFAULT_COLOR, backgrounds } from '@/themer';
 import { trans } from '@/translations';
 import { settings } from '@/settings';
 
@@ -29,7 +29,7 @@ onMounted(async () => {
   // hex.value = color.value; // To call the watcher
 
   // bg.value = backgrounds();
-  console.log(getBackgrounds())
+  // console.log(getBackgrounds())
 
   const [rs, gs, bs] = toRGB(color.value);
   rgb.r = rs

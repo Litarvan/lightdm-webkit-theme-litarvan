@@ -1,17 +1,23 @@
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { reactive, watch, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps(['small', 'preview'])
-const batteryIcon = ref('battery_1')
-const batteryValue = ref(15)
-const batteryIsCharging = ref(false)
-const canAccessBattery = ref(lightdm?.can_access_battery ?? false)
-const brightnessIcon = ref('brightness_high')
-const brightnessValue = ref(85)
-const canAccessBrightness = ref(lightdm?.can_access_brightness ?? false)
-const showBrightnessSlider = ref(false)
 
-watch(brightnessValue, (val, oldValue) => {
+const battery = reactive({
+  icon: 'battery_1',
+  value: 15,
+  isCharging: false,
+  canAccess: lightdm?.can_access_battery ?? false
+})
+
+const brightness = reactive({
+  icon: 'brightness_high',
+  value: 85,
+  canAccess: lightdm?.can_access_brightness ?? false,
+  showSlider: false,
+})
+
+watch(() => brightness.value, (val, oldValue) => {
   if (val == oldValue)
     return;
   lightdm.brightness = val;
@@ -20,7 +26,7 @@ watch(brightnessValue, (val, oldValue) => {
 function on_battery_update() {
   const batteryData = lightdm?.battery_data ?? null;
   if (batteryData == null) {
-    canAccessBattery.value = false;
+    battery.canAccess = false;
     return;
   }
 
@@ -28,42 +34,42 @@ function on_battery_update() {
   const acStatus = batteryData.ac_status ?? false;
 
   if (level < 10) {
-    batteryIcon.value = "battery_0";
+    battery.icon = "battery_0";
   } else if (level < 25) {
-    batteryIcon.value = "battery_1";
+    battery.icon = "battery_1";
   } else if (level < 40) {
-    batteryIcon.value = "battery_2";
+    battery.icon = "battery_2";
   } else if (level < 55) {
-    batteryIcon.value = "battery_3";
+    battery.icon = "battery_3";
   } else if (level < 70) {
-    batteryIcon.value = "battery_4";
+    battery.icon = "battery_4";
   } else if (level < 85) {
-    batteryIcon.value = "battery_5";
+    battery.icon = "battery_5";
   } else if (level < 98) {
-    batteryIcon.value = "battery_6";
+    battery.icon = "battery_6";
   } else {
-    batteryIcon.value = "battery_full";
+    battery.icon = "battery_full";
   }
-  batteryValue.value = level;
-  batteryIsCharging.value = acStatus;
+  battery.value = level;
+  battery.isCharging = acStatus;
 }
 
 function on_brightness_update() {
-  const brightness = lightdm?.brightness ?? null;
-  if (brightness == null) {
-    canAccessBrightness.value = false;
+  const bright = lightdm?.brightness ?? null;
+  if (bright == null) {
+    brightness.canAccess = false;
     return;
   }
 
-  if (brightness < 33) {
-    brightnessIcon.value = "brightness_low";
-  } else if (brightness < 66) {
-    brightnessIcon.value = "brightness_medium";
+  if (bright < 33) {
+    brightness.icon = "brightness_low";
+  } else if (bright < 66) {
+    brightness.icon = "brightness_medium";
   } else {
-    brightnessIcon.value = "brightness_high";
+    brightness.icon = "brightness_high";
   }
 
-  brightnessValue.value = brightness;
+  brightness.value = bright;
 }
 
 onMounted(() => {
@@ -94,25 +100,25 @@ function getImageUrl(path) {
 
 <template>
   <div id="additions" :class="{ 'small': small }">
-    <div id="battery-container" class="addition-container" v-if="canAccessBattery">
-      <img id="battery-icon" class="addition-icon" :src="getImageUrl(`../assets/images/battery/${batteryIcon}.svg`)" />
+    <div id="battery-container" class="addition-container" v-if="battery.canAccess">
+      <img id="battery-icon" class="addition-icon" :src="getImageUrl(`../assets/images/battery/${battery.icon}.svg`)" />
       <img id="battery-charging-icon" class="addition-icon" :src="getImageUrl('../assets/images/battery/bolt.svg')"
-        v-if="batteryIsCharging" />
+        v-if="battery.isCharging" />
       <span id="battery-value">
-        {{ batteryValue }}%
+        {{ battery.value }}%
       </span>
     </div>
 
-    <div id="brightness-container" class="addition-container" v-if="canAccessBrightness"
-      @mouseover="showBrightnessSlider = !preview ? true : false" @mouseleave="showBrightnessSlider = false">
+    <div id="brightness-container" class="addition-container" v-if="brightness.canAccess"
+      @mouseover="brightness.showSlider = !preview ? true : false" @mouseleave="brightness.showSlider = false">
       <img id="brightness-icon" class="addition-icon"
-        :src="getImageUrl(`../assets/images/brightness/${brightnessIcon}.svg`)" />
+        :src="getImageUrl(`../assets/images/brightness/${brightness.icon}.svg`)" />
       <transition name="expand">
-        <input id="brightness-slider" type="range" min="0" max="100" v-model="brightnessValue"
-          v-show="showBrightnessSlider" />
+        <input id="brightness-slider" type="range" min="0" max="100" v-model="brightness.value"
+          v-show="brightness.showSlider" />
       </transition>
       <span id="brightness-value">
-        {{ brightnessValue }}%
+        {{ brightness.value }}%
       </span>
     </div>
   </div>

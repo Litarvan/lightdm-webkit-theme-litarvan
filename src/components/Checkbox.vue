@@ -6,9 +6,9 @@ const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
 const box = ref(null)
 
-function updateStyle(checked) {
+function updateStyle(checked, color) {
   const style = box.value.style;
-  const col = checked ? color.value : null;
+  const col = checked ? color : null;
 
   style['border-color'] = col;
   style['background'] = col;
@@ -18,11 +18,13 @@ function update() {
   emit('update:modelValue', !props.modelValue);
 }
 
-watch(() => props.modelValue, updateStyle)
+// when color or checkbox value changes, update style
+watch([() => props.modelValue, color], ([val, cval]) => updateStyle(val, cval))
 
 onMounted(() => {
-  updateStyle(props.modelValue)
+  updateStyle(props.modelValue, color.value)
 })
+
 </script>
 
 <template>

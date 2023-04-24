@@ -1,5 +1,5 @@
 <script setup>
-import { avatar, settings } from '@/settings.js';
+import { avatar, settings } from '@/settings';
 
 // key is environment name, value is icon name. Sorted by key
 const environments = {

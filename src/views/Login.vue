@@ -6,6 +6,7 @@ import LAdditions from '@/components/Additions.vue';
 
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
+
 import { avatar, settings } from '@/settings';
 import { trans } from '@/translations';
 
@@ -70,9 +71,7 @@ function submit() {
 
   // Workaround for a form submit bug reloading the route
   setTimeout(() => {
-    console.log('lightdm_login')
     lightdm_login(settings.user.username, password.value, !loginInSession.value);
-    console.log('login????')
   }, 150);
 }
 onMounted(() => {
@@ -147,105 +146,6 @@ onBeforeUnmount(() => {
     </div>
   </div>
 </template>
-
-<!-- <script> -->
-<!--     import LPowerButton from '@/components/PowerButton.vue'; -->
-<!--     import LClock from '@/components/Clock.vue'; -->
-<!--     import LSelectItem from '@/components/SelectItem.vue'; -->
-<!--     import LAdditions from '@/components/Additions.vue'; -->
-<!---->
-<!--     import { avatar, settings } from '@/settings'; -->
-<!--     import { trans } from '@/translations'; -->
-<!---->
-<!--     export default { -->
-<!--         name: 'l-login', -->
-<!--         components: { LSelectItem, LPowerButton, LClock, LAdditions }, -->
-<!--         props: ['immutable', 'compact', 'preview'], -->
-<!---->
-<!--         data() { -->
-<!--             return { -->
-<!--                 canHibernate: lightdm.can_hibernate, -->
-<!--                 canSuspend: lightdm.can_suspend, -->
-<!--                 passwordLabel: trans('password'), -->
-<!--                 isCompact: this.immutable ? this.compact : settings.mode === 'compact', -->
-<!--                 settings, -->
-<!--                 powerList: false, -->
-<!--                 logging: false, -->
-<!--                 error: false, -->
-<!--                 info: '', -->
-<!--                 message: '', -->
-<!--                 loginInSession: false, -->
-<!---->
-<!--                 password: '' -->
-<!--             } -->
-<!--         }, -->
-<!--         mounted() { -->
-<!--             window.addEventListener('keyup', this.keyup); -->
-<!--              -->
-<!--             if (!this.preview) { -->
-<!--                 this.cancel(); // cancel any old sessions -->
-<!--                 this.begin(); // begin a new login session to get any messages -->
-<!--             } -->
-<!---->
-<!--             setTimeout(() => { -->
-<!--                 let p = document.querySelector('#password'); -->
-<!--                 p && p.focus(); -->
-<!--             }, 650); -->
-<!--         }, -->
-<!--         beforeDestroy() { -->
-<!--             window.removeEventListener('keyup', this.keyup); -->
-<!--         }, -->
-<!--         methods: { -->
-<!--             avatar, -->
-<!--             keyup(event) { -->
-<!--                 if (event.getModifierState("CapsLock")) { -->
-<!--                     this.info = trans('capsLock'); -->
-<!--                 } else { -->
-<!--                     this.info = ''; -->
-<!--                 } -->
-<!--             }, -->
-<!--             begin() { -->
-<!--                 this.loginInSession = true; -->
-<!--                 lightdm_begin_login(this.settings.user.username, () => { -->
-<!--                     setTimeout(() => lightdm_start(this.settings.desktop.key), 400); -->
-<!--                     this.$router.push(settings.disableFade ? '/base' : '/intro/login'); -->
-<!--                 }, () => { -->
-<!--                     this.error = true; -->
-<!--                     this.password = ''; -->
-<!--                     this.logging = false; -->
-<!--                     this.begin(); -->
-<!--                 }, (msg) => { -->
-<!--                     this.error = true; -->
-<!--                     this.password = ''; -->
-<!--                     this.logging = false; -->
-<!--                     // If we receive a message then the login session has already failed -->
-<!--                     // so wait for the user to submit another password before starting -->
-<!--                     // a new session to avoid an infinite loop -->
-<!--                     this.cancel(); -->
-<!--                     if (this.message === '') { -->
-<!--                         this.message = msg; -->
-<!--                     } else { -->
-<!--                         this.message = `${this.message} ${msg}`; -->
-<!--                     } -->
-<!--                 }); -->
-<!--             }, -->
-<!--             cancel() { -->
-<!--                 this.loginInSession = false; -->
-<!--                 lightdm_cancel_login();  -->
-<!--             }, -->
-<!--             submit() { -->
-<!--                 this.logging = true; -->
-<!--                 this.error = false; -->
-<!--                 this.message = ''; -->
-<!---->
-<!--                 // Workaround for a form submit bug reloading the route -->
-<!--                 setTimeout(() => { -->
-<!--                     lightdm_login(this.settings.user.username, this.password, !this.loginInSession); -->
-<!--                 }, 150); -->
-<!--             } -->
-<!--         } -->
-<!--     } -->
-<!-- </script> -->
 
 <style lang="scss" scoped>
 @import '../theme';

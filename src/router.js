@@ -1,13 +1,13 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-import Login from './views/Login.vue';
-import Splash from './views/Splash.vue';
 import Base from './views/Base.vue';
+import Blur from './views/Blur.vue';
 import Intro from './views/Intro.vue';
+import Login from './views/Login.vue';
 import Setup from './views/Setup.vue';
 import Select from './views/Select.vue';
+import Splash from './views/Splash.vue';
 import Theming from './views/Theming.vue';
-import Blur from './views/Blur.vue';
 
 const routes = [
   {
@@ -55,7 +55,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  // history: createWebHistory(), // webkit2gtk 2.40+ not supported securityerror,
+  // history: createWebHistory(), // webkit2gtk 2.40+ not support. (securityerror)
   history: createWebHashHistory(),
   routes
 });

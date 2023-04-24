@@ -6,6 +6,7 @@ if (local === 'undefined') {
 
 import { reactive, toRaw } from 'vue'
 
+// making settings reactive
 export const settings = reactive((local ? JSON.parse(local) : null) || {
   first: true,
 
@@ -46,20 +47,17 @@ lightdm.sessions.forEach(s => settings.desktop.username === s.key && (settings.d
 save();
 
 export function save() {
-  // localStorage.setItem('settings', JSON.stringify(s ? settings = s : settings));
   localStorage.setItem('settings', JSON.stringify(toRaw(settings)));
-  console.log(localStorage.getItem('settings'))
 }
 
 export function avatar(avatar) {
   if (!avatar || avatar === '') {
-    avatar = new URL('@/assets/images/default_user.png', import.meta.url).href;
+    avatar = new URL('./assets/images/default_user.png', import.meta.url).href;
   }
 
   if (avatar === 'litarvan') {
-    avatar = new URL('@/assets/images/litarvan.png', import.meta.url).href;
+    avatar = new URL('./assets/images/litarvan.png', import.meta.url).href;
   }
-  console.log('avatar', avatar);
 
   return avatar;
 }

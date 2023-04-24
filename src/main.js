@@ -2,28 +2,11 @@ import { createApp } from 'vue'
 
 import './lightdm';
 
-import router from './router.js';
 import App from './App.vue';
-import { hook } from './themer.js';
-import italicHook from './italic.js';
-//
-// Vue.config.productionTip = false;
-//
-// Vue.directive('theming', {
-//     bind(el, { value }) {
-//         hook(el, value);
-//     }
-// });
-//
-// Vue.directive('italic', {
-//     bind(el, { modifiers }) {
-//         italicHook(el, modifiers.custom)
-//     },
-//     update(el, { modifiers }) {
-//         italicHook(el, modifiers.custom);
-//     }
-// });
-//
+import router from './router';
+import { hook } from './themer';
+import italicHook from './italic';
+
 const app = createApp(App)
 
 app.directive('theming', {
@@ -44,7 +27,3 @@ app.directive('italic', {
 app.use(router)
 app.mount('#app')
 
-// new Vue({
-//     router,
-//     render: h => h(App)
-// }).$mount('#app');
