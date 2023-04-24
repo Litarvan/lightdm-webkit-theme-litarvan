@@ -2,18 +2,14 @@
 import { onMounted, onUnmounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
-import { settings, save } from '@/settings';
+import { settings } from '@/settings';
 
 const router = useRouter();
 const route = useRoute();
 
 function keyup(event) {
   if (event.which === 27) {
-    console.log(event)
     if (route.name !== 'splash' && route.name !== 'intro') {
-      // TODO: why saving
-      console.log('App.vue keyup event')
-      save();
       if (route.name === 'setup') {
         router.push('/base/splash');
       } else {

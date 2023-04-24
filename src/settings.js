@@ -4,7 +4,7 @@ if (local === 'undefined') {
   local = null;
 }
 
-import { reactive, toRaw } from 'vue'
+import { reactive, toRaw, watch } from 'vue'
 
 // making settings reactive
 export const settings = reactive((local ? JSON.parse(local) : null) || {
@@ -44,11 +44,13 @@ if (!settings.blur) {
 lightdm.users.forEach(u => settings.user.username === u.username && (settings.user = u));
 lightdm.sessions.forEach(s => settings.desktop.username === s.key && (settings.desktop = s));
 
-save();
-
-export function save() {
+function save() {
   localStorage.setItem('settings', JSON.stringify(toRaw(settings)));
 }
+
+// save settings once settings changed, (autosaving)
+// TODO: test settings first
+watch(settings, save)
 
 export function avatar(avatar) {
   if (!avatar || avatar === '') {

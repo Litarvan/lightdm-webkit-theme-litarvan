@@ -2,7 +2,7 @@
 import LPowerButton from '@/components/PowerButton.vue';
 import LRadio from '@/components/Radio.vue';
 
-import { settings, save } from '@/settings';
+import { settings } from '@/settings';
 import { trans } from '@/translations';
 
 const texts = {
@@ -37,7 +37,7 @@ const texts = {
       <p id="blur-help" v-html="texts.help" />
     </div>
 
-    <div @click="save()">
+    <div>
       <LPowerButton id="back" type="back" />
     </div>
   </div>

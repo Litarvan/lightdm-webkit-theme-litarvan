@@ -1,6 +1,6 @@
 <script setup>
 import LSelectItem from '@/components/SelectItem.vue';
-import { save, settings } from '@/settings.js';
+import { settings } from '@/settings';
 import { useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
@@ -18,7 +18,6 @@ const selected = settings[mode] || {}
 
 function select(obj) {
   settings[mode] = obj;
-  save();
   router.back();
 }
 </script>

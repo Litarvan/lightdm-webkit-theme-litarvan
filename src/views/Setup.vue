@@ -5,7 +5,7 @@ import LCheckbox from '@/components/Checkbox.vue';
 import LLogin from '@/views/Login.vue';
 
 import { trans } from '@/translations';
-import { settings, save } from '@/settings';
+import { settings } from '@/settings';
 
 const fix = !lightdm_debug;
 
@@ -31,7 +31,6 @@ function select(layout) {
 onMounted(() => {
   if (settings.first) {
     settings.first = false;
-    save();
   }
 })
 </script>

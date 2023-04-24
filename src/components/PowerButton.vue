@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import { settings, save } from '@/settings';
+import { settings } from '@/settings';
 
 const router = useRouter();
 
@@ -9,9 +9,7 @@ const props = defineProps(['type', 'disabled']);
 
 function apply() {
   if (props.type === 'back') {
-    save();
     router.back();
-
     return;
   }
 
