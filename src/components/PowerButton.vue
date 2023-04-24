@@ -25,13 +25,13 @@ function apply() {
     return;
   }
 
-  const action = lightdm[props.type];
+  // const action = lightdm[props.type]; // invalid instance type in method
   if (settings.disablePowerTexts) {
-    action();
+    lightdm[props.type]();
     return;
   }
+  setTimeout(() => lightdm[props.type](), 1500);
 
-  setTimeout(action, 1500);
   router.push(`/intro/${props.type}`)
 }
 
