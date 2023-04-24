@@ -49,7 +49,6 @@ function save() {
 }
 
 // save settings once settings changed, (autosaving)
-// TODO: test settings first
 watch(settings, save)
 
 export function avatar(avatar) {
