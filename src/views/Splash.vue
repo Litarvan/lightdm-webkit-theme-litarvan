@@ -1,9 +1,9 @@
 <script setup>
-import { onMounted, onBeforeUnmount } from 'vue'
-import { useRouter } from 'vue-router'
-
 import LClock from '@/components/Clock.vue';
 import LAdditions from '@/components/Additions.vue';
+
+import { onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
 
 import { trans } from '@/translations';
 import { settings } from '@/settings';
@@ -11,7 +11,6 @@ import { settings } from '@/settings';
 const router = useRouter()
 
 const trigger = trans('trigger')
-const clockOnly = settings.disableSplashText
 
 function submit(event) {
     if (event.which === 13 || event.which === 32) {
@@ -29,12 +28,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div id="splash" :class="{ 'clock-only': clockOnly }">
+    <div id="splash" :class="{ 'clock-only': settings.disableSplashText }">
         <div id="top-container">
             <LClock />
-            <LAdditions v-if="!clockOnly" />
+            <LAdditions v-if="!settings.disableSplashText" />
         </div>
-        <div v-if="!clockOnly" id="trigger" v-italic>{{ trigger }}</div>
+        <div v-if="!settings.disableSplashText" id="trigger" v-italic>{{ trigger }}</div>
     </div>
 </template>
 
