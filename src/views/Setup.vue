@@ -1,8 +1,9 @@
 <script setup>
-import { onMounted } from 'vue';
 import LPowerButton from '@/components/PowerButton.vue';
 import LCheckbox from '@/components/Checkbox.vue';
 import LLogin from '@/views/Login.vue';
+
+import { onMounted } from 'vue';
 
 import { trans } from '@/translations';
 import { settings } from '@/settings';
