@@ -20,6 +20,7 @@ if (window.lightdm_debug) {
 
     let brightness = 85;
 
+    // lightdm-webkit2-greeter api doc: https://doclets.io/Antergos/web-greeter/stable
     window.lightdm = {
         is_authenticated: false,
         authentication_user: undefined,
@@ -84,7 +85,7 @@ if (window.lightdm_debug) {
             image: 'litarvan',
             language: "fr_FR.UTF-8",
         }, {
-            // user props can be found on https://github.com/canonical/lightdm/blob/main/liblightdm-gobject/user.c
+            // user props can be found on https://doclets.io/Antergos/web-greeter/stable#dl-LightDM-User
             display_name: "Zayn Chen",
             username: "zaync",
             image: "",

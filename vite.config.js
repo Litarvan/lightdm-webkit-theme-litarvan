@@ -2,15 +2,13 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import autoprefixer from "autoprefixer"
-// import { createVuePlugin as vue } from "vite-plugin-vue2"
 
 const path = require("path");
 
 export default defineConfig({
     resolve: {
         alias: {
-            // vue: '@vue/compat',
-            "@": path.resolve(__dirname, "./src")
+            "@": path.resolve(__dirname, "./src") // for '@settings' '@x.vue' to work
         }
     },
     css: {
@@ -21,13 +19,17 @@ export default defineConfig({
         },
     },
     plugins: [vue()],
-    base: '',
+    base: '', // embedded deployment https://vitejs.dev/config/shared-options.html
     build: {
         rollupOptions: {
             output: {
                 chunkFileNames: 'js/[name]-[hash].js',
                 entryFileNames: 'js/[name]-[hash].js',
 
+                // images to assets dir
+                // js to js dir
+                // css, ttf to css dir
+                // default to assets dir
                 assetFileNames: ({ name }) => {
                     if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
                         return 'assets/[name]-[hash][extname]';

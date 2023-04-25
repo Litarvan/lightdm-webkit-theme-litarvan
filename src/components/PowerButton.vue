@@ -23,7 +23,7 @@ function apply() {
         return;
     }
 
-    // const action = lightdm[props.type]; // invalid instance type in method
+    // const action = lightdm[props.type]; // this cause error: invalid instance type in method
     if (settings.disablePowerTexts) {
         lightdm[props.type]();
         return;

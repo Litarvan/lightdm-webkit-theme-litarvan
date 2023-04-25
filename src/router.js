@@ -11,6 +11,7 @@ import Theming from './views/Theming.vue';
 
 const routes = [
     {
+        // need? vue warning: No match found for location with path '/'
         path: '/',
         redirect: '/intro/initial',
     },

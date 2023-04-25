@@ -14,6 +14,7 @@ function updateStyle(value) {
     style['background'] = col;
 }
 
+// using getter function to watch props, directly watch props.modelValue won't work
 watch(() => props.modelValue, updateStyle)
 
 function select() {
