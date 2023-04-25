@@ -76,11 +76,20 @@ if (window.lightdm_debug) {
     ],
     users: [{
       display_name: 'John Doe',
-      username: 'johnd'
+      username: 'johnd',
+      language: 'en_US.UTF-8',
     }, {
       display_name: 'Adrien Navratil',
       username: 'litarvan',
-      image: 'litarvan'
+      image: 'litarvan',
+      language: "fr_FR.UTF-8",
+    }, {
+      // user props can be found on https://github.com/canonical/lightdm/blob/main/liblightdm-gobject/user.c
+      display_name: "Zayn Chen",
+      username: "zaync",
+      image: "",
+      language: "zh_CN.UTF-8",
+      session: "awesome",
     }],
     languages: [{
       name: 'American English',
@@ -90,6 +99,10 @@ if (window.lightdm_debug) {
       name: 'Français',
       code: 'fr_FR.utf8',
       territory: '',
+    }, {
+      name: '中文',
+      code: 'zh_CN.utf8',
+      territory: '中国'
     }],
     language: { code: "en_US", name: "American English", territory: "United States" },
     battery_data: {

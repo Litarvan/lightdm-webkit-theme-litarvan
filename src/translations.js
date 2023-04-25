@@ -285,7 +285,14 @@ const translations = {
   // More ? PR opens !
 };
 
+import { settings } from '@/settings'
+
 function getLocale() {
+  // get locale from settings.user, which is an element of lightdm.users
+  if (settings.user != undefined && settings.user.language != undefined) {
+    return settings.user.language.split('.')[0].replace('_', '-');
+  }
+
   let lang = 'en-US';
 
   if (!lightdm.language || !lightdm.languages) {
