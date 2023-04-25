@@ -14,18 +14,6 @@ const text = trans(state)
 
 onMounted(() => {
     if (state === 'initial') {
-        // TODO: secondary.html, necessary?
-        if (document.head.dataset.wintype === 'secondary') {
-            if (settings.disableIntro) {
-                router.push('/base/splash');
-            } else {
-                setTimeout(() => {
-                    router.push('/base/splash');
-                }, 2000);
-            }
-            return;
-        }
-
         if (settings.disableIntro) {
             router.push(settings.disableSplash ? '/base/login' : '/base/splash');
             return;
