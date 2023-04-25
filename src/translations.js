@@ -301,8 +301,7 @@ function getLocale() {
 
   lightdm.languages.forEach(l => {
     if (l.name.toLowerCase() === name
-      && (l.territory == undefined
-        || l.territory.toLowerCase() === territory))
+      && (territory === '' || l.territory.toLowerCase() === territory))
       lang = l.code.split('.')[0].replace('_', '-');
   });
 

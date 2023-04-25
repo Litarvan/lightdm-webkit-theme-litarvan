@@ -84,10 +84,12 @@ if (window.lightdm_debug) {
     }],
     languages: [{
       name: 'American English',
-      code: 'en_US.utf8'
+      code: 'en_US.utf8',
+      territory: 'United States',
     }, {
       name: 'Français',
-      code: 'fr_FR.utf8'
+      code: 'fr_FR.utf8',
+      territory: '',
     }],
     language: { code: "en_US", name: "American English", territory: "United States" },
     battery_data: {
