@@ -67,65 +67,6 @@ onBeforeUnmount(() => {
     </div>
 </template>
 
-<!-- <script> -->
-<!--     import { getLocale } from '@/translations'; -->
-<!--     import { settings } from '@/settings'; -->
-<!---->
-<!--     export default { -->
-<!--         name: 'l-clock', -->
-<!--         props: ['small'], -->
-<!---->
-<!--         mounted() { -->
-<!--             this.setTime(); -->
-<!--             this.interval = setInterval(this.setTime, 1000); -->
-<!--         }, -->
-<!---->
-<!--         filters: { -->
-<!--             pad: v => v.toString().padStart(2, '0') -->
-<!--         }, -->
-<!---->
-<!--         methods: { -->
-<!--             setTime() { -->
-<!--                 const date = new Date(); -->
-<!---->
-<!--                 this.hours = date.getHours(); -->
-<!--                 this.minutes = date.getMinutes(); -->
-<!---->
-<!--                 if (settings.clock12) { -->
-<!--                     this.part = this.hours >= 12 ? 'PM' : 'AM'; -->
-<!--                     this.hours = this.hours === 12 || this.hours === 0 ? 12 : this.hours % 12; -->
-<!--                 } -->
-<!---->
-<!--                 let strs = date.toLocaleDateString(getLocale(), { -->
-<!--                     weekday: 'long', -->
-<!--                     day: 'numeric', -->
-<!--                     month: 'long', -->
-<!--                     year: 'numeric' -->
-<!--                 }).split(' '); -->
-<!---->
-<!--                 // Capitalize date -->
-<!--                 let result = ''; -->
-<!--                 strs.forEach(s => result += s.charAt(0).toUpperCase() + s.substring(1) + ' '); -->
-<!---->
-<!--                 this.date = result.substring(0, result.length - 1); -->
-<!--             } -->
-<!--         }, -->
-<!---->
-<!--         data() { -->
-<!--             return { -->
-<!--                 hours: '00', -->
-<!--                 minutes: '00', -->
-<!--                 date: '', -->
-<!--                 part: '' -->
-<!--             }; -->
-<!--         }, -->
-<!---->
-<!--         beforeDestroy() { -->
-<!--             clearInterval(this.interval); -->
-<!--         } -->
-<!--     } -->
-<!-- </script> -->
-
 <style lang="scss" scoped>
 .clock {
     font-size: 164px;
