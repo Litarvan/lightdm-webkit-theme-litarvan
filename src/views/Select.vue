@@ -7,8 +7,8 @@ const router = useRouter();
 const route = useRoute();
 
 const modes = {
-  user: { field: 'users', name: 'display_name', key: 'username' },
-  desktop: { field: 'sessions', name: 'name', key: 'key' }
+    user: { field: 'users', name: 'display_name', key: 'username' },
+    desktop: { field: 'sessions', name: 'name', key: 'key' }
 };
 
 const mode = route.params.mode
@@ -17,30 +17,30 @@ const content = lightdm[type.field] || []
 const selected = settings[mode] || {}
 
 function select(obj) {
-  settings[mode] = obj;
-  router.back();
+    settings[mode] = obj;
+    router.back();
 }
 </script>
 
 <template>
-  <div id="select">
-    <div id="content">
-      <LSelectItem v-for="item of content" :key="item[type.key]" :mode="mode" :item="item"
-        :selected="item[type.key] === selected[type.key]" @select="select(item)" />
+    <div id="select">
+        <div id="content">
+            <LSelectItem v-for="item of content" :key="item[type.key]" :mode="mode" :item="item"
+                :selected="item[type.key] === selected[type.key]" @select="select(item)" />
+        </div>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
 #select {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  font-family: 'Lato', 'Noto Sans', sans-serif;
-  font-weight: normal;
-  font-size: 44px;
+    font-family: 'Lato', 'Noto Sans', sans-serif;
+    font-weight: normal;
+    font-size: 44px;
 
-  text-align: left;
+    text-align: left;
 }
 </style>

@@ -1,6 +1,6 @@
 import { trans } from './translations';
 
-export default function(el, custom) {
+export default function (el, custom) {
     if (!trans('disableItalic')) {
         const classes = el.classList;
         if (classes.contains('italic')) {

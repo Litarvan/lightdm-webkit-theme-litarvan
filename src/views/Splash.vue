@@ -1,43 +1,43 @@
 <script setup>
-    import { onMounted, onBeforeUnmount } from 'vue'
-    import { useRouter } from 'vue-router'
+import { onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
 
-    import LClock from '@/components/Clock.vue';
-    import LAdditions from '@/components/Additions.vue';
+import LClock from '@/components/Clock.vue';
+import LAdditions from '@/components/Additions.vue';
 
-    import { trans } from '@/translations';
-    import { settings } from '@/settings';
+import { trans } from '@/translations';
+import { settings } from '@/settings';
 
-    const router = useRouter()
-        
-    let isSecondary = document.head.dataset.wintype === "secondary";
+const router = useRouter()
 
-    const trigger = trans('trigger')
-    const clockOnly = settings.disableSplashText || isSecondary
-    const showClock = !isSecondary
-    const showAdditions = !isSecondary
+let isSecondary = document.head.dataset.wintype === "secondary";
 
-    function submit(event) {
-        if (event.which === 13 || event.which === 32) {
-            router.push('/base/login');
-        }
+const trigger = trans('trigger')
+const clockOnly = settings.disableSplashText || isSecondary
+const showClock = !isSecondary
+const showAdditions = !isSecondary
+
+function submit(event) {
+    if (event.which === 13 || event.which === 32) {
+        router.push('/base/login');
     }
+}
 
-    onMounted(() =>  {
-        if (isSecondary) {
-            set_complete_cb(() => {
-                router.push(settings.disableFade ? '/base' : '/intro/login');
-            });
-        } else {
-            window.addEventListener('keyup', submit);
-        }
-    })
+onMounted(() => {
+    if (isSecondary) {
+        set_complete_cb(() => {
+            router.push(settings.disableFade ? '/base' : '/intro/login');
+        });
+    } else {
+        window.addEventListener('keyup', submit);
+    }
+})
 
-    onBeforeUnmount(() => {
-        if (!isSecondary) {
-            window.removeEventListener('keyup', submit);
-        }
-    })
+onBeforeUnmount(() => {
+    if (!isSecondary) {
+        window.removeEventListener('keyup', submit);
+    }
+})
 </script>
 
 <template>
@@ -96,38 +96,39 @@
 <!-- </script> -->
 
 <style lang="scss" scoped>
-    #splash {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+#splash {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#splash:not(.clock-only) .clock {
+    margin-top: 6vh;
+}
+
+#splash.clock-only {
+    align-items: center;
+    justify-content: center;
+    flex-direction: initial;
+
+    .clock {
+        padding-bottom: 25px;
+        /* Text size compensation */
     }
+}
 
-    #splash:not(.clock-only) .clock {
-        margin-top: 6vh;
-    }
+#top-container {
+    display: flex;
+    flex-direction: column;
+}
 
-    #splash.clock-only {
-        align-items: center;
-        justify-content: center;
-        flex-direction: initial;
+#trigger {
+    font-family: 'Lato', 'Noto Sans', serif;
+    font-weight: 300;
+    font-size: 32px;
+    cursor: default;
 
-        .clock {
-            padding-bottom: 25px; /* Text size compensation */
-        }
-    }
-
-    #top-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #trigger {
-        font-family: 'Lato', 'Noto Sans', serif;
-        font-weight: 300;
-        font-size: 32px;
-        cursor: default;
-
-        margin-bottom: 11.5vh;
-        letter-spacing: 0.25px;
-    }
+    margin-bottom: 11.5vh;
+    letter-spacing: 0.25px;
+}
 </style>
