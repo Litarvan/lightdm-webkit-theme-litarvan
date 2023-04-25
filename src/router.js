@@ -11,6 +11,10 @@ import Theming from './views/Theming.vue';
 
 const routes = [
     {
+        path: '/',
+        redirect: '/intro/initial',
+    },
+    {
         path: '/setup',
         name: 'setup',
         component: Setup
