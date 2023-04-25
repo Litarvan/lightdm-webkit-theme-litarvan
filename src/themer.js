@@ -1,4 +1,4 @@
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import { settings } from '@/settings';
 
 export const DEFAULT_COLOR = '#249cea';
@@ -22,14 +22,13 @@ export function hook(element, rules) {
         style[rule] = color.value;
     }
 }
-document.documentElement.style.setProperty('--primary-color', color)
 
-export function updateColor() {
+function updateColor() {
     localStorage.setItem('color', color.value);
     document.documentElement.style.setProperty('--primary-color', color.value)
 }
 
-export function updateBG() {
+function updateBG() {
     localStorage.setItem('background', background.value);
     if (window.greeter_comm) {
         greeter_comm.broadcast({
@@ -39,9 +38,18 @@ export function updateBG() {
     }
 }
 
+document.documentElement.style.setProperty('--primary-color', color.value)
+
+// autosave background
+watch(background, updateBG)
+// autosave color
+watch(color, updateColor)
+
+
 // async is conflict with randomize background feature,
-// because randomize background feature requires all backgrounds are already known,
-// so as to pick background randomly to show the background.
+// because randomize background feature requires all backgrounds are already known
+// for picking background randomly to show the background.
+// so randomize background feature may slow down the theme
 function getBackgrounds() {
     const folder = greeter_config.branding.background_images_dir ||
         greeter_config.branding.background_images;

@@ -1,9 +1,10 @@
 <script setup>
-import { ref, reactive, onMounted, watch } from 'vue'
 import LCheckbox from '@/components/Checkbox.vue';
 import LPowerButton from '@/components/PowerButton.vue';
 
-import { background, color, updateColor, updateBG, DEFAULT_COLOR, backgrounds } from '@/themer';
+import { ref, reactive, onMounted, watch } from 'vue'
+
+import { background, backgrounds, color, DEFAULT_COLOR } from '@/themer';
 import { trans } from '@/translations';
 import { settings } from '@/settings';
 
@@ -25,12 +26,7 @@ const rgb = reactive({
     }
 })
 
-onMounted(async () => {
-    // hex.value = color.value; // To call the watcher
-
-    // bg.value = backgrounds();
-    // console.log(getBackgrounds())
-
+onMounted(() => {
     const [rs, gs, bs] = toRGB(color.value);
     rgb.r = rs
     rgb.g = gs
@@ -87,18 +83,16 @@ function prevBG() {
     }
 }
 
+// update rbg when color changes
 watch(color, () => {
     const [r, g, b] = toRGB(color.value);
     !isNaN(r) && (rgb.r = r);
     !isNaN(g) && (rgb.g = g);
     !isNaN(b) && (rgb.b = b);
-
-    updateColor();
 })
 
 watch(bg, (val) => {
     background.value = backgrounds[val];
-    updateBG();
 })
 
 function getImageUrl(name) {
