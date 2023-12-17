@@ -18,6 +18,7 @@
             <div class="checkbox-line"><l-checkbox v-model="settings.disableIntro" /><label>{{ texts.disableIntro }}</label></div>
             <div class="checkbox-line"><l-checkbox v-model="settings.clock12" /><label>{{ texts.clock12 }}</label></div>
             <div class="checkbox-line"><l-checkbox v-model="settings.disablePowerTexts" /><label>{{ texts.disablePowerTexts }}</label></div>
+            <div class="checkbox-line"><l-checkbox v-model="settings.splashTextShadow" /><label>{{ texts.splashTextShadow }}</label></div>
         </div>
 
         <div id="right-settings" class="settings">
@@ -60,6 +61,7 @@
                     setup: trans('setup'),
                     disableSplash: trans('disableSplash'),
                     disableSplashText: trans('disableSplashText'),
+                    splashTextShadow: trans('splashTextShadow'),
                     disableIntro: trans('disableIntro'),
                     disableFade: trans('disableFade'),
                     roundAvatar: trans('roundAvatar'),

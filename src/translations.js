@@ -13,6 +13,7 @@ const translations = {
         theming: 'Theming',
         disableSplash: 'Disable splash ("Press Enter" screen)',
         disableSplashText: 'Disable splash text (clock only)',
+        splashTextShadow: 'Add text shadow for splash screen',
         disableIntro: 'Disable intro (OS logo)',
         disableFade: 'Disable fade to black after login',
         roundAvatar: 'Round avatar',

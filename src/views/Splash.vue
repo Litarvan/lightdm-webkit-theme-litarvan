@@ -1,5 +1,5 @@
 <template>
-    <div id="splash" :class="{ 'clock-only': clockOnly }">
+    <div id="splash" :class="{ 'clock-only': clockOnly, 'shadow': haveShadow }">
         <div id="top-container">
             <l-clock v-if="showClock" />
             <l-additions v-if="showAdditions && !clockOnly" />
@@ -41,6 +41,7 @@
                 clockOnly: settings.disableSplashText || isSecondary,
                 showClock: !isSecondary,
                 showAdditions: !isSecondary,
+                haveShadow: settings.splashTextShadow,
             }
         },
         methods: {
@@ -54,10 +55,16 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "../theme";
+
     #splash {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+    }
+
+    #splash.shadow {
+        text-shadow: $splash-text-shadow;
     }
 
     #splash:not(.clock-only) .clock {
