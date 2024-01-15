@@ -5,22 +5,22 @@
   "author": "Adrien 'Litarvan' Navratil <adrien1975@live.fr>",
   "homepage": "https://litarvan.github.io/lightdm-webkit-theme-litarvan/",
   "repository": "https://github.com/Litarvan/lightdm-webkit-theme-litarvan",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.1.0",
-    "@vue/compiler-sfc": "^3.2.47",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.23",
-    "sass": "^1.62.0",
-    "vite": "^4.3.1"
+    "@vitejs/plugin-vue": "^4.5.2",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.33",
+    "sass": "^1.69.7",
+    "vite": "^5.0.8"
   },
   "browserslist": [
     "> 1%",

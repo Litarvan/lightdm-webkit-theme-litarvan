@@ -1,15 +1,17 @@
 // vite.config.js
+import { fileURLToPath, URL } from "url";
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import autoprefixer from "autoprefixer"
 
-const path = require("path");
+// const path = require("path");
 
 export default defineConfig({
     resolve: {
-        alias: {
-            "@": path.resolve(__dirname, "./src") // for '@settings' '@x.vue' to work
-        }
+        alias: [
+            // "@": resolve(__dirname, "src") // for '@settings' '@x.vue' to work
+            { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+        ]
     },
     css: {
         postcss: {
