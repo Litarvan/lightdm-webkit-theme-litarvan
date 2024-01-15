@@ -290,7 +290,9 @@ import { settings } from '@/settings'
 function getLocale() {
     // get locale from settings.user.language, which is a language.code, like 'en_US.UTF-8'
     // need more test to check if this is working
-    if (settings.user != undefined && settings.user.language != undefined) {
+    if (settings.user != undefined &&
+        settings.user.language != undefined &&
+        settings.user.language !== '') {
         return settings.user.language.split('.')[0].replace('_', '-');
     }
 
