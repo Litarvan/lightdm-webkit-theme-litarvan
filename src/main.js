@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import { createApp } from 'vue'
 
 import './lightdm';
 
@@ -7,24 +7,23 @@ import router from './router';
 import { hook } from './themer';
 import italicHook from './italic';
 
-Vue.config.productionTip = false;
+const app = createApp(App)
 
-Vue.directive('theming', {
-    bind(el, { value }) {
+app.directive('theming', {
+    beforeMount(el, { value }) {
         hook(el, value);
     }
 });
 
-Vue.directive('italic', {
-    bind(el, { modifiers }) {
+app.directive('italic', {
+    beforeMount(el, { modifiers }) {
         italicHook(el, modifiers.custom)
     },
-    update(el, { modifiers }) {
+    updated(el, { modifiers }) {
         italicHook(el, modifiers.custom);
     }
 });
 
-new Vue({
-    router,
-    render: h => h(App)
-}).$mount('#app');
+app.use(router)
+app.mount('#app')
+

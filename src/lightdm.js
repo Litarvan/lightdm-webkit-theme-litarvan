@@ -20,6 +20,7 @@ if (window.lightdm_debug) {
 
     let brightness = 85;
 
+    // lightdm-webkit2-greeter api doc: https://doclets.io/Antergos/web-greeter/stable
     window.lightdm = {
         is_authenticated: false,
         authentication_user: undefined,
@@ -76,20 +77,35 @@ if (window.lightdm_debug) {
         ],
         users: [{
             display_name: 'John Doe',
-            username: 'johnd'
+            username: 'johnd',
+            language: 'en_US.UTF-8',
         }, {
             display_name: 'Adrien Navratil',
             username: 'litarvan',
-            image: 'litarvan'
+            image: 'litarvan',
+            language: "fr_FR.UTF-8",
+        }, {
+            // user props can be found on https://doclets.io/Antergos/web-greeter/stable#dl-LightDM-User
+            display_name: "Zayn Chen",
+            username: "zaync",
+            image: "",
+            language: "zh_CN.UTF-8",
+            session: "awesome",
         }],
         languages: [{
             name: 'American English',
-            code: 'en_US.utf8'
+            code: 'en_US.utf8',
+            territory: 'United States',
         }, {
             name: 'Français',
-            code: 'fr_FR.utf8'
+            code: 'fr_FR.utf8',
+            territory: '',
+        }, {
+            name: '中文',
+            code: 'zh_CN.utf8',
+            territory: '中国'
         }],
-        language: {code: "en_US", name: "American English", territory: "United States"},
+        language: { code: "en_US", name: "American English", territory: "United States" },
         battery_data: {
             level: 15,
             ac_status: true,
@@ -143,13 +159,11 @@ if (window.lightdm_debug) {
         respond: (password) => {
             console.log(`Password provided : '${password}'`);
 
-            if (password === DEBUG_PASSWORD)
-            {
+            if (password === DEBUG_PASSWORD) {
                 lightdm.is_authenticated = true;
                 authentication_complete();
             }
-            else
-            {
+            else {
                 setTimeout(() => authentication_complete(), 2000);
             }
         },
@@ -199,7 +213,7 @@ window.lightdm_begin_login = (username, cb, errCB, msgCB) => {
     errorCB = errCB;
     messageCB = msgCB;
     password = undefined;
-    
+
     lightdm.authenticate(username);
 };
 
@@ -218,8 +232,7 @@ window.lightdm_start = (desktop) => {
 };
 
 window.show_prompt = (text, type) => {
-    if (text === "Password: " && password !== undefined)
-    {
+    if (text === "Password: " && password !== undefined) {
         lightdm.respond(password);
     }
 }
@@ -235,7 +248,7 @@ window.authentication_complete = () => {
 
 window.show_message = (text, type) => {
     if (messageCB) {
-        messageCB(text);  
+        messageCB(text);
     }
 };
 

@@ -4,7 +4,10 @@ if (local === 'undefined') {
     local = null;
 }
 
-export let settings = (local ? JSON.parse(local) : null) || {
+import { reactive, toRaw, watch } from 'vue'
+
+// making settings reactive
+export const settings = reactive((local ? JSON.parse(local) : null) || {
     first: true,
 
     mode: 'classic',
@@ -24,7 +27,7 @@ export let settings = (local ? JSON.parse(local) : null) || {
 
     user: lightdm.users[0],
     desktop: lightdm.sessions[0]
-};
+});
 
 if (!settings.user) {
     settings.user = lightdm.users.find(u => !!u);
@@ -41,23 +44,24 @@ if (!settings.blur) {
 lightdm.users.forEach(u => settings.user.username === u.username && (settings.user = u));
 lightdm.sessions.forEach(s => settings.desktop.username === s.key && (settings.desktop = s));
 
-save();
-
-export function save(s) {
-    localStorage.setItem('settings', JSON.stringify(s ? settings = s : settings));
+function save() {
+    localStorage.setItem('settings', JSON.stringify(toRaw(settings)));
 }
+
+// save settings once settings changed, (autosaving)
+watch(settings, save)
 
 export function avatar(avatar) {
     if (!avatar || avatar === '') {
-        return require('./assets/images/default_user.png');
+        avatar = new URL('./assets/images/default_user.png', import.meta.url).href;
     }
 
     if (avatar === 'litarvan') {
-        return require('./assets/images/litarvan.png');
+        avatar = new URL('./assets/images/litarvan.png', import.meta.url).href;
     }
 
     return avatar;
 }
 
 console.log(' --> Loaded settings :');
-console.log(settings);
+console.log(toRaw(settings));

@@ -285,8 +285,17 @@ const translations = {
     // More ? PR opens !
 };
 
-function getLocale()
-{
+import { settings } from '@/settings'
+
+function getLocale() {
+    // get locale from settings.user.language, which is a language.code, like 'en_US.UTF-8'
+    // need more test to check if this is working
+    if (settings.user != undefined &&
+        settings.user.language != undefined &&
+        settings.user.language !== '') {
+        return settings.user.language.split('.')[0].replace('_', '-');
+    }
+
     let lang = 'en-US';
 
     if (!lightdm.language || !lightdm.languages) {
@@ -294,28 +303,22 @@ function getLocale()
     }
 
     let language = lightdm.language;
-    let name = typeof(language) === 'string' ? language : language.name != undefined ? language.name : '';
+    let name = typeof (language) === 'string' ? language : language.name != undefined ? language.name : '';
     let territory = language.territory != undefined ? language.territory : '';
 
     name = name.toLowerCase();
     territory = territory.toLowerCase();
 
-    if (name !== '' && territory !== '')
-        lightdm.languages.forEach(l => {
-            if (l.name.toLowerCase() === name && l.territory.toLowerCase() === territory)
-                lang = l.code.split('.')[0].replace('_', '-');
-        });
-    else
-        lightdm.languages.forEach(l => {
-            if (l.name.toLowerCase() === name)
-                lang = l.code.split('.')[0].replace('_', '-');
-        });
+    lightdm.languages.forEach(l => {
+        if (l.name.toLowerCase() === name
+            && (territory === '' || l.territory.toLowerCase() === territory))
+            lang = l.code.split('.')[0].replace('_', '-');
+    });
 
     return lang;
 }
 
-function trans(key)
-{
+function trans(key) {
     const lang = getLocale();
     const candidates = [lang, lang.substring(0, 2), 'en'];
     for (const candidate of candidates) {

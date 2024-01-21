@@ -1,61 +1,80 @@
-import { settings } from './settings';
+import { ref, reactive, watch } from 'vue'
+import { settings } from '@/settings';
 
 export const DEFAULT_COLOR = '#249cea';
-const DEFAULT_BG = require('./assets/images/background.png');
 
-export let color = localStorage.getItem('color') || DEFAULT_COLOR;
-export let background = getBackground();
+// vite Static Asset Handling.
+// when building, vite will automatically copy the static assets to dist dir,
+// and adjust the resolved public URL.
+// if using raw string, vite won't copy the static assets, leads to 404
+const DEFAULT_BG = new URL('@/assets/images/background.png', import.meta.url).href;
+// const DEFAULT_BG = require('./assets/images/background.png');
+
+// wrap color, background, backgrounds by ref or reactive to make them reactive
+export const color = ref(localStorage.getItem('color') || DEFAULT_COLOR);
+export const backgrounds = reactive(getBackgrounds());
+export const background = ref(getBackground());
 
 export function hook(element, rules) {
     const style = element.style;
 
     for (const rule of rules) {
-        style[rule] = color;
+        style[rule] = color.value;
     }
 }
-document.documentElement.style.setProperty('--primary-color', color)
 
-export function updateColor(hex) {
-    color = hex;
-    localStorage.setItem('color', color);
-    document.documentElement.style.setProperty('--primary-color', color)
+function updateColor() {
+    localStorage.setItem('color', color.value);
+    document.documentElement.style.setProperty('--primary-color', color.value)
 }
 
-export function updateBG(bg) {
-    background = bg;
-    localStorage.setItem('background', bg);
+function updateBG() {
+    localStorage.setItem('background', background.value);
     if (window.greeter_comm) {
         greeter_comm.broadcast({
             type: "change-background",
-            path: bg,
+            path: background.value,
         })
     }
 }
 
-export async function backgrounds() {
+document.documentElement.style.setProperty('--primary-color', color.value)
+
+// autosave background
+watch(background, updateBG)
+// autosave color
+watch(color, updateColor)
+
+
+// async is conflict with randomize background feature,
+// because randomize background feature requires all backgrounds are already known
+// for picking background randomly to show the background.
+// so randomize background feature may slow down the theme
+function getBackgrounds() {
     const folder = greeter_config.branding.background_images_dir ||
-                    greeter_config.branding.background_images;
+        greeter_config.branding.background_images;
     if (!folder) {
         return [DEFAULT_BG];
     }
 
-    const recDirList = async (dir) => {
+    const recDirList = (dir) => {
         let result = [];
         let dirlist = [];
-        await new Promise((resolve) => {
-            let dirl = theme_utils.dirlist(dir, false, (files) => {
-                dirlist = files;
-                resolve();
-            })
-            if (Array.isArray(dirl)) {
-                dirlist = dirl;
-                resolve();
-            }
+
+        // return list of abs paths for the files and directories found in path.
+        let dirl = theme_utils.dirlist(dir, false, (files) => {
+            dirlist = files;
         })
 
+        if (Array.isArray(dirl)) {
+            dirlist = dirl;
+        }
+
         for (const file of dirlist) {
+            // dirlist is a list of path string,
+            // so no other info to use to distinguish file and dirs
             if (!file.includes('.')) { // I didn't find any good ways to do it
-                result = [...result, ...(await recDirList(file))];
+                result = [...result, ...recDirList(file)];
             } else if (!file.endsWith('.xml') && !file.endsWith('.stw')) { // Gnome and Arch backgrounds have strange files
                 result.push(file);
             }
@@ -63,15 +82,14 @@ export async function backgrounds() {
         return result;
     };
 
-    let result = await recDirList(folder);
+    let result = recDirList(folder);
 
     return [DEFAULT_BG, ...result];
 }
 
 function getBackground() {
-    if(settings.randomizeBG) {
-        const bgs = backgrounds();
-        return bgs[Math.floor(Math.random() * bgs.length)];
+    if (settings.randomizeBG) {
+        return backgrounds[Math.floor(Math.random() * backgrounds.length)];
     }
 
     return localStorage.getItem('background') || DEFAULT_BG;

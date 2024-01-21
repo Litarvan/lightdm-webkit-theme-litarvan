@@ -1,54 +1,51 @@
+<script setup>
+import { ref, onMounted, watch } from 'vue'
+import { color } from '@/themer';
+
+const props = defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
+const box = ref(null)
+
+function updateStyle(checked, color) {
+    const style = box.value.style;
+    const col = checked ? color : null;
+
+    style['border-color'] = col;
+    style['background'] = col;
+}
+
+function update() {
+    emit('update:modelValue', !props.modelValue);
+}
+
+// when color or checkbox value changes, update style
+watch([() => props.modelValue, color], ([val, cval]) => updateStyle(val, cval))
+
+onMounted(() => {
+    updateStyle(props.modelValue, color.value)
+})
+
+</script>
+
 <template>
     <div class="checkbox" @click="update" ref="box">
     </div>
 </template>
 
-<script>
-    import { color } from '@/themer';
-
-    export default {
-        name: 'l-checkbox',
-        props: ['value'],
-
-        mounted() {
-            this.updateStyle();
-        },
-        data() {
-            return {
-                checked: this.value
-            }
-        },
-
-        methods: {
-            update() {
-                this.$emit('input', this.checked = !this.checked);
-                this.updateStyle();
-            },
-            updateStyle() {
-                const style = this.$refs.box.style;
-                const col = this.checked ? color : null;
-
-                style['border-color'] = col;
-                style['background'] = col;
-            }
-        }
-    }
-</script>
-
 <style lang="scss">
-    .checkbox {
-        border: solid 2px;
-        border-radius: 2px;
+.checkbox {
+    border: solid 2px;
+    border-radius: 2px;
 
-        transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
+    transition: border-color 150ms ease-in-out, background 125ms ease-in-out;
 
-        width: 22px;
-        height: 22px;
+    width: 22px;
+    height: 22px;
 
-        display: inline-block;
-    }
+    display: inline-block;
+}
 
-    .checkbox:hover {
-        cursor: pointer;
-    }
+.checkbox:hover {
+    cursor: pointer;
+}
 </style>
